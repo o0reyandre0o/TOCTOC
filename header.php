@@ -136,11 +136,13 @@
         <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-display font-extrabold text-sm">T</div>
         <span class="text-lg font-display tracking-tight">TocToc <em class="italic text-sky-deep">Marketing</em></span>
     </a>
-    <div class="hidden items-center gap-8 md:flex">
-        <a href="#home" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors decoration-none">Home</a>
-        <a href="#loop" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors decoration-none">Loop</a>
-        <a href="#process" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors decoration-none">Process</a>
-        <a href="#portfolio" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors decoration-none">Portfolio</a>
+    <div class="hidden items-center gap-6 lg:gap-8 md:flex">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-[13px] font-bold text-slate-500 hover:text-primary transition-colors decoration-none uppercase tracking-wider">Home</a>
+        <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold text-slate-500 hover:text-primary transition-colors decoration-none uppercase tracking-wider">Services</a>
+        <a href="<?php echo esc_url( home_url( '/seo-agency-services-cayman-islands/' ) ); ?>" class="text-[13px] font-bold text-slate-500 hover:text-primary transition-colors decoration-none uppercase tracking-wider">SEO</a>
+        <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold text-slate-500 hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Design</a>
+        <a href="<?php echo esc_url( home_url( '/social-media-marketing-services-cayman-islands/' ) ); ?>" class="text-[13px] font-bold text-slate-500 hover:text-primary transition-colors decoration-none uppercase tracking-wider">Social</a>
+        <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-[13px] font-bold text-slate-500 hover:text-primary transition-colors decoration-none uppercase tracking-wider">About</a>
     </div>
     <a href="#contact" class="bg-accent text-accent-foreground h-11 px-6 rounded-full flex items-center gap-2 font-bold text-sm shadow-glow transition-transform hover:scale-105 decoration-none">
         Book a Call
