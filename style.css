@@ -1,244 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Dancing+Script:wght@700&display=swap');
+/*
+Theme Name: TOCTOC Sky Editorial
+Description: The official TocToc Marketing theme based on the AI Revenue Loop design system.
+Version: 3.0
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --neon: #D9FF00;
-    --blue: #3b82f6;
-    --dark: #0a0b10;
-    --light: #f8faff;
-    --gray: #64748b;
-    --border: rgba(255, 255, 255, 0.1);
-    --glass: rgba(255, 255, 255, 0.7);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  --background: 210 60% 98%;
+  --foreground: 220 40% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 40% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 40% 10%;
+  --primary: 220 45% 8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 220 40% 10%;
+  --muted: 210 30% 94%;
+  --muted-foreground: 220 15% 40%;
+  --accent: 72 100% 62%;
+  --accent-foreground: 220 45% 8%;
+  --sky-deep: 212 95% 45%;
+  --sky-mid: 205 95% 60%;
+  --sky-light: 200 100% 88%;
+  --sky-pale: 205 100% 96%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 215 25% 88%;
+  --input: 215 25% 88%;
+  --ring: 212 95% 45%;
+  --radius: 1.25rem;
+  --font-display: 'Instrument Serif', serif;
+  --font-sans: 'Inter', sans-serif;
+  --shadow-soft: 0 10px 40px -10px hsl(212 80% 30% / 0.18);
+  --shadow-glass: 0 20px 60px -20px hsl(212 80% 25% / 0.25);
+  --shadow-glow: 0 0 60px hsl(72 100% 62% / 0.45);
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--light);
-    color: var(--dark);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-    font-family: 'Instrument Serif', serif;
-    font-weight: 400;
-    line-height: 1.1;
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+.glass {
+  background: hsl(0 0% 100% / 0.55);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid hsl(0 0% 100% / 0.6);
 }
 
-/* Navbar */
-.nav-bar {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1100px;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 99px;
-    padding: 10px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-glass { box-shadow: var(--shadow-glass); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+@keyframes drift {
+  0% { transform: translateX(-5%); }
+  100% { transform: translateX(5%); }
 }
 
-.nav-logo {
-    font-family: 'Instrument Serif', serif;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: #000;
-}
+.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+.animate-drift { animation: drift 30s ease-in-out infinite alternate; }
 
-.nav-links {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--dark);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.btn-neon {
-    background: var(--neon);
-    color: #000;
-    padding: 8px 20px;
-    border-radius: 99px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: transform 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-neon:hover {
-    transform: scale(1.05);
-}
-
-/* Hero */
-.hero {
-    padding: 160px 0 100px;
-    background: linear-gradient(180deg, #dbeafe 0%, #ffffff 100%);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1534088568595-a066f710b81f?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
-    opacity: 0.1;
-    z-index: 0;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 16px;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 99px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--blue);
-    margin-bottom: 2rem;
-    gap: 8px;
-}
-
-.hero h1 {
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    max-width: 1000px;
-    margin: 0 auto 1.5rem;
-}
-
-.hero h1 em {
-    color: var(--blue);
-    font-style: italic;
-}
-
-.hero p {
-    color: var(--gray);
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-}
-
-/* Cards */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 4rem;
-}
-
-.loop-card {
-    background: #fff;
-    padding: 3rem 2rem;
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.05);
-    text-align: left;
-    position: relative;
-    border: 1px solid #f1f5f9;
-}
-
-.card-num {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--neon);
-    margin-bottom: 1.5rem;
-}
-
-/* Dark Section */
-.dark-section {
-    background: #05070a;
-    color: #fff;
-    padding: 100px 0;
-}
-
-.dark-section h2 em {
-    color: var(--neon);
-    font-style: italic;
-}
-
-.project-list {
-    margin-top: 4rem;
-}
-
-.project-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    text-decoration: none;
-    color: #fff;
-    transition: padding 0.3s ease;
-}
-
-.project-item:hover {
-    padding-left: 1rem;
-    color: var(--neon);
-}
-
-.project-item h3 {
-    font-size: 2.5rem;
-}
-
-/* Final CTA */
-.final-cta {
-    background: var(--blue);
-    padding: 120px 0;
-    text-align: center;
-    color: #fff;
-    position: relative;
-}
-
-.final-cta h2 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-}
-
-.footer {
-    background: #000;
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
-}
-
-.cursive {
-    font-family: 'Dancing Script', cursive;
-    color: var(--blue);
-}
-
-@media (max-width: 768px) {
-    .card-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 3rem; }
-}
+/* Custom Utilities */
+.text-sky-deep { color: hsl(var(--sky-deep)); }
+.bg-sky-pale { background-color: hsl(var(--sky-pale)); }
+.italic { font-style: italic; }
