@@ -23,7 +23,7 @@
                 business in <em class="italic text-sky-deep font-display">AI Answers.</em>
             </h1>
 
-            <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-900">
+            <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-950 font-medium">
                 We are a 2026-ready marketing company that builds the <strong>Revenue Loop</strong> for your business.
             </p>
 
@@ -52,7 +52,7 @@
     <!-- Section 2: Intro -->
     <section class="relative py-24 md:py-32">
         <div class="mx-auto max-w-4xl px-6 text-center">
-            <p class="text-3xl md:text-5xl leading-[1.2] text-slate-900 font-display">
+            <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                 We are a digital marketing agency based in the Cayman Islands, focused on getting your business
                 <em class="italic text-sky-deep font-display"> recommended by AI agents.</em> Our Revenue Loop is
                 the framework we have successfully applied to all our clients to turn digital presence
