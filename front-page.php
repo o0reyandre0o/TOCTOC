@@ -9,7 +9,7 @@
             alt="Sky"
             class="absolute inset-0 w-full h-full object-cover"
         />
-        <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background/50 pointer-events-none z-[2]"></div>
+        <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none z-[2]"></div>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-32 pb-24 text-center flex flex-col items-center">
             <div class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[11px] font-bold text-slate-600 shadow-soft border border-white/80">
