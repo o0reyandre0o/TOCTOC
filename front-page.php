@@ -1,95 +1,111 @@
 <?php get_header(); ?>
 
 <main>
-    <!-- Hero Section -->
-    <section class="hero container">
-        <div class="hero-glow"></div>
-        <div data-animate class="hero-badge">2026 Ready Marketing Framework</div>
-        <h1 data-animate class="gradient-text">A Marketing Agency Focused on Getting Your Business in AI Answers<span>.</span></h1>
-        <p data-animate>We build the <span class="accent-text">Revenue Loop</span> that gets your business recommended by AI agents and turns search intent into growth.</p>
-        <div data-animate class="spacer"></div>
-        <div data-animate>
-            <a href="#" class="btn btn-primary">Book Free Consultation</a>
-            <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section-padding">
-        <div class="container">
-            <div class="card-grid">
-                <div data-animate class="card" style="grid-column: span 2;">
-                    <h2 class="gradient-text" style="font-size: 2.5rem; margin-bottom: 1.5rem;">The Cayman Islands AI Experts</h2>
-                    <p style="font-size: 1.2rem; color: var(--text-secondary);">We are a digital marketing agency focused on getting your business recommended by AI agents. Our Revenue Loop is the framework we have successfully applied to turn digital presence into a measurable revenue engine.</p>
-                </div>
-                <div data-animate class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3>Get Recommended</h3>
-                    <p>Visibility where modern search happens.</p>
-                </div>
+    <!-- Section 1: Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="badge">
+                <span>✦</span> Our Revenue Loop Framework Dominates
             </div>
-        </div>
-    </section>
-
-    <!-- Revenue Loop Section -->
-    <section id="loop" class="section-padding" style="background: #050505;">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 4rem;">
-                <h2 data-animate class="gradient-text" style="font-size: 3rem;">We build a Revenue Loop</h2>
-                <p data-animate style="max-width: 600px; margin: 1rem auto;">A three-phase framework designed to dominate the 2026 digital landscape.</p>
-            </div>
+            <h1>A Marketing Agency focused on getting your business in <em>AI Answers.</em></h1>
+            <p>We are a 2026-ready marketing company that builds the Revenue Loop for your business. Get Recommended • Get Chosen • Get Clients Back</p>
             
+            <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center;">
+                <a href="#" class="btn-neon" style="padding: 15px 35px; font-size: 1rem;">Start Revenue Loop <span>→</span></a>
+                <a href="#portfolio" style="text-decoration: none; color: #000; font-weight: 600;">See Portfolio</a>
+            </div>
+
             <div class="card-grid">
-                <div data-animate class="card">
-                    <div class="card-icon">01</div>
-                    <h3>Phase 01: Get Recommended</h3>
-                    <p>Discovery & AI Visibility. We optimize your "Context" across platforms AI assistants use (Google, Apple Maps, Yelp, etc).</p>
+                <div class="loop-card">
+                    <div class="card-num">01</div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Get Recommended</h3>
+                    <p style="color: var(--gray);">We optimize your context across platforms AI assistants use to recommend brands.</p>
                 </div>
-                <div data-animate class="card">
-                    <div class="card-icon">02</div>
-                    <h3>Phase 02: Get Chosen</h3>
-                    <p>Your Website Foundation. High-speed Discovery Engines that turn recommendations into confirmed leads.</p>
+                <div class="loop-card">
+                    <div class="card-num">02</div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Get Chosen</h3>
+                    <p style="color: var(--gray);">High-speed discovery engines that turn recommendations into confirmed leads.</p>
                 </div>
-                <div data-animate class="card">
-                    <div class="card-icon">03</div>
-                    <h3>Phase 03: Get Clients Back</h3>
-                    <p>Retention & Automation. Intelligent systems to keep your brand top-of-mind using CRM and SMS.</p>
+                <div class="loop-card">
+                    <div class="card-num">03</div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Get Clients Back</h3>
+                    <p style="color: var(--gray);">Intelligent systems to keep your brand top-of-mind using automation.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section-padding">
+    <!-- Section 2: Intro -->
+    <section style="padding: 100px 0; text-align: center;">
         <div class="container">
-            <h2 data-animate class="gradient-text" style="margin-bottom: 3rem;">Live Projects</h2>
-            <div class="card-grid">
-                <a href="https://adventuracayman.com" target="_blank" data-animate class="card" style="text-decoration: none;">
-                    <div style="height: 200px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 1rem;"></div>
-                    <h3>adventuracayman.com</h3>
-                    <p>Discovery Engine Launched</p>
+            <h2 style="font-size: 3.5rem; max-width: 900px; margin: 0 auto;">We are a digital marketing agency focused on getting your business <span style="color: var(--blue);">recommended by AI agents.</span></h2>
+        </div>
+    </section>
+
+    <!-- Section 3: Process -->
+    <section style="padding: 100px 0; background: #fff;">
+        <div class="container">
+            <h2 style="font-size: 4rem;">How to <span class="cursive">work with us</span></h2>
+            <div class="card-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 5rem;">
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem;">01.</div>
+                    <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">Book a Consultation</h4>
+                    <p style="color: var(--gray);">We audit your current digital presence and AI visibility.</p>
+                </div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem;">02.</div>
+                    <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">Tailored Solution</h4>
+                    <p style="color: var(--gray);">We map out a custom Revenue Loop for your business.</p>
+                </div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem;">03.</div>
+                    <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">We Execute</h4>
+                    <p style="color: var(--gray);">Our team builds your foundation and optimizes your context.</p>
+                </div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem;">04.</div>
+                    <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">Receive Leads</h4>
+                    <p style="color: var(--gray);">Your business becomes the recommended answer in search.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Portfolio (Dark) -->
+    <section id="portfolio" class="dark-section">
+        <div class="container">
+            <h2 style="font-size: 5rem; line-height: 1;">We build websites <em>AI loves</em> & humans trust.</h2>
+            
+            <div class="project-list">
+                <a href="https://adventuracayman.com" target="_blank" class="project-item">
+                    <h3>Adventura Cayman</h3>
+                    <span>→</span>
                 </a>
-                <a href="https://uncleliu.ky" target="_blank" data-animate class="card" style="text-decoration: none;">
-                    <div style="height: 200px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 1rem;"></div>
-                    <h3>uncleliu.ky</h3>
-                    <p>Discovery Engine Launched</p>
+                <a href="https://uncleliu.ky" target="_blank" class="project-item">
+                    <h3>Uncle Liu</h3>
+                    <span>→</span>
                 </a>
-                <a href="https://prospectcenter.ky" target="_blank" data-animate class="card" style="text-decoration: none;">
-                    <div style="height: 200px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 1rem;"></div>
-                    <h3>prospectcenter.ky</h3>
-                    <p>Discovery Engine Launched</p>
+                <a href="https://coconutroom.ky" target="_blank" class="project-item">
+                    <h3>Coconut Room</h3>
+                    <span>→</span>
+                </a>
+                <a href="https://prospectcenter.ky" target="_blank" class="project-item">
+                    <h3>Prospect Center</h3>
+                    <span>→</span>
+                </a>
+                <a href="https://insulation.brisanaconstruction.com" target="_blank" class="project-item">
+                    <h3>Brisana Insulation</h3>
+                    <span>→</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="section-padding" style="background: linear-gradient(to bottom, #000, #050505);">
-        <div class="container" style="text-align: center;">
-            <div data-animate class="card" style="max-width: 800px; margin: 0 auto; border-color: var(--accent-blue);">
-                <h2 class="gradient-text" style="font-size: 3rem; margin-bottom: 1.5rem;">Ready to dominate the AI search landscape?</h2>
-                <a href="#" class="btn btn-primary">Book Your Free Consultation</a>
-            </div>
+    <!-- Section 5: Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to build your <em>Revenue Loop?</em></h2>
+            <a href="#" class="btn-neon" style="padding: 20px 50px; font-size: 1.2rem;">Book a Free Consultation <span>✦</span></a>
         </div>
     </section>
 </main>
