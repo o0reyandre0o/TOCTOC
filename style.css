@@ -1,0 +1,17 @@
+/*
+Theme Name: TOCTOC
+Theme URI: http://toctoc.com
+Author: Antigravity
+Author URI: http://antigravity.ai
+Description: A premium WordPress theme replica of the Catalis Webflow template.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: toctoc
+*/
+
+/* Reset and Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+}
