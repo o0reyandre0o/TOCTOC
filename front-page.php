@@ -293,9 +293,7 @@
 
     <!-- Section 7: Final CTA -->
     <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
-        <!-- background clouds -->
-        <img src="https://cdn.prod.website-files.com/690a3d4b70be67fbdfcdc08a/690ce435b295f16c937cbef7_b37d532fd83b00c1e636745a11a55287_join-left.svg" alt="" aria-hidden class="absolute -left-20 bottom-0 w-[500px] opacity-90 pointer-events-none" />
-        <img src="https://cdn.prod.website-files.com/690a3d4b70be67fbdfcdc08a/690ce435bd41a8da12a0be42_459daa8b4411ff62fef7ad254a9456d5_join-right.svg" alt="" aria-hidden class="absolute -right-20 top-10 w-[420px] opacity-80 animate-float-slow pointer-events-none" />
+        <!-- background clouds removed as requested -->
 
         <div class="relative mx-auto max-w-4xl px-6 text-center flex flex-col items-center">
             <h2 class="text-5xl md:text-[100px] leading-[0.95] text-slate-950 font-display">
