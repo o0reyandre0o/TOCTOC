@@ -274,7 +274,7 @@
                 <!-- Project 6: Pr-Optics -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-54-59.webp" alt="Pr-Optics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-56-45.webp" alt="Pr-Optics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Pr-Optics</h3>
