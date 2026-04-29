@@ -77,7 +77,7 @@ get_header(); ?>
     </section>
 
     <!-- Section 3: Strategic Value -->
-    <section class="py-24 md:py-32 bg-slate-950 text-white rounded-[4rem]">
+    <section class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-8">
         <div class="mx-auto max-w-6xl px-6">
             <div class="flex flex-col md:flex-row gap-16 items-center">
                 <div class="md:w-1/2">

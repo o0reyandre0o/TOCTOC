@@ -121,7 +121,7 @@ get_header(); ?>
     </section>
 
     <!-- Section 4: Who We Help -->
-    <section class="py-24 md:py-32 bg-slate-950 text-white rounded-[3rem]">
+    <section class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-8">
         <div class="mx-auto max-w-6xl px-6">
             <div class="text-center max-w-3xl mx-auto mb-20">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Tailored for Cayman</span>

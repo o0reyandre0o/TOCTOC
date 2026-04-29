@@ -189,7 +189,7 @@
     </section>
 
     <!-- Section 5: Portfolio -->
-    <section id="portfolio" class="relative py-24 md:py-32 bg-slate-950 text-white rounded-t-[3rem]">
+    <section id="portfolio" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-t-[3rem]">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <h2 class="text-5xl md:text-8xl font-display leading-[0.9]">
@@ -246,7 +246,7 @@
     </section>
 
     <!-- Section 6: Social Proof (Google Reviews) -->
-    <section id="reviews" class="relative py-24 md:py-32 bg-slate-950 text-white rounded-b-[3rem] -mt-1">
+    <section id="reviews" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-b-[3rem] -mt-1">
         <div class="mx-auto max-w-6xl px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
                 <div class="max-w-2xl">
