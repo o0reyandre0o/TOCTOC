@@ -9,7 +9,7 @@
             alt="Sky"
             class="absolute inset-0 w-full h-full object-cover"
         />
-        <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background pointer-events-none z-[2]"></div>
+        <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background/50 pointer-events-none z-[2]"></div>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-32 pb-24 text-center flex flex-col items-center">
             <div class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[11px] font-bold text-slate-600 shadow-soft border border-white/80">
@@ -246,7 +246,7 @@
     </section>
 
     <!-- Section 6: Social Proof (Google Reviews) -->
-    <section id="reviews" class="relative py-24 md:py-32 bg-slate-950 text-white">
+    <section id="reviews" class="relative py-24 md:py-32 bg-slate-950 text-white rounded-b-[3rem] -mt-1">
         <div class="mx-auto max-w-6xl px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
                 <div class="max-w-2xl">

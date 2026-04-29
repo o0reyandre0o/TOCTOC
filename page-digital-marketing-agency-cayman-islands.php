@@ -7,22 +7,22 @@ get_header(); ?>
 
 <main class="min-h-screen bg-background text-foreground">
     <!-- Section 1: Hero -->
-    <section class="relative pt-48 pb-32 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-light/50 blur-[120px] rounded-full"></div>
-            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/30 blur-[120px] rounded-full"></div>
+    <section class="relative pt-48 pb-32 overflow-hidden bg-white">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent blur-[100px] rounded-full"></div>
         </div>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
-                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/20 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
                     Laser-Focused on Cayman
                 </div>
                 <h1 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">
                     Full-Service Digital Marketing Agency in Cayman: <em class="italic text-sky-deep font-display">ROI & Strategy Coaching.</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">
-                    Maximize your online reach and revenue with the digital marketing agency Cayman businesses choose for technical precision. We ensure your automated flows translate into real profit.
+                    Maximize your online reach and revenue with the digital marketing agency Cayman businesses choose for technical precision.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
                     <a href="#results" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
