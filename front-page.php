@@ -23,7 +23,7 @@
                 business in <em class="italic text-sky-deep font-display">AI Answers.</em>
             </h1>
 
-            <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-600">
+            <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-900">
                 We are a 2026-ready marketing company that builds the <strong>Revenue Loop</strong> for your business.
             </p>
 
