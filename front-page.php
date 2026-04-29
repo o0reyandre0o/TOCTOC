@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main class="min-h-screen bg-background">
-    <!-- Hero Section -->
+    <!-- Section 1: Hero Section -->
     <section id="home" class="relative min-h-[100svh] w-full overflow-hidden flex items-center">
         <!-- Sky background -->
         <img
@@ -233,11 +233,77 @@
         </div>
     </section>
 
-    <!-- Section 6: CTA (Clouds) -->
-    <section id="contact" class="relative py-32 md:py-48 text-center bg-sky-pale/50 overflow-hidden">
-        <div class="relative z-10 mx-auto max-w-4xl px-6">
-            <h2 class="text-5xl md:text-[100px] leading-[0.95] text-slate-950 font-display">Ready to build your <em class="italic font-display">Revenue Loop?</em></h2>
-            <p class="mt-8 text-slate-600 text-lg md:text-xl">Let’s turn your brand into the recommended answer.</p>
+    <!-- Section 6: Social Proof -->
+    <section class="relative py-24 md:py-32 bg-slate-950 text-white">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Social proof</span>
+                <h2 class="mt-4 text-5xl md:text-7xl font-display">
+                    What our <em class="italic text-accent font-display">clients say</em>
+                </h2>
+                <p class="mt-8 text-white/50 text-lg">
+                    22 years of marketing expertise backed by real local results.
+                </p>
+            </div>
+
+            <div class="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
+                    <div class="flex gap-1 text-accent">★★★★★</div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “TocToc rebuilt our entire online presence. We started showing up in AI recommendations within weeks.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5">
+                        <div class="text-base font-bold">Maria S.</div>
+                        <div class="text-sm text-white/40 italic">Owner, Coconut Room</div>
+                    </figcaption>
+                </figure>
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
+                    <div class="flex gap-1 text-accent">★★★★★</div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Bookings doubled in 30 days. Their Revenue Loop framework actually delivers.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5">
+                        <div class="text-base font-bold">James K.</div>
+                        <div class="text-sm text-white/40 italic">Director, Adventura</div>
+                    </figcaption>
+                </figure>
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
+                    <div class="flex gap-1 text-accent">★★★★★</div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Customers find us through ChatGPT now. Real magic — and real revenue.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5">
+                        <div class="text-base font-bold">Liu W.</div>
+                        <div class="text-sm text-white/40 italic">Uncle Liu</div>
+                    </figcaption>
+                </figure>
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
+                    <div class="flex gap-1 text-accent">★★★★★</div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Professional, fast, and transparent. The website converts like nothing we had.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5">
+                        <div class="text-base font-bold">Brian P.</div>
+                        <div class="text-sm text-white/40 italic">Brisana Insulation</div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Final CTA -->
+    <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
+        <!-- background clouds -->
+        <img src="https://cdn.prod.website-files.com/690a3d4b70be67fbdfcdc08a/690ce435b295f16c937cbef7_b37d532fd83b00c1e636745a11a55287_join-left.svg" alt="" aria-hidden class="absolute -left-20 bottom-0 w-[500px] opacity-90 pointer-events-none" />
+        <img src="https://cdn.prod.website-files.com/690a3d4b70be67fbdfcdc08a/690ce435bd41a8da12a0be42_459daa8b4411ff62fef7ad254a9456d5_join-right.svg" alt="" aria-hidden class="absolute -right-20 top-10 w-[420px] opacity-80 animate-float-slow pointer-events-none" />
+
+        <div class="relative mx-auto max-w-4xl px-6 text-center flex flex-col items-center">
+            <h2 class="text-5xl md:text-[100px] leading-[0.95] text-slate-950 font-display">
+                Ready to build your <br /><em class="italic font-display">Revenue Loop?</em>
+            </h2>
+            <p class="mt-8 text-lg md:text-xl text-slate-600 max-w-xl mx-auto">
+                Let’s talk about your business and how we can turn your brand into the recommended answer.
+            </p>
             <a href="mailto:hello@toctoc.ky" class="group mt-12 inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-transform hover:scale-[1.05] decoration-none">
                 Book a Free Consultation
                 <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
