@@ -200,48 +200,77 @@
                 </p>
             </div>
 
-            <ul class="mt-20 divide-y divide-white/10 border-y border-white/10">
-                <li>
-                    <a href="https://adventuracayman.com" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
-                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Adventura Cayman</span>
-                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://uncleliu.ky" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
-                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Uncle Liu</span>
-                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://coconutroom.ky" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
-                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Coconut Room</span>
-                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://insulation.brisanaconstruction.com" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
-                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Brisana Insulation</span>
-                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://prospectcenter.ky" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
-                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Prospect Center</span>
-                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </span>
-                    </a>
-                </li>
-            </ul>
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Project 1: Adventura -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/photo-5156922354653924700-y.webp" alt="Adventura Cayman" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">Adventura Cayman</h3>
+                        <p class="text-white/40 text-sm mb-6">Premium Watersports Rental platform with real-time availability and booking.</p>
+                        <a href="https://adventuracayman.com" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Coconut Room -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-48-25.webp" alt="Coconut Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">Coconut Room</h3>
+                        <p class="text-white/40 text-sm mb-6">Vibrant Hospitality design featuring digital menus and seamless reservations.</p>
+                        <a href="https://coconutroom.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Prospect Center -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-02.webp" alt="Prospect Center" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">Prospect Center</h3>
+                        <p class="text-white/40 text-sm mb-6">Corporate Real Estate portal with advanced search and directory features.</p>
+                        <a href="https://prospectcenter.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Uncle Liu -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-49-04.webp" alt="Uncle Liu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">Uncle Liu</h3>
+                        <p class="text-white/40 text-sm mb-6">Luxury E-commerce experience tailored for the local market.</p>
+                        <a href="https://uncleliu.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5: Brisana -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-38.webp" alt="Brisana Insulation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">Brisana Insulation</h3>
+                        <p class="text-white/40 text-sm mb-6">Industrial Service landing page optimized for lead generation.</p>
+                        <a href="https://insulation.brisanaconstruction.com" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
