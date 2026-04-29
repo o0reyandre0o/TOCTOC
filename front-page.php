@@ -431,40 +431,11 @@
         </div>
     </section>
 
-    <!-- Section 7: Case Studies -->
+    <!-- Section 7: Case Studies (Hidden for now)
     <section class="relative py-24 md:py-32 bg-slate-950 text-white border-t border-white/5">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl">
-                <h2 class="text-5xl md:text-7xl font-display">
-                    The Loop in <em class="italic text-accent font-display">Action</em>
-                </h2>
-                <p class="mt-8 text-white/50 text-lg">
-                    Video deep-dives into how we transform businesses through our Revenue Loop.
-                </p>
-            </div>
-            
-            <div class="mt-16 grid gap-8 md:grid-cols-3">
-                <div class="aspect-video rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center group cursor-pointer hover:bg-white/10 transition-all">
-                    <div class="text-center p-8">
-                        <div class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Video 01</div>
-                        <div class="text-lg font-display">The Prime Group Portfolio Shift</div>
-                    </div>
-                </div>
-                <div class="aspect-video rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center group cursor-pointer hover:bg-white/10 transition-all">
-                    <div class="text-center p-8">
-                        <div class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Video 02</div>
-                        <div class="text-lg font-display">Real Estate AI Dominance</div>
-                    </div>
-                </div>
-                <div class="aspect-video rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center group cursor-pointer hover:bg-white/10 transition-all">
-                    <div class="text-center p-8">
-                        <div class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Video 03</div>
-                        <div class="text-lg font-display">Retention Systems & Automation</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        ...
     </section>
+    -->
 
     <!-- Section 8: Final Call to Action -->
     <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
