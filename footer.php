@@ -1,33 +1,12 @@
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div style="margin-bottom: 2rem;">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-logo" style="justify-content: center;">
-                    TOCTOC<span>.</span>
-                </a>
+            <div style="font-family: 'Instrument Serif', serif; font-size: 2rem; margin-bottom: 1rem;">
+                TocToc <span style="color: var(--neon); font-style: italic;">Marketing</span>
             </div>
-            <p>&copy; <?php echo date('Y'); ?> TocToc Marketing. Based in the Cayman Islands.</p>
+            <p style="color: var(--gray); font-size: 0.9rem;">&copy; <?php echo date('Y'); ?> TocToc Marketing. 2026-Ready. Cayman Islands.</p>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('[data-animate]').forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
     <?php wp_footer(); ?>
 </body>
 </html>
