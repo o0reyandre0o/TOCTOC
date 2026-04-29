@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="min-h-screen bg-background">
+<main class="min-h-screen bg-background text-foreground">
     <!-- Section 1: Hero Section -->
     <section id="home" class="relative min-h-[100svh] w-full overflow-hidden flex items-center">
         <!-- Clean Sky background -->
@@ -245,29 +245,188 @@
         </div>
     </section>
 
-    <!-- Section 6: Social Proof -->
-    <section class="relative py-24 md:py-32 bg-slate-950 text-white">
+    <!-- Section 6: Social Proof (Google Reviews) -->
+    <section id="reviews" class="relative py-24 md:py-32 bg-slate-950 text-white">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="text-center max-w-2xl mx-auto">
-                <h2 class="text-5xl md:text-7xl font-display">
-                    What Our <em class="italic text-accent font-display">Clients Say</em>
-                </h2>
-                <p class="mt-8 text-white/50 text-lg">
-                    22 years of marketing expertise backed by real local results.
-                </p>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
+                <div class="max-w-2xl">
+                    <h2 class="text-5xl md:text-7xl font-display">
+                        What Our <em class="italic text-accent font-display">Clients Say</em>
+                    </h2>
+                    <p class="mt-8 text-white/50 text-lg">
+                        22 years of marketing expertise backed by real local results.
+                    </p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-end">
+                        <div class="flex gap-1 text-accent mb-1">★★★★★</div>
+                        <div class="text-sm font-bold text-white/40">4.9/5 Rating on Google</div>
+                    </div>
+                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png" alt="Google" class="h-6 opacity-80" />
+                </div>
             </div>
-            <!-- Google Review Integration Placeholder -->
-            <div class="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                <div class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
-                    <div class="flex gap-1 text-accent">★★★★★</div>
-                    <p class="text-lg text-white/90 italic">“Real results, real magic.”</p>
-                    <div class="mt-auto pt-8 border-t border-white/5 text-sm text-white/40 font-medium">Verified Google Review</div>
-                </div>
-                <div class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
-                    <div class="flex gap-1 text-accent">★★★★★</div>
-                    <p class="text-lg text-white/90 italic">“The Revenue Loop delivered exactly what they promised.”</p>
-                    <div class="mt-auto pt-8 border-t border-white/5 text-sm text-white/40 font-medium">Verified Google Review</div>
-                </div>
+
+            <div class="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Daniel and his team were genuinely a joy to work with. Daniel is thoughtful and generous and makes time for all your questions.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">LF</div>
+                        <div>
+                            <div class="text-base font-bold">Laura Farries</div>
+                            <div class="text-xs text-white/40 italic">2 months ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Working with Daniel at Toc Toc was the best experience we’ve ever had with a web designer! Highly recommend.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">PP</div>
+                        <div>
+                            <div class="text-base font-bold">Paradise Paddle</div>
+                            <div class="text-xs text-white/40 italic">3 weeks ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Excellent design work! They're super creative and gave my brand image a huge boost. Highly recommended!”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">DA</div>
+                        <div>
+                            <div class="text-base font-bold">Diego Andre</div>
+                            <div class="text-xs text-white/40 italic">2 months ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Excellent service! The Toctoc team helped me improve my website's SEO, and I started seeing real results quickly.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">MR</div>
+                        <div>
+                            <div class="text-base font-bold">María Rincón</div>
+                            <div class="text-xs text-white/40 italic">2 months ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Daniel Garrido and his team are absolutely top-tier! They built an incredible website for me, making the process stress-free.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">BS</div>
+                        <div>
+                            <div class="text-base font-bold">Bipolaroid Studios</div>
+                            <div class="text-xs text-white/40 italic">a year ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “They have been extremely helpful and innovative taking our vision and making it a reality. Wide range of services available.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">JM</div>
+                        <div>
+                            <div class="text-base font-bold">Jeff Mcglashan</div>
+                            <div class="text-xs text-white/40 italic">2 years ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Daniel is awesome! He immensely knows the ins and outs of social media marketing and he is a great help.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">JT</div>
+                        <div>
+                            <div class="text-base font-bold">Janice Tangub</div>
+                            <div class="text-xs text-white/40 italic">2 years ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Very professional, awesome at what they do and great customer service on top! Can’t recommend enough.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">SW</div>
+                        <div>
+                            <div class="text-base font-bold">Stuart Whittle</div>
+                            <div class="text-xs text-white/40 italic">2 years ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl hover:bg-white/[0.05] transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-1 text-accent">★★★★★</div>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white/20"><path d="M12.545 11.071V8.7h6.862c.059.37.088.772.088 1.227 0 2.131-.573 3.912-1.724 5.345-1.151 1.433-2.73 2.15-4.737 2.15-2.527 0-4.665-1.045-6.414-3.135C4.871 12.197 4 9.613 4 6.541s.871-5.656 2.618-7.75C8.368-3.3 10.506-4.345 13.033-4.345c2.112 0 3.847.688 5.204 2.064l-2.43 2.43c-.88-.843-1.89-1.264-3.033-1.264-1.614 0-2.983.676-4.106 2.028-1.123 1.352-1.685 3.125-1.685 5.32 0 2.195.562 3.968 1.685 5.32 1.123 1.352 2.492 2.028 4.106 2.028 1.056 0 1.956-.254 2.701-.762.745-.508 1.233-1.237 1.464-2.188h-4.167v.34z"/></svg>
+                    </div>
+                    <blockquote class="text-lg leading-relaxed text-white/90">
+                        “Top notch marketing. Very engaged, attentive to details and a pleasure to work with.”
+                    </blockquote>
+                    <figcaption class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">LZ</div>
+                        <div>
+                            <div class="text-base font-bold">Lois Zachok</div>
+                            <div class="text-xs text-white/40 italic">a month ago</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="https://www.google.com/maps/place/Toc+Toc+Marketing+-+Digital+Marketing+Agency/@19.2945176,-81.3754188,17z/data=!4m8!3m7!1s0x224ce3f8338a51c1:0xece663baba0755!8m2!3d19.2945176!4d-81.3754188!9m1!1b1!16s%2Fg%2F11t6vf_mtj?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white hover:bg-white/10 transition-all decoration-none">
+                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png" alt="Google" class="h-4 mr-2" />
+                    Read More Reviews
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
