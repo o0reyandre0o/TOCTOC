@@ -36,6 +36,51 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if GSAP is loaded
+            if (typeof gsap !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Animation for badges and headings
+                const animateElements = document.querySelectorAll('[animation="heading"], [animation="description"], [animation="large-heading"], [animation="badge"], [animation="card"]');
+                
+                animateElements.forEach((el) => {
+                    gsap.set(el, { 
+                        visibility: 'visible', 
+                        opacity: 0, 
+                        y: 30 
+                    });
+
+                    gsap.to(el, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 85%",
+                            toggleActions: "play none none none"
+                        }
+                    });
+                });
+
+                // Special animation for growth emphasis
+                const growthElements = document.querySelectorAll('[animation="growth"]');
+                growthElements.forEach((el) => {
+                    gsap.fromTo(el, { scaleX: 0 }, {
+                        scaleX: 1,
+                        duration: 1.5,
+                        ease: "power4.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 90%"
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </div><!-- .page-wrapper -->
 <?php wp_footer(); ?>
 </body>
