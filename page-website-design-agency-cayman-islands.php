@@ -39,7 +39,7 @@ get_header(); ?>
     <!-- Section 2: Case Studies Grid -->
     <section id="portfolio" class="py-24 md:py-32 bg-slate-50">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 <!-- Project 1: Adventura -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">

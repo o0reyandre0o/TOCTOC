@@ -200,7 +200,7 @@
                 </p>
             </div>
 
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                 <!-- Project 1: Adventura -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
