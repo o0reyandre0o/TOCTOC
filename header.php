@@ -3,6 +3,114 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <?php
+    // SEO & Social Meta logic
+    $site_name = "TocToc Marketing";
+    $default_title = "TocToc Marketing | Digital Marketing Agency Cayman Islands";
+    $default_desc = "Leading digital marketing agency in the Cayman Islands. We specialize in SEO, Web Design, and AI-driven growth strategies for local businesses.";
+    $logo_url = "https://toctoc.ky/wp-content/uploads/2026/04/toctoc-marketing-new-02.svg";
+    
+    $seo_map = [
+        'front' => [
+            'title' => 'TocToc Marketing | The Revenue Loop Agency Cayman',
+            'desc' => 'We are a 2026-ready marketing company that builds the Revenue Loop for your business in the Cayman Islands. Speed, AI Visibility, and Growth.'
+        ],
+        'seo-agency-services-cayman-islands' => [
+            'title' => 'AEO, GEO & SEO Services Cayman | TocToc Marketing',
+            'desc' => 'Dominate the Answer Economy. Our AEO, GEO, and SEO services ensure your business is the first recommendation by AI and search engines alike.'
+        ],
+        'digital-marketing-agency-cayman-islands' => [
+            'title' => 'Full-Service Digital Marketing Agency Cayman | TocToc',
+            'desc' => 'From professional branding to high-impact graphic design. We provide comprehensive digital marketing solutions tailored for Cayman businesses.'
+        ],
+        'website-design-agency-cayman-islands' => [
+            'title' => 'Premium Website Design Agency Cayman Islands | TocToc',
+            'desc' => 'We build websites AI loves and humans trust. High-performance, mobile-optimized web design that converts visitors into leads.'
+        ],
+        'social-media-marketing-services-cayman-islands' => [
+            'title' => 'Social Media Marketing & Management Cayman | TocToc',
+            'desc' => 'Scale your local impact with data-driven social media strategies. We manage your presence so you can focus on your business.'
+        ],
+        'about-toc-toc-marketing' => [
+            'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
+            'desc' => 'Meet the team behind your growth. We combine local Cayman expertise with global digital strategies to help your business scale.'
+        ]
+    ];
+
+    $current_slug = '';
+    if (is_front_page()) {
+        $current_slug = 'front';
+    } else {
+        global $post;
+        $current_slug = $post->post_name ?? '';
+    }
+
+    $title = $seo_map[$current_slug]['title'] ?? $default_title;
+    $desc = $seo_map[$current_slug]['desc'] ?? $default_desc;
+    $current_url = home_url(add_query_arg([], $GLOBALS['wp']->request));
+    ?>
+
+    <title><?php echo esc_html($title); ?></title>
+    <meta name="description" content="<?php echo esc_attr($desc); ?>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo esc_url($current_url); ?>">
+    <meta property="og:title" content="<?php echo esc_attr($title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($desc); ?>">
+    <meta property="og:image" content="<?php echo esc_url($logo_url); ?>">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?php echo esc_url($current_url); ?>">
+    <meta property="twitter:title" content="<?php echo esc_attr($title); ?>">
+    <meta property="twitter:description" content="<?php echo esc_attr($desc); ?>">
+    <meta property="twitter:image" content="<?php echo esc_url($logo_url); ?>">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "TocToc Marketing",
+      "image": "<?php echo esc_url($logo_url); ?>",
+      "@id": "https://toctoc.ky",
+      "url": "https://toctoc.ky",
+      "telephone": "+1 345-XXX-XXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Grand Cayman",
+        "addressLocality": "George Town",
+        "addressRegion": "Grand Cayman",
+        "postalCode": "KY1-XXXX",
+        "addressCountry": "KY"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.2945176,
+        "longitude": -81.3754188
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/toctocmarketing",
+        "https://www.instagram.com/toctocmarketing",
+        "https://www.linkedin.com/company/toctocmarketing"
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
     tailwind.config = {
