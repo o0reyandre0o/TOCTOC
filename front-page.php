@@ -12,7 +12,7 @@
                     </div>
                     <div class="spacer-xsmall"></div>
                     <div class="max-heading is-42rem">
-                        <h1 animation="heading">A Marketing Agency Focused on Getting Your Business in <em animation="growth">AI Answers.</em></h1>
+                        <h1 animation="heading">A Marketing Agency<br>Focused on Getting<br>Your Business in <em animation="growth">AI Answers.</em></h1>
                     </div>
                     <div class="max-description is-32rem">
                         <div animation="description">We are a 2026-ready marketing company that builds the Revenue Loop for your business.</div>
