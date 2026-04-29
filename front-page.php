@@ -11,8 +11,8 @@
                         <div class="badge_text">Get Recommended • Get Chosen • Get Clients Back</div>
                     </div>
                     <div class="spacer-xsmall"></div>
-                    <div class="max-heading is-54rem">
-                        <h1 animation="heading">A Marketing Agency<br>Focused on Getting<br>Your Business in <em animation="growth">AI Answers.</em></h1>
+                    <div class="max-heading is-64rem">
+                        <h1 animation="heading">A Marketing Agency Focused on Getting<br>Your Business in <em animation="growth">AI Answers.</em></h1>
                     </div>
                     <div class="max-description is-32rem">
                         <div animation="description">We are a 2026-ready marketing company that builds the Revenue Loop for your business.</div>
