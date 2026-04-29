@@ -3,10 +3,10 @@
 <main class="min-h-screen bg-background">
     <!-- Section 1: Hero Section -->
     <section id="home" class="relative min-h-[100svh] w-full overflow-hidden flex items-center">
-        <!-- Sky background -->
+        <!-- Clean Sky background -->
         <img
             src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2574&auto=format&fit=crop"
-            alt="Sky above the clouds"
+            alt="Sky"
             class="absolute inset-0 w-full h-full object-cover"
         />
         <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background pointer-events-none z-[2]"></div>
@@ -24,14 +24,14 @@
             </h1>
 
             <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-600">
-                We build the <strong>Revenue Loop</strong> for your business — a framework to turn digital presence into a measurable revenue engine.
+                We are a 2026-ready marketing company that builds the <strong>Revenue Loop</strong> for your business.
             </p>
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-2">
                 <span class="rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 shadow-soft border border-slate-100">Get Recommended</span>
-                <span class="text-slate-300">—</span>
+                <span class="text-slate-300">•</span>
                 <span class="rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 shadow-soft border border-slate-100">Get Chosen</span>
-                <span class="text-slate-300">—</span>
+                <span class="text-slate-300">•</span>
                 <span class="rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 shadow-soft border border-slate-100">Get Clients Back</span>
             </div>
 
@@ -52,12 +52,8 @@
     <!-- Section 2: Intro -->
     <section class="relative py-24 md:py-32">
         <div class="mx-auto max-w-4xl px-6 text-center">
-            <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-bold text-slate-500 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                Based in the Cayman Islands
-            </div>
-            <p class="mt-10 text-3xl md:text-5xl leading-[1.2] text-slate-900 font-display">
-                We are a digital marketing agency focused on getting your business
+            <p class="text-3xl md:text-5xl leading-[1.2] text-slate-900 font-display">
+                We are a digital marketing agency based in the Cayman Islands, focused on getting your business
                 <em class="italic text-sky-deep font-display"> recommended by AI agents.</em> Our Revenue Loop is
                 the framework we have successfully applied to all our clients to turn digital presence
                 into a measurable revenue engine.
@@ -69,13 +65,14 @@
     <section id="loop" class="relative py-24 md:py-32 bg-sky-pale/50">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">The framework</span>
-                <h2 class="mt-4 text-5xl md:text-7xl text-slate-900 font-display">
+                <h2 class="text-5xl md:text-7xl text-slate-900 font-display">
                     We build a <em class="italic text-sky-deep font-display">Revenue Loop</em> for your business
                 </h2>
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    A three-phase marketing framework designed to dominate the 2026 digital landscape by turning
-                    search intent into sustainable growth.
+                    <strong>What is it?</strong> A three-phase marketing framework designed to dominate the 2026 digital landscape by turning search intent into sustainable growth.
+                </p>
+                <p class="mt-6 text-slate-500 max-w-2xl">
+                    Our Revenue Loop framework consists of three fundamental phases designed to stabilize your digital foundation, drive new discovery through AI, and maximize customer lifetime value.
                 </p>
             </div>
 
@@ -95,6 +92,8 @@
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Google Maps</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Apple Maps</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">TripAdvisor</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">LinkedIn</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Yelp</span>
                     </div>
                 </article>
 
@@ -111,6 +110,8 @@
                     <p class="text-sm leading-relaxed text-slate-500 mb-8">We build high-speed “Discovery Engines” that turn a recommendation into a confirmed lead.</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Custom Website</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Performance Landings</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Online Booking</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Mobile UI/UX</span>
                     </div>
                 </article>
@@ -125,10 +126,11 @@
                     </div>
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Get Clients Back</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Retention & Automation</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-8">We capture customer data and use intelligent systems to keep your brand top-of-mind.</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-8">We capture your customer data and use intelligent systems to keep your brand top-of-mind.</p>
                     <div class="flex flex-wrap gap-2">
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Email Marketing</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">SMS Automation</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">CRM Loop</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">CRM Integration</span>
                     </div>
                 </article>
             </div>
@@ -140,9 +142,8 @@
         <div class="mx-auto max-w-6xl px-6">
             <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-12">
                 <div class="max-w-2xl">
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Our Process</span>
-                    <h2 class="mt-4 text-5xl md:text-7xl text-slate-900 font-display leading-[0.9]">
-                        How to <em class="italic text-sky-deep font-display">work with us</em>
+                    <h2 class="text-5xl md:text-7xl text-slate-900 font-display leading-[0.9]">
+                        How to <em class="italic text-sky-deep font-display">Work With Us</em>
                     </h2>
                 </div>
                 <p class="text-slate-500 max-w-sm text-lg">
@@ -164,7 +165,7 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">02</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">We Present a Solution</h4>
+                    <h4 class="text-2xl text-slate-900 font-display mb-4">We Present a Tailored Solution</h4>
                     <p class="text-sm text-slate-500 leading-relaxed">We map out a custom Revenue Loop specific to your industry.</p>
                 </div>
                 <div class="p-10 border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
@@ -172,7 +173,7 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">03</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">We Execute the Plan</h4>
+                    <h4 class="text-2xl text-slate-900 font-display mb-4">We Execute the Solution</h4>
                     <p class="text-sm text-slate-500 leading-relaxed">Our team builds your foundation and optimizes your AI visibility.</p>
                 </div>
                 <div class="p-10 hover:bg-sky-pale/30 transition-colors">
@@ -180,20 +181,19 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">04</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">Start Receiving Leads</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in search.</p>
+                    <h4 class="text-2xl text-slate-900 font-display mb-4">You Start Receiving Leads</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in the modern search era.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 5: Portfolio (Dark Mode) -->
+    <!-- Section 5: Portfolio -->
     <section id="portfolio" class="relative py-24 md:py-32 bg-slate-950 text-white rounded-t-[3rem]">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Portfolio</span>
-                <h2 class="mt-6 text-5xl md:text-8xl font-display leading-[0.9]">
-                    We build websites <em class="italic text-accent font-display">AI loves</em> & humans trust.
+                <h2 class="text-5xl md:text-8xl font-display leading-[0.9]">
+                    Portfolio: We Build Websites <em class="italic text-accent font-display">AI Loves</em> & Humans Trust.
                 </h2>
                 <p class="mt-8 text-lg text-slate-400 max-w-2xl italic">
                     Recent high-performance “Discovery Engines” launched in the last 14 days.
@@ -202,31 +202,43 @@
 
             <ul class="mt-20 divide-y divide-white/10 border-y border-white/10">
                 <li>
-                    <a href="https://adventuracayman.com" target="_blank" class="group flex items-center justify-between py-10 md:py-14 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
-                        <div class="flex items-center gap-8 md:gap-16">
-                            <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Adventura Cayman</span>
-                            <span class="hidden md:inline text-[11px] uppercase tracking-[0.3em] text-white/30 font-black">Tourism</span>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <span class="hidden sm:inline text-sm text-white/40 font-mono italic">adventuracayman.com</span>
-                            <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                            </span>
-                        </div>
+                    <a href="https://adventuracayman.com" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
+                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Adventura Cayman</span>
+                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://uncleliu.ky" target="_blank" class="group flex items-center justify-between py-10 md:py-14 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
-                        <div class="flex items-center gap-8 md:gap-16">
-                            <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Uncle Liu</span>
-                            <span class="hidden md:inline text-[11px] uppercase tracking-[0.3em] text-white/30 font-black">Restaurant</span>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <span class="hidden sm:inline text-sm text-white/40 font-mono italic">uncleliu.ky</span>
-                            <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                            </span>
-                        </div>
+                    <a href="https://uncleliu.ky" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
+                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Uncle Liu</span>
+                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://coconutroom.ky" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
+                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Coconut Room</span>
+                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://insulation.brisanaconstruction.com" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
+                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Brisana Insulation</span>
+                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://prospectcenter.ky" target="_blank" class="group flex items-center justify-between py-10 transition-all hover:bg-white/5 px-4 -mx-4 rounded-[2rem] decoration-none text-white">
+                        <span class="text-4xl md:text-7xl font-display group-hover:text-accent transition-colors">Prospect Center</span>
+                        <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-slate-950 transition-all group-hover:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                        </span>
                     </a>
                 </li>
             </ul>
@@ -237,64 +249,66 @@
     <section class="relative py-24 md:py-32 bg-slate-950 text-white">
         <div class="mx-auto max-w-6xl px-6">
             <div class="text-center max-w-2xl mx-auto">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Social proof</span>
-                <h2 class="mt-4 text-5xl md:text-7xl font-display">
-                    What our <em class="italic text-accent font-display">clients say</em>
+                <h2 class="text-5xl md:text-7xl font-display">
+                    What Our <em class="italic text-accent font-display">Clients Say</em>
                 </h2>
                 <p class="mt-8 text-white/50 text-lg">
                     22 years of marketing expertise backed by real local results.
                 </p>
             </div>
-
+            <!-- Google Review Integration Placeholder -->
             <div class="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
+                <div class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
                     <div class="flex gap-1 text-accent">★★★★★</div>
-                    <blockquote class="text-lg leading-relaxed text-white/90">
-                        “TocToc rebuilt our entire online presence. We started showing up in AI recommendations within weeks.”
-                    </blockquote>
-                    <figcaption class="mt-auto pt-8 border-t border-white/5">
-                        <div class="text-base font-bold">Maria S.</div>
-                        <div class="text-sm text-white/40 italic">Owner, Coconut Room</div>
-                    </figcaption>
-                </figure>
-                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
+                    <p class="text-lg text-white/90 italic">“Real results, real magic.”</p>
+                    <div class="mt-auto pt-8 border-t border-white/5 text-sm text-white/40 font-medium">Verified Google Review</div>
+                </div>
+                <div class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
                     <div class="flex gap-1 text-accent">★★★★★</div>
-                    <blockquote class="text-lg leading-relaxed text-white/90">
-                        “Bookings doubled in 30 days. Their Revenue Loop framework actually delivers.”
-                    </blockquote>
-                    <figcaption class="mt-auto pt-8 border-t border-white/5">
-                        <div class="text-base font-bold">James K.</div>
-                        <div class="text-sm text-white/40 italic">Director, Adventura</div>
-                    </figcaption>
-                </figure>
-                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
-                    <div class="flex gap-1 text-accent">★★★★★</div>
-                    <blockquote class="text-lg leading-relaxed text-white/90">
-                        “Customers find us through ChatGPT now. Real magic — and real revenue.”
-                    </blockquote>
-                    <figcaption class="mt-auto pt-8 border-t border-white/5">
-                        <div class="text-base font-bold">Liu W.</div>
-                        <div class="text-sm text-white/40 italic">Uncle Liu</div>
-                    </figcaption>
-                </figure>
-                <figure class="rounded-[2.5rem] bg-white/[0.03] border border-white/5 p-10 flex flex-col gap-6 backdrop-blur-3xl">
-                    <div class="flex gap-1 text-accent">★★★★★</div>
-                    <blockquote class="text-lg leading-relaxed text-white/90">
-                        “Professional, fast, and transparent. The website converts like nothing we had.”
-                    </blockquote>
-                    <figcaption class="mt-auto pt-8 border-t border-white/5">
-                        <div class="text-base font-bold">Brian P.</div>
-                        <div class="text-sm text-white/40 italic">Brisana Insulation</div>
-                    </figcaption>
-                </figure>
+                    <p class="text-lg text-white/90 italic">“The Revenue Loop delivered exactly what they promised.”</p>
+                    <div class="mt-auto pt-8 border-t border-white/5 text-sm text-white/40 font-medium">Verified Google Review</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 7: Final CTA -->
-    <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
-        <!-- background clouds removed as requested -->
+    <!-- Section 7: Case Studies -->
+    <section class="relative py-24 md:py-32 bg-slate-950 text-white border-t border-white/5">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <h2 class="text-5xl md:text-7xl font-display">
+                    The Loop in <em class="italic text-accent font-display">Action</em>
+                </h2>
+                <p class="mt-8 text-white/50 text-lg">
+                    Video deep-dives into how we transform businesses through our Revenue Loop.
+                </p>
+            </div>
+            
+            <div class="mt-16 grid gap-8 md:grid-cols-3">
+                <div class="aspect-video rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center group cursor-pointer hover:bg-white/10 transition-all">
+                    <div class="text-center p-8">
+                        <div class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Video 01</div>
+                        <div class="text-lg font-display">The Prime Group Portfolio Shift</div>
+                    </div>
+                </div>
+                <div class="aspect-video rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center group cursor-pointer hover:bg-white/10 transition-all">
+                    <div class="text-center p-8">
+                        <div class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Video 02</div>
+                        <div class="text-lg font-display">Real Estate AI Dominance</div>
+                    </div>
+                </div>
+                <div class="aspect-video rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center group cursor-pointer hover:bg-white/10 transition-all">
+                    <div class="text-center p-8">
+                        <div class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Video 03</div>
+                        <div class="text-lg font-display">Retention Systems & Automation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Section 8: Final Call to Action -->
+    <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
         <div class="relative mx-auto max-w-4xl px-6 text-center flex flex-col items-center">
             <h2 class="text-5xl md:text-[100px] leading-[0.95] text-slate-950 font-display">
                 Ready to build your <br /><em class="italic font-display">Revenue Loop?</em>
