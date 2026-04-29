@@ -1,7 +1,7 @@
 /*
 Theme Name: TOCTOC Sky Editorial
 Description: The official TocToc Marketing theme based on the AI Revenue Loop design system.
-Version: 3.0
+Version: 3.1
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
@@ -9,33 +9,15 @@ Version: 3.0
 :root {
   --background: 210 60% 98%;
   --foreground: 220 40% 10%;
-  --card: 0 0% 100%;
-  --card-foreground: 220 40% 10%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 220 40% 10%;
   --primary: 220 45% 8%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 220 40% 10%;
-  --muted: 210 30% 94%;
-  --muted-foreground: 220 15% 40%;
   --accent: 72 100% 62%;
   --accent-foreground: 220 45% 8%;
   --sky-deep: 212 95% 45%;
-  --sky-mid: 205 95% 60%;
-  --sky-light: 200 100% 88%;
-  --sky-pale: 205 100% 96%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
   --border: 215 25% 88%;
-  --input: 215 25% 88%;
-  --ring: 212 95% 45%;
-  --radius: 1.25rem;
+  --radius: 9999px;
   --font-display: 'Instrument Serif', serif;
   --font-sans: 'Inter', sans-serif;
-  --shadow-soft: 0 10px 40px -10px hsl(212 80% 30% / 0.18);
-  --shadow-glass: 0 20px 60px -20px hsl(212 80% 25% / 0.25);
-  --shadow-glow: 0 0 60px hsl(72 100% 62% / 0.45);
 }
 
 body {
@@ -45,36 +27,179 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .font-display {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -0.02em;
 }
 
-.glass {
-  background: hsl(0 0% 100% / 0.55);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid hsl(0 0% 100% / 0.6);
+.font-display { font-family: var(--font-display); }
+
+/* Navigation Pillar */
+.nav-pillar {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px 0 24px;
+    z-index: 1000;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
 }
 
-.shadow-soft { box-shadow: var(--shadow-soft); }
-.shadow-glass { box-shadow: var(--shadow-glass); }
-.shadow-glow { box-shadow: var(--shadow-glow); }
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) translateX(0px); }
-  50% { transform: translateY(-20px) translateX(10px); }
-}
-@keyframes drift {
-  0% { transform: translateX(-5%); }
-  100% { transform: translateX(5%); }
+.nav-logo {
+    font-size: 1.25rem;
+    font-family: var(--font-display);
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
-.animate-drift { animation: drift 30s ease-in-out infinite alternate; }
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
 
-/* Custom Utilities */
-.text-sky-deep { color: hsl(var(--sky-deep)); }
-.bg-sky-pale { background-color: hsl(var(--sky-pale)); }
-.italic { font-style: italic; }
+.nav-link {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #334155;
+    transition: color 0.2s;
+}
+
+.nav-link:hover { color: #000; }
+
+.btn-nav {
+    background: #D9FF00;
+    color: #000;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 14px 0 rgba(217, 255, 0, 0.39);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    text-align: center;
+    background: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2574&auto=format&fit=crop') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #475569;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.05;
+    max-width: 1100px;
+    margin: 0 auto 24px;
+    color: #0f172a;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: #3b82f6;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.hero-pills {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-hero-primary {
+    background: #D9FF00;
+    color: #000;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px -10px rgba(217, 255, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+.btn-hero-secondary {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    color: #1e293b;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-title { font-size: 2.5rem; }
+}
