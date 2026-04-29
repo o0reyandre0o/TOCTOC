@@ -42,19 +42,6 @@
             if (typeof gsap !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
 
-                // Animation for sections and key components (excluding headers for specialized animation)
-                const animateElements = document.querySelectorAll('section:not(.hero_section), .feature_card, .benefits_card, .core_card, .blog_card, .pricing_card, .testimonial_card');
-                
-                animateElements.forEach((el) => {
-                    gsap.set(el, { opacity: 0, y: 40 });
-                    gsap.to(el, {
-                        opacity: 1, y: 0, duration: 1.2, ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: el, start: "top 80%", toggleActions: "play none none none"
-                        }
-                    });
-                });
-
                 // Specialized Heading Animation (Line-by-line reveal)
                 const headings = document.querySelectorAll('h1, h2, .heading-large');
                 headings.forEach((heading) => {
