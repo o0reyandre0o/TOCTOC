@@ -39,41 +39,29 @@ get_header(); ?>
     <!-- Section 2: Core Services Grid -->
     <section id="results" class="py-24 md:py-32 bg-slate-50">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Branding -->
-                <article class="group relative bg-white rounded-[2.5rem] p-10 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <div class="aspect-video rounded-2xl bg-slate-100 mb-8 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop" alt="Corporate Branding" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">Professional Corporate Branding</h3>
-                    <p class="text-slate-500 leading-relaxed mb-6">Consistency builds trust. We extend your Visual Identity across all touchpoints—uniforms, merchandise, and stationery—to create a cohesive and professional brand image.</p>
+                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
+                    <h3 class="text-4xl font-display text-slate-900 mb-6">Professional Corporate Branding</h3>
+                    <p class="text-slate-500 text-lg leading-relaxed mb-6">Consistency builds trust. We extend your Visual Identity across all touchpoints—uniforms, merchandise, and stationery—to create a cohesive and professional brand image.</p>
                 </article>
 
                 <!-- Graphic Design -->
-                <article class="group relative bg-white rounded-[2.5rem] p-10 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <div class="aspect-video rounded-2xl bg-slate-100 mb-8 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop" alt="Graphic Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">High-Impact Graphic Design</h3>
-                    <p class="text-slate-500 leading-relaxed mb-6">From digital ads to print posters. Our Graphic Design services ensure your marketing materials grab attention and communicate your message clearly.</p>
+                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
+                    <h3 class="text-4xl font-display text-slate-900 mb-6">High-Impact Graphic Design</h3>
+                    <p class="text-slate-500 text-lg leading-relaxed mb-6">From digital ads to print posters. Our Graphic Design services ensure your marketing materials grab attention and communicate your message clearly.</p>
                 </article>
 
                 <!-- Identity -->
-                <article class="group relative bg-white rounded-[2.5rem] p-10 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <div class="aspect-video rounded-2xl bg-slate-100 mb-8 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?q=80&w=1935&auto=format&fit=crop" alt="Logo Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">Memorable Brand Identity</h3>
-                    <p class="text-slate-500 leading-relaxed mb-6">Your logo is your first impression. We craft unique, scalable Logo Designs that capture your business essence and stand out in the competitive Cayman market.</p>
+                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
+                    <h3 class="text-4xl font-display text-slate-900 mb-6">Memorable Brand Identity</h3>
+                    <p class="text-slate-500 text-lg leading-relaxed mb-6">Your logo is your first impression. We craft unique, scalable Logo Designs that capture your business essence and stand out in the competitive Cayman market.</p>
                 </article>
 
                 <!-- Merchandise -->
-                <article class="group relative bg-white rounded-[2.5rem] p-10 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <div class="aspect-video rounded-2xl bg-slate-100 mb-8 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop" alt="Merchandise" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">Custom Brand Merchandise</h3>
-                    <p class="text-slate-500 leading-relaxed mb-6">Great brands live everywhere. We design custom stickers and merchandise that turn your customers into brand ambassadors, increasing your visibility offline.</p>
+                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
+                    <h3 class="text-4xl font-display text-slate-900 mb-6">Custom Brand Merchandise</h3>
+                    <p class="text-slate-500 text-lg leading-relaxed mb-6">Great brands live everywhere. We design custom stickers and merchandise that turn your customers into brand ambassadors, increasing your visibility offline.</p>
                 </article>
             </div>
         </div>
@@ -82,40 +70,34 @@ get_header(); ?>
     <!-- Section 3: Why Digital Marketing -->
     <section class="py-24 md:py-32">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="lg:w-1/2">
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Market Insight</span>
-                    <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95] text-slate-900">
-                        How Digital Marketing can help your <em class="italic text-sky-deep font-display">Cayman Business?</em>
-                    </h2>
-                    <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                        The Cayman Islands is a country with a high penetration of social media and a large number of searches on Google, driven by tourists and locals alike.
-                    </p>
-                    <ul class="mt-10 space-y-4">
-                        <li class="flex items-center gap-4 text-slate-700 font-medium">
-                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-pale flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            Reach a Wider Audience (Locals & Tourists)
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-700 font-medium">
-                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-pale flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            Drive More Traffic & Generate Leads
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-700 font-medium">
-                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-pale flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            Boost Brand Awareness & Offline Visibility
-                        </li>
-                    </ul>
-                </div>
-                <div class="lg:w-1/2 relative">
-                    <div class="absolute -inset-4 bg-sky-light/20 blur-3xl rounded-full"></div>
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Marketing Strategy" class="relative rounded-[2.5rem] shadow-glass" />
-                </div>
+            <div class="max-w-4xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Market Insight</span>
+                <h2 class="mt-6 text-5xl md:text-8xl font-display leading-[0.95] text-slate-900">
+                    How Digital Marketing can help your <em class="italic text-sky-deep font-display">Cayman Business?</em>
+                </h2>
+                <p class="mt-8 text-xl text-slate-600 leading-relaxed max-w-2xl">
+                    The Cayman Islands is a country with a high penetration of social media and a large number of searches on Google, driven by tourists and locals alike.
+                </p>
+                <ul class="mt-12 space-y-6">
+                    <li class="flex items-center gap-6 text-xl text-slate-700 font-medium">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
+                        </div>
+                        Reach a Wider Audience (Locals & Tourists)
+                    </li>
+                    <li class="flex items-center gap-6 text-xl text-slate-700 font-medium">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
+                        </div>
+                        Drive More Traffic & Generate Leads
+                    </li>
+                    <li class="flex items-center gap-6 text-xl text-slate-700 font-medium">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
+                        </div>
+                        Boost Brand Awareness & Offline Visibility
+                    </li>
+                </ul>
             </div>
         </div>
     </section>

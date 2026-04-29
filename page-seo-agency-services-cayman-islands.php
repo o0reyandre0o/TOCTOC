@@ -43,24 +43,24 @@ get_header(); ?>
                 <!-- Speed that Converts -->
                 <article class="flex flex-col gap-4">
                     <div>
-                        <h3 class="text-4xl md:text-5xl font-display text-slate-900 mb-6">Speed that <em class="italic text-sky-deep font-display">Converts</em></h3>
-                        <p class="text-slate-500 text-xl leading-relaxed">Core Web Vitals optimization for instant mobile loading. We don't just optimize code; we optimize for revenue and user retention.</p>
+                        <h3 class="text-5xl md:text-6xl font-display text-slate-900 mb-6 leading-tight">Speed that <em class="italic text-sky-deep font-display">Converts</em></h3>
+                        <p class="text-slate-500 text-2xl leading-relaxed">Core Web Vitals optimization for instant mobile loading. We don't just optimize code; we optimize for revenue and user retention.</p>
                     </div>
                 </article>
 
                 <!-- We Speak AI -->
                 <article class="flex flex-col gap-4">
                     <div>
-                        <h3 class="text-4xl md:text-5xl font-display text-slate-900 mb-6">We Speak <em class="italic text-sky-deep font-display">AI</em></h3>
-                        <p class="text-slate-500 text-xl leading-relaxed">Advanced Schema Markup so AI tools recommend you first. Your business as the authoritative answer in the Generative Search era.</p>
+                        <h3 class="text-5xl md:text-6xl font-display text-slate-900 mb-6 leading-tight">We Speak <em class="italic text-sky-deep font-display">AI</em></h3>
+                        <p class="text-slate-500 text-2xl leading-relaxed">Advanced Schema Markup so AI tools recommend you first. Your business as the authoritative answer in the Generative Search era.</p>
                     </div>
                 </article>
 
                 <!-- Map Pack Dominance -->
-                <article class="md:col-span-2 max-w-4xl mx-auto w-full text-center mt-12">
+                <article class="md:col-span-2 max-w-5xl mx-auto w-full text-center mt-20 border-t border-slate-200 pt-20">
                     <div>
-                        <h3 class="text-5xl md:text-7xl font-display text-slate-900 mb-8">Map Pack <em class="italic text-sky-deep font-display">Dominance</em></h3>
-                        <p class="text-slate-500 text-2xl leading-relaxed">Fighting to make you the #1 choice in "Near Me" searches. We dominate the local Cayman landscape through precise geotagging and authority building.</p>
+                        <h3 class="text-6xl md:text-9xl font-display text-slate-900 mb-10 leading-[0.85]">Map Pack <br /><em class="italic text-sky-deep font-display">Dominance</em></h3>
+                        <p class="text-slate-500 text-3xl leading-relaxed max-w-3xl mx-auto">Fighting to make you the #1 choice in "Near Me" searches. We dominate the local Cayman landscape through precise geotagging and authority building.</p>
                     </div>
                 </article>
             </div>
