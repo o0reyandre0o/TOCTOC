@@ -132,9 +132,8 @@
 <?php wp_body_open(); ?>
 
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-8 z-[1000] shadow-soft border border-white/50">
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2 group text-primary decoration-none">
-        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-display font-extrabold text-sm">T</div>
-        <span class="text-lg font-display tracking-tight">TocToc <em class="italic text-sky-deep">Marketing</em></span>
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
+        <img src="https://toctoc.ky/wp-content/uploads/2024/01/Toc-Toc-Marketing-Logo.svg" alt="TocToc Marketing" class="h-10 w-auto transition-transform group-hover:scale-105" />
     </a>
     
     <!-- Desktop Menu -->
@@ -180,9 +179,9 @@
                 Start a Project
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
-            <div class="mt-8 flex gap-6 text-slate-400 font-medium text-sm">
-                <span>Cayman Islands</span>
-                <span>ROI Driven</span>
+            <div>
+                <img src="https://toctoc.ky/wp-content/uploads/2024/01/Toc-Toc-Marketing-Logo.svg" alt="TocToc Marketing" class="h-10 w-auto brightness-0 invert" />
+                <p class="mt-4 text-sm text-white/40 font-medium">Cayman Islands · Built for the AI era</p>
             </div>
         </div>
     </div>
