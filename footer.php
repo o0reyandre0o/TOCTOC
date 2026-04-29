@@ -1,85 +1,33 @@
-    <section class="section_footer">
-        <div class="padding-section-medium"></div>
-        <div class="padding-global">
-            <div class="container-medium">
-                <div class="footer_layout">
-                    <div class="footer_left">
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="w-inline-block">
-                            <img src="https://cdn.prod.website-files.com/690a3d4b70be67fbdfcdc08a/690cf081d6ebd1dd46bb9f80_footer-logo.svg" loading="lazy" alt="" class="footer_logo"/>
-                        </a>
-                        <div>
-                            <div>Subscribe to our newsletter</div>
-                            <div class="spacer-xlarge"></div>
-                            <div class="footer_form-block w-form">
-                                <form id="email-form" name="email-form" method="get">
-                                    <div class="footer_form">
-                                        <input class="footer_field w-input" maxlength="256" name="Email" placeholder="Enter your email" type="email" id="Email"/>
-                                        <div class="button_component"><div>Get Started</div></div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer_right">
-                        <div class="footer_column">
-                            <div class="text-xl text-weight-medium">Pages</div>
-                            <div class="footer_links">
-                                <a href="#" class="footer_link w-inline-block"><div class="clip"><div class="link">Home V.1</div><div class="link-line"></div></div></a>
-                                <a href="#" class="footer_link w-inline-block"><div class="clip"><div class="link">Home V.2</div><div class="link-line"></div></div></a>
-                                <a href="#" class="footer_link w-inline-block"><div class="clip"><div class="link">Home V.3</div><div class="link-line"></div></div></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="spacer"><div STYLE="height:7.5rem" class="spacer-desktop"></div></div>
-                <img src="https://cdn.prod.website-files.com/690a3d4b70be67fbdfcdc08a/690cf6fe1054e4e9ea5c7424_Catalis.svg" loading="lazy" alt="" class="footer_visual"/>
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 2rem;">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-logo" style="justify-content: center;">
+                    TOCTOC<span>.</span>
+                </a>
             </div>
+            <p>&copy; <?php echo date('Y'); ?> TocToc Marketing. Based in the Cayman Islands.</p>
         </div>
-    </section>
+    </footer>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Check if GSAP is loaded
-            if (typeof gsap !== 'undefined') {
-                gsap.registerPlugin(ScrollTrigger);
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
 
-                // Specialized Heading Animation (Line-by-line reveal)
-                const headings = document.querySelectorAll('h1, h2, .heading-large');
-                headings.forEach((heading) => {
-                    // Initialize SplitText
-                    const split = new SplitText(heading, { type: "lines" });
-                    
-                    gsap.set(heading, { visibility: "visible" });
-                    gsap.from(split.lines, {
-                        opacity: 0,
-                        y: 40,
-                        stagger: 0.15,
-                        duration: 1.2,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: heading,
-                            start: "top 85%",
-                            toggleActions: "play none none none"
-                        }
-                    });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
                 });
+            }, observerOptions);
 
-                // Special animation for growth emphasis
-                const growthElements = document.querySelectorAll('[animation="growth"]');
-                growthElements.forEach((el) => {
-                    gsap.fromTo(el, { scaleX: 0 }, {
-                        scaleX: 1,
-                        duration: 1.5,
-                        ease: "power4.out",
-                        scrollTrigger: {
-                            trigger: el,
-                            start: "top 90%"
-                        }
-                    });
-                });
-            }
+            document.querySelectorAll('[data-animate]').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
-</div><!-- .page-wrapper -->
-<?php wp_footer(); ?>
+    <?php wp_footer(); ?>
 </body>
 </html>
