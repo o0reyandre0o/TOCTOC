@@ -9,8 +9,6 @@
             </div>
         </div>
     </footer>
-
-    <?php wp_head(); // Keep wp_head/wp_footer as standard ?>
     <?php wp_footer(); ?>
 </body>
 </html>
