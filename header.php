@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> itemscope itemtype="http://schema.org/WebPage">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,6 +53,9 @@
 
     <title><?php echo esc_html($title); ?></title>
     <meta name="description" content="<?php echo esc_attr($desc); ?>">
+    
+    <!-- Image Source for legacy crawlers -->
+    <link rel="image_src" href="<?php echo esc_url($logo_url); ?>">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -236,7 +239,7 @@
     </style>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> itemscope itemtype="http://schema.org/Organization">
 <?php wp_body_open(); ?>
 
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-8 z-[1000] shadow-soft border border-white/50">
