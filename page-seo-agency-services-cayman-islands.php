@@ -39,37 +39,28 @@ get_header(); ?>
     <!-- Section 2: Core Benefits (ENLARGED) -->
     <section id="results" class="py-24 md:py-32 bg-slate-50">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <!-- Speed that Converts -->
-                <article class="group flex flex-col gap-6">
-                    <div class="aspect-video rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop" alt="Speed that Converts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    </div>
+                <article class="flex flex-col gap-4">
                     <div>
-                        <h3 class="text-4xl font-display text-slate-900 mb-4">Speed that <em class="italic text-sky-deep font-display">Converts</em></h3>
-                        <p class="text-slate-500 text-lg leading-relaxed">Core Web Vitals optimization for instant mobile loading. We don't just optimize code; we optimize for revenue and user retention.</p>
+                        <h3 class="text-4xl md:text-5xl font-display text-slate-900 mb-6">Speed that <em class="italic text-sky-deep font-display">Converts</em></h3>
+                        <p class="text-slate-500 text-xl leading-relaxed">Core Web Vitals optimization for instant mobile loading. We don't just optimize code; we optimize for revenue and user retention.</p>
                     </div>
                 </article>
 
                 <!-- We Speak AI -->
-                <article class="group flex flex-col gap-6">
-                    <div class="aspect-video rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1932&auto=format&fit=crop" alt="We Speak AI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    </div>
+                <article class="flex flex-col gap-4">
                     <div>
-                        <h3 class="text-4xl font-display text-slate-900 mb-4">We Speak <em class="italic text-sky-deep font-display">AI</em></h3>
-                        <p class="text-slate-500 text-lg leading-relaxed">Advanced Schema Markup so AI tools recommend you first. Your business as the authoritative answer in the Generative Search era.</p>
+                        <h3 class="text-4xl md:text-5xl font-display text-slate-900 mb-6">We Speak <em class="italic text-sky-deep font-display">AI</em></h3>
+                        <p class="text-slate-500 text-xl leading-relaxed">Advanced Schema Markup so AI tools recommend you first. Your business as the authoritative answer in the Generative Search era.</p>
                     </div>
                 </article>
 
                 <!-- Map Pack Dominance -->
-                <article class="group flex flex-col gap-6 md:col-span-2 max-w-4xl mx-auto w-full">
-                    <div class="aspect-[21/9] rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2066&auto=format&fit=crop" alt="Map Pack Dominance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div class="text-center mt-6">
-                        <h3 class="text-4xl md:text-5xl font-display text-slate-900 mb-4">Map Pack <em class="italic text-sky-deep font-display">Dominance</em></h3>
-                        <p class="text-slate-500 text-lg leading-relaxed">Fighting to make you the #1 choice in "Near Me" searches. We dominate the local Cayman landscape through precise geotagging and authority building.</p>
+                <article class="md:col-span-2 max-w-4xl mx-auto w-full text-center mt-12">
+                    <div>
+                        <h3 class="text-5xl md:text-7xl font-display text-slate-900 mb-8">Map Pack <em class="italic text-sky-deep font-display">Dominance</em></h3>
+                        <p class="text-slate-500 text-2xl leading-relaxed">Fighting to make you the #1 choice in "Near Me" searches. We dominate the local Cayman landscape through precise geotagging and authority building.</p>
                     </div>
                 </article>
             </div>
