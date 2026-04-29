@@ -42,24 +42,36 @@
             if (typeof gsap !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
 
-                // Animation for sections and key components
-                const animateElements = document.querySelectorAll('section, .feature_card, .benefits_card, .core_card, .blog_card, .pricing_card, .testimonial_card');
+                // Animation for sections and key components (excluding headers for specialized animation)
+                const animateElements = document.querySelectorAll('section:not(.hero_section), .feature_card, .benefits_card, .core_card, .blog_card, .pricing_card, .testimonial_card');
                 
                 animateElements.forEach((el) => {
-                    // Pre-set visibility to avoid layout shift before JS loads
-                    gsap.set(el, { 
-                        opacity: 0, 
-                        y: 40 
-                    });
-
+                    gsap.set(el, { opacity: 0, y: 40 });
                     gsap.to(el, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1.2,
-                        ease: "power2.out",
+                        opacity: 1, y: 0, duration: 1.2, ease: "power2.out",
                         scrollTrigger: {
-                            trigger: el,
-                            start: "top 80%",
+                            trigger: el, start: "top 80%", toggleActions: "play none none none"
+                        }
+                    });
+                });
+
+                // Specialized Header Animation (Line-by-line reveal)
+                const headers = document.querySelectorAll('h1, h2, .heading-large');
+                headers.forEach((header) => {
+                    // Initialize SplitText
+                    const split = new SplitText(header, { type: "lines" });
+                    
+                    gsap.set(header, { visibility: "visible" });
+                    gsap.from(split.lines, {
+                        opacity: 0,
+                        y: 50,
+                        rotateX: -20,
+                        stagger: 0.1,
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: header,
+                            start: "top 85%",
                             toggleActions: "play none none none"
                         }
                     });
