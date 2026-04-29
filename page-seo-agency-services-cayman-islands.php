@@ -36,45 +36,10 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Section 2: Results Showreel -->
-    <section id="results" class="py-24 md:py-32">
+    <!-- Section 2: Core Benefits (ENLARGED) -->
+    <section id="results" class="py-24 md:py-32 bg-slate-50">
         <div class="mx-auto max-w-6xl px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft">
-                    <div class="h-2 w-12 bg-sky-deep mb-8 rounded-full"></div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Consistent Traffic Increase</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">We turn your website into a lead generation machine, driving steady, high-quality traffic across the islands.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft">
-                    <div class="h-2 w-12 bg-accent mb-8 rounded-full"></div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Exponential Organic Growth</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">We take businesses from being "invisible" to generating over 25k+ local impressions per month.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft">
-                    <div class="h-2 w-12 bg-slate-950 mb-8 rounded-full"></div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Dominating Niche Keywords</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">From Page 5 to Position #1. We identify the high-intent keywords your customers actually use.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: GEO & Next-Gen SEO -->
-    <section class="py-24 md:py-32 bg-sky-pale/50">
-        <div class="mx-auto max-w-6xl px-6 text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">The Future of Search</span>
-            <h2 class="mt-6 text-4xl md:text-7xl font-display text-slate-900 leading-[0.95]">
-                Generative Engine <em class="italic text-sky-deep font-display">Optimization (GEO)</em>
-            </h2>
-            <p class="mt-8 text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                Most agencies in Cayman are still doing SEO like it’s 2015. We optimize for how people search today—using AI tools like ChatGPT and Gemini.
-            </p>
-
-            <div class="mt-20 grid md:grid-cols-3 gap-12">
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-2xl bg-white shadow-soft flex items-center justify-center text-sky-deep mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 20"/><path d="M17 4l-4 4"/><path d="m19 12-8 2"/><path d="M14 19l-5 5"/></svg>
-                    </div>
                     <h4 class="text-xl font-display text-slate-900 mb-2">Speed that Converts</h4>
                     <p class="text-sm text-slate-500">Core Web Vitals optimization for instant mobile loading.</p>
                 </div>
