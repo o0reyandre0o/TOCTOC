@@ -42,24 +42,24 @@
             if (typeof gsap !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
 
-                // Animation for badges and headings
-                const animateElements = document.querySelectorAll('[animation="heading"], [animation="description"], [animation="large-heading"], [animation="badge"], [animation="card"]');
+                // Animation for sections and key components
+                const animateElements = document.querySelectorAll('section, .feature_card, .benefits_card, .core_card, .blog_card, .pricing_card, .testimonial_card');
                 
                 animateElements.forEach((el) => {
+                    // Pre-set visibility to avoid layout shift before JS loads
                     gsap.set(el, { 
-                        visibility: 'visible', 
                         opacity: 0, 
-                        y: 30 
+                        y: 40 
                     });
 
                     gsap.to(el, {
                         opacity: 1,
                         y: 0,
-                        duration: 1,
-                        ease: "power3.out",
+                        duration: 1.2,
+                        ease: "power2.out",
                         scrollTrigger: {
                             trigger: el,
-                            start: "top 85%",
+                            start: "top 80%",
                             toggleActions: "play none none none"
                         }
                     });
