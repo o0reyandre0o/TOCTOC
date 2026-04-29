@@ -36,8 +36,8 @@
             </div>
 
             <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
-                <a href="#contact" class="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground pl-7 pr-2 py-2 text-base font-bold shadow-glow transition-transform hover:scale-[1.02] decoration-none">
-                    Book a Free Consultation
+                <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground pl-7 pr-2 py-2 text-base font-bold shadow-glow transition-transform hover:scale-[1.02] decoration-none">
+                    Call Us
                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                     </span>
@@ -157,7 +157,7 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">01</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">Book a Free Consultation</h4>
+                    <h4 class="text-2xl text-slate-900 font-display mb-4">Free Consultation Call</h4>
                     <p class="text-sm text-slate-500 leading-relaxed">We discuss your goals and audit your current digital presence.</p>
                 </div>
                 <div class="p-10 border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
@@ -489,8 +489,8 @@
             <p class="mt-8 text-lg md:text-xl text-slate-600 max-w-xl mx-auto">
                 Let’s talk about your business and how we can turn your brand into the recommended answer.
             </p>
-            <a href="mailto:hello@toctoc.ky" class="group mt-12 inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-transform hover:scale-[1.05] decoration-none">
-                Book a Free Consultation
+            <a href="tel:+13455478120" class="group mt-12 inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-transform hover:scale-[1.05] decoration-none">
+                Call Us
                 <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                 </span>
