@@ -55,22 +55,21 @@
                     });
                 });
 
-                // Specialized Header Animation (Line-by-line reveal)
-                const headers = document.querySelectorAll('h1, h2, .heading-large');
-                headers.forEach((header) => {
+                // Specialized Heading Animation (Line-by-line reveal)
+                const headings = document.querySelectorAll('h1, h2, .heading-large');
+                headings.forEach((heading) => {
                     // Initialize SplitText
-                    const split = new SplitText(header, { type: "lines" });
+                    const split = new SplitText(heading, { type: "lines" });
                     
-                    gsap.set(header, { visibility: "visible" });
+                    gsap.set(heading, { visibility: "visible" });
                     gsap.from(split.lines, {
                         opacity: 0,
-                        y: 50,
-                        rotateX: -20,
-                        stagger: 0.1,
-                        duration: 1,
+                        y: 40,
+                        stagger: 0.15,
+                        duration: 1.2,
                         ease: "power3.out",
                         scrollTrigger: {
-                            trigger: header,
+                            trigger: heading,
                             start: "top 85%",
                             toggleActions: "play none none none"
                         }
