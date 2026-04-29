@@ -30,19 +30,15 @@ get_header(); ?>
     <!-- Section 2: Mission & Values -->
     <section class="py-24 md:py-32 bg-slate-50">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="relative">
-                    <div class="absolute -inset-10 bg-sky-light/20 blur-3xl rounded-full"></div>
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="The Team" class="relative rounded-[3rem] shadow-glass" />
-                </div>
-                <div>
-                    <h2 class="text-4xl md:text-6xl font-display leading-[1] text-slate-900 mb-8">
-                        Our Mission: <br /><em class="italic text-sky-deep font-display">Digital Excellence.</em>
-                    </h2>
-                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+            <div class="max-w-4xl">
+                <h2 class="text-5xl md:text-[100px] font-display leading-[0.85] text-slate-900 mb-12">
+                    Our Mission: <br /><em class="italic text-sky-deep font-display">Digital Excellence.</em>
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <p class="text-2xl text-slate-600 leading-relaxed italic">
                         We’ve spent countless hours understanding the unique needs and challenges of local businesses. We’re not just providers; we’re partners.
                     </p>
-                    <p class="text-slate-500 leading-relaxed">
+                    <p class="text-xl text-slate-500 leading-relaxed">
                         From crafting compelling brand stories to executing effective marketing campaigns, we’ve got you covered. Our expertise spans website design, SEO, social media, and more.
                     </p>
                 </div>
@@ -53,50 +49,40 @@ get_header(); ?>
     <!-- Section 3: Founder's Story -->
     <section class="py-24 md:py-32 bg-slate-950 text-white overflow-hidden rounded-[4rem] mx-4 my-8">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="lg:w-1/2">
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Meet the Founder</span>
-                    <h2 class="mt-6 text-4xl md:text-7xl font-display text-white leading-[1]">
-                        Meet the Team Behind <em class="italic text-accent font-display">Your Growth.</em>
-                    </h2>
-                    <div class="mt-10 space-y-6 text-white/60 text-lg leading-relaxed italic">
-                        <p>“I know what it’s like to run a local business – the feeling of building something special from the ground up. It’s my story, too!”</p>
-                        <p>“As a musician and marketer, I translate that passion into powerful campaigns that make your business sing. Think of me as your marketing teammate.”</p>
-                    </div>
-                    <div class="mt-12 flex items-center gap-6">
-                        <div class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-display text-white">Daniel Garrido</div>
-                            <div class="text-xs uppercase tracking-widest text-white/40 font-bold">Founder & CEO</div>
-                        </div>
-                    </div>
+            <div class="max-w-4xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Meet the Founder</span>
+                <h2 class="mt-8 text-5xl md:text-8xl font-display text-white leading-[0.9]">
+                    Meet the Team Behind <em class="italic text-accent font-display">Your Growth.</em>
+                </h2>
+                <div class="mt-16 space-y-10 text-white/60 text-2xl leading-relaxed italic">
+                    <p>“I know what it’s like to run a local business – the feeling of building something special from the ground up. It’s my story, too!”</p>
+                    <p>“As a musician and marketer, I translate that passion into powerful campaigns that make your business sing. Think of me as your marketing teammate.”</p>
                 </div>
-                <div class="lg:w-1/2 relative">
-                    <div class="absolute inset-0 bg-accent/10 blur-[100px] rounded-full"></div>
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" alt="Daniel Garrido" class="relative rounded-[3rem] grayscale hover:grayscale-0 transition-all duration-700 shadow-glass" />
+                <div class="mt-16 flex items-center gap-8 p-10 rounded-[3rem] bg-white/5 border border-white/10 w-fit">
+                    <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-display text-white">Daniel Garrido</div>
+                        <div class="text-sm uppercase tracking-[0.3em] text-white/40 font-bold">Founder & CEO</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Section 4: Team Mini-Grid -->
-    <section class="py-24 md:py-32 bg-white">
+    <section class="py-24 md:py-32 bg-white text-center">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-display text-slate-900">A Passionate <em class="italic text-sky-deep font-display">Team.</em></h2>
-            </div>
-            <div class="flex flex-wrap justify-center gap-12">
+            <h2 class="text-5xl md:text-8xl font-display text-slate-900 mb-20 leading-none">A Passionate <em class="italic text-sky-deep font-display">Team.</em></h2>
+            <div class="flex flex-wrap justify-center gap-24">
                 <div class="text-center">
-                    <div class="w-24 h-24 rounded-full bg-slate-100 mx-auto mb-4 border border-slate-200"></div>
-                    <h4 class="text-xl font-display text-slate-900">Andre</h4>
-                    <p class="text-xs text-slate-400 uppercase font-bold tracking-widest">Strategy</p>
+                    <h4 class="text-4xl font-display text-slate-900 mb-2">Andre</h4>
+                    <p class="text-sm text-slate-400 uppercase font-bold tracking-[0.2em]">Strategy & Technical</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-24 h-24 rounded-full bg-slate-100 mx-auto mb-4 border border-slate-200"></div>
-                    <h4 class="text-xl font-display text-slate-900">Nora</h4>
-                    <p class="text-xs text-slate-400 uppercase font-bold tracking-widest">Creative</p>
+                    <h4 class="text-4xl font-display text-slate-900 mb-2">Nora</h4>
+                    <p class="text-sm text-slate-400 uppercase font-bold tracking-[0.2em]">Creative & Brand</p>
                 </div>
             </div>
         </div>
