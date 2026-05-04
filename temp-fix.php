@@ -57,11 +57,32 @@ if (file_put_contents($test_file, 'test')) {
     echo "<p style='color:red;'>❌ Write test failed. WordPress still won't be able to upload.</p>";
 }
 
-// 5. Instruction for wp-config.php
-$config_path = ABSPATH . 'wp-config.php';
+// 5. Try to auto-update wp-config.php
 echo "<hr>";
-echo "<h2>Next Step:</h2>";
-echo "<p>Add this line to your <b>wp-config.php</b> (before the 'Happy publishing' line):</p>";
+echo "<h2>Automatic Configuration:</h2>";
+if (file_exists($config_path)) {
+    $config_content = file_get_contents($config_path);
+    if (strpos($config_content, 'WP_TEMP_DIR') !== false) {
+        echo "<p style='color:blue;'>ℹ️ WP_TEMP_DIR is already defined in wp-config.php.</p>";
+    } else {
+        $insertion_point = "/* That's all, stop editing! Happy publishing. */";
+        if (strpos($config_content, $insertion_point) !== false) {
+            $new_content = str_replace($insertion_point, "define('WP_TEMP_DIR', ABSPATH . 'wp-content/temp/');\n" . $insertion_point, $config_content);
+            if (file_put_contents($config_path, $new_content)) {
+                echo "<p style='color:green;'>✅ <b>wp-config.php updated automatically!</b> You can now try uploading your images.</p>";
+            } else {
+                echo "<p style='color:red;'>❌ Failed to write to wp-config.php (Permission Denied). Please add the line manually.</p>";
+            }
+        } else {
+            echo "<p style='color:orange;'>⚠️ Could not find the standard insertion point in wp-config.php. Please add the line manually.</p>";
+        }
+    }
+} else {
+    echo "<p style='color:red;'>❌ wp-config.php not found at: " . htmlspecialchars($config_path) . "</p>";
+}
+
+echo "<h2>Manual Step (if auto-fix failed):</h2>";
+echo "<p>Add this line to your <b>wp-config.php</b>:</p>";
 echo "<code style='background:#eee; padding:10px; display:block; border-left:5px solid #ccc;'>define('WP_TEMP_DIR', ABSPATH . 'wp-content/temp/');</code>";
 echo "<p>Absolute path for reference: <code>" . htmlspecialchars(ABSPATH) . "</code></p>";
 
