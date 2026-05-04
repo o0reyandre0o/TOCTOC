@@ -3,6 +3,9 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
+    <link rel="shortcut icon" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
+    <link rel="apple-touch-icon" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
     
     <?php
     // SEO & Social Meta logic
