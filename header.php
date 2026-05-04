@@ -13,8 +13,8 @@
     
     $seo_map = [
         'front' => [
-            'title' => 'TocToc Marketing | The Revenue Loop Agency Cayman',
-            'desc' => 'We are a 2026-ready marketing company that builds the Revenue Loop for your business in the Cayman Islands. Speed, AI Visibility, and Growth.'
+            'title' => 'TocToc Marketing | AI-Driven Revenue Loop Agency Cayman',
+            'desc' => 'Leading digital marketing agency in the Cayman Islands. We build the Revenue Loop for your business. Speed, AI Visibility, and Growth for the 2026 era.'
         ],
         'seo-agency-services-cayman-islands' => [
             'title' => 'AEO, GEO & SEO Services Cayman | TocToc Marketing',
@@ -53,7 +53,17 @@
 
     <title><?php echo esc_html($title); ?></title>
     <meta name="description" content="<?php echo esc_attr($desc); ?>">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
+    <!-- GA4 Tag (Replace G-XXXXXXXXXX with your actual ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <!-- Image Source for legacy crawlers -->
     <link rel="image_src" href="<?php echo esc_url($logo_url); ?>">
     
@@ -75,44 +85,109 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "TocToc Marketing",
-      "image": "<?php echo esc_url($logo_url); ?>",
-      "@id": "https://toctoc.ky",
-      "url": "https://toctoc.ky",
-      "telephone": "+1 345-XXX-XXXX",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Grand Cayman",
-        "addressLocality": "George Town",
-        "addressRegion": "Grand Cayman",
-        "postalCode": "KY1-XXXX",
-        "addressCountry": "KY"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.2945176,
-        "longitude": -81.3754188
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/toctocmarketing",
-        "https://www.instagram.com/toctocmarketing",
-        "https://www.linkedin.com/company/toctocmarketing"
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "name": "TocToc Marketing",
+          "image": "<?php echo esc_url($logo_url); ?>",
+          "@id": "https://toctoc.ky",
+          "url": "https://toctoc.ky",
+          "telephone": "+1 345-547-8120",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Grand Cayman",
+            "addressLocality": "George Town",
+            "addressRegion": "Grand Cayman",
+            "postalCode": "KY1-1102",
+            "addressCountry": "KY"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 19.2945176,
+            "longitude": -81.3754188
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          "sameAs": [
+            "https://www.facebook.com/toctocmarketing",
+            "https://www.instagram.com/toctocmarketing",
+            "https://www.linkedin.com/company/toctocmarketing"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://toctoc.ky/#website",
+          "url": "https://toctoc.ky",
+          "name": "TocToc Marketing",
+          "publisher": { "@id": "https://toctoc.ky" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://toctoc.ky/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "<?php echo $current_url; ?>#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@id": "https://toctoc.ky",
+                "name": "Home"
+              }
+            }
+            <?php if (!is_front_page()): ?>
+            ,{
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@id": "<?php echo $current_url; ?>",
+                "name": "<?php echo esc_attr($title); ?>"
+              }
+            }
+            <?php endif; ?>
+          ]
+        }
+        <?php if (is_front_page()): ?>
+        ,{
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the Revenue Loop framework?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Revenue Loop is a three-phase marketing framework (Get Recommended, Get Chosen, Get Clients Back) designed to turn search intent into sustainable growth by optimizing for AI visibility and user conversion."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you offer SEO services in Cayman Islands?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, TocToc Marketing is a leading SEO and AEO agency in the Cayman Islands, specializing in getting businesses recommended by AI agents and dominating local search results."
+              }
+            }
+          ]
+        }
+        <?php endif; ?>
       ]
     }
     </script>
+
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
