@@ -1,74 +1,45 @@
-# =========================================================
-# TOCTOC - WordPress Media Uploader via REST API
-# Bypasses the wp-admin upload (which has temp folder issues)
-# =========================================================
-# USAGE: Put this script in the SAME folder as your .jpg files
-#        Then right-click > Run with PowerShell
-# =========================================================
+$folder = "C:\Users\58424\Downloads\imagense tocot"
+$user   = "localadm"
+$pass   = "SCE5 RSLY LOOy VPUe 6QDg at8Y"
+$wpUrl  = "https://toctoc.ky/wp-json/wp/v2/media"
 
-$wpUrl      = "https://toctoc.ky"
-$username   = "webtoctoc"
-$appPassword = "BAG7 oKxE 3s9b JNhf WHeV rVE1"
+$cred = [Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("${user}:${pass}"))
 
-# Build Basic Auth header
-$pair  = "$($username):$($appPassword)"
-$bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
-$base64 = [Convert]::ToBase64String($bytes)
-$headers = @{ Authorization = "Basic $base64" }
-
-# Find all JPG/JPEG/PNG files in the current directory
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$images = Get-ChildItem -Path $scriptDir -Include "*.jpg","*.jpeg","*.png","*.webp" -File
-
-if ($images.Count -eq 0) {
-    Write-Host "❌ No image files found in: $scriptDir" -ForegroundColor Red
-    Write-Host "   Place your .jpg files in the same folder as this script." -ForegroundColor Yellow
-    Read-Host "Press Enter to exit"
-    exit
-}
-
-Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host " TOCTOC WordPress Media Uploader" -ForegroundColor Cyan
-Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host "Found $($images.Count) image(s) to upload." -ForegroundColor White
-Write-Host ""
+$images = Get-ChildItem $folder -Filter "*.jpg"
 
 foreach ($img in $images) {
-    Write-Host "Uploading: $($img.Name) ..." -ForegroundColor Yellow
+    Write-Host "Subiendo: $($img.Name) ..." -ForegroundColor Yellow
 
-    $mimeType = switch ($img.Extension.ToLower()) {
-        ".jpg"  { "image/jpeg" }
-        ".jpeg" { "image/jpeg" }
-        ".png"  { "image/png" }
-        ".webp" { "image/webp" }
-        default { "image/jpeg" }
-    }
+    $bytes = [System.IO.File]::ReadAllBytes($img.FullName)
 
-    $uploadHeaders = $headers.Clone()
-    $uploadHeaders["Content-Type"]        = $mimeType
-    $uploadHeaders["Content-Disposition"] = "attachment; filename=`"$($img.Name)`""
+    $req = [System.Net.HttpWebRequest]::Create($wpUrl)
+    $req.Method          = "POST"
+    $req.Headers["Authorization"]        = "Basic $cred"
+    $req.Headers["Content-Disposition"]  = "attachment; filename=`"$($img.Name)`""
+    $req.ContentType     = "image/jpeg"
+    $req.ContentLength   = $bytes.Length
 
-    $fileBytes = [System.IO.File]::ReadAllBytes($img.FullName)
+    $stream = $req.GetRequestStream()
+    $stream.Write($bytes, 0, $bytes.Length)
+    $stream.Close()
 
     try {
-        $response = Invoke-RestMethod `
-            -Uri "$wpUrl/wp-json/wp/v2/media" `
-            -Method POST `
-            -Headers $uploadHeaders `
-            -Body $fileBytes
-
-        Write-Host "   ✅ Uploaded! ID: $($response.id)" -ForegroundColor Green
-        Write-Host "   🔗 URL: $($response.source_url)" -ForegroundColor Cyan
+        $resp = $req.GetResponse()
+        $sr   = New-Object System.IO.StreamReader($resp.GetResponseStream())
+        $json = $sr.ReadToEnd() | ConvertFrom-Json
+        Write-Host "OK: ID=$($json.id)" -ForegroundColor Green
+        Write-Host "    $($json.source_url)" -ForegroundColor Cyan
     }
-    catch {
-        $errMsg = $_.Exception.Message
-        Write-Host "   ❌ Failed: $errMsg" -ForegroundColor Red
+    catch [System.Net.WebException] {
+        $webEx = $_.Exception
+        Write-Host "ERROR HTTP: $($webEx.Status) - $($webEx.Message)" -ForegroundColor Red
+        if ($webEx.Response) {
+            $sr2 = New-Object System.IO.StreamReader($webEx.Response.GetResponseStream())
+            Write-Host "   Detalle: $($sr2.ReadToEnd())" -ForegroundColor DarkRed
+        }
     }
-
     Write-Host ""
 }
 
-Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host " Done! Check your WordPress Media Library." -ForegroundColor Green
-Write-Host "==================================================" -ForegroundColor Cyan
-Read-Host "Press Enter to exit"
+Write-Host "Listo." -ForegroundColor Cyan
+Read-Host "Presiona Enter para cerrar"
