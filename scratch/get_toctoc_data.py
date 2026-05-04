@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 
 SCOPES = ['https://www.googleapis.com/auth/webmasters']
 CRED_PATH = 'service_account_credentials.json'
-SITE_URL = 'https://toctoc.ky/'
+SITE_URL = 'sc-domain:toctoc.ky'
 
 try:
     creds = service_account.Credentials.from_service_account_file(CRED_PATH, scopes=SCOPES)
