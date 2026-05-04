@@ -204,7 +204,7 @@
                 <!-- Project 1: Adventura -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/photo-5156922354653924700-y.webp" alt="Adventura Cayman" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-adventura-cayman.jpg" alt="Adventura Cayman" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Adventura Cayman</h3>
@@ -218,7 +218,7 @@
                 <!-- Project 2: Coconut Room -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-48-25.webp" alt="Coconut Room" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-coconut-room.jpg" alt="Coconut Room" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Coconut Room</h3>
@@ -232,7 +232,7 @@
                 <!-- Project 3: Prospect Center -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-02.webp" alt="Prospect Center" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-prospect-center.jpg" alt="Prospect Center" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Prospect Center</h3>
@@ -246,7 +246,7 @@
                 <!-- Project 4: Uncle Liu -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-49-04.webp" alt="Uncle Liu" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-uncle-liu.jpg" alt="Uncle Liu" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Uncle Liu</h3>
@@ -260,7 +260,7 @@
                 <!-- Project 5: Brisana -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-38.webp" alt="Brisana Insulation" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-brisana.jpg" alt="Brisana Insulation" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Brisana Insulation</h3>
@@ -274,7 +274,7 @@
                 <!-- Project 6: Pr-Optics -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-56-45.webp" alt="Pr-Optics" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-proptics.jpg" alt="Pr-Optics" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Pr-Optics</h3>
