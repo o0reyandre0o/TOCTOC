@@ -57,9 +57,34 @@ if (file_put_contents($test_file, 'test')) {
     echo "<p style='color:red;'>❌ Write test failed. WordPress still won't be able to upload.</p>";
 }
 
-// 5. Try to auto-update wp-config.php
+// 5. Fix .htaccess with php_value upload_tmp_dir (root cause fix)
 echo "<hr>";
-echo "<h2>Automatic Configuration:</h2>";
+echo "<h2>Root Cause Fix — .htaccess (PHP upload_tmp_dir):</h2>";
+$htaccess_path = ABSPATH . '.htaccess';
+$htaccess_line = "php_value upload_tmp_dir /home/toctoc/public_html/wp-content/temp";
+
+if (file_exists($htaccess_path)) {
+    $htaccess_content = file_get_contents($htaccess_path);
+    if (strpos($htaccess_content, 'upload_tmp_dir') !== false) {
+        echo "<p style='color:blue;'>ℹ️ upload_tmp_dir already set in .htaccess.</p>";
+    } else {
+        // Insert after the first line (usually # BEGIN WordPress)
+        $new_htaccess = $htaccess_line . "\n" . $htaccess_content;
+        if (file_put_contents($htaccess_path, $new_htaccess)) {
+            echo "<p style='color:green;'>✅ <b>.htaccess updated!</b> PHP will now use /home/toctoc/public_html/wp-content/temp as upload temp dir.</p>";
+            echo "<p style='color:green;'>👉 <b>Try uploading your images now in WordPress!</b></p>";
+        } else {
+            echo "<p style='color:red;'>❌ Could not write to .htaccess. Please add this line manually at the top of your .htaccess:</p>";
+            echo "<code style='background:#eee;padding:10px;display:block;'>$htaccess_line</code>";
+        }
+    }
+} else {
+    echo "<p style='color:red;'>❌ .htaccess not found at: " . htmlspecialchars($htaccess_path) . "</p>";
+}
+
+// 6. Try to auto-update wp-config.php
+echo "<hr>";
+echo "<h2>wp-config.php (WP_TEMP_DIR):</h2>";
 if (file_exists($config_path)) {
     $config_content = file_get_contents($config_path);
     if (strpos($config_content, 'WP_TEMP_DIR') !== false) {
