@@ -6,6 +6,7 @@
             </div>
             <div class="text-sm text-white/30 font-medium flex flex-col md:items-end gap-2">
                 <a href="mailto:info@toctoc.ky" class="text-white hover:text-accent transition-colors decoration-none">info@toctoc.ky</a>
+                <a href="https://toctoc.ky/wp-content/uploads/2026/05/Trade-and-Business-Licence-Grant-application-TOC-TOC-CORPORATION-LTD-T_A-TOC-TOC-MARKETING_CIG.pdf" target="_blank" class="hover:text-white transition-colors">TBL: TB1795A</a>
                 <span>© <?php echo date('Y'); ?> TocToc Marketing. All rights reserved.</span>
             </div>
         </div>
