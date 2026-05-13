@@ -226,35 +226,7 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Coconut Room -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-coconut-room.jpg" alt="Coconut Room" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-white mb-2">Coconut Room</h3>
-                        <p class="text-white/40 text-sm mb-6">Vibrant Hospitality design featuring digital menus and seamless reservations.</p>
-                        <a href="https://coconutroom.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Prospect Center -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-prospect-center.jpg" alt="Prospect Center" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-white mb-2">Prospect Center</h3>
-                        <p class="text-white/40 text-sm mb-6">Corporate Real Estate portal with advanced search and directory features.</p>
-                        <a href="https://prospectcenter.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Uncle Liu -->
+                <!-- Project 2: Uncle Liu -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
                         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-uncle-liu.jpg" alt="Uncle Liu" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
@@ -268,21 +240,7 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Brisana -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-brisana.jpg" alt="Brisana Insulation" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-white mb-2">Brisana Insulation</h3>
-                        <p class="text-white/40 text-sm mb-6">Industrial Service landing page optimized for lead generation.</p>
-                        <a href="https://insulation.brisanaconstruction.com" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 6: Pr-Optics -->
+                <!-- Project 3: Pr-Optics -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
                         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-proptics.jpg" alt="Pr-Optics" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
@@ -291,6 +249,48 @@
                         <h3 class="text-3xl font-display text-white mb-2">Pr-Optics</h3>
                         <p class="text-white/40 text-sm mb-6">Modern Optical Boutique website featuring high-end eyewear collections and appointment booking.</p>
                         <a href="https://pr-optics.com/" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Smash Burger -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-smash-burger.jpg" alt="Smash Burger" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">Smash Burger</h3>
+                        <p class="text-white/40 text-sm mb-6">Vibrant Quick Service Restaurant website with digital ordering and loyalty program.</p>
+                        <a href="#" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5: Prospect Center -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-prospect-center.jpg" alt="Prospect Center" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">Prospect Center</h3>
+                        <p class="text-white/40 text-sm mb-6">Corporate Real Estate portal with advanced search and directory features.</p>
+                        <a href="https://prospectcenter.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 6: The Yard -->
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-[4/5] rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-the-yard.jpg" alt="The Yard" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-display text-white mb-2">The Yard</h3>
+                        <p class="text-white/40 text-sm mb-6">Industrial Co-working and storage facility landing page with unit booking.</p>
+                        <a href="#" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
                     </div>
