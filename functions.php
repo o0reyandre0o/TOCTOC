@@ -16,3 +16,10 @@ function toctoc_scripts() {
     wp_add_inline_style( 'toctoc-style', 'html { scroll-behavior: smooth; }' );
 }
 add_action( 'wp_enqueue_scripts', 'toctoc_scripts' );
+
+// Register Legal Page Template
+function toctoc_register_legal_template( $templates ) {
+    $templates['page-legal.php'] = 'Legal Page';
+    return $templates;
+}
+add_filter( 'theme_page_templates', 'toctoc_register_legal_template' );
