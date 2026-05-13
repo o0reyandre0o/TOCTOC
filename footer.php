@@ -6,9 +6,9 @@
             </div>
             <div class="flex flex-col md:items-end gap-10">
                 <div class="flex flex-col md:items-end gap-3 text-right">
-                    <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1">Contact Us</h3>
-                    <a href="mailto:info@toctoc.ky" class="text-xl text-white hover:text-accent transition-colors decoration-none font-bold">info@toctoc.ky</a>
-                    <a href="tel:+13455478120" class="text-xl text-white hover:text-accent transition-colors decoration-none font-bold">+1 (345) 547-8120</a>
+                    <h3 class="text-sm font-display italic text-accent mb-1">Contact Us</h3>
+                    <a href="mailto:info@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">info@toctoc.ky</a>
+                    <a href="tel:+13455478120" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">+1 (345) 547-8120</a>
                 </div>
                 <div class="text-xs text-white/30 font-medium flex flex-col md:items-end gap-3">
                     <div class="flex flex-wrap items-center md:justify-end gap-x-4 gap-y-2">
