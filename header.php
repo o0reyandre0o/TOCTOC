@@ -12,7 +12,7 @@
     $site_name = "TocToc Marketing";
     $default_title = "TocToc Marketing | Digital Marketing Agency Cayman Islands";
     $default_desc = "Leading digital marketing agency in the Cayman Islands. We specialize in SEO, Web Design, and AI-driven growth strategies for local businesses.";
-    $logo_url = "https://toctoc.ky/wp-content/uploads/2026/04/toctoc-marketing-new-02.svg";
+    $logo_url = "https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg";
     
     $seo_map = [
         'front' => [
@@ -322,7 +322,7 @@
 
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-8 z-[1000] shadow-soft border border-white/50">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
-        <img src="https://toctoc.ky/wp-content/uploads/2026/04/toctoc-marketing-new-02.svg" alt="TocToc Marketing" class="h-6 w-auto transition-transform group-hover:scale-105" />
+        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     
     <!-- Desktop Menu -->
@@ -369,7 +369,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
             <div>
-                <img src="https://toctoc.ky/wp-content/uploads/2026/04/toctoc-marketing-new-02.svg" alt="TocToc Marketing" class="h-4 w-auto brightness-0 invert" />
+                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" class="h-4 w-auto brightness-0 invert" />
                 <p class="mt-4 text-sm text-white/40 font-medium">Cayman Islands · Built for the AI era</p>
             </div>
         </div>
