@@ -300,7 +300,7 @@
     </section>
 
     <!-- Section 6: Social Proof (Google Reviews) -->
-    <!-- Section 6: Social Proof (Google Reviews) - Moneda Style Redesign -->
+    <!-- Section 6: Social Proof (Google Reviews) - Orbiting Layout -->
     <section id="reviews" class="relative py-32 bg-[#f8fafc] text-slate-900 rounded-[3rem] mx-4 my-12 overflow-hidden">
         <style>
             @keyframes float {
@@ -325,23 +325,12 @@
         <div class="absolute inset-0 opacity-[0.08]" style="background-image: linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(90deg, #94a3b8 1px, transparent 1px); background-size: 50px 50px;"></div>
         
         <div class="relative mx-auto max-w-7xl px-6">
-            <!-- Center Heading -->
-            <div class="text-center mb-32 relative z-10">
-                <h2 class="text-6xl md:text-8xl font-display leading-[1.1] tracking-tight text-black">
-                    TocToc Works <br />
-                    <span class="italic text-black">Wherever You Do</span>
-                </h2>
-                <div class="mt-8 flex items-center justify-center gap-4">
-                    <div class="flex gap-1 text-yellow-500">★★★★★</div>
-                    <div class="text-sm font-bold text-slate-400 uppercase tracking-widest">4.9/5 Rating on Google</div>
-                </div>
-            </div>
-
-            <!-- Floating Cards Container -->
-            <div class="relative h-[1600px] md:h-[850px] w-full mt-20">
+            
+            <!-- Floating Cards Container (Reviews around the bottom center) -->
+            <div class="relative h-[1600px] md:h-[950px] w-full">
                 
                 <!-- Review 1: Top Left -->
-                <div class="absolute top-0 left-0 md:left-[2%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-20 float-animation hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                <div class="absolute top-[50px] left-0 md:left-[5%] w-full md:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-20 float-animation hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">LF</div>
                         <div>
@@ -355,7 +344,7 @@
                 </div>
 
                 <!-- Review 2: Top Right -->
-                <div class="absolute top-[280px] md:top-[-60px] right-0 md:right-[2%] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 float-animation float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                <div class="absolute top-[0px] right-0 md:right-[5%] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 float-animation float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xl shadow-inner">MT</div>
                         <div>
@@ -364,12 +353,12 @@
                         </div>
                     </div>
                     <p class="text-xl font-bold leading-[1.4] text-slate-800">
-                        “Working with Daniel at TocToc was the best experience we’ve ever had with a marketing agency! Highly recommend their AI-driven approach.”
+                        “Working with Daniel at TocToc was the best experience we’ve ever had with a marketing agency! Highly recommend.”
                     </p>
                 </div>
 
-                <!-- Review 3: Middle Left -->
-                <div class="absolute top-[560px] md:top-[280px] left-0 md:left-[5%] w-full md:w-[340px] bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-white z-10 float-animation float-delayed-2 hover:pause-animation transition-all duration-500">
+                <!-- Review 3: Middle Left (Lower down) -->
+                <div class="absolute top-[400px] md:top-[350px] left-0 md:left-[0%] w-full md:w-[340px] bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-white z-10 float-animation float-delayed-2 hover:pause-animation transition-all duration-500">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 font-bold text-xl border border-slate-100">SJ</div>
                         <div>
@@ -378,12 +367,12 @@
                         </div>
                     </div>
                     <p class="text-lg font-bold leading-[1.4] text-slate-700">
-                        “The AI-driven strategy they implemented doubled our leads in months. Professional, fast, and results-oriented. The best in the region.”
+                        “The AI-driven strategy they implemented doubled our leads in months. Professional, fast, and results-oriented.”
                     </p>
                 </div>
 
                 <!-- Review 4: Middle Right -->
-                <div class="absolute top-[840px] md:top-[240px] right-0 md:right-[10%] w-full md:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-20 float-animation float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                <div class="absolute top-[350px] md:top-[300px] right-0 md:right-[0%] w-full md:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-20 float-animation float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-14 h-14 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center font-bold text-xl shadow-inner">JT</div>
                         <div>
@@ -396,8 +385,8 @@
                     </p>
                 </div>
 
-                <!-- Review 5: Bottom Left -->
-                <div class="absolute top-[1120px] md:top-[540px] left-0 md:left-[15%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 float-animation float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                <!-- Review 5: Bottom Left (Orbiting) -->
+                <div class="absolute top-[700px] md:top-[600px] left-0 md:left-[10%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 float-animation float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xl shadow-inner">SW</div>
                         <div>
@@ -410,8 +399,8 @@
                     </p>
                 </div>
 
-                <!-- Review 6: Bottom Right -->
-                <div class="absolute top-[1400px] md:bottom-[-20px] md:top-auto right-0 md:right-[2%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 float-animation float-delayed-2 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                <!-- Review 6: Bottom Right (Orbiting) -->
+                <div class="absolute top-[650px] md:top-[550px] right-0 md:right-[5%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 float-animation float-delayed-2 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">JW</div>
                         <div>
@@ -420,17 +409,28 @@
                         </div>
                     </div>
                     <p class="text-xl font-bold leading-[1.4] text-slate-800">
-                        “I was looking for a partner who understood the AI era. TocToc precision with a local touch. Honestly, it's been a game-changer.”
+                        “I was looking for a partner who understood the AI era. TocToc precision with a local touch. Honestly game-changer.”
                     </p>
                 </div>
 
+                <!-- CENTER BOTTOM TITLE -->
+                <div class="absolute bottom-[-50px] left-1/2 -translate-x-1/2 w-full text-center z-50">
+                    <h2 class="text-6xl md:text-[110px] font-display leading-[0.9] tracking-tight text-black mb-10">
+                        TocToc Works <br />
+                        <span class="italic">Wherever You Do</span>
+                    </h2>
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="flex gap-1 text-yellow-500 text-2xl">★★★★★</div>
+                        <div class="text-sm font-bold text-slate-400 uppercase tracking-[0.3em]">4.9/5 Rating on Google</div>
+                    </div>
+                </div>
+
             </div>
-            
-            <div class="mt-16 flex justify-center relative z-50">
-                <a href="https://www.google.com/maps/place/Toc+Toc+Marketing+-+Digital+Marketing+Agency/@19.2945176,-81.3754188,17z/data=!4m8!3m7!1s0x224ce3f8338a51c1:0xece663baba0755!8m2!3d19.2945176!4d-81.3754188!9m1!1b1!16s%2Fg%2F11t6vf_mtj?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-8 py-4 text-sm font-bold text-slate-900 hover:bg-slate-50 transition-all shadow-lg decoration-none">
+
+            <div class="mt-48 flex justify-center relative z-50">
+                <a href="https://www.google.com/maps/place/Toc+Toc+Marketing+-+Digital+Marketing+Agency/@19.2945176,-81.3754188,17z/data=!4m8!3m7!1s0x224ce3f8338a51c1:0xece663baba0755!8m2!3d19.2945176!4d-81.3754188!9m1!1b1!16s%2Fg%2F11t6vf_mtj?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-10 py-5 text-sm font-bold text-slate-900 hover:bg-slate-50 transition-all shadow-xl hover:scale-105 decoration-none">
                     <svg viewBox="0 0 24 24" width="20" height="20" class="mr-1"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                    Read More Reviews
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    View All Reviews
                 </a>
             </div>
         </div>
