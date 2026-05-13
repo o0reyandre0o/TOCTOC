@@ -329,9 +329,9 @@
             <!-- Floating Cards Container (H2 centered behind reviews on Desktop, Stacked on Mobile) -->
             <div class="relative min-h-[800px] md:h-[1000px] w-full mt-10 flex flex-col md:block">
                 
-                <!-- TITLE: Top on Mobile, Centered-Lowered on Desktop -->
-                <div class="relative md:absolute md:inset-0 flex flex-col items-center md:justify-center text-center z-0 md:translate-y-[20%] pointer-events-none mb-20 md:mb-0">
-                    <h2 class="text-5xl md:text-[140px] font-display leading-[0.85] tracking-tighter text-black select-none">
+                <!-- TITLE: Top on Mobile, Centered on Desktop -->
+                <div class="relative md:absolute md:inset-0 flex flex-col items-center md:justify-center text-center z-0 pointer-events-none mb-20 md:mb-0">
+                    <h2 class="text-5xl md:text-[112px] font-display leading-[0.85] tracking-tighter text-black select-none">
                         TocToc Works <br />
                         <span class="italic">Wherever You Do</span>
                     </h2>
