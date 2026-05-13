@@ -322,7 +322,7 @@
 
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-8 z-[1000] shadow-soft border border-white/50">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
-        <img src="https://toctoc.ky/wp-content/uploads/2026/04/toctoc-marketing-new-02.svg" alt="TocToc Marketing" class="h-4 w-auto transition-transform group-hover:scale-105" />
+        <img src="https://toctoc.ky/wp-content/uploads/2026/04/toctoc-marketing-new-02.svg" alt="TocToc Marketing" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     
     <!-- Desktop Menu -->
