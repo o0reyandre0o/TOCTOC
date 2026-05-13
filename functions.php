@@ -23,12 +23,3 @@ function toctoc_register_legal_template( $templates ) {
     return $templates;
 }
 add_filter( 'theme_page_templates', 'toctoc_register_legal_template' );
-
-// Force Template Assignment (One-time)
-function toctoc_force_legal_templates() {
-    $legal_pages = [3, 2631, 8555];
-    foreach ($legal_pages as $page_id) {
-        update_post_meta($page_id, '_wp_page_template', 'page-legal.php');
-    }
-}
-add_action('init', 'toctoc_force_legal_templates');
