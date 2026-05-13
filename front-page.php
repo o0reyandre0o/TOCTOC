@@ -9,10 +9,12 @@
             alt="Sky"
             class="absolute inset-0 w-full h-full object-cover"
         />
+        <!-- White overlay to lighten background -->
+        <div class="absolute inset-0 bg-white/40 z-[1]"></div>
         <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none z-[2]"></div>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-32 pb-24 text-center flex flex-col items-center">
-            <div class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[11px] font-bold text-slate-600 shadow-soft border border-white/80">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] font-bold text-slate-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-sky-deep"><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.89 15.89 12 12"/><path d="m16.13 7.87-4.13 4.13"/><path d="m7.87 16.13 4.13-4.13"/><path d="m15.89 8.11 3.18-3.18"/><path d="m4.93 19.07 3.18-3.18"/><path d="M12 22v-2"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="m6.34 17.66-1.41 1.41"/></svg>
                 A 2026-READY MARKETING AGENCY · CAYMAN ISLANDS
             </div>
@@ -24,25 +26,32 @@
             </h1>
 
             <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-950 font-medium">
-                We are a 2026-ready marketing company that builds the <strong>Revenue Loop</strong> for your business.
+                We are a 2026-ready marketing company that builds the <strong class="bg-accent text-sky-deep px-1.5 py-0.5 rounded-md">Revenue Loop</strong> for your business.
             </p>
 
-            <div class="mt-10 flex flex-wrap items-center justify-center gap-2">
-                <span class="rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 shadow-soft border border-slate-100">Get Recommended</span>
-                <span class="text-slate-300">•</span>
-                <span class="rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 shadow-soft border border-slate-100">Get Chosen</span>
-                <span class="text-slate-300">•</span>
-                <span class="rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 shadow-soft border border-slate-100">Get Clients Back</span>
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+                <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
+                    Get Recommended
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
+                    Get Chosen
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
+                    Get Clients Back
+                </div>
             </div>
 
             <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
-                <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground pl-7 pr-2 py-2 text-base font-bold shadow-glow transition-transform hover:scale-[1.02] decoration-none">
+                <a href="tel:+13455478120" class="group inline-flex items-center justify-center gap-3 rounded-full bg-accent text-accent-foreground w-full sm:w-64 pl-7 pr-2 py-2 text-base font-bold shadow-glow transition-transform hover:scale-[1.02] decoration-none">
                     Call Us
                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                     </span>
                 </a>
-                <a href="#portfolio" class="inline-flex items-center gap-2 rounded-full glass px-10 py-4 text-base font-bold text-slate-800 hover:bg-white/80 transition-colors decoration-none shadow-soft">
+                <a href="#portfolio" class="inline-flex items-center justify-center rounded-full bg-transparent border border-white w-full sm:w-64 py-4 text-base font-bold text-slate-900 hover:bg-white/10 transition-colors decoration-none">
                     See Portfolio
                 </a>
             </div>
@@ -54,8 +63,10 @@
         <div class="mx-auto max-w-4xl px-6 text-center">
             <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                 We are a digital marketing agency based in the Cayman Islands, focused on getting your business
-                <em class="italic text-sky-deep font-display"> recommended by AI agents.</em> Our Revenue Loop is
-                the framework we have successfully applied to all our clients to turn digital presence
+                <em class="italic text-sky-deep font-display"> recommended by AI agents.</em>
+            </p>
+            <p class="mt-8 text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
+                Our Revenue Loop is the framework we have successfully applied to all our clients to turn digital presence
                 into a measurable revenue engine.
             </p>
         </div>
@@ -71,7 +82,7 @@
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
                     <strong>What is it?</strong> A three-phase marketing framework designed to dominate the 2026 digital landscape by turning search intent into sustainable growth.
                 </p>
-                <p class="mt-6 text-slate-500 max-w-2xl">
+                <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
                     Our Revenue Loop framework consists of three fundamental phases designed to stabilize your digital foundation, drive new discovery through AI, and maximize customer lifetime value.
                 </p>
             </div>
