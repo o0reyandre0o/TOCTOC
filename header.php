@@ -38,6 +38,18 @@
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
             'desc' => 'Meet the team behind your growth. We combine local Cayman expertise with global digital strategies to help your business scale.'
+        ],
+        'cookie-policy' => [
+            'title' => 'Cookie Policy | TocToc Marketing Cayman Islands',
+            'desc' => 'Read TocToc Marketing\'s Cookie Policy. Learn how we use cookies to enhance your experience on our Cayman Islands digital marketing agency website.'
+        ],
+        'privacy-policy' => [
+            'title' => 'Privacy Policy | TocToc Marketing Cayman Islands',
+            'desc' => 'TocToc Marketing\'s Privacy Policy. Understand how we collect, use, and protect your personal data as a leading digital marketing agency in the Cayman Islands.'
+        ],
+        'terms-and-conditions' => [
+            'title' => 'Terms & Conditions | TocToc Marketing Cayman Islands',
+            'desc' => 'Review TocToc Marketing\'s Terms and Conditions governing the use of our digital marketing services in the Cayman Islands.'
         ]
     ];
 
