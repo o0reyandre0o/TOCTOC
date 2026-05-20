@@ -23,38 +23,32 @@ function toctoc_register_legal_template( $templates ) {
 }
 add_filter( 'theme_page_templates', 'toctoc_register_legal_template' );
 
-// Dynamic XML Sitemap at /sitemap.xml
-function toctoc_sitemap_rewrite() {
-    add_rewrite_rule( '^sitemap\.xml$', 'index.php?toctoc_sitemap=1', 'top' );
-}
-add_action( 'init', 'toctoc_sitemap_rewrite' );
-
-function toctoc_sitemap_query_vars( $vars ) {
-    $vars[] = 'toctoc_sitemap';
-    return $vars;
-}
-add_filter( 'query_vars', 'toctoc_sitemap_query_vars' );
-
-function toctoc_serve_sitemap() {
-    if ( ! get_query_var( 'toctoc_sitemap' ) ) {
+// Dynamic XML Sitemap at /sitemap.xml — intercepts before WordPress routing, no permalink flush needed
+add_action( 'init', function () {
+    $uri = $_SERVER['REQUEST_URI'] ?? '';
+    // Strip query string for comparison
+    $path = strtok( $uri, '?' );
+    if ( $path !== '/sitemap.xml' ) {
         return;
     }
     header( 'Content-Type: application/xml; charset=utf-8' );
-    $today = date( 'Y-m-d' );
+    $today = gmdate( 'Y-m-d' );
     echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-    ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://toctoc.ky/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>1.0</priority></url>
-  <url><loc>https://toctoc.ky/seo-agency-services-cayman-islands/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.9</priority></url>
-  <url><loc>https://toctoc.ky/digital-marketing-agency-cayman-islands/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.9</priority></url>
-  <url><loc>https://toctoc.ky/website-design-agency-cayman-islands/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.9</priority></url>
-  <url><loc>https://toctoc.ky/social-media-marketing-services-cayman-islands/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.8</priority></url>
-  <url><loc>https://toctoc.ky/about-toc-toc-marketing/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.7</priority></url>
-  <url><loc>https://toctoc.ky/cookie-policy/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.2</priority></url>
-  <url><loc>https://toctoc.ky/privacy-policy/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.2</priority></url>
-  <url><loc>https://toctoc.ky/terms-and-conditions/</loc><lastmod><?php echo esc_html( $today ); ?></lastmod><priority>0.2</priority></url>
-</urlset>
-    <?php
+    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    $urls = [
+        [ 'https://toctoc.ky/',                                                    '1.0' ],
+        [ 'https://toctoc.ky/seo-agency-services-cayman-islands/',                 '0.9' ],
+        [ 'https://toctoc.ky/digital-marketing-agency-cayman-islands/',            '0.9' ],
+        [ 'https://toctoc.ky/website-design-agency-cayman-islands/',               '0.9' ],
+        [ 'https://toctoc.ky/social-media-marketing-services-cayman-islands/',     '0.8' ],
+        [ 'https://toctoc.ky/about-toc-toc-marketing/',                            '0.7' ],
+        [ 'https://toctoc.ky/cookie-policy/',                                      '0.2' ],
+        [ 'https://toctoc.ky/privacy-policy/',                                     '0.2' ],
+        [ 'https://toctoc.ky/terms-and-conditions/',                               '0.2' ],
+    ];
+    foreach ( $urls as [ $loc, $priority ] ) {
+        echo "  <url><loc>{$loc}</loc><lastmod>{$today}</lastmod><priority>{$priority}</priority></url>\n";
+    }
+    echo '</urlset>';
     exit;
-}
-add_action( 'template_redirect', 'toctoc_serve_sitemap' );
+} );
