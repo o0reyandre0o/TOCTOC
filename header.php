@@ -87,6 +87,10 @@
 
     <title><?php echo esc_html($title); ?></title>
     <meta name="description" content="<?php echo esc_attr($desc); ?>">
+    <meta name="keywords" content="<?php echo esc_attr($keywords); ?>">
+    <meta name="author" content="TocToc Marketing">
+    <meta name="publisher" content="TocToc Marketing">
+    <meta name="copyright" content="TocToc Marketing">
     <?php if (is_404()): ?>
     <meta name="robots" content="noindex, follow">
     <?php else: ?>
