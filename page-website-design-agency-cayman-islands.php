@@ -142,17 +142,17 @@ get_header(); ?>
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">01.</div>
-                    <h4 class="text-2xl font-display mb-4">Boost Online Visibility</h4>
+                    <h3 class="text-2xl font-display mb-4">Boost Online Visibility</h3>
                     <p class="text-white/50 text-sm leading-relaxed">Our web design Cayman services improve your search engine rankings from day one.</p>
                 </div>
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">02.</div>
-                    <h4 class="text-2xl font-display mb-4">Increase Lead Gen</h4>
+                    <h3 class="text-2xl font-display mb-4">Increase Lead Gen</h3>
                     <p class="text-white/50 text-sm leading-relaxed">Convert more visitors with strategic website development design and CTAs.</p>
                 </div>
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">03.</div>
-                    <h4 class="text-2xl font-display mb-4">Responsive Design</h4>
+                    <h3 class="text-2xl font-display mb-4">Responsive Design</h3>
                     <p class="text-white/50 text-sm leading-relaxed">Ensure your site looks great on all devices with our mobile-first Cayman design.</p>
                 </div>
             </div>
@@ -169,15 +169,15 @@ get_header(); ?>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Search Optimized</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Search Optimized</h3>
                     <p class="text-slate-500 text-sm mb-6">Implement SEO best practices for improved visibility in search results from launch.</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Mobile Optimization</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Mobile Optimization</h3>
                     <p class="text-slate-500 text-sm mb-6">Responsive design for seamless browsing on smartphones and tablets.</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">WhatsApp Integration</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">WhatsApp Integration</h3>
                     <p class="text-slate-500 text-sm mb-6">Add live chat to your website for instant customer support and conversion.</p>
                 </div>
             </div>

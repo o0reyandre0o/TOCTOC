@@ -82,17 +82,17 @@ get_header(); ?>
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">01.</div>
-                    <h4 class="text-2xl font-display mb-4">Technical Authority</h4>
+                    <h3 class="text-2xl font-display mb-4">Technical Authority</h3>
                     <p class="text-white/50 text-sm leading-relaxed">We fix the foundation. From server speed to internal linking, we build a site that Google loves to crawl.</p>
                 </div>
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">02.</div>
-                    <h4 class="text-2xl font-display mb-4">AI Search Visibility</h4>
+                    <h3 class="text-2xl font-display mb-4">AI Search Visibility</h3>
                     <p class="text-white/50 text-sm leading-relaxed">We optimize your data structure so AI models like ChatGPT "read" your business as the top option.</p>
                 </div>
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">03.</div>
-                    <h4 class="text-2xl font-display mb-4">Local Map SEO</h4>
+                    <h3 class="text-2xl font-display mb-4">Local Map SEO</h3>
                     <p class="text-white/50 text-sm leading-relaxed">Dominate the Google Map Pack. We ensure tourists and locals find you first when they need a solution.</p>
                 </div>
             </div>
@@ -109,15 +109,15 @@ get_header(); ?>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Keyword Intelligence</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Keyword Intelligence</h3>
                     <p class="text-slate-500 text-sm mb-6">We find the high-intent keywords that your customers are actually searching for in Cayman.</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Content Strategy</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Content Strategy</h3>
                     <p class="text-slate-500 text-sm mb-6">Semantic content that builds authority and answers the complex questions of modern searchers.</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Backlink Building</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Backlink Building</h3>
                     <p class="text-slate-500 text-sm mb-6">Earned authority through high-quality placements that signal trust and relevance to search engines.</p>
                 </div>
             </div>

@@ -168,7 +168,7 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">01</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">Free Consultation Call</h4>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">Free Consultation Call</h3>
                     <p class="text-sm text-slate-500 leading-relaxed">We discuss your goals and audit your current digital presence.</p>
                 </div>
                 <div class="p-10 border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
@@ -176,7 +176,7 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">02</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">We Present a Tailored Solution</h4>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">We Present a Tailored Solution</h3>
                     <p class="text-sm text-slate-500 leading-relaxed">We map out a custom Revenue Loop specific to your industry.</p>
                 </div>
                 <div class="p-10 border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
@@ -184,7 +184,7 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">03</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">We Execute the Solution</h4>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">We Execute the Solution</h3>
                     <p class="text-sm text-slate-500 leading-relaxed">Our team builds your foundation and optimizes your AI visibility.</p>
                 </div>
                 <div class="p-10 hover:bg-sky-pale/30 transition-colors">
@@ -192,7 +192,7 @@
                         <span class="font-mono text-xs font-bold text-sky-deep">04</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h4 class="text-2xl text-slate-900 font-display mb-4">You Start Receiving Leads</h4>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">You Start Receiving Leads</h3>
                     <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in the modern search era.</p>
                 </div>
             </div>

@@ -113,27 +113,27 @@ get_header(); ?>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h4 class="text-xl font-display mb-2">Retail</h4>
+                    <h3 class="text-xl font-display mb-2">Retail</h3>
                     <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Local Stores & Boutiques</p>
                 </div>
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h4 class="text-xl font-display mb-2">Hospitality</h4>
+                    <h3 class="text-xl font-display mb-2">Hospitality</h3>
                     <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Restaurants & Hotels</p>
                 </div>
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h4 class="text-xl font-display mb-2">Professional</h4>
+                    <h3 class="text-xl font-display mb-2">Professional</h3>
                     <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Lawyers & Doctors</p>
                 </div>
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h4 class="text-xl font-display mb-2">E-commerce</h4>
+                    <h3 class="text-xl font-display mb-2">E-commerce</h3>
                     <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Online Businesses</p>
                 </div>
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h4 class="text-xl font-display mb-2">Non-profits</h4>
+                    <h3 class="text-xl font-display mb-2">Non-profits</h3>
                     <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Charitable Missions</p>
                 </div>
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h4 class="text-xl font-display mb-2">Government</h4>
+                    <h3 class="text-xl font-display mb-2">Government</h3>
                     <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Public Sector</p>
                 </div>
             </div>
@@ -154,7 +154,7 @@ get_header(); ?>
                     <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M12 21v-4"/><path d="M2 7h20"/><path d="M12 3v4"/></svg>
                     </div>
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Web Development</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Web Development</h3>
                     <ul class="space-y-3 text-sm text-slate-500">
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Custom Architecture</li>
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> SEO Optimized</li>
@@ -167,7 +167,7 @@ get_header(); ?>
                     <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     </div>
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Email & Automation</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Email & Automation</h3>
                     <ul class="space-y-3 text-sm text-slate-500">
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Targeted Campaigns</li>
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Personalized Content</li>
@@ -180,7 +180,7 @@ get_header(); ?>
                     <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     </div>
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">WhatsApp Marketing</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">WhatsApp Marketing</h3>
                     <ul class="space-y-3 text-sm text-slate-500">
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Intelligent Chatbots</li>
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Group Promotions</li>
@@ -193,7 +193,7 @@ get_header(); ?>
                     <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="m12 12 4 10 1.7-4.3L22 16Z"/></svg>
                     </div>
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">PPC & Paid Ads</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">PPC & Paid Ads</h3>
                     <ul class="space-y-3 text-sm text-slate-500">
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Google & Meta Ads</li>
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Audience ROI Focus</li>
@@ -206,7 +206,7 @@ get_header(); ?>
                     <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Lead Gen & CRM</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Lead Gen & CRM</h3>
                     <ul class="space-y-3 text-sm text-slate-500">
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Customer Data Management</li>
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Behavioral Segmentation</li>
@@ -219,7 +219,7 @@ get_header(); ?>
                     <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 20 20"/><path d="m5 16 7-7"/></svg>
                     </div>
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Branding & Identity</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Branding & Identity</h3>
                     <ul class="space-y-3 text-sm text-slate-500">
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Visual Guidelines</li>
                         <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Graphic Excellence</li>

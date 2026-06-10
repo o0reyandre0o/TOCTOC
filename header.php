@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> itemscope itemtype="http://schema.org/WebPage">
+<html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,9 +53,16 @@
         ]
     ];
 
+    $seo_map['404'] = [
+        'title' => 'Page Not Found | TocToc Marketing Cayman Islands',
+        'desc' => 'The page you are looking for does not exist. Explore TocToc Marketing\'s SEO, AEO, web design, and digital marketing services in the Cayman Islands.'
+    ];
+
     $current_slug = '';
     if (is_front_page()) {
         $current_slug = 'front';
+    } elseif (is_404()) {
+        $current_slug = '404';
     } else {
         global $post;
         $current_slug = $post->post_name ?? '';
@@ -64,11 +71,17 @@
     $title = $seo_map[$current_slug]['title'] ?? $default_title;
     $desc = $seo_map[$current_slug]['desc'] ?? $default_desc;
     $current_url = home_url(add_query_arg([], $GLOBALS['wp']->request));
+    $canonical = is_front_page() ? home_url('/') : trailingslashit($current_url);
     ?>
 
     <title><?php echo esc_html($title); ?></title>
     <meta name="description" content="<?php echo esc_attr($desc); ?>">
+    <?php if (is_404()): ?>
+    <meta name="robots" content="noindex, follow">
+    <?php else: ?>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="<?php echo esc_url($canonical); ?>">
+    <?php endif; ?>
     
     <!-- GA4 Tag (Replace G-XXXXXXXXXX with your actual ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -84,6 +97,8 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="TocToc Marketing">
     <meta property="og:url" content="<?php echo esc_url($current_url); ?>">
     <meta property="og:title" content="<?php echo esc_attr($title); ?>">
     <meta property="og:description" content="<?php echo esc_attr($desc); ?>">
@@ -102,13 +117,60 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "LocalBusiness",
+          "@type": ["ProfessionalService", "LocalBusiness"],
           "name": "TocToc Marketing",
+          "alternateName": "Toc Toc Marketing",
+          "description": "<?php echo esc_attr($default_desc); ?>",
+          "slogan": "We build the Revenue Loop for your business.",
           "image": "<?php echo esc_url($logo_url); ?>",
+          "logo": "<?php echo esc_url($logo_url); ?>",
           "@id": "https://toctoc.ky",
           "url": "https://toctoc.ky",
           "telephone": "+1 345-547-8120",
+          "email": "info@toctoc.ky",
           "priceRange": "$$",
+          "areaServed": [
+            { "@type": "Country", "name": "Cayman Islands" },
+            { "@type": "City", "name": "George Town" },
+            { "@type": "Place", "name": "Grand Cayman" }
+          ],
+          "knowsAbout": [
+            "Search Engine Optimization (SEO)",
+            "Answer Engine Optimization (AEO)",
+            "Generative Engine Optimization (GEO)",
+            "AI Search Visibility",
+            "Website Design and Development",
+            "Social Media Marketing",
+            "Local SEO Cayman Islands",
+            "Digital Marketing Strategy"
+          ],
+          "founder": {
+            "@type": "Person",
+            "@id": "https://toctoc.ky/about-toc-toc-marketing/#daniel-garrido",
+            "name": "Daniel Garrido",
+            "jobTitle": "Founder & CEO",
+            "worksFor": { "@id": "https://toctoc.ky" }
+          },
+          "employee": [
+            {
+              "@type": "Person",
+              "@id": "https://toctoc.ky/about-toc-toc-marketing/#andre-gutierrez",
+              "name": "Andre Gutierrez",
+              "jobTitle": "Web Developer",
+              "description": "AI-driven web developer specializing in vibe coding, WordPress, and Elementor. Builds high-performance websites optimized for AI search visibility.",
+              "knowsAbout": ["Vibe Coding", "WordPress Development", "Elementor", "AI-Assisted Development", "Web Performance"],
+              "worksFor": { "@id": "https://toctoc.ky" }
+            },
+            {
+              "@type": "Person",
+              "@id": "https://toctoc.ky/about-toc-toc-marketing/#nora-bravo",
+              "name": "Nora Bravo",
+              "jobTitle": "Graphic Designer",
+              "description": "Graphic designer crafting brand identities, visual systems, and creative assets that make Cayman businesses stand out.",
+              "knowsAbout": ["Graphic Design", "Branding", "Visual Identity", "Social Media Creatives"],
+              "worksFor": { "@id": "https://toctoc.ky" }
+            }
+          ],
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Grand Cayman",
@@ -197,6 +259,17 @@
               }
             }
           ]
+        }
+        <?php endif; ?>
+        <?php if (is_page('about-toc-toc-marketing')): ?>
+        ,{
+          "@type": "AboutPage",
+          "@id": "<?php echo esc_url($canonical); ?>#webpage",
+          "url": "<?php echo esc_url($canonical); ?>",
+          "name": "<?php echo esc_attr($title); ?>",
+          "description": "<?php echo esc_attr($desc); ?>",
+          "about": { "@id": "https://toctoc.ky" },
+          "isPartOf": { "@id": "https://toctoc.ky/#website" }
         }
         <?php endif; ?>
       ]
@@ -329,7 +402,7 @@
     </style>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> itemscope itemtype="http://schema.org/Organization">
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-8 z-[1000] shadow-soft border border-white/50">

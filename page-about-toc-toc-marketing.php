@@ -58,7 +58,7 @@ get_header(); ?>
                     <p>“I know what it’s like to run a local business – the feeling of building something special from the ground up. It’s my story, too!”</p>
                     <p>“As a musician and marketer, I translate that passion into powerful campaigns that make your business sing. Think of me as your marketing teammate.”</p>
                 </div>
-                <div class="mt-16 flex items-center gap-8 p-10 rounded-[3rem] bg-white/5 border border-white/10 w-fit">
+                <div id="daniel-garrido" class="mt-16 flex items-center gap-8 p-10 rounded-[3rem] bg-white/5 border border-white/10 w-fit">
                     <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                     </div>
@@ -71,19 +71,60 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Section 4: Team Mini-Grid -->
-    <section class="py-24 md:py-32 bg-white text-center">
+    <!-- Section 4: Team Grid -->
+    <section id="team" class="py-24 md:py-32 bg-white">
         <div class="mx-auto max-w-6xl px-6">
-            <h2 class="text-5xl md:text-8xl font-display text-slate-900 mb-20 leading-none">A Passionate <em class="italic text-sky-deep font-display">Team.</em></h2>
-            <div class="flex flex-wrap justify-center gap-24">
-                <div class="text-center">
-                    <h4 class="text-4xl font-display text-slate-900 mb-2">Andre</h4>
-                    <p class="text-sm text-slate-400 uppercase font-bold tracking-[0.2em]">Strategy & Technical</p>
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+                    The Talent
                 </div>
-                <div class="text-center">
-                    <h4 class="text-4xl font-display text-slate-900 mb-2">Nora</h4>
-                    <p class="text-sm text-slate-400 uppercase font-bold tracking-[0.2em]">Creative & Brand</p>
-                </div>
+                <h2 class="text-5xl md:text-8xl font-display text-slate-900 leading-none">A Passionate <em class="italic text-sky-deep font-display">Team.</em></h2>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+                <!-- Andre Gutierrez -->
+                <article id="andre-gutierrez" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
+                    <div class="flex items-center gap-5 mb-8">
+                        <div class="w-16 h-16 rounded-full bg-sky-pale flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-display text-slate-900">Andre Gutierrez</h3>
+                            <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Web Developer</p>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-8">
+                        Andre builds the websites AI loves and humans trust. An AI-driven developer who blends <strong class="text-slate-700">vibe coding</strong> with deep WordPress and Elementor expertise, he ships fast, high-performance sites engineered to get recommended in the answer economy.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Vibe Coding</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">WordPress</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Elementor</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">AI Development</span>
+                    </div>
+                </article>
+
+                <!-- Nora Bravo -->
+                <article id="nora-bravo" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
+                    <div class="flex items-center gap-5 mb-8">
+                        <div class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-display text-slate-900">Nora Bravo</h3>
+                            <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Graphic Designer</p>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-8">
+                        Nora gives every brand its visual voice. From logos and brand identities to scroll-stopping social creatives, she designs the look and feel that makes Cayman businesses instantly recognizable — and impossible to ignore.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Branding</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Visual Identity</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Social Creatives</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Graphic Design</span>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

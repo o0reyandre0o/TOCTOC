@@ -42,22 +42,22 @@ get_header(); ?>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Card 1 -->
                 <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h4 class="text-3xl font-display text-slate-900 mb-4">Audience Connection</h4>
+                    <h3 class="text-3xl font-display text-slate-900 mb-4">Audience Connection</h3>
                     <p class="text-lg text-slate-500 leading-relaxed">Content that connects emotionally and humanizes your brand, building deep trust with the Cayman community.</p>
                 </div>
                 <!-- Card 2 -->
                 <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h4 class="text-3xl font-display text-slate-900 mb-4">Consistent Branding</h4>
+                    <h3 class="text-3xl font-display text-slate-900 mb-4">Consistent Branding</h3>
                     <p class="text-lg text-slate-500 leading-relaxed">Ensuring every post aligns perfectly with your visual brand identity for instant recognition.</p>
                 </div>
                 <!-- Card 3 -->
                 <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h4 class="text-3xl font-display text-slate-900 mb-4">Value-Driven</h4>
+                    <h3 class="text-3xl font-display text-slate-900 mb-4">Value-Driven</h3>
                     <p class="text-lg text-slate-500 leading-relaxed">Positioning you as the expert through educational and informative content that answers customer needs.</p>
                 </div>
                 <!-- Card 4 -->
                 <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h4 class="text-3xl font-display text-slate-900 mb-4">Scroll-Stopping</h4>
+                    <h3 class="text-3xl font-display text-slate-900 mb-4">Scroll-Stopping</h3>
                     <p class="text-lg text-slate-500 leading-relaxed">High-impact, technical execution that captures attention and drives measurable engagement.</p>
                 </div>
             </div>
@@ -95,15 +95,15 @@ get_header(); ?>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-soft">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Paid Social Ads</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Paid Social Ads</h3>
                     <p class="text-slate-500 text-sm">Targeted Meta & LinkedIn campaigns designed to reach your ideal audience and maximize ROI.</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-soft">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">AI Chatbots</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">AI Chatbots</h3>
                     <p class="text-slate-500 text-sm">24/7 customer support with AI-powered chatbots for instant replies and lead capture.</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-soft">
-                    <h4 class="text-2xl font-display text-slate-900 mb-4">Content Planning</h4>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Content Planning</h3>
                     <p class="text-slate-500 text-sm">Organized content calendars that align with your business goals and ensure consistency.</p>
                 </div>
             </div>
