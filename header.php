@@ -58,6 +58,16 @@
         'desc' => 'The page you are looking for does not exist. Explore TocToc Marketing\'s SEO, AEO, web design, and digital marketing services in the Cayman Islands.'
     ];
 
+    $default_keywords = 'digital marketing agency cayman islands, marketing agency grand cayman, seo cayman islands, web design cayman islands, toctoc marketing';
+    $keywords_map = [
+        'front' => 'digital marketing agency cayman islands, ai marketing agency, aeo agency, revenue loop marketing, marketing agency grand cayman, seo cayman islands',
+        'seo-agency-services-cayman-islands' => 'seo services cayman islands, aeo services, geo optimization, ai search visibility, answer engine optimization, local seo grand cayman',
+        'digital-marketing-agency-cayman-islands' => 'digital marketing services cayman islands, branding agency cayman, graphic design cayman islands, marketing strategy grand cayman',
+        'website-design-agency-cayman-islands' => 'website design cayman islands, web design agency grand cayman, wordpress development cayman, high performance websites',
+        'social-media-marketing-services-cayman-islands' => 'social media marketing cayman islands, social media management grand cayman, instagram marketing cayman, facebook ads cayman',
+        'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
+    ];
+
     $current_slug = '';
     if (is_front_page()) {
         $current_slug = 'front';
@@ -70,6 +80,7 @@
 
     $title = $seo_map[$current_slug]['title'] ?? $default_title;
     $desc = $seo_map[$current_slug]['desc'] ?? $default_desc;
+    $keywords = $keywords_map[$current_slug] ?? $default_keywords;
     $current_url = home_url(add_query_arg([], $GLOBALS['wp']->request));
     $canonical = is_front_page() ? home_url('/') : trailingslashit($current_url);
     ?>
