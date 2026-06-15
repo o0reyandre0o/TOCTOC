@@ -110,6 +110,27 @@ get_header(); ?>
         </div>
     </section>
 
+    <?php
+    toctoc_render_faq( [
+        [
+            'q' => 'How much does social media management cost in the Cayman Islands?',
+            'a' => 'Social media management pricing depends on how many platforms you want managed, posting frequency, and whether you need paid ad campaigns. TocToc offers tailored monthly plans for Cayman businesses rather than fixed packages, so your investment matches your goals. Book a free consultation for a clear quote.',
+        ],
+        [
+            'q' => 'Which social media platforms should my Cayman business use?',
+            'a' => 'It depends on your audience. Most Cayman businesses see the strongest return on Instagram and Facebook for reaching locals and tourists, while LinkedIn works well for professional services. We help you focus your budget on the platforms where your customers actually spend time, instead of spreading thin across all of them.',
+        ],
+        [
+            'q' => 'Do you create the content and manage posting?',
+            'a' => 'Yes. We handle it end to end — strategy, content calendars, scroll-stopping creative aligned to your brand, scheduling, and community engagement — so you can focus on running your business while we build your audience.',
+        ],
+        [
+            'q' => 'Can social media really generate leads, not just likes?',
+            'a' => 'Yes, and that is exactly our focus. We build communities that drive revenue, not vanity metrics. Through targeted paid social, AI chatbots for instant lead capture, and value-driven content, we turn followers into loyal, paying clients and track the real-world ROI.',
+        ],
+    ], 'Social Media FAQ', 'Social Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
+    ?>
+
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
         <div class="mx-auto max-w-4xl px-6">

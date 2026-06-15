@@ -230,6 +230,59 @@ get_header(); ?>
         </div>
     </section>
 
+    <!-- Section 5b: Advertising, PR & Communications -->
+    <section class="py-24 md:py-32 bg-slate-50">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-16">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Beyond the Click</span>
+                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Advertising, PR &amp; <em class="italic text-sky-deep font-display">Communications</em></h2>
+                <p class="mt-8 text-xl text-slate-600 leading-relaxed">
+                    As a full-service marketing agency in the Cayman Islands, we go beyond digital. From campaign advertising and media buying to public relations and corporate communications, we help Cayman businesses build a reputation that earns trust across every channel.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Advertising Campaigns</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Creative, data-driven advertising across Google, Meta, print, and local Cayman media — planned and measured for return, not just reach.</p>
+                </div>
+                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Public Relations</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Press, partnerships, and reputation management that position your business as a trusted name in the Cayman Islands community.</p>
+                </div>
+                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Corporate Communications</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Clear, consistent messaging across your brand — internal and external — so every touchpoint tells the same compelling story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php
+    toctoc_render_faq( [
+        [
+            'q' => 'What makes TocToc the best marketing agency in the Cayman Islands?',
+            'a' => 'We combine deep local Cayman knowledge with a 2026-ready approach built around our Revenue Loop framework: Get Recommended, Get Chosen, Get Clients Back. Unlike traditional agencies, we optimize your business to be recommended by AI tools and search engines, not just to look good — turning visibility into measurable revenue.',
+        ],
+        [
+            'q' => 'How much does a digital marketing agency cost in Cayman?',
+            'a' => 'Costs vary based on the services you need — SEO, web design, social media, advertising, or a full Revenue Loop strategy. We build custom plans for each Cayman business rather than fixed packages, and a free consultation gives you a clear, transparent quote with no obligation.',
+        ],
+        [
+            'q' => 'Do you offer advertising, PR, and communications services in Cayman?',
+            'a' => 'Yes. As a full-service agency, we cover advertising campaigns and media buying, public relations, and corporate communications alongside our digital marketing, SEO, and web design services — a single partner for your entire marketing presence in the Cayman Islands.',
+        ],
+        [
+            'q' => 'Do you work with small businesses in Grand Cayman?',
+            'a' => 'Absolutely. We work with retail, hospitality, professional services, e-commerce, non-profits, and government across Grand Cayman — from local boutiques to established firms. Our strategies scale to your size and budget.',
+        ],
+        [
+            'q' => 'How quickly will I see results from digital marketing?',
+            'a' => 'Paid advertising can drive traffic and leads almost immediately, while SEO and content build compounding results over 3 to 6 months. We focus on a balanced strategy so you see early wins while we build long-term, sustainable growth.',
+        ],
+    ], 'Marketing FAQ', 'Your Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
+    ?>
+
     <!-- Section 6: Contact CTA -->
     <section class="relative py-32 bg-sky-pale/50 overflow-hidden">
         <div class="relative mx-auto max-w-4xl px-6 text-center">

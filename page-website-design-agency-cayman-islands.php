@@ -184,6 +184,31 @@ get_header(); ?>
         </div>
     </section>
 
+    <?php
+    toctoc_render_faq( [
+        [
+            'q' => 'How much does a website cost in the Cayman Islands?',
+            'a' => 'Website cost in Cayman depends on the number of pages, features like booking or e-commerce, and whether you need custom design or a redesign. TocToc builds every site as a 24/7 salesperson engineered to convert, and we quote transparently after a quick call about your goals — no generic packages.',
+        ],
+        [
+            'q' => 'How long does it take to build a website?',
+            'a' => 'A focused business website typically takes 3 to 6 weeks from kickoff to launch, depending on content readiness and the scope of features. Larger e-commerce or directory platforms take longer. We map a clear timeline before we start so you always know what comes next.',
+        ],
+        [
+            'q' => 'Do you offer website redesign and web development services?',
+            'a' => 'Yes. Beyond new builds, we specialize in website redesign and full web development for Cayman businesses — rebuilding slow, outdated, or poorly converting sites with custom architecture, fast Core Web Vitals, and SEO baked in from launch.',
+        ],
+        [
+            'q' => 'Do you build websites for restaurants and hospitality businesses in Cayman?',
+            'a' => 'Absolutely. We have built sites for restaurants, watersports, optical boutiques, and real estate across Grand Cayman, with features like digital menus, online reservations, and real-time booking. Hospitality and tourism are a core focus for us.',
+        ],
+        [
+            'q' => 'Will my website be optimized for SEO and mobile?',
+            'a' => 'Every website we build is mobile-first and search optimized from day one — clean code, fast loading, Schema markup, and a structure Google and AI assistants love to crawl. A beautiful site that nobody finds is wasted, so visibility is built in, not bolted on.',
+        ],
+    ], 'Web Design FAQ', 'Website Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
+    ?>
+
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
         <div class="mx-auto max-w-4xl px-6">

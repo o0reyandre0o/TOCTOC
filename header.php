@@ -16,24 +16,24 @@
     
     $seo_map = [
         'front' => [
-            'title' => 'TocToc Marketing | AI-Driven Revenue Loop Agency Cayman',
-            'desc' => 'Leading digital marketing agency in the Cayman Islands. We build the Revenue Loop for your business. Speed, AI Visibility, and Growth for the 2026 era.'
+            'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
+            'desc' => 'Top-rated marketing agency in the Cayman Islands. SEO, web design & AI visibility that turn searches into customers. Book your free consultation today.'
         ],
         'seo-agency-services-cayman-islands' => [
-            'title' => 'AEO, GEO & SEO Services Cayman | TocToc Marketing',
-            'desc' => 'Dominate the Answer Economy. Our AEO, GEO, and SEO services ensure your business is the first recommendation by AI and search engines alike.'
+            'title' => 'SEO Services Cayman Islands | AEO & GEO Experts | TocToc',
+            'desc' => 'Rank #1 in Google and get recommended by AI. Cayman SEO, AEO & GEO services with local Map Pack optimization. Free SEO consultation — talk to an expert.'
         ],
         'digital-marketing-agency-cayman-islands' => [
-            'title' => 'Full-Service Digital Marketing Agency Cayman | TocToc',
-            'desc' => 'From professional branding to high-impact graphic design. We provide comprehensive digital marketing solutions tailored for Cayman businesses.'
+            'title' => 'Digital Marketing Agency Cayman Islands | TocToc Marketing',
+            'desc' => 'Full-service digital marketing agency in Cayman: SEO, web design, social media, advertising & PR. Grow your revenue with a free strategy call today.'
         ],
         'website-design-agency-cayman-islands' => [
-            'title' => 'Premium Website Design Agency Cayman Islands | TocToc',
-            'desc' => 'We build websites AI loves and humans trust. High-performance, mobile-optimized web design that converts visitors into leads.'
+            'title' => 'Website Design Agency Cayman Islands | TocToc Marketing',
+            'desc' => 'Award-worthy web design & development in the Cayman Islands. Fast, mobile-first websites that convert visitors into leads. Get your custom quote today.'
         ],
         'social-media-marketing-services-cayman-islands' => [
-            'title' => 'Social Media Marketing & Management Cayman | TocToc',
-            'desc' => 'Scale your local impact with data-driven social media strategies. We manage your presence so you can focus on your business.'
+            'title' => 'Social Media Marketing Cayman Islands | TocToc Marketing',
+            'desc' => 'Social media marketing & management for Cayman businesses. We build communities that drive real leads, not just likes. Book a free consultation today.'
         ],
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',

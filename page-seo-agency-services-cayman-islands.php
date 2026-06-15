@@ -124,6 +124,31 @@ get_header(); ?>
         </div>
     </section>
 
+    <?php
+    toctoc_render_faq( [
+        [
+            'q' => 'How much do SEO services cost in the Cayman Islands?',
+            'a' => 'SEO pricing in Cayman depends on your industry, competition, and goals. TocToc Marketing builds custom monthly retainers rather than one-size-fits-all packages, so you only pay for the work that moves your rankings. Book a free call and we will give you a transparent quote based on your specific market.',
+        ],
+        [
+            'q' => 'How long does SEO take to show results in Cayman?',
+            'a' => 'Most local Cayman businesses see measurable movement in 3 to 6 months, with compounding growth after that. Technical fixes and Google Business Profile optimization can lift local "near me" and Map Pack visibility faster, while competitive keywords like "marketing agency Cayman" take sustained content and authority building.',
+        ],
+        [
+            'q' => 'What is the difference between SEO, AEO, and GEO?',
+            'a' => 'SEO (Search Engine Optimization) gets you ranked on Google. AEO (Answer Engine Optimization) gets your business quoted as the direct answer in featured snippets and voice search. GEO (Generative Engine Optimization) gets you recommended by AI tools like ChatGPT, Perplexity, and Google AI Overviews. We optimize for all three, because in 2026 your customers search across all of them.',
+        ],
+        [
+            'q' => 'Do you offer local SEO and Google Map Pack optimization?',
+            'a' => 'Yes. Local SEO is core to what we do for Cayman businesses. We optimize your Google Business Profile, build local citations, manage reviews, and apply precise geotagging so you appear in the Map Pack when locals and tourists search for services near them in Grand Cayman and George Town.',
+        ],
+        [
+            'q' => 'Can you get my business recommended by AI tools like ChatGPT?',
+            'a' => 'That is our specialty. We structure your website with advanced Schema markup and authoritative, well-organized content so AI models read your business as the trustworthy answer. This is the Get Recommended phase of our Revenue Loop framework.',
+        ],
+    ], 'SEO FAQ', 'SEO Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
+    ?>
+
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
         <div class="mx-auto max-w-4xl px-6">
