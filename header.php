@@ -82,6 +82,12 @@
         'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
     ];
 
+    // Per-page social share image (og:image / twitter:image). Use a raster image
+    // (JPG/PNG, ideally 1200x630) — social platforms do not render the SVG logo.
+    $og_image_map = [
+        'venezuela' => 'https://content.api.news/v3/images/bin/d252bb5f8159e9d1b1a1d85860728696',
+    ];
+
     $current_slug = '';
     if (is_front_page()) {
         $current_slug = 'front';
@@ -95,6 +101,7 @@
     $title = $seo_map[$current_slug]['title'] ?? $default_title;
     $desc = $seo_map[$current_slug]['desc'] ?? $default_desc;
     $keywords = $keywords_map[$current_slug] ?? $default_keywords;
+    $og_image = $og_image_map[$current_slug] ?? $logo_url;
     $current_url = home_url(add_query_arg([], $GLOBALS['wp']->request));
     $canonical = is_front_page() ? home_url('/') : trailingslashit($current_url);
     ?>
@@ -130,14 +137,15 @@
     <meta property="og:url" content="<?php echo esc_url($current_url); ?>">
     <meta property="og:title" content="<?php echo esc_attr($title); ?>">
     <meta property="og:description" content="<?php echo esc_attr($desc); ?>">
-    <meta property="og:image" content="<?php echo esc_url($logo_url); ?>">
+    <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
+    <meta property="og:image:alt" content="<?php echo esc_attr($title); ?>">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="<?php echo esc_url($current_url); ?>">
     <meta property="twitter:title" content="<?php echo esc_attr($title); ?>">
     <meta property="twitter:description" content="<?php echo esc_attr($desc); ?>">
-    <meta property="twitter:image" content="<?php echo esc_url($logo_url); ?>">
+    <meta property="twitter:image" content="<?php echo esc_url($og_image); ?>">
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
