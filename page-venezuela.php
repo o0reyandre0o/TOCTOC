@@ -95,7 +95,7 @@ get_header(); ?>
             </div>
 
             <p class="mt-8 text-sm text-white/40">
-                Please reference <strong class="text-white/70">“Venezuela Earthquake Appeal”</strong> with your transfer. The appeal runs from June 29 to July 31, 2026.
+                The appeal runs from June 29 to July 31, 2026.
             </p>
         </div>
     </section>
