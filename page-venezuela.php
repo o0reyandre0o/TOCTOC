@@ -51,15 +51,12 @@ get_header(); ?>
             <figure>
                 <div class="overflow-hidden rounded-[2.5rem] shadow-glass">
                     <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Edif%C3%ADcios_colapsados_e_danificados_em_Los_Palos_Grandes%2C_2026-06-26.png/1280px-Edif%C3%ADcios_colapsados_e_danificados_em_Los_Palos_Grandes%2C_2026-06-26.png"
-                        alt="Collapsed and damaged buildings in Los Palos Grandes, Caracas, after the June 2026 Venezuela earthquakes"
+                        src="https://content.api.news/v3/images/bin/d252bb5f8159e9d1b1a1d85860728696"
+                        alt="Earthquake damage in northern Venezuela, June 2026 — Cayman Islands Red Cross appeal"
                         class="w-full h-auto object-cover"
                         loading="lazy"
                     />
                 </div>
-                <figcaption class="mt-3 text-center text-xs text-slate-400">
-                    Los Palos Grandes, Caracas, June 2026. Photo: Venezolana de Televisión (public domain).
-                </figcaption>
             </figure>
         </div>
     </section>
