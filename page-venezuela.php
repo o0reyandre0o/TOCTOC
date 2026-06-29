@@ -57,6 +57,9 @@ get_header(); ?>
                         loading="lazy"
                     />
                 </div>
+                <figcaption class="mt-3 text-center text-xs text-slate-400">
+                    Photo: Juan Barreto / AFP
+                </figcaption>
             </figure>
         </div>
     </section>
