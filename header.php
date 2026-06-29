@@ -43,6 +43,10 @@
             'title' => 'Web Development Agency Cayman Islands | TocToc Marketing',
             'desc' => 'Custom web development services in the Cayman Islands: websites, e-commerce & web apps built fast, secure & SEO-ready. Get your free project quote today.'
         ],
+        'venezuela' => [
+            'title' => 'Venezuela Earthquake Appeal | Cayman Islands Red Cross',
+            'desc' => 'Donate to the Cayman Islands Red Cross Venezuela Earthquake Appeal. Two earthquakes struck northern Venezuela on June 24, 2026. Please help these families now.'
+        ],
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
             'desc' => 'Meet the team behind your growth. We combine local Cayman expertise with global digital strategies to help your business scale.'
