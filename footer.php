@@ -1,9 +1,19 @@
     <footer class="bg-slate-950 text-white border-t border-white/5">
-        <div class="mx-auto max-w-6xl px-6 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+        <div class="mx-auto max-w-6xl px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
                 <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" class="h-6 w-auto brightness-0 invert" />
                 <p class="mt-4 text-sm text-white/40 font-medium">Cayman Islands · Built for the AI era</p>
             </div>
+            <nav aria-label="Services" class="flex flex-col gap-3">
+                <h2 class="text-sm font-display italic text-accent mb-1">Our Services</h2>
+                <a href="/digital-marketing-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Digital Marketing Agency</a>
+                <a href="/seo-agency-services-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">SEO, AEO &amp; GEO Services</a>
+                <a href="/website-design-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Website Design</a>
+                <a href="/web-development-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Web Development</a>
+                <a href="/social-media-marketing-services-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Social Media Marketing</a>
+                <a href="/advertising-pr-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Advertising &amp; PR</a>
+                <a href="/about-toc-toc-marketing/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">About Us</a>
+            </nav>
             <div class="flex flex-col md:items-end gap-10">
                 <div class="flex flex-col md:items-end gap-3 text-right">
                     <h3 class="text-sm font-display italic text-accent mb-1">Contact Us</h3>

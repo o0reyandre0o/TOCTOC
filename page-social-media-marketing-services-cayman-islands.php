@@ -110,6 +110,72 @@ get_header(); ?>
         </div>
     </section>
 
+    <!-- Section 5: Platforms We Manage -->
+    <section class="py-24 md:py-32 bg-slate-50">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-16">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Where Your Audience Is</span>
+                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Platforms We <em class="italic text-sky-deep font-display">Manage</em></h2>
+                <p class="mt-8 text-xl text-slate-600 leading-relaxed">
+                    As a social media marketing agency in the Cayman Islands, we focus your budget on the platforms where your customers actually spend time — instead of spreading thin across all of them.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
+                    <h3 class="text-2xl font-display text-slate-900 mb-3">Instagram</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Reels, stories, and a feed that turns followers into customers — ideal for Cayman hospitality, retail, and lifestyle brands.</p>
+                </article>
+                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
+                    <h3 class="text-2xl font-display text-slate-900 mb-3">Facebook</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Community building and powerful local ad targeting to reach residents and tourists across Grand Cayman.</p>
+                </article>
+                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
+                    <h3 class="text-2xl font-display text-slate-900 mb-3">TikTok</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Short-form video that rides trends and puts your brand in front of a younger, highly engaged Cayman audience.</p>
+                </article>
+                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
+                    <h3 class="text-2xl font-display text-slate-900 mb-3">LinkedIn</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">B2B authority and lead generation for professional services, finance, and corporate Cayman businesses.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: What's Included -->
+    <section class="py-24 md:py-32 bg-white">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Done For You</span>
+                    <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">What Our Social Media <em class="italic text-sky-deep font-display">Management Includes</em></h2>
+                    <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                        We handle your social media end to end, so you can focus on running your Cayman business while we build your audience and bring in leads.
+                    </p>
+                </div>
+                <ul class="space-y-5">
+                    <?php
+                    $sm_included = [
+                        'Strategy & audience research tailored to Cayman',
+                        'Monthly content calendar & scheduling',
+                        'Scroll-stopping creative, graphics & short-form video',
+                        'Community management & comment replies',
+                        'Paid social ad campaigns (Meta & LinkedIn)',
+                        'Monthly analytics & ROI reporting',
+                    ];
+                    foreach ( $sm_included as $item ) : ?>
+                    <li class="flex items-center gap-5 text-lg text-slate-700 font-medium">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
+                        </span>
+                        <?php echo esc_html( $item ); ?>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <?php
     toctoc_render_faq( [
         [

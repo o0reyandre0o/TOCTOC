@@ -95,6 +95,8 @@ add_action( 'init', function () {
         [ 'https://toctoc.ky/digital-marketing-agency-cayman-islands/',            '0.9' ],
         [ 'https://toctoc.ky/website-design-agency-cayman-islands/',               '0.9' ],
         [ 'https://toctoc.ky/social-media-marketing-services-cayman-islands/',     '0.8' ],
+        [ 'https://toctoc.ky/web-development-cayman-islands/',                      '0.8' ],
+        [ 'https://toctoc.ky/advertising-pr-agency-cayman-islands/',               '0.8' ],
         [ 'https://toctoc.ky/about-toc-toc-marketing/',                            '0.7' ],
         [ 'https://toctoc.ky/cookie-policy/',                                      '0.2' ],
         [ 'https://toctoc.ky/privacy-policy/',                                     '0.2' ],

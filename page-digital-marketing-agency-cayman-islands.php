@@ -239,6 +239,11 @@ get_header(); ?>
                 <p class="mt-8 text-xl text-slate-600 leading-relaxed">
                     As a full-service marketing agency in the Cayman Islands, we go beyond digital. From campaign advertising and media buying to public relations and corporate communications, we help Cayman businesses build a reputation that earns trust across every channel.
                 </p>
+                <div class="mt-8">
+                    <a href="<?php echo esc_url( home_url( '/advertising-pr-agency-cayman-islands/' ) ); ?>" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
+                        Explore Advertising &amp; PR <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

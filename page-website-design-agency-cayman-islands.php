@@ -165,6 +165,9 @@ get_header(); ?>
             <div class="text-center mb-20">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Technical Excellence</span>
                 <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Website Redesign <em class="italic text-sky-deep font-display">& Development</em></h2>
+                <p class="mt-6 text-lg text-slate-500 max-w-2xl mx-auto">
+                    Need more than a website? Explore our full <a href="<?php echo esc_url( home_url( '/web-development-cayman-islands/' ) ); ?>" class="text-sky-deep font-bold underline decoration-accent decoration-2 underline-offset-4">web development services in Cayman</a> — e-commerce, web apps, and custom builds.
+                </p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
