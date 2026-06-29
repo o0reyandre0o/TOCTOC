@@ -17,13 +17,10 @@ get_header(); ?>
         </div>
 
         <div class="relative z-10 mx-auto max-w-4xl px-6 text-center flex flex-col items-center">
-            <!-- Cayman Islands Red Cross lockup -->
-            <div class="flex items-center gap-3 mb-10">
-                <span class="inline-flex items-center justify-center w-11 h-11 bg-[#ED1C24] rounded-[4px]" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z"/></svg>
-                </span>
-                <span class="text-xl font-bold tracking-tight text-slate-900">Cayman Islands<span class="text-[#ED1C24]">RedCross</span></span>
-            </div>
+            <!-- Cayman Islands Red Cross official logo -->
+            <a href="https://redcross.org.ky/" target="_blank" rel="noopener" class="mb-10 inline-block decoration-none">
+                <img src="https://redcross.org.ky/wp-content/themes/redcross/images/logo_60years.svg" alt="Cayman Islands Red Cross" class="h-16 w-auto mx-auto" />
+            </a>
 
             <div class="inline-flex items-center gap-2 rounded-full border border-[#ED1C24]/20 bg-[#ED1C24]/5 px-4 py-1.5 text-[11px] font-bold text-[#ED1C24] mb-8 uppercase tracking-widest">
                 Emergency Appeal · June 29 – July 31, 2026
@@ -51,13 +48,18 @@ get_header(); ?>
     <!-- Section 2: Image -->
     <section class="pb-8 bg-white">
         <div class="mx-auto max-w-5xl px-6">
-            <figure class="overflow-hidden rounded-[2.5rem] shadow-glass">
-                <img
-                    src="https://toctoc.ky/wp-content/uploads/2026/06/venezuela-earthquake-appeal.jpg"
-                    alt="Earthquake damage in northern Venezuela, June 2026 — Cayman Islands Red Cross appeal"
-                    class="w-full h-auto object-cover"
-                    loading="lazy"
-                />
+            <figure>
+                <div class="overflow-hidden rounded-[2.5rem] shadow-glass">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Edif%C3%ADcios_colapsados_e_danificados_em_Los_Palos_Grandes%2C_2026-06-26.png/1280px-Edif%C3%ADcios_colapsados_e_danificados_em_Los_Palos_Grandes%2C_2026-06-26.png"
+                        alt="Collapsed and damaged buildings in Los Palos Grandes, Caracas, after the June 2026 Venezuela earthquakes"
+                        class="w-full h-auto object-cover"
+                        loading="lazy"
+                    />
+                </div>
+                <figcaption class="mt-3 text-center text-xs text-slate-400">
+                    Los Palos Grandes, Caracas, June 2026. Photo: Venezolana de Televisión (public domain).
+                </figcaption>
             </figure>
         </div>
     </section>
