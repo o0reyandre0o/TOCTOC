@@ -58,7 +58,7 @@ get_header(); ?>
                     />
                 </div>
                 <figcaption class="mt-3 text-center text-xs text-slate-400">
-                    Photo: Juan Barreto / AFP
+                    Photo: Matias Delacroix / AP
                 </figcaption>
             </figure>
         </div>
