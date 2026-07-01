@@ -192,7 +192,7 @@ $ve_donations_children = [
 
     <!-- ================= 4. MAP ================= -->
     <section class="py-24 md:py-32 bg-slate-50 text-slate-900">
-        <div class="mx-auto max-w-5xl px-6">
+        <div class="mx-auto w-full px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Where It Happened</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">The most affected areas</h2>
@@ -201,7 +201,7 @@ $ve_donations_children = [
                 </p>
             </div>
 
-            <figure>
+            <figure class="mx-auto w-full lg:w-4/5 max-w-[1600px]">
                 <!-- Facade: the heavy ArcGIS dashboard loads only on click, keeping the page fast. -->
                 <div id="ve-map-embed" data-src="https://www.arcgis.com/apps/dashboards/e414897f14154a55b33ce6c84b147c23" class="overflow-hidden rounded-[2.5rem] shadow-glass bg-slate-100">
                     <button type="button" id="ve-map-load" class="group w-full h-[420px] md:h-[560px] flex flex-col items-center justify-center gap-4 text-center px-6 hover:bg-slate-200/60 transition-colors">
