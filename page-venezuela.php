@@ -468,6 +468,26 @@ $ve_donations_children = [
         });
     });
 })();
+
+(function () {
+    document.querySelectorAll('.ve-video').forEach(function (el) {
+        function play() {
+            var id = el.getAttribute('data-id');
+            var f = document.createElement('iframe');
+            f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+            f.className = 'absolute inset-0 w-full h-full';
+            f.setAttribute('frameborder', '0');
+            f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            f.setAttribute('allowfullscreen', '');
+            el.innerHTML = '';
+            el.appendChild(f);
+        }
+        el.addEventListener('click', play);
+        el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+        });
+    });
+})();
 </script>
 
 <?php get_footer(); ?>
