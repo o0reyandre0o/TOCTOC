@@ -11,12 +11,12 @@ get_header();
 // --- Statistics (as of July 1, 2026) ---
 $ve_stats = [
     [ 'num' => '2',        'label' => 'Earthquakes in 39 seconds — magnitude 7.2 &amp; 7.5' ],
-    [ 'num' => '1,700+',   'label' => 'Lives lost so far (as of July 1, 2026)' ],
-    [ 'num' => '10,000+',  'label' => 'People injured' ],
-    [ 'num' => '43,000+',  'label' => 'People still missing' ],
-    [ 'num' => '70,000+',  'label' => 'Families affected' ],
+    [ 'num' => '2,295+',   'label' => 'People confirmed killed' ],
+    [ 'num' => '10,000',   'label' => 'Death toll could reach this (UN)' ],
+    [ 'num' => '43,000+',  'label' => 'People reported missing' ],
+    [ 'num' => '15,866',   'label' => 'People left homeless' ],
     [ 'num' => '59,000+',  'label' => 'Buildings damaged or destroyed' ],
-    [ 'num' => '200+',     'label' => 'Buildings fully collapsed' ],
+    [ 'num' => '430+',     'label' => 'Buildings fully collapsed' ],
     [ 'num' => 'Thousands','label' => 'Children left orphaned', 'sm' => true ],
 ];
 
@@ -170,7 +170,10 @@ $ve_donations_children = [
             </div>
 
             <p class="mt-6 text-xs text-white/40 max-w-3xl">
-                Figures from Venezuelan authorities and the UN, as of early July 2026. Rescue efforts continue and numbers are still being confirmed — the UN estimates more than 50,000 people may remain missing.
+                Figures as of early July 2026; rescue efforts continue and numbers are still being confirmed. Sources:
+                <a href="https://news.sky.com/story/venezuela-earthquake-live-high-casualties-feared-after-back-to-back-tremors-hit-south-american-country-13557399" target="_blank" rel="noopener" class="underline hover:text-white">Sky News</a>
+                and
+                <a href="https://elpais.com/internacional/2026-06-29/cuantos-edificios-han-colapsado-los-satelites-ya-han-identificado-434-bloques-destruidos.html" target="_blank" rel="noopener" class="underline hover:text-white">El País</a>.
             </p>
 
             <p class="mt-10 text-lg text-white/70 leading-relaxed max-w-3xl">
@@ -390,7 +393,7 @@ $ve_donations_children = [
         ],
         [
             'q' => 'What happened in the 2026 Venezuela earthquakes?',
-            'a' => 'On June 24, 2026, two powerful earthquakes struck northern Venezuela just 39 seconds apart — a magnitude 7.2 followed by a 7.5. More than 1,700 people were killed, over 10,000 injured, tens of thousands of families were affected, and thousands of children were left orphaned.',
+            'a' => 'On June 24, 2026, two powerful earthquakes struck northern Venezuela just 39 seconds apart — a magnitude 7.2 followed by a 7.5. At least 2,295 people have been confirmed killed, and the UN warns the death toll could reach 10,000. More than 43,000 people are reported missing, over 15,000 have been left homeless, and hundreds of buildings have collapsed.',
         ],
         [
             'q' => 'Are these Venezuela donation organizations trustworthy?',
