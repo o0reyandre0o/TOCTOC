@@ -39,6 +39,30 @@ $ve_donations = [
     ],
 ];
 
+// --- Photo gallery (already uploaded to toctoc.ky media library). ---
+// Filename encodes date + photographer, e.g. june26-ap-ariana-cubillos.webp
+$ve_upload  = 'https://toctoc.ky/wp-content/uploads/2026/07/';
+$ve_gallery = [
+    'june26-ap-ariana-cubillos.webp',
+    'june26-ap-juan-pablo-arraez.webp',
+    'june26-ap-fernando-vergara.webp',
+    'june26-ap-fernando-vergara-.webp',
+    'june27-ap-matias-delacroix.webp',
+    'june27-ap-matias-delacroix-.webp',
+    'june27-ap-matias-delacroix2.webp',
+    'june27-matias-delacroix.webp',
+    'june27-matias-delacroix-.webp',
+    'june27-ap-fernando-vergara.webp',
+    'june27-ap-fernando-vergara-.webp',
+    'june27-ap-fernando-vergara2.webp',
+    'june28-ap-matias-delacroix.webp',
+    'june28-matias-delacroix.webp',
+    'june28-ap-pedro-mattey.webp',
+    'june30-ariana-cubillos.webp',
+    'june30-ariana-cubillos-.webp',
+    'june30-ariana-cubillos2.webp',
+];
+
 // --- Donations for children ---
 $ve_donations_children = [
     [
@@ -59,7 +83,7 @@ $ve_donations_children = [
     <!-- ================= 1. HERO ================= -->
     <section class="relative min-h-[100svh] flex items-center overflow-hidden">
         <img
-            src="https://content.api.news/v3/images/bin/d252bb5f8159e9d1b1a1d85860728696"
+            src="https://toctoc.ky/wp-content/uploads/2026/07/june27-ap-matias-delacroix.webp"
             alt="Earthquake destruction in northern Venezuela, June 2026"
             class="absolute inset-0 w-full h-full object-cover"
         />
@@ -136,22 +160,32 @@ $ve_donations_children = [
                 </p>
             </div>
 
-            <!--
-                DEV NOTE (Andre): Replace each placeholder below with a real embed from a
-                VERIFIED source (X/Twitter, Instagram, TikTok, YouTube). Paste the platform's
-                official <blockquote>/<iframe> embed code inside each card, replacing the
-                placeholder <div>. Keep the aspect-[9/16] wrapper for vertical video.
-            -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <?php for ( $i = 1; $i <= 3; $i++ ) : ?>
-                <div class="aspect-[9/16] rounded-[2rem] bg-slate-100 border border-slate-200 flex flex-col items-center justify-center text-center p-8">
-                    <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-soft mb-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#ED1C24]"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-                    </span>
-                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Verified clip <?php echo $i; ?></p>
-                    <p class="mt-2 text-xs text-slate-400">Social embed goes here</p>
-                </div>
-                <?php endfor; ?>
+            <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+                <?php foreach ( $ve_gallery as $img ) :
+                    $name    = preg_replace( '/\.webp$/', '', $img );
+                    $caption = '';
+                    if ( preg_match( '/^([a-z]+)(\d+)-(.*)$/', $name, $m ) ) {
+                        $rest    = preg_replace( '/^ap-/', '', $m[3] );   // drop "ap-" prefix
+                        $rest    = preg_replace( '/\d+$/', '', $rest );    // drop trailing 2, 3...
+                        $rest    = trim( $rest, '-' );                     // drop trailing dash
+                        $author  = ucwords( str_replace( '-', ' ', $rest ) );
+                        $caption = ucfirst( $m[1] ) . ' ' . $m[2] . ' · ' . $author . ' / AP';
+                    }
+                ?>
+                <figure class="break-inside-avoid mb-6">
+                    <div class="overflow-hidden rounded-[1.5rem] shadow-soft bg-slate-100">
+                        <img
+                            src="<?php echo esc_url( $ve_upload . $img ); ?>"
+                            alt="Earthquake aftermath in Venezuela — <?php echo esc_attr( $caption ); ?>"
+                            class="w-full h-auto object-cover"
+                            loading="lazy"
+                        />
+                    </div>
+                    <?php if ( $caption ) : ?>
+                    <figcaption class="mt-2 text-xs text-slate-400"><?php echo esc_html( $caption ); ?></figcaption>
+                    <?php endif; ?>
+                </figure>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
