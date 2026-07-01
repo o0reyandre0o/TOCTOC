@@ -163,7 +163,7 @@ $ve_donations_children = [
                     $ve_num_class = ! empty( $stat['sm'] ) ? 'text-3xl sm:text-4xl md:text-5xl' : 'text-3xl sm:text-4xl md:text-6xl';
                 ?>
                 <div class="p-5 md:p-8 rounded-[2rem] bg-white/5 border border-white/10">
-                    <div class="<?php echo $ve_num_class; ?> font-display text-[#ED1C24] leading-none tracking-tight break-words mb-4"><?php echo wp_kses_post( $stat['num'] ); ?></div>
+                    <div class="<?php echo $ve_num_class; ?> font-display text-[#ED1C24] leading-none tracking-tight break-words mb-1"><?php echo wp_kses_post( $stat['num'] ); ?></div>
                     <p class="text-xs sm:text-sm text-white/60 leading-relaxed"><?php echo wp_kses_post( $stat['label'] ); ?></p>
                 </div>
                 <?php endforeach; ?>
