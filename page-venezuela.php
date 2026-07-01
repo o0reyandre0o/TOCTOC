@@ -138,7 +138,7 @@ $ve_donations_children = [
             <h2 class="text-center text-3xl md:text-5xl font-display text-white mb-10">Footage from <em class="italic text-[#ED1C24] font-display">the ground</em></h2>
             <div class="flex flex-wrap justify-center gap-5 md:gap-6">
                 <?php foreach ( $ve_footage as $vid ) : ?>
-                <div class="ve-video group relative aspect-[9/16] w-[44%] sm:w-52 lg:w-60 overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
+                <div class="ve-video group relative aspect-[9/16] w-[80%] sm:w-52 lg:w-60 overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
                     <img src="https://i.ytimg.com/vi/<?php echo esc_attr( $vid ); ?>/hqdefault.jpg" alt="Video from Venezuela" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
                     <span class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></span>
                     <span class="absolute inset-0 flex items-center justify-center">
