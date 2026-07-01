@@ -289,4 +289,40 @@ $ve_donations_children = [
 
 </main>
 
+<script>
+(function () {
+    var box = document.getElementById('ve-map-embed');
+    var btn = document.getElementById('ve-map-load');
+    if (!box || !btn) return;
+
+    // Warm up the connection to ArcGIS on hover, so the click loads faster.
+    var warmed = false;
+    function warm() {
+        if (warmed) return;
+        warmed = true;
+        ['https://www.arcgis.com', 'https://js.arcgis.com'].forEach(function (h) {
+            var l = document.createElement('link');
+            l.rel = 'preconnect';
+            l.href = h;
+            l.crossOrigin = '';
+            document.head.appendChild(l);
+        });
+    }
+    btn.addEventListener('pointerenter', warm);
+
+    btn.addEventListener('click', function () {
+        warm();
+        var f = document.createElement('iframe');
+        f.src = box.getAttribute('data-src');
+        f.className = 'w-full h-[640px] md:h-[820px] border-0';
+        f.setAttribute('allow', 'fullscreen');
+        f.setAttribute('allowfullscreen', '');
+        f.setAttribute('referrerpolicy', 'strict-origin');
+        f.setAttribute('title', 'Live dashboard of the 2026 Venezuela earthquakes');
+        box.innerHTML = '';
+        box.appendChild(f);
+    });
+})();
+</script>
+
 <?php get_footer(); ?>
