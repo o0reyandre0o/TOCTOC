@@ -111,7 +111,7 @@ $ve_donations_children = [
                 Emergency Appeal · From the Cayman Islands
             </div>
 
-            <h1 class="text-5xl sm:text-6xl md:text-8xl font-display leading-[0.9] text-white">
+            <h1 class="text-6xl sm:text-7xl md:text-8xl font-display leading-[0.9] text-white">
                 Venezuela <br class="sm:hidden" /><em class="italic text-[#ED1C24] font-display">Needs Us</em> Now
             </h1>
 
