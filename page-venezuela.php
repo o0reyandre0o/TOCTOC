@@ -215,7 +215,7 @@ $ve_donations_children = [
                         title="Live dashboard of the 2026 Venezuela earthquakes — affected areas and figures"
                     ></iframe>
                 </div>
-                <figcaption class="mt-3 text-center text-xs text-slate-400">Interactive map · Source: ArcGIS StoryMaps</figcaption>
+                <figcaption class="mt-3 text-center text-xs text-slate-400">Live dashboard · Source: ArcGIS</figcaption>
             </figure>
         </div>
     </section>
