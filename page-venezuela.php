@@ -12,6 +12,8 @@ get_header();
 $ve_stats = [
     [ 'num' => '2',        'label' => 'Earthquakes in 39 seconds — magnitude 7.2 &amp; 7.5' ],
     [ 'num' => '1,700+',   'label' => 'Lives lost so far (as of July 1, 2026)' ],
+    [ 'num' => '10,000+',  'label' => 'People injured' ],
+    [ 'num' => '43,000+',  'label' => 'People still missing' ],
     [ 'num' => '70,000+',  'label' => 'Families affected' ],
     [ 'num' => '59,000+',  'label' => 'Buildings damaged or destroyed' ],
     [ 'num' => '200+',     'label' => 'Buildings fully collapsed' ],
@@ -104,7 +106,7 @@ $ve_donations_children = [
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 <?php foreach ( $ve_stats as $stat ) : ?>
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10">
                     <div class="text-4xl md:text-6xl font-display text-[#ED1C24] leading-none mb-4"><?php echo wp_kses_post( $stat['num'] ); ?></div>
@@ -112,6 +114,10 @@ $ve_donations_children = [
                 </div>
                 <?php endforeach; ?>
             </div>
+
+            <p class="mt-6 text-xs text-white/40 max-w-3xl">
+                Figures from Venezuelan authorities and the UN, as of early July 2026. Rescue efforts continue and numbers are still being confirmed — the UN estimates more than 50,000 people may remain missing.
+            </p>
 
             <p class="mt-10 text-lg text-white/70 leading-relaxed max-w-3xl">
                 Thousands of families have lost their homes and everything they owned. Behind every number is a person — a child, a parent, a grandparent — waiting for help.
