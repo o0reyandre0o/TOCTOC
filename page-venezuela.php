@@ -258,7 +258,7 @@ $ve_donations_children = [
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            <div class="flex md:grid md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 <?php foreach ( $ve_gallery as $img ) :
                     $name    = preg_replace( '/\.webp$/', '', $img );
                     $caption = '';
