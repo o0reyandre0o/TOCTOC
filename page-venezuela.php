@@ -324,10 +324,10 @@ $ve_donations_children = [
             </div>
 
             <?php foreach ( $ve_videos as $ve_cat => $ve_ids ) : ?>
-            <h3 class="text-2xl font-display text-white/90 mb-6 mt-14 first:mt-0"><?php echo esc_html( $ve_cat ); ?></h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            <h3 class="text-2xl font-display text-white/90 mb-8 mt-16 first:mt-0"><?php echo esc_html( $ve_cat ); ?></h3>
+            <div class="flex flex-wrap justify-center gap-5 md:gap-6">
                 <?php foreach ( $ve_ids as $vid ) : ?>
-                <div class="ve-video group relative aspect-[9/16] w-full overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
+                <div class="ve-video group relative aspect-[9/16] w-[44%] sm:w-52 lg:w-60 overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
                     <img src="https://i.ytimg.com/vi/<?php echo esc_attr( $vid ); ?>/hqdefault.jpg" alt="Video from Venezuela" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
                     <span class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></span>
                     <span class="absolute inset-0 flex items-center justify-center">
