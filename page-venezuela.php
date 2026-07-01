@@ -66,6 +66,13 @@ $ve_gallery = [
     'june30-ariana-cubillos2.webp',
 ];
 
+// --- Videos (YouTube IDs, grouped by theme). Loaded on click to keep the page fast. ---
+$ve_videos = [
+    'Footage from the ground'       => [ 'zYix2i05aII', 'RBZw5Ml3wds', 'IGEsM_MPuU8' ],
+    'The moment the earthquake hit' => [ '9qvGVIrrGpI', 'hfi_JccQYCo', 'XFveu6m1MmE' ],
+    'People rescued'                => [ '36E6bYq_WXg', 'yDGhN4NiZ7k', 'ER2LoVEbPH8', '8DibFQh0wrY', '_cUAJ-5lL_0', 'U-3CdymZ69Q' ],
+];
+
 // --- Donations for children ---
 $ve_donations_children = [
     [
