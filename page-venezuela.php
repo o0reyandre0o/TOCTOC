@@ -276,7 +276,7 @@ $ve_donations_children = [
                         <img
                             src="<?php echo esc_url( $ve_upload . $img ); ?>"
                             alt="Earthquake aftermath in Venezuela — <?php echo esc_attr( $caption ); ?>"
-                            class="w-full h-full object-cover"
+                            class="ve-gallery-img w-full h-full object-cover cursor-pointer transition-transform duration-500 hover:scale-105"
                             loading="lazy"
                             decoding="async"
                         />
