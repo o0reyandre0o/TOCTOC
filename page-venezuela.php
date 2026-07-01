@@ -78,7 +78,7 @@ $ve_donations_children = [
         'name' => 'Save the Children',
         'desc' => 'Emergency support for children and families who have lost their homes and loved ones.',
         'url'  => 'https://www.savethechildren.org.uk/how-you-can-help/emergencies/venezuela-earthquake-donate',
-        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/save-the-children-logo.png',
+        'logo' => 'https://www.savethechildren.org.uk/themes/custom/scuk_theme/images/logo.svg',
     ],
 ];
 ?>
