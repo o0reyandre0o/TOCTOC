@@ -569,6 +569,34 @@ $ve_donations_children = [
         });
     });
 })();
+
+(function () {
+    var lb    = document.getElementById('ve-lightbox');
+    var lbImg = document.getElementById('ve-lightbox-img');
+    if (!lb || !lbImg) return;
+    function open(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.ve-gallery-img').forEach(function (img) {
+        img.addEventListener('click', function () {
+            open(img.getAttribute('src'), img.getAttribute('alt'));
+        });
+    });
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+    });
+})();
 </script>
 
 <?php get_footer(); ?>
