@@ -246,11 +246,9 @@ $ve_donations_children = [
             </div>
 
             <h3 class="text-2xl font-display text-slate-900 mb-6">Emergency relief</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <?php foreach ( $ve_donations as $d ) :
-                    $is_local = ! empty( $d['local'] );
-                ?>
-                <a href="<?php echo $is_local ? '#ve-local-transfer' : esc_url( $d['url'] ); ?>"<?php echo $is_local ? '' : ' target="_blank" rel="noopener"'; ?> class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <?php foreach ( $ve_donations as $d ) : ?>
+                <a href="<?php echo esc_url( $d['url'] ); ?>" target="_blank" rel="noopener" class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
                     <?php if ( ! empty( $d['logo'] ) ) : ?>
                     <div class="h-12 mb-6 flex items-center">
                         <img src="<?php echo esc_url( $d['logo'] ); ?>" alt="<?php echo esc_attr( $d['name'] ); ?> logo" class="max-h-12 w-auto object-contain" loading="lazy" onerror="this.style.display='none'" />
@@ -259,7 +257,7 @@ $ve_donations_children = [
                     <h4 class="text-2xl font-display text-slate-900 mb-3 group-hover:text-[#ED1C24] transition-colors"><?php echo esc_html( $d['name'] ); ?></h4>
                     <p class="text-slate-500 text-sm leading-relaxed flex-1"><?php echo esc_html( $d['desc'] ); ?></p>
                     <span class="mt-6 inline-flex items-center gap-2 font-bold text-[#ED1C24] group-hover:gap-3 transition-all">
-                        <?php echo $is_local ? 'Bank transfer details' : 'Donate Now'; ?>
+                        Donate Now
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </span>
                 </a>
