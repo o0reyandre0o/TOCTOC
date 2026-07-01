@@ -20,22 +20,31 @@ $ve_stats = [
     [ 'num' => 'Thousands','label' => 'Children left orphaned', 'sm' => true ],
 ];
 
-// --- General relief donation links ---
+// --- General relief donation links (Cayman Islands Red Cross first) ---
 $ve_donations = [
+    [
+        'name'  => 'Cayman Islands Red Cross',
+        'desc'  => 'The local emergency appeal, right here in the Cayman Islands. Donate by bank transfer — account details below.',
+        'logo'  => 'https://redcross.org.ky/wp-content/themes/redcross/images/logo_60years.svg',
+        'local' => true,
+    ],
     [
         'name' => 'British Red Cross',
         'desc' => 'Venezuela Earthquake Crisis Appeal — emergency shelter, medical aid and relief for affected communities.',
         'url'  => 'https://donate.redcross.org.uk/appeal/venezuela-earthquake-crisis',
+        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/british-red-cross-logo.png',
     ],
     [
         'name' => 'Global Empowerment Mission',
         'desc' => 'On-the-ground disaster response delivering aid and essentials directly to families who lost everything.',
         'url'  => 'https://www.globalempowermentmission.org/mission/venezuela-earthquakes/',
+        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/global-empowerment-mission-logo.png',
     ],
     [
         'name' => 'UN Crisis Relief',
         'desc' => 'The United Nations coordinated humanitarian response for the Venezuela earthquake crisis.',
         'url'  => 'https://crisisrelief.un.org/en/donate-venezuela-crisis',
+        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/un-crisis-relief-logo.png',
     ],
 ];
 
@@ -69,11 +78,13 @@ $ve_donations_children = [
         'name' => 'UNICEF UK',
         'desc' => 'Protecting children affected by the earthquakes with clean water, healthcare and safe spaces.',
         'url'  => 'https://www.unicef.org.uk/donate/donate-to-our-venezuela-earthquake-appeal/',
+        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/unicef-logo.png',
     ],
     [
         'name' => 'Save the Children',
         'desc' => 'Emergency support for children and families who have lost their homes and loved ones.',
         'url'  => 'https://www.savethechildren.org.uk/how-you-can-help/emergencies/venezuela-earthquake-donate',
+        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/save-the-children-logo.png',
     ],
 ];
 ?>
