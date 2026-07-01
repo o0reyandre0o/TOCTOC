@@ -32,13 +32,13 @@ $ve_donations = [
         'name' => 'Global Empowerment Mission',
         'desc' => 'On-the-ground disaster response delivering aid and essentials directly to families who lost everything.',
         'url'  => 'https://www.globalempowermentmission.org/mission/venezuela-earthquakes/',
-        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/global-empowerment-mission-logo.png',
+        'logo' => 'https://www.globalempowermentmission.org/wp-content/uploads/2024/11/GEM-logo-1536x384.png',
     ],
     [
         'name' => 'UN Crisis Relief',
         'desc' => 'The United Nations coordinated humanitarian response for the Venezuela earthquake crisis.',
         'url'  => 'https://crisisrelief.un.org/en/donate-venezuela-crisis',
-        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/un-crisis-relief-logo.png',
+        'logo' => 'https://raisely-images.imgix.net/un-crisis-relief/uploads/un-crisis-relief-png-ea5540.png?fit=max&w=1000&auto=format&q=62&dpr=1',
     ],
 ];
 
@@ -72,7 +72,7 @@ $ve_donations_children = [
         'name' => 'UNICEF UK',
         'desc' => 'Protecting children affected by the earthquakes with clean water, healthcare and safe spaces.',
         'url'  => 'https://www.unicef.org.uk/donate/donate-to-our-venezuela-earthquake-appeal/',
-        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/unicef-logo.png',
+        'logo' => 'https://www.unicef.org.uk/wp-content/uploads/2022/10/unicef-uk-logo-horizontal.png',
     ],
     [
         'name' => 'Save the Children',
