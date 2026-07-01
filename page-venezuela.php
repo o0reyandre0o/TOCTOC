@@ -141,16 +141,16 @@ $ve_donations_children = [
                         On June 24, 2026, a magnitude 7.2 earthquake struck northern Venezuela — and just 39 seconds later, a second, even stronger 7.5 quake followed. In under a minute, entire neighborhoods were reduced to rubble. Aftershocks continue, and survivors urgently need shelter, clean water, food and medical care.
                     </p>
                 </div>
-                <figure class="relative">
-                    <div class="overflow-hidden rounded-[2.5rem] shadow-glass ring-1 ring-white/10">
+                <figure>
+                    <div class="relative overflow-hidden rounded-[2.5rem] shadow-glass ring-1 ring-white/10">
                         <img
                             src="<?php echo esc_url( $ve_upload . 'june26-ap-juan-pablo-arraez.webp' ); ?>"
                             alt="Rescuers search collapsed buildings after the June 2026 Venezuela earthquakes"
                             class="w-full h-full object-cover aspect-[4/5]"
                             loading="lazy"
                         />
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent pointer-events-none"></div>
                     </div>
-                    <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none"></div>
                     <figcaption class="mt-3 text-xs text-white/40">June 26 · Juan Pablo Arraez / AP</figcaption>
                 </figure>
             </div>
