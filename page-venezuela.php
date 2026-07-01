@@ -324,7 +324,7 @@ $ve_donations_children = [
             </div>
 
             <?php foreach ( $ve_videos as $ve_cat => $ve_ids ) : ?>
-            <h3 class="text-2xl font-display text-white/90 mb-8 mt-16 first:mt-0"><?php echo esc_html( $ve_cat ); ?></h3>
+            <h3 class="text-center text-3xl md:text-4xl font-display text-white mb-8 mt-16 first:mt-0"><?php echo esc_html( $ve_cat ); ?></h3>
             <div class="flex flex-wrap justify-center gap-5 md:gap-6">
                 <?php foreach ( $ve_ids as $vid ) : ?>
                 <div class="ve-video group relative aspect-[9/16] w-[44%] sm:w-52 lg:w-60 overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
@@ -339,7 +339,7 @@ $ve_donations_children = [
                 <?php endforeach; ?>
             </div>
             <?php endforeach; ?>
-            <p class="mt-10 text-xs text-white/40">Videos hosted on YouTube. Sources retain all rights.</p>
+            <p class="mt-10 text-center text-xs text-white/40">Videos hosted on YouTube. Sources retain all rights.</p>
         </div>
     </section>
 
