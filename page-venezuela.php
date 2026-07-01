@@ -131,14 +131,28 @@ $ve_donations_children = [
     <!-- ================= 2. WHAT HAPPENED ================= -->
     <section class="py-24 md:py-32 bg-slate-950">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">What Happened</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-white leading-[0.95]">
-                    39 seconds that changed <em class="italic text-[#ED1C24] font-display">Venezuela forever</em>
-                </h2>
-                <p class="mt-8 text-lg text-white/60 leading-relaxed">
-                    On June 24, 2026, a magnitude 7.2 earthquake struck northern Venezuela — and just 39 seconds later, a second, even stronger 7.5 quake followed. In under a minute, entire neighborhoods were reduced to rubble. Aftershocks continue, and survivors urgently need shelter, clean water, food and medical care.
-                </p>
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16 md:mb-20">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">What Happened</span>
+                    <h2 class="mt-6 text-4xl md:text-6xl font-display text-white leading-[0.95]">
+                        39 seconds that changed <em class="italic text-[#ED1C24] font-display">Venezuela forever</em>
+                    </h2>
+                    <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                        On June 24, 2026, a magnitude 7.2 earthquake struck northern Venezuela — and just 39 seconds later, a second, even stronger 7.5 quake followed. In under a minute, entire neighborhoods were reduced to rubble. Aftershocks continue, and survivors urgently need shelter, clean water, food and medical care.
+                    </p>
+                </div>
+                <figure class="relative">
+                    <div class="overflow-hidden rounded-[2.5rem] shadow-glass ring-1 ring-white/10">
+                        <img
+                            src="<?php echo esc_url( $ve_upload . 'june26-ap-juan-pablo-arraez.webp' ); ?>"
+                            alt="Rescuers search collapsed buildings after the June 2026 Venezuela earthquakes"
+                            class="w-full h-full object-cover aspect-[4/5]"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none"></div>
+                    <figcaption class="mt-3 text-xs text-white/40">June 26 · Juan Pablo Arraez / AP</figcaption>
+                </figure>
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
