@@ -247,6 +247,49 @@ $ve_donations_children = [
         </div>
     </section>
 
+    <!-- ================= FROM THE GROUND (photos) ================= -->
+    <section class="py-24 md:py-32 bg-white text-slate-900">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-16">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">From the Ground</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">The reality, from those <em class="italic text-[#ED1C24] font-display">living it</em></h2>
+                <p class="mt-8 text-lg text-slate-500 leading-relaxed">
+                    Verified images from trusted sources on the ground in Venezuela.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+                <?php foreach ( $ve_gallery as $img ) :
+                    $name    = preg_replace( '/\.webp$/', '', $img );
+                    $caption = '';
+                    if ( preg_match( '/^([a-z]+)(\d+)-(.*)$/', $name, $m ) ) {
+                        $rest    = preg_replace( '/^ap-/', '', $m[3] );
+                        $rest    = preg_replace( '/-?scaled$/', '', $rest );  // drop WP -scaled suffix
+                        $rest    = preg_replace( '/-?\d+$/', '', $rest );      // drop trailing dedup numbers
+                        $rest    = trim( $rest, '-' );
+                        $author  = ucwords( str_replace( '-', ' ', $rest ) );
+                        $caption = ucfirst( $m[1] ) . ' ' . $m[2] . ' · ' . $author . ' / AP';
+                    }
+                ?>
+                <figure>
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl bg-slate-100">
+                        <img
+                            src="<?php echo esc_url( $ve_upload . $img ); ?>"
+                            alt="Earthquake aftermath in Venezuela — <?php echo esc_attr( $caption ); ?>"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <?php if ( $caption ) : ?>
+                    <figcaption class="mt-2 text-[11px] text-slate-400"><?php echo esc_html( $caption ); ?></figcaption>
+                    <?php endif; ?>
+                </figure>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
     <!-- ================= 4. MAP ================= -->
     <section class="py-24 md:py-32 bg-slate-50 text-slate-900">
         <div class="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
@@ -335,49 +378,6 @@ $ve_donations_children = [
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </span>
                 </a>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= FROM THE GROUND (photos) ================= -->
-    <section class="py-24 md:py-32 bg-white text-slate-900">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">From the Ground</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">The reality, from those <em class="italic text-[#ED1C24] font-display">living it</em></h2>
-                <p class="mt-8 text-lg text-slate-500 leading-relaxed">
-                    Verified images from trusted sources on the ground in Venezuela.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-                <?php foreach ( $ve_gallery as $img ) :
-                    $name    = preg_replace( '/\.webp$/', '', $img );
-                    $caption = '';
-                    if ( preg_match( '/^([a-z]+)(\d+)-(.*)$/', $name, $m ) ) {
-                        $rest    = preg_replace( '/^ap-/', '', $m[3] );
-                        $rest    = preg_replace( '/-?scaled$/', '', $rest );  // drop WP -scaled suffix
-                        $rest    = preg_replace( '/-?\d+$/', '', $rest );      // drop trailing dedup numbers
-                        $rest    = trim( $rest, '-' );
-                        $author  = ucwords( str_replace( '-', ' ', $rest ) );
-                        $caption = ucfirst( $m[1] ) . ' ' . $m[2] . ' · ' . $author . ' / AP';
-                    }
-                ?>
-                <figure>
-                    <div class="aspect-[4/5] overflow-hidden rounded-2xl bg-slate-100">
-                        <img
-                            src="<?php echo esc_url( $ve_upload . $img ); ?>"
-                            alt="Earthquake aftermath in Venezuela — <?php echo esc_attr( $caption ); ?>"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-                    <?php if ( $caption ) : ?>
-                    <figcaption class="mt-2 text-[11px] text-slate-400"><?php echo esc_html( $caption ); ?></figcaption>
-                    <?php endif; ?>
-                </figure>
                 <?php endforeach; ?>
             </div>
         </div>
