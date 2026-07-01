@@ -216,6 +216,37 @@ $ve_donations_children = [
         </div>
     </section>
 
+    <!-- ================= VIDEOS ================= -->
+    <section class="py-24 md:py-32 bg-slate-950 text-white">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-16">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Video</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-white leading-[0.95]">Watch what <em class="italic text-[#ED1C24] font-display">happened</em></h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    Verified footage from Venezuela following the earthquakes. Tap any clip to play.
+                </p>
+            </div>
+
+            <?php foreach ( $ve_videos as $ve_cat => $ve_ids ) : ?>
+            <h3 class="text-center text-3xl md:text-4xl font-display text-white mb-8 mt-16 first:mt-0"><?php echo esc_html( $ve_cat ); ?></h3>
+            <div class="flex flex-wrap justify-center gap-5 md:gap-6">
+                <?php foreach ( $ve_ids as $vid ) : ?>
+                <div class="ve-video group relative aspect-[9/16] w-[44%] sm:w-52 lg:w-60 overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
+                    <img src="https://i.ytimg.com/vi/<?php echo esc_attr( $vid ); ?>/hqdefault.jpg" alt="Video from Venezuela" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+                    <span class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></span>
+                    <span class="absolute inset-0 flex items-center justify-center">
+                        <span class="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#ED1C24] text-white shadow-pill transition-transform group-hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </span>
+                    </span>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <?php endforeach; ?>
+            <p class="mt-10 text-center text-xs text-white/40">Videos hosted on YouTube. Sources retain all rights.</p>
+        </div>
+    </section>
+
     <!-- ================= 4. MAP ================= -->
     <section class="py-24 md:py-32 bg-slate-50 text-slate-900">
         <div class="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
@@ -349,37 +380,6 @@ $ve_donations_children = [
                 </figure>
                 <?php endforeach; ?>
             </div>
-        </div>
-    </section>
-
-    <!-- ================= VIDEOS ================= -->
-    <section class="py-24 md:py-32 bg-slate-950 text-white">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Video</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-white leading-[0.95]">Watch what <em class="italic text-[#ED1C24] font-display">happened</em></h2>
-                <p class="mt-8 text-lg text-white/60 leading-relaxed">
-                    Verified footage from Venezuela following the earthquakes. Tap any clip to play.
-                </p>
-            </div>
-
-            <?php foreach ( $ve_videos as $ve_cat => $ve_ids ) : ?>
-            <h3 class="text-center text-3xl md:text-4xl font-display text-white mb-8 mt-16 first:mt-0"><?php echo esc_html( $ve_cat ); ?></h3>
-            <div class="flex flex-wrap justify-center gap-5 md:gap-6">
-                <?php foreach ( $ve_ids as $vid ) : ?>
-                <div class="ve-video group relative aspect-[9/16] w-[44%] sm:w-52 lg:w-60 overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
-                    <img src="https://i.ytimg.com/vi/<?php echo esc_attr( $vid ); ?>/hqdefault.jpg" alt="Video from Venezuela" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
-                    <span class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></span>
-                    <span class="absolute inset-0 flex items-center justify-center">
-                        <span class="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#ED1C24] text-white shadow-pill transition-transform group-hover:scale-110">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </span>
-                    </span>
-                </div>
-                <?php endforeach; ?>
-            </div>
-            <?php endforeach; ?>
-            <p class="mt-10 text-center text-xs text-white/40">Videos hosted on YouTube. Sources retain all rights.</p>
         </div>
     </section>
 
