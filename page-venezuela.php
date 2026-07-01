@@ -209,7 +209,6 @@ $ve_donations_children = [
             loading="lazy"
         />
         <div class="absolute inset-0 bg-slate-950/75"></div>
-        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 to-transparent"></div>
 
         <div class="relative z-10 mx-auto max-w-3xl px-6 text-center">
             <p class="text-3xl md:text-5xl font-display text-white leading-[1.12]">
