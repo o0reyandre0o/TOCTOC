@@ -17,7 +17,7 @@ $ve_stats = [
     [ 'num' => '70,000+',  'label' => 'Families affected' ],
     [ 'num' => '59,000+',  'label' => 'Buildings damaged or destroyed' ],
     [ 'num' => '200+',     'label' => 'Buildings fully collapsed' ],
-    [ 'num' => 'Thousands','label' => 'Children left orphaned' ],
+    [ 'num' => 'Thousands','label' => 'Children left orphaned', 'sm' => true ],
 ];
 
 // --- General relief donation links ---
