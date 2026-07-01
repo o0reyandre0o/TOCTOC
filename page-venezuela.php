@@ -202,18 +202,19 @@ $ve_donations_children = [
             </div>
 
             <figure>
-                <div class="overflow-hidden rounded-[2.5rem] shadow-glass bg-white">
-                    <!-- Live ArcGIS Dashboard embed. Shows the indicators + map only, and
-                         updates automatically when the dashboard owner updates the data. -->
-                    <iframe
-                        src="https://www.arcgis.com/apps/dashboards/e414897f14154a55b33ce6c84b147c23"
-                        class="w-full h-[640px] md:h-[820px] border-0"
-                        loading="lazy"
-                        allowfullscreen
-                        allow="fullscreen"
-                        referrerpolicy="strict-origin"
-                        title="Live dashboard of the 2026 Venezuela earthquakes — affected areas and figures"
-                    ></iframe>
+                <!-- Facade: the heavy ArcGIS dashboard loads only on click, keeping the page fast. -->
+                <div id="ve-map-embed" data-src="https://www.arcgis.com/apps/dashboards/e414897f14154a55b33ce6c84b147c23" class="overflow-hidden rounded-[2.5rem] shadow-glass bg-slate-100">
+                    <button type="button" id="ve-map-load" class="group w-full h-[420px] md:h-[560px] flex flex-col items-center justify-center gap-4 text-center px-6 hover:bg-slate-200/60 transition-colors">
+                        <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-soft">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#ED1C24]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span class="text-2xl md:text-3xl font-display text-slate-900">Live earthquake dashboard</span>
+                        <span class="text-sm text-slate-500 max-w-sm">Interactive map and real-time figures from ArcGIS. Loads on demand so this page stays fast.</span>
+                        <span class="mt-2 inline-flex items-center gap-2 rounded-full bg-[#ED1C24] text-white px-6 py-3 text-sm font-bold group-hover:scale-105 transition-transform">
+                            Load live data
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </span>
+                    </button>
                 </div>
                 <figcaption class="mt-3 text-center text-xs text-slate-400">Live dashboard · Source: ArcGIS</figcaption>
             </figure>
