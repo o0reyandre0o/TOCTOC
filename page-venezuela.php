@@ -38,7 +38,7 @@ $ve_donations = [
         'name' => 'UN Crisis Relief',
         'desc' => 'The United Nations coordinated humanitarian response for the Venezuela earthquake crisis.',
         'url'  => 'https://crisisrelief.un.org/en/donate-venezuela-crisis',
-        'logo' => 'https://raisely-images.imgix.net/un-crisis-relief/uploads/un-crisis-relief-png-ea5540.png?fit=max&w=1000&auto=format&q=62&dpr=1',
+        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/un-crisis-relief-png-ea5540.webp',
     ],
 ];
 
