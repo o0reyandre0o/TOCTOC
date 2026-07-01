@@ -201,7 +201,7 @@ $ve_donations_children = [
                 </p>
             </div>
 
-            <figure class="mx-auto w-full lg:w-4/5 max-w-[1600px]">
+            <figure class="mx-auto w-full max-w-[1800px]">
                 <!-- Facade: the heavy ArcGIS dashboard loads only on click, keeping the page fast. -->
                 <div id="ve-map-embed" data-src="https://www.arcgis.com/apps/dashboards/e414897f14154a55b33ce6c84b147c23" class="overflow-hidden rounded-[2.5rem] shadow-glass bg-slate-100">
                     <button type="button" id="ve-map-load" class="group w-full h-[420px] md:h-[560px] flex flex-col items-center justify-center gap-4 text-center px-6 hover:bg-slate-200/60 transition-colors">
