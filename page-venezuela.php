@@ -330,6 +330,20 @@ $ve_donations_children = [
         box.appendChild(f);
     });
 })();
+
+(function () {
+    var copyBtn = document.getElementById('ve-copy');
+    var account = document.getElementById('ve-account');
+    var label   = document.getElementById('ve-copy-label');
+    if (!copyBtn || !account) return;
+    copyBtn.addEventListener('click', function () {
+        var number = account.textContent.trim();
+        navigator.clipboard.writeText(number).then(function () {
+            label.textContent = 'Copied!';
+            setTimeout(function () { label.textContent = 'Copy'; }, 2000);
+        });
+    });
+})();
 </script>
 
 <?php get_footer(); ?>
