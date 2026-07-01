@@ -80,6 +80,7 @@
         'advertising-pr-agency-cayman-islands' => 'advertising agency cayman islands, advertising company cayman, communications agency cayman, pr agency cayman, pr services cayman, media buying cayman',
         'web-development-cayman-islands' => 'web development cayman islands, web development agency cayman, website development company cayman, ecommerce development cayman, web app development cayman',
         'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
+        'venezuela' => 'donate venezuela cayman islands, venezuela earthquake appeal cayman, help venezuela from cayman, venezuela earthquake donation, cayman islands red cross venezuela, donate to venezuela earthquake',
     ];
 
     // Per-page social share image (og:image / twitter:image). Use a raster image

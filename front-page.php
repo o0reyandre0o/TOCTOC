@@ -58,6 +58,28 @@
         </div>
     </section>
 
+    <!-- Venezuela Earthquake Appeal banner -->
+    <section class="relative z-20 px-4 -mt-6 md:-mt-10">
+        <div class="mx-auto max-w-6xl rounded-[2rem] bg-slate-950 text-white overflow-hidden shadow-glass border border-white/10">
+            <div class="flex flex-col md:flex-row items-center gap-6 p-8 md:p-10">
+                <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#ED1C24]/15 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#ED1C24]"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </span>
+                <div class="flex-1 text-center md:text-left">
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-[#ED1C24] mb-1">Emergency Appeal</p>
+                    <h2 class="text-2xl md:text-3xl font-display leading-tight text-white">Venezuela Earthquake Appeal</h2>
+                    <p class="mt-1 text-sm text-white/60">Two earthquakes devastated Venezuela. From the Cayman Islands, we can help — donate today.</p>
+                </div>
+                <a href="<?php echo esc_url( home_url( '/venezuela/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-[#ED1C24] text-white pl-6 pr-2 py-2 text-base font-bold shadow-pill hover:bg-[#c8161d] hover:scale-105 transition-all decoration-none shrink-0">
+                    Donate Now
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-[#ED1C24] transition-transform group-hover:rotate-45">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 2: Intro -->
     <section class="relative py-24 md:py-32">
         <div class="mx-auto max-w-4xl px-6 text-center">

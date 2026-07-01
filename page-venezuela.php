@@ -283,6 +283,68 @@ $ve_donations_children = [
         </div>
     </section>
 
+    <!-- ================= FAQ (AEO / GEO — Cayman searches) ================= -->
+    <?php
+    $ve_faqs = [
+        [
+            'q' => 'How can I donate to Venezuela from the Cayman Islands?',
+            'a' => 'You can donate online in minutes to trusted international relief organizations listed on this page — the British Red Cross, Global Empowerment Mission and UN Crisis Relief. If you prefer a local bank transfer, the Cayman Islands Red Cross accepts donations for its International Emergency Appeals at Butterfield Bank, account 136-035054-0060 (KYD).',
+        ],
+        [
+            'q' => 'Where can I donate to help the children affected by the Venezuela earthquake?',
+            'a' => 'To help children specifically, donate to UNICEF UK or Save the Children. Both are providing clean water, healthcare, safe spaces and emergency support for children and families in Venezuela.',
+        ],
+        [
+            'q' => 'Is the Cayman Islands Red Cross collecting donations for Venezuela?',
+            'a' => 'Yes. The Cayman Islands Red Cross is collecting donations locally through its International Emergency Appeals. You can make a bank transfer directly to their Butterfield Bank account, number 136-035054-0060 (KYD).',
+        ],
+        [
+            'q' => 'What happened in the 2026 Venezuela earthquakes?',
+            'a' => 'On June 24, 2026, two powerful earthquakes struck northern Venezuela just 39 seconds apart — a magnitude 7.2 followed by a 7.5. More than 1,700 people were killed, over 10,000 injured, tens of thousands of families were affected, and thousands of children were left orphaned.',
+        ],
+        [
+            'q' => 'Are these Venezuela donation organizations trustworthy?',
+            'a' => 'Yes. Every organization listed here is an established international humanitarian body — the British Red Cross, UNICEF, the United Nations (UN Crisis Relief), Save the Children and Global Empowerment Mission — and donations are made directly through their own official appeal pages.',
+        ],
+    ];
+    ?>
+    <section class="py-24 md:py-32 bg-slate-50 text-slate-900">
+        <div class="mx-auto max-w-4xl px-6">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Donation FAQ</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How to help from <em class="italic text-[#ED1C24] font-display">the Cayman Islands</em></h2>
+            </div>
+            <div class="space-y-4">
+                <?php foreach ( $ve_faqs as $faq ) : ?>
+                <details class="group rounded-[1.5rem] border border-slate-100 bg-white p-7 shadow-soft transition-all">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 text-xl md:text-2xl font-display text-slate-900 list-none [&::-webkit-details-marker]:hidden">
+                        <span><?php echo esc_html( $faq['q'] ); ?></span>
+                        <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#ED1C24]/10 text-[#ED1C24] transition-transform group-open:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo esc_html( $faq['a'] ); ?></p>
+                </details>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <script type="application/ld+json">
+    <?php
+    echo wp_json_encode( [
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array_map( function ( $f ) {
+            return [
+                '@type'          => 'Question',
+                'name'           => $f['q'],
+                'acceptedAnswer' => [ '@type' => 'Answer', 'text' => $f['a'] ],
+            ];
+        }, $ve_faqs ),
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+    ?>
+    </script>
+
     <!-- ================= 6. SHARE ================= -->
     <section class="py-20 md:py-28 bg-slate-950 text-center">
         <div class="mx-auto max-w-2xl px-6">
