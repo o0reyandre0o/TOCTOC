@@ -170,47 +170,6 @@ $ve_donations_children = [
         </div>
     </section>
 
-    <!-- ================= 3. FROM THE GROUND (social media) ================= -->
-    <section class="py-24 md:py-32 bg-white text-slate-900">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">From the Ground</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">The reality, from those <em class="italic text-[#ED1C24] font-display">living it</em></h2>
-                <p class="mt-8 text-lg text-slate-500 leading-relaxed">
-                    Verified footage and images shared by people and trusted sources on the ground in Venezuela.
-                </p>
-            </div>
-
-            <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
-                <?php foreach ( $ve_gallery as $img ) :
-                    $name    = preg_replace( '/\.webp$/', '', $img );
-                    $caption = '';
-                    if ( preg_match( '/^([a-z]+)(\d+)-(.*)$/', $name, $m ) ) {
-                        $rest    = preg_replace( '/^ap-/', '', $m[3] );   // drop "ap-" prefix
-                        $rest    = preg_replace( '/\d+$/', '', $rest );    // drop trailing 2, 3...
-                        $rest    = trim( $rest, '-' );                     // drop trailing dash
-                        $author  = ucwords( str_replace( '-', ' ', $rest ) );
-                        $caption = ucfirst( $m[1] ) . ' ' . $m[2] . ' · ' . $author . ' / AP';
-                    }
-                ?>
-                <figure class="break-inside-avoid mb-6">
-                    <div class="overflow-hidden rounded-[1.5rem] shadow-soft bg-slate-100">
-                        <img
-                            src="<?php echo esc_url( $ve_upload . $img ); ?>"
-                            alt="Earthquake aftermath in Venezuela — <?php echo esc_attr( $caption ); ?>"
-                            class="w-full h-auto object-cover"
-                            loading="lazy"
-                        />
-                    </div>
-                    <?php if ( $caption ) : ?>
-                    <figcaption class="mt-2 text-xs text-slate-400"><?php echo esc_html( $caption ); ?></figcaption>
-                    <?php endif; ?>
-                </figure>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
     <!-- ================= 4. MAP ================= -->
     <section class="py-24 md:py-32 bg-slate-50 text-slate-900">
         <div class="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
