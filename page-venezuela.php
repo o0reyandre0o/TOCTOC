@@ -218,33 +218,6 @@ $ve_donations_children = [
         </div>
     </section>
 
-    <!-- ================= IMPACT BAND ================= -->
-    <section class="relative py-32 md:py-48 overflow-hidden">
-        <img
-            src="https://toctoc.ky/wp-content/uploads/2026/07/june25-ap-pedro-mattey-scaled.webp"
-            alt="A family amid the destruction after the June 2026 Venezuela earthquakes"
-            class="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-        />
-        <div class="absolute inset-0 bg-slate-950/75"></div>
-
-        <div class="relative z-10 mx-auto max-w-3xl px-6 text-center">
-            <p class="text-3xl md:text-5xl font-display text-white leading-[1.12]">
-                When the ground stops shaking, the need is just beginning. <em class="italic text-[#ED1C24] font-display">Your donation brings shelter, water and hope.</em>
-            </p>
-            <div class="mt-12">
-                <a href="#donate" class="group inline-flex items-center justify-center gap-3 rounded-full bg-[#ED1C24] text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 hover:bg-[#c8161d] decoration-none">
-                    Donate Now
-                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-[#ED1C24] transition-transform group-hover:rotate-45">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-
-        <span class="absolute bottom-3 right-4 z-10 text-[10px] text-white/40">Photo: Pedro Mattey / AP</span>
-    </section>
-
     <!-- ================= 5. DONATE ================= -->
     <section id="donate" class="py-24 md:py-32 bg-white text-slate-900">
         <div class="mx-auto max-w-6xl px-6">
@@ -450,25 +423,6 @@ $ve_donations_children = [
     ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
     ?>
     </script>
-
-    <!-- ================= PARALLAX BAND ================= -->
-    <section class="relative bg-fixed bg-cover bg-center" style="background-image: url('https://toctoc.ky/wp-content/uploads/2026/07/june30-ap-matias-delacroix-scaled.webp');">
-        <div class="absolute inset-0 bg-slate-950/75"></div>
-        <div class="relative z-10 mx-auto max-w-3xl px-6 py-32 md:py-52 text-center">
-            <p class="text-3xl md:text-5xl font-display text-white leading-[1.12]">
-                The Cayman Islands has always answered the call. <em class="italic text-[#ED1C24] font-display">Let's answer Venezuela's.</em>
-            </p>
-            <div class="mt-12">
-                <a href="#donate" class="group inline-flex items-center justify-center gap-3 rounded-full bg-[#ED1C24] text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 hover:bg-[#c8161d] decoration-none">
-                    Donate Now
-                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-[#ED1C24] transition-transform group-hover:rotate-45">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-        <span class="absolute bottom-3 right-4 z-10 text-[10px] text-white/40">Photo: Matias Delacroix / AP</span>
-    </section>
 
     <!-- ================= 6. SHARE ================= -->
     <section class="py-20 md:py-28 bg-slate-950 text-center">
