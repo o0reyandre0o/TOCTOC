@@ -45,7 +45,7 @@
         ],
         'venezuela' => [
             'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',
-            'desc' => 'Two earthquakes devastated northern Venezuela on June 24, 2026. From the Cayman Islands, donate now to trusted international relief organizations helping families recover.'
+            'desc' => 'See what is happening in Venezuela after the June 2026 earthquakes: photos, videos and footage from the ground, plus trusted ways to donate from the Cayman Islands.'
         ],
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
