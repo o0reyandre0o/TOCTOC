@@ -68,9 +68,10 @@ $ve_gallery = [
     'june30-ap-matias-delacroix-1-scaled.webp',
 ];
 
-// --- Videos (YouTube IDs, grouped by theme). Loaded on click to keep the page fast. ---
+// --- Videos (YouTube IDs). Loaded on click to keep the page fast. ---
+// Footage clips are shown right after the hero; the rest live in the videos section.
+$ve_footage = [ 'zYix2i05aII', 'RBZw5Ml3wds', 'IGEsM_MPuU8' ];
 $ve_videos = [
-    'Footage from the ground'       => [ 'zYix2i05aII', 'RBZw5Ml3wds', 'IGEsM_MPuU8' ],
     'The moment the earthquake hit' => [ '9qvGVIrrGpI', 'hfi_JccQYCo', 'XFveu6m1MmE' ],
     'People rescued'                => [ '36E6bYq_WXg', 'yDGhN4NiZ7k', 'ER2LoVEbPH8', '8DibFQh0wrY', '_cUAJ-5lL_0', 'U-3CdymZ69Q' ],
 ];
@@ -129,6 +130,26 @@ $ve_donations_children = [
         </div>
 
         <span class="absolute bottom-3 right-4 z-10 text-[10px] text-white/40">Photo: Matias Delacroix / AP</span>
+    </section>
+
+    <!-- ================= FOOTAGE (after hero) ================= -->
+    <section class="py-20 md:py-28 bg-slate-950">
+        <div class="mx-auto max-w-6xl px-6">
+            <h2 class="text-center text-3xl md:text-5xl font-display text-white mb-10">Footage from <em class="italic text-[#ED1C24] font-display">the ground</em></h2>
+            <div class="flex flex-wrap justify-center gap-5 md:gap-6">
+                <?php foreach ( $ve_footage as $vid ) : ?>
+                <div class="ve-video group relative aspect-[9/16] w-[44%] sm:w-52 lg:w-60 overflow-hidden rounded-2xl bg-slate-800 cursor-pointer ring-1 ring-white/10" data-id="<?php echo esc_attr( $vid ); ?>" role="button" tabindex="0" aria-label="Play video">
+                    <img src="https://i.ytimg.com/vi/<?php echo esc_attr( $vid ); ?>/hqdefault.jpg" alt="Video from Venezuela" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+                    <span class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></span>
+                    <span class="absolute inset-0 flex items-center justify-center">
+                        <span class="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#ED1C24] text-white shadow-pill transition-transform group-hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </span>
+                    </span>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </section>
 
     <!-- ================= 2. WHAT HAPPENED ================= -->
