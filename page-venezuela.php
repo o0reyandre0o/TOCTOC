@@ -26,7 +26,7 @@ $ve_donations = [
         'name' => 'British Red Cross',
         'desc' => 'Venezuela Earthquake Crisis Appeal — emergency shelter, medical aid and relief for affected communities.',
         'url'  => 'https://donate.redcross.org.uk/appeal/venezuela-earthquake-crisis',
-        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/british-red-cross-logo.png',
+        'logo' => 'https://toctoc.ky/wp-content/uploads/2026/07/svgexport-1.svg',
     ],
     [
         'name' => 'Global Empowerment Mission',
