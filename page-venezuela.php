@@ -131,10 +131,12 @@ $ve_donations_children = [
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <?php foreach ( $ve_stats as $stat ) : ?>
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10">
-                    <div class="text-4xl md:text-6xl font-display text-[#ED1C24] leading-none mb-4"><?php echo wp_kses_post( $stat['num'] ); ?></div>
-                    <p class="text-sm text-white/60 leading-relaxed"><?php echo wp_kses_post( $stat['label'] ); ?></p>
+                <?php foreach ( $ve_stats as $stat ) :
+                    $ve_num_class = ! empty( $stat['sm'] ) ? 'text-2xl sm:text-3xl md:text-4xl' : 'text-3xl sm:text-4xl md:text-6xl';
+                ?>
+                <div class="p-5 md:p-8 rounded-[2rem] bg-white/5 border border-white/10">
+                    <div class="<?php echo $ve_num_class; ?> font-display text-[#ED1C24] leading-none break-words mb-4"><?php echo wp_kses_post( $stat['num'] ); ?></div>
+                    <p class="text-xs sm:text-sm text-white/60 leading-relaxed"><?php echo wp_kses_post( $stat['label'] ); ?></p>
                 </div>
                 <?php endforeach; ?>
             </div>
