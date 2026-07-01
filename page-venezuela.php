@@ -203,15 +203,20 @@ $ve_donations_children = [
 
             <figure>
                 <div class="overflow-hidden rounded-[2.5rem] shadow-glass bg-white">
-                    <!-- DEV NOTE (Andre): upload the BBC map image and update this src. -->
-                    <img
-                        src="https://toctoc.ky/wp-content/uploads/2026/07/venezuela-earthquake-map-bbc.jpg"
-                        alt="Map of northern Venezuela showing the areas most affected by the June 2026 earthquakes"
-                        class="w-full h-auto object-cover"
+                    <!-- Live ArcGIS StoryMap embed. Updates automatically when the map owner
+                         updates the data. To show a single map instead of the full story,
+                         swap this src for that map's Share > Embed URL. -->
+                    <iframe
+                        src="https://storymaps.arcgis.com/stories/89a9d8a7cade4a2b90c0d7ebe9983359"
+                        class="w-full h-[600px] md:h-[760px] border-0"
                         loading="lazy"
-                    />
+                        allowfullscreen
+                        allow="fullscreen"
+                        referrerpolicy="strict-origin"
+                        title="Interactive map of the areas affected by the 2026 Venezuela earthquakes"
+                    ></iframe>
                 </div>
-                <figcaption class="mt-3 text-center text-xs text-slate-400">Source: BBC</figcaption>
+                <figcaption class="mt-3 text-center text-xs text-slate-400">Interactive map · Source: ArcGIS StoryMaps</figcaption>
             </figure>
         </div>
     </section>
