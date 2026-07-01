@@ -487,6 +487,12 @@ $ve_donations_children = [
 
 </main>
 
+<!-- Persistent mobile Donate button (always visible on phones) -->
+<a href="#donate" class="md:hidden fixed bottom-4 inset-x-4 z-[800] inline-flex items-center justify-center gap-2 rounded-full bg-[#ED1C24] text-white py-4 text-base font-bold shadow-pill hover:bg-[#c8161d] transition-colors decoration-none">
+    Donate Now
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+</a>
+
 <script>
 (function () {
     var box = document.getElementById('ve-map-embed');
