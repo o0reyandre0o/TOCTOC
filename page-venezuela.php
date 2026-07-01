@@ -203,17 +203,16 @@ $ve_donations_children = [
 
             <figure>
                 <div class="overflow-hidden rounded-[2.5rem] shadow-glass bg-white">
-                    <!-- Live ArcGIS StoryMap embed. Updates automatically when the map owner
-                         updates the data. To show a single map instead of the full story,
-                         swap this src for that map's Share > Embed URL. -->
+                    <!-- Live ArcGIS Dashboard embed. Shows the indicators + map only, and
+                         updates automatically when the dashboard owner updates the data. -->
                     <iframe
-                        src="https://storymaps.arcgis.com/stories/89a9d8a7cade4a2b90c0d7ebe9983359"
-                        class="w-full h-[600px] md:h-[760px] border-0"
+                        src="https://www.arcgis.com/apps/dashboards/e414897f14154a55b33ce6c84b147c23"
+                        class="w-full h-[640px] md:h-[820px] border-0"
                         loading="lazy"
                         allowfullscreen
                         allow="fullscreen"
                         referrerpolicy="strict-origin"
-                        title="Interactive map of the areas affected by the 2026 Venezuela earthquakes"
+                        title="Live dashboard of the 2026 Venezuela earthquakes — affected areas and figures"
                     ></iframe>
                 </div>
                 <figcaption class="mt-3 text-center text-xs text-slate-400">Interactive map · Source: ArcGIS StoryMaps</figcaption>
