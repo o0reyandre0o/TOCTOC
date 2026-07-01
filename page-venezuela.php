@@ -20,14 +20,8 @@ $ve_stats = [
     [ 'num' => 'Thousands','label' => 'Children left orphaned', 'sm' => true ],
 ];
 
-// --- General relief donation links (Cayman Islands Red Cross first) ---
+// --- International relief donation links ---
 $ve_donations = [
-    [
-        'name'  => 'Cayman Islands Red Cross',
-        'desc'  => 'The local emergency appeal, right here in the Cayman Islands. Donate by bank transfer — account details below.',
-        'logo'  => 'https://redcross.org.ky/wp-content/themes/redcross/images/logo_60years.svg',
-        'local' => true,
-    ],
     [
         'name' => 'British Red Cross',
         'desc' => 'Venezuela Earthquake Crisis Appeal — emergency shelter, medical aid and relief for affected communities.',
