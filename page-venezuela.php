@@ -301,8 +301,23 @@ $ve_donations_children = [
             <p class="mt-8 text-lg text-slate-500 leading-relaxed">
                 The earthquakes hit northern Venezuela, with the heaviest damage concentrated along the densely populated coastal region. Explore the interactive map to see the epicenters and the areas hit hardest.
             </p>
+
+            <figure class="mt-12 w-full">
+                <div class="overflow-hidden rounded-[2rem] shadow-glass ring-1 ring-slate-200">
+                    <img
+                        src="https://toctoc.ky/wp-content/uploads/2026/07/grand-cayman-la-guaira-map.webp"
+                        alt="Map showing the distance from Grand Cayman to La Guaira, Venezuela, and the earthquake-affected coastal region"
+                        class="w-full h-auto object-cover"
+                        loading="lazy"
+                    />
+                </div>
+                <figcaption class="mt-3 text-xs text-slate-400">
+                    Map Source: <a href="https://storymaps.arcgis.com/stories/717d0c07ec434b54ab6b2e0bbd7bc9f6" target="_blank" rel="noopener" class="underline hover:text-slate-600">ArcGIS StoryMaps</a> · Earthstar Geographics — European Union / Copernicus Emergency Management Service. Powered by Esri.
+                </figcaption>
+            </figure>
+
             <div class="mt-10">
-                <a href="https://storymaps.arcgis.com/stories/89a9d8a7cade4a2b90c0d7ebe9983359" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                <a href="https://storymaps.arcgis.com/stories/717d0c07ec434b54ab6b2e0bbd7bc9f6" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
                     View the interactive map
                     <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#ED1C24] text-white transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
