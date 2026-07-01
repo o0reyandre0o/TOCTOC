@@ -97,7 +97,7 @@ $ve_donations_children = [
             </div>
 
             <h1 class="text-5xl sm:text-6xl md:text-8xl font-display leading-[0.9] text-white">
-                Venezuela <em class="italic text-[#ED1C24] font-display">Needs Us</em> Now.
+                Venezuela <br class="sm:hidden" /><em class="italic text-[#ED1C24] font-display">Needs Us</em> Now
             </h1>
 
             <p class="mt-8 mx-auto max-w-2xl text-lg sm:text-xl text-white/80 leading-relaxed">
@@ -123,7 +123,7 @@ $ve_donations_children = [
             <div class="max-w-3xl mb-16">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">What Happened</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-white leading-[0.95]">
-                    39 seconds that changed <em class="italic text-[#ED1C24] font-display">Venezuela forever.</em>
+                    39 seconds that changed <em class="italic text-[#ED1C24] font-display">Venezuela forever</em>
                 </h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
                     On June 24, 2026, a magnitude 7.2 earthquake struck northern Venezuela — and just 39 seconds later, a second, even stronger 7.5 quake followed. In under a minute, entire neighborhoods were reduced to rubble. Aftershocks continue, and survivors urgently need shelter, clean water, food and medical care.
@@ -132,10 +132,10 @@ $ve_donations_children = [
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 <?php foreach ( $ve_stats as $stat ) :
-                    $ve_num_class = ! empty( $stat['sm'] ) ? 'text-2xl sm:text-3xl md:text-4xl' : 'text-3xl sm:text-4xl md:text-6xl';
+                    $ve_num_class = ! empty( $stat['sm'] ) ? 'text-3xl sm:text-4xl md:text-5xl' : 'text-3xl sm:text-4xl md:text-6xl';
                 ?>
                 <div class="p-5 md:p-8 rounded-[2rem] bg-white/5 border border-white/10">
-                    <div class="<?php echo $ve_num_class; ?> font-display text-[#ED1C24] leading-none break-words mb-4"><?php echo wp_kses_post( $stat['num'] ); ?></div>
+                    <div class="<?php echo $ve_num_class; ?> font-display text-[#ED1C24] leading-none tracking-tight break-words mb-4"><?php echo wp_kses_post( $stat['num'] ); ?></div>
                     <p class="text-xs sm:text-sm text-white/60 leading-relaxed"><?php echo wp_kses_post( $stat['label'] ); ?></p>
                 </div>
                 <?php endforeach; ?>
@@ -156,7 +156,7 @@ $ve_donations_children = [
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl mb-16">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">From the Ground</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">The reality, from those <em class="italic text-[#ED1C24] font-display">living it.</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">The reality, from those <em class="italic text-[#ED1C24] font-display">living it</em></h2>
                 <p class="mt-8 text-lg text-slate-500 leading-relaxed">
                     Verified footage and images shared by people and trusted sources on the ground in Venezuela.
                 </p>
@@ -228,7 +228,7 @@ $ve_donations_children = [
         <div class="mx-auto max-w-6xl px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Donate Now</span>
-                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.95]">Give hope in <em class="italic text-[#ED1C24] font-display">one click.</em></h2>
+                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.95]">Give hope in <em class="italic text-[#ED1C24] font-display">one click</em></h2>
                 <p class="mt-8 text-lg text-slate-500 leading-relaxed">
                     Donate directly to trusted international organizations delivering emergency relief in Venezuela. 100% of your donation goes through these official appeals.
                 </p>
@@ -286,7 +286,7 @@ $ve_donations_children = [
     <!-- ================= 6. SHARE ================= -->
     <section class="py-20 md:py-28 bg-slate-950 text-center">
         <div class="mx-auto max-w-2xl px-6">
-            <h2 class="text-4xl md:text-6xl font-display leading-[0.95] text-white">Can't donate? <em class="italic text-[#ED1C24] font-display">Share it.</em></h2>
+            <h2 class="text-4xl md:text-6xl font-display leading-[0.95] text-white">Can't donate? <em class="italic text-[#ED1C24] font-display">Share it</em></h2>
             <p class="mt-6 text-lg text-white/60">Every share reaches someone who can give. Help us get the word out across the Cayman Islands.</p>
             <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://toctoc.ky/venezuela/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors decoration-none">Share on Facebook</a>
