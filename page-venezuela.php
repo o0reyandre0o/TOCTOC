@@ -317,7 +317,7 @@ $ve_donations_children = [
             </figure>
 
             <div class="mt-10">
-                <a href="https://storymaps.arcgis.com/stories/717d0c07ec434b54ab6b2e0bbd7bc9f6" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                <a href="https://storymaps.arcgis.com/stories/89a9d8a7cade4a2b90c0d7ebe9983359" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
                     View the interactive map
                     <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#ED1C24] text-white transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
