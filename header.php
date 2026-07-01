@@ -44,8 +44,8 @@
             'desc' => 'Custom web development services in the Cayman Islands: websites, e-commerce & web apps built fast, secure & SEO-ready. Get your free project quote today.'
         ],
         'venezuela' => [
-            'title' => 'Venezuela Earthquake Appeal | Cayman Islands Red Cross',
-            'desc' => 'Donate to the Cayman Islands Red Cross Venezuela Earthquake Appeal. Two earthquakes struck northern Venezuela on June 24, 2026. Please help these families now.'
+            'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',
+            'desc' => 'Two earthquakes devastated northern Venezuela on June 24, 2026. From the Cayman Islands, donate now to trusted international relief organizations helping families recover.'
         ],
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
