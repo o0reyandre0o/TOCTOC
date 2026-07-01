@@ -112,7 +112,7 @@ $ve_donations_children = [
             </div>
 
             <h1 class="text-6xl sm:text-7xl md:text-8xl font-display leading-[0.9] text-white">
-                Cayman, Venezuela <br class="sm:hidden" /><em class="italic text-[#ED1C24] font-display">Need Us</em> Now
+                Cayman, Venezuela <br /><em class="italic text-[#ED1C24] font-display">Need Us</em> Now
             </h1>
 
             <p class="mt-8 mx-auto max-w-2xl text-lg sm:text-xl text-white/80 leading-relaxed">
