@@ -261,17 +261,21 @@ $ve_donations_children = [
             </div>
 
             <!-- Local bank-transfer option for Cayman donors -->
-            <div class="mt-12 rounded-[2rem] bg-slate-50 border border-slate-100 p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div class="flex items-center gap-5">
-                    <img src="https://redcross.org.ky/wp-content/themes/redcross/images/logo_60years.svg" alt="Cayman Islands Red Cross" class="h-14 w-auto shrink-0" />
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24] mb-2">Prefer a local bank transfer?</p>
-                        <p class="text-slate-600 text-sm">Cayman Islands Red Cross · International Emergency Appeals · Butterfield Bank</p>
-                    </div>
+            <div class="mt-12 rounded-[2rem] bg-slate-50 border border-slate-100 p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+                <div>
+                    <img src="https://redcross.org.ky/wp-content/themes/redcross/images/logo_60years.svg" alt="Cayman Islands Red Cross" class="h-14 w-auto mb-5" />
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24] mb-2">Prefer a local bank transfer?</p>
+                    <p class="text-slate-600 text-sm">Cayman Islands Red Cross · International Emergency Appeals · Butterfield Bank</p>
                 </div>
-                <div class="text-left md:text-right">
-                    <p class="text-xs text-slate-400 font-medium">Account (KYD)</p>
-                    <p class="text-2xl font-display text-slate-900">136-035054-0060</p>
+                <div class="shrink-0 text-left md:text-right">
+                    <p class="text-xs text-slate-400 font-medium mb-1">Account (KYD)</p>
+                    <div class="flex items-center gap-3 md:justify-end">
+                        <p id="ve-account" class="text-2xl md:text-3xl font-display text-slate-900">136-035054-0060</p>
+                        <button id="ve-copy" type="button" class="inline-flex items-center gap-1.5 rounded-full bg-[#ED1C24] text-white px-4 py-2 text-xs font-bold hover:bg-[#c8161d] transition-colors shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                            <span id="ve-copy-label">Copy</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
