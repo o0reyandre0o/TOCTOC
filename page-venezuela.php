@@ -493,6 +493,14 @@ $ve_donations_children = [
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
 </a>
 
+<!-- Gallery lightbox -->
+<div id="ve-lightbox" class="fixed inset-0 z-[1100] hidden items-center justify-center bg-black/90 p-4 cursor-zoom-out">
+    <img id="ve-lightbox-img" src="" alt="" class="max-w-full max-h-full rounded-lg object-contain" />
+    <button id="ve-lightbox-close" type="button" aria-label="Close" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+</div>
+
 <script>
 (function () {
     var box = document.getElementById('ve-map-embed');
