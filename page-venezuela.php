@@ -262,9 +262,12 @@ $ve_donations_children = [
 
             <!-- Local bank-transfer option for Cayman donors -->
             <div class="mt-12 rounded-[2rem] bg-slate-50 border border-slate-100 p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24] mb-2">Prefer a local bank transfer?</p>
-                    <p class="text-slate-600 text-sm">Cayman Islands Red Cross · International Emergency Appeals · Butterfield Bank</p>
+                <div class="flex items-center gap-5">
+                    <img src="https://redcross.org.ky/wp-content/themes/redcross/images/logo_60years.svg" alt="Cayman Islands Red Cross" class="h-14 w-auto shrink-0" />
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24] mb-2">Prefer a local bank transfer?</p>
+                        <p class="text-slate-600 text-sm">Cayman Islands Red Cross · International Emergency Appeals · Butterfield Bank</p>
+                    </div>
                 </div>
                 <div class="text-left md:text-right">
                     <p class="text-xs text-slate-400 font-medium">Account (KYD)</p>
