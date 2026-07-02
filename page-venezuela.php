@@ -50,7 +50,7 @@ $ve_donations = [
         'name' => 'GiveDirectly',
         'desc' => 'Sends cash directly to families affected by the earthquakes, so they can buy exactly what they need most — the fastest, most flexible way to help.',
         'url'  => 'https://www.givedirectly.org/venezuela-earthquakes',
-        'logo' => 'https://www.givedirectly.org/wp-content/uploads/2023/11/cropped-GiveDirectly-Square-Logo-Green-Black-270x270.png',
+        'logo' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/GiveDirectly_logo.svg/500px-GiveDirectly_logo.svg.png',
     ],
 ];
 
