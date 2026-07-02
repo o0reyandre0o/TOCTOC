@@ -483,12 +483,24 @@ $ve_news = [
                 <p class="mt-8 text-lg text-slate-500 leading-relaxed">The Cayman community is coming together for Venezuela. Join one of these local fundraisers and help while you are at it.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <?php foreach ( $ve_events as $ev ) : ?>
+                <?php foreach ( $ve_events as $ev ) :
+                    $ev_link = ! empty( $ev['url'] );
+                ?>
+                <?php if ( $ev_link ) : ?>
+                <a href="<?php echo esc_url( $ev['url'] ); ?>" target="_blank" rel="noopener" class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
+                <?php else : ?>
                 <article class="flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                <?php endif; ?>
                     <p class="text-xs font-bold uppercase tracking-widest text-[#ED1C24] mb-4"><?php echo esc_html( $ev['date'] ); ?></p>
-                    <h3 class="text-2xl font-display text-slate-900 mb-3"><?php echo esc_html( $ev['name'] ); ?></h3>
-                    <p class="text-slate-500 text-sm leading-relaxed"><?php echo esc_html( $ev['desc'] ); ?></p>
-                </article>
+                    <h3 class="text-2xl font-display text-slate-900 mb-3 <?php echo $ev_link ? 'group-hover:text-[#ED1C24] transition-colors' : ''; ?>"><?php echo esc_html( $ev['name'] ); ?></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed flex-1"><?php echo esc_html( $ev['desc'] ); ?></p>
+                    <?php if ( $ev_link ) : ?>
+                    <span class="mt-6 inline-flex items-center gap-2 font-bold text-[#ED1C24] group-hover:gap-3 transition-all">
+                        Visit website
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                    <?php endif; ?>
+                <?php echo $ev_link ? '</a>' : '</article>'; ?>
                 <?php endforeach; ?>
             </div>
         </div>
