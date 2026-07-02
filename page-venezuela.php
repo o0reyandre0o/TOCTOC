@@ -271,7 +271,7 @@ $ve_donations_children = [
                         $caption = ucfirst( $m[1] ) . ' ' . $m[2] . ' · ' . $author . ' / AP';
                     }
                 ?>
-                <figure>
+                <figure class="snap-center shrink-0 w-[75%] sm:w-[45%] md:w-auto">
                     <div class="aspect-[4/5] overflow-hidden rounded-2xl bg-slate-100">
                         <img
                             src="<?php echo esc_url( $ve_upload . $img ); ?>"
