@@ -135,7 +135,7 @@ $ve_news = [
         'source'  => 'Cayman Compass',
         'title'   => 'How Cayman residents can help Venezuela after the earthquakes',
         'url'     => 'https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/',
-        'image'   => 'https://toctoc.ky/wp-content/uploads/2026/07/june27-ap-matias-delacroix.webp',
+        'image'   => 'https://caymancompass.s3.amazonaws.com/wp-content/uploads/2026/07/WhatsApp-Im2age-2026-07-01-at-11.46.14.jpeg',
         'youtube' => '',
     ],
     [
@@ -151,7 +151,7 @@ $ve_news = [
         'source'  => 'Cayman Compass',
         'title'   => 'Cayman\'s Venezuelan community in shock following double earthquake',
         'url'     => 'https://www.caymancompass.com/2026/06/26/caymans-venezuelan-community-in-shock-following-double-earthquake/',
-        'image'   => 'https://toctoc.ky/wp-content/uploads/2026/07/june25-ap-pedro-mattey-scaled.webp',
+        'image'   => 'https://caymancompass.s3.amazonaws.com/wp-content/uploads/2026/06/download-1392x928.webp',
         'youtube' => '',
     ],
 ];
