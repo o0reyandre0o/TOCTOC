@@ -143,7 +143,7 @@ $ve_news = [
         'source'  => 'Cayman Marl Road',
         'title'   => 'Venezuelan community in Cayman rallies support for earthquake victims',
         'url'     => 'https://caymanmarlroad.com/2026/07/02/venezuelan-community-in-cayman-rallies-support-for-earthquake-victims/',
-        'image'   => 'https://toctoc.ky/wp-content/uploads/2026/07/june26-ap-juan-pablo-arraez.webp',
+        'image'   => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Edif%C3%ADcios_colapsados_e_danificados_em_Los_Palos_Grandes%2C_2026-06-26.png/1280px-Edif%C3%ADcios_colapsados_e_danificados_em_Los_Palos_Grandes%2C_2026-06-26.png',
         'youtube' => '',
     ],
     [
