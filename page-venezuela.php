@@ -97,6 +97,25 @@ $ve_donations_children = [
         'logo' => 'https://www.savethechildren.org.uk/themes/custom/scuk_theme/images/logo.svg',
     ],
 ];
+
+// --- Sections NOT ready to publish yet. Flip the flag to true (and fill the array) to show them. ---
+$ve_show_points = false; // Physical donation drop-off points (locations TBD)
+$ve_show_news   = true;  // News / CEO interviews coverage
+
+$ve_points = [
+    // [ 'name' => 'Drop-off location', 'address' => 'Street, George Town, Grand Cayman', 'hours' => 'Mon–Fri · 9am–5pm' ],
+];
+
+$ve_news = [
+    // For a video interview set 'youtube' to the video ID; for an article set 'url'. Both optional.
+    [
+        'date'    => 'July 2, 2026',
+        'source'  => 'Cayman Compass',
+        'title'   => 'How Cayman residents can help Venezuela after the earthquakes',
+        'url'     => 'https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/',
+        'youtube' => '',
+    ],
+];
 ?>
 
 <main class="min-h-screen bg-slate-950 text-white">
@@ -133,6 +152,11 @@ $ve_donations_children = [
                     </span>
                 </a>
             </div>
+
+            <a href="https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/" target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/50 hover:text-white transition-colors decoration-none">
+                As featured in <span class="text-white">Cayman Compass</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
         </div>
 
         <span class="absolute bottom-3 right-4 z-10 text-[10px] text-white/40">Photo: Matias Delacroix / AP</span>
@@ -213,7 +237,7 @@ $ve_donations_children = [
                 Figures as of early July 2026; rescue efforts continue and numbers are still being confirmed. Sources:
                 <a href="https://news.sky.com/story/venezuela-earthquake-live-high-casualties-feared-after-back-to-back-tremors-hit-south-american-country-13557399" target="_blank" rel="noopener" class="underline hover:text-white">Sky News</a>
                 and
-                <a href="https://elpais.com/internacional/2026-06-29/cuantos-edificios-han-colapsado-los-satelites-ya-han-identificado-434-bloques-destruidos.html" target="_blank" rel="noopener" class="underline hover:text-white">El País</a>.
+                <a href="https://elpais.com/internacional/2026-06-29/cuantos-edificios-han-colapsado-los-satelites-ya-han-identificado-434-bloques-destruidos.html" target="_blank" rel="noopener" class="underline hover:text-white">El País</a>. This page is updated regularly as the response evolves.
             </p>
 
             <p class="mt-10 text-lg text-white/70 leading-relaxed max-w-3xl">
@@ -319,6 +343,20 @@ $ve_donations_children = [
         </div>
     </section>
 
+    <!-- ================= QUOTE (Daniel Garrido, via Cayman Compass) ================= -->
+    <section class="py-20 md:py-28 bg-slate-950 text-white">
+        <div class="mx-auto max-w-4xl px-6 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" class="mx-auto mb-8 text-[#ED1C24]/40"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/></svg>
+            <blockquote class="text-2xl md:text-4xl font-display leading-[1.25] text-white">
+                Shipping goods into Venezuela is expensive, slow and complicated. <em class="italic text-[#ED1C24] font-display">Financial donations let trusted organisations already on the ground buy what people need most</em> and get help to communities much faster.
+            </blockquote>
+            <div class="mt-8">
+                <p class="text-lg font-bold text-white">Daniel Garrido</p>
+                <p class="text-sm text-white/50">Founder of TocToc · via <a href="https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/" target="_blank" rel="noopener" class="underline hover:text-white">Cayman Compass</a></p>
+            </div>
+        </div>
+    </section>
+
     <!-- ================= 5. DONATE ================= -->
     <section id="donate" class="py-24 md:py-32 bg-white text-slate-900">
         <div class="mx-auto max-w-6xl px-6">
@@ -336,6 +374,7 @@ $ve_donations_children = [
                     <img src="https://redcross.org.ky/wp-content/themes/redcross/images/logo_60years.svg" alt="Cayman Islands Red Cross" class="h-14 w-auto mb-5" />
                     <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24] mb-2">Bank transfer · Butterfield Bank</p>
                     <p class="text-slate-600 text-sm">Cayman Islands Red Cross · International Emergency Appeals</p>
+                    <p class="mt-3 text-xs text-slate-500 leading-relaxed">Or by cheque payable to <strong>Cayman Islands Red Cross</strong>, memo &ldquo;Venezuela Earthquake&rdquo;. Appeal open until 31 July.</p>
                 </div>
                 <div class="shrink-0 text-left md:text-right">
                     <p class="text-xs text-slate-400 font-medium mb-1">Account (KYD)</p>
@@ -352,7 +391,7 @@ $ve_donations_children = [
             <h3 class="text-2xl font-display text-slate-900 mb-6">Emergency relief</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <?php foreach ( $ve_donations as $d ) : ?>
-                <a href="<?php echo esc_url( $d['url'] ); ?>" target="_blank" rel="noopener" class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
+                <a href="<?php echo esc_url( $d['url'] ); ?>" target="_blank" rel="noopener" data-donate="<?php echo esc_attr( $d['name'] ); ?>" class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
                     <?php if ( ! empty( $d['logo'] ) ) : ?>
                     <div class="h-12 mb-6 flex items-center">
                         <img src="<?php echo esc_url( $d['logo'] ); ?>" alt="<?php echo esc_attr( $d['name'] ); ?> logo" class="max-h-12 w-auto object-contain" loading="lazy" onerror="this.style.display='none'" />
@@ -371,7 +410,7 @@ $ve_donations_children = [
             <h3 class="text-2xl font-display text-slate-900 mt-16 mb-6">Donate for the children</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <?php foreach ( $ve_donations_children as $d ) : ?>
-                <a href="<?php echo esc_url( $d['url'] ); ?>" target="_blank" rel="noopener" class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
+                <a href="<?php echo esc_url( $d['url'] ); ?>" target="_blank" rel="noopener" data-donate="<?php echo esc_attr( $d['name'] ); ?>" class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
                     <?php if ( ! empty( $d['logo'] ) ) : ?>
                     <div class="h-12 mb-6 flex items-center">
                         <img src="<?php echo esc_url( $d['logo'] ); ?>" alt="<?php echo esc_attr( $d['name'] ); ?> logo" class="max-h-12 w-auto object-contain" loading="lazy" onerror="this.style.display='none'" />
@@ -388,6 +427,68 @@ $ve_donations_children = [
             </div>
         </div>
     </section>
+
+    <?php if ( $ve_show_points && ! empty( $ve_points ) ) : ?>
+    <!-- ================= DONATION POINTS (hidden until locations confirmed) ================= -->
+    <section class="py-24 md:py-32 bg-slate-50 text-slate-900">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Drop off in person</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Donation points in the Cayman Islands</h2>
+                <p class="mt-8 text-lg text-slate-500 leading-relaxed">Prefer to give goods in person? Drop your contribution at any of these locations.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <?php foreach ( $ve_points as $pt ) : ?>
+                <article class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <h3 class="text-2xl font-display text-slate-900 mb-3"><?php echo esc_html( $pt['name'] ); ?></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed"><?php echo esc_html( $pt['address'] ); ?></p>
+                    <?php if ( ! empty( $pt['hours'] ) ) : ?>
+                    <p class="mt-3 text-xs font-bold uppercase tracking-widest text-[#ED1C24]"><?php echo esc_html( $pt['hours'] ); ?></p>
+                    <?php endif; ?>
+                </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <?php if ( $ve_show_news && ! empty( $ve_news ) ) : ?>
+    <!-- ================= NEWS / MEDIA (hidden until content confirmed) ================= -->
+    <section class="py-24 md:py-32 bg-white text-slate-900">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-16">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">In the news</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Latest coverage</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <?php foreach ( $ve_news as $n ) : ?>
+                <article class="rounded-[2rem] border border-slate-100 shadow-soft overflow-hidden bg-white">
+                    <?php if ( ! empty( $n['youtube'] ) ) : ?>
+                    <div class="ve-video group relative aspect-video w-full overflow-hidden bg-slate-800 cursor-pointer" data-id="<?php echo esc_attr( $n['youtube'] ); ?>" role="button" tabindex="0" aria-label="Play video">
+                        <img src="https://i.ytimg.com/vi/<?php echo esc_attr( $n['youtube'] ); ?>/hqdefault.jpg" alt="<?php echo esc_attr( $n['title'] ); ?>" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                        <span class="absolute inset-0 flex items-center justify-center">
+                            <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#ED1C24] text-white shadow-pill">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                        </span>
+                    </div>
+                    <?php endif; ?>
+                    <div class="p-8">
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2"><?php echo esc_html( $n['date'] ); ?><?php if ( ! empty( $n['source'] ) ) echo ' · ' . esc_html( $n['source'] ); ?></p>
+                        <h3 class="text-2xl font-display text-slate-900 mb-4"><?php echo esc_html( $n['title'] ); ?></h3>
+                        <?php if ( ! empty( $n['url'] ) ) : ?>
+                        <a href="<?php echo esc_url( $n['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-[#ED1C24] hover:gap-3 transition-all decoration-none">
+                            <?php echo ! empty( $n['youtube'] ) ? 'Watch the interview' : 'Read the full story'; ?>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                        <?php endif; ?>
+                    </div>
+                </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
 
     <!-- ================= FAQ (AEO / GEO — Cayman searches) ================= -->
     <?php
@@ -603,6 +704,58 @@ $ve_donations_children = [
         if (e.key === 'Escape') close();
     });
 })();
+
+/* Donation click tracking -> Google Tag Manager (dataLayer) */
+(function () {
+    window.dataLayer = window.dataLayer || [];
+    document.querySelectorAll('[data-donate]').forEach(function (a) {
+        a.addEventListener('click', function () {
+            window.dataLayer.push({
+                event: 'donate_click',
+                donate_org: a.getAttribute('data-donate'),
+                donate_url: a.getAttribute('href')
+            });
+        });
+    });
+    var copyBtn2 = document.getElementById('ve-copy');
+    if (copyBtn2) {
+        copyBtn2.addEventListener('click', function () {
+            window.dataLayer.push({
+                event: 'donate_click',
+                donate_org: 'Cayman Islands Red Cross (bank transfer)',
+                donate_url: 'account-copied'
+            });
+        });
+    }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://toctoc.ky/venezuela/#webpage",
+  "url": "https://toctoc.ky/venezuela/",
+  "name": "Venezuela Earthquake Appeal — Donate Now | Cayman Islands",
+  "description": "Verified ways for Cayman Islands residents to donate to trusted organizations responding to the June 2026 Venezuela earthquakes.",
+  "inLanguage": "en",
+  "isPartOf": { "@id": "https://toctoc.ky/#website" },
+  "about": { "@type": "Place", "name": "Venezuela" },
+  "creator": {
+    "@type": "Person",
+    "name": "Daniel Garrido",
+    "jobTitle": "Founder & CEO",
+    "worksFor": { "@type": "Organization", "name": "TocToc Marketing", "url": "https://toctoc.ky" }
+  },
+  "citation": {
+    "@type": "NewsArticle",
+    "headline": "How Cayman residents can help Venezuela after the earthquakes",
+    "url": "https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/",
+    "datePublished": "2026-07-02",
+    "author": { "@type": "Person", "name": "Daphne Ewing-Chow" },
+    "publisher": { "@type": "Organization", "name": "Cayman Compass", "url": "https://www.caymancompass.com" }
+  }
+}
 </script>
 
 <?php get_footer(); ?>
