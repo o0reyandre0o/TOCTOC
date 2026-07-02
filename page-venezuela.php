@@ -118,7 +118,7 @@ $ve_events = [
     [
         'name' => 'BodyWorks Holistic Wellness Centre',
         'date' => 'Thursday evenings · all July',
-        'desc' => 'Free Thursday evening Relaxation Music Sessions — all contributions collected are donated to humanitarian organisations responding to the disaster.',
+        'desc' => 'Free Thursday evening Relaxation Music Sessions — all contributions collected are donated to humanitarian organisations responding to the Venezuela earthquake disaster.',
         'url'  => 'https://www.bodyworkscayman.com/',
     ],
     [
