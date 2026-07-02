@@ -520,7 +520,7 @@ $ve_news = [
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php foreach ( $ve_news as $n ) : ?>
-                <article class="rounded-[2rem] border border-slate-100 shadow-soft overflow-hidden bg-white">
+                <article class="group rounded-[2rem] border border-slate-100 shadow-soft overflow-hidden bg-white">
                     <?php if ( ! empty( $n['youtube'] ) ) : ?>
                     <div class="ve-video group relative aspect-video w-full overflow-hidden bg-slate-800 cursor-pointer" data-id="<?php echo esc_attr( $n['youtube'] ); ?>" role="button" tabindex="0" aria-label="Play video">
                         <img src="https://i.ytimg.com/vi/<?php echo esc_attr( $n['youtube'] ); ?>/hqdefault.jpg" alt="<?php echo esc_attr( $n['title'] ); ?>" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
@@ -530,6 +530,10 @@ $ve_news = [
                             </span>
                         </span>
                     </div>
+                    <?php elseif ( ! empty( $n['image'] ) ) : ?>
+                    <a href="<?php echo esc_url( $n['url'] ); ?>" target="_blank" rel="noopener" class="block aspect-video overflow-hidden">
+                        <img src="<?php echo esc_url( $n['image'] ); ?>" alt="<?php echo esc_attr( $n['title'] ); ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                    </a>
                     <?php endif; ?>
                     <div class="p-8">
                         <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2"><?php echo esc_html( $n['date'] ); ?><?php if ( ! empty( $n['source'] ) ) echo ' · ' . esc_html( $n['source'] ); ?></p>
