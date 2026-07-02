@@ -113,13 +113,11 @@ $ve_events = [
         'name' => 'La Casita — Venezuela Day',
         'date' => 'July 18, 2026',
         'desc' => 'A Venezuela Day fundraiser at the Cayman restaurant La Casita, with Venezuelan-inspired food and drink specials and proceeds supporting relief efforts.',
-        'url'  => 'https://lacasita.ky/',
     ],
     [
         'name' => 'BodyWorks Holistic Wellness Centre',
         'date' => 'Thursday evenings · all July',
         'desc' => 'Free Thursday evening Relaxation Music Sessions — all contributions collected are donated to humanitarian organisations responding to the Venezuela earthquake disaster.',
-        'url'  => 'https://www.bodyworkscayman.com/',
     ],
     [
         'name' => 'Venezuelan Community Charity Run',
