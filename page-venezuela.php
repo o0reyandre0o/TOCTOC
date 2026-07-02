@@ -135,6 +135,7 @@ $ve_news = [
         'source'  => 'Cayman Compass',
         'title'   => 'How Cayman residents can help Venezuela after the earthquakes',
         'url'     => 'https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/',
+        'image'   => 'https://toctoc.ky/wp-content/uploads/2026/07/june27-ap-matias-delacroix.webp',
         'youtube' => '',
     ],
     [
@@ -142,6 +143,7 @@ $ve_news = [
         'source'  => 'Cayman Marl Road',
         'title'   => 'Venezuelan community in Cayman rallies support for earthquake victims',
         'url'     => 'https://caymanmarlroad.com/2026/07/02/venezuelan-community-in-cayman-rallies-support-for-earthquake-victims/',
+        'image'   => 'https://toctoc.ky/wp-content/uploads/2026/07/june26-ap-juan-pablo-arraez.webp',
         'youtube' => '',
     ],
     [
@@ -149,6 +151,7 @@ $ve_news = [
         'source'  => 'Cayman Compass',
         'title'   => 'Cayman\'s Venezuelan community in shock following double earthquake',
         'url'     => 'https://www.caymancompass.com/2026/06/26/caymans-venezuelan-community-in-shock-following-double-earthquake/',
+        'image'   => 'https://toctoc.ky/wp-content/uploads/2026/07/june25-ap-pedro-mattey-scaled.webp',
         'youtube' => '',
     ],
 ];
