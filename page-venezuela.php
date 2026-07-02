@@ -105,11 +105,25 @@ $ve_donations_children = [
 ];
 
 // --- Sections NOT ready to publish yet. Flip the flag to true (and fill the array) to show them. ---
-$ve_show_points = false; // Physical donation drop-off points (locations TBD)
+$ve_show_events = true;  // Local fundraising events in Cayman
 $ve_show_news   = true;  // News / CEO interviews coverage
 
-$ve_points = [
-    // [ 'name' => 'Drop-off location', 'address' => 'Street, George Town, Grand Cayman', 'hours' => 'Mon–Fri · 9am–5pm' ],
+$ve_events = [
+    [
+        'name' => 'La Casita — Venezuela Day',
+        'date' => 'July 18, 2026',
+        'desc' => 'A Venezuela Day fundraiser at the Cayman restaurant La Casita, with Venezuelan-inspired food and drink specials and proceeds supporting relief efforts.',
+    ],
+    [
+        'name' => 'BodyWorks Holistic Wellness Centre',
+        'date' => 'Thursday evenings · all July',
+        'desc' => 'Free Thursday evening Relaxation Music Sessions — all contributions collected are donated to humanitarian organisations responding to the disaster.',
+    ],
+    [
+        'name' => 'Venezuelan Community Charity Run',
+        'date' => 'September 2026',
+        'desc' => 'A charity run organised by Cayman\'s Venezuelan community to raise additional funds for earthquake relief.',
+    ],
 ];
 
 $ve_news = [
@@ -457,23 +471,21 @@ $ve_news = [
         </div>
     </section>
 
-    <?php if ( $ve_show_points && ! empty( $ve_points ) ) : ?>
-    <!-- ================= DONATION POINTS (hidden until locations confirmed) ================= -->
+    <?php if ( $ve_show_events && ! empty( $ve_events ) ) : ?>
+    <!-- ================= LOCAL EVENTS ================= -->
     <section class="py-24 md:py-32 bg-slate-50 text-slate-900">
         <div class="mx-auto max-w-6xl px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Drop off in person</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Donation points in the Cayman Islands</h2>
-                <p class="mt-8 text-lg text-slate-500 leading-relaxed">Prefer to give goods in person? Drop your contribution at any of these locations.</p>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">Local ways to help</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Events in the Cayman Islands</h2>
+                <p class="mt-8 text-lg text-slate-500 leading-relaxed">The Cayman community is coming together for Venezuela. Join one of these local fundraisers and help while you are at it.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <?php foreach ( $ve_points as $pt ) : ?>
-                <article class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
-                    <h3 class="text-2xl font-display text-slate-900 mb-3"><?php echo esc_html( $pt['name'] ); ?></h3>
-                    <p class="text-slate-500 text-sm leading-relaxed"><?php echo esc_html( $pt['address'] ); ?></p>
-                    <?php if ( ! empty( $pt['hours'] ) ) : ?>
-                    <p class="mt-3 text-xs font-bold uppercase tracking-widest text-[#ED1C24]"><?php echo esc_html( $pt['hours'] ); ?></p>
-                    <?php endif; ?>
+                <?php foreach ( $ve_events as $ev ) : ?>
+                <article class="flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <p class="text-xs font-bold uppercase tracking-widest text-[#ED1C24] mb-4"><?php echo esc_html( $ev['date'] ); ?></p>
+                    <h3 class="text-2xl font-display text-slate-900 mb-3"><?php echo esc_html( $ev['name'] ); ?></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed"><?php echo esc_html( $ev['desc'] ); ?></p>
                 </article>
                 <?php endforeach; ?>
             </div>
