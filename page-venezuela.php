@@ -121,6 +121,20 @@ $ve_news = [
         'url'     => 'https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/',
         'youtube' => '',
     ],
+    [
+        'date'    => 'July 2, 2026',
+        'source'  => 'Cayman Marl Road',
+        'title'   => 'Venezuelan community in Cayman rallies support for earthquake victims',
+        'url'     => 'https://caymanmarlroad.com/2026/07/02/venezuelan-community-in-cayman-rallies-support-for-earthquake-victims/',
+        'youtube' => '',
+    ],
+    [
+        'date'    => 'June 26, 2026',
+        'source'  => 'Cayman Compass',
+        'title'   => 'Cayman\'s Venezuelan community in shock following double earthquake',
+        'url'     => 'https://www.caymancompass.com/2026/06/26/caymans-venezuelan-community-in-shock-following-double-earthquake/',
+        'youtube' => '',
+    ],
 ];
 ?>
 
@@ -468,7 +482,7 @@ $ve_news = [
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#ED1C24]">In the news</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Latest coverage</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php foreach ( $ve_news as $n ) : ?>
                 <article class="rounded-[2rem] border border-slate-100 shadow-soft overflow-hidden bg-white">
                     <?php if ( ! empty( $n['youtube'] ) ) : ?>
