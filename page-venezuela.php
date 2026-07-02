@@ -173,10 +173,13 @@ $ve_news = [
                 </a>
             </div>
 
-            <div class="mt-8 inline-flex items-center gap-3">
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <span class="text-[11px] font-bold uppercase tracking-widest text-white/50">As featured in</span>
                 <a href="https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/" target="_blank" rel="noopener" class="inline-flex items-center rounded-lg bg-white px-3 py-1.5 shadow-soft hover:scale-105 transition-transform" aria-label="Read the Cayman Compass article">
                     <img src="https://caymancompass.s3.amazonaws.com/wp-content/uploads/2025/04/cayman-compass-logo-icon-544x180-1.png" alt="Cayman Compass" class="h-5 w-auto" />
+                </a>
+                <a href="https://caymanmarlroad.com/2026/07/02/venezuelan-community-in-cayman-rallies-support-for-earthquake-victims/" target="_blank" rel="noopener" class="inline-flex items-center rounded-lg border border-white/25 px-3 py-2 text-xs font-bold text-white hover:bg-white/10 transition-colors decoration-none">
+                    Cayman Marl Road
                 </a>
             </div>
         </div>
