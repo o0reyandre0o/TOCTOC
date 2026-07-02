@@ -388,6 +388,10 @@ $ve_news = [
                 <p class="mt-8 text-lg text-slate-500 leading-relaxed">
                     Donate directly to trusted international organizations delivering emergency relief in Venezuela. 100% of your donation goes through these official appeals.
                 </p>
+                <div class="mt-8 inline-flex items-center gap-3 rounded-2xl bg-[#ED1C24]/5 border border-[#ED1C24]/15 px-6 py-4 text-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-[#ED1C24]"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C4 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                    <p class="text-base md:text-lg font-medium text-slate-700">Even <strong class="text-[#ED1C24]">$1</strong> can buy clean water for someone who has lost everything.</p>
+                </div>
             </div>
 
             <h3 class="text-2xl font-display text-slate-900 mb-6">Donate locally in the Cayman Islands</h3>
