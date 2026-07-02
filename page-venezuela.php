@@ -46,6 +46,12 @@ $ve_donations = [
         'url'  => 'https://wayuutaya.org/',
         'logo' => 'https://img1.wsimg.com/isteam/ip/ee54cd24-3e7f-42d7-8a7f-cbb134d83b74/Recurso%206-0001.png/:/rs=w:834,h:188,cg:true,m/cr=w:834,h:188/qt=q:95',
     ],
+    [
+        'name' => 'GiveDirectly',
+        'desc' => 'Sends cash directly to families affected by the earthquakes, so they can buy exactly what they need most — the fastest, most flexible way to help.',
+        'url'  => 'https://www.givedirectly.org/venezuela-earthquakes',
+        'logo' => 'https://www.givedirectly.org/wp-content/uploads/2023/11/cropped-GiveDirectly-Square-Logo-Green-Black-270x270.png',
+    ],
 ];
 
 // --- Photo gallery (already uploaded to toctoc.ky media library). ---
@@ -391,7 +397,7 @@ $ve_news = [
             </div>
 
             <h3 class="text-2xl font-display text-slate-900 mb-6">Emergency relief</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php foreach ( $ve_donations as $d ) : ?>
                 <a href="<?php echo esc_url( $d['url'] ); ?>" target="_blank" rel="noopener" data-donate="<?php echo esc_attr( $d['name'] ); ?>" class="group flex flex-col p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
                     <?php if ( ! empty( $d['logo'] ) ) : ?>
