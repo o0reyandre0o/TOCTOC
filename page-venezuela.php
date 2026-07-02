@@ -153,10 +153,12 @@ $ve_news = [
                 </a>
             </div>
 
-            <a href="https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/" target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/50 hover:text-white transition-colors decoration-none">
-                As featured in <span class="text-white">Cayman Compass</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
+            <div class="mt-8 inline-flex items-center gap-3">
+                <span class="text-[11px] font-bold uppercase tracking-widest text-white/50">As featured in</span>
+                <a href="https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/" target="_blank" rel="noopener" class="inline-flex items-center rounded-lg bg-white px-3 py-1.5 shadow-soft hover:scale-105 transition-transform" aria-label="Read the Cayman Compass article">
+                    <img src="https://caymancompass.s3.amazonaws.com/wp-content/uploads/2025/04/cayman-compass-logo-icon-544x180-1.png" alt="Cayman Compass" class="h-5 w-auto" />
+                </a>
+            </div>
         </div>
 
         <span class="absolute bottom-3 right-4 z-10 text-[10px] text-white/40">Photo: Matias Delacroix / AP</span>
