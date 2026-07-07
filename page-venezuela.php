@@ -14,9 +14,9 @@ $ve_stats = [
     [ 'num' => '3,500+',   'label' => 'People confirmed killed' ],
     [ 'num' => '10,000',   'label' => 'Death toll could reach this (UN)' ],
     [ 'num' => '43,000+',  'label' => 'People reported missing' ],
-    [ 'num' => '15,866',   'label' => 'People left homeless' ],
+    [ 'num' => '17,800+',  'label' => 'People left homeless' ],
     [ 'num' => '59,000+',  'label' => 'Buildings damaged or destroyed' ],
-    [ 'num' => '430+',     'label' => 'Buildings fully collapsed' ],
+    [ 'num' => '190+',     'label' => 'Buildings fully collapsed' ],
     [ 'num' => 'Thousands','label' => 'Children left orphaned', 'sm' => true ],
 ];
 
