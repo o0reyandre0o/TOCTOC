@@ -567,7 +567,7 @@ $ve_news = [
         ],
         [
             'q' => 'What happened in the 2026 Venezuela earthquakes?',
-            'a' => 'On June 24, 2026, two powerful earthquakes struck northern Venezuela just 39 seconds apart — a magnitude 7.2 followed by a 7.5. At least 2,295 people have been confirmed killed, and the UN warns the death toll could reach 10,000. More than 43,000 people are reported missing, over 15,000 have been left homeless, and hundreds of buildings have collapsed.',
+            'a' => 'On June 24, 2026, two powerful earthquakes struck northern Venezuela just 39 seconds apart — a magnitude 7.2 followed by a 7.5. At least 3,500 people have been confirmed killed, and the UN warns the death toll could reach 10,000. More than 43,000 people are reported missing, over 17,800 have been left homeless, and hundreds of buildings have collapsed.',
         ],
         [
             'q' => 'Are these Venezuela donation organizations trustworthy?',
