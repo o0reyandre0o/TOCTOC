@@ -11,7 +11,7 @@ get_header();
 // --- Statistics (as of July 1, 2026) ---
 $ve_stats = [
     [ 'num' => '2',        'label' => 'Earthquakes in 39 seconds — magnitude 7.2 &amp; 7.5' ],
-    [ 'num' => '2,295+',   'label' => 'People confirmed killed' ],
+    [ 'num' => '3,500+',   'label' => 'People confirmed killed' ],
     [ 'num' => '10,000',   'label' => 'Death toll could reach this (UN)' ],
     [ 'num' => '43,000+',  'label' => 'People reported missing' ],
     [ 'num' => '15,866',   'label' => 'People left homeless' ],
