@@ -263,9 +263,12 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         ev.preventDefault();
         document.getElementById('ttseo-error').classList.add('hidden');
         var url = document.getElementById('ttseo-url').value.trim();
+        var competitor = document.getElementById('ttseo-competitor').value.trim();
         var email = document.getElementById('ttseo-email').value.trim();
         var name = document.getElementById('ttseo-name').value.trim();
         if (!url || !email) { showError('Please enter a URL and your email.'); return; }
+        var tsToken = (TTSEO.ts && window.turnstile) ? (window.turnstile.getResponse() || '') : '';
+        if (TTSEO.ts && !tsToken) { showError('Please complete the anti-spam check below.'); return; }
 
         var btn = document.getElementById('ttseo-submit');
         var lbl = document.getElementById('ttseo-btn-label');
@@ -276,11 +279,15 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'seo_check_lead', lead_email: email, checked_url: url });
 
-        var body = new URLSearchParams({ action: 'toctoc_seo_check', nonce: TTSEO.nonce, url: url, email: email, name: name });
+        var params = { action: 'toctoc_seo_check', nonce: TTSEO.nonce, url: url, email: email, name: name };
+        if (competitor) params.competitor = competitor;
+        if (tsToken) params.ts_token = tsToken;
+        var body = new URLSearchParams(params);
         fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
         .then(function (r) { return r.json(); })
         .then(function (json) {
             btn.disabled = false; btn.style.opacity = '1'; lbl.textContent = 'Analyze my website';
+            if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
             if (!json || !json.success) { showError(json && json.data ? json.data.message : 'Could not analyze that URL.'); return; }
             var d = json.data;
 
