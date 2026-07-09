@@ -234,7 +234,6 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
             perfEl.innerHTML = '<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">' +
                 metric('LCP', d.lcp) + metric('CLS', d.cls) + metric('Total Blocking', d.tbt) +
                 metric('First Paint', d.fcp) + metric('Speed Index', d.si) +
-                metric('Lighthouse SEO', d.seo != null ? d.seo : '—') +
                 '</div>';
         })
         .catch(function () {
