@@ -312,6 +312,7 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         })
         .catch(function () {
             btn.disabled = false; btn.style.opacity = '1'; lbl.textContent = 'Analyze my website';
+            if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
             showError('Network error. Please try again.');
         });
     });
