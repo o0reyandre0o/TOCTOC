@@ -164,7 +164,7 @@ function toctoc_seo_fetch( $url, $timeout = 8 ) {
 
 /** Store + email the lead. */
 function toctoc_seo_capture_lead( $name, $email, $url ) {
-	$to      = apply_filters( 'toctoc_seo_lead_email', 'info@toctoc.ky' );
+	$to      = apply_filters( 'toctoc_seo_lead_email', array( 'info@toctoc.ky', 'daniel@toctoc.ky', 'web@toctoc.ky' ) );
 	$subject = 'SEO Checker lead — ' . $email;
 	$body    = "New SEO Checker lead:\n\nName: {$name}\nEmail: {$email}\nURL analysed: {$url}\nWhen: " . current_time( 'mysql' );
 	wp_mail( $to, $subject, $body );
