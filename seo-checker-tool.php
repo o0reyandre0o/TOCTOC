@@ -390,6 +390,31 @@ function toctoc_seo_check_handler() {
 
 	$result = toctoc_seo_analyze( $url, $html );
 
+	// Optional competitor comparison.
+	$comp_raw = isset( $_POST['competitor'] ) ? wp_unslash( $_POST['competitor'] ) : '';
+	$comp_url = $comp_raw ? toctoc_seo_safe_url( $comp_raw ) : false;
+	if ( $comp_url && $comp_url !== $url ) {
+		$cresp = wp_remote_get(
+			$comp_url,
+			array(
+				'timeout'     => 15,
+				'redirection' => 3,
+				'user-agent'  => 'TocTocSEOChecker/1.0 (+https://toctoc.ky)',
+			)
+		);
+		if ( ! is_wp_error( $cresp ) && (int) wp_remote_retrieve_response_code( $cresp ) < 400 ) {
+			$chtml = (string) wp_remote_retrieve_body( $cresp );
+			if ( '' !== $chtml ) {
+				$cres                 = toctoc_seo_analyze( $comp_url, $chtml );
+				$result['competitor'] = array(
+					'url'    => $comp_url,
+					'host'   => wp_parse_url( $comp_url, PHP_URL_HOST ),
+					'scores' => $cres['scores'],
+				);
+			}
+		}
+	}
+
 	// Email the full report to the team + the lead, and log the lead.
 	toctoc_seo_send_report( $name, $email, $url, $result );
 

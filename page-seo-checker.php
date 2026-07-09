@@ -88,6 +88,12 @@ if ( $ttseo_ts ) {
                 </div>
             </div>
 
+            <!-- Competitor comparison (shown only when a competitor is entered) -->
+            <div id="ttseo-vs" class="hidden rounded-[2rem] bg-slate-950 text-white p-8 md:p-10 mb-10">
+                <p class="text-xs font-bold uppercase tracking-widest text-accent mb-6">You vs your competitor</p>
+                <div id="vs-body"></div>
+            </div>
+
             <!-- Plain-English summary -->
             <div class="rounded-[2rem] bg-white border border-slate-100 shadow-soft p-8 md:p-10 mb-10">
                 <div class="inline-flex items-center gap-2 rounded-full bg-sky-pale/60 px-4 py-1.5 text-[11px] font-bold text-sky-deep uppercase tracking-widest mb-5">In plain English</div>
