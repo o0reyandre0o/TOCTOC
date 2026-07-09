@@ -247,8 +247,6 @@ function toctoc_seo_check_handler() {
 		wp_send_json_error( array( 'message' => 'Please enter a valid, public website URL.' ) );
 	}
 
-	toctoc_seo_capture_lead( $name, $email, $url );
-
 	$resp = wp_remote_get(
 		$url,
 		array(
@@ -270,7 +268,12 @@ function toctoc_seo_check_handler() {
 		wp_send_json_error( array( 'message' => 'The URL returned HTTP status ' . $status . ' or no HTML.' ) );
 	}
 
-	wp_send_json_success( toctoc_seo_analyze( $url, $html ) );
+	$result = toctoc_seo_analyze( $url, $html );
+
+	// Email the full report to the team + the lead, and log the lead.
+	toctoc_seo_send_report( $name, $email, $url, $result );
+
+	wp_send_json_success( $result );
 }
 
 /**
