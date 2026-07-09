@@ -162,8 +162,33 @@ function toctoc_seo_fetch( $url, $timeout = 8 ) {
 	);
 }
 
-/** Build the audit report as an HTML email body. */
+/** Plain-language "what to do" for each check (for a non-technical reader). */
+function toctoc_seo_tips() {
+	return array(
+		'Title tag'                  => "Add a clear page title — it's the blue headline people see in Google. Keep it short and descriptive.",
+		'Meta description'           => "Write a 1-2 sentence summary of the page. It's the little text under your title in Google and helps people decide to click.",
+		'H1 heading'                 => "Give the page one main heading that clearly says what it's about.",
+		'Subheadings (H2)'           => "Break the content into sections with subheadings — easier to read for people and for Google.",
+		'Canonical tag'              => "Add a canonical link so Google doesn't get confused if the page has more than one web address.",
+		'Indexable'                  => "This page is currently hidden from Google. Turn that off so it can show up in search results.",
+		'Mobile viewport'            => "Make the page work well on phones — right now it's missing the mobile setting.",
+		'Social / Open Graph'        => "Add a preview image and title so the page looks good when shared on WhatsApp, Facebook or LinkedIn.",
+		'Image alt text'             => "Add short descriptions to your images. It helps Google understand them and helps blind visitors.",
+		'Language attribute'         => "Tell browsers and Google what language the page is written in.",
+		'HTTPS'                      => "Get an SSL certificate so your site shows the padlock and loads securely. Visitors and Google trust it more.",
+		'Content depth'              => "Add more helpful text to the page. Very short pages are hard to rank and don't answer people's questions.",
+		'Structured data (JSON-LD)'  => "Add 'schema' — hidden code that tells Google and AI what your business is. It unlocks rich results and AI recommendations.",
+		'FAQ / Q&A schema'           => "Add a FAQ section (with schema). It's one of the best ways to get quoted by ChatGPT and Google's AI answers.",
+		'AI crawler access'          => "Your site is blocking AI bots like ChatGPT's. Let them in so your business can show up when people ask AI.",
+		'XML sitemap'                => "Add a sitemap — a map of all your pages — so search engines find everything.",
+		'llms.txt'                   => "Optional: add an 'llms.txt' file to guide AI models around your site. Nice-to-have, not urgent.",
+		'Semantic HTML'              => "Use proper page structure so AI and screen readers read your content in the right order.",
+	);
+}
+
+/** Build the audit report as an HTML email body (plain-English summary first, then technical). */
 function toctoc_seo_report_html( $result, $lead = array() ) {
+	$tips   = toctoc_seo_tips();
 	$icons  = array( 'pass' => '&#9989;', 'warn' => '&#9888;&#65039;', 'fail' => '&#10060;', 'info' => '&#8505;&#65039;' );
 	$render = function ( $items ) use ( $icons ) {
 		$out = '';
@@ -178,16 +203,64 @@ function toctoc_seo_report_html( $result, $lead = array() ) {
 		}
 		return $out;
 	};
+
 	$seo_score = isset( $result['scores']['seo'] ) ? (int) $result['scores']['seo'] : 0;
 	$geo_score = isset( $result['scores']['geo'] ) ? (int) $result['scores']['geo'] : 0;
+	$avg       = (int) round( ( $seo_score + $geo_score ) / 2 );
+
+	if ( $avg >= 80 ) {
+		$verdict = "Great news — your website is in good shape. Just a few small tweaks and you're set.";
+	} elseif ( $avg >= 50 ) {
+		$verdict = "Your website is doing okay, but there are some important things to improve so more people — and AI — can find it.";
+	} else {
+		$verdict = "Your website needs some work — but don't worry, everything is fixable. Here is exactly what to do, in plain language.";
+	}
+
+	$all    = array_merge( $result['seo'], $result['geo'] );
+	$issues = array();
+	$good   = array();
+	foreach ( $all as $r ) {
+		if ( 'fail' === $r['status'] || 'warn' === $r['status'] ) {
+			$issues[] = $r;
+		} elseif ( 'pass' === $r['status'] ) {
+			$good[] = $r['label'];
+		}
+	}
+	// Failures first.
+	usort( $issues, function ( $a, $b ) {
+		$rank = array( 'fail' => 0, 'warn' => 1 );
+		return $rank[ $a['status'] ] - $rank[ $b['status'] ];
+	} );
 
 	$h  = '<div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;color:#222;">';
 	if ( ! empty( $lead ) ) {
 		$h .= '<p style="background:#f4f4f5;padding:12px 16px;border-radius:8px;"><strong>New lead:</strong> ' . esc_html( $lead['name'] ) . ' &middot; ' . esc_html( $lead['email'] ) . '</p>';
 	}
-	$h .= '<h2 style="margin:16px 0 4px;">SEO / GEO report</h2>';
-	$h .= '<p style="margin:0 0 16px;"><a href="' . esc_url( $result['url'] ) . '">' . esc_html( $result['url'] ) . '</a></p>';
+
+	// ---- Plain English ----
+	$h .= '<h2 style="margin:16px 0 6px;">Your report in plain English</h2>';
+	$h .= '<p style="margin:0 0 12px;"><a href="' . esc_url( $result['url'] ) . '">' . esc_html( $result['url'] ) . '</a></p>';
+	$h .= '<p style="font-size:16px;color:#333;line-height:1.5;">' . esc_html( $verdict ) . '</p>';
 	$h .= '<p style="font-size:16px;"><strong>SEO:</strong> ' . $seo_score . '/100 &nbsp;|&nbsp; <strong>GEO / AEO:</strong> ' . $geo_score . '/100</p>';
+
+	if ( $issues ) {
+		$h .= '<h3 style="margin:20px 0 8px;">What to improve (' . count( $issues ) . ')</h3><ul style="padding-left:0;list-style:none;">';
+		foreach ( $issues as $r ) {
+			$dot = ( 'fail' === $r['status'] ) ? '&#128308;' : '&#128993;'; // red / yellow circle
+			$tip = isset( $tips[ $r['label'] ] ) ? $tips[ $r['label'] ] : ( isset( $r['why'] ) ? $r['why'] : $r['label'] );
+			$h  .= '<li style="margin-bottom:10px;color:#333;line-height:1.5;">' . $dot . ' ' . esc_html( $tip ) . '</li>';
+		}
+		$h .= '</ul>';
+	} else {
+		$h .= '<p style="color:#16a34a;">Nothing major to fix — nicely done!</p>';
+	}
+	if ( $good ) {
+		$h .= '<p style="color:#16a34a;font-size:13px;">&#10003; Already good: ' . esc_html( implode( ', ', $good ) ) . '.</p>';
+	}
+
+	// ---- Technical ----
+	$h .= '<hr style="margin:28px 0;border:none;border-top:1px solid #eee;">';
+	$h .= '<h2 style="margin:0 0 6px;">The technical details</h2>';
 	$h .= '<h3 style="margin:22px 0 6px;">On-page SEO</h3><table style="border-collapse:collapse;width:100%;">' . $render( $result['seo'] ) . '</table>';
 	$h .= '<h3 style="margin:22px 0 6px;">GEO / AEO / AI visibility</h3><table style="border-collapse:collapse;width:100%;">' . $render( $result['geo'] ) . '</table>';
 	$h .= '<p style="color:#999;font-size:12px;margin-top:24px;">Speed / Core Web Vitals are shown live in the tool. Generated by the TocToc SEO Checker.</p>';
