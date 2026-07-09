@@ -16,6 +16,18 @@ if ( $ttseo_ts ) {
 }
 ?>
 
+<style>
+@media print {
+    nav, footer, .ttseo-noprint { display: none !important; }
+    .ttseo-print-header { display: block !important; }
+    #ttseo-results { display: block !important; background: #fff !important; padding: 0 !important; }
+    #ttseo-results .shadow-soft, #ttseo-results .shadow-glass { box-shadow: none !important; }
+    #ttseo-results section, #ttseo-results > div { max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; }
+    #ttseo-vs { background: #0f172a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    #ttseo-results .rounded-\[2rem\] { break-inside: avoid; }
+}
+</style>
+
 <main class="min-h-screen bg-background text-foreground">
 
     <!-- Hero + form -->
@@ -68,7 +80,17 @@ if ( $ttseo_ts ) {
     <section id="ttseo-results" class="hidden py-16 md:py-24 bg-slate-50">
         <div class="mx-auto max-w-5xl px-6">
 
-            <p class="text-center text-sm text-slate-500 mb-8">Report for <span id="ttseo-target" class="font-bold text-slate-900"></span></p>
+            <div class="ttseo-print-header" style="display:none;">
+                <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#0284c7;font-weight:bold;margin:0;">TocToc Marketing &middot; SEO / GEO Report</p>
+                <hr style="border:none;border-top:2px solid #0f172a;margin:8px 0 20px;">
+            </div>
+            <div class="flex items-center justify-between gap-4 mb-8">
+                <p class="text-sm text-slate-500">Report for <span id="ttseo-target" class="font-bold text-slate-900"></span></p>
+                <button id="ttseo-pdf" type="button" class="ttseo-noprint shrink-0 inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2.5 text-sm font-bold hover:bg-slate-800 transition-colors">
+                    Download PDF
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                </button>
+            </div>
 
             <!-- Score cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -246,6 +268,30 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         goodEl.innerHTML = passes.length
             ? '<p class="mt-6 text-sm text-slate-500 leading-relaxed"><span class="font-bold text-green-600">✓ Already good:</span> ' + passes.map(function (r) { return esc(r.label); }).join(', ') + '.</p>'
             : '';
+    }
+
+    function renderCompetitor(d) {
+        var el = document.getElementById('ttseo-vs');
+        if (!d.competitor || !d.competitor.scores) { el.classList.add('hidden'); return; }
+        var c = d.competitor;
+        function bar(label, you, them) {
+            return '<div style="margin-bottom:22px;">' +
+                '<p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px;">' + esc(label) + '</p>' +
+                '<div class="grid grid-cols-2 gap-4">' +
+                    '<div><span style="font-size:34px;font-family:\'Instrument Serif\',serif;color:' + scoreColor(you) + ';">' + you + '</span><span style="color:rgba(255,255,255,.4);"> / 100</span><p style="font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;">You</p></div>' +
+                    '<div><span style="font-size:34px;font-family:\'Instrument Serif\',serif;color:' + scoreColor(them) + ';">' + them + '</span><span style="color:rgba(255,255,255,.4);"> / 100</span><p style="font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;">' + esc(c.host) + '</p></div>' +
+                '</div></div>';
+        }
+        var youAvg = Math.round((d.scores.seo + d.scores.geo) / 2);
+        var themAvg = Math.round((c.scores.seo + c.scores.geo) / 2);
+        var verdict = youAvg > themAvg ? "You're ahead of your competitor overall — nice. Keep the lead." :
+                      youAvg < themAvg ? "Your competitor is ahead overall — this is your chance to catch up and pass them." :
+                      "You're neck and neck with your competitor.";
+        document.getElementById('vs-body').innerHTML =
+            '<p style="font-size:24px;font-family:\'Instrument Serif\',serif;line-height:1.2;margin-bottom:28px;">' + esc(verdict) + '</p>' +
+            bar('SEO', d.scores.seo, c.scores.seo) +
+            bar('GEO / AEO — AI visibility', d.scores.geo, c.scores.geo);
+        el.classList.remove('hidden');
     }
 
     function updateSpeedSummary(perf) {
