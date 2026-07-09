@@ -498,13 +498,18 @@ function toctoc_seo_psi_handler() {
 	$key = defined( 'TOCTOC_PSI_KEY' ) ? TOCTOC_PSI_KEY : get_option( 'toctoc_psi_key', '' );
 
 	$endpoint  = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
-	$endpoint .= '?strategy=mobile&category=PERFORMANCE&category=SEO&category=BEST_PRACTICES&category=ACCESSIBILITY';
+	$endpoint .= '?strategy=mobile&category=PERFORMANCE';
 	$endpoint .= '&url=' . rawurlencode( $url );
 	if ( $key ) {
 		$endpoint .= '&key=' . rawurlencode( $key );
 	}
 
-	$resp = wp_remote_get( $endpoint, array( 'timeout' => 45 ) );
+	// Without an API key PageSpeed is heavily throttled and will usually time out.
+	if ( ! $key ) {
+		wp_send_json_error( array( 'message' => 'Add your PageSpeed API key in WordPress → Settings → SEO Checker to enable speed scoring.' ) );
+	}
+
+	$resp = wp_remote_get( $endpoint, array( 'timeout' => 55 ) );
 	if ( is_wp_error( $resp ) ) {
 		wp_send_json_error( array( 'message' => 'PageSpeed unavailable: ' . $resp->get_error_message() ) );
 	}
