@@ -317,7 +317,7 @@ function toctoc_seo_send_report( $name, $email, $url, $result ) {
 	$host    = wp_parse_url( $url, PHP_URL_HOST );
 
 	// Team copy (with lead details + full report).
-	$team = apply_filters( 'toctoc_seo_lead_email', array( 'info@toctoc.ky', 'daniel@toctoc.ky', 'web@toctoc.ky' ) );
+	$team = apply_filters( 'toctoc_seo_lead_email', array( 'info@toctoc.ky', 'web@toctoc.ky' ) );
 	wp_mail(
 		$team,
 		'SEO Checker: ' . $host . ' — lead ' . $email,
