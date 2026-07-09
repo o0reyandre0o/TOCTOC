@@ -162,6 +162,7 @@ $ve_news = [
         <img
             src="https://toctoc.ky/wp-content/uploads/2026/07/june27-ap-matias-delacroix.webp"
             alt="Earthquake destruction in northern Venezuela, June 2026"
+            fetchpriority="high"
             class="absolute inset-0 w-full h-full object-cover"
         />
         <div class="absolute inset-0 bg-slate-950/70"></div>
