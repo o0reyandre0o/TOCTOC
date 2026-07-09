@@ -3,6 +3,16 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Perf: warm up connections to the render-critical + image origins -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <?php if ( is_front_page() ) : ?>
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" fetchpriority="high">
+    <?php endif; ?>
+
     <link rel="icon" type="image/svg+xml" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
     <link rel="shortcut icon" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
     <link rel="apple-touch-icon" href="https://toctoc.ky/toctoc-new-favicon-03.svg">

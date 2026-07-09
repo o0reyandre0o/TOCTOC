@@ -5,8 +5,9 @@
     <section id="home" class="relative min-h-[100svh] w-full overflow-hidden flex items-center">
         <!-- Clean Sky background -->
         <img
-            src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2574&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop"
             alt="Sky"
+            fetchpriority="high"
             class="absolute inset-0 w-full h-full object-cover"
         />
         <!-- White overlay to lighten background -->
