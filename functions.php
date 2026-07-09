@@ -102,6 +102,7 @@ add_action( 'init', function () {
         [ 'https://toctoc.ky/advertising-pr-agency-cayman-islands/',               '0.8' ],
         [ 'https://toctoc.ky/about-toc-toc-marketing/',                            '0.7' ],
         [ 'https://toctoc.ky/venezuela/',                                          '0.9' ],
+        [ 'https://toctoc.ky/seo-checker/',                                        '0.7' ],
         [ 'https://toctoc.ky/cookie-policy/',                                      '0.2' ],
         [ 'https://toctoc.ky/privacy-policy/',                                     '0.2' ],
         [ 'https://toctoc.ky/terms-and-conditions/',                               '0.2' ],
