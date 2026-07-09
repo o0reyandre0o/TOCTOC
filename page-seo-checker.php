@@ -136,9 +136,8 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
     function scoreColor(v) { return v >= 80 ? '#16a34a' : (v >= 50 ? '#d97706' : '#dc2626'); }
     function setScore(id, v) {
         var el = document.getElementById(id);
-        if (v == null) { el.textContent = '—'; return; }
-        el.textContent = v;
-        el.style.color = scoreColor(v);
+        if (v == null) { el.innerHTML = '<span style="color:#94a3b8;">—</span>'; return; }
+        el.innerHTML = '<span style="color:' + scoreColor(v) + ';">' + v + '</span><span style="font-size:0.34em;color:#94a3b8;font-weight:400;"> / 100</span>';
     }
     var ICON = {
         pass: '<span style="color:#16a34a">&#10003;</span>',
