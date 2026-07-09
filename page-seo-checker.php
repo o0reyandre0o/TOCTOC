@@ -301,6 +301,7 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
             document.getElementById('prev-desc').textContent = d.meta.description || '(no meta description)';
 
             renderSummary(d);
+            renderCompetitor(d);
             renderList('list-seo', d.seo);
             renderList('list-geo', d.geo);
 
