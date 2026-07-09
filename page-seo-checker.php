@@ -177,6 +177,73 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         document.getElementById(containerId).innerHTML = html;
     }
 
+    // Plain-language "what to do" for each check, for a non-technical person.
+    var TIPS = {
+        'Title tag': "Add a clear page title — it's the blue headline people see in Google. Keep it short and descriptive.",
+        'Meta description': "Write a 1–2 sentence summary of the page. It's the little text under your title in Google and helps people decide to click.",
+        'H1 heading': "Give the page one main heading that clearly says what it's about.",
+        'Subheadings (H2)': "Break the content into sections with subheadings — easier to read for people and for Google.",
+        'Canonical tag': "Add a 'canonical' link so Google doesn't get confused if the page has more than one web address.",
+        'Indexable': "This page is currently hidden from Google. Turn that off so it can show up in search results.",
+        'Mobile viewport': "Make the page work well on phones — right now it's missing the mobile setting.",
+        'Social / Open Graph': "Add a preview image and title so the page looks good when shared on WhatsApp, Facebook or LinkedIn.",
+        'Image alt text': "Add short descriptions to your images. It helps Google understand them and helps blind visitors.",
+        'Language attribute': "Tell browsers and Google what language the page is written in.",
+        'HTTPS': "Get an SSL certificate so your site shows the padlock and loads securely. Visitors and Google trust it more.",
+        'Content depth': "Add more helpful text to the page. Very short pages are hard to rank and don't answer people's questions.",
+        'Structured data (JSON-LD)': "Add 'schema' — hidden code that tells Google and AI what your business is. It unlocks rich results and AI recommendations.",
+        'FAQ / Q&A schema': "Add a FAQ section (with schema). It's one of the best ways to get quoted by ChatGPT and Google's AI answers.",
+        'AI crawler access': "Your site is blocking AI bots like ChatGPT's. Let them in so your business can show up when people ask AI.",
+        'XML sitemap': "Add a sitemap — a map of all your pages — so search engines find everything.",
+        'llms.txt': "Optional: add an 'llms.txt' file to guide AI models around your site. Nice-to-have, not urgent.",
+        'Semantic HTML': "Use proper page structure so AI and screen readers read your content in the right order."
+    };
+
+    function renderSummary(d) {
+        var all = (d.seo || []).concat(d.geo || []);
+        var fails = all.filter(function (r) { return r.status === 'fail'; });
+        var warns = all.filter(function (r) { return r.status === 'warn'; });
+        var passes = all.filter(function (r) { return r.status === 'pass'; });
+        var avg = Math.round(((d.scores.seo || 0) + (d.scores.geo || 0)) / 2);
+
+        var verdict;
+        if (avg >= 80) verdict = "Great news — your website is in good shape! Just a few small tweaks and you're set.";
+        else if (avg >= 50) verdict = "Your website is doing okay, but there are some important things to improve so more people — and AI — can find it.";
+        else verdict = "Your website needs some work — but don't worry, everything is fixable. Here's exactly what to do, in plain language.";
+        document.getElementById('summary-verdict').textContent = verdict;
+
+        var issues = fails.concat(warns);
+        var fixEl = document.getElementById('summary-fix');
+        if (!issues.length) {
+            fixEl.innerHTML = '<p class="text-slate-600">Nothing major to fix — nicely done! 🎉</p>';
+        } else {
+            var html = '<p class="font-bold text-slate-900 mb-4">What to improve (' + issues.length + '):</p><ul class="space-y-4">';
+            issues.forEach(function (r) {
+                var tip = TIPS[r.label] || r.why || r.label;
+                var dot = r.status === 'fail' ? '🔴' : '🟡';
+                html += '<li class="flex gap-3"><span class="shrink-0">' + dot + '</span><span class="text-slate-700 leading-relaxed">' + esc(tip) + '</span></li>';
+            });
+            html += '</ul>';
+            fixEl.innerHTML = html;
+        }
+
+        var goodEl = document.getElementById('summary-good');
+        goodEl.innerHTML = passes.length
+            ? '<p class="mt-6 text-sm text-slate-500 leading-relaxed"><span class="font-bold text-green-600">✓ Already good:</span> ' + passes.map(function (r) { return esc(r.label); }).join(', ') + '.</p>'
+            : '';
+    }
+
+    function updateSpeedSummary(perf) {
+        var el = document.getElementById('summary-speed');
+        if (!el) return;
+        if (perf == null) { el.innerHTML = ''; return; }
+        var emoji, msg;
+        if (perf >= 90) { emoji = '🟢'; msg = 'Your site loads fast — great for visitors and for Google.'; }
+        else if (perf >= 50) { emoji = '🟡'; msg = 'Your loading speed is okay, but making it faster would keep more visitors and help your ranking.'; }
+        else { emoji = '🔴'; msg = 'Your site is slow to load. This frustrates visitors and hurts your Google ranking — fixing speed should be a priority.'; }
+        el.innerHTML = '<p class="flex gap-3 text-slate-700 leading-relaxed"><span class="shrink-0">' + emoji + '</span><span><strong>Speed:</strong> ' + esc(msg) + '</span></p>';
+    }
+
     function showError(msg) {
         var e = document.getElementById('ttseo-error');
         e.textContent = msg || 'Something went wrong. Please try again.';
@@ -217,6 +284,7 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
             document.getElementById('prev-url').textContent = d.url;
             document.getElementById('prev-desc').textContent = d.meta.description || '(no meta description)';
 
+            renderSummary(d);
             renderList('list-seo', d.seo);
             renderList('list-geo', d.geo);
 
@@ -244,6 +312,7 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
             }
             var d = json.data;
             setScore('score-perf', d.performance);
+            updateSpeedSummary(d.performance);
             var metric = function (label, val) {
                 return '<div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><p class="text-xs font-bold uppercase tracking-widest text-slate-400">' + label + '</p><p class="mt-1 text-2xl font-display text-slate-900">' + esc(val) + '</p></div>';
             };
