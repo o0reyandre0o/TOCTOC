@@ -8,6 +8,9 @@ function toctoc_setup() {
 }
 add_action( 'after_setup_theme', 'toctoc_setup' );
 
+// Free SEO / GEO / AEO checker tool (AJAX endpoints for /seo-checker/).
+require_once get_template_directory() . '/seo-checker-tool.php';
+
 function toctoc_scripts() {
     wp_enqueue_style( 'toctoc-style', get_stylesheet_uri(), array(), '3.0' );
     
