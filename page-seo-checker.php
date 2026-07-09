@@ -79,6 +79,23 @@ $ttseo_ajax  = admin_url( 'admin-ajax.php' );
                 </div>
             </div>
 
+            <!-- Plain-English summary -->
+            <div class="rounded-[2rem] bg-white border border-slate-100 shadow-soft p-8 md:p-10 mb-10">
+                <div class="inline-flex items-center gap-2 rounded-full bg-sky-pale/60 px-4 py-1.5 text-[11px] font-bold text-sky-deep uppercase tracking-widest mb-5">In plain English</div>
+                <p id="summary-verdict" class="text-xl md:text-2xl font-display text-slate-900 leading-snug"></p>
+                <div id="summary-speed" class="mt-4"></div>
+                <div id="summary-fix" class="mt-6"></div>
+                <div id="summary-good" class="mt-2"></div>
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <a href="tel:+13455478120" class="inline-flex items-center gap-2 font-bold text-sky-deep decoration-none">
+                        Want help fixing these? Call TocToc
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <h2 class="text-2xl md:text-3xl font-display text-slate-900 mb-6">The technical details</h2>
+
             <!-- Search preview -->
             <div id="ttseo-preview" class="rounded-[2rem] bg-white border border-slate-100 shadow-soft p-8 mb-8">
                 <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Search preview</p>
