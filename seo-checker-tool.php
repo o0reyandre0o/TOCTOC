@@ -29,6 +29,8 @@ add_action( 'admin_menu', function () {
 } );
 add_action( 'admin_init', function () {
 	register_setting( 'toctoc_seo_settings', 'toctoc_psi_key', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+	register_setting( 'toctoc_seo_settings', 'toctoc_ts_site', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+	register_setting( 'toctoc_seo_settings', 'toctoc_ts_secret', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 } );
 function toctoc_seo_settings_page() {
 	if ( ! current_user_can( 'manage_options' ) ) {
@@ -46,6 +48,19 @@ function toctoc_seo_settings_page() {
 					<td>
 						<input type="text" id="toctoc_psi_key" name="toctoc_psi_key" value="<?php echo esc_attr( get_option( 'toctoc_psi_key', '' ) ); ?>" class="regular-text" style="width:440px;" placeholder="AIza..." />
 						<p class="description">Paste your free PageSpeed Insights API key here. <a href="https://developers.google.com/speed/docs/insights/v5/get-started" target="_blank" rel="noopener">How to get one &rarr;</a></p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="toctoc_ts_site">Cloudflare Turnstile — Site key</label></th>
+					<td>
+						<input type="text" id="toctoc_ts_site" name="toctoc_ts_site" value="<?php echo esc_attr( get_option( 'toctoc_ts_site', '' ) ); ?>" class="regular-text" style="width:440px;" placeholder="0x4AAA..." />
+						<p class="description">Optional anti-spam. Leave both Turnstile fields empty to disable. <a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank" rel="noopener">Get free keys &rarr;</a></p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="toctoc_ts_secret">Cloudflare Turnstile — Secret key</label></th>
+					<td>
+						<input type="text" id="toctoc_ts_secret" name="toctoc_ts_secret" value="<?php echo esc_attr( get_option( 'toctoc_ts_secret', '' ) ); ?>" class="regular-text" style="width:440px;" placeholder="0x4AAA..." />
 					</td>
 				</tr>
 			</table>
@@ -122,6 +137,34 @@ function toctoc_seo_rate_limited( $bucket = 'check', $max = 15 ) {
 	}
 	set_transient( $key, $n + 1, HOUR_IN_SECONDS );
 	return false;
+}
+
+/** Verify the Cloudflare Turnstile token. Returns true when disabled or valid. */
+function toctoc_seo_turnstile_ok() {
+	$secret = get_option( 'toctoc_ts_secret', '' );
+	if ( empty( $secret ) ) {
+		return true; // Anti-spam not configured.
+	}
+	$token = isset( $_POST['ts_token'] ) ? sanitize_text_field( wp_unslash( $_POST['ts_token'] ) ) : '';
+	if ( empty( $token ) ) {
+		return false;
+	}
+	$resp = wp_remote_post(
+		'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+		array(
+			'timeout' => 10,
+			'body'    => array(
+				'secret'   => $secret,
+				'response' => $token,
+				'remoteip' => isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '',
+			),
+		)
+	);
+	if ( is_wp_error( $resp ) ) {
+		return false;
+	}
+	$data = json_decode( (string) wp_remote_retrieve_body( $resp ), true );
+	return ! empty( $data['success'] );
 }
 
 /** Build a single check row. */
@@ -302,6 +345,10 @@ function toctoc_seo_send_report( $name, $email, $url, $result ) {
  */
 function toctoc_seo_check_handler() {
 	check_ajax_referer( 'toctoc_seo', 'nonce' );
+
+	if ( ! toctoc_seo_turnstile_ok() ) {
+		wp_send_json_error( array( 'message' => 'Anti-spam verification failed. Please refresh and try again.' ) );
+	}
 
 	if ( toctoc_seo_rate_limited( 'check', 15 ) ) {
 		wp_send_json_error( array( 'message' => 'You have reached the hourly limit. Please try again later.' ), 429 );

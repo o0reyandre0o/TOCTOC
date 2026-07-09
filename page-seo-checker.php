@@ -10,6 +10,10 @@ get_header();
 
 $ttseo_nonce = wp_create_nonce( 'toctoc_seo' );
 $ttseo_ajax  = admin_url( 'admin-ajax.php' );
+$ttseo_ts    = get_option( 'toctoc_ts_site', '' );
+if ( $ttseo_ts ) {
+	echo '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
+}
 ?>
 
 <main class="min-h-screen bg-background text-foreground">
@@ -36,11 +40,16 @@ $ttseo_ajax  = admin_url( 'admin-ajax.php' );
                 <div class="rounded-[2rem] bg-white border border-slate-200 shadow-soft p-6 md:p-8">
                     <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Website URL</label>
                     <input id="ttseo-url" type="text" required inputmode="url" placeholder="https://yourwebsite.com" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-lg text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
+                    <input id="ttseo-competitor" type="text" inputmode="url" placeholder="Compare with a competitor's URL (optional)" class="mt-3 w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
 
                     <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input id="ttseo-name" type="text" placeholder="Your name (optional)" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
                         <input id="ttseo-email" type="email" required placeholder="Your email" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
                     </div>
+
+                    <?php if ( $ttseo_ts ) : ?>
+                    <div class="cf-turnstile mt-4" data-sitekey="<?php echo esc_attr( $ttseo_ts ); ?>"></div>
+                    <?php endif; ?>
 
                     <button id="ttseo-submit" type="submit" class="mt-5 w-full inline-flex items-center justify-center gap-3 rounded-full bg-slate-950 text-white py-4 text-lg font-bold shadow-pill transition-all hover:scale-[1.01] decoration-none">
                         <span id="ttseo-btn-label">Analyze my website</span>
@@ -140,7 +149,7 @@ $ttseo_ajax  = admin_url( 'admin-ajax.php' );
 </main>
 
 <script>
-window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php echo esc_js( $ttseo_nonce ); ?>' };
+window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php echo esc_js( $ttseo_nonce ); ?>', ts: '<?php echo esc_js( $ttseo_ts ); ?>' };
 (function () {
     var form = document.getElementById('ttseo-form');
     if (!form) return;
