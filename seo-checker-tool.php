@@ -21,6 +21,59 @@ add_action( 'wp_ajax_toctoc_seo_psi', 'toctoc_seo_psi_handler' );
 add_action( 'wp_ajax_nopriv_toctoc_seo_psi', 'toctoc_seo_psi_handler' );
 
 /**
+ * Admin settings page: WordPress → Settings → SEO Checker.
+ * Paste the PageSpeed API key here (no need to edit wp-config.php).
+ */
+add_action( 'admin_menu', function () {
+	add_options_page( 'SEO Checker', 'SEO Checker', 'manage_options', 'toctoc-seo-checker', 'toctoc_seo_settings_page' );
+} );
+add_action( 'admin_init', function () {
+	register_setting( 'toctoc_seo_settings', 'toctoc_psi_key', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+} );
+function toctoc_seo_settings_page() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	$leads = get_option( 'toctoc_seo_leads', array() );
+	?>
+	<div class="wrap">
+		<h1>SEO / GEO Checker</h1>
+		<form method="post" action="options.php">
+			<?php settings_fields( 'toctoc_seo_settings' ); ?>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><label for="toctoc_psi_key">Google PageSpeed API key</label></th>
+					<td>
+						<input type="text" id="toctoc_psi_key" name="toctoc_psi_key" value="<?php echo esc_attr( get_option( 'toctoc_psi_key', '' ) ); ?>" class="regular-text" style="width:440px;" placeholder="AIza..." />
+						<p class="description">Paste your free PageSpeed Insights API key here. <a href="https://developers.google.com/speed/docs/insights/v5/get-started" target="_blank" rel="noopener">How to get one &rarr;</a></p>
+					</td>
+				</tr>
+			</table>
+			<?php submit_button(); ?>
+		</form>
+
+		<?php if ( is_array( $leads ) && $leads ) : ?>
+		<hr>
+		<h2>Recent leads (<?php echo count( $leads ); ?>)</h2>
+		<table class="widefat striped" style="max-width:900px;">
+			<thead><tr><th>When</th><th>Name</th><th>Email</th><th>URL analysed</th></tr></thead>
+			<tbody>
+			<?php foreach ( array_slice( $leads, 0, 30 ) as $l ) : ?>
+				<tr>
+					<td><?php echo esc_html( $l['time'] ); ?></td>
+					<td><?php echo esc_html( $l['name'] ); ?></td>
+					<td><?php echo esc_html( $l['email'] ); ?></td>
+					<td><?php echo esc_html( $l['url'] ); ?></td>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
+/**
  * Normalise + validate a user URL and block SSRF to private/reserved hosts.
  * Returns the safe URL string, or false.
  */
