@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '/^<script>$/{f=1;next} /^<\\\\/script>$/{f=0} f' page-seo-checker.php)",
+      "Bash(node --check /tmp/ttseo.js)"
+    ]
+  }
+}
