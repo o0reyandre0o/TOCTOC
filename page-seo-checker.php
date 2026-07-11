@@ -31,7 +31,7 @@ if ( $ttseo_ts ) {
 <main class="min-h-screen bg-background text-foreground">
 
     <!-- Hero + form -->
-    <section class="relative pt-40 md:pt-48 pb-20 overflow-hidden bg-white">
+    <section class="ttseo-noprint relative pt-40 md:pt-48 pb-20 overflow-hidden bg-white">
         <div class="absolute inset-0 z-0 opacity-10">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
             <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent blur-[100px] rounded-full"></div>
@@ -163,7 +163,7 @@ if ( $ttseo_ts ) {
             </div>
 
             <!-- CTA -->
-            <div class="rounded-[2.5rem] bg-slate-950 text-white p-10 md:p-14 text-center">
+            <div class="ttseo-noprint rounded-[2.5rem] bg-slate-950 text-white p-10 md:p-14 text-center">
                 <h2 class="text-3xl md:text-5xl font-display leading-[0.95]">Want us to <em class="italic text-accent font-display">fix all this?</em></h2>
                 <p class="mt-6 text-white/60 max-w-xl mx-auto">TocToc Marketing builds websites that Google and AI love. Let's turn these scores green.</p>
                 <a href="<?php echo esc_url( home_url( '/seo-agency-services-cayman-islands/' ) ); ?>" class="mt-8 inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-glow transition-transform hover:scale-105 decoration-none">
@@ -309,6 +309,11 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         var e = document.getElementById('ttseo-error');
         e.textContent = msg || 'Something went wrong. Please try again.';
         e.classList.remove('hidden');
+    }
+
+    var pdfBtn = document.getElementById('ttseo-pdf');
+    if (pdfBtn) {
+        pdfBtn.addEventListener('click', function () { window.print(); });
     }
 
     form.addEventListener('submit', function (ev) {
