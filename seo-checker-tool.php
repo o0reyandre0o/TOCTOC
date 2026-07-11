@@ -739,3 +739,179 @@ function toctoc_seo_psi_handler() {
 		)
 	);
 }
+
+/* -------------------------------------------------------------------------
+ * Full-site crawl (frontend-driven: discover pages, then analyse each one).
+ * ---------------------------------------------------------------------- */
+
+/** Log a lead + notify the team without sending the full per-page report. */
+function toctoc_seo_log_lead( $name, $email, $url ) {
+	$log = get_option( 'toctoc_seo_leads', array() );
+	if ( ! is_array( $log ) ) {
+		$log = array();
+	}
+	array_unshift( $log, array( 'name' => $name, 'email' => $email, 'url' => $url, 'time' => current_time( 'mysql' ) ) );
+	update_option( 'toctoc_seo_leads', array_slice( $log, 0, 200 ), false );
+	wp_mail(
+		apply_filters( 'toctoc_seo_lead_email', array( 'info@toctoc.ky', 'daniel@toctoc.ky', 'web@toctoc.ky' ) ),
+		'SEO Checker lead — ' . $email,
+		"Lead: {$name} <{$email}>\nRequested: {$url}\nWhen: " . current_time( 'mysql' )
+	);
+}
+
+/** Extract same-origin, HTML-looking page URLs from an HTML document. */
+function toctoc_seo_extract_links( $html, $origin ) {
+	$urls = array();
+	if ( '' === $html ) {
+		return $urls;
+	}
+	libxml_use_internal_errors( true );
+	$doc = new DOMDocument();
+	$doc->loadHTML( $html );
+	libxml_clear_errors();
+	$scheme = wp_parse_url( $origin, PHP_URL_SCHEME );
+	$host   = strtolower( (string) wp_parse_url( $origin, PHP_URL_HOST ) );
+	foreach ( $doc->getElementsByTagName( 'a' ) as $a ) {
+		$href = trim( $a->getAttribute( 'href' ) );
+		if ( '' === $href || 0 === strpos( $href, '#' ) || preg_match( '#^(mailto:|tel:|javascript:)#i', $href ) ) {
+			continue;
+		}
+		if ( 0 === strpos( $href, '//' ) ) {
+			$href = $scheme . ':' . $href;
+		} elseif ( 0 === strpos( $href, '/' ) ) {
+			$href = $origin . $href;
+		} elseif ( ! preg_match( '#^https?://#i', $href ) ) {
+			$href = $origin . '/' . ltrim( $href, '/' );
+		}
+		$p = wp_parse_url( $href );
+		if ( empty( $p['host'] ) || strtolower( $p['host'] ) !== $host ) {
+			continue;
+		}
+		$clean = $p['scheme'] . '://' . $p['host'] . ( isset( $p['path'] ) ? $p['path'] : '/' );
+		if ( preg_match( '/\.(jpe?g|png|gif|webp|svg|pdf|zip|css|js|ico|mp4|mp3|woff2?)$/i', $clean ) ) {
+			continue;
+		}
+		$urls[ $clean ] = true;
+	}
+	return array_keys( $urls );
+}
+
+/** Extract page URLs from a sitemap (handles a one-level sitemap index). */
+function toctoc_seo_parse_sitemap( $xml, $origin ) {
+	$pages = array();
+	$subs  = array();
+	$host  = strtolower( (string) wp_parse_url( $origin, PHP_URL_HOST ) );
+	if ( preg_match_all( '#<loc>\s*([^<\s]+)\s*</loc>#i', $xml, $m ) ) {
+		foreach ( $m[1] as $loc ) {
+			$loc = html_entity_decode( trim( $loc ) );
+			if ( strtolower( (string) wp_parse_url( $loc, PHP_URL_HOST ) ) !== $host ) {
+				continue;
+			}
+			if ( preg_match( '/\.xml($|\?)/i', $loc ) ) {
+				$subs[] = $loc;
+			} else {
+				$pages[] = $loc;
+			}
+		}
+	}
+	if ( empty( $pages ) && ! empty( $subs ) ) {
+		foreach ( array_slice( $subs, 0, 2 ) as $sub ) {
+			$r = toctoc_seo_fetch( $sub, 8 );
+			if ( 200 === $r['code'] && preg_match_all( '#<loc>\s*([^<\s]+)\s*</loc>#i', $r['body'], $mm ) ) {
+				foreach ( $mm[1] as $l ) {
+					$l = html_entity_decode( trim( $l ) );
+					if ( ! preg_match( '/\.xml($|\?)/i', $l ) ) {
+						$pages[] = $l;
+					}
+				}
+			}
+		}
+	}
+	return array_values( array_unique( $pages ) );
+}
+
+add_action( 'wp_ajax_toctoc_seo_discover', 'toctoc_seo_discover_handler' );
+add_action( 'wp_ajax_nopriv_toctoc_seo_discover', 'toctoc_seo_discover_handler' );
+function toctoc_seo_discover_handler() {
+	check_ajax_referer( 'toctoc_seo', 'nonce' );
+	if ( ! toctoc_seo_turnstile_ok() ) {
+		wp_send_json_error( array( 'message' => 'Anti-spam verification failed. Please refresh and try again.' ) );
+	}
+	if ( toctoc_seo_rate_limited( 'discover', 8 ) ) {
+		wp_send_json_error( array( 'message' => 'You have reached the hourly limit. Please try again later.' ), 429 );
+	}
+	$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	$name  = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
+	if ( ! is_email( $email ) ) {
+		wp_send_json_error( array( 'message' => 'Please enter a valid email address.' ) );
+	}
+	$url = toctoc_seo_safe_url( isset( $_POST['url'] ) ? wp_unslash( $_POST['url'] ) : '' );
+	if ( ! $url ) {
+		wp_send_json_error( array( 'message' => 'Please enter a valid, public website URL.' ) );
+	}
+
+	toctoc_seo_log_lead( $name, $email, $url . ' (full-site scan)' );
+
+	$parts  = wp_parse_url( $url );
+	$origin = $parts['scheme'] . '://' . $parts['host'];
+	$urls   = array();
+
+	$sm = toctoc_seo_fetch( $origin . '/sitemap.xml', 10 );
+	if ( 200 === $sm['code'] && false !== stripos( $sm['body'], '<loc' ) ) {
+		$urls = toctoc_seo_parse_sitemap( $sm['body'], $origin );
+	}
+	if ( count( $urls ) < 2 ) {
+		$home = toctoc_seo_fetch( $url, 15 );
+		if ( $home['code'] < 400 ) {
+			$urls = toctoc_seo_extract_links( $home['body'], $origin );
+		}
+	}
+	array_unshift( $urls, $url );
+	$urls = array_slice( array_values( array_unique( $urls ) ), 0, 20 );
+
+	wp_send_json_success( array( 'urls' => $urls, 'host' => $parts['host'] ) );
+}
+
+add_action( 'wp_ajax_toctoc_seo_page', 'toctoc_seo_page_handler' );
+add_action( 'wp_ajax_nopriv_toctoc_seo_page', 'toctoc_seo_page_handler' );
+function toctoc_seo_page_handler() {
+	check_ajax_referer( 'toctoc_seo', 'nonce' );
+	if ( toctoc_seo_rate_limited( 'page', 250 ) ) {
+		wp_send_json_error( array( 'message' => 'Rate limit reached.' ), 429 );
+	}
+	$url = toctoc_seo_safe_url( isset( $_POST['url'] ) ? wp_unslash( $_POST['url'] ) : '' );
+	if ( ! $url ) {
+		wp_send_json_error( array( 'message' => 'Invalid URL.' ) );
+	}
+	$resp = wp_remote_get(
+		$url,
+		array(
+			'timeout'     => 15,
+			'redirection' => 3,
+			'user-agent'  => 'TocTocSEOChecker/1.0 (+https://toctoc.ky)',
+		)
+	);
+	if ( is_wp_error( $resp ) || (int) wp_remote_retrieve_response_code( $resp ) >= 400 ) {
+		wp_send_json_error( array( 'message' => 'unreachable', 'url' => $url ) );
+	}
+	$res   = toctoc_seo_analyze( $url, (string) wp_remote_retrieve_body( $resp ) );
+	$all   = array_merge( $res['seo'], $res['geo'] );
+	$fails = 0;
+	$warns = 0;
+	foreach ( $all as $r ) {
+		if ( 'fail' === $r['status'] ) {
+			$fails++;
+		} elseif ( 'warn' === $r['status'] ) {
+			$warns++;
+		}
+	}
+	wp_send_json_success(
+		array(
+			'url'   => $url,
+			'seo'   => $res['scores']['seo'],
+			'geo'   => $res['scores']['geo'],
+			'fails' => $fails,
+			'warns' => $warns,
+		)
+	);
+}

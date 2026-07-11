@@ -59,6 +59,11 @@ if ( $ttseo_ts ) {
                         <input id="ttseo-email" type="email" required placeholder="Your email" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
                     </div>
 
+                    <label class="mt-4 flex items-center gap-2 text-sm text-slate-600 cursor-pointer select-none">
+                        <input id="ttseo-crawl-toggle" type="checkbox" class="w-4 h-4 rounded border-slate-300 accent-sky-deep">
+                        Scan the whole website (up to 20 pages)
+                    </label>
+
                     <?php if ( $ttseo_ts ) : ?>
                     <div class="cf-turnstile mt-4" data-sitekey="<?php echo esc_attr( $ttseo_ts ); ?>"></div>
                     <?php endif; ?>
@@ -172,6 +177,44 @@ if ( $ttseo_ts ) {
                 </a>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Full-site crawl results -->
+    <section id="ttseo-crawl" class="hidden py-16 md:py-24 bg-white">
+        <div class="mx-auto max-w-5xl px-6">
+            <h2 class="text-3xl md:text-4xl font-display text-slate-900 mb-2">Full-site scan</h2>
+            <p id="crawl-status" class="text-slate-500 mb-6">Finding pages…</p>
+            <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden mb-10">
+                <div id="crawl-bar" class="h-full bg-sky-deep transition-all duration-300" style="width:0%"></div>
+            </div>
+            <div class="grid grid-cols-3 gap-4 md:gap-6 mb-10">
+                <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6 text-center">
+                    <div id="crawl-avg-seo" class="text-4xl md:text-5xl font-display leading-none">—</div>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 mt-2">Avg SEO</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6 text-center">
+                    <div id="crawl-avg-geo" class="text-4xl md:text-5xl font-display leading-none">—</div>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 mt-2">Avg GEO</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6 text-center">
+                    <div id="crawl-pages" class="text-4xl md:text-5xl font-display leading-none">0</div>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 mt-2">Pages</p>
+                </div>
+            </div>
+            <div class="rounded-[2rem] bg-white border border-slate-100 shadow-soft overflow-x-auto">
+                <table class="w-full text-sm min-w-[520px]">
+                    <thead>
+                        <tr class="text-left text-slate-400 border-b border-slate-100">
+                            <th class="p-4 font-bold">Page</th>
+                            <th class="p-4 font-bold">SEO</th>
+                            <th class="p-4 font-bold">GEO</th>
+                            <th class="p-4 font-bold">Issues</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crawl-rows"></tbody>
+                </table>
+            </div>
         </div>
     </section>
 </main>
@@ -305,6 +348,80 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         el.innerHTML = '<p class="flex gap-3 text-slate-700 leading-relaxed"><span class="shrink-0">' + emoji + '</span><span><strong>Speed:</strong> ' + esc(msg) + '</span></p>';
     }
 
+    function resetBtn() {
+        var btn = document.getElementById('ttseo-submit');
+        var lbl = document.getElementById('ttseo-btn-label');
+        if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+        if (lbl) { lbl.textContent = 'Analyze my website'; }
+    }
+
+    function runCrawl(url, email, name, tsToken) {
+        var sec = document.getElementById('ttseo-crawl');
+        sec.classList.remove('hidden');
+        document.getElementById('crawl-rows').innerHTML = '';
+        document.getElementById('crawl-bar').style.width = '0%';
+        document.getElementById('crawl-avg-seo').textContent = '—';
+        document.getElementById('crawl-avg-geo').textContent = '—';
+        document.getElementById('crawl-pages').textContent = '0';
+        document.getElementById('crawl-status').textContent = 'Finding pages…';
+        sec.scrollIntoView({ behavior: 'smooth' });
+
+        var params = { action: 'toctoc_seo_discover', nonce: TTSEO.nonce, url: url, email: email, name: name };
+        if (tsToken) params.ts_token = tsToken;
+        fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(params) })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+            if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
+            resetBtn();
+            if (!json || !json.success) { showError(json && json.data ? json.data.message : 'Could not scan that site.'); return; }
+            var urls = (json.data && json.data.urls) || [];
+            if (!urls.length) { document.getElementById('crawl-status').textContent = 'No pages found to scan.'; return; }
+            crawlPages(urls);
+        })
+        .catch(function () {
+            if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
+            resetBtn();
+            showError('Network error. Please try again.');
+        });
+    }
+
+    function crawlPages(urls) {
+        var total = urls.length, done = 0, counted = 0, seoSum = 0, geoSum = 0;
+        var rows = document.getElementById('crawl-rows');
+        var statusEl = document.getElementById('crawl-status');
+        function next(i) {
+            if (i >= total) {
+                statusEl.textContent = 'Done — scanned ' + counted + ' page' + (counted === 1 ? '' : 's') + '.';
+                return;
+            }
+            statusEl.textContent = 'Scanning ' + (i + 1) + ' of ' + total + '…';
+            var body = new URLSearchParams({ action: 'toctoc_seo_page', nonce: TTSEO.nonce, url: urls[i] });
+            fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+            .then(function (r) { return r.json(); })
+            .then(function (json) {
+                done++;
+                document.getElementById('crawl-bar').style.width = Math.round(done / total * 100) + '%';
+                if (json && json.success) {
+                    var d = json.data; counted++; seoSum += d.seo; geoSum += d.geo;
+                    var path = d.url.replace(/^https?:\/\/[^\/]+/, '') || '/';
+                    rows.insertAdjacentHTML('beforeend',
+                        '<tr class="border-b border-slate-50">' +
+                        '<td class="p-4"><a href="' + esc(d.url) + '" target="_blank" rel="noopener" class="text-sky-deep hover:underline break-all">' + esc(path) + '</a></td>' +
+                        '<td class="p-4 font-bold" style="color:' + scoreColor(d.seo) + '">' + d.seo + '</td>' +
+                        '<td class="p-4 font-bold" style="color:' + scoreColor(d.geo) + '">' + d.geo + '</td>' +
+                        '<td class="p-4 text-slate-500">' + (d.fails + d.warns) + '</td>' +
+                        '</tr>');
+                    document.getElementById('crawl-pages').textContent = counted;
+                    document.getElementById('crawl-avg-seo').textContent = Math.round(seoSum / counted);
+                    document.getElementById('crawl-avg-geo').textContent = Math.round(geoSum / counted);
+                }
+                next(i + 1);
+            })
+            .catch(function () { done++; next(i + 1); });
+        }
+        next(0);
+    }
+
     function showError(msg) {
         var e = document.getElementById('ttseo-error');
         e.textContent = msg || 'Something went wrong. Please try again.';
@@ -335,6 +452,12 @@ window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php ech
         // dataLayer lead event for GTM.
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'seo_check_lead', lead_email: email, checked_url: url });
+
+        var crawlToggle = document.getElementById('ttseo-crawl-toggle');
+        if (crawlToggle && crawlToggle.checked) {
+            runCrawl(url, email, name, tsToken);
+            return;
+        }
 
         var params = { action: 'toctoc_seo_check', nonce: TTSEO.nonce, url: url, email: email, name: name };
         if (competitor) params.competitor = competitor;
