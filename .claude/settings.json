@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(awk '/^<script>$/{f=1;next} /^<\\\\/script>$/{f=0} f' page-seo-checker.php)",
-      "Bash(node --check /tmp/ttseo.js)"
+      "Bash(node --check /tmp/ttseo.js)",
+      "Bash(curl -s \"https://toctoc.ky/robots.txt\")",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\n\" -A \"Mozilla/5.0 \\(compatible; GPTBot/1.1; +https://openai.com/gptbot\\)\" \"https://toctoc.ky/\")",
+      "Bash(curl -s -o /dev/null -w \"sitemap.xml status=%{http_code}\\\\n\" \"https://toctoc.ky/sitemap.xml\")"
     ]
   }
 }
