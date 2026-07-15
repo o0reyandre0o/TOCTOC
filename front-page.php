@@ -1,5 +1,20 @@
 <?php get_header(); ?>
 
+<!-- Venezuela appeal bar — slim black strip pinned above everything -->
+<div class="fixed top-0 inset-x-0 z-[1100] bg-slate-950 text-white">
+    <div class="mx-auto max-w-6xl px-4 h-11 flex items-center justify-center gap-2 sm:gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 text-[#ED1C24]"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <span class="text-xs sm:text-sm font-bold truncate">Venezuela Earthquake Appeal</span>
+        <a href="<?php echo esc_url( home_url( '/venezuela/' ) ); ?>" class="shrink-0 inline-flex items-center rounded-full bg-[#ED1C24] px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold text-white hover:bg-[#c8161d] transition-colors decoration-none">
+            Donate now
+        </a>
+    </div>
+</div>
+<style>
+    /* Push the floating nav below the appeal bar (home page only). */
+    nav.fixed { top: 3.5rem !important; }
+</style>
+
 <main class="min-h-screen bg-background text-foreground">
     <!-- Section 1: Hero Section -->
     <section id="home" class="relative min-h-[100svh] w-full overflow-hidden flex items-center">
@@ -59,28 +74,6 @@
         </div>
     </section>
 
-    <!-- Venezuela Earthquake Appeal banner -->
-    <section class="relative z-20 px-4 -mt-6 md:-mt-10">
-        <div class="mx-auto max-w-6xl rounded-[2rem] bg-slate-950 text-white overflow-hidden shadow-glass border border-white/10">
-            <div class="flex flex-col md:flex-row items-center gap-6 p-8 md:p-10">
-                <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#ED1C24]/15 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#ED1C24]"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                </span>
-                <div class="flex-1 text-center md:text-left">
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-[#ED1C24] mb-1">Emergency Appeal</p>
-                    <h2 class="text-2xl md:text-3xl font-display leading-tight text-white">Venezuela Earthquake Appeal</h2>
-                    <p class="mt-1 text-sm text-white/60">Two earthquakes devastated Venezuela. From the Cayman Islands, we can help — donate today.</p>
-                </div>
-                <a href="<?php echo esc_url( home_url( '/venezuela/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-[#ED1C24] text-white pl-6 pr-2 py-2 text-base font-bold shadow-pill hover:bg-[#c8161d] hover:scale-105 transition-all decoration-none shrink-0">
-                    Donate Now
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-[#ED1C24] transition-transform group-hover:rotate-45">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Section 2: Intro -->
     <section class="relative py-24 md:py-32">
         <div class="mx-auto max-w-4xl px-6 text-center">
@@ -100,13 +93,10 @@
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <h2 class="text-5xl md:text-7xl text-slate-900 font-display">
-                    We build a <em class="italic text-sky-deep font-display">Revenue Loop</em> for your business
+                    How We Put Your Business in <em class="italic text-sky-deep font-display">AI Search Results</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    <strong>What is it?</strong> A three-phase marketing framework designed to dominate the 2026 digital landscape by turning search intent into sustainable growth.
-                </p>
-                <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    Our Revenue Loop framework consists of three fundamental phases designed to stabilize your digital foundation, drive new discovery through AI, and maximize customer lifetime value.
+                    Through our <strong>AI Search Visibility Framework</strong>&mdash;a three-phase system designed to make your business the definitive answer cited by ChatGPT, Gemini, Perplexity, and more.
                 </p>
             </div>
 
@@ -114,36 +104,37 @@
                 <!-- Card 01 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-6xl text-sky-deep/20">01</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep/25">Phase 01</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
                         </div>
                     </div>
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Get Recommended</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Discovery & AI Visibility</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-8">We optimize your “Context” across the platforms AI assistants use to learn about and recommend local businesses.</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">We optimize your &ldquo;Context&rdquo; across the platforms AI assistants use to learn about and recommend local businesses. We make sure that when someone asks an AI for an expert in your niche, your brand is the answer it gives.</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Channels Optimized</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Google Maps</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Apple Maps</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">TripAdvisor</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">LinkedIn</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Yelp</span>
                     </div>
                 </article>
 
                 <!-- Card 02 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-6xl text-sky-deep/20">02</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep/25">Phase 02</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                         </div>
                     </div>
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Get Chosen</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Your Website Foundation</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-8">We build high-speed “Discovery Engines” that turn a recommendation into a confirmed lead.</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">A recommendation is only as good as the destination. We build high-speed &ldquo;Discovery Engines&rdquo;&mdash;custom websites that AI loves to crawl and humans trust to use&mdash;turning an initial AI citation into a confirmed lead.</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Products Involved</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Custom Website</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Custom Websites</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Performance Landings</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Online Booking</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Mobile UI/UX</span>
@@ -153,18 +144,19 @@
                 <!-- Card 03 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-6xl text-sky-deep/20">03</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep/25">Phase 03</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
                         </div>
                     </div>
-                    <h3 class="text-3xl text-slate-900 font-display mb-2">Get Clients Back</h3>
-                    <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Retention & Automation</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-8">We capture your customer data and use intelligent systems to keep your brand top-of-mind.</p>
+                    <h3 class="text-3xl text-slate-900 font-display mb-2">Stay Recommended</h3>
+                    <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Ongoing Optimization</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">We keep your digital footprint fresh with monthly updates and new reviews so AI assistants keep recommending you.</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Products Involved</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Email Marketing</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">SMS Automation</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">CRM Integration</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Monthly Content Updates</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Review Generation</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Profile Maintenance</span>
                     </div>
                 </article>
             </div>
