@@ -104,7 +104,7 @@
                 <!-- Card 01 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-4xl md:text-5xl text-sky-deep/25">Phase 01</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 01</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
                         </div>
@@ -124,7 +124,7 @@
                 <!-- Card 02 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-4xl md:text-5xl text-sky-deep/25">Phase 02</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 02</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                         </div>
@@ -144,7 +144,7 @@
                 <!-- Card 03 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-4xl md:text-5xl text-sky-deep/25">Phase 03</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 03</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
                         </div>
