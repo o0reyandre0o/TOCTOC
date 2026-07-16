@@ -159,7 +159,7 @@ TocToc Marketing already delivers #1 AI-search rankings for Cayman businesses. E
 - [AI Search Optimization](https://toctoc.ky/ai-search-optimization-cayman-islands/): SEO, AEO and GEO (Search, Answer and Generative Engine Optimization) — rank on Google and get recommended by AI assistants.
 - [Website Design](https://toctoc.ky/website-design-agency-cayman-islands/): Fast, mobile-first websites that convert visitors into leads.
 - [Web Development](https://toctoc.ky/web-development-cayman-islands/): Custom websites, e-commerce and web apps built for speed and SEO.
-- [Social Media for Algorithmic Trust](https://toctoc.ky/social-media-marketing-services-cayman-islands/): Social media marketing that builds the engagement and trust signals AI and search algorithms use to recommend a business.
+- [Social Media for Algorithmic Trust](https://toctoc.ky/social-media-marketing-services-cayman-islands/): We optimize your social profiles (bios, handles, contact details, category tags and link structure) and provide strategic content blueprints, so AI crawlers read your business as active, consistent and trusted. Strategic and technical guidance — not daily posting, grid curation or community management.
 - [Digital PR for AI Authority Citations](https://toctoc.ky/advertising-pr-agency-cayman-islands/): Advertising, PR and media coverage that earn the third-party citations AI assistants rely on to recognize and recommend your brand.
 - [Full-Service Digital Marketing](https://toctoc.ky/digital-marketing-agency-cayman-islands/): A single partner for your entire marketing presence in Cayman.
 

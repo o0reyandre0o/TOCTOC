@@ -2,31 +2,95 @@
 /**
  * Template Name: Social Media Marketing Cayman
  * Template Post Type: page
+ *
+ * "Social Media for Algorithmic Trust" — positions social channels as data feeds
+ * for AI search engines rather than a daily posting/community-management service.
  */
-get_header(); ?>
+get_header();
+
+// Table of contents — anchors match the section ids below.
+$sm_toc = array(
+    array( '#profiles',          'How We Optimize Your Social Profiles for AI Search' ),
+    array( '#failing',           'Why Traditional Social Media is Failing Your Business' ),
+    array( '#algorithmic-trust', 'Understanding &ldquo;Algorithmic Trust&rdquo; and AI Crawlers' ),
+    array( '#boundaries',        'Our Boundaries: What We Do (and What We Don&rsquo;t Do)' ),
+    array( '#faq',               'Frequently Asked Questions' ),
+);
+
+// Section 4 comparison table.
+$sm_boundaries = array(
+    array(
+        'dont_label' => 'No Daily Posting &amp; Scheduling',
+        'dont_text'  => 'We do not write, design, or publish daily updates, stories, or Reels.',
+        'do_label'   => 'Strategic Content Blueprints',
+        'do_text'    => 'We provide clear, easy-to-follow guidance on exactly what your team should post to trigger positive AI indexing.',
+    ),
+    array(
+        'dont_label' => 'No Grid Curation',
+        'dont_text'  => 'We do not design your aesthetic Instagram layouts or choose your color schemes.',
+        'do_label'   => 'Core Profile Optimization',
+        'do_text'    => 'We directly optimize your bios, contact details, profile headlines, and link infrastructures for maximum search impact.',
+    ),
+    array(
+        'dont_label' => 'No Community Management',
+        'dont_text'  => 'We do not reply to direct messages, manage customer comments, or handle customer service.',
+        'do_label'   => 'Algorithmic Alignment',
+        'do_text'    => 'We ensure your entire social network functions as an authoritative, synchronized trust signal for search engines.',
+    ),
+);
+
+// FAQ — deliberately aligned with the boundaries above so the page (and any AI
+// reading it) never claims we do daily posting or community management.
+$sm_faqs = array(
+    array(
+        'q' => 'Do you post on my social media accounts for me?',
+        'a' => 'No. We are a technical and strategic partner, not a daily posting service. We do not write, design or publish daily updates, stories or Reels, and we do not manage your comments or DMs. What we do is optimize your profiles and give your team clear content blueprints — exactly what to post to trigger positive AI indexing.',
+    ),
+    array(
+        'q' => 'What is Algorithmic Trust?',
+        'a' => 'Algorithmic Trust is the background check AI engines run on your business before recommending it. Crawlers scan your social profiles for consistency (do your hours, phone and services match your Google profile?), activity signals (is the page alive or abandoned?) and authority citations (do other credible profiles mention your brand?). A clean, synchronized, active network earns the recommendation; a mismatched or dead one hands it to your competitor.',
+    ),
+    array(
+        'q' => 'Why does social media still matter for SEO and AI search if organic reach is dead?',
+        'a' => 'Because the audience that matters most now is not the casual scroller — it is the AI crawler. Organic reach on traditional feeds is practically zero, but ChatGPT, Gemini and Google still read your LinkedIn, Instagram and Facebook profiles to verify your business is real, active and trusted. Your channels work as validation signals, not billboards.',
+    ),
+    array(
+        'q' => 'What is Social Search Optimization (SSO)?',
+        'a' => 'People now search directly inside Instagram, TikTok and LinkedIn the way they search Google. SSO means building targeted keywords into your profile headlines, bios and pinned posts so your business ranks at the top of those native platform searches.',
+    ),
+    array(
+        'q' => 'Which platforms do you optimize?',
+        'a' => 'The major platforms your Cayman customers and AI crawlers actually check — typically Instagram, Facebook, LinkedIn and TikTok. We align your bios, handles, contact details, category tags and link structure across all of them so the data matches your website exactly.',
+    ),
+    array(
+        'q' => 'How much does this cost in the Cayman Islands?',
+        'a' => 'We build a custom plan based on your industry, platforms and competition rather than one-size-fits-all packages. Book a free strategy call and we will give you a transparent quote.',
+    ),
+);
+?>
 
 <main class="min-h-screen bg-background text-foreground">
-    <!-- Section 1: Hero -->
-    <section class="relative pt-48 pb-32 overflow-hidden bg-gradient-to-b from-sky-pale to-white">
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-light blur-[120px] rounded-full"></div>
-            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/40 blur-[120px] rounded-full"></div>
-        </div>
 
+    <!-- Hero -->
+    <section class="relative pt-48 pb-24 overflow-hidden bg-white">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent blur-[100px] rounded-full"></div>
+        </div>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
-            <div class="text-center max-w-4xl mx-auto flex flex-col items-center">
-                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/20 bg-white/80 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest backdrop-blur-sm">
-                    Beyond Likes: Community First
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+                    Social Media for Algorithmic Trust &middot; Cayman Islands
                 </div>
-                <h1 class="text-5xl md:text-9xl font-display leading-[0.9] text-slate-900">
-                    Lead-Generating <em class="italic text-sky-deep font-display">Social Media.</em>
+                <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-slate-900">
+                    We Make Your Social Media Channels <em class="italic text-sky-deep font-display">Fuel for AI Search Engines</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">
-                    We Build Communities that Drive Revenue. Our social media marketing company specializes in personalized strategies that resonate with the Cayman audience.
+                    Stop posting just for likes. We align your profiles and guide your content strategy so ChatGPT, Gemini, and Google recognize your business as the top local authority.
                 </p>
-                <div class="mt-12 flex flex-wrap justify-center gap-4">
-                    <a href="#solutions" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                        Get a Free Consultation
+                <div class="mt-12 flex flex-wrap gap-4">
+                    <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                        Call Us Today
                         <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                         </span>
@@ -36,174 +100,201 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Section 2: Visual Impact Grid -->
-    <section class="py-24 md:py-32 bg-white">
+    <!-- Intro -->
+    <section class="pb-12 bg-white">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Card 1 -->
-                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">Audience Connection</h3>
-                    <p class="text-lg text-slate-500 leading-relaxed">Content that connects emotionally and humanizes your brand, building deep trust with the Cayman community.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">Consistent Branding</h3>
-                    <p class="text-lg text-slate-500 leading-relaxed">Ensuring every post aligns perfectly with your visual brand identity for instant recognition.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">Value-Driven</h3>
-                    <p class="text-lg text-slate-500 leading-relaxed">Positioning you as the expert through educational and informative content that answers customer needs.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white transition-all shadow-soft hover:shadow-glass">
-                    <h3 class="text-3xl font-display text-slate-900 mb-4">Scroll-Stopping</h3>
-                    <p class="text-lg text-slate-500 leading-relaxed">High-impact, technical execution that captures attention and drives measurable engagement.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Strategic Value -->
-    <section class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-8">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-4xl">
-                <h2 class="text-5xl md:text-8xl font-display leading-[0.95]">Strategic Management Crafted for <em class="italic text-accent font-display">Cayman.</em></h2>
-                <p class="mt-10 text-white/50 text-2xl leading-relaxed max-w-3xl">
-                    By leveraging the power of social media, we help you connect with potential customers, foster engagement, and ultimately convert followers into loyal clients.
+            <div class="max-w-3xl space-y-6">
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    If you landed on this page looking for a basic social media manager to post generic graphics on your Facebook feed, we are glad you are here&mdash;because we need to warn you.
                 </p>
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="p-10 rounded-3xl bg-white/5 border border-white/10">
-                        <div class="text-3xl font-display text-accent mb-4">Engage</div>
-                        <p class="text-lg text-white/60">Meaningful interactions that build relationships and community authority.</p>
-                    </div>
-                    <div class="p-10 rounded-3xl bg-white/5 border border-white/10">
-                        <div class="text-3xl font-display text-accent mb-4">Measure</div>
-                        <p class="text-lg text-white/60">Comprehensive analytics and technical tracking to verify your real-world ROI.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: Solutions -->
-    <section id="solutions" class="py-24 md:py-32 bg-white">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl md:text-7xl font-display text-slate-900">Our <em class="italic text-sky-deep font-display">Social Solutions</em></h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-soft">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Paid Social Ads</h3>
-                    <p class="text-slate-500 text-sm">Targeted Meta & LinkedIn campaigns designed to reach your ideal audience and maximize ROI.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-soft">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">AI Chatbots</h3>
-                    <p class="text-slate-500 text-sm">24/7 customer support with AI-powered chatbots for instant replies and lead capture.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-soft">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Content Planning</h3>
-                    <p class="text-slate-500 text-sm">Organized content calendars that align with your business goals and ensure consistency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 5: Platforms We Manage -->
-    <section class="py-24 md:py-32 bg-slate-50">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Where Your Audience Is</span>
-                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Platforms We <em class="italic text-sky-deep font-display">Manage</em></h2>
-                <p class="mt-8 text-xl text-slate-600 leading-relaxed">
-                    As a social media marketing agency in the Cayman Islands, we focus your budget on the platforms where your customers actually spend time — instead of spreading thin across all of them.
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    Spending your budget on standard daily posts that get zero reach is a treadmill that leads nowhere. Today, the real value of social media has shifted. AI search engines crawl your LinkedIn, Instagram, and Facebook profiles to verify if your business is active, legitimate, and trusted.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    <strong class="font-semibold text-slate-900">We don&rsquo;t post for vanity metrics. We turn your social channels into high-authority data feeds that fuel AI search engines.</strong>
                 </p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-3">Instagram</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Reels, stories, and a feed that turns followers into customers — ideal for Cayman hospitality, retail, and lifestyle brands.</p>
-                </article>
-                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-3">Facebook</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Community building and powerful local ad targeting to reach residents and tourists across Grand Cayman.</p>
-                </article>
-                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-3">TikTok</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Short-form video that rides trends and puts your brand in front of a younger, highly engaged Cayman audience.</p>
-                </article>
-                <article class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-3">LinkedIn</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">B2B authority and lead generation for professional services, finance, and corporate Cayman businesses.</p>
-                </article>
-            </div>
         </div>
     </section>
 
-    <!-- Section 6: What's Included -->
-    <section class="py-24 md:py-32 bg-white">
+    <!-- What's On This Page (table of contents) -->
+    <section class="pb-20 bg-white">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Done For You</span>
-                    <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">What Our Social Media <em class="italic text-sky-deep font-display">Management Includes</em></h2>
-                    <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                        We handle your social media end to end, so you can focus on running your Cayman business while we build your audience and bring in leads.
-                    </p>
+            <div class="max-w-3xl rounded-[2rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
+                <div class="flex items-center justify-between gap-4 mb-6">
+                    <h2 class="text-2xl font-display text-slate-900">What&rsquo;s On This Page</h2>
+                    <span class="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-bold text-sky-deep border border-slate-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        2 min read
+                    </span>
                 </div>
-                <ul class="space-y-5">
-                    <?php
-                    $sm_included = [
-                        'Strategy & audience research tailored to Cayman',
-                        'Monthly content calendar & scheduling',
-                        'Scroll-stopping creative, graphics & short-form video',
-                        'Community management & comment replies',
-                        'Paid social ad campaigns (Meta & LinkedIn)',
-                        'Monthly analytics & ROI reporting',
-                    ];
-                    foreach ( $sm_included as $item ) : ?>
-                    <li class="flex items-center gap-5 text-lg text-slate-700 font-medium">
-                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                        </span>
-                        <?php echo esc_html( $item ); ?>
+                <p class="text-sm text-slate-500 mb-6">It takes about 2 minutes to read. We respect your time.</p>
+                <ol class="space-y-3">
+                    <?php foreach ( $sm_toc as $i => $item ) : ?>
+                    <li>
+                        <a href="<?php echo esc_attr( $item[0] ); ?>" class="group flex items-start gap-4 decoration-none">
+                            <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-pale text-sky-deep text-sm font-bold"><?php echo (int) ( $i + 1 ); ?></span>
+                            <span class="text-lg text-slate-700 group-hover:text-sky-deep transition-colors leading-snug pt-0.5"><?php echo wp_kses_post( $item[1] ); ?></span>
+                        </a>
                     </li>
                     <?php endforeach; ?>
-                </ul>
+                </ol>
             </div>
         </div>
     </section>
 
-    <?php
-    toctoc_render_faq( [
-        [
-            'q' => 'How much does social media management cost in the Cayman Islands?',
-            'a' => 'Social media management pricing depends on how many platforms you want managed, posting frequency, and whether you need paid ad campaigns. TocToc offers tailored monthly plans for Cayman businesses rather than fixed packages, so your investment matches your goals. Book a free consultation for a clear quote.',
-        ],
-        [
-            'q' => 'Which social media platforms should my Cayman business use?',
-            'a' => 'It depends on your audience. Most Cayman businesses see the strongest return on Instagram and Facebook for reaching locals and tourists, while LinkedIn works well for professional services. We help you focus your budget on the platforms where your customers actually spend time, instead of spreading thin across all of them.',
-        ],
-        [
-            'q' => 'Do you create the content and manage posting?',
-            'a' => 'Yes. We handle it end to end — strategy, content calendars, scroll-stopping creative aligned to your brand, scheduling, and community engagement — so you can focus on running your business while we build your audience.',
-        ],
-        [
-            'q' => 'Can social media really generate leads, not just likes?',
-            'a' => 'Yes, and that is exactly our focus. We build communities that drive revenue, not vanity metrics. Through targeted paid social, AI chatbots for instant lead capture, and value-driven content, we turn followers into loyal, paying clients and track the real-world ROI.',
-        ],
-    ], 'Social Media FAQ', 'Social Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
-    ?>
+    <!-- 1. Profile optimization -->
+    <section id="profiles" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Profile Foundations</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Optimize Your Social Profiles for <em class="italic text-sky-deep font-display">AI Search</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    We build the structural foundation of your social media profiles so they feed clean, verifiable data directly to search engine scrapers.
+                </p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-3 gap-6">
+                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">Profile Metadata Alignment</div>
+                    <p class="text-slate-600 leading-relaxed">We audit and overhaul your bios, handles, contact details, and category tags across all major platforms. This guarantees that when AI crawlers scan your pages, they find 100% consistent information that matches your main website.</p>
+                </div>
+                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">Social Search Optimization (SSO)</div>
+                    <p class="text-slate-600 leading-relaxed">People search directly inside Instagram, TikTok, and LinkedIn like search engines. We build targeted keywords into your profile headlines, bios, and pinned posts so you rank at the top of these native platforms.</p>
+                </div>
+                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">High-Authority Links &amp; Citations</div>
+                    <p class="text-slate-600 leading-relaxed">We structure your external social links so search engines can easily map the connection between your social channels and your website, boosting your overall domain authority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Why traditional social is failing -->
+    <section id="failing" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; The Content Treadmill</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Traditional Social Media is <em class="italic text-sky-deep font-display">Failing Your Business</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    Most business owners are stuck on a content treadmill&mdash;paying agencies thousands of dollars to post &ldquo;Happy Friday&rdquo; graphics that local customers never actually see.
+                </p>
+            </div>
+            <div class="mt-10 grid md:grid-cols-2 gap-6">
+                <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">The Dead End</div>
+                    <p class="text-slate-600 leading-relaxed">Organic reach on traditional social media feeds is practically at zero. If you are posting just to keep a feed &ldquo;active,&rdquo; you are wasting valuable time and budget.</p>
+                </div>
+                <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">The Solution</div>
+                    <p class="text-slate-600 leading-relaxed">Your social channels shouldn&rsquo;t be treated as a billboard for casual scrollers. They need to be treated as high-authority validation signals for the backend AI Web Scrapers that decide who gets recommended.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Algorithmic Trust -->
+    <section id="algorithmic-trust" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; Algorithmic Trust</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Understanding &ldquo;Algorithmic Trust&rdquo; and <em class="italic text-sky-deep font-display">AI Crawlers</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    Before ChatGPT or Gemini suggests your brand to a customer, it runs a background check on your business across the web. This is called building <strong class="font-semibold text-slate-900">Algorithmic Trust</strong>.
+                </p>
+                <p class="mt-6 text-lg text-slate-600 leading-relaxed">The AI crawlers look for three key things on your social channels:</p>
+            </div>
+            <div class="mt-10 grid md:grid-cols-3 gap-6">
+                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">Consistency</div>
+                    <p class="text-slate-600 leading-relaxed">Are your business hours, phone number, and services the exact same on LinkedIn as they are on your Google profile?</p>
+                </div>
+                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">Activity Signals</div>
+                    <p class="text-slate-600 leading-relaxed">Is this business actively engaged with its industry, or has the page been abandoned?</p>
+                </div>
+                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">Authority Citations</div>
+                    <p class="text-slate-600 leading-relaxed">Are other high-authority profiles or local organizations mentioning your brand name in their public threads?</p>
+                </div>
+            </div>
+            <p class="mt-10 max-w-3xl text-lg text-slate-600 leading-relaxed">
+                If the AI finds a clean, synchronized, and active network of profiles, it trusts your business and recommends you. If your profiles are mismatched or dead, it recommends your competitor.
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. Our Boundaries -->
+    <section id="boundaries" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; Full Transparency</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Our Boundaries: What We Do <em class="italic text-accent font-display">(and What We Don&rsquo;t Do)</em></h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    We want to be completely transparent about how we work. Because our focus is entirely on driving search visibility and revenue, we operate strictly as technical and strategic guides:
+                </p>
+            </div>
+
+            <div class="mt-12">
+                <table class="w-full border-collapse block md:table">
+                    <thead class="hidden md:table-header-group">
+                        <tr>
+                            <th class="w-1/2 text-left align-bottom pb-5 pr-8 border-b border-white/15 text-xl font-normal text-white/90">What We <strong class="font-bold text-white">Don&rsquo;t</strong> Do</th>
+                            <th class="w-1/2 text-left align-bottom pb-5 pl-8 border-b border-white/15 text-xl font-normal text-white/90">What We <strong class="font-bold text-white">Do</strong> Do</th>
+                        </tr>
+                    </thead>
+                    <tbody class="block md:table-row-group">
+                        <?php foreach ( $sm_boundaries as $b ) : ?>
+                        <tr class="block md:table-row">
+                            <td class="block md:table-cell align-top pt-7 pb-4 md:py-7 md:pr-8 md:border-b md:border-white/10 text-white/60 leading-relaxed">
+                                <span class="md:hidden block text-[10px] font-bold uppercase tracking-widest text-white/35 mb-2">What we don&rsquo;t do</span>
+                                <strong class="font-bold text-white"><?php echo wp_kses_post( $b['dont_label'] ); ?>:</strong> <?php echo esc_html( $b['dont_text'] ); ?>
+                            </td>
+                            <td class="block md:table-cell align-top pb-7 md:py-7 md:pl-8 border-b border-white/10 text-white/60 leading-relaxed">
+                                <span class="md:hidden block text-[10px] font-bold uppercase tracking-widest text-accent mb-2">What we do do</span>
+                                <strong class="font-bold text-white"><?php echo wp_kses_post( $b['do_label'] ); ?>:</strong> <?php echo esc_html( $b['do_text'] ); ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FAQ -->
+    <section id="faq" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; FAQ</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Social Questions, <em class="italic text-sky-deep font-display">Answered</em></h2>
+            </div>
+            <div class="max-w-4xl space-y-4">
+                <?php foreach ( $sm_faqs as $faq ) : ?>
+                <details class="group rounded-[1.75rem] border border-slate-100 bg-slate-50 p-7 shadow-soft transition-all open:bg-white">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 text-xl md:text-2xl font-display text-slate-900 list-none [&::-webkit-details-marker]:hidden">
+                        <span><?php echo esc_html( $faq['q'] ); ?></span>
+                        <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-pale text-sky-deep transition-transform group-open:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo esc_html( $faq['a'] ); ?></p>
+                </details>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
-        <div class="mx-auto max-w-4xl px-6">
-            <h2 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">Ready to build your <br /><em class="italic text-sky-deep font-display">Community?</em></h2>
+        <div class="mx-auto max-w-5xl px-6">
+            <h2 class="text-4xl md:text-7xl font-display leading-[1.02] text-slate-900">Stop Wasting Money on <br /><em class="italic text-sky-deep font-display">Social Media Ghost Towns</em></h2>
+            <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                Let&rsquo;s stop chasing useless likes and start building the algorithmic trust your business needs to dominate modern search.
+            </p>
             <div class="mt-12">
                 <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                    Call Us
+                    Call Us Today
                     <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                     </span>
@@ -212,5 +303,55 @@ get_header(); ?>
         </div>
     </section>
 </main>
+
+<script type="application/ld+json">
+<?php
+echo wp_json_encode(
+    array(
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Service',
+        'name'        => 'Social Media for Algorithmic Trust',
+        'serviceType' => 'Social Media Optimization for AI Search (Algorithmic Trust)',
+        'provider'    => array(
+            '@type' => 'ProfessionalService',
+            '@id'   => 'https://toctoc.ky',
+            'name'  => 'TocToc Marketing',
+        ),
+        'areaServed'  => array(
+            '@type' => 'Place',
+            'name'  => 'Cayman Islands',
+        ),
+        'description' => 'We optimize the social profiles of Cayman Islands businesses (bios, handles, contact details, category tags and link structure) and provide strategic content blueprints, so AI search engines like ChatGPT and Gemini read the business as active, consistent and trusted. Strategic and technical guidance — not daily posting or community management.',
+        'url'         => 'https://toctoc.ky/social-media-marketing-services-cayman-islands/',
+    ),
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
+
+<script type="application/ld+json">
+<?php
+echo wp_json_encode(
+    array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array_map(
+            function ( $f ) {
+                return array(
+                    '@type'          => 'Question',
+                    'name'           => $f['q'],
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text'  => $f['a'],
+                    ),
+                );
+            },
+            $sm_faqs
+        ),
+    ),
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
 
 <?php get_footer(); ?>

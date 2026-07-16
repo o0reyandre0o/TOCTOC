@@ -46,8 +46,8 @@
             'desc' => 'Award-worthy web design & development in the Cayman Islands. Fast, mobile-first websites that convert visitors into leads. Get your custom quote today.'
         ],
         'social-media-marketing-services-cayman-islands' => [
-            'title' => 'Social Media Marketing Cayman Islands | TocToc Marketing',
-            'desc' => 'Social media marketing & management for Cayman businesses. We build communities that drive real leads, not just likes. Book a free consultation today.'
+            'title' => 'Social Media for Algorithmic Trust Cayman | TocToc',
+            'desc' => 'Turn your social profiles into fuel for AI search. We optimize your profiles and content strategy so ChatGPT, Gemini & Google see your Cayman business as the local authority.'
         ],
         'advertising-pr-agency-cayman-islands' => [
             'title' => 'Advertising & PR Agency Cayman Islands | TocToc Marketing',
@@ -99,7 +99,7 @@
         'seo-agency-services-cayman-islands' => 'ai search optimization cayman islands, ai seo cayman, aeo agency cayman, geo optimization cayman, chatgpt seo, gemini recommendation, ai search visibility cayman, answer engine optimization',
         'digital-marketing-agency-cayman-islands' => 'digital marketing services cayman islands, branding agency cayman, graphic design cayman islands, marketing strategy grand cayman',
         'website-design-agency-cayman-islands' => 'website design cayman islands, web design agency grand cayman, wordpress development cayman, high performance websites',
-        'social-media-marketing-services-cayman-islands' => 'social media marketing cayman islands, social media management grand cayman, social media agency cayman, instagram marketing cayman, facebook ads cayman',
+        'social-media-marketing-services-cayman-islands' => 'social media marketing cayman islands, social media for ai search, algorithmic trust, social search optimization, social media optimization cayman, social media agency cayman, ai crawlers social profiles, instagram linkedin optimization cayman',
         'advertising-pr-agency-cayman-islands' => 'advertising agency cayman islands, advertising company cayman, communications agency cayman, pr agency cayman, pr services cayman, media buying cayman',
         'web-development-cayman-islands' => 'web development cayman islands, web development agency cayman, website development company cayman, ecommerce development cayman, web app development cayman',
         'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
