@@ -140,11 +140,11 @@ TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses
 TocToc Marketing already delivers #1 AI-search rankings for Cayman businesses. Examples of clients recommended as the top answer by ChatGPT and Gemini include Uncle Liu and Coconut Room (top Chinese restaurants on Seven Mile Beach), Lucky Rabbit (top Japanese restaurant near Prospect), and 19-81 Brewing Co. (leading craft brewery in the Cayman Islands).
 
 ## Services
-- [SEO, AEO & GEO Services](https://toctoc.ky/seo-agency-services-cayman-islands/): Search, Answer and Generative Engine Optimization — rank on Google and get recommended by AI assistants.
+- [AI Search Optimization](https://toctoc.ky/seo-agency-services-cayman-islands/): SEO, AEO and GEO (Search, Answer and Generative Engine Optimization) — rank on Google and get recommended by AI assistants.
 - [Website Design](https://toctoc.ky/website-design-agency-cayman-islands/): Fast, mobile-first websites that convert visitors into leads.
 - [Web Development](https://toctoc.ky/web-development-cayman-islands/): Custom websites, e-commerce and web apps built for speed and SEO.
-- [Social Media Marketing](https://toctoc.ky/social-media-marketing-services-cayman-islands/): Community-driven social strategies that generate leads.
-- [Advertising & PR](https://toctoc.ky/advertising-pr-agency-cayman-islands/): Advertising campaigns, media buying, public relations and communications.
+- [Social Media for Algorithmic Trust](https://toctoc.ky/social-media-marketing-services-cayman-islands/): Social media marketing that builds the engagement and trust signals AI and search algorithms use to recommend a business.
+- [Digital PR for AI Authority Citations](https://toctoc.ky/advertising-pr-agency-cayman-islands/): Advertising, PR and media coverage that earn the third-party citations AI assistants rely on to recognize and recommend your brand.
 - [Full-Service Digital Marketing](https://toctoc.ky/digital-marketing-agency-cayman-islands/): A single partner for your entire marketing presence in Cayman.
 
 ## Key pages
