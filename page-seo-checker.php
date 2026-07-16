@@ -464,6 +464,17 @@ window.TTSEO = {
         pdfBtn.addEventListener('click', function () { window.print(); });
     }
 
+    // Expand/collapse a crawled page's issue breakdown (delegated — rows are added later).
+    var crawlRows = document.getElementById('crawl-rows');
+    if (crawlRows) {
+        crawlRows.addEventListener('click', function (ev) {
+            var btn = ev.target.closest('.ttseo-expand');
+            if (!btn) return;
+            var el = document.getElementById(btn.getAttribute('data-target'));
+            if (el) el.classList.toggle('hidden');
+        });
+    }
+
     form.addEventListener('submit', function (ev) {
         ev.preventDefault();
         document.getElementById('ttseo-error').classList.add('hidden');
