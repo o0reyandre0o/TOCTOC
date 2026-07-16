@@ -187,7 +187,7 @@
                     </div>
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Get Chosen</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Your Website Foundation</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-6">A recommendation is only as good as the destination. We build high-speed &ldquo;Discovery Engines&rdquo;&mdash;custom websites that AI loves to crawl and humans trust to use&mdash;turning an initial AI citation into a confirmed lead.</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">A recommendation is only as good as the destination. We build high-speed websites that AI loves to crawl and humans trust to use.</p>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Products Involved</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Custom Websites</span>
