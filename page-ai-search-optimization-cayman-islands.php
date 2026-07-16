@@ -142,13 +142,15 @@ $ai_toc = array(
 
     <!-- 2. Trust Your Brand -->
     <section id="trust" class="py-24 md:py-32 bg-white scroll-mt-28">
-        <div class="mx-auto max-w-4xl px-6">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Local Knowledge Graph</span>
-            <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Get ChatGPT &amp; Gemini to <em class="italic text-sky-deep font-display">Trust Your Brand</em></h2>
-            <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                Before an AI engine risks recommending your business to a user, it searches the entire internet to verify you are a real, active, and highly rated company. This complete web of data is known as your <strong class="font-semibold text-slate-900">Local Knowledge Graph</strong>.
-            </p>
-            <p class="mt-6 text-lg text-slate-600 leading-relaxed">We force the algorithms to choose you using a two-step approach:</p>
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Local Knowledge Graph</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Get ChatGPT &amp; Gemini to <em class="italic text-sky-deep font-display">Trust Your Brand</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    Before an AI engine risks recommending your business to a user, it searches the entire internet to verify you are a real, active, and highly rated company. This complete web of data is known as your <strong class="font-semibold text-slate-900">Local Knowledge Graph</strong>.
+                </p>
+                <p class="mt-6 text-lg text-slate-600 leading-relaxed">We force the algorithms to choose you using a two-step approach:</p>
+            </div>
             <div class="mt-10 grid md:grid-cols-2 gap-6">
                 <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
                     <div class="text-sky-deep text-sm font-bold mb-3">Building the Graph</div>
@@ -164,13 +166,15 @@ $ai_toc = array(
 
     <!-- 3. How AI Reads Your Website -->
     <section id="how-ai-reads" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
-        <div class="mx-auto max-w-4xl px-6">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; Schema Markup</span>
-            <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">How AI Engines Actually <em class="italic text-accent font-display">Read Your Website</em></h2>
-            <p class="mt-8 text-lg text-white/60 leading-relaxed">
-                AI assistants don&rsquo;t look at your beautiful photos or read your text the way humans do. Instead, they scan the hidden code running in the background of your site.
-            </p>
-            <p class="mt-6 text-lg text-white/60 leading-relaxed">To bridge this gap, we install a specialized digital language called <strong class="font-semibold text-white">Schema Markup</strong>:</p>
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; Schema Markup</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">How AI Engines Actually <em class="italic text-accent font-display">Read Your Website</em></h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    AI assistants don&rsquo;t look at your beautiful photos or read your text the way humans do. Instead, they scan the hidden code running in the background of your site.
+                </p>
+                <p class="mt-6 text-lg text-white/60 leading-relaxed">To bridge this gap, we install a specialized digital language called <strong class="font-semibold text-white">Schema Markup</strong>:</p>
+            </div>
             <div class="mt-10 grid md:grid-cols-2 gap-6">
                 <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10">
                     <div class="text-accent text-sm font-bold mb-3">The Invisible Translator</div>
@@ -186,13 +190,15 @@ $ai_toc = array(
 
     <!-- 4. Why Traditional SEO is Failing -->
     <section id="traditional-seo" class="py-24 md:py-32 bg-white scroll-mt-28">
-        <div class="mx-auto max-w-4xl px-6">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">04 &middot; Generative Engine Optimization</span>
-            <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Traditional SEO is <em class="italic text-sky-deep font-display">Failing Your Business</em></h2>
-            <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                Traditional SEO was built for short, static keywords. Today, the market has shifted to <strong class="font-semibold text-slate-900">Conversational Queries</strong>&mdash;meaning customers are asking highly specific, full-sentence questions like, &ldquo;Where is the best place to get authentic Chinese food on Seven Mile Beach open right now?&rdquo;
-            </p>
-            <p class="mt-6 text-lg text-slate-600 leading-relaxed">To win these modern searches, we deploy <strong class="font-semibold text-slate-900">Generative Engine Optimization (GEO)</strong>:</p>
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">04 &middot; Generative Engine Optimization</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Traditional SEO is <em class="italic text-sky-deep font-display">Failing Your Business</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    Traditional SEO was built for short, static keywords. Today, the market has shifted to <strong class="font-semibold text-slate-900">Conversational Queries</strong>&mdash;meaning customers are asking highly specific, full-sentence questions like, &ldquo;Where is the best place to get authentic Chinese food on Seven Mile Beach open right now?&rdquo;
+                </p>
+                <p class="mt-6 text-lg text-slate-600 leading-relaxed">To win these modern searches, we deploy <strong class="font-semibold text-slate-900">Generative Engine Optimization (GEO)</strong>:</p>
+            </div>
             <div class="mt-10 grid md:grid-cols-2 gap-6">
                 <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
                     <div class="text-sky-deep text-sm font-bold mb-3">AI-Ready Content</div>
