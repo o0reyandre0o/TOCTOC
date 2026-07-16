@@ -20,11 +20,30 @@ if ( $ttseo_ts ) {
 @media print {
     nav, footer, .ttseo-noprint { display: none !important; }
     .ttseo-print-header { display: block !important; }
-    #ttseo-results { display: block !important; background: #fff !important; padding: 0 !important; }
-    #ttseo-results .shadow-soft, #ttseo-results .shadow-glass { box-shadow: none !important; }
-    #ttseo-results section, #ttseo-results > div { max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; }
+
+    /* Never force display on these two: only the mode that actually ran has had its
+       .hidden removed by JS. Forcing it would print an empty skeleton of the other. */
+    #ttseo-results, #ttseo-crawl {
+        background: #fff !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    #ttseo-results .shadow-soft, #ttseo-results .shadow-glass,
+    #ttseo-crawl .shadow-soft, #ttseo-crawl .shadow-glass { box-shadow: none !important; }
+    #ttseo-results section, #ttseo-results > div,
+    #ttseo-crawl > div { max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; }
     #ttseo-vs { background: #0f172a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     #ttseo-results .rounded-\[2rem\] { break-inside: avoid; }
+
+    /* Full-site scan: expand every per-URL breakdown so the PDF carries the issues
+       of every page, not just the ones the user happened to click open. */
+    #ttseo-crawl tbody tr.hidden { display: table-row !important; }
+    #ttseo-crawl .overflow-x-auto { overflow: visible !important; }
+    #ttseo-crawl table { min-width: 0 !important; width: 100% !important; }
+    #ttseo-crawl tbody tr { break-inside: avoid; }
+    #ttseo-crawl .ttseo-expand { color: #0f172a !important; text-decoration: none !important; }
+    #ttseo-crawl .ttseo-expand span { display: none !important; } /* the ▾ chevron */
 }
 </style>
 
