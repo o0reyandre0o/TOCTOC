@@ -214,8 +214,9 @@
               "@id": "https://toctoc.ky/about-toc-toc-marketing/#andre-gutierrez",
               "name": "Andre Gutierrez",
               "jobTitle": "Web Developer",
-              "description": "AI-driven web developer specializing in vibe coding, WordPress, and Elementor. Builds high-performance websites optimized for AI search visibility.",
-              "knowsAbout": ["Vibe Coding", "WordPress Development", "Elementor", "AI-Assisted Development", "Web Performance"],
+              "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, and Elementor, building high-performance websites optimized for AI search visibility.",
+              "knowsAbout": ["Vibe Coding", "WordPress Development", "WordPress Theme Development", "Elementor", "AI-Assisted Development", "Web Performance"],
+              "sameAs": ["https://www.linkedin.com/in/andre-g-9b373a97/"],
               "worksFor": { "@id": "https://toctoc.ky" }
             },
             {
