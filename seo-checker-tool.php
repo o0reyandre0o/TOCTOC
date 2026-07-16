@@ -167,13 +167,28 @@ function toctoc_seo_turnstile_ok() {
 	return ! empty( $data['success'] );
 }
 
-/** Build a single check row. */
+/**
+ * Build a single check row.
+ *
+ * Every row automatically carries both explanations (plain + technical) and the
+ * fix, looked up from toctoc_seo_explanations() by label. Because every check in
+ * the tool goes through here, the single-URL check, the competitor comparison,
+ * every crawled page and the email report all get them for free.
+ */
 function toctoc_seo_row( $label, $status, $detail, $why = '' ) {
+	static $ex = null;
+	if ( null === $ex ) {
+		$ex = toctoc_seo_explanations();
+	}
+	$e = isset( $ex[ $label ] ) ? $ex[ $label ] : array();
 	return array(
 		'label'  => $label,
 		'status' => $status, // pass | warn | fail | info
 		'detail' => $detail,
 		'why'    => $why,
+		'plain'  => isset( $e['plain'] ) ? $e['plain'] : '',
+		'tech'   => isset( $e['tech'] ) ? $e['tech'] : $why,
+		'fix'    => isset( $e['fix'] ) ? $e['fix'] : '',
 	);
 }
 
@@ -205,28 +220,117 @@ function toctoc_seo_fetch( $url, $timeout = 8 ) {
 	);
 }
 
-/** Plain-language "what to do" for each check (for a non-technical reader). */
-function toctoc_seo_tips() {
+/**
+ * The single source of truth for what every check means.
+ *
+ * Each entry has three parts:
+ *   plain — what it is, for a non-technical reader. Written status-neutral so it
+ *           reads correctly whether the check passed or failed.
+ *   tech  — the technical explanation: the actual element/rule and the threshold.
+ *   fix   — what to do about it. Only shown when the check warns or fails.
+ */
+function toctoc_seo_explanations() {
 	return array(
-		'Title tag'                  => "Add a clear page title — it's the blue headline people see in Google. Keep it short and descriptive.",
-		'Meta description'           => "Write a 1-2 sentence summary of the page. It's the little text under your title in Google and helps people decide to click.",
-		'H1 heading'                 => "Give the page one main heading that clearly says what it's about.",
-		'Subheadings (H2)'           => "Break the content into sections with subheadings — easier to read for people and for Google.",
-		'Canonical tag'              => "Add a canonical link so Google doesn't get confused if the page has more than one web address.",
-		'Indexable'                  => "This page is currently hidden from Google. Turn that off so it can show up in search results.",
-		'Mobile viewport'            => "Make the page work well on phones — right now it's missing the mobile setting.",
-		'Social / Open Graph'        => "Add a preview image and title so the page looks good when shared on WhatsApp, Facebook or LinkedIn.",
-		'Image alt text'             => "Add short descriptions to your images. It helps Google understand them and helps blind visitors.",
-		'Language attribute'         => "Tell browsers and Google what language the page is written in.",
-		'HTTPS'                      => "Get an SSL certificate so your site shows the padlock and loads securely. Visitors and Google trust it more.",
-		'Content depth'              => "Add more helpful text to the page. Very short pages are hard to rank and don't answer people's questions.",
-		'Structured data (JSON-LD)'  => "Add 'schema' — hidden code that tells Google and AI what your business is. It unlocks rich results and AI recommendations.",
-		'FAQ / Q&A schema'           => "Add a FAQ section (with schema). It's one of the best ways to get quoted by ChatGPT and Google's AI answers.",
-		'AI crawler access'          => "Your site is blocking AI bots like ChatGPT's. Let them in so your business can show up when people ask AI.",
-		'XML sitemap'                => "Add a sitemap — a map of all your pages — so search engines find everything.",
-		'llms.txt'                   => "Optional: add an 'llms.txt' file to guide AI models around your site. Nice-to-have, not urgent.",
-		'Semantic HTML'              => "Use proper page structure so AI and screen readers read your content in the right order.",
+		'Title tag' => array(
+			'plain' => "This is the blue headline people click on in Google. It is the first thing anyone reads about your page, so it decides whether they click you or your competitor.",
+			'tech'  => "The <title> element in <head>. A primary on-page relevance signal. Google renders roughly 50–60 characters; aim for a unique, descriptive 30–65 characters that leads with your main keyword and ends with your brand.",
+			'fix'   => "Add a clear page title — it's the blue headline people see in Google. Keep it short and descriptive.",
+		),
+		'Meta description' => array(
+			'plain' => "The small grey text under your title in Google. It does not change your ranking, but a good one convinces people to click instead of scrolling past.",
+			'tech'  => "<meta name=\"description\">. Not a direct ranking factor, but it drives click-through rate, which is. Aim for ~120–160 characters; Google truncates beyond that and will rewrite it if it doesn't match the query intent.",
+			'fix'   => "Write a 1–2 sentence summary of the page. It's the little text under your title in Google and helps people decide to click.",
+		),
+		'H1 heading' => array(
+			'plain' => "The big main headline on the page — it tells both visitors and Google what this page is actually about.",
+			'tech'  => "Exactly one <h1> per page. It anchors the document outline and is a strong on-page relevance signal. Multiple H1s dilute it; zero H1s leave the page's topic ambiguous to crawlers.",
+			'fix'   => "Give the page one main heading that clearly says what it's about.",
+		),
+		'Subheadings (H2)' => array(
+			'plain' => "The section titles that break your page into readable chunks, like chapters in a book. Nobody reads a wall of text.",
+			'tech'  => "<h2>/<h3> elements forming a logical hierarchy. They let crawlers segment the page into passages — and passage extraction is exactly how AI answer engines decide which chunk of your page to quote.",
+			'fix'   => "Break the content into sections with subheadings — easier to read for people and for Google.",
+		),
+		'Canonical tag' => array(
+			'plain' => "A note that tells Google \"this is the official address of this page\", so it doesn't get confused when the same content is reachable through several different links.",
+			'tech'  => "<link rel=\"canonical\">. Consolidates duplicate, parameterised and trailing-slash variants into one indexable URL, concentrating link equity instead of splitting it across near-duplicates.",
+			'fix'   => "Add a canonical link so Google doesn't get confused if the page has more than one web address.",
+		),
+		'Indexable' => array(
+			'plain' => "Whether Google is even allowed to show this page in search results. If this is off, nothing else on this list matters.",
+			'tech'  => "Checks for a 'noindex' directive in <meta name=\"robots\">. It removes the page from the index entirely regardless of its content quality, backlinks or other optimisation.",
+			'fix'   => "This page is currently hidden from Google. Turn that off so it can show up in search results.",
+		),
+		'Mobile viewport' => array(
+			'plain' => "Whether your page adapts properly to phone screens. Most of your visitors are on a phone, so this is not optional.",
+			'tech'  => "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">. Required for responsive rendering. Google indexes mobile-first, so the mobile rendering is the version that gets ranked.",
+			'fix'   => "Make the page work well on phones — right now it's missing the mobile setting.",
+		),
+		'Social / Open Graph' => array(
+			'plain' => "Controls the picture and title that appear when someone shares your link on WhatsApp, Facebook or LinkedIn. Without it your link looks broken and nobody clicks.",
+			'tech'  => "og:title and og:image meta properties. Platforms will guess or show nothing when absent. Use a raster image (JPG/PNG) around 1200×630 — SVG logos do not render on most social platforms.",
+			'fix'   => "Add a preview image and title so the page looks good when shared on WhatsApp, Facebook or LinkedIn.",
+		),
+		'Image alt text' => array(
+			'plain' => "Short descriptions of your pictures. Blind visitors hear them read aloud, and Google uses them to understand what your images show.",
+			'tech'  => "The alt attribute on <img>. Required for WCAG accessibility compliance, enables Google Image search, and gives crawlers context they cannot get from the pixels. Purely decorative images should carry an empty alt=\"\".",
+			'fix'   => "Add short descriptions to your images. It helps Google understand them and helps blind visitors.",
+		),
+		'Language attribute' => array(
+			'plain' => "Tells browsers and Google which language your page is written in.",
+			'tech'  => "The lang attribute on <html> (e.g. lang=\"en\"). Drives correct language indexing, hreflang targeting, screen-reader pronunciation and browser translation prompts.",
+			'fix'   => "Tell browsers and Google what language the page is written in.",
+		),
+		'HTTPS' => array(
+			'plain' => "The padlock in the address bar. Without it, browsers actively warn your visitors that the site is \"Not secure\" — and most of them leave.",
+			'tech'  => "TLS/SSL on the origin. A confirmed (if lightweight) Google ranking signal, required for modern browser APIs, and without it Chrome shows a 'Not Secure' warning in the address bar.",
+			'fix'   => "Get an SSL certificate so your site shows the padlock and loads securely. Visitors and Google trust it more.",
+		),
+		'Content depth' => array(
+			'plain' => "How much genuinely useful text is on the page. Very thin pages rarely rank, because they don't actually answer anybody's question.",
+			'tech'  => "Approximate word count of the <body> text. Under ~300 words is usually too thin to demonstrate topical coverage, and gives AI engines no substantial passage to extract as an answer.",
+			'fix'   => "Add more helpful text to the page. Very short pages are hard to rank and don't answer people's questions.",
+		),
+		'Structured data (JSON-LD)' => array(
+			'plain' => "Hidden code that spells out exactly what your business is — name, address, hours, services — so Google and AI never have to guess.",
+			'tech'  => "schema.org markup inside <script type=\"application/ld+json\">. Powers rich results and is a primary input for entity recognition in knowledge graphs and AI retrieval. LocalBusiness / Organization / Service / Person types matter most for a local business.",
+			'fix'   => "Add 'schema' — hidden code that tells Google and AI what your business is. It unlocks rich results and AI recommendations.",
+		),
+		'FAQ / Q&A schema' => array(
+			'plain' => "A questions-and-answers section, marked up so ChatGPT and Google's AI can lift your answers word for word.",
+			'tech'  => "FAQPage schema with Question / acceptedAnswer entities that mirror visible on-page text. One of the strongest AEO signals available — answer engines extract these near-verbatim, and the answer text must exist in the DOM, not be injected on click.",
+			'fix'   => "Add a FAQ section (with schema). It's one of the best ways to get quoted by ChatGPT and Google's AI answers.",
+		),
+		'AI crawler access' => array(
+			'plain' => "Whether you let ChatGPT, Claude and Google's AI actually read your site. If you block them, you simply cannot be recommended by them — no matter how good your site is.",
+			'tech'  => "robots.txt rules for GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot and CCBot. A blanket 'Disallow: /' for these agents removes you from AI retrieval and training corpora.",
+			'fix'   => "Your site is blocking AI bots like ChatGPT's. Let them in so your business can show up when people ask AI.",
+		),
+		'XML sitemap' => array(
+			'plain' => "A map of all your pages, so search engines find every one of them instead of only the ones they happen to stumble across.",
+			'tech'  => "An /sitemap.xml (or one declared via a 'Sitemap:' line in robots.txt) listing canonical URLs with lastmod dates. Speeds up discovery and recrawl, which matters most for new, deep or poorly-linked pages.",
+			'fix'   => "Add a sitemap — a map of all your pages — so search engines find everything.",
+		),
+		'llms.txt' => array(
+			'plain' => "A newer, optional file that hands AI models a clean summary of your site and what you do. Nice to have, not urgent.",
+			'tech'  => "An /llms.txt markdown file — an emerging convention, not an official standard, and not yet consumed by the major crawlers. Provides a curated, token-efficient guide to key pages and facts. Low cost, speculative upside.",
+			'fix'   => "Optional: add an 'llms.txt' file to guide AI models around your site. Nice-to-have, not urgent.",
+		),
+		'Semantic HTML' => array(
+			'plain' => "Using proper page structure so AI and screen readers can tell your real content apart from the menus, sidebars and footer.",
+			'tech'  => "<main> / <article> landmark elements. They let parsers isolate the primary content block from navigation boilerplate — which is precisely what AI extractors and readability algorithms do before deciding what your page says.",
+			'fix'   => "Use proper page structure so AI and screen readers read your content in the right order.",
+		),
 	);
+}
+
+/** Plain-language "what to do" for each check, keyed by label (derived from the map above). */
+function toctoc_seo_tips() {
+	$tips = array();
+	foreach ( toctoc_seo_explanations() as $label => $e ) {
+		$tips[ $label ] = $e['fix'];
+	}
+	return $tips;
 }
 
 /** Build the audit report as an HTML email body (plain-English summary first, then technical). */
@@ -238,11 +342,20 @@ function toctoc_seo_report_html( $result, $lead = array() ) {
 		foreach ( $items as $r ) {
 			$ic   = isset( $icons[ $r['status'] ] ) ? $icons[ $r['status'] ] : '&#8226;';
 			$out .= '<tr>'
-				. '<td style="padding:7px 8px;vertical-align:top;font-size:16px;">' . $ic . '</td>'
-				. '<td style="padding:7px 8px;border-bottom:1px solid #eee;">'
-				. '<strong style="color:#111;">' . esc_html( $r['label'] ) . '</strong><br>'
-				. '<span style="color:#666;font-size:13px;">' . esc_html( $r['detail'] ) . '</span>'
-				. '</td></tr>';
+				. '<td style="padding:10px 8px;vertical-align:top;font-size:16px;">' . $ic . '</td>'
+				. '<td style="padding:10px 8px;border-bottom:1px solid #eee;">'
+				. '<strong style="color:#111;">' . esc_html( $r['label'] ) . '</strong> '
+				. '<span style="color:#666;font-size:13px;">&mdash; ' . esc_html( $r['detail'] ) . '</span>';
+			if ( ! empty( $r['plain'] ) ) {
+				$out .= '<p style="margin:6px 0 0;color:#333;font-size:13px;line-height:1.5;"><strong style="color:#0284c7;">In plain English:</strong> ' . esc_html( $r['plain'] ) . '</p>';
+			}
+			if ( ! empty( $r['tech'] ) ) {
+				$out .= '<p style="margin:4px 0 0;color:#666;font-size:12px;line-height:1.5;"><strong>Technical:</strong> ' . esc_html( $r['tech'] ) . '</p>';
+			}
+			if ( ! empty( $r['fix'] ) && in_array( $r['status'], array( 'fail', 'warn' ), true ) ) {
+				$out .= '<p style="margin:4px 0 0;color:#b45309;font-size:12px;line-height:1.5;"><strong>How to fix:</strong> ' . esc_html( $r['fix'] ) . '</p>';
+			}
+			$out .= '</td></tr>';
 		}
 		return $out;
 	};
