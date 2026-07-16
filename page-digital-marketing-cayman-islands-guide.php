@@ -99,8 +99,8 @@ $guide_faqs = array(
 				<h2 class="mt-4 text-4xl md:text-5xl font-display text-slate-900 leading-[0.95]">TocToc services in Cayman</h2>
 			</div>
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-				<a href="<?php echo esc_url( home_url( '/seo-agency-services-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
-					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">SEO, AEO &amp; GEO</h3>
+				<a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
+					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">AI Search Optimization</h3>
 					<p class="text-slate-500 text-sm">Rank on Google and get recommended by AI.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">

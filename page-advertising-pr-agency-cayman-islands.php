@@ -117,8 +117,8 @@ get_header(); ?>
                     <h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Social Media Marketing</h3>
                     <p class="text-slate-500 text-sm">Amplify every campaign across the platforms your Cayman audience uses daily.</p>
                 </a>
-                <a href="<?php echo esc_url( home_url( '/seo-agency-services-cayman-islands/' ) ); ?>" class="group p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all decoration-none">
-                    <h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">SEO, AEO &amp; GEO</h3>
+                <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="group p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all decoration-none">
+                    <h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">AI Search Optimization</h3>
                     <p class="text-slate-500 text-sm">Get found in search and recommended by AI long after the ad campaign ends.</p>
                 </a>
                 <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="group p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all decoration-none">
