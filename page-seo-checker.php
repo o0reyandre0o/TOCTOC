@@ -418,13 +418,30 @@ window.TTSEO = {
                 if (json && json.success) {
                     var d = json.data; counted++; seoSum += d.seo; geoSum += d.geo;
                     var path = d.url.replace(/^https?:\/\/[^\/]+/, '') || '/';
+                    var issues = d.issues || [];
+                    var rid = 'crawlrow-' + i;
+                    // Every scanned URL gets its own expandable breakdown, with the same
+                    // plain-English + technical explanation as the single-page report.
+                    var issuesCell = issues.length
+                        ? '<button type="button" class="ttseo-expand font-bold text-sky-deep hover:underline" data-target="' + rid + '">' + (d.fails + d.warns) + ' <span class="text-xs">&#9662;</span></button>'
+                        : '<span class="font-bold text-green-600">0</span>';
+                    var detailHtml = issues.map(function (r) {
+                        return '<div class="py-3 border-b border-slate-100 last:border-0">' +
+                            '<div class="flex flex-wrap items-baseline gap-2">' +
+                                '<span>' + (ICON[r.status] || ICON.info) + '</span>' +
+                                '<span class="font-bold text-slate-900">' + esc(r.label) + '</span>' +
+                                '<span class="text-xs text-slate-500">' + esc(r.detail) + '</span>' +
+                            '</div>' + explainHtml(r) +
+                        '</div>';
+                    }).join('');
                     rows.insertAdjacentHTML('beforeend',
                         '<tr class="border-b border-slate-50">' +
                         '<td class="p-4"><a href="' + esc(d.url) + '" target="_blank" rel="noopener" class="text-sky-deep hover:underline break-all">' + esc(path) + '</a></td>' +
                         '<td class="p-4 font-bold" style="color:' + scoreColor(d.seo) + '">' + d.seo + '</td>' +
                         '<td class="p-4 font-bold" style="color:' + scoreColor(d.geo) + '">' + d.geo + '</td>' +
-                        '<td class="p-4 text-slate-500">' + (d.fails + d.warns) + '</td>' +
-                        '</tr>');
+                        '<td class="p-4 text-slate-500">' + issuesCell + '</td>' +
+                        '</tr>' +
+                        (issues.length ? '<tr id="' + rid + '" class="hidden"><td colspan="4" class="px-4 pb-6 pt-0 bg-slate-50/60">' + detailHtml + '</td></tr>' : ''));
                     document.getElementById('crawl-pages').textContent = counted;
                     document.getElementById('crawl-avg-seo').textContent = Math.round(seoSum / counted);
                     document.getElementById('crawl-avg-geo').textContent = Math.round(geoSum / counted);
