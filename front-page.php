@@ -167,7 +167,7 @@
                     </div>
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Get Recommended</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Discovery & AI Visibility</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-6">We optimize your &ldquo;Context&rdquo; across the platforms AI assistants use to learn about and recommend local businesses. We make sure that when someone asks an AI for an expert in your niche, your brand is the answer it gives.</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">We optimize your &ldquo;Context&rdquo; across the platforms AI assistants use to learn about and recommend local businesses.</p>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Channels Optimized</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Google Maps</span>
@@ -510,8 +510,8 @@
 
     <!-- Section 8: Final Call to Action -->
     <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
-        <div class="relative mx-auto max-w-4xl px-6 text-center flex flex-col items-center">
-            <h2 class="text-5xl md:text-[100px] leading-[0.95] text-slate-950 font-display">
+        <div class="relative mx-auto max-w-5xl px-6 text-center flex flex-col items-center">
+            <h2 class="text-4xl sm:text-6xl md:text-7xl leading-[1.02] text-slate-950 font-display">
                 Ready to put your business in <br /><em class="italic font-display">AI Search?</em>
             </h2>
             <p class="mt-8 text-lg md:text-xl text-slate-600 max-w-xl mx-auto">
