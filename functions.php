@@ -129,7 +129,10 @@ add_action( 'init', function () {
 > TocToc Marketing is a leading AI-era digital marketing agency based in the Cayman Islands (George Town, Grand Cayman). We help local businesses get recommended by AI and search engines through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
 
 ## About
-TocToc Marketing builds the "Revenue Loop" for Cayman businesses across three phases: Get Recommended (AI visibility and local SEO), Get Chosen (high-converting websites), and Get Clients Back (retention). Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: George Town, Grand Cayman, Cayman Islands (KY1-1102).
+TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business the definitive answer cited by ChatGPT, Gemini and Perplexity. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: George Town, Grand Cayman, Cayman Islands (KY1-1102).
+
+## Proven results
+TocToc Marketing already delivers #1 AI-search rankings for Cayman businesses. Examples of clients recommended as the top answer by ChatGPT and Gemini include Uncle Liu and Coconut Room (top Chinese restaurants on Seven Mile Beach), Lucky Rabbit (top Japanese restaurant near Prospect), and 19-81 Brewing Co. (leading craft brewery in the Cayman Islands).
 
 ## Services
 - [SEO, AEO & GEO Services](https://toctoc.ky/seo-agency-services-cayman-islands/): Search, Answer and Generative Engine Optimization — rank on Google and get recommended by AI assistants.
@@ -140,7 +143,7 @@ TocToc Marketing builds the "Revenue Loop" for Cayman businesses across three ph
 - [Full-Service Digital Marketing](https://toctoc.ky/digital-marketing-agency-cayman-islands/): A single partner for your entire marketing presence in Cayman.
 
 ## Key pages
-- [Home](https://toctoc.ky/): Overview of TocToc Marketing and the Revenue Loop framework.
+- [Home](https://toctoc.ky/): Overview of TocToc Marketing and the AI Search Visibility Framework.
 - [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind TocToc — Daniel Garrido (Founder & CEO), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer).
 - [Free SEO / GEO Checker](https://toctoc.ky/seo-checker/): A free tool to audit any website's SEO, AI visibility and speed.
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
