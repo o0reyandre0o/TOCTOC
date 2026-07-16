@@ -29,7 +29,7 @@
         <div class="absolute inset-0 bg-white/40 z-[1]"></div>
         <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none z-[2]"></div>
 
-        <div class="relative z-10 mx-auto max-w-6xl px-6 pt-32 pb-24 text-center flex flex-col items-center">
+        <div class="relative z-10 mx-auto max-w-6xl px-6 pt-44 md:pt-52 pb-24 text-center flex flex-col items-center">
             <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] leading-[0.95] text-slate-900 font-display">
                 A Marketing Agency<br />
                 focused on getting your<br />
