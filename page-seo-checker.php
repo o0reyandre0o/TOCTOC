@@ -220,7 +220,13 @@ if ( $ttseo_ts ) {
 </main>
 
 <script>
-window.TTSEO = { ajax: '<?php echo esc_js( $ttseo_ajax ); ?>', nonce: '<?php echo esc_js( $ttseo_nonce ); ?>', ts: '<?php echo esc_js( $ttseo_ts ); ?>' };
+window.TTSEO = {
+    ajax: '<?php echo esc_js( $ttseo_ajax ); ?>',
+    nonce: '<?php echo esc_js( $ttseo_nonce ); ?>',
+    ts: '<?php echo esc_js( $ttseo_ts ); ?>',
+    // label -> { plain, tech, fix }. Single source of truth lives in seo-checker-tool.php.
+    explain: <?php echo wp_json_encode( toctoc_seo_explanations() ); ?>
+};
 (function () {
     var form = document.getElementById('ttseo-form');
     if (!form) return;

@@ -1007,24 +1007,35 @@ function toctoc_seo_page_handler() {
 	if ( is_wp_error( $resp ) || (int) wp_remote_retrieve_response_code( $resp ) >= 400 ) {
 		wp_send_json_error( array( 'message' => 'unreachable', 'url' => $url ) );
 	}
-	$res   = toctoc_seo_analyze( $url, (string) wp_remote_retrieve_body( $resp ) );
-	$all   = array_merge( $res['seo'], $res['geo'] );
-	$fails = 0;
-	$warns = 0;
+	$res    = toctoc_seo_analyze( $url, (string) wp_remote_retrieve_body( $resp ) );
+	$all    = array_merge( $res['seo'], $res['geo'] );
+	$fails  = 0;
+	$warns  = 0;
+	$issues = array();
 	foreach ( $all as $r ) {
 		if ( 'fail' === $r['status'] ) {
 			$fails++;
 		} elseif ( 'warn' === $r['status'] ) {
 			$warns++;
 		}
+		if ( 'fail' === $r['status'] || 'warn' === $r['status'] ) {
+			// Only the label/status/detail travel per page — the front end looks the
+			// explanations up from TTSEO.explain so we don't repeat them per URL.
+			$issues[] = array(
+				'label'  => $r['label'],
+				'status' => $r['status'],
+				'detail' => $r['detail'],
+			);
+		}
 	}
 	wp_send_json_success(
 		array(
-			'url'   => $url,
-			'seo'   => $res['scores']['seo'],
-			'geo'   => $res['scores']['geo'],
-			'fails' => $fails,
-			'warns' => $warns,
+			'url'    => $url,
+			'seo'    => $res['scores']['seo'],
+			'geo'    => $res['scores']['geo'],
+			'fails'  => $fails,
+			'warns'  => $warns,
+			'issues' => $issues,
 		)
 	);
 }
