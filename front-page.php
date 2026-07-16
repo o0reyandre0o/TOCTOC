@@ -94,7 +94,7 @@
         array(
             'label'  => 'Japanese Restaurants',
             'desc'   => 'Video proof showing Lucky Rabbit instantly recommended by ChatGPT and Gemini as the #1 Japanese restaurant near Prospect, showcasing high visibility in local AI search results.',
-            'mp4'    => '',
+            'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-japanese-2-1.mp4',
             'poster' => '',
         ),
         array(
