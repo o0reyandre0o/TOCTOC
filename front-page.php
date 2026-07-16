@@ -119,8 +119,8 @@
 
             <div class="grid gap-8 md:grid-cols-3">
                 <?php foreach ( $ttc_proof as $pv ) : ?>
-                <figure>
-                    <div class="aspect-[9/16] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
+                <figure class="flex flex-col items-center text-center">
+                    <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
                         <?php if ( ! empty( $pv['mp4'] ) ) : ?>
                         <video class="w-full h-full object-cover" controls preload="none" playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
                             <source src="<?php echo esc_url( $pv['mp4'] ); ?>" type="video/mp4">
