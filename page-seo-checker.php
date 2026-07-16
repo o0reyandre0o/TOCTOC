@@ -248,16 +248,46 @@ window.TTSEO = {
         fail: '<span style="color:#dc2626">&#10007;</span>',
         info: '<span style="color:#64748b">&#8226;</span>'
     };
+    // Look up the two explanations for a check. Rows from the single-URL check carry
+    // them inline; crawl issues only carry a label, so fall back to TTSEO.explain.
+    function explainOf(r) {
+        var e = (TTSEO.explain && TTSEO.explain[r.label]) || {};
+        return {
+            plain: r.plain || e.plain || '',
+            tech: r.tech || e.tech || r.why || '',
+            fix: r.fix || e.fix || ''
+        };
+    }
+
+    // The two explanations (+ the fix when the check isn't passing), for one check.
+    function explainHtml(r) {
+        var e = explainOf(r);
+        var out = '';
+        if (e.plain) {
+            out += '<p class="mt-2 text-sm text-slate-600 leading-relaxed">' +
+                '<span class="font-bold text-sky-deep">In plain English:</span> ' + esc(e.plain) + '</p>';
+        }
+        if (e.tech) {
+            out += '<p class="mt-1.5 text-xs text-slate-400 leading-relaxed">' +
+                '<span class="font-bold text-slate-500">Technical:</span> ' + esc(e.tech) + '</p>';
+        }
+        if (e.fix && (r.status === 'fail' || r.status === 'warn')) {
+            out += '<p class="mt-2 text-sm text-amber-700 bg-amber-50 border border-amber-100 rounded-xl px-3 py-2 leading-relaxed">' +
+                '<span class="font-bold">How to fix:</span> ' + esc(e.fix) + '</p>';
+        }
+        return out;
+    }
+
     function renderList(containerId, rows) {
         var html = rows.map(function (r) {
-            return '<div class="flex items-start gap-4 py-4">' +
+            return '<div class="flex items-start gap-4 py-5 border-b border-slate-50 last:border-0">' +
                 '<span class="shrink-0 w-6 text-center text-lg font-bold">' + (ICON[r.status] || ICON.info) + '</span>' +
-                '<div class="flex-1">' +
+                '<div class="flex-1 min-w-0">' +
                     '<div class="flex flex-wrap items-baseline justify-between gap-2">' +
                         '<span class="font-bold text-slate-900">' + esc(r.label) + '</span>' +
                         '<span class="text-sm text-slate-500">' + esc(r.detail) + '</span>' +
                     '</div>' +
-                    (r.why ? '<p class="mt-1 text-xs text-slate-400 leading-relaxed">' + esc(r.why) + '</p>' : '') +
+                    explainHtml(r) +
                 '</div></div>';
         }).join('');
         document.getElementById(containerId).innerHTML = html;
