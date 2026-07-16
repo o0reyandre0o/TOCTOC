@@ -7,7 +7,7 @@
             <nav aria-label="Services" class="flex flex-col gap-3">
                 <h2 class="text-sm font-display italic text-accent mb-1">Our Services</h2>
                 <a href="/digital-marketing-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Digital Marketing Agency</a>
-                <a href="/seo-agency-services-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">AI Search Optimization</a>
+                <a href="/ai-search-optimization-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">AI Search Optimization</a>
                 <a href="/website-design-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Website Design</a>
                 <a href="/web-development-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Web Development</a>
                 <a href="/social-media-marketing-services-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Social Media for Algorithmic Trust</a>
