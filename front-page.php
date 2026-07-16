@@ -110,7 +110,7 @@
             <div class="max-w-3xl mb-14">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Proof, not promises</span>
                 <h2 class="mt-6 text-5xl md:text-7xl text-slate-900 font-display leading-[0.95]">
-                    Proof We Put You <em class="italic text-sky-deep font-display">First in AI Search</em>
+                    Proof We Put You <br /><em class="italic text-sky-deep font-display">First in AI Search</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
                     We are already delivering #1 rankings for Cayman businesses on ChatGPT and Gemini today. We don&rsquo;t just talk about the future of search.
