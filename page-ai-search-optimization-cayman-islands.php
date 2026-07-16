@@ -38,6 +38,35 @@ $ai_toc = array(
     array( '#how-ai-reads',    'How AI Engines Actually Read Your Website' ),
     array( '#traditional-seo', 'Why Traditional SEO is Failing Your Business' ),
     array( '#process',         'Our 3-Step Process for AI Visibility' ),
+    array( '#faq',             'Frequently Asked Questions' ),
+);
+
+// FAQ — visible accordion + FAQPage schema (great for AEO/GEO: this is what AI answer engines read).
+$ai_faqs = array(
+    array(
+        'q' => 'Will this get my business recommended by ChatGPT and Gemini?',
+        'a' => 'Yes — that is the entire goal. We build your Local Knowledge Graph across Google Maps, Apple Maps, directories and reviews, then add Schema markup and Answer Engine Optimization so AI assistants read your business as the trusted, definitive answer. We are already delivering #1 recommendations on ChatGPT and Gemini for Cayman businesses like Uncle Liu, Coconut Room, Lucky Rabbit and 19-81 Brewing Co.',
+    ),
+    array(
+        'q' => 'What is the difference between SEO, AEO and GEO?',
+        'a' => 'SEO (Search Engine Optimization) gets you ranked on Google. AEO (Answer Engine Optimization) gets your business quoted as the direct answer in featured snippets and voice search. GEO (Generative Engine Optimization) gets you recommended by AI assistants like ChatGPT, Gemini and Perplexity. Our AI Search Optimization covers all three, because in 2026 your customers search across all of them.',
+    ),
+    array(
+        'q' => 'How long does it take to show up in AI search results?',
+        'a' => 'Most local Cayman businesses see measurable movement in 3 to 6 months, with compounding growth after that. Cleaning up your Google Business Profile and local data can lift visibility faster, while becoming the default AI recommendation in a competitive category takes sustained authority and citation building.',
+    ),
+    array(
+        'q' => 'Do you work with small, local Cayman businesses?',
+        'a' => 'Yes. We work with small and local businesses across Grand Cayman — restaurants, hospitality, retail, professional services and more — with a plan scaled to your industry, competition and budget.',
+    ),
+    array(
+        'q' => 'How is this different from traditional SEO?',
+        'a' => 'Traditional SEO targets short keywords and a list of blue links. AI Search Optimization targets conversational, full-sentence questions and gets your business generated as the live recommendation an AI gives — not just a ranking. We optimize your data structure, Schema and content specifically for how ChatGPT, Gemini and Google AI read and cite businesses today.',
+    ),
+    array(
+        'q' => 'How much does AI Search Optimization cost in the Cayman Islands?',
+        'a' => 'We build a custom monthly plan based on your industry, competition and goals rather than one-size-fits-all packages. Book a free strategy call and we will give you a transparent quote.',
+    ),
 );
 ?>
 
@@ -240,6 +269,29 @@ $ai_toc = array(
         </div>
     </section>
 
+    <!-- 6. FAQ -->
+    <section id="faq" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">06 &middot; FAQ</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">AI Search, <em class="italic text-sky-deep font-display">Answered</em></h2>
+            </div>
+            <div class="max-w-4xl space-y-4">
+                <?php foreach ( $ai_faqs as $faq ) : ?>
+                <details class="group rounded-[1.75rem] border border-slate-100 bg-slate-50 p-7 shadow-soft transition-all open:bg-white">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 text-xl md:text-2xl font-display text-slate-900 list-none [&::-webkit-details-marker]:hidden">
+                        <span><?php echo esc_html( $faq['q'] ); ?></span>
+                        <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-pale text-sky-deep transition-transform group-open:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo esc_html( $faq['a'] ); ?></p>
+                </details>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
         <div class="mx-auto max-w-4xl px-6">
@@ -278,6 +330,31 @@ echo wp_json_encode(
         ),
         'description' => 'AI Search Optimization for Cayman Islands businesses: SEO, Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) that make your brand the recommended answer on ChatGPT, Gemini and Google.',
         'url'         => 'https://toctoc.ky/ai-search-optimization-cayman-islands/',
+    ),
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
+
+<script type="application/ld+json">
+<?php
+echo wp_json_encode(
+    array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array_map(
+            function ( $f ) {
+                return array(
+                    '@type'          => 'Question',
+                    'name'           => $f['q'],
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text'  => $f['a'],
+                    ),
+                );
+            },
+            $ai_faqs
+        ),
     ),
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 );
