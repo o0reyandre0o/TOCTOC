@@ -202,9 +202,22 @@ if ( $ttseo_ts ) {
     <!-- Full-site crawl results -->
     <section id="ttseo-crawl" class="hidden py-16 md:py-24 bg-white">
         <div class="mx-auto max-w-5xl px-6">
-            <h2 class="text-3xl md:text-4xl font-display text-slate-900 mb-2">Full-site scan</h2>
+
+            <div class="ttseo-print-header" style="display:none;">
+                <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#0284c7;font-weight:bold;margin:0;">TocToc Marketing &middot; Full-Site SEO / GEO Report</p>
+                <p id="crawl-print-target" style="font-size:13px;color:#555;margin:6px 0 0;"></p>
+                <hr style="border:none;border-top:2px solid #0f172a;margin:8px 0 20px;">
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                <h2 class="text-3xl md:text-4xl font-display text-slate-900">Full-site scan</h2>
+                <button id="ttseo-crawl-pdf" type="button" class="ttseo-noprint hidden shrink-0 inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2.5 text-sm font-bold hover:bg-slate-800 transition-colors">
+                    Download PDF
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                </button>
+            </div>
             <p id="crawl-status" class="text-slate-500 mb-6">Finding pages…</p>
-            <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden mb-10">
+            <div class="ttseo-noprint w-full h-2 bg-slate-200 rounded-full overflow-hidden mb-10">
                 <div id="crawl-bar" class="h-full bg-sky-deep transition-all duration-300" style="width:0%"></div>
             </div>
             <div class="grid grid-cols-3 gap-4 md:gap-6 mb-10">
@@ -397,6 +410,8 @@ window.TTSEO = {
         document.getElementById('crawl-avg-geo').textContent = '—';
         document.getElementById('crawl-pages').textContent = '0';
         document.getElementById('crawl-status').textContent = 'Finding pages…';
+        document.getElementById('ttseo-crawl-pdf').classList.add('hidden');
+        document.getElementById('crawl-print-target').textContent = url;
         sec.scrollIntoView({ behavior: 'smooth' });
 
         var params = { action: 'toctoc_seo_discover', nonce: TTSEO.nonce, url: url, email: email, name: name };
@@ -425,6 +440,8 @@ window.TTSEO = {
         function next(i) {
             if (i >= total) {
                 statusEl.textContent = 'Done — scanned ' + counted + ' page' + (counted === 1 ? '' : 's') + '.';
+                // Only offer the PDF once every page has actually been scanned.
+                if (counted) document.getElementById('ttseo-crawl-pdf').classList.remove('hidden');
                 return;
             }
             statusEl.textContent = 'Scanning ' + (i + 1) + ' of ' + total + '…';
@@ -481,6 +498,14 @@ window.TTSEO = {
     var pdfBtn = document.getElementById('ttseo-pdf');
     if (pdfBtn) {
         pdfBtn.addEventListener('click', function () { window.print(); });
+    }
+
+    // Full-site scan PDF. The print stylesheet expands every collapsed per-URL
+    // breakdown, so the export always contains every page and all its issues —
+    // regardless of what the user expanded on screen.
+    var crawlPdfBtn = document.getElementById('ttseo-crawl-pdf');
+    if (crawlPdfBtn) {
+        crawlPdfBtn.addEventListener('click', function () { window.print(); });
     }
 
     // Expand/collapse a crawled page's issue breakdown (delegated — rows are added later).
