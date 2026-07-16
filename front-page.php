@@ -30,19 +30,14 @@
         <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none z-[2]"></div>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-32 pb-24 text-center flex flex-col items-center">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] font-bold text-slate-950">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-sky-deep"><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.89 15.89 12 12"/><path d="m16.13 7.87-4.13 4.13"/><path d="m7.87 16.13 4.13-4.13"/><path d="m15.89 8.11 3.18-3.18"/><path d="m4.93 19.07 3.18-3.18"/><path d="M12 22v-2"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="m6.34 17.66-1.41 1.41"/></svg>
-                A 2026-READY MARKETING AGENCY · CAYMAN ISLANDS
-            </div>
-
-            <h1 class="mt-8 text-5xl sm:text-6xl md:text-7xl lg:text-[100px] leading-[0.95] text-slate-900 font-display">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] leading-[0.95] text-slate-900 font-display">
                 A Marketing Agency<br />
                 focused on getting your<br />
                 business in <em class="italic text-sky-deep font-display">AI Answers.</em>
             </h1>
 
             <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-950 font-medium">
-                We are a 2026-ready marketing company that builds the <strong class="bg-accent text-sky-deep px-1.5 py-0.5 rounded-md">Revenue Loop</strong> for your business.
+                We are a 2026-ready marketing company based in the Cayman Islands that deploys the <strong class="bg-accent text-sky-deep px-1.5 py-0.5 rounded-md">AI Search Visibility Framework</strong> for your business.
             </p>
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
@@ -56,7 +51,7 @@
                 </div>
                 <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                    Get Clients Back
+                    Stay Recommended
                 </div>
             </div>
 
@@ -82,9 +77,70 @@
                 <em class="italic text-sky-deep font-display"> recommended by AI agents.</em>
             </p>
             <p class="mt-8 text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                Our Revenue Loop is the framework we have successfully applied to all our clients to turn digital presence
-                into a measurable revenue engine.
+                Our <em class="italic text-sky-deep font-display">AI Search Visibility Framework</em> is the proven system we use to turn local digital presence into definitive AI citations &mdash; and the real-world results speak for themselves.
             </p>
+        </div>
+    </section>
+
+    <!-- Section 2b: Proof (AI search demos) -->
+    <?php
+    $ttc_proof = array(
+        array(
+            'label'  => 'Chinese Restaurants',
+            'desc'   => 'A search demonstration showing Prime Group&rsquo;s Uncle Liu and Coconut Room ranked as the #1 and #2 best Chinese restaurants on Seven Mile Beach by both ChatGPT and Gemini.',
+            'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-1-1.mp4',
+            'poster' => '', // Optional: thumbnail image URL.
+        ),
+        array(
+            'label'  => 'Japanese Restaurants',
+            'desc'   => 'Video proof showing Lucky Rabbit instantly recommended by ChatGPT and Gemini as the #1 Japanese restaurant near Prospect, showcasing high visibility in local AI search results.',
+            'mp4'    => '',
+            'poster' => '',
+        ),
+        array(
+            'label'  => 'Craft Brewery',
+            'desc'   => 'A demonstration of 19-81 Brewing Co. cited as the undisputed #1 craft brewery in the Cayman Islands by ChatGPT and Gemini, confirming their digital authority.',
+            'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
+            'poster' => '',
+        ),
+    );
+    ?>
+    <section class="relative py-24 md:py-32 bg-white">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-14">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Proof, not promises</span>
+                <h2 class="mt-6 text-5xl md:text-7xl text-slate-900 font-display leading-[0.95]">
+                    Proof We Put You <em class="italic text-sky-deep font-display">First in AI Search</em>
+                </h2>
+                <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
+                    We are already delivering #1 rankings for Cayman businesses on ChatGPT and Gemini today. We don&rsquo;t just talk about the future of search.
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-3">
+                <?php foreach ( $ttc_proof as $pv ) : ?>
+                <figure>
+                    <div class="aspect-[9/16] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
+                        <?php if ( ! empty( $pv['mp4'] ) ) : ?>
+                        <video class="w-full h-full object-cover" controls preload="none" playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
+                            <source src="<?php echo esc_url( $pv['mp4'] ); ?>" type="video/mp4">
+                        </video>
+                        <?php else : ?>
+                        <div class="w-full h-full flex flex-col items-center justify-center text-center gap-4 text-white/60">
+                            <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" class="text-sky-deep"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            <span class="text-xs font-bold uppercase tracking-widest">Video coming soon</span>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <figcaption class="mt-5">
+                        <span class="block text-lg font-display text-slate-900 mb-1"><?php echo esc_html( $pv['label'] ); ?></span>
+                        <span class="block text-sm text-slate-500 leading-relaxed"><?php echo wp_kses_post( $pv['desc'] ); ?></span>
+                    </figcaption>
+                </figure>
+                <?php endforeach; ?>
+            </div>
         </div>
     </section>
 
@@ -173,42 +229,34 @@
                     </h2>
                 </div>
                 <p class="text-slate-500 max-w-sm text-lg">
-                    A transparent, 4-step path to increasing your leads and revenue.
+                    A transparent, 3-step path to putting your business at the top of AI search results.
                 </p>
             </div>
 
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-4 bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-soft">
-                <div class="p-10 border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-soft">
+                <div class="p-10 border-b md:border-b-0 md:border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
                     <div class="flex items-center gap-4 mb-8">
                         <span class="font-mono text-xs font-bold text-sky-deep">01</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h3 class="text-2xl text-slate-900 font-display mb-4">Free Consultation Call</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">We discuss your goals and audit your current digital presence.</p>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">Discovery &amp; Strategy</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">We discuss your business goals, audit your current digital footprint, and map out a custom AI Search Visibility plan tailored to your industry.</p>
                 </div>
-                <div class="p-10 border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
+                <div class="p-10 border-b md:border-b-0 md:border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
                     <div class="flex items-center gap-4 mb-8">
                         <span class="font-mono text-xs font-bold text-sky-deep">02</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h3 class="text-2xl text-slate-900 font-display mb-4">We Present a Tailored Solution</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">We map out a custom Revenue Loop specific to your industry.</p>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">Build &amp; Optimize</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Our team sets up your digital profiles for AI crawlers, optimizes your local data feeds, and builds your high-speed website foundation.</p>
                 </div>
-                <div class="p-10 border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
+                <div class="p-10 hover:bg-sky-pale/30 transition-colors">
                     <div class="flex items-center gap-4 mb-8">
                         <span class="font-mono text-xs font-bold text-sky-deep">03</span>
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
-                    <h3 class="text-2xl text-slate-900 font-display mb-4">We Execute the Solution</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Our team builds your foundation and optimizes your AI visibility.</p>
-                </div>
-                <div class="p-10 hover:bg-sky-pale/30 transition-colors">
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="font-mono text-xs font-bold text-sky-deep">04</span>
-                        <div class="h-[1px] flex-1 bg-slate-100"></div>
-                    </div>
-                    <h3 class="text-2xl text-slate-900 font-display mb-4">You Start Receiving Leads</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in the modern search era.</p>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">Get Cited &amp; Grow</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in modern search engines like ChatGPT and Gemini, turning AI discovery traffic into a steady stream of new leads.</p>
                 </div>
             </div>
         </div>
@@ -464,7 +512,7 @@
     <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
         <div class="relative mx-auto max-w-4xl px-6 text-center flex flex-col items-center">
             <h2 class="text-5xl md:text-[100px] leading-[0.95] text-slate-950 font-display">
-                Ready to build your <br /><em class="italic font-display">Revenue Loop?</em>
+                Ready to put your business in <br /><em class="italic font-display">AI Search?</em>
             </h2>
             <p class="mt-8 text-lg md:text-xl text-slate-600 max-w-xl mx-auto">
                 Let’s talk about your business and how we can turn your brand into the recommended answer.
