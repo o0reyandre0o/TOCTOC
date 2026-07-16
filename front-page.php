@@ -77,7 +77,7 @@
                 <em class="italic text-sky-deep font-display"> recommended by AI agents.</em>
             </p>
             <p class="mt-8 text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                Our <em class="italic text-sky-deep font-display">AI Search Visibility Framework</em> is the proven system we use to turn local digital presence into definitive AI citations &mdash; and the real-world results speak for themselves.
+                Our <em class="italic text-sky-deep font-display">AI Search Visibility Framework</em> is the proven system we use to turn local digital presence into definitive AI citations (and the real-world results speak for themselves).
             </p>
         </div>
     </section>
