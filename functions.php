@@ -131,6 +131,11 @@ add_action( 'init', function () {
 ## About
 TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business the definitive answer cited by ChatGPT, Gemini and Perplexity. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: George Town, Grand Cayman, Cayman Islands (KY1-1102).
 
+## Team
+- Daniel Garrido — Founder & CEO of TocToc Marketing.
+- Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
+- Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives).
+
 ## Proven results
 TocToc Marketing already delivers #1 AI-search rankings for Cayman businesses. Examples of clients recommended as the top answer by ChatGPT and Gemini include Uncle Liu and Coconut Room (top Chinese restaurants on Seven Mile Beach), Lucky Rabbit (top Japanese restaurant near Prospect), and 19-81 Brewing Co. (leading craft brewery in the Cayman Islands).
 
