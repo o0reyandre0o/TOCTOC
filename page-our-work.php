@@ -357,20 +357,25 @@ $ow_sites = array(
                         </div>
                         <?php endif; ?>
                     </div>
-                    <!-- Screenshot slots -->
+                    <!-- Screenshot slots — matched to the video frame (9:16, 280px). -->
                     <?php foreach ( $c['shots'] as $shot ) : ?>
                     <?php if ( ! empty( $shot['img'] ) ) : ?>
-                    <figure class="overflow-hidden rounded-[2rem] border border-slate-100 shadow-soft bg-white">
-                        <img src="<?php echo esc_url( $shot['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $c['title'] . ' — ' . $shot['label'] ) ); ?>" loading="lazy" decoding="async" class="w-full h-auto" />
-                        <figcaption class="px-4 py-3 text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo wp_kses_post( $shot['label'] ); ?></figcaption>
+                    <?php $ow_contain = ( isset( $shot['fit'] ) && 'contain' === $shot['fit'] ); ?>
+                    <figure class="flex flex-col items-center md:items-start">
+                        <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-slate-100 shadow-soft <?php echo $ow_contain ? 'bg-slate-100 flex items-center justify-center' : 'bg-slate-950'; ?>">
+                            <img src="<?php echo esc_url( $shot['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $c['title'] . ' — ' . $shot['label'] ) ); ?>" loading="lazy" decoding="async" class="<?php echo $ow_contain ? 'w-full h-auto' : 'w-full h-full object-cover object-top'; ?>" />
+                        </div>
+                        <figcaption class="mt-3 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo wp_kses_post( $shot['label'] ); ?></figcaption>
                     </figure>
                     <?php else : ?>
-                    <div class="aspect-video rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/60 flex flex-col items-center justify-center gap-3 text-center px-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-slate-300 shadow-soft">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                        </span>
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo wp_kses_post( $shot['label'] ); ?></span>
-                        <span class="text-xs text-slate-400">Screenshot slot</span>
+                    <div class="flex flex-col items-center md:items-start">
+                        <div class="aspect-[9/16] w-full max-w-[280px] rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/60 flex flex-col items-center justify-center gap-3 text-center px-6">
+                            <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-slate-300 shadow-soft">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                            </span>
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo wp_kses_post( $shot['label'] ); ?></span>
+                            <span class="text-xs text-slate-400">Screenshot slot</span>
+                        </div>
                     </div>
                     <?php endif; ?>
                     <?php endforeach; ?>
