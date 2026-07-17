@@ -116,8 +116,8 @@ $guide_faqs = array(
 					<p class="text-slate-500 text-sm">Communities that drive real leads.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/advertising-pr-agency-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
-					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Advertising &amp; PR</h3>
-					<p class="text-slate-500 text-sm">Campaigns, media buying and public relations.</p>
+					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Digital PR</h3>
+					<p class="text-slate-500 text-sm">Permanent citations that make AI cite your brand.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
 					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">All Services</h3>
