@@ -135,7 +135,7 @@ $ow_sites = array(
         'name' => 'Coconut Room',
         'desc' => 'Tropical Asian kitchen on Seven Mile Beach — glassmorphism dark mode and direct reservations.',
         'url'  => 'https://coconutroom.ky',
-        'img'  => '',
+        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093239.webp',
     ),
     array(
         'name' => 'San Si Wu',
