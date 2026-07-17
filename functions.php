@@ -154,7 +154,29 @@ TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses
 - Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives).
 
 ## Proven results
-TocToc Marketing already delivers #1 AI-search rankings for Cayman businesses. Examples of clients recommended as the top answer by ChatGPT and Gemini include Uncle Liu and Coconut Room (top Chinese restaurants on Seven Mile Beach), Lucky Rabbit (top Japanese restaurant near Prospect), and 19-81 Brewing Co. (leading craft brewery in the Cayman Islands).
+TocToc Marketing already delivers #1 AI-search rankings for Cayman businesses. Examples of clients recommended as the top answer by ChatGPT and Gemini include Uncle Liu and Coconut Room (top Chinese restaurants on Seven Mile Beach), Lucky Rabbit (top Japanese restaurant near Prospect), and 19-81 Brewing Co. (leading craft brewery in the Cayman Islands). Full case studies and video proof are on the Our Work page: https://toctoc.ky/our-work/
+
+## Case studies
+- 19-81 Brewing Co. (craft brewery, Grand Cayman): moved from low online visibility to being regularly recommended by ChatGPT and Gemini and appearing at the top of local map packs. New website, optimized Google Maps and TripAdvisor listings, and weekly updates.
+- Prime Group (Chinese restaurants Uncle Liu and Coconut Room, Seven Mile Beach): synchronized the digital profiles of both sister venues so they are routinely chosen by AI engines and local maps as top-tier recommendations.
+- TintXKing (window tint company): built an authoritative local footprint that validates the brand for the traffic coming from its paid ad campaigns, increasing overall sales.
+
+## Selected client work
+Live websites designed and developed by TocToc Marketing (custom WordPress themes, SEO/AEO/GEO and Schema markup):
+- PR Optics — https://pr-optics.com — B2B digital lens manufacturing lab, Puerto Rico.
+- SolaraPRO — https://solara-pro.com — precision photochromic eyewear brand.
+- Uncle Liu — https://uncleliu.ky — Szechuan restaurant, Seven Mile Beach, Cayman.
+- Carnivore Smash Burger — https://carnivore.ky — premium smash burgers, Cayman Islands.
+- Coconut Room — https://coconutroom.ky — tropical Asian kitchen, Seven Mile Beach, Cayman.
+- San Si Wu — https://sansiwu.ky — Chinese street food, Seven Mile Beach, Cayman.
+- Daniel Garrido — https://danielgarrido.com — personal brand of TocToc's founder, an AI search visibility specialist.
+- VitaGo — https://vitagopr.com — smart wellness vending company, Puerto Rico.
+- Infinite Mindcare — https://infinitemindcare.com — counseling services, Cayman Islands.
+- The Conscious Closet — https://theconsciouscloset.ky — circular / sustainable fashion boutique, Cayman.
+- 19-81 Brewing Co. — https://1981brewingco.com — craft brewery and taproom, Grand Cayman.
+- Luxe Detailing — https://luxedetailing.ky — automotive and marine detailing, Grand Cayman.
+- Miss Cayman Islands — https://misscaymanislands.ky — official national pageant of the Cayman Islands.
+- Adventura Cayman — https://adventuracayman.com — premium watersports and equipment rentals, Grand Cayman.
 
 ## Services
 - [AI Search Optimization](https://toctoc.ky/ai-search-optimization-cayman-islands/): SEO, AEO and GEO (Search, Answer and Generative Engine Optimization) — rank on Google and get recommended by AI assistants.
