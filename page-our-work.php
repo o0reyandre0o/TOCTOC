@@ -230,6 +230,12 @@ $ow_sites = array(
         'url'  => 'https://mpjroofingsupply.com',
         'img'  => '',
     ),
+    array(
+        'name' => 'Miss Cayman Islands',
+        'desc' => 'The official home of the national pageant — reigning queen, the Beauty with a Purpose platform and entry information.',
+        'url'  => 'https://misscaymanislands.ky',
+        'img'  => '',
+    ),
 );
 ?>
 
