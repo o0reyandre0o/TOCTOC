@@ -106,6 +106,7 @@
         'social-media-marketing-services-cayman-islands' => 'social media marketing cayman islands, social media for ai search, algorithmic trust, social search optimization, social media optimization cayman, social media agency cayman, ai crawlers social profiles, instagram linkedin optimization cayman',
         'advertising-pr-agency-cayman-islands' => 'digital pr cayman islands, ai authority citations, pr agency cayman, pr services cayman, entity trust score, linkedin authority building cayman, digital pr for ai search, brand citations chatgpt gemini',
         'web-development-cayman-islands' => 'web development cayman islands, web development agency cayman, website development company cayman, ecommerce development cayman, web app development cayman',
+        'our-work' => 'toctoc marketing case studies, ai search results cayman islands, chatgpt ranking case study, gemini recommendation cayman, 19-81 brewing, prime group cayman, web design portfolio cayman islands',
         'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
         'venezuela' => 'donate venezuela cayman islands, venezuela earthquake appeal cayman, help venezuela from cayman, venezuela earthquake donation, cayman islands red cross venezuela, donate to venezuela earthquake',
         'seo-checker' => 'free seo checker, seo audit tool, geo checker, aeo checker, ai visibility checker, website seo test, core web vitals test, seo checker cayman islands',
