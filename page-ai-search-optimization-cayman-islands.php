@@ -33,15 +33,74 @@ $ai_proof = array(
 
 // Table of contents — anchors match the section ids below.
 $ai_toc = array(
-    array( '#video-proof',     'Video Proof: Live Results for Cayman Brands' ),
-    array( '#trust',           'How We Get ChatGPT &amp; Gemini to Trust Your Brand' ),
-    array( '#how-ai-reads',    'How AI Engines Actually Read Your Website' ),
+    array( '#video-proof',     'Live Video Proof: Results for Cayman Brands' ),
+    array( '#what-we-do',      'What We Do: Our 4 Core AI Visibility Steps' ),
+    array( '#how-we-do-it',    'How We Do It: Our 3-Step Execution Process' ),
     array( '#traditional-seo', 'Why Traditional SEO is Failing Your Business' ),
-    array( '#process',         'Our 3-Step Process for AI Visibility' ),
     array( '#faq',             'Frequently Asked Questions' ),
 );
 
-// FAQ — visible accordion + FAQPage schema (great for AEO/GEO: this is what AI answer engines read).
+// Section 2 — the four things we actually build and manage.
+$ai_core_steps = array(
+    array(
+        'n'      => '1',
+        'title'  => 'We Build a High-Speed, AI-Ready Website From Scratch.',
+        'body'   => 'If you already have one, we keep it and deeply improve its backend structure. If your current site is too slow or outdated to crawl, we will discuss a full or partial redesign to make it perfect.',
+        'behind' => 'AI assistants don&rsquo;t read websites the way humans do; they scan hidden code in the background. We inject specialized Schema Markup into your site code. This hands ChatGPT and Gemini your exact location, hours, and services on a silver platter.',
+    ),
+    array(
+        'n'      => '2',
+        'title'  => 'We Sync Your Business Details Across Maps and Core Social Profiles.',
+        'body'   => 'We fully clean up, sync, and lock down your exact business name, address, phone number, and services across Google Maps, Apple Maps, local directories, LinkedIn, Facebook, and Instagram.',
+        'behind' => 'Before an AI engine risks recommending you, it runs an automated web background check to verify you are a real, active company. Mismatched details across different apps confuse the AI, but a perfectly synchronized network of profiles forces them to trust you.',
+    ),
+    array(
+        'n'      => '3',
+        'title'  => 'We Restructure Your Content to Answer Real Conversational Questions.',
+        'body'   => 'We take your business knowledge and turn it into deep-dive website blogs, LinkedIn articles, and visual micro-content. We explicitly write and format these assets to serve as direct, definitive answers to consumer queries.',
+        'behind' => 'People don&rsquo;t type short keyword phrases into AI engines anymore; they ask full sentences like, &ldquo;Where is the best place to get authentic Chinese food open right now?&rdquo; We format your content so AI tools can instantly scan, summarize, and deliver your brand as their live recommendation.',
+    ),
+    array(
+        'n'      => '4',
+        'title'  => 'We Provide Continuous Monthly Maintenance and Weekly Performance Updates.',
+        'body'   => 'We don&rsquo;t just set it and forget it. We perform weekly technical health checks on your website, continuously feed the algorithms fresh content, and monitor your live positioning.',
+        'behind' => 'AI algorithms never stop changing, and competitors will try to outrank you. By running weekly optimization updates and tracking exactly how tools like ChatGPT and Gemini cite your brand, we protect and defend your #1 spot.',
+    ),
+);
+
+// Section 3 — the execution timeline.
+$ai_process = array(
+    array(
+        'n'     => '01',
+        'title' => 'Discovery &amp; Strategy',
+        'body'  => 'We analyze your current digital footprint, audit how AI engines view your competitors, and map out your custom AI Search Visibility blueprint.',
+        'items' => array(),
+    ),
+    array(
+        'n'     => '02',
+        'title' => 'The 3-Day Base Build',
+        'body'  => 'Once the strategy is locked in, our team sets up your core digital foundation. This initial launch takes exactly 3 days to build and complete, delivering:',
+        'items' => array(
+            'Your new or deeply improved, high-speed website.',
+            'A fully optimized professional LinkedIn profile featuring your first deep-dive article.',
+            'Updated, fully aligned Instagram and Facebook profiles.',
+            'A newly launched or fully optimized YouTube channel featuring at least one high-value video introducing your company.',
+            '3 high-impact social media posts &ldquo;chunked&rdquo; directly out of your main LinkedIn article.',
+        ),
+    ),
+    array(
+        'n'     => '03',
+        'title' => 'Ongoing Maintenance &amp; Monitoring',
+        'body'  => 'AI search engines favor consistent activity. To scale your visibility and defend your rankings, we transition into a monthly growth schedule:',
+        'items' => array(
+            'We run weekly technical updates and monitoring to ensure your website remains at peak crawling speed.',
+            'We produce and publish at least one deep-dive LinkedIn and website article per month to expand your AI keyword footprint.',
+            'We continuously repurpose that monthly article into video and image content chunks for your YouTube, Instagram, and Facebook feeds, proving to AI engines that your brand is completely verified and trusted.',
+        ),
+    ),
+);
+
+// FAQ — visible accordion + FAQPage schema (what AI answer engines actually read).
 $ai_faqs = array(
     array(
         'q' => 'Will this get my business recommended by ChatGPT and Gemini?',
@@ -53,7 +112,7 @@ $ai_faqs = array(
     ),
     array(
         'q' => 'How long does it take to show up in AI search results?',
-        'a' => 'Most local Cayman businesses see measurable movement in 3 to 6 months, with compounding growth after that. Cleaning up your Google Business Profile and local data can lift visibility faster, while becoming the default AI recommendation in a competitive category takes sustained authority and citation building.',
+        'a' => 'The base build takes 3 days, but visibility compounds after that. Most local Cayman businesses see measurable movement in 3 to 6 months, with growth continuing from there. Cleaning up your Google Business Profile and local data can lift visibility faster, while becoming the default AI recommendation in a competitive category takes sustained authority and citation building.',
     ),
     array(
         'q' => 'Do you work with small, local Cayman businesses?',
@@ -81,7 +140,7 @@ $ai_faqs = array(
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
-                    AI Search Visibility Framework &middot; Cayman Islands
+                    AI Search Visibility &amp; Optimization Services
                 </div>
                 <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-slate-900">
                     Make Your Business the <em class="italic text-sky-deep font-display">#1 Choice</em> on ChatGPT, Gemini, and Google
@@ -103,20 +162,22 @@ $ai_faqs = array(
 
     <!-- Intro -->
     <section class="pb-12 bg-white">
-        <div class="mx-auto max-w-3xl px-6 space-y-6">
-            <p class="text-xl text-slate-700 leading-relaxed">
-                Traditional search has changed. Customers are no longer just typing &ldquo;Cayman restaurant&rdquo; into Google&mdash;they are asking their phones full, conversational questions. If your business isn&rsquo;t set up for this shift, AI engines won&rsquo;t even know you exist.
-            </p>
-            <p class="text-xl text-slate-700 leading-relaxed">
-                We take care of all the complex technical heavy lifting so your business is always the first one recommended.
-            </p>
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl space-y-6">
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    Traditional search has changed. Customers are no longer just typing &ldquo;Cayman restaurant&rdquo; into Google&mdash;they are asking their phones full, conversational questions. If your business isn&rsquo;t set up for this shift, AI engines won&rsquo;t even know you exist.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    We take care of all the complex technical heavy lifting so your business is always the first one recommended.
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- What's On This Page (table of contents) -->
     <section class="pb-20 bg-white">
-        <div class="mx-auto max-w-3xl px-6">
-            <div class="rounded-[2rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl rounded-[2rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
                 <div class="flex items-center justify-between gap-4 mb-6">
                     <h2 class="text-2xl font-display text-slate-900">What&rsquo;s On This Page</h2>
                     <span class="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-bold text-sky-deep border border-slate-100">
@@ -139,12 +200,12 @@ $ai_faqs = array(
         </div>
     </section>
 
-    <!-- 1. Video Proof -->
+    <!-- 1. Live Video Proof -->
     <section id="video-proof" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl mb-14">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Proof, not promises</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Video Proof: Live Results for <em class="italic text-sky-deep font-display">Cayman Brands</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Live Video Proof: <em class="italic text-sky-deep font-display">Results for Cayman Brands</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     We don&rsquo;t just talk about the future of search&mdash;we&rsquo;ve already coded our clients into the top spots. Here is the real-world proof of Cayman businesses dominating ChatGPT and Gemini today.
                 </p>
@@ -169,56 +230,85 @@ $ai_faqs = array(
         </div>
     </section>
 
-    <!-- 2. Trust Your Brand -->
-    <section id="trust" class="py-24 md:py-32 bg-white scroll-mt-28">
+    <!-- 2. What We Do: 4 core steps -->
+    <section id="what-we-do" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Local Knowledge Graph</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Get ChatGPT &amp; Gemini to <em class="italic text-sky-deep font-display">Trust Your Brand</em></h2>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; What We Do</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">What We Do: <em class="italic text-sky-deep font-display">Our 4 Core AI Visibility Steps</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                    Before an AI engine risks recommending your business to a user, it searches the entire internet to verify you are a real, active, and highly rated company. This complete web of data is known as your <strong class="font-semibold text-slate-900">Local Knowledge Graph</strong>.
+                    Instead of just ranking you in old-school blue links, we actively build your brand&rsquo;s presence inside the databases that fuel AI search engines. Here is exactly what we build and manage for your business:
                 </p>
-                <p class="mt-6 text-lg text-slate-600 leading-relaxed">We force the algorithms to choose you using a two-step approach:</p>
             </div>
-            <div class="mt-10 grid md:grid-cols-2 gap-6">
-                <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
-                    <div class="text-sky-deep text-sm font-bold mb-3">Building the Graph</div>
-                    <p class="text-slate-600 leading-relaxed">We clean, sync, and lockdown your business information across Google Maps, Apple Maps, directory sites, and local reviews to build an unbreakable digital profile.</p>
-                </div>
-                <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
-                    <div class="text-sky-deep text-sm font-bold mb-3">Triggering the Recommendation</div>
-                    <p class="text-slate-600 leading-relaxed">Once the AI trusts this network of proof, our Answer Engine Optimization (AEO) framework kicks in, cementing your brand as the definitive, trusted answer in your industry.</p>
-                </div>
+
+            <div class="mt-14 space-y-6">
+                <?php foreach ( $ai_core_steps as $s ) : ?>
+                <article class="rounded-[2.5rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
+                    <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
+                        <span class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-950 text-white text-2xl font-display">
+                            <?php echo esc_html( $s['n'] ); ?>
+                        </span>
+                        <div class="flex-1">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-deep mb-2">Step <?php echo esc_html( $s['n'] ); ?></p>
+                            <h3 class="text-2xl md:text-3xl font-display text-slate-900 leading-snug"><?php echo wp_kses_post( $s['title'] ); ?></h3>
+                            <p class="mt-4 text-lg text-slate-600 leading-relaxed"><?php echo wp_kses_post( $s['body'] ); ?></p>
+
+                            <div class="mt-6 rounded-[1.5rem] border border-sky-deep/15 bg-sky-pale/40 p-6">
+                                <p class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.15em] text-sky-deep mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    How this works behind the scenes
+                                </p>
+                                <p class="text-base text-slate-600 leading-relaxed"><?php echo wp_kses_post( $s['behind'] ); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
-    <!-- 3. How AI Reads Your Website -->
-    <section id="how-ai-reads" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+    <!-- 3. How We Do It: 3-step execution -->
+    <section id="how-we-do-it" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; Schema Markup</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">How AI Engines Actually <em class="italic text-accent font-display">Read Your Website</em></h2>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; Our Process</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">How We Do It: <em class="italic text-accent font-display">Our 3-Step Execution Process</em></h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
-                    AI assistants don&rsquo;t look at your beautiful photos or read your text the way humans do. Instead, they scan the hidden code running in the background of your site.
+                    We take the complexity out of the equation. Here is the exact framework we use to take your business from hidden to highly cited:
                 </p>
-                <p class="mt-6 text-lg text-white/60 leading-relaxed">To bridge this gap, we install a specialized digital language called <strong class="font-semibold text-white">Schema Markup</strong>:</p>
             </div>
-            <div class="mt-10 grid md:grid-cols-2 gap-6">
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10">
-                    <div class="text-accent text-sm font-bold mb-3">The Invisible Translator</div>
-                    <p class="text-white/60 leading-relaxed">This code acts as a direct translator between your website and AI databases.</p>
-                </div>
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10">
-                    <div class="text-accent text-sm font-bold mb-3">Zero Guesswork</div>
-                    <p class="text-white/60 leading-relaxed">It hands ChatGPT and Gemini your exact location, hours, services, and menus on a silver platter so the algorithm never has to guess what you do.</p>
-                </div>
+
+            <div class="mt-14 space-y-10">
+                <?php foreach ( $ai_process as $p ) : ?>
+                <article class="flex flex-col md:flex-row gap-6 md:gap-10 border-t border-white/10 pt-10">
+                    <div class="shrink-0 md:w-40">
+                        <span class="text-5xl md:text-6xl font-display text-accent leading-none"><?php echo esc_html( $p['n'] ); ?></span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl md:text-3xl font-display leading-snug"><?php echo wp_kses_post( $p['title'] ); ?></h3>
+                        <p class="mt-4 text-lg text-white/60 leading-relaxed"><?php echo wp_kses_post( $p['body'] ); ?></p>
+                        <?php if ( ! empty( $p['items'] ) ) : ?>
+                        <ul class="mt-6 space-y-3">
+                            <?php foreach ( $p['items'] as $li ) : ?>
+                            <li class="flex items-start gap-3 text-white/70 leading-relaxed">
+                                <span class="shrink-0 mt-1 inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/20 text-accent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                                </span>
+                                <span><?php echo wp_kses_post( $li ); ?></span>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <?php endif; ?>
+                    </div>
+                </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
     <!-- 4. Why Traditional SEO is Failing -->
-    <section id="traditional-seo" class="py-24 md:py-32 bg-white scroll-mt-28">
+    <section id="traditional-seo" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">04 &middot; Generative Engine Optimization</span>
@@ -229,11 +319,11 @@ $ai_faqs = array(
                 <p class="mt-6 text-lg text-slate-600 leading-relaxed">To win these modern searches, we deploy <strong class="font-semibold text-slate-900">Generative Engine Optimization (GEO)</strong>:</p>
             </div>
             <div class="mt-10 grid md:grid-cols-2 gap-6">
-                <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
+                <div class="p-8 rounded-[2rem] border border-slate-100 bg-white shadow-soft">
                     <div class="text-sky-deep text-sm font-bold mb-3">AI-Ready Content</div>
                     <p class="text-slate-600 leading-relaxed">We structure, format, and optimize your website&rsquo;s information so AI tools can instantly read and summarize it.</p>
                 </div>
-                <div class="p-8 rounded-[2rem] border border-slate-100 bg-slate-50 shadow-soft">
+                <div class="p-8 rounded-[2rem] border border-slate-100 bg-white shadow-soft">
                     <div class="text-sky-deep text-sm font-bold mb-3">Instant Recommendations</div>
                     <p class="text-slate-600 leading-relaxed">Instead of just ranking you in a list of blue links, GEO ensures AI engines dynamically generate a live recommendation that features your business first.</p>
                 </div>
@@ -241,39 +331,11 @@ $ai_faqs = array(
         </div>
     </section>
 
-    <!-- 5. 3-Step Process -->
-    <section id="process" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-2xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; Our Process</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our 3-Step Process for <em class="italic text-sky-deep font-display">AI Visibility</em></h2>
-                <p class="mt-8 text-lg text-slate-600 leading-relaxed">A transparent, 3-step path to putting your business at the top of modern search results.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft">
-                    <div class="text-sky-deep text-4xl font-display mb-4">01</div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Discovery &amp; Strategy</h3>
-                    <p class="text-slate-500 leading-relaxed">We discuss your business goals, audit your current digital footprint, and map out a custom AI Search Visibility plan tailored to your industry.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft">
-                    <div class="text-sky-deep text-4xl font-display mb-4">02</div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Build &amp; Optimize</h3>
-                    <p class="text-slate-500 leading-relaxed">Our team sets up your digital profiles for AI crawlers, optimizes your local data feeds, and builds your high-speed website foundation.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft">
-                    <div class="text-sky-deep text-4xl font-display mb-4">03</div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Get Cited &amp; Grow</h3>
-                    <p class="text-slate-500 leading-relaxed">Your business becomes the recommended answer in modern search engines like ChatGPT and Gemini, turning AI discovery traffic into a steady stream of new leads.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. FAQ -->
+    <!-- 5. FAQ -->
     <section id="faq" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl mb-12">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">06 &middot; FAQ</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; FAQ</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">AI Search, <em class="italic text-sky-deep font-display">Answered</em></h2>
             </div>
             <div class="max-w-4xl space-y-4">
@@ -294,8 +356,10 @@ $ai_faqs = array(
 
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
-        <div class="mx-auto max-w-4xl px-6">
-            <h2 class="text-4xl md:text-7xl font-display leading-[0.95] text-slate-900">Claim Your #1 Spot in the <br /><em class="italic text-sky-deep font-display">AI Search Era</em></h2>
+        <div class="mx-auto max-w-5xl px-6">
+            <h2 class="text-4xl sm:text-6xl md:text-7xl leading-[1.02] text-slate-950 font-display">
+                Claim Your #1 Spot in the <br /><em class="italic font-display text-sky-deep">AI Search Era</em>
+            </h2>
             <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
                 Don&rsquo;t let your competitors get coded into the algorithms first. Let&rsquo;s talk today and secure your brand as the recommended answer.
             </p>
@@ -317,7 +381,7 @@ echo wp_json_encode(
     array(
         '@context'    => 'https://schema.org',
         '@type'       => 'Service',
-        'name'        => 'AI Search Optimization',
+        'name'        => 'AI Search Visibility & Optimization Services',
         'serviceType' => 'AI Search Optimization (SEO, AEO & GEO)',
         'provider'    => array(
             '@type' => 'ProfessionalService',
@@ -328,7 +392,7 @@ echo wp_json_encode(
             '@type' => 'Place',
             'name'  => 'Cayman Islands',
         ),
-        'description' => 'AI Search Optimization for Cayman Islands businesses: SEO, Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) that make your brand the recommended answer on ChatGPT, Gemini and Google.',
+        'description' => 'AI Search Optimization for Cayman Islands businesses: SEO, Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) that make your brand the recommended answer on ChatGPT, Gemini and Google. We build a high-speed AI-ready website, sync your business details across Google Maps, Apple Maps and core social profiles, restructure your content to answer conversational questions, and provide continuous monthly maintenance with weekly performance updates.',
         'url'         => 'https://toctoc.ky/ai-search-optimization-cayman-islands/',
     ),
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
