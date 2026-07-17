@@ -93,23 +93,142 @@ $ow_cases = array(
     ),
 );
 
-// Standalone web design showcase — same treatment as the homepage portfolio.
+/**
+ * Standalone web design showcase — same treatment as the homepage portfolio.
+ * The six projects featured on the homepage (Adventura, Uncle Liu, PR Optics,
+ * Carnivore, Solara, 19-81) intentionally live there and are not repeated here.
+ *
+ * Every URL below was verified live by its <title>. 'img' empty renders a
+ * name placeholder until a preview screenshot is uploaded.
+ */
 $ow_sites = array(
     array(
-        'name'   => 'Prospect Center',
-        'desc'   => 'Corporate Real Estate portal with advanced search and directory features.',
-        'url'    => 'https://prospectcenter.ky',
-        'img'    => 'https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-02-768x418.webp',
-        'w'      => 768,
-        'h'      => 418,
+        'name' => 'Prospect Center',
+        'desc' => 'Luxury development landing page — custom theme, dark mode and glassmorphism, built for conversion.',
+        'url'  => 'https://prospectcenter.ky',
+        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-02-768x418.webp',
+        'w'    => 768,
+        'h'    => 418,
     ),
     array(
-        'name'   => 'The Yard',
-        'desc'   => 'Landing page for the Cayman Islands&rsquo; first premium food truck court.',
-        'url'    => 'https://theyard.ky',
-        'img'    => 'https://toctoc.ky/wp-content/uploads/2026/05/image-2026-05-13-11-23-06-768x464.webp',
-        'w'      => 768,
-        'h'      => 464,
+        'name' => 'The Yard',
+        'desc' => 'Landing page for the Cayman Islands&rsquo; first premium food truck court, with elite local SEO.',
+        'url'  => 'https://theyard.ky',
+        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/05/image-2026-05-13-11-23-06-768x464.webp',
+        'w'    => 768,
+        'h'    => 464,
+    ),
+    array(
+        'name' => 'Easy Lot Cayman',
+        'desc' => 'Premium real estate platform with dynamic metadata, JSON-LD schema and WhatsApp integration.',
+        'url'  => 'https://easylot.ky',
+        'img'  => 'https://toctoc.ky/wp-content/uploads/2024/01/easylot-website-local-business-cayman-islands.webp',
+        'w'    => 0,
+        'h'    => 0,
+    ),
+    array(
+        'name' => 'Caytech AC &amp; Appliances',
+        'desc' => 'HVAC lead engine rebuilt for speed — 90+ PageSpeed on mobile and desktop, FAQ schema, AJAX forms.',
+        'url'  => 'https://caytechac.com',
+        'img'  => 'https://toctoc.ky/wp-content/uploads/2024/01/caytechac-website-local-business-cayman-islands.jpg',
+        'w'    => 0,
+        'h'    => 0,
+    ),
+    array(
+        'name' => 'VitaGo',
+        'desc' => 'Smart wellness vending brand in Puerto Rico — custom theme from scratch, no page builders.',
+        'url'  => 'https://vitagopr.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Coconut Room',
+        'desc' => 'Tropical Asian kitchen on Seven Mile Beach — glassmorphism dark mode and direct reservations.',
+        'url'  => 'https://coconutroom.ky',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Prime Group',
+        'desc' => 'Premium hospitality consulting and private chef services — editorial design system.',
+        'url'  => 'https://primegroup.ky',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Volc&aacute;n Resins',
+        'desc' => 'Premium epoxy and metallic flooring in Charleston, SC — dynamic gallery and AJAX estimator.',
+        'url'  => 'https://volcanresinflooring.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Rovial &amp; Workfast',
+        'desc' => 'Spray foam insulation platform for Florida — premium dark UI with intelligent video gallery.',
+        'url'  => 'https://insulation.brisanaconstruction.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Infinite Mind Care',
+        'desc' => 'Counseling services in the Cayman Islands — a calm, accessible, search-ready foundation.',
+        'url'  => 'https://infinitemindcare.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'ESCALA Group',
+        'desc' => 'Residential and commercial design firm in Dallas — content architecture and SEO-driven copy.',
+        'url'  => 'https://escalausa.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Blue Mountain Financing',
+        'desc' => 'Car title loans in Cayman — high-conversion landing page built around a single clear promise.',
+        'url'  => 'https://bmf345.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Zafra USA',
+        'desc' => 'Custom cabinetry in Orlando — silo content architecture built to generate qualified leads.',
+        'url'  => 'https://zafrausa.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Prospect Self Storage',
+        'desc' => 'Self storage in Grand Cayman — SelfStorage schema and precise geo data to win the map pack.',
+        'url'  => 'https://prospectstorage.ky',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'The Conscious Closet',
+        'desc' => 'Circular fashion boutique in Cayman — WooCommerce with unified in-store POS.',
+        'url'  => 'https://theconsciouscloset.ky',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Yallah Modern Mediterranean',
+        'desc' => 'Modern Mediterranean restaurant in Cayman — local visibility and reputation strategy.',
+        'url'  => 'https://yallah.ky',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Jaly Dance Fit',
+        'desc' => 'Dance fitness brand — full CRO redesign structuring five services into one clear funnel.',
+        'url'  => 'https://jalydancefit.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Rincon Fence Supply',
+        'desc' => 'Fences and gates in Miami — two landing pages merged into one conversion machine.',
+        'url'  => 'https://rinconfencesupply.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'Security on the Spot',
+        'desc' => 'Security camera installation in Miami — corporate site plus a focused lead-gen landing page.',
+        'url'  => 'https://securityonthespot.com',
+        'img'  => '',
+    ),
+    array(
+        'name' => 'MPJ Roofing Supply',
+        'desc' => 'B2B roofing supply in Orlando — Product and FAQ schema built to cut cost per lead.',
+        'url'  => 'https://mpjroofingsupply.com',
+        'img'  => '',
     ),
 );
 ?>
