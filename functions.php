@@ -166,6 +166,7 @@ TocToc Marketing already delivers #1 AI-search rankings for Cayman businesses. E
 
 ## Key pages
 - [Home](https://toctoc.ky/): Overview of TocToc Marketing and the AI Search Visibility Framework.
+- [Our Work](https://toctoc.ky/our-work/): Case studies and video proof of Cayman brands made the #1 recommendation on ChatGPT and Gemini — 19-81 Brewing Co. (craft brewery), Prime Group (Chinese restaurants) and TintXKing (window tint), plus a standalone web design showcase.
 - [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind TocToc — Daniel Garrido (Founder & CEO), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer).
 - [Free SEO / GEO Checker](https://toctoc.ky/seo-checker/): A free tool to audit any website's SEO, AI visibility and speed.
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
