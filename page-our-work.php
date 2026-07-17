@@ -70,7 +70,10 @@ $ow_cases = array(
         ),
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-1-1.mp4',
         'headline'  => 'How we ranked our clients #1 &amp; #2 on ChatGPT &amp; Gemini! &#128081;',
-        'shots'     => array( 'Restaurant Website Previews', 'Google Maps &amp; TripAdvisor Profiles' ),
+        'shots'     => array(
+            array( 'label' => 'Uncle Liu &mdash; Google Business Profile', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094942.webp' ),
+            array( 'label' => 'Coconut Room &mdash; Google Business Profile', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094910.webp' ),
+        ),
         'bg'        => 'bg-slate-50',
         'card'      => 'bg-white',
     ),
@@ -88,9 +91,11 @@ $ow_cases = array(
             'Overhauled, aligned, and optimized their active Social Media channels.',
             'Perform weekly updates across all platforms to keep their digital footprint active, verified, and authoritative for search engines.',
         ),
-        'mp4'       => '', // Pending — no ChatGPT/Gemini demo recorded for TintXKing yet.
-        'headline'  => '',
-        'shots'     => array( 'TintXKing Website Preview', 'Google Maps Listing' ),
+        'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking.mp4',
+        'headline'  => 'How TintXKing shows up in ChatGPT &amp; Gemini &#128663;',
+        'shots'     => array(
+            array( 'label' => 'Google Maps listing', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094748.webp' ),
+        ),
         'bg'        => 'bg-white',
         'card'      => 'bg-slate-50',
     ),
@@ -407,13 +412,20 @@ $ow_sites = array(
                     </div>
                     <!-- Screenshot slots -->
                     <?php foreach ( $c['shots'] as $shot ) : ?>
+                    <?php if ( ! empty( $shot['img'] ) ) : ?>
+                    <figure class="overflow-hidden rounded-[2rem] border border-slate-100 shadow-soft bg-white">
+                        <img src="<?php echo esc_url( $shot['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $c['title'] . ' — ' . $shot['label'] ) ); ?>" loading="lazy" decoding="async" class="w-full h-auto" />
+                        <figcaption class="px-4 py-3 text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo wp_kses_post( $shot['label'] ); ?></figcaption>
+                    </figure>
+                    <?php else : ?>
                     <div class="aspect-video rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/60 flex flex-col items-center justify-center gap-3 text-center px-6">
                         <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-slate-300 shadow-soft">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                         </span>
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo wp_kses_post( $shot ); ?></span>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo wp_kses_post( $shot['label'] ); ?></span>
                         <span class="text-xs text-slate-400">Screenshot slot</span>
                     </div>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
             </div>
