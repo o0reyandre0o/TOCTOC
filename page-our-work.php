@@ -153,7 +153,7 @@ $ow_sites = array(
         'name' => 'VitaGo',
         'desc' => 'Smart wellness vending brand in Puerto Rico — custom theme from scratch, no page builders.',
         'url'  => 'https://vitagopr.com',
-        'img'  => '',
+        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093332.webp',
     ),
     array(
         'name' => 'Infinite Mindcare',
