@@ -123,7 +123,7 @@ $ow_sites = array(
         'name' => 'Uncle Liu',
         'desc' => 'Szechuan restaurant on Seven Mile Beach — custom theme, ranked #1 in AI and local search.',
         'url'  => 'https://uncleliu.ky',
-        'img'  => '',
+        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093300.webp',
     ),
     array(
         'name' => 'Carnivore Smash Burger',
