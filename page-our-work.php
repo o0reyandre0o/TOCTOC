@@ -49,7 +49,7 @@ $ow_cases = array(
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
         'headline'  => 'How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;',
         'shots'     => array(
-            array( 'label' => '19-81 website', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp' ),
+            array( 'label' => '19-81 website', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp', 'fit' => 'contain' ),
             array( 'label' => 'Google Business Profile', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094552.webp' ),
         ),
         'bg'        => 'bg-white',
