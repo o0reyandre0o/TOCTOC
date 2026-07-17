@@ -426,11 +426,15 @@ $ow_sites = array(
             <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                 <?php foreach ( $ow_sites as $s ) : ?>
                 <div class="group flex flex-col gap-6">
-                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( $s['name'] ); ?>" width="<?php echo (int) $s['w']; ?>" height="<?php echo (int) $s['h']; ?>" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft <?php echo empty( $s['img'] ) ? 'flex items-center justify-center px-6' : ''; ?>">
+                        <?php if ( ! empty( $s['img'] ) ) : ?>
+                        <img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $s['name'] ) ); ?>" <?php echo ! empty( $s['w'] ) ? 'width="' . (int) $s['w'] . '" height="' . (int) $s['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <?php else : ?>
+                        <span class="font-display text-3xl text-white/20 text-center leading-tight"><?php echo wp_kses_post( $s['name'] ); ?></span>
+                        <?php endif; ?>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-display text-white mb-2"><?php echo esc_html( $s['name'] ); ?></h3>
+                        <h3 class="text-3xl font-display text-white mb-2"><?php echo wp_kses_post( $s['name'] ); ?></h3>
                         <p class="text-white/40 text-sm mb-6"><?php echo wp_kses_post( $s['desc'] ); ?></p>
                         <a href="<?php echo esc_url( $s['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
