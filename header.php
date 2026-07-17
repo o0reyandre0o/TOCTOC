@@ -69,6 +69,10 @@
             'title' => 'Digital Marketing in the Cayman Islands: 2026 Guide | TocToc',
             'desc' => 'A clear 2026 guide to digital marketing in the Cayman Islands — SEO, AEO/GEO, AI visibility, costs and how to choose an agency. Answered by TocToc Marketing.'
         ],
+        'our-work' => [
+            'title' => 'Our Work | AI Search Case Studies Cayman | TocToc',
+            'desc' => 'Real results: how we made Cayman brands the #1 recommendation on ChatGPT and Gemini. Case studies from 19-81 Brewing Co., Prime Group and TintXKing.'
+        ],
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
             'desc' => 'Meet the team behind your growth. We combine local Cayman expertise with global digital strategies to help your business scale.'
