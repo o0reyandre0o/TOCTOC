@@ -334,7 +334,7 @@
                 <!-- Project 5: Prospect Center -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-02.webp" alt="Prospect Center" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-02-768x418.webp" alt="Prospect Center" width="768" height="418" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Prospect Center</h3>
@@ -348,7 +348,7 @@
                 <!-- Project 6: The Yard -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/image-2026-05-13-11-23-06.webp" alt="The Yard" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/image-2026-05-13-11-23-06-768x464.webp" alt="The Yard" width="768" height="464" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">The Yard</h3>
