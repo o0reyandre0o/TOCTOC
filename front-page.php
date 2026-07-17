@@ -331,10 +331,10 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Solara — preview image pending -->
+                <!-- Project 5: Solara -->
                 <div class="group flex flex-col gap-6">
-                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft flex items-center justify-center">
-                        <span class="font-display text-4xl text-white/20">Solara</span>
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092614.webp" alt="Solara" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Solara</h3>
@@ -348,7 +348,7 @@
                 <!-- Project 6: 19-81 Brewing Co. -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2025/05/homepage-cayman-islands-craft-brewery-homepage-768x354.webp" alt="19-81 Brewing Co." width="768" height="354" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp" alt="19-81 Brewing Co." loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">19-81 Brewing Co.</h3>
