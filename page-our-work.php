@@ -201,9 +201,9 @@ $ow_sites = array(
         'img'  => '',
     ),
     array(
-        'name' => 'Yallah Modern Mediterranean',
-        'desc' => 'Modern Mediterranean restaurant in Cayman — local visibility and reputation strategy.',
-        'url'  => 'https://yallah.ky',
+        'name' => 'Luxe Detailing',
+        'desc' => 'Automotive and marine detailing in Grand Cayman — search-ready foundation from day one.',
+        'url'  => 'https://luxedetailing.ky',
         'img'  => '',
     ),
     array(
