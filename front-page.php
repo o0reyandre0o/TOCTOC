@@ -325,39 +325,48 @@
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Smash Burger</h3>
                         <p class="text-white/40 text-sm mb-6">Vibrant Quick Service Restaurant website with digital ordering and loyalty program.</p>
-                        <a href="#" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                        <a href="https://carnivore.ky/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project 5: Prospect Center -->
+                <!-- Project 5: Solara — preview image pending -->
                 <div class="group flex flex-col gap-6">
-                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-47-02-768x418.webp" alt="Prospect Center" width="768" height="418" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft flex items-center justify-center">
+                        <span class="font-display text-4xl text-white/20">Solara</span>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-display text-white mb-2">Prospect Center</h3>
-                        <p class="text-white/40 text-sm mb-6">Corporate Real Estate portal with advanced search and directory features.</p>
-                        <a href="https://prospectcenter.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                        <h3 class="text-3xl font-display text-white mb-2">Solara</h3>
+                        <p class="text-white/40 text-sm mb-6">Precision photochromic eyewear brand site with a product-led, search-ready structure.</p>
+                        <a href="https://solara-pro.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project 6: The Yard -->
+                <!-- Project 6: 19-81 Brewing Co. -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/image-2026-05-13-11-23-06-768x464.webp" alt="The Yard" width="768" height="464" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2025/05/homepage-cayman-islands-craft-brewery-homepage-768x354.webp" alt="19-81 Brewing Co." width="768" height="354" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
-                        <h3 class="text-3xl font-display text-white mb-2">The Yard</h3>
-                        <p class="text-white/40 text-sm mb-6">Industrial Co-working and storage facility landing page with unit booking.</p>
-                        <a href="#" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
+                        <h3 class="text-3xl font-display text-white mb-2">19-81 Brewing Co.</h3>
+                        <p class="text-white/40 text-sm mb-6">Craft brewery and taproom site built to be cited as the #1 brewery by ChatGPT and Gemini.</p>
+                        <a href="https://1981brewingco.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
                     </div>
                 </div>
+            </div>
+
+            <div class="mt-16 flex justify-center">
+                <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-white text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                    View Our Work
+                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
