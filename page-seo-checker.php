@@ -510,6 +510,140 @@ window.TTSEO = {
         next(0);
     }
 
+    // ---- Site-wide cross-analysis: issues only visible across the whole site. ----
+    function renderSitewide(pages) {
+        var el = document.getElementById('crawl-sitewide');
+        el.classList.remove('hidden');
+        var findings = [];
+
+        // Duplicate titles / meta descriptions across pages.
+        function dupGroups(field) {
+            var map = {};
+            pages.forEach(function (p) {
+                var v = (p[field] || '').trim().toLowerCase();
+                if (!v) return;
+                (map[v] = map[v] || []).push(pathOf(p.url));
+            });
+            return Object.keys(map).filter(function (k) { return map[k].length > 1; }).map(function (k) { return map[k]; });
+        }
+        var dupT = dupGroups('title');
+        if (dupT.length) {
+            findings.push({ sev: 'fail', title: 'Duplicate page titles',
+                detail: dupT.map(function (g) { return g.slice(0, 4).join(', ') + (g.length > 4 ? ' +' + (g.length - 4) : '') + ' share one title'; }).join(' · '),
+                plain: 'Each page competes against its twins in Google instead of ranking on its own. Give every page a unique title.' });
+        } else {
+            findings.push({ sev: 'pass', title: 'Page titles', detail: 'All ' + pages.length + ' scanned pages have unique titles', plain: '' });
+        }
+        var dupD = dupGroups('desc');
+        if (dupD.length) {
+            findings.push({ sev: 'warn', title: 'Duplicate meta descriptions',
+                detail: dupD.map(function (g) { return g.slice(0, 4).join(', ') + (g.length > 4 ? ' +' + (g.length - 4) : ''); }).join(' · '),
+                plain: 'Google rewrites duplicated descriptions and your click-through rate suffers. Write a unique one per page.' });
+        } else {
+            findings.push({ sev: 'pass', title: 'Meta descriptions', detail: 'No duplicates across scanned pages', plain: '' });
+        }
+
+        // H1 discipline across the site.
+        var badH1 = pages.filter(function (p) { return p.h1 !== 1; });
+        if (badH1.length) {
+            findings.push({ sev: 'warn', title: 'H1 problems on ' + badH1.length + ' page' + (badH1.length === 1 ? '' : 's'),
+                detail: badH1.slice(0, 5).map(function (p) { return pathOf(p.url) + ' (' + p.h1 + ' H1' + (p.h1 === 1 ? '' : 's') + ')'; }).join(' · ') + (badH1.length > 5 ? ' …' : ''),
+                plain: 'Every page needs exactly one main heading so search engines and AI know what it is about.' });
+        } else {
+            findings.push({ sev: 'pass', title: 'H1 headings', detail: 'Every scanned page has exactly one H1', plain: '' });
+        }
+
+        // NAP consistency: clickable phone numbers across the site.
+        var phoneSet = {};
+        var pagesWithPhone = 0;
+        pages.forEach(function (p) {
+            if (p.phones.length) pagesWithPhone++;
+            p.phones.forEach(function (ph) { phoneSet[ph] = (phoneSet[ph] || 0) + 1; });
+        });
+        var phones = Object.keys(phoneSet);
+        if (phones.length === 0) {
+            findings.push({ sev: 'warn', title: 'No clickable phone number found',
+                detail: 'None of the ' + pages.length + ' scanned pages has a tel: link',
+                plain: 'A consistent, clickable phone number is a core local trust signal — AI engines cross-check it against your Google profile. This is part of your NAP (Name, Address, Phone) consistency.' });
+        } else if (phones.length === 1) {
+            findings.push({ sev: 'pass', title: 'Phone number consistent (NAP)',
+                detail: phones[0] + ' on ' + pagesWithPhone + ' of ' + pages.length + ' pages', plain: '' });
+        } else {
+            findings.push({ sev: 'warn', title: phones.length + ' different phone numbers across the site',
+                detail: phones.slice(0, 3).join(' · ') + (phones.length > 3 ? ' …' : ''),
+                plain: 'Mismatched phone numbers confuse the automated background check AI engines run before recommending a business. If they are all intentional (departments, locations), make sure each also matches its Google Business Profile.' });
+        }
+
+        var html = '<h3 class="text-xl font-display text-slate-900 mb-1">Site-wide findings</h3>' +
+            '<p class="text-sm text-slate-500 mb-5">Issues that only show up when you look at the whole site together.</p>';
+        findings.forEach(function (f) {
+            html += '<div class="flex items-start gap-4 py-4 border-b border-slate-50">' +
+                '<span class="shrink-0 w-6 text-center text-lg font-bold">' + (ICON[f.sev] || ICON.info) + '</span>' +
+                '<div class="flex-1 min-w-0">' +
+                    '<span class="font-bold text-slate-900">' + esc(f.title) + '</span>' +
+                    '<span class="block text-sm text-slate-500 mt-0.5">' + esc(f.detail) + '</span>' +
+                    (f.plain ? '<p class="mt-1.5 text-sm text-slate-600 leading-relaxed"><span class="font-bold text-sky-deep">In plain English:</span> ' + esc(f.plain) + '</p>' : '') +
+                '</div></div>';
+        });
+        html += '<div id="crawl-links" class="pt-4 text-sm text-slate-500">Preparing internal link check&hellip;</div>';
+        el.innerHTML = html;
+    }
+
+    // ---- Broken internal links: probe links discovered during the crawl. ----
+    function checkBrokenLinks(linkMap, pages) {
+        var mount = document.getElementById('crawl-links');
+        if (!mount) return;
+        var crawled = {};
+        pages.forEach(function (p) { crawled[p.url.replace(/\/+$/, '').toLowerCase()] = true; });
+        var candidates = Object.keys(linkMap).filter(function (k) { return !crawled[k]; }).slice(0, 50).map(function (k) { return linkMap[k]; });
+        if (!candidates.length) {
+            mount.innerHTML = '<span class="font-bold text-green-600">&#10003;</span> No extra internal links to verify — every link found points to a scanned page.';
+            return;
+        }
+        var broken = [];
+        var idx = 0;
+        function batch() {
+            if (idx >= candidates.length) {
+                if (!broken.length) {
+                    mount.innerHTML = '<span class="font-bold text-green-600">&#10003;</span> Checked ' + candidates.length + ' internal links — none broken.';
+                } else {
+                    var html = '<div class="flex items-start gap-4 py-4">' +
+                        '<span class="shrink-0 w-6 text-center text-lg font-bold">' + ICON.fail + '</span>' +
+                        '<div class="flex-1 min-w-0">' +
+                        '<span class="font-bold text-slate-900">' + broken.length + ' broken internal link' + (broken.length === 1 ? '' : 's') + '</span>' +
+                        '<p class="mt-1.5 text-sm text-slate-600 leading-relaxed"><span class="font-bold text-sky-deep">In plain English:</span> These links send visitors (and crawlers) to dead pages. Fix or remove them — broken links waste crawl budget and erode trust.</p>' +
+                        '<ul class="mt-2 space-y-1">';
+                    broken.slice(0, 10).forEach(function (b) {
+                        html += '<li class="text-sm text-slate-500 break-all">' + esc(pathOf(b.url)) + ' <span class="font-bold text-red-600">(' + (b.code === 0 ? 'unreachable' : b.code) + ')</span>' +
+                            (b.src.length ? ' <span class="text-slate-400">&larr; linked from ' + esc(b.src.slice(0, 2).map(pathOf).join(', ')) + (b.src.length > 2 ? ' …' : '') + '</span>' : '') + '</li>';
+                    });
+                    html += (broken.length > 10 ? '<li class="text-sm text-slate-400">…and ' + (broken.length - 10) + ' more</li>' : '') + '</ul></div></div>';
+                    mount.innerHTML = html;
+                }
+                return;
+            }
+            var slice = candidates.slice(idx, idx + 10);
+            mount.innerHTML = '<span class="inline-flex items-center gap-2"><span class="inline-block w-4 h-4 border-2 border-slate-200 border-t-sky-deep rounded-full animate-spin"></span> Checking internal links&hellip; ' + Math.min(idx + 10, candidates.length) + ' of ' + candidates.length + '</span>';
+            var body = new URLSearchParams({ action: 'toctoc_seo_status', nonce: TTSEO.nonce, urls: JSON.stringify(slice.map(function (c) { return c.url; })) });
+            fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+            .then(function (r) { return r.json(); })
+            .then(function (json) {
+                if (json && json.success && json.data.codes) {
+                    slice.forEach(function (c) {
+                        var code = json.data.codes[c.url];
+                        if (typeof code === 'number' && code !== -1 && (code === 0 || code >= 400)) {
+                            broken.push({ url: c.url, code: code, src: c.src });
+                        }
+                    });
+                }
+                idx += 10;
+                batch();
+            })
+            .catch(function () { idx += 10; batch(); });
+        }
+        batch();
+    }
+
     function showError(msg) {
         var e = document.getElementById('ttseo-error');
         e.textContent = msg || 'Something went wrong. Please try again.';
