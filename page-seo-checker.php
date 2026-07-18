@@ -583,15 +583,28 @@ window.TTSEO = {
         });
     });
 
-    function runPSI(url) {
+    // Google's Lighthouse run can outlast our server timeout on slow sites, but it
+    // keeps analyzing and caches the result — so a retry usually succeeds fast.
+    function runPSI(url, attempt) {
+        attempt = attempt || 1;
+        var MAX_ATTEMPTS = 3;
         var body = new URLSearchParams({ action: 'toctoc_seo_psi', nonce: TTSEO.nonce, url: url });
         fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
         .then(function (r) { return r.json(); })
         .then(function (json) {
             var perfEl = document.getElementById('perf-body');
             if (!json || !json.success) {
+                var retryable = json && json.data && json.data.retryable;
+                if (retryable && attempt < MAX_ATTEMPTS) {
+                    perfEl.innerHTML = '<span class="inline-flex items-center gap-2 text-slate-500"><span class="inline-block w-4 h-4 border-2 border-slate-200 border-t-sky-deep rounded-full animate-spin"></span> Google is still analyzing this site &mdash; retrying (' + (attempt + 1) + '/' + MAX_ATTEMPTS + ')&hellip;</span>';
+                    setTimeout(function () { runPSI(url, attempt + 1); }, 4000);
+                    return;
+                }
                 setScore('score-perf', null);
-                perfEl.innerHTML = '<span class="text-slate-400">' + esc(json && json.data ? json.data.message : 'Speed data unavailable.') + '</span>';
+                var failMsg = retryable
+                    ? 'This site takes Google a very long time to analyze (usually a sign it is quite slow). Try again in a minute.'
+                    : (json && json.data ? json.data.message : 'Speed data unavailable.');
+                perfEl.innerHTML = '<span class="text-slate-400">' + esc(failMsg) + '</span>';
                 return;
             }
             var d = json.data;
