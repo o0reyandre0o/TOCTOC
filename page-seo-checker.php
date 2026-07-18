@@ -745,6 +745,35 @@ window.TTSEO = {
         .catch(function () {});
     }
 
+    // ---- Shareable badge: preview + copy-paste embed code. ----
+    function renderShareBadge(badgeUrl) {
+        var el = document.getElementById('ttseo-share');
+        if (!el) return;
+        if (!badgeUrl) { el.classList.add('hidden'); return; }
+        var embed = '<a href="https://toctoc.ky/seo-checker/"><img src="' + badgeUrl + '" alt="SEO score verified by TocToc Marketing" width="360" height="56"></a>';
+        el.innerHTML =
+            '<p class="text-xs font-bold uppercase tracking-widest text-sky-deep mb-4">Proud of your score? Share it</p>' +
+            '<div class="flex flex-col md:flex-row md:items-center gap-6">' +
+                '<img src="' + esc(badgeUrl) + '" alt="Score badge" width="360" height="56" class="shrink-0 max-w-full h-auto" />' +
+                '<div class="flex-1 min-w-0">' +
+                    '<p class="text-sm text-slate-500 mb-2">Paste this on your website or share the image — it links back to the checker:</p>' +
+                    '<textarea id="ttseo-embed" readonly rows="2" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600 outline-none"></textarea>' +
+                    '<button id="ttseo-copy-embed" type="button" class="mt-2 inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2 text-sm font-bold hover:bg-slate-800 transition-colors">Copy embed code</button>' +
+                '</div>' +
+            '</div>';
+        el.classList.remove('hidden');
+        var ta = document.getElementById('ttseo-embed');
+        ta.value = embed;
+        document.getElementById('ttseo-copy-embed').addEventListener('click', function () {
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            if (navigator.clipboard) { navigator.clipboard.writeText(embed).catch(function () {}); }
+            this.textContent = 'Copied ✓';
+            var btn = this;
+            setTimeout(function () { btn.textContent = 'Copy embed code'; }, 2000);
+        });
+    }
+
     function showError(msg) {
         var e = document.getElementById('ttseo-error');
         e.textContent = msg || 'Something went wrong. Please try again.';
