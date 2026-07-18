@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Perf: warm up connections to the render-critical + image origins -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <!-- Compiled Tailwind (static, ~39 KB) — replaces the runtime CDN build. Rebuild with: npm run build:css -->
+    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() . '/assets/tailwind.min.css' ); ?>?v=<?php echo (int) @filemtime( get_template_directory() . '/assets/tailwind.min.css' ); ?>">
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <?php if ( is_front_page() ) : ?>
@@ -345,129 +345,6 @@
     </script>
 
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Instrument Serif', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            border: "hsl(var(--border))",
-            input: "hsl(var(--input))",
-            ring: "hsl(var(--ring))",
-            background: "hsl(var(--background))",
-            foreground: "hsl(var(--foreground))",
-            primary: {
-              DEFAULT: "hsl(var(--primary))",
-              foreground: "hsl(var(--primary-foreground))",
-            },
-            secondary: {
-              DEFAULT: "hsl(var(--secondary))",
-              foreground: "hsl(var(--secondary-foreground))",
-            },
-            accent: {
-              DEFAULT: "hsl(var(--accent))",
-              foreground: "hsl(var(--accent-foreground))",
-            },
-            muted: {
-              DEFAULT: "hsl(var(--muted))",
-              foreground: "hsl(var(--muted-foreground))",
-            },
-            card: {
-              DEFAULT: "hsl(var(--card))",
-              foreground: "hsl(var(--card-foreground))",
-            },
-            sky: {
-              deep: "hsl(var(--sky-deep))",
-              mid: "hsl(var(--sky-mid))",
-              light: "hsl(var(--sky-light))",
-              pale: "hsl(var(--sky-pale))",
-            },
-          },
-          borderRadius: {
-            lg: "var(--radius)",
-            md: "calc(var(--radius) - 2px)",
-            sm: "calc(var(--radius) - 4px)",
-          },
-          boxShadow: {
-            soft: "0 10px 40px -10px hsl(212 80% 30% / 0.18)",
-            glass: "0 20px 60px -20px hsl(212 80% 25% / 0.25)",
-            pill: "0 8px 24px -8px hsl(220 45% 10% / 0.35)",
-            glow: "0 0 60px hsl(72 100% 62% / 0.45)",
-          },
-          animation: {
-            'float-slow': 'float-slow 9s ease-in-out infinite',
-            'drift': 'drift 30s ease-in-out infinite alternate',
-          },
-          keyframes: {
-            'float-slow': {
-              '0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
-              '50%': { transform: 'translateY(-20px) translateX(10px)' },
-            },
-            'drift': {
-              '0%': { transform: 'translateX(-5%)' },
-              '100%': { transform: 'translateX(5%)' },
-            }
-          }
-        }
-      }
-    }
-    </script>
-    <style type="text/tailwindcss">
-      @layer base {
-        :root {
-          --background: 210 60% 98%;
-          --foreground: 220 40% 10%;
-          --card: 0 0% 100%;
-          --card-foreground: 220 40% 10%;
-          --popover: 0 0% 100%;
-          --popover-foreground: 220 40% 10%;
-          --primary: 220 45% 8%;
-          --primary-foreground: 0 0% 100%;
-          --secondary: 210 40% 96%;
-          --secondary-foreground: 220 40% 10%;
-          --muted: 210 30% 94%;
-          --muted-foreground: 220 15% 40%;
-          --accent: 72 100% 62%;
-          --accent-foreground: 220 45% 8%;
-          --sky-deep: 212 95% 45%;
-          --sky-mid: 205 95% 60%;
-          --sky-light: 200 100% 88%;
-          --sky-pale: 205 100% 96%;
-          --destructive: 0 84% 60%;
-          --destructive-foreground: 0 0% 100%;
-          --border: 215 25% 88%;
-          --input: 215 25% 88%;
-          --ring: 212 95% 45%;
-          --radius: 1.25rem;
-        }
-        .dark {
-          --background: 222.2 84% 4.9%;
-          --foreground: 210 40% 98%;
-        }
-        body {
-          @apply bg-background text-foreground antialiased font-sans;
-        }
-        h1, h2, h3, h4 {
-          @apply font-display tracking-tight font-normal;
-        }
-      }
-      @layer utilities {
-        .glass {
-          background: hsl(0 0% 100% / 0.55);
-          backdrop-filter: blur(20px) saturate(160%);
-          border: 1px solid hsl(0 0% 100% / 0.6);
-        }
-        .glass-dark {
-          background: hsl(220 45% 8% / 0.6);
-          backdrop-filter: blur(20px) saturate(160%);
-          border: 1px solid hsl(0 0% 100% / 0.08);
-        }
-      }
-    </style>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
