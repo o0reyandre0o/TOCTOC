@@ -171,7 +171,7 @@ get_header(); ?>
                 </div>
 
                 <div class="order-1 lg:order-2">
-                    <div id="ttglobe-wrap" class="relative mx-auto w-full max-w-[560px] aspect-square select-none">
+                    <div id="ttglobe-wrap" class="relative mx-auto w-full max-w-[640px] aspect-square select-none">
                         <canvas id="ttglobe" class="block w-full h-full"></canvas>
                         <!-- Location chips: fixed slots at the edges; canvas draws a leader
                              line from each chip to its marker as the globe turns.
@@ -278,7 +278,7 @@ get_header(); ?>
             W = wrap.clientWidth; H = wrap.clientHeight;
             canvas.width = W * dpr; canvas.height = H * dpr;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            CX = W / 2; CY = H / 2; R = Math.min(W, H) * 0.42;
+            CX = W / 2; CY = H / 2; R = Math.min(W, H) * 0.44;
         }
         resize();
         window.addEventListener('resize', resize);
