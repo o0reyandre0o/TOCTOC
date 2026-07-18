@@ -80,6 +80,140 @@ function toctoc_render_faq( $faqs, $eyebrow = 'FAQ', $heading = 'Frequently Aske
     <?php
 }
 
+/** Word-wrap for GD text: split $text into lines that fit $max px at $size. */
+function toctoc_og_wrap( $text, $font, $size, $max ) {
+	$words = preg_split( '/\s+/', $text );
+	$lines = array();
+	$cur   = '';
+	foreach ( $words as $w ) {
+		$try = ( '' === $cur ) ? $w : $cur . ' ' . $w;
+		$bb  = imagettfbbox( $size, 0, $font, $try );
+		if ( ( $bb[2] - $bb[0] ) > $max && '' !== $cur ) {
+			$lines[] = $cur;
+			$cur     = $w;
+		} else {
+			$cur = $try;
+		}
+	}
+	if ( '' !== $cur ) {
+		$lines[] = $cur;
+	}
+	return $lines;
+}
+
+/**
+ * Branded Open Graph image (1200x630 PNG), generated once with GD and cached in
+ * uploads/toctoc-og/. Social platforms don't render the SVG logo, so every page
+ * gets a real raster card: dark slate gradient, dot texture, lime check badge,
+ * page title in Instrument Serif. Falls back to $fallback when GD/font missing.
+ * The filename embeds a hash of the title, so a title change regenerates it.
+ */
+function toctoc_og_image_url( $slug, $title, $fallback ) {
+	if ( ! function_exists( 'imagecreatetruecolor' ) || ! function_exists( 'imagettftext' ) ) {
+		return $fallback;
+	}
+	$font = get_template_directory() . '/assets/fonts/InstrumentSerif-Regular.ttf';
+	if ( ! file_exists( $font ) ) {
+		return $fallback;
+	}
+	// Clean title: the part before "|" reads better on a card.
+	$t = trim( preg_replace( '/\s*\|.*$/', '', html_entity_decode( (string) $title, ENT_QUOTES, 'UTF-8' ) ) );
+	if ( '' === $t ) {
+		$t = 'TocToc Marketing';
+	}
+	$slug = sanitize_key( $slug ? $slug : 'default' );
+	$up   = wp_upload_dir();
+	$name = $slug . '-' . substr( md5( $t ), 0, 6 ) . '.png';
+	$dir  = $up['basedir'] . '/toctoc-og';
+	$file = $dir . '/' . $name;
+	$url  = $up['baseurl'] . '/toctoc-og/' . $name;
+	if ( file_exists( $file ) ) {
+		return $url;
+	}
+	if ( ! wp_mkdir_p( $dir ) ) {
+		return $fallback;
+	}
+
+	$im = imagecreatetruecolor( 1200, 630 );
+	// Vertical gradient: slate-950 (#0b1120) -> slate-800 (#1e293b).
+	for ( $y = 0; $y < 630; $y++ ) {
+		$mix = $y / 630;
+		imageline( $im, 0, $y, 1200, $y, imagecolorallocate( $im, (int) ( 11 + 19 * $mix ), (int) ( 17 + 24 * $mix ), (int) ( 32 + 27 * $mix ) ) );
+	}
+	$accent = imagecolorallocate( $im, 217, 255, 62 );
+	$white  = imagecolorallocate( $im, 255, 255, 255 );
+	$gray   = imagecolorallocate( $im, 148, 163, 184 );
+	$dark   = imagecolorallocate( $im, 15, 23, 42 );
+	// Subtle dot grid.
+	$dot = imagecolorallocatealpha( $im, 148, 163, 184, 105 );
+	for ( $x = 60; $x < 1200; $x += 48 ) {
+		for ( $y = 60; $y < 630; $y += 48 ) {
+			imagefilledellipse( $im, $x, $y, 3, 3, $dot );
+		}
+	}
+	// Lime check badge (same mark as the score badge).
+	imagefilledellipse( $im, 120, 118, 84, 84, $accent );
+	imagesetthickness( $im, 9 );
+	imageline( $im, 97, 120, 113, 136, $dark );
+	imageline( $im, 113, 136, 146, 101, $dark );
+	imagesetthickness( $im, 1 );
+	// Brand block.
+	imagettftext( $im, 30, 0, 182, 110, $white, $font, 'TocToc Marketing' );
+	imagettftext( $im, 17, 0, 184, 146, $gray, $font, 'AI Search Visibility · Cayman Islands' );
+	// Accent bar above the title.
+	imagefilledrectangle( $im, 82, 240, 242, 248, $accent );
+	// Title (adaptive size, max 3 lines).
+	$size  = 62;
+	$lines = toctoc_og_wrap( $t, $font, $size, 1040 );
+	while ( count( $lines ) > 3 && $size > 38 ) {
+		$size -= 6;
+		$lines = toctoc_og_wrap( $t, $font, $size, 1040 );
+	}
+	$lines = array_slice( $lines, 0, 3 );
+	$y     = 240 + $size + 40;
+	foreach ( $lines as $ln ) {
+		imagettftext( $im, $size, 0, 80, $y, $white, $font, $ln );
+		$y += (int) ( $size * 1.3 );
+	}
+	// Footer.
+	imagettftext( $im, 22, 0, 80, 570, $accent, $font, 'toctoc.ky' );
+	$foot = 'Rated 4.8/5 on Google';
+	$bb   = imagettfbbox( 18, 0, $font, $foot );
+	imagettftext( $im, 18, 0, 1120 - ( $bb[2] - $bb[0] ), 570, $gray, $font, $foot );
+
+	imagepng( $im, $file, 9 );
+	imagedestroy( $im );
+	return file_exists( $file ) ? $url : $fallback;
+}
+
+/**
+ * VideoObject JSON-LD for a list of videos — makes the proof clips eligible for
+ * Google video results. Pass [ ['name','description','contentUrl','thumbnailUrl','uploadDate'], ... ].
+ */
+function toctoc_render_video_schema( $videos ) {
+	$items = array();
+	foreach ( $videos as $v ) {
+		if ( empty( $v['contentUrl'] ) ) {
+			continue;
+		}
+		$items[] = array(
+			'@context'     => 'https://schema.org',
+			'@type'        => 'VideoObject',
+			'name'         => $v['name'],
+			'description'  => $v['description'],
+			'contentUrl'   => $v['contentUrl'],
+			'thumbnailUrl' => $v['thumbnailUrl'],
+			'uploadDate'   => $v['uploadDate'],
+		);
+	}
+	if ( ! $items ) {
+		return;
+	}
+	echo '<script type="application/ld+json">'
+		. wp_json_encode( ( 1 === count( $items ) ) ? $items[0] : $items, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+		. '</script>';
+}
+
 // Dynamic XML Sitemap at /sitemap.xml — intercepts before WordPress routing, no permalink flush needed
 add_action( 'init', function () {
     $uri = $_SERVER['REQUEST_URI'] ?? '';
