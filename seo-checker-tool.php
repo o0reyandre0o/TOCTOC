@@ -885,7 +885,15 @@ function toctoc_seo_history_handler() {
 	if ( ! is_email( $email ) || ! $url || $seo < 0 || $seo > 100 || $geo < 0 || $geo > 100 ) {
 		wp_send_json_error( array( 'message' => 'Invalid payload.' ) );
 	}
-	wp_send_json_success( array( 'history' => toctoc_seo_record_scan( $email, $url, $seo, $geo, 'crawl' ) ) );
+	if ( ! empty( $_POST['monitor'] ) ) {
+		toctoc_seo_monitor_subscribe( $email, $url, $seo, $geo );
+	}
+	wp_send_json_success(
+		array(
+			'history' => toctoc_seo_record_scan( $email, $url, $seo, $geo, 'crawl' ),
+			'badge'   => toctoc_seo_badge_url( $seo, $geo ),
+		)
+	);
 }
 add_action( 'wp_ajax_toctoc_seo_history', 'toctoc_seo_history_handler' );
 add_action( 'wp_ajax_nopriv_toctoc_seo_history', 'toctoc_seo_history_handler' );
