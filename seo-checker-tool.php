@@ -550,8 +550,132 @@ function toctoc_seo_check_handler() {
 	// Email the full report to the team + the lead, and log the lead.
 	toctoc_seo_send_report( $name, $email, $url, $result );
 
+	// Scan history: store this scan, return the previous ones so the front end
+	// can show progress ("SEO +9 since your last scan"), and (re)arm the 30-day
+	// re-scan reminder for this lead.
+	$result['history'] = is_email( $email )
+		? toctoc_seo_record_scan( $email, $url, $result['scores']['seo'], $result['scores']['geo'], 'single' )
+		: array();
+
 	wp_send_json_success( $result );
 }
+
+/** Create the scan-history table once (guarded by a version option). */
+function toctoc_seo_db_init() {
+	if ( '1' === get_option( 'toctoc_seo_db_v' ) ) {
+		return;
+	}
+	global $wpdb;
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	$table   = $wpdb->prefix . 'ttseo_scans';
+	$charset = $wpdb->get_charset_collate();
+	dbDelta(
+		"CREATE TABLE {$table} (
+			id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+			email VARCHAR(190) NOT NULL,
+			url VARCHAR(500) NOT NULL,
+			seo TINYINT UNSIGNED NOT NULL,
+			geo TINYINT UNSIGNED NOT NULL,
+			mode VARCHAR(10) NOT NULL DEFAULT 'single',
+			created_at DATETIME NOT NULL,
+			PRIMARY KEY  (id),
+			KEY email_url (email, url(190))
+		) {$charset};"
+	);
+	update_option( 'toctoc_seo_db_v', '1' );
+}
+
+/**
+ * Store one scan, return the previous scans for the same email+url (newest
+ * first, max 5) and (re)schedule the 30-day re-scan reminder.
+ */
+function toctoc_seo_record_scan( $email, $url, $seo, $geo, $mode = 'single' ) {
+	toctoc_seo_db_init();
+	global $wpdb;
+	$table = $wpdb->prefix . 'ttseo_scans';
+	$norm  = untrailingslashit( strtolower( $url ) );
+	$hist  = $wpdb->get_results(
+		$wpdb->prepare(
+			"SELECT seo, geo, created_at FROM {$table} WHERE email = %s AND url = %s ORDER BY created_at DESC LIMIT 5",
+			$email,
+			$norm
+		),
+		ARRAY_A
+	);
+	$wpdb->insert(
+		$table,
+		array(
+			'email'      => $email,
+			'url'        => $norm,
+			'seo'        => max( 0, min( 100, (int) $seo ) ),
+			'geo'        => max( 0, min( 100, (int) $geo ) ),
+			'mode'       => in_array( $mode, array( 'single', 'crawl' ), true ) ? $mode : 'single',
+			'created_at' => current_time( 'mysql' ),
+		)
+	);
+	// One pending reminder per email+url: clear the old one, arm a fresh one.
+	$args = array( $email, $norm );
+	wp_clear_scheduled_hook( 'toctoc_seo_rescan_reminder', $args );
+	wp_schedule_single_event( time() + 30 * DAY_IN_SECONDS, 'toctoc_seo_rescan_reminder', $args );
+	return $hist ? $hist : array();
+}
+
+/** The 30-day re-engagement email. Fired by WP-Cron. */
+function toctoc_seo_send_rescan_reminder( $email, $url ) {
+	if ( ! is_email( $email ) ) {
+		return;
+	}
+	global $wpdb;
+	$table = $wpdb->prefix . 'ttseo_scans';
+	$last  = $wpdb->get_row(
+		$wpdb->prepare(
+			"SELECT seo, geo, created_at FROM {$table} WHERE email = %s AND url = %s ORDER BY created_at DESC LIMIT 1",
+			$email,
+			$url
+		),
+		ARRAY_A
+	);
+	if ( ! $last ) {
+		return;
+	}
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	$host = $host ? $host : $url;
+	$h  = '<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;color:#222;">';
+	$h .= '<h2 style="margin:0 0 10px;">A month ago, ' . esc_html( $host ) . ' scored ' . (int) $last['seo'] . '/100 (SEO) and ' . (int) $last['geo'] . '/100 (AI visibility).</h2>';
+	$h .= '<p style="font-size:15px;line-height:1.6;color:#333;">Websites change, competitors publish, and AI algorithms never stop moving. A monthly check is the easiest way to catch a drop before it costs you customers.</p>';
+	$h .= '<p style="margin:24px 0;"><a href="https://toctoc.ky/seo-checker/" style="background:#0f172a;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:bold;">Re-scan your site free &rarr;</a></p>';
+	$h .= '<p style="font-size:13px;color:#666;line-height:1.5;">Want the fixes done for you? TocToc Marketing puts Cayman businesses at the top of Google and AI answers. Call us at +1 (345) 547-8120.</p>';
+	$h .= '<p style="font-size:11px;color:#999;margin-top:24px;">You are receiving this one-time reminder because you ran a free scan at toctoc.ky/seo-checker. No further emails will be sent unless you scan again.</p>';
+	$h .= '</div>';
+	wp_mail(
+		$email,
+		'How is ' . $host . ' ranking a month later?',
+		$h,
+		array( 'Content-Type: text/html; charset=UTF-8' )
+	);
+}
+add_action( 'toctoc_seo_rescan_reminder', 'toctoc_seo_send_rescan_reminder', 10, 2 );
+
+/**
+ * Crawl-mode history beacon: the front end aggregates the site-wide averages,
+ * so it reports them here at the end of a full-site scan.
+ */
+function toctoc_seo_history_handler() {
+	check_ajax_referer( 'toctoc_seo', 'nonce' );
+	if ( toctoc_seo_rate_limited( 'hist', 30 ) ) {
+		wp_send_json_error( array( 'message' => 'Rate limit reached.' ), 429 );
+	}
+	$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	$url   = toctoc_seo_safe_url( isset( $_POST['url'] ) ? wp_unslash( $_POST['url'] ) : '' );
+	$seo   = isset( $_POST['seo'] ) ? (int) $_POST['seo'] : -1;
+	$geo   = isset( $_POST['geo'] ) ? (int) $_POST['geo'] : -1;
+	if ( ! is_email( $email ) || ! $url || $seo < 0 || $seo > 100 || $geo < 0 || $geo > 100 ) {
+		wp_send_json_error( array( 'message' => 'Invalid payload.' ) );
+	}
+	wp_send_json_success( array( 'history' => toctoc_seo_record_scan( $email, $url, $seo, $geo, 'crawl' ) ) );
+}
+add_action( 'wp_ajax_toctoc_seo_history', 'toctoc_seo_history_handler' );
+add_action( 'wp_ajax_nopriv_toctoc_seo_history', 'toctoc_seo_history_handler' );
 
 /**
  * Analyse the fetched HTML and return the structured report.
