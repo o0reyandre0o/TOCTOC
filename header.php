@@ -136,7 +136,10 @@
     $title = $seo_map[$current_slug]['title'] ?? $default_title;
     $desc = $seo_map[$current_slug]['desc'] ?? $default_desc;
     $keywords = $keywords_map[$current_slug] ?? $default_keywords;
-    $og_image = $og_image_map[$current_slug] ?? $logo_url;
+    // Per-page OG: explicit map first (e.g. Venezuela photo), then a generated
+    // branded 1200x630 card (social platforms don't render the SVG logo).
+    $og_image = $og_image_map[$current_slug]
+        ?? ( function_exists( 'toctoc_og_image_url' ) ? toctoc_og_image_url( $current_slug ?: 'default', $title, $logo_url ) : $logo_url );
     $current_url = home_url(add_query_arg([], $GLOBALS['wp']->request));
     $canonical = is_front_page() ? home_url('/') : trailingslashit($current_url);
     ?>
