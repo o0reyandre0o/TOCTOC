@@ -276,6 +276,21 @@ function toctoc_seo_explanations() {
 			'tech'  => "The alt attribute on <img>. Required for WCAG accessibility compliance, enables Google Image search, and gives crawlers context they cannot get from the pixels. Purely decorative images should carry an empty alt=\"\".",
 			'fix'   => "Add short descriptions to your images. It helps Google understand them and helps blind visitors.",
 		),
+		'Image optimization' => array(
+			'plain' => "Whether your pictures are saved in modern, lightweight formats and set up so the page doesn't jump around while they load.",
+			'tech'  => "Checks three things per <img>: modern formats (WebP/AVIF vs legacy JPG/PNG), loading=\"lazy\" on below-the-fold images, and explicit width/height attributes (prevents Cumulative Layout Shift, a Core Web Vitals metric).",
+			'fix'   => "Re-export your images as WebP, add loading=\"lazy\" to images further down the page, and give every image a width and height so the layout doesn't jump.",
+		),
+		'Image weight' => array(
+			'plain' => "How many kilobytes your pictures actually make visitors download. Heavy images are the #1 reason pages feel slow on a phone.",
+			'tech'  => "HEAD-requests a sample of up to 8 images and reads their real transfer size. Thresholds: any single image over ~150 KB warns, over ~300 KB (or >2 MB total) fails. Oversized intrinsic dimensions vs. rendered size is the usual culprit.",
+			'fix'   => "Resize images to roughly the size they are displayed at (2x for retina), compress them, and serve them as WebP. A hero image should rarely exceed ~150 KB.",
+		),
+		'Schema completeness' => array(
+			'plain' => "You have the hidden 'business card' code — but is it filled in? An empty card (no phone, no address, no hours) doesn't convince Google or AI of anything.",
+			'tech'  => "Audits each recognized schema.org entity against the properties Google and AI retrieval expect — e.g. LocalBusiness wants address, telephone, geo, openingHoursSpecification, sameAs and aggregateRating; Article wants author and datePublished. Missing required properties fail; missing recommended ones warn.",
+			'fix'   => "Fill in the missing properties listed in the detail — especially address, phone, opening hours and sameAs links to your social profiles. Complete entities are what earn rich results and AI citations.",
+		),
 		'Language attribute' => array(
 			'plain' => "Tells browsers and Google which language your page is written in.",
 			'tech'  => "The lang attribute on <html> (e.g. lang=\"en\"). Drives correct language indexing, hreflang targeting, screen-reader pronunciation and browser translation prompts.",
