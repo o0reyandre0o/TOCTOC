@@ -918,6 +918,7 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 
 	$h1 = $doc->getElementsByTagName( 'h1' );
 	$meta['h1'] = $h1->length;
+	$h1_text    = $h1->length ? trim( preg_replace( '/\s+/', ' ', $h1->item( 0 )->textContent ) ) : '';
 	$seo[] = toctoc_seo_row(
 		'H1 heading',
 		1 === $h1->length ? 'pass' : ( 0 === $h1->length ? 'fail' : 'warn' ),
@@ -932,6 +933,43 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 		$h2->length . ' found',
 		'H2/H3 structure helps both readers and search engines understand the page.'
 	);
+
+	// Keyword alignment: do the title, the H1 and the URL slug talk about the same thing?
+	$kw_tokens = function ( $s ) {
+		$stop = array( 'the', 'and', 'for', 'with', 'your', 'our', 'from', 'that', 'this', 'are', 'was', 'were', 'has', 'have', 'had', 'you', 'all', 'can', 'how', 'what', 'why', 'when', 'where', 'who', 'best', 'top', 'get', 'new', 'not', 'its', 'de', 'la', 'el', 'los', 'las', 'del', 'para', 'con', 'una', 'and', 'home', 'page', 'www', 'com' );
+		$s    = strtolower( preg_replace( '/[^a-z0-9\s\-\/_]/i', ' ', $s ) );
+		$out  = array();
+		foreach ( preg_split( '/[\s\-\/_]+/', $s ) as $w ) {
+			if ( strlen( $w ) >= 3 && ! is_numeric( $w ) && ! in_array( $w, $stop, true ) ) {
+				$out[ $w ] = true;
+			}
+		}
+		return array_keys( $out );
+	};
+	if ( '' !== $title && '' !== $h1_text ) {
+		$tt      = $kw_tokens( $title );
+		$th      = $kw_tokens( $h1_text );
+		$overlap = array_intersect( $tt, $th );
+		$path    = (string) wp_parse_url( $url, PHP_URL_PATH );
+		$is_home = ( '' === $path || '/' === $path );
+		$ts      = $is_home ? array() : $kw_tokens( $path );
+		$slug_ok = $is_home || empty( $ts ) || count( array_intersect( $tt, $ts ) ) > 0 || count( array_intersect( $th, $ts ) ) > 0;
+		$aligned = count( $overlap ) > 0;
+		$detail  = array();
+		if ( ! $aligned ) {
+			$detail[] = 'title and H1 share no meaningful words';
+		}
+		if ( ! $slug_ok ) {
+			$detail[] = 'URL slug matches neither the title nor the H1';
+		}
+		$seo[] = toctoc_seo_row(
+			'Keyword alignment',
+			( $aligned && $slug_ok ) ? 'pass' : 'warn',
+			( $aligned && $slug_ok )
+				? 'Title, H1' . ( $is_home ? '' : ' and URL' ) . ' talk about the same topic'
+				: implode( ' · ', $detail )
+		);
+	}
 
 	$canon = $xp->query( '//link[@rel="canonical"]/@href' );
 	$seo[] = toctoc_seo_row(
