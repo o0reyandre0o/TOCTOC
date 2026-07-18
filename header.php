@@ -213,11 +213,6 @@
           "telephone": "+1 345-547-8120",
           "email": "info@toctoc.ky",
           "priceRange": "$$",
-          "areaServed": [
-            { "@type": "Country", "name": "Cayman Islands" },
-            { "@type": "City", "name": "George Town" },
-            { "@type": "Place", "name": "Grand Cayman" }
-          ],
           "knowsAbout": [
             "Search Engine Optimization (SEO)",
             "Answer Engine Optimization (AEO)",
