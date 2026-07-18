@@ -1,0 +1,13 @@
+{
+  "name": "toctoc-sky-editorial",
+  "version": "3.3.0",
+  "private": true,
+  "description": "Build tooling for the TOCTOC Sky Editorial WordPress theme (compiles Tailwind to a static stylesheet).",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/tailwind.min.css --minify",
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./assets/tailwind.min.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

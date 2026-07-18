@@ -1,0 +1,61 @@
+/**
+ * Tailwind input for the TOCTOC Sky Editorial theme.
+ * The @layer blocks below are ported 1:1 from the old inline
+ * <style type="text/tailwindcss"> in header.php.
+ * Compile with: npm run build:css
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 60% 98%;
+    --foreground: 220 40% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 10%;
+    --primary: 220 45% 8%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 220 40% 10%;
+    --muted: 210 30% 94%;
+    --muted-foreground: 220 15% 40%;
+    --accent: 72 100% 62%;
+    --accent-foreground: 220 45% 8%;
+    --sky-deep: 212 95% 45%;
+    --sky-mid: 205 95% 60%;
+    --sky-light: 200 100% 88%;
+    --sky-pale: 205 100% 96%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 25% 88%;
+    --input: 215 25% 88%;
+    --ring: 212 95% 45%;
+    --radius: 1.25rem;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight font-normal;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: hsl(0 0% 100% / 0.55);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid hsl(0 0% 100% / 0.6);
+  }
+  .glass-dark {
+    background: hsl(220 45% 8% / 0.6);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+  }
+}
