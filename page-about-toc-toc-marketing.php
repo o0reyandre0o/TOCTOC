@@ -359,7 +359,7 @@ get_header(); ?>
 
             // Markers, leader lines and chip opacity.
             chips.forEach(function (el) {
-                var v = fromLatLon(parseFloat(el.dataset.lat), parseFloat(el.dataset.lon));
+                var v = fromLatLon(parseFloat(el.dataset.dlat), parseFloat(el.dataset.dlon));
                 p = project(v, ang);
                 var front = p[2] > 0.02;
                 var main = el.dataset.main === '1';
