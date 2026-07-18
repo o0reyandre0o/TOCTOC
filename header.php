@@ -193,6 +193,13 @@
           "alternateName": "Toc Toc Marketing",
           "description": "<?php echo esc_attr($default_desc); ?>",
           "slogan": "We deploy the AI Search Visibility Framework for your business.",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "21",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
           "image": "<?php echo esc_url($logo_url); ?>",
           "logo": "<?php echo esc_url($logo_url); ?>",
           "@id": "https://toctoc.ky",
