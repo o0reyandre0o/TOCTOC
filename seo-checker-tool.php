@@ -1272,6 +1272,49 @@ function toctoc_seo_discover_handler() {
 
 add_action( 'wp_ajax_toctoc_seo_page', 'toctoc_seo_page_handler' );
 add_action( 'wp_ajax_nopriv_toctoc_seo_page', 'toctoc_seo_page_handler' );
+
+/**
+ * Broken-link probe: takes up to 10 URLs and returns their HTTP status codes.
+ * HEAD first (cheap); falls back to a size-capped GET when the server rejects
+ * HEAD. Every URL passes the same SSRF guard as the rest of the tool.
+ */
+function toctoc_seo_status_handler() {
+	check_ajax_referer( 'toctoc_seo', 'nonce' );
+	if ( toctoc_seo_rate_limited( 'status', 60 ) ) {
+		wp_send_json_error( array( 'message' => 'Rate limit reached.' ), 429 );
+	}
+	$raw  = isset( $_POST['urls'] ) ? wp_unslash( $_POST['urls'] ) : '';
+	$list = json_decode( $raw, true );
+	if ( ! is_array( $list ) ) {
+		wp_send_json_error( array( 'message' => 'Invalid payload.' ) );
+	}
+	$list = array_slice( $list, 0, 10 );
+	$out  = array();
+	foreach ( $list as $u ) {
+		$safe = toctoc_seo_safe_url( $u );
+		if ( ! $safe ) {
+			$out[ $u ] = -1; // rejected (unsafe/invalid) — not counted as broken
+			continue;
+		}
+		$args = array(
+			'timeout'     => 6,
+			'redirection' => 3,
+			'user-agent'  => 'TocTocSEOChecker/1.0 (+https://toctoc.ky)',
+		);
+		$r    = wp_remote_head( $safe, $args );
+		$code = is_wp_error( $r ) ? 0 : (int) wp_remote_retrieve_response_code( $r );
+		if ( 0 === $code || 405 === $code || 501 === $code ) {
+			// Server dislikes HEAD — confirm with a lightweight GET before calling it broken.
+			$args['limit_response_size'] = 2048;
+			$r    = wp_remote_get( $safe, $args );
+			$code = is_wp_error( $r ) ? 0 : (int) wp_remote_retrieve_response_code( $r );
+		}
+		$out[ $u ] = $code;
+	}
+	wp_send_json_success( array( 'codes' => $out ) );
+}
+add_action( 'wp_ajax_toctoc_seo_status', 'toctoc_seo_status_handler' );
+add_action( 'wp_ajax_nopriv_toctoc_seo_status', 'toctoc_seo_status_handler' );
 function toctoc_seo_page_handler() {
 	check_ajax_referer( 'toctoc_seo', 'nonce' );
 	if ( toctoc_seo_rate_limited( 'page', 250 ) ) {
@@ -1336,6 +1379,11 @@ function toctoc_seo_page_handler() {
 			'fails'  => $fails,
 			'warns'  => $warns,
 			'issues' => $issues,
+			'title'  => isset( $res['meta']['title'] ) ? $res['meta']['title'] : '',
+			'desc'   => isset( $res['meta']['description'] ) ? $res['meta']['description'] : '',
+			'h1'     => isset( $res['meta']['h1'] ) ? (int) $res['meta']['h1'] : 0,
+			'phones' => array_keys( $phones ),
+			'links'  => $links,
 		)
 	);
 }
