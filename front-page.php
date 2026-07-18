@@ -22,6 +22,8 @@
         <img
             src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop"
             alt="Sky"
+            width="1920"
+            height="1280"
             fetchpriority="high"
             class="absolute inset-0 w-full h-full object-cover"
         />

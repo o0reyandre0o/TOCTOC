@@ -220,6 +220,8 @@ if ( $ttseo_ts ) {
             <div class="ttseo-noprint w-full h-2 bg-slate-200 rounded-full overflow-hidden mb-10">
                 <div id="crawl-bar" class="h-full bg-sky-deep transition-all duration-300" style="width:0%"></div>
             </div>
+            <!-- Speed of the entered URL (Google PageSpeed) — runs alongside the crawl. -->
+            <div id="crawl-speed" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
             <div class="grid grid-cols-3 gap-4 md:gap-6 mb-10">
                 <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6 text-center">
                     <div id="crawl-avg-seo" class="text-4xl md:text-5xl font-display leading-none">—</div>
@@ -412,6 +414,11 @@ window.TTSEO = {
         document.getElementById('crawl-status').textContent = 'Finding pages…';
         document.getElementById('ttseo-crawl-pdf').classList.add('hidden');
         document.getElementById('crawl-print-target').textContent = url;
+        // Measure the entered URL's speed in parallel with the crawl.
+        var spd = document.getElementById('crawl-speed');
+        spd.classList.remove('hidden');
+        spd.innerHTML = '<span class="inline-flex items-center gap-2 text-slate-500"><span class="inline-block w-4 h-4 border-2 border-slate-200 border-t-sky-deep rounded-full animate-spin"></span> Measuring speed with Google PageSpeed&hellip;</span>';
+        runPSI(url, 1, { score: null, body: 'crawl-speed' });
         sec.scrollIntoView({ behavior: 'smooth' });
 
         var params = { action: 'toctoc_seo_discover', nonce: TTSEO.nonce, url: url, email: email, name: name };
@@ -585,22 +592,25 @@ window.TTSEO = {
 
     // Google's Lighthouse run can outlast our server timeout on slow sites, but it
     // keeps analyzing and caches the result — so a retry usually succeeds fast.
-    function runPSI(url, attempt) {
+    // `els` targets where to render: default is the single-URL report; the
+    // full-site scan passes its own panel ({score:null, body:'crawl-speed'}).
+    function runPSI(url, attempt, els) {
         attempt = attempt || 1;
+        els = els || { score: 'score-perf', body: 'perf-body' };
         var MAX_ATTEMPTS = 3;
+        var perfEl = document.getElementById(els.body);
         var body = new URLSearchParams({ action: 'toctoc_seo_psi', nonce: TTSEO.nonce, url: url });
         fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
         .then(function (r) { return r.json(); })
         .then(function (json) {
-            var perfEl = document.getElementById('perf-body');
             if (!json || !json.success) {
                 var retryable = json && json.data && json.data.retryable;
                 if (retryable && attempt < MAX_ATTEMPTS) {
                     perfEl.innerHTML = '<span class="inline-flex items-center gap-2 text-slate-500"><span class="inline-block w-4 h-4 border-2 border-slate-200 border-t-sky-deep rounded-full animate-spin"></span> Google is still analyzing this site &mdash; retrying (' + (attempt + 1) + '/' + MAX_ATTEMPTS + ')&hellip;</span>';
-                    setTimeout(function () { runPSI(url, attempt + 1); }, 4000);
+                    setTimeout(function () { runPSI(url, attempt + 1, els); }, 4000);
                     return;
                 }
-                setScore('score-perf', null);
+                if (els.score) setScore(els.score, null);
                 var failMsg = retryable
                     ? 'This site takes Google a very long time to analyze (usually a sign it is quite slow). Try again in a minute.'
                     : (json && json.data ? json.data.message : 'Speed data unavailable.');
@@ -608,19 +618,30 @@ window.TTSEO = {
                 return;
             }
             var d = json.data;
-            setScore('score-perf', d.performance);
-            updateSpeedSummary(d.performance);
             var metric = function (label, val) {
-                return '<div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><p class="text-xs font-bold uppercase tracking-widest text-slate-400">' + label + '</p><p class="mt-1 text-2xl font-display text-slate-900">' + esc(val) + '</p></div>';
+                return '<div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><p class="text-xs font-bold uppercase tracking-widest text-slate-500">' + label + '</p><p class="mt-1 text-2xl font-display text-slate-900">' + esc(val) + '</p></div>';
             };
-            perfEl.innerHTML = '<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">' +
+            var grid = '<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">' +
                 metric('LCP', d.lcp) + metric('CLS', d.cls) + metric('Total Blocking', d.tbt) +
                 metric('First Paint', d.fcp) + metric('Speed Index', d.si) +
                 '</div>';
+            if (els.score) {
+                setScore(els.score, d.performance);
+                updateSpeedSummary(d.performance);
+                perfEl.innerHTML = grid;
+            } else {
+                // Crawl panel: include the score inline, since there is no score card.
+                perfEl.innerHTML =
+                    '<div class="flex flex-wrap items-baseline gap-3 mb-5">' +
+                        '<span class="text-sm font-bold uppercase tracking-widest text-slate-500">Speed (Google PageSpeed)</span>' +
+                        '<span class="text-4xl font-display" style="color:' + scoreColor(d.performance) + '">' + d.performance + '</span>' +
+                        '<span class="text-slate-400">/ 100 &middot; mobile</span>' +
+                    '</div>' + grid;
+            }
         })
         .catch(function () {
-            setScore('score-perf', null);
-            document.getElementById('perf-body').innerHTML = '<span class="text-slate-400">Speed data unavailable.</span>';
+            if (els.score) setScore(els.score, null);
+            perfEl.innerHTML = '<span class="text-slate-400">Speed data unavailable.</span>';
         });
     }
 })();
