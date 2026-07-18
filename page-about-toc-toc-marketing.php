@@ -399,10 +399,27 @@ get_header(); ?>
         }
 
         var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduced) {
-            frame(0);
-            return;
-        }
+
+        // Grab-and-spin with inertia.
+        var dragging = false, userAng = 0, userVel = 0, lastX = 0;
+        canvas.style.cursor = 'grab';
+        canvas.style.touchAction = 'pan-y'; // keep vertical page scroll on touch
+        canvas.addEventListener('pointerdown', function (ev) {
+            dragging = true; lastX = ev.clientX; userVel = 0;
+            canvas.style.cursor = 'grabbing';
+            if (canvas.setPointerCapture) { try { canvas.setPointerCapture(ev.pointerId); } catch (e) {} }
+        });
+        canvas.addEventListener('pointermove', function (ev) {
+            if (!dragging) return;
+            var dx = ev.clientX - lastX;
+            lastX = ev.clientX;
+            userAng += dx * 0.005;
+            userVel = dx * 0.005;
+        });
+        function endDrag() { dragging = false; canvas.style.cursor = 'grab'; }
+        canvas.addEventListener('pointerup', endDrag);
+        canvas.addEventListener('pointercancel', endDrag);
+
         var running = true;
         function loop(now) { if (running) frame(now); requestAnimationFrame(loop); }
         requestAnimationFrame(loop);
