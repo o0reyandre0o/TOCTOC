@@ -368,7 +368,7 @@ $ow_sites = array(
                     <div class="flex justify-center md:justify-start">
                         <?php if ( $c['mp4'] ) : ?>
                         <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
-                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
+                            <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline>
                                 <source src="<?php echo esc_url( $c['mp4'] ); ?>#t=0.1" type="video/mp4">
                             </video>
                             <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">

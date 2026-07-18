@@ -35,6 +35,29 @@
             </div>
         </div>
     </footer>
+    <script>
+    // Lazy video metadata: videos ship with preload="none" so multi-MB mp4s never
+    // load up front. When one nears the viewport we flip to metadata + load(),
+    // which renders its first frame (#t=0.1) exactly like the old eager behavior.
+    (function () {
+        var vids = document.querySelectorAll('video[data-ttlazy]');
+        if (!vids.length) return;
+        if (!('IntersectionObserver' in window)) {
+            vids.forEach(function (v) { v.preload = 'metadata'; v.load(); });
+            return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                var v = e.target;
+                v.preload = 'metadata';
+                v.load();
+                io.unobserve(v);
+            });
+        }, { rootMargin: '200px 0px' });
+        vids.forEach(function (v) { io.observe(v); });
+    })();
+    </script>
     <?php wp_footer(); ?>
 </body>
 </html>

@@ -124,7 +124,10 @@
                 <figure class="flex flex-col items-center text-center">
                     <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
                         <?php if ( ! empty( $pv['mp4'] ) ) : ?>
-                        <video class="w-full h-full object-cover" controls preload="metadata" playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
+                        <!-- preload="none" + data-ttlazy: metadata only loads when the video nears the
+                             viewport (footer.php observer). These mp4s lack faststart, so eager
+                             metadata would download the entire ~17 MB file per video. -->
+                        <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
                             <source src="<?php echo esc_url( $pv['mp4'] ); ?>#t=0.1" type="video/mp4">
                         </video>
                         <?php else : ?>

@@ -214,7 +214,7 @@ $ai_faqs = array(
                 <?php foreach ( $ai_proof as $pv ) : ?>
                 <figure class="flex flex-col items-center text-center">
                     <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
-                        <video class="w-full h-full object-cover" controls preload="metadata" playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
+                        <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
                             <source src="<?php echo esc_url( $pv['mp4'] ); ?>#t=0.1" type="video/mp4">
                         </video>
                         <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
