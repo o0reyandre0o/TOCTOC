@@ -162,6 +162,9 @@ if ( $ttseo_ts ) {
                 </div>
             </div>
 
+            <!-- Shareable score badge (filled after a successful check) -->
+            <div id="ttseo-share" class="hidden ttseo-noprint rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
+
             <h2 class="text-2xl md:text-3xl font-display text-slate-900 mb-6">The technical details</h2>
 
             <!-- Search preview -->
@@ -688,7 +691,10 @@ window.TTSEO = {
     // then show the progress line at the top of the site-wide panel.
     function recordCrawlHistory(siteUrl, email, avgSeo, avgGeo) {
         if (!email) return;
-        var body = new URLSearchParams({ action: 'toctoc_seo_history', nonce: TTSEO.nonce, url: siteUrl, email: email, seo: avgSeo, geo: avgGeo });
+        var params = { action: 'toctoc_seo_history', nonce: TTSEO.nonce, url: siteUrl, email: email, seo: avgSeo, geo: avgGeo };
+        var monT = document.getElementById('ttseo-monitor-toggle');
+        if (monT && monT.checked) params.monitor = '1';
+        var body = new URLSearchParams(params);
         fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
         .then(function (r) { return r.json(); })
         .then(function (json) {
@@ -796,6 +802,8 @@ window.TTSEO = {
         }
 
         var params = { action: 'toctoc_seo_check', nonce: TTSEO.nonce, url: url, email: email, name: name };
+        var monToggle = document.getElementById('ttseo-monitor-toggle');
+        if (monToggle && monToggle.checked) params.monitor = '1';
         if (competitor) params.competitor = competitor;
         if (tsToken) params.ts_token = tsToken;
         var body = new URLSearchParams(params);
@@ -819,6 +827,7 @@ window.TTSEO = {
             renderSummary(d);
             renderCompetitor(d);
             renderHistory(d.history || [], d.scores.seo, d.scores.geo);
+            renderShareBadge(d.badge);
             renderList('list-seo', d.seo);
             renderList('list-geo', d.geo);
 
