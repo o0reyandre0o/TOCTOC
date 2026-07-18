@@ -234,10 +234,11 @@ get_header(); ?>
         }
 
         // Stylized display positions (spread across the hemisphere for clarity —
-        // the real coordinates live in the chip labels). Cayman center-left,
-        // USA top-right, Puerto Rico right, Venezuela bottom.
-        var HQ = [16, -105];
-        var DESTS = [[40, -72], [4, -48], [-24, -88]];
+        // the real coordinates live in the chip labels). With the projection
+        // used here, screen-left corresponds to GREATER longitudes than the
+        // camera center (-75): Cayman left, USA top-right, PR right, VE bottom.
+        var HQ = [18, -45];
+        var DESTS = [[42, -100], [2, -108], [-26, -58]];
 
         function arcPoints(A0, B0) {
             var A = fromLatLon(A0[0], A0[1]), B = fromLatLon(B0[0], B0[1]);
@@ -254,9 +255,10 @@ get_header(); ?>
         }
         var arcs = DESTS.map(function (d) { return arcPoints(HQ, d); });
 
-        // Rotation: centered on the marker cluster, sweeping ±32° — plus the
-        // user can grab and spin the globe (drag with inertia).
-        var BASE = Math.PI / 2 - (-105 * Math.PI / 180);
+        // Rotation: BASE centers longitude -75 on screen (with this projection a
+        // point is screen-centered when lon - BASE = 90°, so BASE = lonC - 90°).
+        // Ambient sweep ±20° always on, plus grab-and-spin with inertia.
+        var BASE = (-75 * Math.PI / 180) - Math.PI / 2;
         var TILT = -0.32;
         var cosT = Math.cos(TILT), sinT = Math.sin(TILT);
 
