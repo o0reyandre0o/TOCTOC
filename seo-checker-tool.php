@@ -1083,9 +1083,25 @@ function toctoc_seo_psi_handler() {
 		wp_send_json_error( array( 'message' => 'Add your PageSpeed API key in WordPress → Settings → SEO Checker to enable speed scoring.' ) );
 	}
 
-	$resp = wp_remote_get( $endpoint, array( 'timeout' => 55 ) );
+	// Lighthouse can take 60-90s on slow sites. Lift PHP's own limit (where the
+	// host allows it) and give Google up to 110s before giving up.
+	if ( function_exists( 'set_time_limit' ) ) {
+		@set_time_limit( 150 );
+	}
+	$resp = wp_remote_get( $endpoint, array( 'timeout' => 110 ) );
 	if ( is_wp_error( $resp ) ) {
-		wp_send_json_error( array( 'message' => 'PageSpeed unavailable: ' . $resp->get_error_message() ) );
+		$msg       = $resp->get_error_message();
+		$timed_out = ( false !== stripos( $msg, 'timed out' ) || false !== stripos( $msg, 'cURL error 28' ) );
+		wp_send_json_error(
+			array(
+				// Google keeps analyzing after we hang up and caches the result,
+				// so an immediate retry usually succeeds — tell the front end.
+				'retryable' => $timed_out,
+				'message'   => $timed_out
+					? 'Google is still analyzing this site — retrying automatically…'
+					: 'PageSpeed unavailable: ' . $msg,
+			)
+		);
 	}
 
 	$data = json_decode( (string) wp_remote_retrieve_body( $resp ), true );
