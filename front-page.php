@@ -71,27 +71,38 @@
         </div>
     </section>
 
-    <!-- Results-in-numbers strip: instant credibility right under the hero claim. -->
-    <section aria-label="TocToc Marketing in numbers" class="relative bg-white border-y border-slate-100">
-        <div class="mx-auto max-w-6xl px-6">
-            <dl class="grid grid-cols-2 md:grid-cols-4">
-                <div class="flex flex-col items-center py-10 md:py-12 px-4 text-center border-b md:border-b-0 border-r border-slate-100">
-                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Clients ranked #1&ndash;#2 on<br>ChatGPT &amp; Gemini</dt>
-                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">4</dd>
+    <!-- Results-in-numbers marquee: an endless sliding band of proof under the hero. -->
+    <style>
+        @keyframes ttc-marquee { to { transform: translateX(-50%); } }
+        .ttc-marquee-track { animation: ttc-marquee 30s linear infinite; }
+        .ttc-marquee:hover .ttc-marquee-track { animation-play-state: paused; }
+    </style>
+    <section aria-label="TocToc Marketing in numbers" class="ttc-marquee relative bg-white border-y border-slate-100 overflow-hidden py-8 md:py-10">
+        <!-- Edge fade -->
+        <div class="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+        <div class="ttc-marquee-track flex w-max items-center">
+            <?php
+            $ttc_stats = array(
+                array( '4',    'Clients ranked #1&ndash;#2<br>on ChatGPT &amp; Gemini' ),
+                array( '4.8<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(21 reviews)' ),
+                array( '20+',  'Websites designed<br>&amp; launched' ),
+                array( '4',    'Countries<br>we work in' ),
+            );
+            // Two identical copies make the -50% translate loop seamless.
+            for ( $ttc_copy = 0; $ttc_copy < 2; $ttc_copy++ ) :
+            ?>
+            <div class="flex w-max items-center shrink-0" <?php echo $ttc_copy ? 'aria-hidden="true"' : ''; ?>>
+                <?php foreach ( $ttc_stats as $ttc_s ) : ?>
+                <div class="flex items-center gap-4 shrink-0 pl-12 md:pl-16">
+                    <span class="text-4xl md:text-5xl font-display text-slate-950 leading-none whitespace-nowrap"><?php echo $ttc_s[0]; // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+                    <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500 leading-snug text-left"><?php echo wp_kses_post( $ttc_s[1] ); ?></span>
                 </div>
-                <div class="flex flex-col items-center py-10 md:py-12 px-4 text-center border-b md:border-b-0 md:border-r border-slate-100">
-                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Google rating<br>(21 reviews)</dt>
-                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">4.8<span class="text-accent align-top text-3xl md:text-4xl">&#9733;</span></dd>
-                </div>
-                <div class="flex flex-col items-center py-10 md:py-12 px-4 text-center border-r border-slate-100">
-                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Websites designed<br>&amp; launched</dt>
-                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">20+</dd>
-                </div>
-                <div class="flex flex-col items-center py-10 md:py-12 px-4 text-center">
-                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Countries<br>we work in</dt>
-                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">4</dd>
-                </div>
-            </dl>
+                <span class="shrink-0 ml-12 md:ml-16 w-2 h-2 rounded-full bg-accent"></span>
+                <?php endforeach; ?>
+            </div>
+            <?php endfor; ?>
         </div>
     </section>
 
