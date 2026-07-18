@@ -222,6 +222,8 @@ if ( $ttseo_ts ) {
             </div>
             <!-- Speed of the entered URL (Google PageSpeed) — runs alongside the crawl. -->
             <div id="crawl-speed" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
+            <!-- Site-wide findings: duplicates, H1s, NAP consistency and broken links (filled after the crawl). -->
+            <div id="crawl-sitewide" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
             <div class="grid grid-cols-3 gap-4 md:gap-6 mb-10">
                 <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6 text-center">
                     <div id="crawl-avg-seo" class="text-4xl md:text-5xl font-display leading-none">—</div>
@@ -440,15 +442,21 @@ window.TTSEO = {
         });
     }
 
+    function pathOf(u) { return u.replace(/^https?:\/\/[^\/]+/, '') || '/'; }
+
     function crawlPages(urls) {
         var total = urls.length, done = 0, counted = 0, seoSum = 0, geoSum = 0;
         var rows = document.getElementById('crawl-rows');
         var statusEl = document.getElementById('crawl-status');
+        // Collected across pages for the site-wide cross-analysis.
+        var pages = [];
+        var linkMap = {}; // normalized url -> { url, src: [pages linking to it] }
         function next(i) {
             if (i >= total) {
                 statusEl.textContent = 'Done — scanned ' + counted + ' page' + (counted === 1 ? '' : 's') + '.';
                 // Only offer the PDF once every page has actually been scanned.
                 if (counted) document.getElementById('ttseo-crawl-pdf').classList.remove('hidden');
+                if (counted) { renderSitewide(pages); checkBrokenLinks(linkMap, pages); }
                 return;
             }
             statusEl.textContent = 'Scanning ' + (i + 1) + ' of ' + total + '…';
@@ -460,6 +468,12 @@ window.TTSEO = {
                 document.getElementById('crawl-bar').style.width = Math.round(done / total * 100) + '%';
                 if (json && json.success) {
                     var d = json.data; counted++; seoSum += d.seo; geoSum += d.geo;
+                    pages.push({ url: d.url, title: d.title || '', desc: d.desc || '', h1: (d.h1 | 0), phones: d.phones || [] });
+                    (d.links || []).forEach(function (L) {
+                        var k = L.replace(/\/+$/, '').toLowerCase();
+                        if (!linkMap[k]) linkMap[k] = { url: L, src: [] };
+                        if (linkMap[k].src.length < 5 && linkMap[k].src.indexOf(d.url) < 0) linkMap[k].src.push(d.url);
+                    });
                     var path = d.url.replace(/^https?:\/\/[^\/]+/, '') || '/';
                     var issues = d.issues || [];
                     var rid = 'crawlrow-' + i;
