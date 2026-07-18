@@ -745,6 +745,7 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 	);
 
 	$h1 = $doc->getElementsByTagName( 'h1' );
+	$meta['h1'] = $h1->length;
 	$seo[] = toctoc_seo_row(
 		'H1 heading',
 		1 === $h1->length ? 'pass' : ( 0 === $h1->length ? 'fail' : 'warn' ),
@@ -1291,8 +1292,23 @@ function toctoc_seo_page_handler() {
 	if ( is_wp_error( $resp ) || (int) wp_remote_retrieve_response_code( $resp ) >= 400 ) {
 		wp_send_json_error( array( 'message' => 'unreachable', 'url' => $url ) );
 	}
-	$res    = toctoc_seo_analyze( $url, (string) wp_remote_retrieve_body( $resp ) );
+	$html   = (string) wp_remote_retrieve_body( $resp );
+	$res    = toctoc_seo_analyze( $url, $html );
 	$all    = array_merge( $res['seo'], $res['geo'] );
+
+	// Extras for the site-wide cross-analysis done by the front end:
+	// clickable phone numbers (NAP consistency) and internal links (broken-link check).
+	$phones = array();
+	if ( preg_match_all( '/href=["\']tel:([^"\']+)/i', $html, $pm ) ) {
+		foreach ( $pm[1] as $p ) {
+			$norm = preg_replace( '/[^0-9+]/', '', rawurldecode( $p ) );
+			if ( strlen( $norm ) >= 7 ) {
+				$phones[ $norm ] = true;
+			}
+		}
+	}
+	$origin = wp_parse_url( $url, PHP_URL_SCHEME ) . '://' . wp_parse_url( $url, PHP_URL_HOST );
+	$links  = array_slice( toctoc_seo_extract_links( $html, $origin ), 0, 150 );
 	$fails  = 0;
 	$warns  = 0;
 	$issues = array();
