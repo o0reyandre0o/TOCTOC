@@ -82,6 +82,10 @@ if ( $ttseo_ts ) {
                         <input id="ttseo-crawl-toggle" type="checkbox" class="w-4 h-4 rounded border-slate-300 accent-sky-deep">
                         Scan the whole website (up to 20 pages)
                     </label>
+                    <label class="mt-2 flex items-center gap-2 text-sm text-slate-600 cursor-pointer select-none">
+                        <input id="ttseo-monitor-toggle" type="checkbox" class="w-4 h-4 rounded border-slate-300 accent-sky-deep">
+                        Watch my site weekly &amp; email me if my score drops (free)
+                    </label>
 
                     <?php if ( $ttseo_ts ) : ?>
                     <div class="cf-turnstile mt-4" data-sitekey="<?php echo esc_attr( $ttseo_ts ); ?>"></div>
