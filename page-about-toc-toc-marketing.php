@@ -172,7 +172,7 @@ get_header(); ?>
                             <p class="text-sm font-bold text-white leading-none">Cayman Islands</p>
                             <p class="mt-1 text-[10px] tracking-wider text-accent">19.3&deg;N &middot; 81.4&deg;W &middot; HQ</p>
                         </div>
-                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:0;top:4%" data-dlat="42" data-dlon="-100">
+                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:0;top:4%" data-dlat="22" data-dlon="-100">
                             <p class="text-sm font-bold text-white leading-none">USA</p>
                             <p class="mt-1 text-[10px] tracking-wider text-white/50">Miami</p>
                         </div>
@@ -180,7 +180,7 @@ get_header(); ?>
                             <p class="text-sm font-bold text-white leading-none">Puerto Rico</p>
                             <p class="mt-1 text-[10px] tracking-wider text-white/50">San Juan</p>
                         </div>
-                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:10%;bottom:6%" data-dlat="-26" data-dlon="-58">
+                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:10%;bottom:6%" data-dlat="-48" data-dlon="-58">
                             <p class="text-sm font-bold text-white leading-none">Venezuela</p>
                             <p class="mt-1 text-[10px] tracking-wider text-white/50">Caracas</p>
                         </div>
@@ -238,7 +238,7 @@ get_header(); ?>
         // used here, screen-left corresponds to GREATER longitudes than the
         // camera center (-75): Cayman left, USA top-right, PR right, VE bottom.
         var HQ = [18, -45];
-        var DESTS = [[42, -100], [2, -108], [-26, -58]];
+        var DESTS = [[22, -100], [2, -108], [-48, -58]];
 
         function arcPoints(A0, B0) {
             var A = fromLatLon(A0[0], A0[1]), B = fromLatLon(B0[0], B0[1]);
