@@ -413,6 +413,19 @@ $ow_sites = array(
     </section>
     <?php endforeach; ?>
 
+    <?php
+    // VideoObject schema for the case-study demo videos.
+    toctoc_render_video_schema( array_map( function ( $c ) {
+        return array(
+            'name'         => $c['title'] . ' — ' . wp_strip_all_tags( html_entity_decode( $c['headline'], ENT_QUOTES, 'UTF-8' ) ),
+            'description'  => wp_strip_all_tags( html_entity_decode( $c['lead'], ENT_QUOTES, 'UTF-8' ) ),
+            'contentUrl'   => $c['mp4'],
+            'thumbnailUrl' => toctoc_og_image_url( 'video-' . sanitize_title( $c['title'] ), $c['title'] . ' · Case Study', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
+            'uploadDate'   => '2026-07-17',
+        );
+    }, $ow_cases ) );
+    ?>
+
     <!-- 5. Standalone Web Design Showcase -->
     <section id="web-design" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">

@@ -230,6 +230,19 @@ $ai_faqs = array(
         </div>
     </section>
 
+    <?php
+    // VideoObject schema for the proof clips.
+    toctoc_render_video_schema( array_map( function ( $pv ) {
+        return array(
+            'name'         => wp_strip_all_tags( html_entity_decode( $pv['headline'], ENT_QUOTES, 'UTF-8' ) ),
+            'description'  => wp_strip_all_tags( html_entity_decode( $pv['desc'], ENT_QUOTES, 'UTF-8' ) ),
+            'contentUrl'   => $pv['mp4'],
+            'thumbnailUrl' => toctoc_og_image_url( 'video-' . substr( md5( $pv['mp4'] ), 0, 8 ), wp_strip_all_tags( html_entity_decode( $pv['headline'], ENT_QUOTES, 'UTF-8' ) ), 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
+            'uploadDate'   => '2026-07-17',
+        );
+    }, $ai_proof ) );
+    ?>
+
     <!-- 2. What We Do: 4 core steps -->
     <section id="what-we-do" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">

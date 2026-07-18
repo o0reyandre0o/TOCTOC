@@ -184,6 +184,19 @@
         </div>
     </section>
 
+    <?php
+    // VideoObject schema — makes the proof clips eligible for Google video results.
+    toctoc_render_video_schema( array_map( function ( $pv ) {
+        return array(
+            'name'         => wp_strip_all_tags( $pv['label'] ) . ' — #1 results on ChatGPT & Gemini',
+            'description'  => wp_strip_all_tags( html_entity_decode( $pv['desc'], ENT_QUOTES, 'UTF-8' ) ),
+            'contentUrl'   => $pv['mp4'],
+            'thumbnailUrl' => toctoc_og_image_url( 'video-' . sanitize_title( $pv['label'] ), wp_strip_all_tags( $pv['label'] ) . ' · First in AI Search', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
+            'uploadDate'   => '2026-07-17',
+        );
+    }, $ttc_proof ) );
+    ?>
+
     <!-- Section 3: AI Search Visibility Framework -->
     <section id="loop" class="relative py-24 md:py-32 bg-sky-pale/50">
         <div class="mx-auto max-w-6xl px-6">
