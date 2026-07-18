@@ -436,7 +436,7 @@ window.TTSEO = {
             if (!json || !json.success) { showError(json && json.data ? json.data.message : 'Could not scan that site.'); return; }
             var urls = (json.data && json.data.urls) || [];
             if (!urls.length) { document.getElementById('crawl-status').textContent = 'No pages found to scan.'; return; }
-            crawlPages(urls);
+            crawlPages(urls, url, email);
         })
         .catch(function () {
             if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
@@ -447,7 +447,7 @@ window.TTSEO = {
 
     function pathOf(u) { return u.replace(/^https?:\/\/[^\/]+/, '') || '/'; }
 
-    function crawlPages(urls) {
+    function crawlPages(urls, siteUrl, email) {
         var total = urls.length, done = 0, counted = 0, seoSum = 0, geoSum = 0;
         var rows = document.getElementById('crawl-rows');
         var statusEl = document.getElementById('crawl-status');
@@ -459,7 +459,11 @@ window.TTSEO = {
                 statusEl.textContent = 'Done — scanned ' + counted + ' page' + (counted === 1 ? '' : 's') + '.';
                 // Only offer the PDF once every page has actually been scanned.
                 if (counted) document.getElementById('ttseo-crawl-pdf').classList.remove('hidden');
-                if (counted) { renderSitewide(pages); checkBrokenLinks(linkMap, pages); }
+                if (counted) {
+                    renderSitewide(pages);
+                    checkBrokenLinks(linkMap, pages);
+                    recordCrawlHistory(siteUrl, email, Math.round(seoSum / counted), Math.round(geoSum / counted));
+                }
                 return;
             }
             statusEl.textContent = 'Scanning ' + (i + 1) + ' of ' + total + '…';
