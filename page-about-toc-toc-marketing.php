@@ -191,7 +191,8 @@ get_header(); ?>
 
     <script>
     (function () {
-        // ---- TocToc dot globe: vanilla canvas, no libraries. ----
+        // ---- TocToc dot globe v2: dense sphere + graticule, visible rotation,
+        //      fixed chips with leader lines. Vanilla canvas, no libraries. ----
         var wrap = document.getElementById('ttglobe-wrap');
         var canvas = document.getElementById('ttglobe');
         if (!wrap || !canvas || !canvas.getContext) return;
@@ -199,11 +200,9 @@ get_header(); ?>
         var chips = Array.prototype.slice.call(wrap.querySelectorAll('.ttglobe-chip'));
 
         var ACCENT = '#D9FF3E';
-        var DOT = 'rgba(226, 232, 240, 0.9)';      // slate-200
-        var GRID_DOT = 'rgba(56, 189, 248, 0.55)'; // sky-400
 
-        // Fibonacci sphere.
-        var N = 750, pts = [];
+        // Dense fibonacci sphere.
+        var N = 1300, pts = [];
         for (var i = 0; i < N; i++) {
             var y = 1 - (2 * i) / (N - 1);
             var r = Math.sqrt(Math.max(0, 1 - y * y));
@@ -211,33 +210,49 @@ get_header(); ?>
             pts.push([Math.cos(th) * r, y, Math.sin(th) * r]);
         }
 
-        function fromLatLon(lat, lon) {
-            var p = lat * Math.PI / 180, l = lon * Math.PI / 180;
+        // Graticule: latitude rings + meridians as fine sky-blue dots.
+        var grid = [];
+        var lat, lon, a;
+        for (var li = 0; li < 5; li++) {           // latitudes -60,-30,0,30,60
+            lat = (-60 + li * 30) * Math.PI / 180;
+            for (a = 0; a < Math.PI * 2; a += Math.PI / 60) {
+                grid.push([Math.cos(a) * Math.cos(lat), Math.sin(lat), Math.sin(a) * Math.cos(lat)]);
+            }
+        }
+        for (var mi = 0; mi < 6; mi++) {           // meridians every 30°
+            lon = mi * Math.PI / 6;
+            for (a = 0; a < Math.PI * 2; a += Math.PI / 60) {
+                grid.push([Math.cos(a) * Math.cos(lon), Math.sin(a), Math.cos(a) * Math.sin(lon)]);
+            }
+        }
+
+        function fromLatLon(la, lo) {
+            var p = la * Math.PI / 180, l = lo * Math.PI / 180;
             return [Math.cos(p) * Math.cos(l), Math.sin(p), Math.cos(p) * Math.sin(l)];
         }
 
         var HQ = [19.29, -81.38];
         var DESTS = [[25.77, -80.19], [18.44, -66.10], [10.48, -66.90]];
 
-        // Pre-sample the connection arcs (in un-rotated space).
-        function arcPoints(a, b) {
-            var A = fromLatLon(a[0], a[1]), B = fromLatLon(b[0], b[1]);
+        function arcPoints(A0, B0) {
+            var A = fromLatLon(A0[0], A0[1]), B = fromLatLon(B0[0], B0[1]);
             var out = [];
             for (var t = 0; t <= 1.0001; t += 0.033) {
                 var x = A[0] + (B[0] - A[0]) * t;
-                var y = A[1] + (B[1] - A[1]) * t;
+                var yy = A[1] + (B[1] - A[1]) * t;
                 var z = A[2] + (B[2] - A[2]) * t;
-                var m = Math.sqrt(x * x + y * y + z * z) || 1;
-                var lift = 1 + 0.16 * Math.sin(Math.PI * t); // rise above the surface
-                out.push([x / m * lift, y / m * lift, z / m * lift]);
+                var m = Math.sqrt(x * x + yy * yy + z * z) || 1;
+                var lift = 1 + 0.18 * Math.sin(Math.PI * t);
+                out.push([x / m * lift, yy / m * lift, z / m * lift]);
             }
             return out;
         }
         var arcs = DESTS.map(function (d) { return arcPoints(HQ, d); });
 
-        // Base rotation faces the Caribbean; gentle oscillation keeps it visible.
+        // Rotation: keeps the Caribbean facing front, but sweeps ±55° every ~13s
+        // so the planet is unmistakably turning.
         var BASE = Math.PI / 2 - (-81.38 * Math.PI / 180);
-        var TILT = -0.30;
+        var TILT = -0.32;
         var cosT = Math.cos(TILT), sinT = Math.sin(TILT);
 
         var W = 0, H = 0, CX = 0, CY = 0, R = 0, dpr = 1;
@@ -246,7 +261,7 @@ get_header(); ?>
             W = wrap.clientWidth; H = wrap.clientHeight;
             canvas.width = W * dpr; canvas.height = H * dpr;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            CX = W / 2; CY = H / 2; R = Math.min(W, H) * 0.40;
+            CX = W / 2; CY = H / 2; R = Math.min(W, H) * 0.42;
         }
         resize();
         window.addEventListener('resize', resize);
@@ -255,46 +270,63 @@ get_header(); ?>
             var ca = Math.cos(ang), sa = Math.sin(ang);
             var x = v[0] * ca + v[2] * sa;
             var z = -v[0] * sa + v[2] * ca;
-            var y = v[1] * cosT - z * sinT;   // slight tilt toward the viewer
+            var yv = v[1] * cosT - z * sinT;
             var z2 = v[1] * sinT + z * cosT;
-            return [CX + x * R, CY - y * R, z2]; // z2 > 0 = facing the camera
+            return [CX + x * R, CY - yv * R, z2];
         }
 
-        var CHIP_OFF = {
-            left:  function (el, x, y) { return 'translate(' + (x - el.offsetWidth - 16) + 'px,' + (y - el.offsetHeight / 2) + 'px)'; },
-            right: function (el, x, y) { return 'translate(' + (x + 16) + 'px,' + (y - el.offsetHeight / 2) + 'px)'; },
-            above: function (el, x, y) { return 'translate(' + (x - el.offsetWidth / 2) + 'px,' + (y - el.offsetHeight - 14) + 'px)'; },
-            below: function (el, x, y) { return 'translate(' + (x - el.offsetWidth / 2) + 'px,' + (y + 14) + 'px)'; }
-        };
+        // Leader line endpoint: the point on the chip's border facing the marker.
+        function chipEdge(el, px, py) {
+            var cx = el.offsetLeft + el.offsetWidth / 2;
+            var cy = el.offsetTop + el.offsetHeight / 2;
+            var dx = px - cx, dy = py - cy;
+            if (!dx && !dy) return [cx, cy];
+            var s = 1 / Math.max(Math.abs(dx) / (el.offsetWidth / 2 + 4), Math.abs(dy) / (el.offsetHeight / 2 + 4));
+            return [cx + dx * s, cy + dy * s];
+        }
 
         function frame(now) {
             var t = now * 0.001;
-            var ang = BASE + Math.sin(t * 0.28) * 0.42;
+            var ang = BASE + Math.sin(t * 0.48) * 0.95;
             ctx.clearRect(0, 0, W, H);
 
-            // Halo.
-            ctx.beginPath();
-            ctx.arc(CX, CY, R + 14, 0, Math.PI * 2);
-            ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
+            // Halo rings.
             ctx.lineWidth = 1;
-            ctx.stroke();
+            ctx.beginPath(); ctx.arc(CX, CY, R + 12, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(148,163,184,0.14)'; ctx.stroke();
+            ctx.beginPath(); ctx.arc(CX, CY, R + 26, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(148,163,184,0.06)'; ctx.stroke();
 
-            // Sphere dots (back first for a hint of depth).
-            for (var pass = 0; pass < 2; pass++) {
-                for (var i = 0; i < N; i++) {
-                    var p = project(pts[i], ang);
-                    var front = p[2] > 0;
-                    if ((pass === 0 && front) || (pass === 1 && !front)) continue;
-                    var a = front ? 0.25 + 0.65 * p[2] : 0.05;
-                    ctx.globalAlpha = a;
-                    ctx.fillStyle = (i % 7 === 0) ? GRID_DOT : DOT;
-                    var s = front ? 1.5 : 1;
-                    ctx.fillRect(p[0] - s / 2, p[1] - s / 2, s, s);
+            var i, p, al;
+
+            // Graticule (structure): fine sky dots.
+            for (i = 0; i < grid.length; i++) {
+                p = project(grid[i], ang);
+                if (p[2] > 0) {
+                    al = 0.10 + 0.22 * p[2];
+                    ctx.globalAlpha = al;
+                    ctx.fillStyle = 'rgba(56,189,248,1)';
+                    ctx.fillRect(p[0] - 0.6, p[1] - 0.6, 1.2, 1.2);
+                }
+            }
+
+            // Surface dots with a soft twinkle so the sphere feels alive.
+            for (i = 0; i < N; i++) {
+                p = project(pts[i], ang);
+                if (p[2] > 0) {
+                    var tw = 0.8 + 0.2 * Math.sin(t * 1.7 + i * 1.3);
+                    ctx.globalAlpha = (0.30 + 0.60 * p[2]) * tw;
+                    ctx.fillStyle = 'rgba(226,232,240,1)';
+                    ctx.fillRect(p[0] - 0.9, p[1] - 0.9, 1.8, 1.8);
+                } else {
+                    ctx.globalAlpha = 0.05;
+                    ctx.fillStyle = 'rgba(226,232,240,1)';
+                    ctx.fillRect(p[0] - 0.5, p[1] - 0.5, 1, 1);
                 }
             }
             ctx.globalAlpha = 1;
 
-            // Arcs + travelling pulse.
+            // Connection arcs + travelling pulses.
             for (var k = 0; k < arcs.length; k++) {
                 var arc = arcs[k];
                 ctx.beginPath();
@@ -304,10 +336,9 @@ get_header(); ?>
                     if (j === 0) ctx.moveTo(q[0], q[1]); else ctx.lineTo(q[0], q[1]);
                     if (q[2] > 0) visible = true;
                 }
-                ctx.strokeStyle = 'rgba(217, 255, 62, ' + (visible ? 0.55 : 0.10) + ')';
-                ctx.lineWidth = 1.4;
+                ctx.strokeStyle = 'rgba(217,255,62,' + (visible ? 0.6 : 0.12) + ')';
+                ctx.lineWidth = 1.5;
                 ctx.stroke();
-                // Pulse dot along the arc.
                 var pt = arc[Math.floor(((t * 0.35 + k * 0.33) % 1) * (arc.length - 1))];
                 var pp = project(pt, ang);
                 if (pp[2] > -0.1) {
@@ -318,18 +349,32 @@ get_header(); ?>
                 }
             }
 
-            // Markers + chips.
+            // Markers, leader lines and chip opacity.
             chips.forEach(function (el) {
                 var v = fromLatLon(parseFloat(el.dataset.lat), parseFloat(el.dataset.lon));
-                var p = project(v, ang);
-                var front = p[2] > 0.05;
+                p = project(v, ang);
+                var front = p[2] > 0.02;
                 var main = el.dataset.main === '1';
+                el.style.opacity = front ? 1 : 0.25;
                 if (front) {
-                    if (main) { // pulsing HQ ring
+                    // Leader line from chip border to marker.
+                    var e = chipEdge(el, p[0], p[1]);
+                    ctx.beginPath();
+                    ctx.moveTo(e[0], e[1]);
+                    ctx.lineTo(p[0], p[1]);
+                    ctx.strokeStyle = main ? 'rgba(217,255,62,0.55)' : 'rgba(255,255,255,0.28)';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(e[0], e[1], 1.8, 0, Math.PI * 2);
+                    ctx.fillStyle = main ? 'rgba(217,255,62,0.8)' : 'rgba(255,255,255,0.5)';
+                    ctx.fill();
+                    // Marker.
+                    if (main) {
                         var pr = 9 + 3 * Math.sin(t * 2.2);
                         ctx.beginPath();
                         ctx.arc(p[0], p[1], pr, 0, Math.PI * 2);
-                        ctx.strokeStyle = 'rgba(217, 255, 62, ' + (0.5 - 0.25 * Math.sin(t * 2.2)) + ')';
+                        ctx.strokeStyle = 'rgba(217,255,62,' + (0.5 - 0.25 * Math.sin(t * 2.2)) + ')';
                         ctx.lineWidth = 1.5;
                         ctx.stroke();
                     }
@@ -342,21 +387,17 @@ get_header(); ?>
                     ctx.fillStyle = '#0f172a';
                     ctx.fill();
                 }
-                var op = front ? Math.min(1, Math.max(0, (p[2] - 0.05) * 4)) : 0;
-                el.style.opacity = op;
-                el.style.transform = CHIP_OFF[el.dataset.mode || 'right'](el, p[0], p[1]);
             });
         }
 
         var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduced) {
-            frame(0); // single static frame
+            frame(0);
             return;
         }
         var running = true;
         function loop(now) { if (running) frame(now); requestAnimationFrame(loop); }
         requestAnimationFrame(loop);
-        // Don't burn CPU while offscreen.
         if ('IntersectionObserver' in window) {
             new IntersectionObserver(function (e) { running = e[0].isIntersecting; }).observe(wrap);
         }
