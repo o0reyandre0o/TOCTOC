@@ -652,6 +652,127 @@ function toctoc_seo_badge_handler() {
 add_action( 'wp_ajax_toctoc_seo_badge', 'toctoc_seo_badge_handler' );
 add_action( 'wp_ajax_nopriv_toctoc_seo_badge', 'toctoc_seo_badge_handler' );
 
+/* ---------------------------------------------------------------------------
+ * Weekly monitoring: opt-in leads get their site re-scanned every week and an
+ * alert email only when a score drops — the natural bridge to a paid retainer.
+ * ------------------------------------------------------------------------- */
+
+/** Add (or refresh) a monitoring subscription. Stored in one option, capped. */
+function toctoc_seo_monitor_subscribe( $email, $url, $seo, $geo ) {
+	$monitors = get_option( 'toctoc_seo_monitors', array() );
+	if ( ! is_array( $monitors ) ) {
+		$monitors = array();
+	}
+	$norm = untrailingslashit( strtolower( $url ) );
+	$key  = md5( $email . '|' . $norm );
+	if ( ! isset( $monitors[ $key ] ) && count( $monitors ) >= 200 ) {
+		return; // safety cap
+	}
+	$monitors[ $key ] = array(
+		'email'   => $email,
+		'url'     => $norm,
+		'seo'     => (int) $seo,
+		'geo'     => (int) $geo,
+		'since'   => isset( $monitors[ $key ]['since'] ) ? $monitors[ $key ]['since'] : current_time( 'mysql' ),
+		'checked' => current_time( 'mysql' ),
+	);
+	update_option( 'toctoc_seo_monitors', $monitors, false );
+}
+
+// Keep the weekly runner scheduled.
+add_action( 'init', function () {
+	if ( ! wp_next_scheduled( 'toctoc_seo_weekly_monitor' ) ) {
+		wp_schedule_event( time() + HOUR_IN_SECONDS, 'weekly', 'toctoc_seo_weekly_monitor' );
+	}
+} );
+
+/** The weekly run: re-scan each monitored site, alert only on a real drop. */
+function toctoc_seo_weekly_monitor_run() {
+	$monitors = get_option( 'toctoc_seo_monitors', array() );
+	if ( ! is_array( $monitors ) || empty( $monitors ) ) {
+		return;
+	}
+	$done = 0;
+	foreach ( $monitors as $key => $mon ) {
+		if ( $done >= 25 ) {
+			break; // stay well within one cron run
+		}
+		$done++;
+		$resp = wp_remote_get(
+			$mon['url'],
+			array(
+				'timeout'     => 20,
+				'redirection' => 3,
+				'user-agent'  => 'TocTocSEOChecker/1.0 (+https://toctoc.ky)',
+			)
+		);
+		if ( is_wp_error( $resp ) || (int) wp_remote_retrieve_response_code( $resp ) >= 400 ) {
+			continue; // transient failure — try again next week
+		}
+		$res  = toctoc_seo_analyze( $mon['url'], (string) wp_remote_retrieve_body( $resp ) );
+		$seo  = (int) $res['scores']['seo'];
+		$geo  = (int) $res['scores']['geo'];
+		$dSeo = $seo - (int) $mon['seo'];
+		$dGeo = $geo - (int) $mon['geo'];
+
+		// Log into the same history table so trends show in wp-admin.
+		toctoc_seo_db_init();
+		global $wpdb;
+		$wpdb->insert(
+			$wpdb->prefix . 'ttseo_scans',
+			array(
+				'email'      => $mon['email'],
+				'url'        => $mon['url'],
+				'seo'        => $seo,
+				'geo'        => $geo,
+				'mode'       => 'monitor',
+				'created_at' => current_time( 'mysql' ),
+			)
+		);
+
+		// Alert only when something actually got worse (5+ points).
+		if ( $dSeo <= -5 || $dGeo <= -5 ) {
+			$host  = wp_parse_url( $mon['url'], PHP_URL_HOST );
+			$unsub = home_url( '/?ttseo_unsub=' . $key );
+			$line  = function ( $label, $old, $new ) {
+				$d = $new - $old;
+				return '<tr><td style="padding:6px 12px;font-weight:bold;">' . $label . '</td><td style="padding:6px 12px;">' . $old . ' &rarr; ' . $new
+					. ' <span style="color:' . ( $d < 0 ? '#dc2626' : '#16a34a' ) . ';font-weight:bold;">(' . ( $d > 0 ? '+' : '' ) . $d . ')</span></td></tr>';
+			};
+			$h  = '<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;color:#222;">';
+			$h .= '<h2 style="margin:0 0 10px;color:#dc2626;">&#9888; Your score dropped this week</h2>';
+			$h .= '<p style="font-size:15px;color:#333;">Weekly check for <strong>' . esc_html( $host ) . '</strong>:</p>';
+			$h .= '<table style="border-collapse:collapse;background:#f8fafc;border-radius:8px;">' . $line( 'SEO', (int) $mon['seo'], $seo ) . $line( 'AI visibility (GEO)', (int) $mon['geo'], $geo ) . '</table>';
+			$h .= '<p style="font-size:14px;color:#333;line-height:1.6;margin-top:16px;">A drop usually means something changed on the site or competitors moved. <a href="https://toctoc.ky/seo-checker/">Run a full scan</a> to see exactly what to fix &mdash; or let us defend your ranking for you: TocToc Marketing, +1 (345) 547-8120.</p>';
+			$h .= '<p style="font-size:11px;color:#999;margin-top:24px;">You get this weekly check because you opted in at toctoc.ky/seo-checker. <a href="' . esc_url( $unsub ) . '" style="color:#999;">Stop monitoring this site</a>.</p>';
+			$h .= '</div>';
+			wp_mail( $mon['email'], '⚠ ' . $host . ': your SEO score dropped', $h, array( 'Content-Type: text/html; charset=UTF-8' ) );
+		}
+
+		$monitors[ $key ]['seo']     = $seo;
+		$monitors[ $key ]['geo']     = $geo;
+		$monitors[ $key ]['checked'] = current_time( 'mysql' );
+	}
+	update_option( 'toctoc_seo_monitors', $monitors, false );
+}
+add_action( 'toctoc_seo_weekly_monitor', 'toctoc_seo_weekly_monitor_run' );
+
+// One-click unsubscribe (link in every alert email).
+add_action( 'init', function () {
+	if ( empty( $_GET['ttseo_unsub'] ) ) {
+		return;
+	}
+	$key      = sanitize_text_field( wp_unslash( $_GET['ttseo_unsub'] ) );
+	$monitors = get_option( 'toctoc_seo_monitors', array() );
+	if ( is_array( $monitors ) && isset( $monitors[ $key ] ) ) {
+		unset( $monitors[ $key ] );
+		update_option( 'toctoc_seo_monitors', $monitors, false );
+	}
+	header( 'Content-Type: text/plain; charset=utf-8' );
+	echo "You have been unsubscribed from weekly monitoring.\nYou can re-enable it any time at https://toctoc.ky/seo-checker/";
+	exit;
+} );
+
 /** Create the scan-history table once (guarded by a version option). */
 function toctoc_seo_db_init() {
 	if ( '1' === get_option( 'toctoc_seo_db_v' ) ) {
