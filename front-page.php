@@ -5,7 +5,7 @@
     <div class="mx-auto max-w-6xl px-4 h-11 flex items-center justify-center gap-2 sm:gap-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 text-[#ED1C24]"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
         <span class="text-xs sm:text-sm font-bold truncate">Venezuela Earthquake Appeal</span>
-        <a href="<?php echo esc_url( home_url( '/venezuela/' ) ); ?>" class="shrink-0 inline-flex items-center rounded-full bg-[#ED1C24] px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold text-white hover:bg-[#c8161d] transition-colors decoration-none">
+        <a href="<?php echo esc_url( home_url( '/venezuela/' ) ); ?>" class="shrink-0 inline-flex items-center rounded-full bg-[#C8102E] px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold text-white hover:bg-[#A50D26] transition-colors decoration-none">
             Donate now
         </a>
     </div>
@@ -37,7 +37,7 @@
             </h1>
 
             <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg text-slate-950 font-medium">
-                We are a 2026-ready marketing company based in the Cayman Islands that deploys the <strong class="bg-accent text-sky-deep px-1.5 py-0.5 rounded-md">AI Search Visibility Framework</strong> for your business.
+                We are a 2026-ready marketing company based in the Cayman Islands that deploys the <strong class="bg-accent text-slate-950 px-1.5 py-0.5 rounded-md">AI Search Visibility Framework</strong> for your business.
             </p>
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
@@ -168,7 +168,7 @@
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Get Recommended</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Discovery & AI Visibility</p>
                     <p class="text-sm leading-relaxed text-slate-500 mb-6">We optimize your &ldquo;Context&rdquo; across the platforms AI assistants use to learn about and recommend local businesses.</p>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Channels Optimized</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Channels Optimized</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Google Maps</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Apple Maps</span>
@@ -188,7 +188,7 @@
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Get Chosen</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Your Website Foundation</p>
                     <p class="text-sm leading-relaxed text-slate-500 mb-6">A recommendation is only as good as the destination. We build high-speed websites that AI loves to crawl and humans trust to use.</p>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Products Involved</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Products Involved</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Custom Websites</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Performance Landings</span>
@@ -208,7 +208,7 @@
                     <h3 class="text-3xl text-slate-900 font-display mb-2">Stay Recommended</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Ongoing Optimization</p>
                     <p class="text-sm leading-relaxed text-slate-500 mb-6">We keep your digital footprint fresh with monthly updates and new reviews so AI assistants keep recommending you.</p>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Products Involved</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Products Involved</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Monthly Content Updates</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Review Generation</span>
@@ -282,7 +282,7 @@
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Adventura Cayman</h3>
-                        <p class="text-white/40 text-sm mb-6">Premium Watersports Rental platform with real-time availability and booking.</p>
+                        <p class="text-white/60 text-sm mb-6">Premium Watersports Rental platform with real-time availability and booking.</p>
                         <a href="https://adventuracayman.com" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -296,7 +296,7 @@
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Uncle Liu</h3>
-                        <p class="text-white/40 text-sm mb-6">Luxury E-commerce experience tailored for the local market.</p>
+                        <p class="text-white/60 text-sm mb-6">Luxury E-commerce experience tailored for the local market.</p>
                         <a href="https://uncleliu.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -310,7 +310,7 @@
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Pr-Optics</h3>
-                        <p class="text-white/40 text-sm mb-6">Modern Optical Boutique website featuring high-end eyewear collections and appointment booking.</p>
+                        <p class="text-white/60 text-sm mb-6">Modern Optical Boutique website featuring high-end eyewear collections and appointment booking.</p>
                         <a href="https://pr-optics.com/" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -324,7 +324,7 @@
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Smash Burger</h3>
-                        <p class="text-white/40 text-sm mb-6">Vibrant Quick Service Restaurant website with digital ordering and loyalty program.</p>
+                        <p class="text-white/60 text-sm mb-6">Vibrant Quick Service Restaurant website with digital ordering and loyalty program.</p>
                         <a href="https://carnivore.ky/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -338,7 +338,7 @@
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Solara</h3>
-                        <p class="text-white/40 text-sm mb-6">Precision photochromic eyewear brand site with a product-led, search-ready structure.</p>
+                        <p class="text-white/60 text-sm mb-6">Precision photochromic eyewear brand site with a product-led, search-ready structure.</p>
                         <a href="https://solara-pro.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -352,7 +352,7 @@
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">19-81 Brewing Co.</h3>
-                        <p class="text-white/40 text-sm mb-6">Craft brewery and taproom site built to be cited as the #1 brewery by ChatGPT and Gemini.</p>
+                        <p class="text-white/60 text-sm mb-6">Craft brewery and taproom site built to be cited as the #1 brewery by ChatGPT and Gemini.</p>
                         <a href="https://1981brewingco.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -446,7 +446,7 @@
                     <!-- Review 3 -->
                     <div class="relative md:absolute md:top-[380px] md:left-[0%] w-full md:w-[340px] bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-white z-10 md:float-animation md:float-delayed-2 hover:pause-animation transition-all duration-500">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 font-bold text-xl border border-slate-100">SJ</div>
+                            <div class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 font-bold text-xl border border-slate-100">SJ</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Sarah Jenkins</div>
                                 <div class="text-xs text-slate-400">Marketing Executive · UK</div>
@@ -460,7 +460,7 @@
                     <!-- Review 4 -->
                     <div class="relative md:absolute md:top-[320px] md:right-[0%] w-full md:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 md:float-animation md:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center font-bold text-xl shadow-inner">JT</div>
+                            <div class="w-14 h-14 rounded-full bg-yellow-100 text-yellow-800 flex items-center justify-center font-bold text-xl shadow-inner">JT</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Janice Tangub</div>
                                 <div class="text-xs text-slate-400">Client · Cayman Islands</div>
