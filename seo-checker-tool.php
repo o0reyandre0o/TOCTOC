@@ -643,6 +643,52 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 		'Alt text improves accessibility and image SEO.'
 	);
 
+	// Image optimization (static analysis — formats, lazy loading, dimensions).
+	$img_srcs   = array();
+	$legacy     = 0; // jpg/png/gif instead of webp/avif
+	$lazy       = 0;
+	$no_dims    = 0;
+	foreach ( $imgs as $img ) {
+		$src = trim( $img->getAttribute( 'src' ) );
+		if ( '' === $src || 0 === strpos( $src, 'data:' ) ) {
+			continue;
+		}
+		$img_srcs[] = $src;
+		$path = strtolower( strtok( $src, '?' ) );
+		if ( preg_match( '/\.(jpe?g|png|gif|bmp)$/', $path ) ) {
+			$legacy++;
+		}
+		if ( 'lazy' === strtolower( $img->getAttribute( 'loading' ) ) ) {
+			$lazy++;
+		}
+		if ( '' === trim( $img->getAttribute( 'width' ) ) || '' === trim( $img->getAttribute( 'height' ) ) ) {
+			$no_dims++;
+		}
+	}
+	$img_real = count( $img_srcs );
+	if ( $img_real > 0 ) {
+		$issues = array();
+		if ( $legacy / $img_real >= 0.5 ) {
+			$issues[] = $legacy . ' of ' . $img_real . ' in legacy formats (JPG/PNG — use WebP/AVIF)';
+		}
+		if ( $img_real >= 4 && 0 === $lazy ) {
+			$issues[] = 'no lazy loading on any image';
+		}
+		if ( $no_dims / $img_real > 0.5 ) {
+			$issues[] = $no_dims . ' of ' . $img_real . ' missing width/height (causes layout shift)';
+		}
+		$seo[] = toctoc_seo_row(
+			'Image optimization',
+			empty( $issues ) ? 'pass' : ( count( $issues ) >= 2 ? 'fail' : 'warn' ),
+			empty( $issues ) ? 'Modern formats, lazy loading and dimensions look good' : implode( ' · ', $issues )
+		);
+	}
+
+	// Image weight (deep mode only — asks the server for the real file sizes).
+	if ( $deep && $img_real > 0 ) {
+		$seo[] = toctoc_seo_image_weight( $img_srcs, $origin, $url );
+	}
+
 	$langn = $xp->query( '//html/@lang' );
 	$lang  = ( $langn && $langn->length ) ? trim( $langn->item( 0 )->nodeValue ) : '';
 	$seo[] = toctoc_seo_row(
