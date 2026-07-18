@@ -421,7 +421,7 @@
                             <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">LF</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Laura Farries</div>
-                                <div class="text-xs text-slate-400">Entrepreneur · Cayman Islands</div>
+                                <div class="text-xs text-slate-500">Entrepreneur · Cayman Islands</div>
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
@@ -435,7 +435,7 @@
                             <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xl shadow-inner">MT</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Mark Thompson</div>
-                                <div class="text-xs text-slate-400">Creative Director · Paradise Paddle</div>
+                                <div class="text-xs text-slate-500">Creative Director · Paradise Paddle</div>
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
@@ -449,7 +449,7 @@
                             <div class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 font-bold text-xl border border-slate-100">SJ</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Sarah Jenkins</div>
-                                <div class="text-xs text-slate-400">Marketing Executive · UK</div>
+                                <div class="text-xs text-slate-500">Marketing Executive · UK</div>
                             </div>
                         </div>
                         <p class="text-lg font-bold leading-[1.4] text-slate-700">
@@ -463,7 +463,7 @@
                             <div class="w-14 h-14 rounded-full bg-yellow-100 text-yellow-800 flex items-center justify-center font-bold text-xl shadow-inner">JT</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Janice Tangub</div>
-                                <div class="text-xs text-slate-400">Client · Cayman Islands</div>
+                                <div class="text-xs text-slate-500">Client · Cayman Islands</div>
                             </div>
                         </div>
                         <p class="text-lg font-bold leading-[1.4] text-slate-800">
@@ -477,7 +477,7 @@
                             <div class="w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xl shadow-inner">SW</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Stuart Whittle</div>
-                                <div class="text-xs text-slate-400">Business Owner · Cayman Islands</div>
+                                <div class="text-xs text-slate-500">Business Owner · Cayman Islands</div>
                             </div>
                         </div>
                         <p class="text-lg font-bold leading-[1.4] text-slate-800">
@@ -491,7 +491,7 @@
                             <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">JW</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">James Wilson</div>
-                                <div class="text-xs text-slate-400">Tech Founder · Bipolaroid Studios</div>
+                                <div class="text-xs text-slate-500">Tech Founder · Bipolaroid Studios</div>
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">

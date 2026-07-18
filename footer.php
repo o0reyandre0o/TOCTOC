@@ -2,7 +2,7 @@
         <div class="mx-auto max-w-6xl px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
                 <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" class="h-6 w-auto brightness-0 invert" />
-                <p class="mt-4 text-sm text-white/40 font-medium">Cayman Islands · Built for the AI era</p>
+                <p class="mt-4 text-sm text-white/60 font-medium">Cayman Islands · Built for the AI era</p>
             </div>
             <nav aria-label="Services" class="flex flex-col gap-3">
                 <h2 class="text-sm font-display italic text-accent mb-1">Our Services</h2>
@@ -20,7 +20,7 @@
                     <a href="mailto:info@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">info@toctoc.ky</a>
                     <a href="tel:+13455478120" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">+1 (345) 547-8120</a>
                 </div>
-                <div class="text-xs text-white/30 font-medium flex flex-col md:items-end gap-3">
+                <div class="text-xs text-white/60 font-medium flex flex-col md:items-end gap-3">
                     <div class="flex flex-wrap items-center md:justify-end gap-x-4 gap-y-2">
                         <a href="/privacy-policy/" class="hover:text-white transition-colors decoration-none">Privacy Policy</a>
                         <span class="opacity-20">•</span>
