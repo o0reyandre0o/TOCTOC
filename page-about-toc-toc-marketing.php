@@ -165,20 +165,22 @@ get_header(); ?>
                     <div id="ttglobe-wrap" class="relative mx-auto w-full max-w-[560px] aspect-square select-none">
                         <canvas id="ttglobe" class="block w-full h-full"></canvas>
                         <!-- Location chips: fixed slots at the edges; canvas draws a leader
-                             line from each chip to its marker as the globe turns. -->
-                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-accent/50 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:0;top:22%" data-lat="19.29" data-lon="-81.38" data-main="1">
+                             line from each chip to its marker as the globe turns.
+                             data-dlat/data-dlon are stylized display positions (spread apart
+                             for readability) — the visible text keeps the real coordinates. -->
+                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-accent/50 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:0;top:16%" data-dlat="16" data-dlon="-105" data-main="1">
                             <p class="text-sm font-bold text-white leading-none">Cayman Islands</p>
                             <p class="mt-1 text-[10px] tracking-wider text-accent">19.3&deg;N &middot; 81.4&deg;W &middot; HQ</p>
                         </div>
-                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:2%;top:2%" data-lat="25.77" data-lon="-80.19">
+                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:0;top:4%" data-dlat="40" data-dlon="-72">
                             <p class="text-sm font-bold text-white leading-none">USA</p>
                             <p class="mt-1 text-[10px] tracking-wider text-white/50">Miami</p>
                         </div>
-                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:0;top:52%" data-lat="18.44" data-lon="-66.10">
+                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:0;top:56%" data-dlat="4" data-dlon="-48">
                             <p class="text-sm font-bold text-white leading-none">Puerto Rico</p>
                             <p class="mt-1 text-[10px] tracking-wider text-white/50">San Juan</p>
                         </div>
-                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:12%;bottom:2%" data-lat="10.48" data-lon="-66.90">
+                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:8%;bottom:4%" data-dlat="-24" data-dlon="-88">
                             <p class="text-sm font-bold text-white leading-none">Venezuela</p>
                             <p class="mt-1 text-[10px] tracking-wider text-white/50">Caracas</p>
                         </div>
