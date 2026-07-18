@@ -200,6 +200,12 @@
             "bestRating": "5",
             "worstRating": "1"
           },
+          "areaServed": [
+            { "@type": "Country", "name": "Cayman Islands" },
+            { "@type": "Country", "name": "United States" },
+            { "@type": "Country", "name": "Puerto Rico" },
+            { "@type": "Country", "name": "Venezuela" }
+          ],
           "image": "<?php echo esc_url($logo_url); ?>",
           "logo": "<?php echo esc_url($logo_url); ?>",
           "@id": "https://toctoc.ky",
