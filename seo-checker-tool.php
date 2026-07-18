@@ -26,7 +26,81 @@ add_action( 'wp_ajax_nopriv_toctoc_seo_psi', 'toctoc_seo_psi_handler' );
  */
 add_action( 'admin_menu', function () {
 	add_options_page( 'SEO Checker', 'SEO Checker', 'manage_options', 'toctoc-seo-checker', 'toctoc_seo_settings_page' );
+	add_options_page( 'SEO Leads', 'SEO Leads', 'manage_options', 'toctoc-seo-leads', 'toctoc_seo_leads_page' );
 } );
+
+/**
+ * Mini-CRM: every scan and every monitoring subscription, in one screen.
+ * WordPress → Settings → SEO Leads.
+ */
+function toctoc_seo_leads_page() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	toctoc_seo_db_init();
+	global $wpdb;
+	$table = $wpdb->prefix . 'ttseo_scans';
+	$scans = $wpdb->get_results( "SELECT email, url, seo, geo, mode, created_at FROM {$table} ORDER BY created_at DESC LIMIT 200", ARRAY_A );
+	$uniq  = $wpdb->get_var( "SELECT COUNT(DISTINCT email) FROM {$table}" );
+	$total = $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
+	$mons  = get_option( 'toctoc_seo_monitors', array() );
+	$mons  = is_array( $mons ) ? $mons : array();
+	$badge = function ( $n ) {
+		$c = $n >= 80 ? '#16a34a' : ( $n >= 50 ? '#d97706' : '#dc2626' );
+		return '<strong style="color:' . $c . ';">' . (int) $n . '</strong>';
+	};
+	?>
+	<div class="wrap">
+		<h1>SEO Checker — Leads</h1>
+		<p style="font-size:14px;">
+			<strong><?php echo (int) $uniq; ?></strong> unique leads &middot;
+			<strong><?php echo (int) $total; ?></strong> scans recorded &middot;
+			<strong><?php echo count( $mons ); ?></strong> sites under weekly monitoring
+		</p>
+
+		<?php if ( $mons ) : ?>
+		<h2>Weekly monitoring subscriptions</h2>
+		<table class="widefat striped" style="max-width:1100px;">
+			<thead><tr><th>Email</th><th>Site</th><th>SEO</th><th>GEO</th><th>Since</th><th>Last check</th><th></th></tr></thead>
+			<tbody>
+			<?php foreach ( $mons as $key => $m ) : ?>
+				<tr>
+					<td><a href="mailto:<?php echo esc_attr( $m['email'] ); ?>"><?php echo esc_html( $m['email'] ); ?></a></td>
+					<td><a href="<?php echo esc_url( $m['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( preg_replace( '#^https?://#', '', $m['url'] ) ); ?></a></td>
+					<td><?php echo $badge( $m['seo'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></td>
+					<td><?php echo $badge( $m['geo'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></td>
+					<td><?php echo esc_html( substr( (string) $m['since'], 0, 10 ) ); ?></td>
+					<td><?php echo esc_html( substr( (string) $m['checked'], 0, 10 ) ); ?></td>
+					<td><a href="<?php echo esc_url( home_url( '/?ttseo_unsub=' . $key ) ); ?>" onclick="return confirm('Remove this monitoring subscription?');">Remove</a></td>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php endif; ?>
+
+		<h2 style="margin-top:24px;">Scan history (latest 200)</h2>
+		<?php if ( $scans ) : ?>
+		<table class="widefat striped" style="max-width:1100px;">
+			<thead><tr><th>Date</th><th>Email</th><th>Site</th><th>Mode</th><th>SEO</th><th>GEO</th></tr></thead>
+			<tbody>
+			<?php foreach ( $scans as $s ) : ?>
+				<tr>
+					<td><?php echo esc_html( substr( $s['created_at'], 0, 16 ) ); ?></td>
+					<td><a href="mailto:<?php echo esc_attr( $s['email'] ); ?>"><?php echo esc_html( $s['email'] ); ?></a></td>
+					<td><a href="<?php echo esc_url( $s['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( preg_replace( '#^https?://#', '', $s['url'] ) ); ?></a></td>
+					<td><?php echo esc_html( $s['mode'] ); ?></td>
+					<td><?php echo $badge( $s['seo'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></td>
+					<td><?php echo $badge( $s['geo'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></td>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php else : ?>
+		<p>No scans recorded yet — they will appear here as soon as someone uses the checker.</p>
+		<?php endif; ?>
+	</div>
+	<?php
+}
 add_action( 'admin_init', function () {
 	register_setting( 'toctoc_seo_settings', 'toctoc_psi_key', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 	register_setting( 'toctoc_seo_settings', 'toctoc_ts_site', array( 'sanitize_callback' => 'sanitize_text_field' ) );
