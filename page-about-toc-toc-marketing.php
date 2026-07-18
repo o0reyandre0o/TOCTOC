@@ -293,11 +293,9 @@ get_header(); ?>
         }
 
         function frame(now) {
-            // With prefers-reduced-motion the ambient animation freezes at a nice
-            // pose, but manual drag still rotates the globe.
-            var t = reduced ? 9 : now * 0.001;
+            var t = now * 0.001;
             if (!dragging) { userVel *= 0.94; userAng += userVel; }
-            var ang = BASE + userAng + (reduced ? 0 : Math.sin(t * 0.4) * 0.55);
+            var ang = BASE + userAng + Math.sin(t * 0.4) * 0.35;
             ctx.clearRect(0, 0, W, H);
 
             // Halo rings.
@@ -399,8 +397,6 @@ get_header(); ?>
                 }
             });
         }
-
-        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         // Grab-and-spin with inertia.
         var dragging = false, userAng = 0, userVel = 0, lastX = 0;
