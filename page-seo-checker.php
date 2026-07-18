@@ -651,6 +651,90 @@ window.TTSEO = {
         batch();
     }
 
+    // ---- Scan history: "your progress since last time". ----
+    function historyHtml(hist, seoNow, geoNow) {
+        var prev = hist[0];
+        var dS = seoNow - prev.seo, dG = geoNow - prev.geo;
+        function chip(d) {
+            if (d > 0) return '<span style="color:#16a34a;font-weight:bold;">&#9650; +' + d + '</span>';
+            if (d < 0) return '<span style="color:#dc2626;font-weight:bold;">&#9660; ' + d + '</span>';
+            return '<span class="text-slate-400 font-bold">=</span>';
+        }
+        var html = '<div class="flex flex-wrap items-center gap-x-6 gap-y-2">' +
+            '<span class="text-xs font-bold uppercase tracking-widest text-sky-deep">Your progress</span>' +
+            '<span class="text-slate-700">vs your last scan (' + esc((prev.created_at || '').slice(0, 10)) + '): SEO ' + chip(dS) + ' &middot; GEO ' + chip(dG) + '</span>' +
+            '</div>';
+        if (hist.length > 1) {
+            html += '<p class="mt-2 text-xs text-slate-400">Earlier: ' + hist.slice(1).map(function (h) {
+                return esc((h.created_at || '').slice(0, 10)) + ' (' + h.seo + '/' + h.geo + ')';
+            }).join(' · ') + '</p>';
+        }
+        return html;
+    }
+
+    function renderHistory(hist, seoNow, geoNow) {
+        var el = document.getElementById('ttseo-history');
+        if (!el) return;
+        if (!hist || !hist.length) { el.classList.add('hidden'); return; }
+        el.innerHTML = historyHtml(hist, seoNow, geoNow);
+        el.classList.remove('hidden');
+    }
+
+    // Crawl mode: report the site-wide averages so they enter the same history,
+    // then show the progress line at the top of the site-wide panel.
+    function recordCrawlHistory(siteUrl, email, avgSeo, avgGeo) {
+        if (!email) return;
+        var body = new URLSearchParams({ action: 'toctoc_seo_history', nonce: TTSEO.nonce, url: siteUrl, email: email, seo: avgSeo, geo: avgGeo });
+        fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+            if (!json || !json.success || !json.data.history || !json.data.history.length) return;
+            var panel = document.getElementById('crawl-sitewide');
+            if (panel) panel.insertAdjacentHTML('afterbegin', '<div class="pb-4 mb-4 border-b border-slate-100">' + historyHtml(json.data.history, avgSeo, avgGeo) + '</div>');
+        })
+        .catch(function () {});
+    }
+
+    // ---- CrUX: what real Chrome users experienced (28-day p75). ----
+    function cruxRate(v, good, poor) {
+        if (v === null || v === undefined) return ['—', '#94a3b8'];
+        v = parseFloat(v);
+        if (v <= good) return ['Good', '#16a34a'];
+        if (v <= poor) return ['Needs work', '#d97706'];
+        return ['Poor', '#dc2626'];
+    }
+
+    function fetchCrux(url, mountId) {
+        var host = document.getElementById(mountId);
+        if (!host) return;
+        var body = new URLSearchParams({ action: 'toctoc_seo_crux', nonce: TTSEO.nonce, url: url });
+        fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+            var div = document.createElement('div');
+            div.className = 'mt-5 pt-5 border-t border-slate-100';
+            if (!json || !json.success) {
+                div.innerHTML = '<p class="text-xs text-slate-400">Real-user data: ' + esc(json && json.data ? json.data.message : 'unavailable') + '</p>';
+                host.appendChild(div);
+                return;
+            }
+            var d = json.data;
+            var lcp = cruxRate(d.lcp, 2500, 4000), inp = cruxRate(d.inp, 200, 500), cls = cruxRate(d.cls, 0.1, 0.25);
+            function item(label, rate, disp) {
+                return '<div><p class="text-xs font-bold uppercase tracking-widest text-slate-500">' + label + '</p>' +
+                    '<p class="mt-1 text-xl font-display text-slate-900">' + disp + ' <span style="font-size:12px;font-weight:bold;color:' + rate[1] + '">' + rate[0] + '</span></p></div>';
+            }
+            div.innerHTML = '<p class="text-xs font-bold uppercase tracking-widest text-sky-deep mb-3">Real users &middot; Chrome, last 28 days (' + (d.level === 'origin' ? 'whole site' : 'this page') + ')</p>' +
+                '<div class="grid grid-cols-3 gap-4">' +
+                item('LCP', lcp, d.lcp != null ? (d.lcp / 1000).toFixed(1) + ' s' : '—') +
+                item('INP', inp, d.inp != null ? d.inp + ' ms' : '—') +
+                item('CLS', cls, d.cls != null ? parseFloat(d.cls).toFixed(2) : '—') +
+                '</div>';
+            host.appendChild(div);
+        })
+        .catch(function () {});
+    }
+
     function showError(msg) {
         var e = document.getElementById('ttseo-error');
         e.textContent = msg || 'Something went wrong. Please try again.';
@@ -730,6 +814,7 @@ window.TTSEO = {
 
             renderSummary(d);
             renderCompetitor(d);
+            renderHistory(d.history || [], d.scores.seo, d.scores.geo);
             renderList('list-seo', d.seo);
             renderList('list-geo', d.geo);
 
@@ -794,8 +879,9 @@ window.TTSEO = {
                         '<span class="text-slate-400">/ 100 &middot; mobile</span>' +
                     '</div>' + grid + desktopLine;
             }
-            // Kick the desktop measurement once mobile has rendered.
+            // Kick the desktop measurement + real-user CrUX data once mobile has rendered.
             fetchDesktopScore(url, els.score ? 'psi-desktop-single' : 'psi-desktop-crawl');
+            fetchCrux(url, els.score ? 'perf-body' : 'crawl-speed');
         })
         .catch(function () {
             if (els.score) setScore(els.score, null);
