@@ -129,6 +129,10 @@ function toctoc_seo_safe_url( $url ) {
  * Simple per-IP hourly rate limit. Returns true when the caller is over the limit.
  */
 function toctoc_seo_rate_limited( $bucket = 'check', $max = 15 ) {
+	// Logged-in site admins (the TocToc team testing the tool) are never limited.
+	if ( function_exists( 'current_user_can' ) && current_user_can( 'manage_options' ) ) {
+		return false;
+	}
 	$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
 	$key = 'ttseo_' . $bucket . '_' . md5( $ip );
 	$n   = (int) get_transient( $key );
@@ -1061,7 +1065,7 @@ function toctoc_seo_score( $rows ) {
 function toctoc_seo_psi_handler() {
 	check_ajax_referer( 'toctoc_seo', 'nonce' );
 
-	if ( toctoc_seo_rate_limited( 'psi', 15 ) ) {
+	if ( toctoc_seo_rate_limited( 'psi', 40 ) ) {
 		wp_send_json_error( array( 'message' => 'Rate limit reached.' ), 429 );
 	}
 
