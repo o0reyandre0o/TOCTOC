@@ -1071,8 +1071,10 @@ function toctoc_seo_psi_handler() {
 
 	$key = defined( 'TOCTOC_PSI_KEY' ) ? TOCTOC_PSI_KEY : get_option( 'toctoc_psi_key', '' );
 
+	$strategy = ( isset( $_POST['strategy'] ) && 'desktop' === $_POST['strategy'] ) ? 'desktop' : 'mobile';
+
 	$endpoint  = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
-	$endpoint .= '?strategy=mobile&category=PERFORMANCE';
+	$endpoint .= '?strategy=' . $strategy . '&category=PERFORMANCE';
 	$endpoint .= '&url=' . rawurlencode( $url );
 	if ( $key ) {
 		$endpoint .= '&key=' . rawurlencode( $key );

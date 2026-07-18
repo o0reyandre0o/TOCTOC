@@ -625,10 +625,11 @@ window.TTSEO = {
                 metric('LCP', d.lcp) + metric('CLS', d.cls) + metric('Total Blocking', d.tbt) +
                 metric('First Paint', d.fcp) + metric('Speed Index', d.si) +
                 '</div>';
+            var desktopLine = '<p class="mt-4 text-sm text-slate-500">Mobile score above &middot; Desktop: <strong id="' + (els.score ? 'psi-desktop-single' : 'psi-desktop-crawl') + '">measuring&hellip;</strong></p>';
             if (els.score) {
                 setScore(els.score, d.performance);
                 updateSpeedSummary(d.performance);
-                perfEl.innerHTML = grid;
+                perfEl.innerHTML = grid + desktopLine;
             } else {
                 // Crawl panel: include the score inline, since there is no score card.
                 perfEl.innerHTML =
@@ -636,13 +637,37 @@ window.TTSEO = {
                         '<span class="text-sm font-bold uppercase tracking-widest text-slate-500">Speed (Google PageSpeed)</span>' +
                         '<span class="text-4xl font-display" style="color:' + scoreColor(d.performance) + '">' + d.performance + '</span>' +
                         '<span class="text-slate-400">/ 100 &middot; mobile</span>' +
-                    '</div>' + grid;
+                    '</div>' + grid + desktopLine;
             }
+            // Kick the desktop measurement once mobile has rendered.
+            fetchDesktopScore(url, els.score ? 'psi-desktop-single' : 'psi-desktop-crawl');
         })
         .catch(function () {
             if (els.score) setScore(els.score, null);
             perfEl.innerHTML = '<span class="text-slate-400">Speed data unavailable.</span>';
         });
+    }
+
+    // Desktop PageSpeed score — appended under the mobile metrics (same retry logic).
+    function fetchDesktopScore(url, mountId, attempt) {
+        attempt = attempt || 1;
+        var el = document.getElementById(mountId);
+        if (!el) return;
+        var body = new URLSearchParams({ action: 'toctoc_seo_psi', nonce: TTSEO.nonce, url: url, strategy: 'desktop' });
+        fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+            if (!json || !json.success) {
+                if (json && json.data && json.data.retryable && attempt < 3) {
+                    setTimeout(function () { fetchDesktopScore(url, mountId, attempt + 1); }, 4000);
+                    return;
+                }
+                el.textContent = 'unavailable';
+                return;
+            }
+            el.innerHTML = '<span style="color:' + scoreColor(json.data.performance) + '">' + json.data.performance + '</span><span class="text-slate-400 font-normal"> / 100</span>';
+        })
+        .catch(function () { el.textContent = 'unavailable'; });
     }
 })();
 </script>
