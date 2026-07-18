@@ -607,8 +607,50 @@ function toctoc_seo_check_handler() {
 		? toctoc_seo_record_scan( $email, $url, $result['scores']['seo'], $result['scores']['geo'], 'single' )
 		: array();
 
+	// Shareable badge (signed so the numbers can't be forged in the URL).
+	$result['badge'] = toctoc_seo_badge_url( $result['scores']['seo'], $result['scores']['geo'] );
+
+	// Optional weekly monitoring opt-in.
+	if ( ! empty( $_POST['monitor'] ) && is_email( $email ) ) {
+		toctoc_seo_monitor_subscribe( $email, $url, $result['scores']['seo'], $result['scores']['geo'] );
+	}
+
 	wp_send_json_success( $result );
 }
+
+/** Signed URL for the share badge (token prevents forged scores). */
+function toctoc_seo_badge_url( $seo, $geo ) {
+	$seo = max( 0, min( 100, (int) $seo ) );
+	$geo = max( 0, min( 100, (int) $geo ) );
+	$tok = substr( md5( $seo . '|' . $geo . '|' . wp_salt( 'nonce' ) ), 0, 10 );
+	return admin_url( 'admin-ajax.php' ) . '?action=toctoc_seo_badge&seo=' . $seo . '&geo=' . $geo . '&t=' . $tok;
+}
+
+/** Serve the badge as a cacheable SVG. Public (images cannot carry nonces). */
+function toctoc_seo_badge_handler() {
+	$seo = isset( $_GET['seo'] ) ? max( 0, min( 100, (int) $_GET['seo'] ) ) : 0;
+	$geo = isset( $_GET['geo'] ) ? max( 0, min( 100, (int) $_GET['geo'] ) ) : 0;
+	$tok = isset( $_GET['t'] ) ? sanitize_text_field( wp_unslash( $_GET['t'] ) ) : '';
+	if ( ! hash_equals( substr( md5( $seo . '|' . $geo . '|' . wp_salt( 'nonce' ) ), 0, 10 ), $tok ) ) {
+		status_header( 403 );
+		exit;
+	}
+	$color = function ( $n ) {
+		return $n >= 80 ? '#4ade80' : ( $n >= 50 ? '#fbbf24' : '#f87171' );
+	};
+	header( 'Content-Type: image/svg+xml' );
+	header( 'Cache-Control: public, max-age=86400' );
+	echo '<svg xmlns="http://www.w3.org/2000/svg" width="360" height="56" viewBox="0 0 360 56" role="img" aria-label="SEO score ' . $seo . ' of 100, AI visibility ' . $geo . ' of 100, verified by TocToc Marketing">'
+		. '<rect width="360" height="56" rx="28" fill="#0f172a"/>'
+		. '<text x="24" y="35" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#94a3b8">SEO <tspan fill="' . $color( $seo ) . '" font-size="20">' . $seo . '</tspan>'
+		. '<tspan fill="#334155">  |  </tspan>AI <tspan fill="' . $color( $geo ) . '" font-size="20">' . $geo . '</tspan></text>'
+		. '<text x="352" y="24" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#d9f99d">&#10003; Verified score</text>'
+		. '<text x="352" y="41" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#e2e8f0">toctoc.ky/seo-checker</text>'
+		. '</svg>';
+	exit;
+}
+add_action( 'wp_ajax_toctoc_seo_badge', 'toctoc_seo_badge_handler' );
+add_action( 'wp_ajax_nopriv_toctoc_seo_badge', 'toctoc_seo_badge_handler' );
 
 /** Create the scan-history table once (guarded by a version option). */
 function toctoc_seo_db_init() {
