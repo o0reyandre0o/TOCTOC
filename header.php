@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Perf: warm up connections to the render-critical + image origins -->
+    <!-- Fonts: direct links (parallel) instead of the old @import chain inside style.css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap">
     <!-- Compiled Tailwind (static, ~39 KB) — replaces the runtime CDN build. Rebuild with: npm run build:css -->
     <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() . '/assets/tailwind.min.css' ); ?>?v=<?php echo (int) @filemtime( get_template_directory() . '/assets/tailwind.min.css' ); ?>">
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -358,7 +362,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
         
         <!-- Mobile Toggle -->
-        <button id="menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-primary transition-colors">
+        <button id="menu-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-primary transition-colors">
             <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>

@@ -6,9 +6,11 @@ Author: Andre Gutierrez
 Author URI: https://www.linkedin.com/in/andre-g-9b373a97/
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
+/* Fonts load via <link> in header.php (parallel, non-chained) — an @import here
+   created a render-blocking chain: style.css had to download before the font CSS
+   request could even start. */
 
-/* All styles are handled via Tailwind in header.php */
+/* All styles are handled via compiled Tailwind (assets/tailwind.min.css) */
 /* This file is for small overrides if necessary */
 
 html {
