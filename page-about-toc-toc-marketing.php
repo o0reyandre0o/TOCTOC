@@ -129,6 +129,239 @@ get_header(); ?>
         </div>
     </section>
 
+    <!-- Where we work: animated dot globe (Cayman HQ + USA, Puerto Rico, Venezuela) -->
+    <section class="relative py-20 md:py-28 bg-slate-950 text-white rounded-[3rem] mx-4 my-8 overflow-hidden">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+                <div class="order-2 lg:order-1">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Where we work</span>
+                    <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">One team, <em class="italic text-accent font-display">four countries</em></h2>
+                    <p class="mt-8 text-lg text-white/60 leading-relaxed max-w-md">
+                        Our HQ is in George Town, Grand Cayman &mdash; and our clients rank from the United States and Puerto Rico to Venezuela. Everything we do is digital-first, so borders don&rsquo;t slow us down.
+                    </p>
+                    <ul class="mt-10 space-y-4">
+                        <li class="flex items-center gap-4">
+                            <span class="inline-flex w-2.5 h-2.5 rounded-full bg-accent shadow-glow"></span>
+                            <span class="font-bold text-white">Cayman Islands</span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-accent border border-accent/30 rounded-full px-2.5 py-0.5">HQ</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="inline-flex w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                            <span class="text-white/80">United States</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="inline-flex w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                            <span class="text-white/80">Puerto Rico</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="inline-flex w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                            <span class="text-white/80">Venezuela</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <div id="ttglobe-wrap" class="relative mx-auto w-full max-w-[560px] aspect-square select-none">
+                        <canvas id="ttglobe" class="block w-full h-full"></canvas>
+                        <!-- Location chips: positioned by JS as the globe turns. -->
+                        <div class="ttglobe-chip absolute left-0 top-0 pointer-events-none rounded-xl border border-accent/40 bg-slate-900/90 px-3 py-2 shadow-soft" data-lat="19.29" data-lon="-81.38" data-mode="left" data-main="1">
+                            <p class="text-sm font-bold text-white leading-none">Cayman Islands</p>
+                            <p class="mt-1 text-[10px] tracking-wider text-accent">19.3&deg;N &middot; 81.4&deg;W &middot; George Town &middot; HQ</p>
+                        </div>
+                        <div class="ttglobe-chip absolute left-0 top-0 pointer-events-none rounded-xl border border-white/15 bg-slate-900/90 px-3 py-2 shadow-soft" data-lat="25.77" data-lon="-80.19" data-mode="above">
+                            <p class="text-sm font-bold text-white leading-none">USA</p>
+                            <p class="mt-1 text-[10px] tracking-wider text-white/50">25.8&deg;N &middot; 80.2&deg;W &middot; Miami</p>
+                        </div>
+                        <div class="ttglobe-chip absolute left-0 top-0 pointer-events-none rounded-xl border border-white/15 bg-slate-900/90 px-3 py-2 shadow-soft" data-lat="18.44" data-lon="-66.10" data-mode="right">
+                            <p class="text-sm font-bold text-white leading-none">Puerto Rico</p>
+                            <p class="mt-1 text-[10px] tracking-wider text-white/50">18.4&deg;N &middot; 66.1&deg;W &middot; San Juan</p>
+                        </div>
+                        <div class="ttglobe-chip absolute left-0 top-0 pointer-events-none rounded-xl border border-white/15 bg-slate-900/90 px-3 py-2 shadow-soft" data-lat="10.48" data-lon="-66.90" data-mode="below">
+                            <p class="text-sm font-bold text-white leading-none">Venezuela</p>
+                            <p class="mt-1 text-[10px] tracking-wider text-white/50">10.5&deg;N &middot; 66.9&deg;W &middot; Caracas</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+    (function () {
+        // ---- TocToc dot globe: vanilla canvas, no libraries. ----
+        var wrap = document.getElementById('ttglobe-wrap');
+        var canvas = document.getElementById('ttglobe');
+        if (!wrap || !canvas || !canvas.getContext) return;
+        var ctx = canvas.getContext('2d');
+        var chips = Array.prototype.slice.call(wrap.querySelectorAll('.ttglobe-chip'));
+
+        var ACCENT = '#D9FF3E';
+        var DOT = 'rgba(226, 232, 240, 0.9)';      // slate-200
+        var GRID_DOT = 'rgba(56, 189, 248, 0.55)'; // sky-400
+
+        // Fibonacci sphere.
+        var N = 750, pts = [];
+        for (var i = 0; i < N; i++) {
+            var y = 1 - (2 * i) / (N - 1);
+            var r = Math.sqrt(Math.max(0, 1 - y * y));
+            var th = i * 2.399963;
+            pts.push([Math.cos(th) * r, y, Math.sin(th) * r]);
+        }
+
+        function fromLatLon(lat, lon) {
+            var p = lat * Math.PI / 180, l = lon * Math.PI / 180;
+            return [Math.cos(p) * Math.cos(l), Math.sin(p), Math.cos(p) * Math.sin(l)];
+        }
+
+        var HQ = [19.29, -81.38];
+        var DESTS = [[25.77, -80.19], [18.44, -66.10], [10.48, -66.90]];
+
+        // Pre-sample the connection arcs (in un-rotated space).
+        function arcPoints(a, b) {
+            var A = fromLatLon(a[0], a[1]), B = fromLatLon(b[0], b[1]);
+            var out = [];
+            for (var t = 0; t <= 1.0001; t += 0.033) {
+                var x = A[0] + (B[0] - A[0]) * t;
+                var y = A[1] + (B[1] - A[1]) * t;
+                var z = A[2] + (B[2] - A[2]) * t;
+                var m = Math.sqrt(x * x + y * y + z * z) || 1;
+                var lift = 1 + 0.16 * Math.sin(Math.PI * t); // rise above the surface
+                out.push([x / m * lift, y / m * lift, z / m * lift]);
+            }
+            return out;
+        }
+        var arcs = DESTS.map(function (d) { return arcPoints(HQ, d); });
+
+        // Base rotation faces the Caribbean; gentle oscillation keeps it visible.
+        var BASE = Math.PI / 2 - (-81.38 * Math.PI / 180);
+        var TILT = -0.30;
+        var cosT = Math.cos(TILT), sinT = Math.sin(TILT);
+
+        var W = 0, H = 0, CX = 0, CY = 0, R = 0, dpr = 1;
+        function resize() {
+            dpr = Math.min(2, window.devicePixelRatio || 1);
+            W = wrap.clientWidth; H = wrap.clientHeight;
+            canvas.width = W * dpr; canvas.height = H * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            CX = W / 2; CY = H / 2; R = Math.min(W, H) * 0.40;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function project(v, ang) {
+            var ca = Math.cos(ang), sa = Math.sin(ang);
+            var x = v[0] * ca + v[2] * sa;
+            var z = -v[0] * sa + v[2] * ca;
+            var y = v[1] * cosT - z * sinT;   // slight tilt toward the viewer
+            var z2 = v[1] * sinT + z * cosT;
+            return [CX + x * R, CY - y * R, z2]; // z2 > 0 = facing the camera
+        }
+
+        var CHIP_OFF = {
+            left:  function (el, x, y) { return 'translate(' + (x - el.offsetWidth - 16) + 'px,' + (y - el.offsetHeight / 2) + 'px)'; },
+            right: function (el, x, y) { return 'translate(' + (x + 16) + 'px,' + (y - el.offsetHeight / 2) + 'px)'; },
+            above: function (el, x, y) { return 'translate(' + (x - el.offsetWidth / 2) + 'px,' + (y - el.offsetHeight - 14) + 'px)'; },
+            below: function (el, x, y) { return 'translate(' + (x - el.offsetWidth / 2) + 'px,' + (y + 14) + 'px)'; }
+        };
+
+        function frame(now) {
+            var t = now * 0.001;
+            var ang = BASE + Math.sin(t * 0.28) * 0.42;
+            ctx.clearRect(0, 0, W, H);
+
+            // Halo.
+            ctx.beginPath();
+            ctx.arc(CX, CY, R + 14, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Sphere dots (back first for a hint of depth).
+            for (var pass = 0; pass < 2; pass++) {
+                for (var i = 0; i < N; i++) {
+                    var p = project(pts[i], ang);
+                    var front = p[2] > 0;
+                    if ((pass === 0 && front) || (pass === 1 && !front)) continue;
+                    var a = front ? 0.25 + 0.65 * p[2] : 0.05;
+                    ctx.globalAlpha = a;
+                    ctx.fillStyle = (i % 7 === 0) ? GRID_DOT : DOT;
+                    var s = front ? 1.5 : 1;
+                    ctx.fillRect(p[0] - s / 2, p[1] - s / 2, s, s);
+                }
+            }
+            ctx.globalAlpha = 1;
+
+            // Arcs + travelling pulse.
+            for (var k = 0; k < arcs.length; k++) {
+                var arc = arcs[k];
+                ctx.beginPath();
+                var visible = false;
+                for (var j = 0; j < arc.length; j++) {
+                    var q = project(arc[j], ang);
+                    if (j === 0) ctx.moveTo(q[0], q[1]); else ctx.lineTo(q[0], q[1]);
+                    if (q[2] > 0) visible = true;
+                }
+                ctx.strokeStyle = 'rgba(217, 255, 62, ' + (visible ? 0.55 : 0.10) + ')';
+                ctx.lineWidth = 1.4;
+                ctx.stroke();
+                // Pulse dot along the arc.
+                var pt = arc[Math.floor(((t * 0.35 + k * 0.33) % 1) * (arc.length - 1))];
+                var pp = project(pt, ang);
+                if (pp[2] > -0.1) {
+                    ctx.beginPath();
+                    ctx.arc(pp[0], pp[1], 2.6, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fill();
+                }
+            }
+
+            // Markers + chips.
+            chips.forEach(function (el) {
+                var v = fromLatLon(parseFloat(el.dataset.lat), parseFloat(el.dataset.lon));
+                var p = project(v, ang);
+                var front = p[2] > 0.05;
+                var main = el.dataset.main === '1';
+                if (front) {
+                    if (main) { // pulsing HQ ring
+                        var pr = 9 + 3 * Math.sin(t * 2.2);
+                        ctx.beginPath();
+                        ctx.arc(p[0], p[1], pr, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(217, 255, 62, ' + (0.5 - 0.25 * Math.sin(t * 2.2)) + ')';
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+                    }
+                    ctx.beginPath();
+                    ctx.arc(p[0], p[1], main ? 5.5 : 4, 0, Math.PI * 2);
+                    ctx.fillStyle = ACCENT;
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.arc(p[0], p[1], main ? 2.2 : 1.6, 0, Math.PI * 2);
+                    ctx.fillStyle = '#0f172a';
+                    ctx.fill();
+                }
+                var op = front ? Math.min(1, Math.max(0, (p[2] - 0.05) * 4)) : 0;
+                el.style.opacity = op;
+                el.style.transform = CHIP_OFF[el.dataset.mode || 'right'](el, p[0], p[1]);
+            });
+        }
+
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) {
+            frame(0); // single static frame
+            return;
+        }
+        var running = true;
+        function loop(now) { if (running) frame(now); requestAnimationFrame(loop); }
+        requestAnimationFrame(loop);
+        // Don't burn CPU while offscreen.
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (e) { running = e[0].isIntersecting; }).observe(wrap);
+        }
+    })();
+    </script>
+
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale text-center">
         <div class="mx-auto max-w-4xl px-6">
