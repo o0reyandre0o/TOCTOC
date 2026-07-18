@@ -537,6 +537,157 @@ function toctoc_seo_check_handler() {
 /**
  * Analyse the fetched HTML and return the structured report.
  */
+/** Resolve a possibly-relative image src against the page origin/URL. */
+function toctoc_seo_abs_url( $src, $origin, $page_url ) {
+	if ( preg_match( '#^https?://#i', $src ) ) {
+		return $src;
+	}
+	if ( 0 === strpos( $src, '//' ) ) {
+		return 'https:' . $src;
+	}
+	if ( 0 === strpos( $src, '/' ) ) {
+		return rtrim( $origin, '/' ) . $src;
+	}
+	// Relative to the page's directory.
+	$base = preg_replace( '#[^/]*$#', '', strtok( $page_url, '?' ) );
+	return $base . $src;
+}
+
+/**
+ * Deep check: HEAD-request up to 8 images and report real transfer weight.
+ * HEAD only (no body download); images whose size the server won't reveal
+ * are skipped rather than fetched.
+ */
+function toctoc_seo_image_weight( $img_srcs, $origin, $page_url ) {
+	$sample   = array_slice( array_values( array_unique( $img_srcs ) ), 0, 8 );
+	$total    = 0;
+	$heaviest = 0;
+	$heavy_ct = 0; // images over 150 KB
+	$measured = 0;
+	foreach ( $sample as $src ) {
+		$abs = toctoc_seo_abs_url( $src, $origin, $page_url );
+		$r   = wp_remote_head(
+			$abs,
+			array(
+				'timeout'     => 4,
+				'redirection' => 2,
+				'user-agent'  => 'TocTocSEOChecker/1.0 (+https://toctoc.ky)',
+			)
+		);
+		if ( is_wp_error( $r ) ) {
+			continue;
+		}
+		$len = (int) wp_remote_retrieve_header( $r, 'content-length' );
+		if ( $len <= 0 ) {
+			continue;
+		}
+		$measured++;
+		$total += $len;
+		if ( $len > $heaviest ) {
+			$heaviest = $len;
+		}
+		if ( $len > 150 * 1024 ) {
+			$heavy_ct++;
+		}
+	}
+	if ( 0 === $measured ) {
+		return toctoc_seo_row( 'Image weight', 'info', 'Could not measure image sizes (server hides file sizes)' );
+	}
+	$kb  = static function ( $b ) {
+		return $b >= 1048576 ? round( $b / 1048576, 1 ) . ' MB' : round( $b / 1024 ) . ' KB';
+	};
+	$status = 'pass';
+	if ( $heaviest > 300 * 1024 || $total > 2 * 1048576 ) {
+		$status = 'fail';
+	} elseif ( $heaviest > 150 * 1024 || $total > 1048576 ) {
+		$status = 'warn';
+	}
+	return toctoc_seo_row(
+		'Image weight',
+		$status,
+		'Sampled ' . $measured . ' images: ' . $kb( $total ) . ' total, heaviest ' . $kb( $heaviest ) . ( $heavy_ct ? ' (' . $heavy_ct . ' over 150 KB)' : '' )
+	);
+}
+
+/**
+ * Deep schema audit: for every recognized @type, verify the properties Google
+ * and AI engines expect. Returns [detail, status] or null when there is
+ * nothing auditable.
+ */
+function toctoc_seo_schema_audit( $entities ) {
+	// type => [ 'req' => required, 'rec' => recommended ]
+	$rules = array(
+		'Organization'        => array( 'req' => array( 'name' ), 'rec' => array( 'url', 'logo', 'sameAs', 'telephone' ) ),
+		'LocalBusiness'       => array( 'req' => array( 'name', 'address' ), 'rec' => array( 'telephone', 'url', 'image', 'geo', 'openingHoursSpecification', 'priceRange', 'sameAs', 'aggregateRating' ) ),
+		'ProfessionalService' => array( 'req' => array( 'name', 'address' ), 'rec' => array( 'telephone', 'url', 'image', 'geo', 'openingHoursSpecification', 'priceRange', 'sameAs', 'aggregateRating' ) ),
+		'Restaurant'          => array( 'req' => array( 'name', 'address' ), 'rec' => array( 'telephone', 'url', 'image', 'geo', 'servesCuisine', 'priceRange', 'aggregateRating' ) ),
+		'Store'               => array( 'req' => array( 'name', 'address' ), 'rec' => array( 'telephone', 'url', 'image', 'geo', 'openingHoursSpecification' ) ),
+		'WebSite'             => array( 'req' => array( 'name', 'url' ), 'rec' => array( 'potentialAction' ) ),
+		'FAQPage'             => array( 'req' => array( 'mainEntity' ), 'rec' => array() ),
+		'Product'             => array( 'req' => array( 'name' ), 'rec' => array( 'image', 'description', 'offers', 'aggregateRating', 'brand' ) ),
+		'Service'             => array( 'req' => array( 'name', 'provider' ), 'rec' => array( 'areaServed', 'description' ) ),
+		'Article'             => array( 'req' => array( 'headline' ), 'rec' => array( 'author', 'datePublished', 'image', 'publisher' ) ),
+		'BlogPosting'         => array( 'req' => array( 'headline' ), 'rec' => array( 'author', 'datePublished', 'image', 'publisher' ) ),
+		'NewsArticle'         => array( 'req' => array( 'headline' ), 'rec' => array( 'author', 'datePublished', 'image', 'publisher' ) ),
+		'BreadcrumbList'      => array( 'req' => array( 'itemListElement' ), 'rec' => array() ),
+		'Person'              => array( 'req' => array( 'name' ), 'rec' => array( 'jobTitle', 'sameAs', 'worksFor' ) ),
+		'VideoObject'         => array( 'req' => array( 'name' ), 'rec' => array( 'thumbnailUrl', 'uploadDate', 'description' ) ),
+		'Event'               => array( 'req' => array( 'name', 'startDate' ), 'rec' => array( 'location', 'image', 'offers' ) ),
+	);
+
+	$audited  = array(); // type => ['req' => missing[], 'rec' => missing[]]
+	foreach ( $entities as $e ) {
+		if ( ! isset( $e['@type'] ) ) {
+			continue;
+		}
+		foreach ( (array) $e['@type'] as $t ) {
+			if ( ! isset( $rules[ $t ] ) || isset( $audited[ $t ] ) ) {
+				continue; // unknown type, or already audited the first entity of this type
+			}
+			$miss_req = array();
+			$miss_rec = array();
+			foreach ( $rules[ $t ]['req'] as $k ) {
+				if ( empty( $e[ $k ] ) ) {
+					$miss_req[] = $k;
+				}
+			}
+			foreach ( $rules[ $t ]['rec'] as $k ) {
+				if ( empty( $e[ $k ] ) ) {
+					$miss_rec[] = $k;
+				}
+			}
+			$audited[ $t ] = array( 'req' => $miss_req, 'rec' => $miss_rec );
+		}
+	}
+	if ( empty( $audited ) ) {
+		return null;
+	}
+
+	$parts    = array();
+	$any_req  = false;
+	$any_rec  = false;
+	foreach ( $audited as $t => $m ) {
+		if ( empty( $m['req'] ) && empty( $m['rec'] ) ) {
+			$parts[] = $t . ': complete';
+			continue;
+		}
+		$bits = array();
+		if ( $m['req'] ) {
+			$any_req = true;
+			$bits[]  = 'missing required: ' . implode( ', ', $m['req'] );
+		}
+		if ( $m['rec'] ) {
+			$any_rec = true;
+			$bits[]  = 'missing recommended: ' . implode( ', ', array_slice( $m['rec'], 0, 5 ) );
+		}
+		$parts[] = $t . ' — ' . implode( '; ', $bits );
+	}
+	return array(
+		'detail' => implode( ' · ', array_slice( $parts, 0, 5 ) ),
+		'status' => $any_req ? 'fail' : ( $any_rec ? 'warn' : 'pass' ),
+	);
+}
+
 /**
  * Analyze one page. $deep enables checks that need extra HTTP requests
  * (currently: real image weight). The full-site crawl and the competitor
@@ -721,16 +872,27 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 	);
 
 	// ---------- GEO / AEO / AI ----------
-	$ld_nodes = $xp->query( '//script[@type="application/ld+json"]' );
-	$types    = array();
+	$ld_nodes  = $xp->query( '//script[@type="application/ld+json"]' );
+	$types     = array();
+	$entities  = array();
+	$bad_json  = 0;
 	if ( $ld_nodes ) {
 		foreach ( $ld_nodes as $node ) {
-			$json = json_decode( trim( $node->textContent ), true );
+			$raw = trim( $node->textContent );
+			if ( '' === $raw ) {
+				continue;
+			}
+			$json = json_decode( $raw, true );
 			if ( ! is_array( $json ) ) {
+				$bad_json++;
 				continue;
 			}
 			$stack = isset( $json['@graph'] ) && is_array( $json['@graph'] ) ? $json['@graph'] : array( $json );
 			foreach ( $stack as $item ) {
+				if ( ! is_array( $item ) ) {
+					continue;
+				}
+				$entities[] = $item;
 				if ( isset( $item['@type'] ) ) {
 					foreach ( (array) $item['@type'] as $t ) {
 						$types[] = $t;
@@ -739,19 +901,57 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 			}
 		}
 	}
-	$types = array_values( array_unique( $types ) );
+	$types    = array_values( array_unique( $types ) );
+	$ld_detail = count( $types ) ? implode( ', ', array_slice( $types, 0, 8 ) ) : 'No JSON-LD schema found';
+	if ( $bad_json ) {
+		$ld_detail .= ' · ' . $bad_json . ' block(s) contain invalid JSON';
+	}
 	$geo[] = toctoc_seo_row(
 		'Structured data (JSON-LD)',
-		count( $types ) ? 'pass' : 'fail',
-		count( $types ) ? implode( ', ', array_slice( $types, 0, 8 ) ) : 'No JSON-LD schema found',
+		count( $types ) ? ( $bad_json ? 'warn' : 'pass' ) : 'fail',
+		$ld_detail,
 		'Schema.org markup helps Google and AI engines understand and cite your content.'
 	);
 
-	$has_faq = in_array( 'FAQPage', $types, true );
+	// Deep audit: are the required/recommended properties actually filled in?
+	$schema_audit = toctoc_seo_schema_audit( $entities );
+	if ( null !== $schema_audit ) {
+		$geo[] = toctoc_seo_row( 'Schema completeness', $schema_audit['status'], $schema_audit['detail'] );
+	}
+
+	// FAQ schema — and whether its answers are actually visible on the page.
+	// AI engines only trust FAQ markup whose text exists in the rendered content.
+	$has_faq     = in_array( 'FAQPage', $types, true );
+	$faq_status  = $has_faq ? 'pass' : 'warn';
+	$faq_detail  = $has_faq ? 'FAQPage schema present' : 'No FAQ schema';
+	if ( $has_faq && '' !== $body_text ) {
+		$faq_visible = null;
+		foreach ( $entities as $e ) {
+			$etypes = isset( $e['@type'] ) ? (array) $e['@type'] : array();
+			if ( ! in_array( 'FAQPage', $etypes, true ) || empty( $e['mainEntity'] ) ) {
+				continue;
+			}
+			$first = is_array( $e['mainEntity'] ) ? reset( $e['mainEntity'] ) : null;
+			$ans   = is_array( $first ) && isset( $first['acceptedAnswer']['text'] ) ? $first['acceptedAnswer']['text'] : '';
+			if ( '' === $ans ) {
+				break;
+			}
+			$needle      = preg_replace( '/\s+/', ' ', trim( wp_strip_all_tags( $ans ) ) );
+			$needle      = function_exists( 'mb_substr' ) ? mb_substr( $needle, 0, 40 ) : substr( $needle, 0, 40 );
+			$faq_visible = ( '' !== $needle && false !== stripos( $body_text, $needle ) );
+			break;
+		}
+		if ( false === $faq_visible ) {
+			$faq_status = 'warn';
+			$faq_detail = 'FAQPage schema present, but its answers were not found in the visible page text';
+		} elseif ( true === $faq_visible ) {
+			$faq_detail = 'FAQPage schema present, answers visible on the page';
+		}
+	}
 	$geo[] = toctoc_seo_row(
 		'FAQ / Q&A schema',
-		$has_faq ? 'pass' : 'warn',
-		$has_faq ? 'FAQPage schema present' : 'No FAQ schema',
+		$faq_status,
+		$faq_detail,
 		'FAQ schema is one of the strongest signals for Answer Engine Optimization (AEO).'
 	);
 
