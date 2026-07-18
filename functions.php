@@ -132,15 +132,14 @@ add_action( 'template_redirect', function () {
     }
 } );
 
-// Dynamic /llms.txt — a curated guide for AI models (GEO/AEO). Served as plain text.
-add_action( 'init', function () {
-    $uri  = $_SERVER['REQUEST_URI'] ?? '';
-    $path = strtok( $uri, '?' );
-    if ( '/llms.txt' !== $path ) {
-        return;
-    }
-    header( 'Content-Type: text/plain; charset=utf-8' );
-    echo <<<'LLMS'
+/**
+ * The llms.txt content — a curated guide for AI models (GEO/AEO).
+ * Single source of truth: served dynamically at /llms.txt AND mirrored to a
+ * physical llms.txt in the WordPress root (see toctoc_llms_sync_file), because
+ * Apache serves an existing physical file before WordPress ever runs.
+ */
+function toctoc_llms_content() {
+    return <<<'LLMS'
 # TocToc Marketing
 
 > TocToc Marketing is a leading AI-era digital marketing agency based in the Cayman Islands (George Town, Grand Cayman). We help local businesses get recommended by AI and search engines through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
@@ -198,5 +197,38 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 - Serving: Grand Cayman, George Town and the wider Cayman Islands.
 - Specialties: getting Cayman businesses recommended by AI (ChatGPT, Gemini, Perplexity) and ranking in Google.
 LLMS;
+}
+
+// Dynamic /llms.txt — answers the URL when no physical file shadows it.
+add_action( 'init', function () {
+    $uri  = $_SERVER['REQUEST_URI'] ?? '';
+    $path = strtok( $uri, '?' );
+    if ( '/llms.txt' !== $path ) {
+        return;
+    }
+    header( 'Content-Type: text/plain; charset=utf-8' );
+    echo toctoc_llms_content();
     exit;
+} );
+
+/**
+ * Self-healing physical llms.txt.
+ *
+ * Apache serves an existing file in the site root before WordPress runs, so a
+ * stale/empty llms.txt there silently hides the dynamic one (exactly what
+ * happened: an empty file from Feb 2026 served 0 bytes). This keeps the
+ * physical file in sync automatically: on every wp-admin visit it compares the
+ * file's hash against the current content and rewrites it when they differ —
+ * so the file is created, repaired and updated with no manual step.
+ */
+add_action( 'admin_init', function () {
+    if ( ! defined( 'ABSPATH' ) ) {
+        return;
+    }
+    $file    = ABSPATH . 'llms.txt';
+    $content = toctoc_llms_content();
+    if ( file_exists( $file ) && is_readable( $file ) && md5_file( $file ) === md5( $content ) ) {
+        return; // already current
+    }
+    @file_put_contents( $file, $content );
 } );
