@@ -1,7 +1,7 @@
     <footer class="bg-slate-950 text-white border-t border-white/5">
         <div class="mx-auto max-w-6xl px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
-                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" class="h-6 w-auto brightness-0 invert" />
+                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" loading="lazy" class="h-6 w-auto brightness-0 invert" />
                 <p class="mt-4 text-sm text-white/60 font-medium">Cayman Islands · Built for the AI era</p>
             </div>
             <nav aria-label="Services" class="flex flex-col gap-3">

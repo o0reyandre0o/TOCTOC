@@ -517,6 +517,29 @@
     </section>
     -->
 
+    <?php
+    // Visible FAQ + matching FAQPage schema (answers must exist in the DOM for
+    // AI answer engines to trust and quote them).
+    toctoc_render_faq( [
+        [
+            'q' => 'What is the AI Search Visibility Framework?',
+            'a' => 'The AI Search Visibility Framework is TocToc Marketing\'s three-phase system for Cayman businesses: Get Recommended (discovery and AI visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business the definitive answer cited by ChatGPT, Gemini and Google.',
+        ],
+        [
+            'q' => 'Do you offer SEO services in the Cayman Islands?',
+            'a' => 'Yes. TocToc Marketing is a leading AI Search Optimization agency in the Cayman Islands covering SEO, AEO and GEO — ranking businesses on Google and getting them recommended by AI assistants like ChatGPT and Gemini.',
+        ],
+        [
+            'q' => 'Can you really get my business recommended by ChatGPT and Gemini?',
+            'a' => 'Yes — we already do it for Cayman businesses. Uncle Liu and Coconut Room rank #1 and #2 as the best Chinese restaurants on Seven Mile Beach, Lucky Rabbit is the #1 Japanese restaurant near Prospect, and 19-81 Brewing Co. is cited as the #1 craft brewery in Grand Cayman — all recommended by ChatGPT and Gemini today.',
+        ],
+        [
+            'q' => 'How long does it take to appear in AI search results?',
+            'a' => 'Our base build takes 3 days, and most local Cayman businesses see measurable movement in 3 to 6 months, with compounding growth after that as citations and authority accumulate.',
+        ],
+    ], 'FAQ', 'Quick Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
+    ?>
+
     <!-- Section 8: Final Call to Action -->
     <section id="contact" class="relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-background via-sky-pale to-sky-light/30">
         <div class="relative mx-auto max-w-5xl px-6 text-center flex flex-col items-center">

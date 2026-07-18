@@ -47,7 +47,7 @@
         ],
         'social-media-marketing-services-cayman-islands' => [
             'title' => 'Social Media for Algorithmic Trust Cayman | TocToc',
-            'desc' => 'Turn your social profiles into fuel for AI search. We optimize your profiles and content strategy so ChatGPT, Gemini & Google see your Cayman business as the local authority.'
+            'desc' => 'Turn your social profiles into fuel for AI search. We optimize your profiles so ChatGPT, Gemini & Google see your Cayman business as the local authority.'
         ],
         'advertising-pr-agency-cayman-islands' => [
             'title' => 'Digital PR for AI Authority Citations Cayman | TocToc',
@@ -306,29 +306,9 @@
             <?php endif; ?>
           ]
         }
-        <?php if (is_front_page()): ?>
-        ,{
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is the Revenue Loop framework?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The Revenue Loop is a three-phase marketing framework (Get Recommended, Get Chosen, Get Clients Back) designed to turn search intent into sustainable growth by optimizing for AI visibility and user conversion."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you offer SEO services in Cayman Islands?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, TocToc Marketing is a leading SEO and AEO agency in the Cayman Islands, specializing in getting businesses recommended by AI agents and dominating local search results."
-              }
-            }
-          ]
-        }
-        <?php endif; ?>
+        <?php /* Front-page FAQ schema now lives in front-page.php via toctoc_render_faq(),
+                 where the answers are visible on the page — AI engines only trust FAQ
+                 markup whose text exists in the rendered content. */ ?>
         <?php if (is_page('about-toc-toc-marketing')): ?>
         ,{
           "@type": "AboutPage",
@@ -356,7 +336,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-8 z-[1000] shadow-soft border border-white/50">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
-        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" class="h-6 w-auto transition-transform group-hover:scale-105" />
+        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     
     <!-- Desktop Menu -->
@@ -403,7 +383,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
             <div>
-                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" class="h-4 w-auto brightness-0 invert" />
+                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" class="h-4 w-auto brightness-0 invert" />
                 <p class="mt-4 text-sm text-white/40 font-medium">Cayman Islands · Built for the AI era</p>
             </div>
         </div>
