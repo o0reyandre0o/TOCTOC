@@ -132,7 +132,7 @@ get_header(); ?>
     <!-- Where we work: animated dot globe (Cayman HQ + USA, Puerto Rico, Venezuela) -->
     <section class="relative py-20 md:py-28 bg-slate-950 text-white rounded-[3rem] mx-4 my-8 overflow-hidden">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
 
                 <div class="order-2 lg:order-1">
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Where we work</span>
@@ -141,32 +141,6 @@ get_header(); ?>
                         Four countries, two languages, one framework. We work in <strong class="text-white font-semibold">English and Spanish</strong> &mdash; and everything we do is digital-first, so borders don&rsquo;t slow us down.
                     </p>
 
-                    <div class="mt-8 space-y-4 max-w-md">
-                        <div class="rounded-[1.5rem] border border-accent/40 bg-white/5 p-5">
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-1.5">HQ &middot; Caribbean</p>
-                            <h3 class="text-2xl font-display text-white">Cayman Islands</h3>
-                            <p class="mt-2 text-sm text-white/50 leading-relaxed">Main operation in George Town. Clients in hospitality, dining, real estate and professional services across Grand Cayman.</p>
-                            <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">George Town &middot; Seven Mile Beach &middot; Prospect</p>
-                        </div>
-                        <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">Southeast US</p>
-                            <h3 class="text-2xl font-display text-white">United States</h3>
-                            <p class="mt-2 text-sm text-white/50 leading-relaxed">Projects across Florida and the Southeast &mdash; security, home services and B2B supply.</p>
-                            <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">Miami &middot; Orlando &middot; Charleston</p>
-                        </div>
-                        <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">Caribbean</p>
-                            <h3 class="text-2xl font-display text-white">Puerto Rico</h3>
-                            <p class="mt-2 text-sm text-white/50 leading-relaxed">Design and development for optical, eyewear and wellness brands on the island.</p>
-                            <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">San Juan &middot; Caguas</p>
-                        </div>
-                        <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">South America</p>
-                            <h3 class="text-2xl font-display text-white">Venezuela</h3>
-                            <p class="mt-2 text-sm text-white/50 leading-relaxed">Projects and partnerships in Caracas &mdash; the same framework, tuned to the local market.</p>
-                            <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">Caracas</p>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="order-1 lg:order-2">
@@ -190,11 +164,39 @@ get_header(); ?>
                         </div>
                         <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:10%;bottom:6%" data-dlat="-48" data-dlon="-58">
                             <p class="text-sm font-bold text-white leading-none">Venezuela</p>
-                            <p class="mt-1 text-[10px] tracking-wider text-white/50">Caracas</p>
+                            <p class="mt-1 text-[10px] tracking-wider text-white/50">Caracas &middot; Zulia</p>
                         </div>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Country cards: one row, no vertical scroll wall. -->
+            <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="rounded-[1.5rem] border border-accent/40 bg-white/5 p-5">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-1.5">HQ &middot; Caribbean</p>
+                    <h3 class="text-2xl font-display text-white">Cayman Islands</h3>
+                    <p class="mt-2 text-sm text-white/50 leading-relaxed">Main operation in George Town. Clients in hospitality, dining, real estate and professional services across Grand Cayman.</p>
+                    <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">George Town &middot; Seven Mile Beach &middot; Prospect</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">Southeast US</p>
+                    <h3 class="text-2xl font-display text-white">United States</h3>
+                    <p class="mt-2 text-sm text-white/50 leading-relaxed">Projects across Florida and the Southeast &mdash; security, home services and B2B supply.</p>
+                    <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">Miami &middot; Orlando &middot; Charleston</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">Caribbean</p>
+                    <h3 class="text-2xl font-display text-white">Puerto Rico</h3>
+                    <p class="mt-2 text-sm text-white/50 leading-relaxed">Design and development for optical, eyewear and wellness brands on the island.</p>
+                    <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">San Juan &middot; Caguas</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">South America</p>
+                    <h3 class="text-2xl font-display text-white">Venezuela</h3>
+                    <p class="mt-2 text-sm text-white/50 leading-relaxed">Projects and partnerships in Caracas and Zulia &mdash; the same framework, tuned to the local market.</p>
+                    <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40">Caracas &middot; Zulia</p>
+                </div>
             </div>
         </div>
     </section>
