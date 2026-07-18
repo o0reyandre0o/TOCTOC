@@ -700,9 +700,14 @@ window.TTSEO = {
         fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
         .then(function (r) { return r.json(); })
         .then(function (json) {
-            if (!json || !json.success || !json.data.history || !json.data.history.length) return;
-            var panel = document.getElementById('crawl-sitewide');
-            if (panel) panel.insertAdjacentHTML('afterbegin', '<div class="pb-4 mb-4 border-b border-slate-100">' + historyHtml(json.data.history, avgSeo, avgGeo) + '</div>');
+            if (!json || !json.success) return;
+            // Share badge always (site-wide averages) — even on a first scan.
+            renderShareBadge(json.data.badge, 'crawl-share');
+            // Progress line only when there is a previous scan to compare against.
+            if (json.data.history && json.data.history.length) {
+                var panel = document.getElementById('crawl-sitewide');
+                if (panel) panel.insertAdjacentHTML('afterbegin', '<div class="pb-4 mb-4 border-b border-slate-100">' + historyHtml(json.data.history, avgSeo, avgGeo) + '</div>');
+            }
         })
         .catch(function () {});
     }
