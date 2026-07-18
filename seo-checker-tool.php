@@ -712,14 +712,30 @@ function toctoc_seo_badge_handler() {
 	$color = function ( $n ) {
 		return $n >= 80 ? '#4ade80' : ( $n >= 50 ? '#fbbf24' : '#f87171' );
 	};
+	$ff = "'Segoe UI', Arial, Helvetica, sans-serif";
 	header( 'Content-Type: image/svg+xml' );
 	header( 'Cache-Control: public, max-age=86400' );
-	echo '<svg xmlns="http://www.w3.org/2000/svg" width="360" height="56" viewBox="0 0 360 56" role="img" aria-label="SEO score ' . $seo . ' of 100, AI visibility ' . $geo . ' of 100, verified by TocToc Marketing">'
-		. '<rect width="360" height="56" rx="28" fill="#0f172a"/>'
-		. '<text x="24" y="35" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#94a3b8">SEO <tspan fill="' . $color( $seo ) . '" font-size="20">' . $seo . '</tspan>'
-		. '<tspan fill="#334155">  |  </tspan>AI <tspan fill="' . $color( $geo ) . '" font-size="20">' . $geo . '</tspan></text>'
-		. '<text x="352" y="24" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#d9f99d">&#10003; Verified score</text>'
-		. '<text x="352" y="41" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#e2e8f0">toctoc.ky/seo-checker</text>'
+	echo '<svg xmlns="http://www.w3.org/2000/svg" width="460" height="72" viewBox="0 0 460 72" role="img" aria-label="SEO score ' . $seo . ' of 100, AI visibility ' . $geo . ' of 100, verified by TocToc Marketing">'
+		// Card with a subtle diagonal slate gradient + hairline border.
+		. '<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">'
+		. '<stop offset="0" stop-color="#0b1120"/><stop offset="1" stop-color="#1e293b"/>'
+		. '</linearGradient></defs>'
+		. '<rect x="0.5" y="0.5" width="459" height="71" rx="20" fill="url(#bg)" stroke="#334155"/>'
+		// Brand mark: lime circle + dark check (the site accent).
+		. '<circle cx="38" cy="36" r="17" fill="#D9FF3E"/>'
+		. '<path d="M30.5 36.5 l5.5 5.5 L47 30.5" fill="none" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'
+		// Brand block.
+		. '<text x="66" y="30" font-family="' . $ff . '" font-size="9" font-weight="bold" letter-spacing="2.5" fill="#8fa3bd">VERIFIED SCORE</text>'
+		. '<text x="66" y="50" font-family="' . $ff . '" font-size="15" font-weight="bold" fill="#ffffff">TocToc Marketing</text>'
+		// Divider.
+		. '<line x1="212" y1="17" x2="212" y2="55" stroke="#334155"/>'
+		// Scores.
+		. '<text x="234" y="28" font-family="' . $ff . '" font-size="10" font-weight="bold" letter-spacing="1.5" fill="#8fa3bd">SEO</text>'
+		. '<text x="234" y="54" font-family="' . $ff . '" font-size="26" font-weight="bold" fill="' . $color( $seo ) . '">' . $seo . '<tspan font-size="10" font-weight="normal" fill="#64748b"> /100</tspan></text>'
+		. '<text x="316" y="28" font-family="' . $ff . '" font-size="10" font-weight="bold" letter-spacing="1.5" fill="#8fa3bd">AI SEARCH</text>'
+		. '<text x="316" y="54" font-family="' . $ff . '" font-size="26" font-weight="bold" fill="' . $color( $geo ) . '">' . $geo . '<tspan font-size="10" font-weight="normal" fill="#64748b"> /100</tspan></text>'
+		// Site, tucked bottom-right.
+		. '<text x="444" y="61" text-anchor="end" font-family="' . $ff . '" font-size="9" fill="#64748b">toctoc.ky/seo-checker</text>'
 		. '</svg>';
 	exit;
 }
