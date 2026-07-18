@@ -234,6 +234,8 @@ if ( $ttseo_ts ) {
             <div id="crawl-speed" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
             <!-- Site-wide findings: duplicates, H1s, NAP consistency and broken links (filled after the crawl). -->
             <div id="crawl-sitewide" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
+            <!-- Shareable score badge for crawl mode (site-wide averages) -->
+            <div id="crawl-share" class="hidden ttseo-noprint rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
             <div class="grid grid-cols-3 gap-4 md:gap-6 mb-10">
                 <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6 text-center">
                     <div id="crawl-avg-seo" class="text-4xl md:text-5xl font-display leading-none">—</div>
@@ -745,9 +747,10 @@ window.TTSEO = {
         .catch(function () {});
     }
 
-    // ---- Shareable badge: preview + copy-paste embed code. ----
-    function renderShareBadge(badgeUrl) {
-        var el = document.getElementById('ttseo-share');
+    // ---- Shareable badge: preview + copy-paste embed code. Works in both modes
+    // (single report mounts into #ttseo-share, full-site scan into #crawl-share). ----
+    function renderShareBadge(badgeUrl, mountId) {
+        var el = document.getElementById(mountId || 'ttseo-share');
         if (!el) return;
         if (!badgeUrl) { el.classList.add('hidden'); return; }
         var embed = '<a href="https://toctoc.ky/seo-checker/"><img src="' + badgeUrl + '" alt="SEO score verified by TocToc Marketing" width="360" height="56"></a>';
@@ -757,14 +760,14 @@ window.TTSEO = {
                 '<img src="' + esc(badgeUrl) + '" alt="Score badge" width="360" height="56" class="shrink-0 max-w-full h-auto" />' +
                 '<div class="flex-1 min-w-0">' +
                     '<p class="text-sm text-slate-500 mb-2">Paste this on your website or share the image — it links back to the checker:</p>' +
-                    '<textarea id="ttseo-embed" readonly rows="2" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600 outline-none"></textarea>' +
-                    '<button id="ttseo-copy-embed" type="button" class="mt-2 inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2 text-sm font-bold hover:bg-slate-800 transition-colors">Copy embed code</button>' +
+                    '<textarea readonly rows="2" class="ttseo-embed-ta w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600 outline-none"></textarea>' +
+                    '<button type="button" class="ttseo-copy-btn mt-2 inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2 text-sm font-bold hover:bg-slate-800 transition-colors">Copy embed code</button>' +
                 '</div>' +
             '</div>';
         el.classList.remove('hidden');
-        var ta = document.getElementById('ttseo-embed');
+        var ta = el.querySelector('.ttseo-embed-ta');
         ta.value = embed;
-        document.getElementById('ttseo-copy-embed').addEventListener('click', function () {
+        el.querySelector('.ttseo-copy-btn').addEventListener('click', function () {
             ta.select();
             try { document.execCommand('copy'); } catch (e) {}
             if (navigator.clipboard) { navigator.clipboard.writeText(embed).catch(function () {}); }
