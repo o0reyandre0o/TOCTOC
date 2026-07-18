@@ -233,8 +233,11 @@ get_header(); ?>
             return [Math.cos(p) * Math.cos(l), Math.sin(p), Math.cos(p) * Math.sin(l)];
         }
 
-        var HQ = [19.29, -81.38];
-        var DESTS = [[25.77, -80.19], [18.44, -66.10], [10.48, -66.90]];
+        // Stylized display positions (spread across the hemisphere for clarity —
+        // the real coordinates live in the chip labels). Cayman center-left,
+        // USA top-right, Puerto Rico right, Venezuela bottom.
+        var HQ = [16, -105];
+        var DESTS = [[40, -72], [4, -48], [-24, -88]];
 
         function arcPoints(A0, B0) {
             var A = fromLatLon(A0[0], A0[1]), B = fromLatLon(B0[0], B0[1]);
@@ -251,9 +254,9 @@ get_header(); ?>
         }
         var arcs = DESTS.map(function (d) { return arcPoints(HQ, d); });
 
-        // Rotation: keeps the Caribbean facing front, but sweeps ±55° every ~13s
-        // so the planet is unmistakably turning.
-        var BASE = Math.PI / 2 - (-81.38 * Math.PI / 180);
+        // Rotation: centered on the marker cluster, sweeping ±32° — plus the
+        // user can grab and spin the globe (drag with inertia).
+        var BASE = Math.PI / 2 - (-105 * Math.PI / 180);
         var TILT = -0.32;
         var cosT = Math.cos(TILT), sinT = Math.sin(TILT);
 
@@ -288,8 +291,11 @@ get_header(); ?>
         }
 
         function frame(now) {
-            var t = now * 0.001;
-            var ang = BASE + Math.sin(t * 0.48) * 0.95;
+            // With prefers-reduced-motion the ambient animation freezes at a nice
+            // pose, but manual drag still rotates the globe.
+            var t = reduced ? 9 : now * 0.001;
+            if (!dragging) { userVel *= 0.94; userAng += userVel; }
+            var ang = BASE + userAng + (reduced ? 0 : Math.sin(t * 0.4) * 0.55);
             ctx.clearRect(0, 0, W, H);
 
             // Halo rings.
