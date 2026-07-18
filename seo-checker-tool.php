@@ -280,6 +280,11 @@ function toctoc_seo_explanations() {
 			'tech'  => "The alt attribute on <img>. Required for WCAG accessibility compliance, enables Google Image search, and gives crawlers context they cannot get from the pixels. Purely decorative images should carry an empty alt=\"\".",
 			'fix'   => "Add short descriptions to your images. It helps Google understand them and helps blind visitors.",
 		),
+		'Keyword alignment' => array(
+			'plain' => "Whether your page title, your main headline and your web address all say the same thing. If they each talk about something different, Google can't tell what the page is really about.",
+			'tech'  => "Tokenizes the <title>, the first <h1> and the URL slug (stopwords removed) and checks for meaningful overlap. Zero shared terms between title and H1 — or a slug matching neither — dilutes the page's relevance signal for the query it should rank for.",
+			'fix'   => "Pick the one main topic of the page and repeat its key words in the title, the H1 and the URL slug. They don't need to be identical — they need to clearly agree.",
+		),
 		'Image optimization' => array(
 			'plain' => "Whether your pictures are saved in modern, lightweight formats and set up so the page doesn't jump around while they load.",
 			'tech'  => "Checks three things per <img>: modern formats (WebP/AVIF vs legacy JPG/PNG), loading=\"lazy\" on below-the-fold images, and explicit width/height attributes (prevents Cumulative Layout Shift, a Core Web Vitals metric).",
@@ -356,6 +361,7 @@ function toctoc_seo_priority() {
 		'Title tag'                 => array( 3, '10 min' ),
 		'Structured data (JSON-LD)' => array( 3, '1–2 h' ),
 		'H1 heading'                => array( 2, '10 min' ),
+		'Keyword alignment'         => array( 2, '15 min' ),
 		'Meta description'          => array( 2, '10 min' ),
 		'FAQ / Q&A schema'          => array( 2, '1 h' ),
 		'Schema completeness'       => array( 2, '30–60 min' ),
