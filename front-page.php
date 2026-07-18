@@ -146,7 +146,7 @@
         </div>
     </section>
 
-    <!-- Section 3: Revenue Loop -->
+    <!-- Section 3: AI Search Visibility Framework -->
     <section id="loop" class="relative py-24 md:py-32 bg-sky-pale/50">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">

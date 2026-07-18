@@ -98,7 +98,7 @@
 
     $default_keywords = 'digital marketing agency cayman islands, marketing agency grand cayman, seo cayman islands, web design cayman islands, toctoc marketing';
     $keywords_map = [
-        'front' => 'digital marketing agency cayman islands, ai marketing agency, aeo agency, revenue loop marketing, marketing agency grand cayman, seo cayman islands',
+        'front' => 'digital marketing agency cayman islands, ai marketing agency, aeo agency, ai search visibility framework, marketing agency grand cayman, seo cayman islands',
         'ai-search-optimization-cayman-islands' => 'ai search optimization cayman islands, ai seo cayman, aeo agency cayman, geo optimization cayman, chatgpt seo, gemini recommendation, ai search visibility cayman, answer engine optimization',
         'seo-agency-services-cayman-islands' => 'ai search optimization cayman islands, ai seo cayman, aeo agency cayman, geo optimization cayman, chatgpt seo, gemini recommendation, ai search visibility cayman, answer engine optimization',
         'digital-marketing-agency-cayman-islands' => 'digital marketing services cayman islands, branding agency cayman, graphic design cayman islands, marketing strategy grand cayman',
@@ -188,7 +188,7 @@
           "name": "TocToc Marketing",
           "alternateName": "Toc Toc Marketing",
           "description": "<?php echo esc_attr($default_desc); ?>",
-          "slogan": "We build the Revenue Loop for your business.",
+          "slogan": "We deploy the AI Search Visibility Framework for your business.",
           "image": "<?php echo esc_url($logo_url); ?>",
           "logo": "<?php echo esc_url($logo_url); ?>",
           "@id": "https://toctoc.ky",
