@@ -80,6 +80,29 @@ function toctoc_render_faq( $faqs, $eyebrow = 'FAQ', $heading = 'Frequently Aske
     <?php
 }
 
+/**
+ * Visible breadcrumbs (Home / Page). The matching BreadcrumbList JSON-LD has
+ * been in header.php all along — this renders the visual counterpart.
+ * Pass a short label; falls back to the WP page title.
+ */
+function toctoc_render_breadcrumbs( $label = '' ) {
+	if ( is_front_page() ) {
+		return;
+	}
+	if ( '' === $label ) {
+		$label = get_the_title();
+	}
+	?>
+	<nav aria-label="Breadcrumb" class="mb-6">
+		<ol class="flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest">
+			<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-slate-400 hover:text-sky-deep transition-colors decoration-none">Home</a></li>
+			<li aria-hidden="true" class="text-slate-300">/</li>
+			<li aria-current="page" class="text-sky-deep"><?php echo esc_html( $label ); ?></li>
+		</ol>
+	</nav>
+	<?php
+}
+
 /** Word-wrap for GD text: split $text into lines that fit $max px at $size. */
 function toctoc_og_wrap( $text, $font, $size, $max ) {
 	$words = preg_split( '/\s+/', $text );

@@ -53,6 +53,7 @@ $guide_faqs = array(
 			<div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
 		</div>
 		<div class="relative z-10 mx-auto max-w-4xl px-6">
+			<?php toctoc_render_breadcrumbs( '2026 Guide' ); ?>
 			<div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
 				2026 Guide · Cayman Islands
 			</div>

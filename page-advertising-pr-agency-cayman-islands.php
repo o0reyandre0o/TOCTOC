@@ -80,6 +80,7 @@ $pr_faqs = array(
         </div>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
+                <?php toctoc_render_breadcrumbs( 'Digital PR' ); ?>
                 <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
                     Digital PR for AI Authority Citations &middot; Cayman Islands
                 </div>

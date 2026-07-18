@@ -15,6 +15,7 @@ get_header(); ?>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
+                <?php toctoc_render_breadcrumbs( 'Services' ); ?>
                 <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
                     Laser-Focused on Cayman
                 </div>
@@ -318,5 +319,75 @@ get_header(); ?>
         </div>
     </section>
 </main>
+
+<script type="application/ld+json">
+<?php
+// OfferCatalog: a formal, machine-readable enumeration of every service —
+// so when an AI is asked "what does TocToc offer?", the answer is structured,
+// not inferred from prose.
+$ttc_catalog = array(
+	array(
+		'AI Search Optimization (SEO, AEO & GEO)',
+		'Search, Answer and Generative Engine Optimization — rank on Google and get recommended by AI assistants like ChatGPT and Gemini.',
+		'https://toctoc.ky/ai-search-optimization-cayman-islands/',
+	),
+	array(
+		'Website Design',
+		'Fast, mobile-first websites that convert visitors into leads.',
+		'https://toctoc.ky/website-design-agency-cayman-islands/',
+	),
+	array(
+		'Web Development',
+		'Custom websites, e-commerce and web apps built for speed and SEO.',
+		'https://toctoc.ky/web-development-cayman-islands/',
+	),
+	array(
+		'Social Media for Algorithmic Trust',
+		'Profile optimization and strategic content blueprints so AI crawlers read your business as active, consistent and trusted.',
+		'https://toctoc.ky/social-media-marketing-services-cayman-islands/',
+	),
+	array(
+		'Digital PR for AI Authority Citations',
+		'Permanent, high-authority digital assets — LinkedIn optimization, deep-dive articles and repurposed video content — that make AI engines cite and recommend your brand.',
+		'https://toctoc.ky/advertising-pr-agency-cayman-islands/',
+	),
+	array(
+		'Full-Service Digital Marketing',
+		'A single partner for your entire marketing presence in the Cayman Islands.',
+		'https://toctoc.ky/digital-marketing-agency-cayman-islands/',
+	),
+);
+echo wp_json_encode(
+	array(
+		'@context' => 'https://schema.org',
+		'@type'    => 'OfferCatalog',
+		'name'     => 'TocToc Marketing Services',
+		'url'      => 'https://toctoc.ky/digital-marketing-agency-cayman-islands/',
+		'provider' => array(
+			'@type' => 'ProfessionalService',
+			'@id'   => 'https://toctoc.ky',
+			'name'  => 'TocToc Marketing',
+		),
+		'itemListElement' => array_map(
+			function ( $s ) {
+				return array(
+					'@type'       => 'Offer',
+					'itemOffered' => array(
+						'@type'       => 'Service',
+						'name'        => $s[0],
+						'description' => $s[1],
+						'url'         => $s[2],
+						'provider'    => array( '@id' => 'https://toctoc.ky' ),
+						'areaServed'  => array( '@type' => 'Place', 'name' => 'Cayman Islands' ),
+					),
+				);
+			},
+			$ttc_catalog
+		),
+	),
+	JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
 
 <?php get_footer(); ?>

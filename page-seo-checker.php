@@ -57,6 +57,7 @@ if ( $ttseo_ts ) {
         </div>
 
         <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+            <?php toctoc_render_breadcrumbs( 'Free SEO Checker' ); ?>
             <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
                 Free Tool · SEO · GEO · AEO
             </div>
