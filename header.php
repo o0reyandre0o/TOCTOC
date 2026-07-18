@@ -202,6 +202,8 @@
           },
           "areaServed": [
             { "@type": "Country", "name": "Cayman Islands" },
+            { "@type": "City", "name": "George Town" },
+            { "@type": "Place", "name": "Grand Cayman" },
             { "@type": "Country", "name": "United States" },
             { "@type": "Country", "name": "Puerto Rico" },
             { "@type": "Country", "name": "Venezuela" }
