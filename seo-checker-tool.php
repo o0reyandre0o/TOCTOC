@@ -1487,6 +1487,75 @@ function toctoc_seo_status_handler() {
 }
 add_action( 'wp_ajax_toctoc_seo_status', 'toctoc_seo_status_handler' );
 add_action( 'wp_ajax_nopriv_toctoc_seo_status', 'toctoc_seo_status_handler' );
+
+/**
+ * CrUX field data: what real Chrome users experienced in the last 28 days
+ * (p75 LCP / INP / CLS). Uses the same Google API key as PageSpeed — the
+ * "Chrome UX Report API" must be enabled on the same Cloud project.
+ * Falls back from page-level to origin-level data automatically.
+ */
+function toctoc_seo_crux_handler() {
+	check_ajax_referer( 'toctoc_seo', 'nonce' );
+	if ( toctoc_seo_rate_limited( 'crux', 40 ) ) {
+		wp_send_json_error( array( 'message' => 'Rate limit reached.' ), 429 );
+	}
+	$url = toctoc_seo_safe_url( isset( $_POST['url'] ) ? wp_unslash( $_POST['url'] ) : '' );
+	if ( ! $url ) {
+		wp_send_json_error( array( 'message' => 'Invalid URL.' ) );
+	}
+	$key = defined( 'TOCTOC_PSI_KEY' ) ? TOCTOC_PSI_KEY : get_option( 'toctoc_psi_key', '' );
+	if ( ! $key ) {
+		wp_send_json_error( array( 'message' => 'No API key configured.' ) );
+	}
+	$endpoint = 'https://chromeuxreport.googleapis.com/v1/records:queryRecord?key=' . rawurlencode( $key );
+	$query    = function ( $payload ) use ( $endpoint ) {
+		$r = wp_remote_post(
+			$endpoint,
+			array(
+				'timeout' => 15,
+				'headers' => array( 'Content-Type' => 'application/json' ),
+				'body'    => wp_json_encode( $payload ),
+			)
+		);
+		if ( is_wp_error( $r ) ) {
+			return array( 'code' => 0, 'data' => null );
+		}
+		return array(
+			'code' => (int) wp_remote_retrieve_response_code( $r ),
+			'data' => json_decode( (string) wp_remote_retrieve_body( $r ), true ),
+		);
+	};
+
+	// Page-level first, then whole-origin (small sites rarely have page-level data).
+	$level = 'url';
+	$res   = $query( array( 'url' => $url, 'formFactor' => 'PHONE' ) );
+	if ( 200 !== $res['code'] ) {
+		$level  = 'origin';
+		$origin = wp_parse_url( $url, PHP_URL_SCHEME ) . '://' . wp_parse_url( $url, PHP_URL_HOST );
+		$res    = $query( array( 'origin' => $origin, 'formFactor' => 'PHONE' ) );
+	}
+	if ( 200 !== $res['code'] || empty( $res['data']['record']['metrics'] ) ) {
+		$gmsg = isset( $res['data']['error']['message'] ) ? $res['data']['error']['message'] : '';
+		if ( false !== stripos( $gmsg, 'disabled' ) || false !== stripos( $gmsg, 'has not been used' ) ) {
+			wp_send_json_error( array( 'message' => 'Enable the "Chrome UX Report API" in the same Google Cloud project as your PageSpeed key to unlock real-user data.' ) );
+		}
+		wp_send_json_error( array( 'message' => 'Not enough real-user Chrome data for this site yet (low traffic). The lab results above still apply.' ) );
+	}
+	$m   = $res['data']['record']['metrics'];
+	$p75 = function ( $metric ) use ( $m ) {
+		return isset( $m[ $metric ]['percentiles']['p75'] ) ? $m[ $metric ]['percentiles']['p75'] : null;
+	};
+	wp_send_json_success(
+		array(
+			'level' => $level,
+			'lcp'   => $p75( 'largest_contentful_paint' ),   // ms
+			'inp'   => $p75( 'interaction_to_next_paint' ),  // ms
+			'cls'   => $p75( 'cumulative_layout_shift' ),    // string float
+		)
+	);
+}
+add_action( 'wp_ajax_toctoc_seo_crux', 'toctoc_seo_crux_handler' );
+add_action( 'wp_ajax_nopriv_toctoc_seo_crux', 'toctoc_seo_crux_handler' );
 function toctoc_seo_page_handler() {
 	check_ajax_referer( 'toctoc_seo', 'nonce' );
 	if ( toctoc_seo_rate_limited( 'page', 250 ) ) {
