@@ -501,7 +501,7 @@ function toctoc_seo_check_handler() {
 		wp_send_json_error( array( 'message' => 'The URL returned HTTP status ' . $status . ' or no HTML.' ) );
 	}
 
-	$result = toctoc_seo_analyze( $url, $html );
+	$result = toctoc_seo_analyze( $url, $html, true );
 
 	// Optional competitor comparison.
 	$comp_raw = isset( $_POST['competitor'] ) ? wp_unslash( $_POST['competitor'] ) : '';
@@ -537,7 +537,12 @@ function toctoc_seo_check_handler() {
 /**
  * Analyse the fetched HTML and return the structured report.
  */
-function toctoc_seo_analyze( $url, $html ) {
+/**
+ * Analyze one page. $deep enables checks that need extra HTTP requests
+ * (currently: real image weight). The full-site crawl and the competitor
+ * comparison run with $deep = false to stay fast and polite.
+ */
+function toctoc_seo_analyze( $url, $html, $deep = false ) {
 	$parts  = wp_parse_url( $url );
 	$origin = $parts['scheme'] . '://' . $parts['host'];
 
