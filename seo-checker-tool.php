@@ -431,10 +431,16 @@ function toctoc_seo_report_html( $result, $lead = array() ) {
 			$good[] = $r['label'];
 		}
 	}
-	// Failures first.
-	usort( $issues, function ( $a, $b ) {
+	// Prioritize: severity first, then impact (from the priority map), then quick wins.
+	$prio = toctoc_seo_priority();
+	usort( $issues, function ( $a, $b ) use ( $prio ) {
 		$rank = array( 'fail' => 0, 'warn' => 1 );
-		return $rank[ $a['status'] ] - $rank[ $b['status'] ];
+		if ( $rank[ $a['status'] ] !== $rank[ $b['status'] ] ) {
+			return $rank[ $a['status'] ] - $rank[ $b['status'] ];
+		}
+		$ia = isset( $prio[ $a['label'] ] ) ? $prio[ $a['label'] ][0] : 1;
+		$ib = isset( $prio[ $b['label'] ] ) ? $prio[ $b['label'] ][0] : 1;
+		return $ib - $ia;
 	} );
 
 	$h  = '<div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;color:#222;">';
