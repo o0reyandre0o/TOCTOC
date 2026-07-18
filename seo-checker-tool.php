@@ -697,7 +697,8 @@ function toctoc_seo_badge_url( $seo, $geo ) {
 	$seo = max( 0, min( 100, (int) $seo ) );
 	$geo = max( 0, min( 100, (int) $geo ) );
 	$tok = substr( md5( $seo . '|' . $geo . '|' . wp_salt( 'nonce' ) ), 0, 10 );
-	return admin_url( 'admin-ajax.php' ) . '?action=toctoc_seo_badge&seo=' . $seo . '&geo=' . $geo . '&t=' . $tok;
+	// v bumps past the 24h SVG cache whenever the badge design changes.
+	return admin_url( 'admin-ajax.php' ) . '?action=toctoc_seo_badge&v=2&seo=' . $seo . '&geo=' . $geo . '&t=' . $tok;
 }
 
 /** Serve the badge as a cacheable SVG. Public (images cannot carry nonces). */

@@ -758,11 +758,11 @@ window.TTSEO = {
         var el = document.getElementById(mountId || 'ttseo-share');
         if (!el) return;
         if (!badgeUrl) { el.classList.add('hidden'); return; }
-        var embed = '<a href="https://toctoc.ky/seo-checker/"><img src="' + badgeUrl + '" alt="SEO score verified by TocToc Marketing" width="360" height="56"></a>';
+        var embed = '<a href="https://toctoc.ky/seo-checker/"><img src="' + badgeUrl + '" alt="SEO score verified by TocToc Marketing" width="460" height="72"></a>';
         el.innerHTML =
             '<p class="text-xs font-bold uppercase tracking-widest text-sky-deep mb-4">Proud of your score? Share it</p>' +
             '<div class="flex flex-col md:flex-row md:items-center gap-6">' +
-                '<img src="' + esc(badgeUrl) + '" alt="Score badge" width="360" height="56" class="shrink-0 max-w-full h-auto" />' +
+                '<img src="' + esc(badgeUrl) + '" alt="Score badge" width="460" height="72" class="shrink-0 max-w-full h-auto" />' +
                 '<div class="flex-1 min-w-0">' +
                     '<p class="text-sm text-slate-500 mb-2">Paste this on your website or share the image — it links back to the checker:</p>' +
                     '<textarea readonly rows="2" class="ttseo-embed-ta w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600 outline-none"></textarea>' +
