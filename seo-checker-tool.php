@@ -455,13 +455,21 @@ function toctoc_seo_report_html( $result, $lead = array() ) {
 	$h .= '<p style="font-size:16px;"><strong>SEO:</strong> ' . $seo_score . '/100 &nbsp;|&nbsp; <strong>GEO / AEO:</strong> ' . $geo_score . '/100</p>';
 
 	if ( $issues ) {
-		$h .= '<h3 style="margin:20px 0 8px;">What to improve (' . count( $issues ) . ')</h3><ul style="padding-left:0;list-style:none;">';
+		$impact_label = array( 3 => 'CRITICAL', 2 => 'HIGH IMPACT', 1 => 'MEDIUM' );
+		$impact_color = array( 3 => '#dc2626', 2 => '#d97706', 1 => '#64748b' );
+		$h .= '<h3 style="margin:20px 0 4px;">Your action plan (' . count( $issues ) . ' items)</h3>';
+		$h .= '<p style="margin:0 0 12px;color:#666;font-size:13px;">Work top-down: sorted by impact, quickest wins first within each level.</p>';
+		$h .= '<ol style="padding-left:20px;margin:0;">';
 		foreach ( $issues as $r ) {
-			$dot = ( 'fail' === $r['status'] ) ? '&#128308;' : '&#128993;'; // red / yellow circle
-			$tip = isset( $tips[ $r['label'] ] ) ? $tips[ $r['label'] ] : ( isset( $r['why'] ) ? $r['why'] : $r['label'] );
-			$h  .= '<li style="margin-bottom:10px;color:#333;line-height:1.5;">' . $dot . ' ' . esc_html( $tip ) . '</li>';
+			$p    = isset( $prio[ $r['label'] ] ) ? $prio[ $r['label'] ] : array( 1, '' );
+			$tip  = isset( $tips[ $r['label'] ] ) ? $tips[ $r['label'] ] : ( isset( $r['why'] ) ? $r['why'] : $r['label'] );
+			$h   .= '<li style="margin-bottom:14px;color:#333;line-height:1.5;">'
+				. '<strong style="color:#111;">' . esc_html( $r['label'] ) . '</strong> '
+				. '<span style="font-size:11px;font-weight:bold;color:' . $impact_color[ $p[0] ] . ';">' . $impact_label[ $p[0] ] . '</span>'
+				. ( $p[1] ? ' <span style="font-size:11px;color:#666;">&middot; ~' . esc_html( $p[1] ) . '</span>' : '' )
+				. '<br><span style="font-size:14px;">' . esc_html( $tip ) . '</span></li>';
 		}
-		$h .= '</ul>';
+		$h .= '</ol>';
 	} else {
 		$h .= '<p style="color:#16a34a;">Nothing major to fix — nicely done!</p>';
 	}
