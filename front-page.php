@@ -71,6 +71,30 @@
         </div>
     </section>
 
+    <!-- Results-in-numbers strip: instant credibility right under the hero claim. -->
+    <section aria-label="TocToc Marketing in numbers" class="relative bg-white border-y border-slate-100">
+        <div class="mx-auto max-w-6xl px-6">
+            <dl class="grid grid-cols-2 md:grid-cols-4">
+                <div class="py-10 md:py-12 px-4 text-center border-b md:border-b-0 border-r border-slate-100">
+                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Clients ranked #1&ndash;#2 on<br>ChatGPT &amp; Gemini</dt>
+                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">4</dd>
+                </div>
+                <div class="py-10 md:py-12 px-4 text-center border-b md:border-b-0 md:border-r border-slate-100">
+                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Google rating<br>(21 reviews)</dt>
+                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">4.8<span class="text-accent align-top text-3xl md:text-4xl">&#9733;</span></dd>
+                </div>
+                <div class="py-10 md:py-12 px-4 text-center border-r border-slate-100">
+                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Websites designed<br>&amp; launched</dt>
+                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">20+</dd>
+                </div>
+                <div class="py-10 md:py-12 px-4 text-center">
+                    <dt class="order-2 mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Countries<br>we work in</dt>
+                    <dd class="order-1 text-5xl md:text-6xl font-display text-slate-950 leading-none">4</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
     <!-- Section 2: Intro -->
     <section class="relative py-24 md:py-32">
         <div class="mx-auto max-w-4xl px-6 text-center">
