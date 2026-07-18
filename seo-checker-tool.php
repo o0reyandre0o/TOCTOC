@@ -343,6 +343,36 @@ function toctoc_seo_explanations() {
 	);
 }
 
+/**
+ * Impact (3 = critical, 2 = high, 1 = medium) and typical effort per check.
+ * Drives the prioritized action plan in the email report.
+ */
+function toctoc_seo_priority() {
+	return array(
+		'Indexable'                 => array( 3, '5 min' ),
+		'Mobile viewport'           => array( 3, '5 min' ),
+		'AI crawler access'         => array( 3, '10 min' ),
+		'HTTPS'                     => array( 3, 'hosting task' ),
+		'Title tag'                 => array( 3, '10 min' ),
+		'Structured data (JSON-LD)' => array( 3, '1–2 h' ),
+		'H1 heading'                => array( 2, '10 min' ),
+		'Meta description'          => array( 2, '10 min' ),
+		'FAQ / Q&A schema'          => array( 2, '1 h' ),
+		'Schema completeness'       => array( 2, '30–60 min' ),
+		'Content depth'             => array( 2, '2 h+' ),
+		'Image weight'              => array( 2, '30 min' ),
+		'XML sitemap'               => array( 2, '15 min' ),
+		'Canonical tag'             => array( 1, '10 min' ),
+		'Social / Open Graph'       => array( 1, '15 min' ),
+		'Image alt text'            => array( 1, '20 min' ),
+		'Image optimization'        => array( 1, '30 min' ),
+		'Language attribute'        => array( 1, '5 min' ),
+		'Subheadings (H2)'          => array( 1, '20 min' ),
+		'llms.txt'                  => array( 1, '20 min' ),
+		'Semantic HTML'             => array( 1, '30 min' ),
+	);
+}
+
 /** Plain-language "what to do" for each check, keyed by label (derived from the map above). */
 function toctoc_seo_tips() {
 	$tips = array();
