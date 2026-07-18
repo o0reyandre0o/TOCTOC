@@ -134,6 +134,9 @@ if ( $ttseo_ts ) {
                 </div>
             </div>
 
+            <!-- Scan history / progress vs previous scans (filled when the lead has scanned before) -->
+            <div id="ttseo-history" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-6 md:p-8 mb-10"></div>
+
             <!-- Competitor comparison (shown only when a competitor is entered) -->
             <div id="ttseo-vs" class="hidden rounded-[2rem] bg-slate-950 text-white p-8 md:p-10 mb-10">
                 <p class="text-xs font-bold uppercase tracking-widest text-accent mb-6">You vs your competitor</p>
