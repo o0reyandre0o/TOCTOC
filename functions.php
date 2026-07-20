@@ -393,3 +393,84 @@ add_action( 'admin_init', function () {
     }
     @file_put_contents( $file, $content );
 } );
+
+/**
+ * Canonical robots.txt: welcomes AI crawlers and points Google at the real,
+ * working sitemap. The deactivated SEO plugin left a physical robots.txt in the
+ * root pointing at /sitemap_index.xml — which now 404s — so Google keeps trying
+ * to read a dead sitemap. This is the single source of truth for both the
+ * physical-file self-heal and the WordPress virtual robots.txt filter.
+ */
+function toctoc_robots_content() {
+    return "# TocToc Marketing\n"
+        . "User-agent: *\n"
+        . "Disallow: /wp-admin/\n"
+        . "Allow: /wp-admin/admin-ajax.php\n"
+        . "Disallow: /*?s=\n"
+        . "Disallow: /search/\n"
+        . "\n"
+        . "# AI assistants — explicitly welcome to read and cite this site\n"
+        . "User-agent: GPTBot\nAllow: /\n\n"
+        . "User-agent: OAI-SearchBot\nAllow: /\n\n"
+        . "User-agent: ChatGPT-User\nAllow: /\n\n"
+        . "User-agent: Google-Extended\nAllow: /\n\n"
+        . "User-agent: PerplexityBot\nAllow: /\n\n"
+        . "User-agent: ClaudeBot\nAllow: /\n\n"
+        . "User-agent: anthropic-ai\nAllow: /\n\n"
+        . "User-agent: Applebot-Extended\nAllow: /\n\n"
+        . "User-agent: CCBot\nAllow: /\n"
+        . "\n"
+        . "Sitemap: https://toctoc.ky/sitemap.xml\n";
+}
+
+/**
+ * Self-healing physical robots.txt. Only rewrites when the file is missing or
+ * still carries the dead 'sitemap_index.xml' reference (or lacks our real
+ * sitemap) — so it fixes the plugin leftover without fighting a deliberate
+ * future customization.
+ */
+add_action( 'admin_init', function () {
+    if ( ! defined( 'ABSPATH' ) ) {
+        return;
+    }
+    $file = ABSPATH . 'robots.txt';
+    if ( file_exists( $file ) && is_readable( $file ) ) {
+        $cur = (string) @file_get_contents( $file );
+        $has_dead = ( false !== stripos( $cur, 'sitemap_index.xml' ) );
+        $has_good = ( false !== stripos( $cur, 'toctoc.ky/sitemap.xml' ) );
+        if ( ! $has_dead && $has_good ) {
+            return; // already correct
+        }
+    }
+    @file_put_contents( $file, toctoc_robots_content() );
+} );
+
+// If the physical robots.txt is ever removed, WordPress serves a virtual one —
+// keep that correct too. (Respects the "discourage search engines" setting.)
+add_filter( 'robots_txt', function ( $output, $public ) {
+    return $public ? toctoc_robots_content() : $output;
+}, 20, 2 );
+
+/**
+ * Force HTTPS. http://toctoc.ky currently answers 200 (no redirect), creating a
+ * duplicate copy of every URL. This 301s http -> https. Guarded against redirect
+ * loops behind an SSL-terminating proxy (Cloudflare et al.) by honoring
+ * X-Forwarded-Proto / X-Forwarded-SSL. Priority 1 so it runs before the slug 301.
+ */
+add_action( 'template_redirect', function () {
+    if ( is_ssl() ) {
+        return;
+    }
+    $fwd_proto = strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '' );
+    $fwd_ssl   = strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ?? '' );
+    if ( 'https' === $fwd_proto || 'on' === $fwd_ssl ) {
+        return; // already secure at the proxy — redirecting would loop
+    }
+    if ( is_admin() || ( function_exists( 'wp_doing_ajax' ) && wp_doing_ajax() ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+        return;
+    }
+    $host = $_SERVER['HTTP_HOST'] ?? 'toctoc.ky';
+    $uri  = $_SERVER['REQUEST_URI'] ?? '/';
+    wp_redirect( 'https://' . $host . $uri, 301 );
+    exit;
+}, 1 );
