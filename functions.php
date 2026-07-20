@@ -409,7 +409,7 @@ function toctoc_robots_content() {
         . "Disallow: /*?s=\n"
         . "Disallow: /search/\n"
         . "\n"
-        . "# AI assistants — explicitly welcome to read and cite this site\n"
+        . "# AI assistants - explicitly welcome to read and cite this site\n"
         . "User-agent: GPTBot\nAllow: /\n\n"
         . "User-agent: OAI-SearchBot\nAllow: /\n\n"
         . "User-agent: ChatGPT-User\nAllow: /\n\n"
