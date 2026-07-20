@@ -240,7 +240,7 @@
           "employee": [
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/#andre-gutierrez",
+              "@id": "https://www.linkedin.com/in/andre-g-9b373a97/#person",
               "name": "Andre Gutierrez",
               "jobTitle": "Web Developer & Technical SEO Specialist",
               "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, technical and semantic SEO, building high-performance websites optimized for AI search visibility.",
