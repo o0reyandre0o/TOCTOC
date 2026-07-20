@@ -94,6 +94,7 @@ $ow_cases = array(
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking.mp4',
         'headline'  => 'How TintXKing shows up in ChatGPT &amp; Gemini &#128663;',
         'shots'     => array(
+            array( 'label' => 'TintXKing website', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/descarga.webp', 'w' => 396, 'h' => 800 ),
             array( 'label' => 'Google Maps listing', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094748.webp', 'w' => 502, 'h' => 1198 ),
         ),
         'bg'        => 'bg-white',
