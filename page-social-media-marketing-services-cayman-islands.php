@@ -315,7 +315,7 @@ echo wp_json_encode(
         'serviceType' => 'Social Media Optimization for AI Search (Algorithmic Trust)',
         'provider'    => array(
             '@type' => 'ProfessionalService',
-            '@id'   => 'https://toctoc.ky',
+            '@id'   => 'https://toctoc.ky/#organization',
             'name'  => 'TocToc Marketing',
         ),
         'areaServed'  => array(

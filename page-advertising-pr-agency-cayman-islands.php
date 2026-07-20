@@ -332,7 +332,7 @@ echo wp_json_encode(
         'serviceType' => 'Digital PR and AI Authority Citation Building',
         'provider'    => array(
             '@type' => 'ProfessionalService',
-            '@id'   => 'https://toctoc.ky',
+            '@id'   => 'https://toctoc.ky/#organization',
             'name'  => 'TocToc Marketing',
         ),
         'areaServed'  => array(

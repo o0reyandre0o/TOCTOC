@@ -365,7 +365,7 @@ echo wp_json_encode(
 		'url'      => 'https://toctoc.ky/digital-marketing-agency-cayman-islands/',
 		'provider' => array(
 			'@type' => 'ProfessionalService',
-			'@id'   => 'https://toctoc.ky',
+			'@id'   => 'https://toctoc.ky/#organization',
 			'name'  => 'TocToc Marketing',
 		),
 		'itemListElement' => array_map(
@@ -377,7 +377,7 @@ echo wp_json_encode(
 						'name'        => $s[0],
 						'description' => $s[1],
 						'url'         => $s[2],
-						'provider'    => array( '@id' => 'https://toctoc.ky' ),
+						'provider'    => array( '@id' => 'https://toctoc.ky/#organization' ),
 						'areaServed'  => array( '@type' => 'Place', 'name' => 'Cayman Islands' ),
 					),
 				);

@@ -399,7 +399,7 @@ echo wp_json_encode(
         'serviceType' => 'AI Search Optimization (SEO, AEO & GEO)',
         'provider'    => array(
             '@type' => 'ProfessionalService',
-            '@id'   => 'https://toctoc.ky',
+            '@id'   => 'https://toctoc.ky/#organization',
             'name'  => 'TocToc Marketing',
         ),
         'areaServed'  => array(

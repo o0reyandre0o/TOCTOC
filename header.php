@@ -191,7 +191,7 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": ["ProfessionalService", "LocalBusiness"],
+          "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
           "name": "TocToc Marketing",
           "alternateName": "Toc Toc Marketing",
           "description": "<?php echo esc_attr($default_desc); ?>",
@@ -213,7 +213,7 @@
           ],
           "image": "<?php echo esc_url($logo_url); ?>",
           "logo": "<?php echo esc_url($logo_url); ?>",
-          "@id": "https://toctoc.ky",
+          "@id": "https://toctoc.ky/#organization",
           "url": "https://toctoc.ky",
           "telephone": "+1 345-547-8120",
           "email": "info@toctoc.ky",
@@ -230,30 +230,35 @@
           ],
           "founder": {
             "@type": "Person",
-            "@id": "https://toctoc.ky/about-toc-toc-marketing/#daniel-garrido",
+            "@id": "https://toctoc.ky/#daniel-garrido",
             "name": "Daniel Garrido",
             "jobTitle": "Founder & CEO",
-            "worksFor": { "@id": "https://toctoc.ky" }
+            "knowsAbout": ["Web Design", "Search Engine Optimization", "Digital Marketing", "Brand Strategy"],
+            "sameAs": ["https://www.linkedin.com/in/bydanielgarrido/"],
+            "worksFor": { "@id": "https://toctoc.ky/#organization" }
           },
           "employee": [
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/about-toc-toc-marketing/#andre-gutierrez",
+              "@id": "https://toctoc.ky/#andre-gutierrez",
               "name": "Andre Gutierrez",
-              "jobTitle": "Web Developer",
-              "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, and Elementor, building high-performance websites optimized for AI search visibility.",
-              "knowsAbout": ["Vibe Coding", "WordPress Development", "WordPress Theme Development", "Elementor", "AI-Assisted Development", "Web Performance"],
+              "jobTitle": "Web Developer & Technical SEO Specialist",
+              "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, technical and semantic SEO, building high-performance websites optimized for AI search visibility.",
+              "knowsAbout": ["WordPress Development", "WordPress Theme Development", "Vibe Coding", "Technical SEO", "Semantic SEO", "JSON-LD Structured Data", "Conversion Rate Optimization (CRO)", "Elementor", "AI-Assisted Development", "Web Performance"],
               "sameAs": ["https://www.linkedin.com/in/andre-g-9b373a97/"],
-              "worksFor": { "@id": "https://toctoc.ky" }
+              "worksFor": [
+                { "@id": "https://toctoc.ky/#organization" },
+                { "@type": "Organization", "name": "Polimedios", "url": "https://polimedios.com/" }
+              ]
             },
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/about-toc-toc-marketing/#nora-bravo",
+              "@id": "https://toctoc.ky/#nora-bravo",
               "name": "Nora Bravo",
               "jobTitle": "Graphic Designer",
               "description": "Graphic designer crafting brand identities, visual systems, and creative assets that make Cayman businesses stand out.",
               "knowsAbout": ["Graphic Design", "Branding", "Visual Identity", "Social Media Creatives"],
-              "worksFor": { "@id": "https://toctoc.ky" }
+              "worksFor": { "@id": "https://toctoc.ky/#organization" }
             }
           ],
           "address": {
@@ -292,7 +297,8 @@
           "@id": "https://toctoc.ky/#website",
           "url": "https://toctoc.ky",
           "name": "TocToc Marketing",
-          "publisher": { "@id": "https://toctoc.ky" },
+          "publisher": { "@id": "https://toctoc.ky/#organization" },
+          "creator": { "@id": "https://toctoc.ky/#organization" },
           "potentialAction": {
             "@type": "SearchAction",
             "target": "https://toctoc.ky/?s={search_term_string}",
@@ -333,7 +339,7 @@
           "url": "<?php echo esc_url($canonical); ?>",
           "name": "<?php echo esc_attr($title); ?>",
           "description": "<?php echo esc_attr($desc); ?>",
-          "about": { "@id": "https://toctoc.ky" },
+          "about": { "@id": "https://toctoc.ky/#organization" },
           "isPartOf": { "@id": "https://toctoc.ky/#website" }
         }
         <?php endif; ?>

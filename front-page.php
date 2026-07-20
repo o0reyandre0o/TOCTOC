@@ -85,10 +85,8 @@
         <div class="ttc-marquee-track flex w-max items-center">
             <?php
             $ttc_stats = array(
-                array( '4',    'Clients ranked #1&ndash;#2<br>on ChatGPT &amp; Gemini' ),
+                array( '20+',  'AI-Ready Websites<br>in 2026' ),
                 array( '4.8<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(21 reviews)' ),
-                array( '20+',  'Websites designed<br>&amp; launched' ),
-                array( '4',    'Countries<br>we work in' ),
             );
             // Two identical copies make the -50% translate loop seamless.
             for ( $ttc_copy = 0; $ttc_copy < 2; $ttc_copy++ ) :
