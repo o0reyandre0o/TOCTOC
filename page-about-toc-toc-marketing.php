@@ -60,11 +60,7 @@ get_header(); ?>
                     <p>“As a musician and marketer, I translate that passion into powerful campaigns that make your business sing. Think of me as your marketing teammate.”</p>
                 </div>
                 <div id="daniel-garrido" class="mt-16 flex items-center gap-8 p-10 rounded-[3rem] bg-white/5 border border-white/10 w-fit">
-                    <?php
-                    // TODO: replace $daniel_photo with the real headshot URL from Nora.
-                    // Until then it falls back to the music-note icon avatar.
-                    $daniel_photo = '';
-                    ?>
+                    <?php $daniel_photo = 'https://toctoc.ky/wp-content/uploads/2026/07/dsf5319-1.webp'; ?>
                     <?php if ( $daniel_photo ) : ?>
                     <img src="<?php echo esc_url( $daniel_photo ); ?>" alt="Daniel Garrido, Founder & CEO of TocToc Marketing" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover shrink-0" />
                     <?php else : ?>
