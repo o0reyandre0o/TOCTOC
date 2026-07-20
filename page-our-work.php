@@ -102,125 +102,6 @@ $ow_cases = array(
     ),
 );
 
-/**
- * Standalone web design showcase.
- * Every URL below was verified live by its <title>. 'img' empty renders a
- * name placeholder until a preview screenshot is uploaded.
- */
-$ow_sites = array(
-    array(
-        'name' => 'PR Optics',
-        'desc' => 'B2B digital lens lab in Puerto Rico — native PHP SEO/Schema engine and a premium Tailwind UI.',
-        'url'  => 'https://pr-optics.com',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092632.webp',
-        'w'    => 1898,
-        'h'    => 1027,
-    ),
-    array(
-        'name' => 'SolaraPRO',
-        'desc' => 'Precision photochromic eyewear brand — a product-led, search-ready website.',
-        'url'  => 'https://solara-pro.com',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092614.webp',
-        'w'    => 1897,
-        'h'    => 1032,
-    ),
-    array(
-        'name' => 'Uncle Liu',
-        'desc' => 'Szechuan restaurant on Seven Mile Beach — custom theme, ranked #1 in AI and local search.',
-        'url'  => 'https://uncleliu.ky',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093300.webp',
-        'w'    => 1897,
-        'h'    => 1105,
-    ),
-    array(
-        'name' => 'Carnivore Smash Burger',
-        'desc' => 'Premium smash burger spot — brutalist high-impact design ported from React into WordPress.',
-        'url'  => 'https://carnivore.ky',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093216-1.webp',
-        'w'    => 1900,
-        'h'    => 1075,
-    ),
-    array(
-        'name' => 'Coconut Room',
-        'desc' => 'Tropical Asian kitchen on Seven Mile Beach — glassmorphism dark mode and direct reservations.',
-        'url'  => 'https://coconutroom.ky',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093239.webp',
-        'w'    => 1897,
-        'h'    => 1127,
-    ),
-    array(
-        'name' => 'San Si Wu',
-        'desc' => 'Chinese street food on Seven Mile Beach — fast, mobile-first site built for local AI search.',
-        'url'  => 'https://sansiwu.ky',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093611.webp',
-        'w'    => 1898,
-        'h'    => 1062,
-    ),
-    array(
-        'name' => 'Daniel Garrido',
-        'desc' => 'Personal brand of TocToc&rsquo;s founder — an AI Search Visibility specialist&rsquo;s authority site.',
-        'url'  => 'https://danielgarrido.com',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093515.webp',
-        'w'    => 1900,
-        'h'    => 1062,
-    ),
-    array(
-        'name' => 'VitaGo',
-        'desc' => 'Smart wellness vending brand in Puerto Rico — custom theme from scratch, no page builders.',
-        'url'  => 'https://vitagopr.com',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093332.webp',
-        'w'    => 1897,
-        'h'    => 1045,
-    ),
-    array(
-        'name' => 'Infinite Mindcare',
-        'desc' => 'Counseling services in the Cayman Islands — a calm, accessible, search-ready foundation.',
-        'url'  => 'https://infinitemindcare.com',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093002.webp',
-        'w'    => 1903,
-        'h'    => 1013,
-    ),
-    array(
-        'name' => 'The Conscious Closet',
-        'desc' => 'Circular fashion boutique in Cayman — WooCommerce with unified in-store POS.',
-        'url'  => 'https://theconsciouscloset.ky',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093100.webp',
-        'w'    => 1898,
-        'h'    => 1080,
-    ),
-    array(
-        'name' => '19-81 Brewing Co.',
-        'desc' => 'Craft brewery and taproom — built to be cited as the #1 brewery by ChatGPT and Gemini.',
-        'url'  => 'https://1981brewingco.com',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp',
-        'w'    => 1905,
-        'h'    => 1026,
-    ),
-    array(
-        'name' => 'Luxe Detailing',
-        'desc' => 'Automotive and marine detailing in Grand Cayman — search-ready foundation from day one.',
-        'url'  => 'https://luxedetailing.ky',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092846.png',
-        'w'    => 1897,
-        'h'    => 1031,
-    ),
-    array(
-        'name' => 'Miss Cayman Islands',
-        'desc' => 'The official home of the national pageant — reigning queen and the Beauty with a Purpose platform.',
-        'url'  => 'https://misscaymanislands.ky',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092915.webp',
-        'w'    => 1903,
-        'h'    => 1032,
-    ),
-    array(
-        'name' => 'Adventura Cayman',
-        'desc' => 'Premium watersports rental platform with real-time availability and booking.',
-        'url'  => 'https://adventuracayman.com',
-        'img'  => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093454.webp',
-        'w'    => 1898,
-        'h'    => 1132,
-    ),
-);
 ?>
 
 <main class="min-h-screen bg-background text-foreground">
@@ -439,25 +320,8 @@ $ow_sites = array(
                 </p>
             </div>
 
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-                <?php foreach ( $ow_sites as $s ) : ?>
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft <?php echo empty( $s['img'] ) ? 'flex items-center justify-center px-6' : ''; ?>">
-                        <?php if ( ! empty( $s['img'] ) ) : ?>
-                        <img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $s['name'] ) ); ?>" <?php echo ! empty( $s['w'] ) ? 'width="' . (int) $s['w'] . '" height="' . (int) $s['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                        <?php else : ?>
-                        <span class="font-display text-3xl text-white/20 text-center leading-tight"><?php echo wp_kses_post( $s['name'] ); ?></span>
-                        <?php endif; ?>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-white mb-2"><?php echo wp_kses_post( $s['name'] ); ?></h3>
-                        <p class="text-white/40 text-sm mb-6"><?php echo wp_kses_post( $s['desc'] ); ?></p>
-                        <a href="<?php echo esc_url( $s['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+            <div class="mt-20">
+                <?php toctoc_render_showcase_grid( true ); ?>
             </div>
         </div>
     </section>

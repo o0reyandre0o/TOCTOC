@@ -36,39 +36,6 @@ $wd_help = array(
     ),
 );
 
-// Section 2 portfolio — real Cayman builds, mapped to the three project scopes.
-$wd_projects = array(
-    array(
-        'name'     => '19-81 Brewing Co.',
-        'industry' => 'Craft Brewery',
-        'scope'    => 'New AI-Ready Web Build',
-        'features' => 'High-speed mobile framework, Schema Markup integration, and direct local call-to-action pathways.',
-        'url'      => 'https://1981brewingco.com',
-        'img'      => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp',
-        'w'        => 1905,
-        'h'        => 1026,
-    ),
-    array(
-        'name'     => 'Coconut Room',
-        'industry' => 'Restaurant / Hospitality',
-        'scope'    => 'Strategic Website Redesign &amp; Local Map Sync',
-        'features' => 'Clean modern aesthetic, instant load times, and structured content optimized for conversational search.',
-        'url'      => 'https://coconutroom.ky',
-        'img'      => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093239.webp',
-        'w'        => 1897,
-        'h'        => 1127,
-    ),
-    array(
-        'name'     => 'Caytech AC &amp; Appliances',
-        'industry' => 'HVAC / Home Services',
-        'scope'    => 'Backend Restructuring &amp; Conversion Engine',
-        'features' => 'Restructured backend code, metadata alignment, and high-conversion landing layout.',
-        'url'      => 'https://caytechac.com',
-        'img'      => 'https://toctoc.ky/wp-content/uploads/2024/01/caytechac-website-local-business-cayman-islands.jpg',
-        'w'        => 0,
-        'h'        => 0,
-    ),
-);
 
 // Section 4 — the 3 pillars.
 $wd_pillars = array(
@@ -209,25 +176,8 @@ $wd_process = array(
                     We build every project on clean code, high speeds, and crawlable backend architectures. Here are a few examples of digital foundations built for local Cayman businesses:
                 </p>
             </div>
-            <div class="mt-14 grid md:grid-cols-3 gap-8">
-                <?php foreach ( $wd_projects as $p ) : ?>
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-video rounded-[2.5rem] bg-slate-100 overflow-hidden border border-slate-100 shadow-soft">
-                        <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by TocToc Marketing' ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display text-slate-900"><?php echo wp_kses_post( $p['name'] ); ?></h3>
-                        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 mb-3"><?php echo wp_kses_post( $p['industry'] ); ?></p>
-                        <p class="text-sm text-sky-deep font-bold mb-1">Scope</p>
-                        <p class="text-sm text-slate-600 mb-4 leading-relaxed"><?php echo wp_kses_post( $p['scope'] ); ?></p>
-                        <p class="text-sm text-sky-deep font-bold mb-1">Key Features</p>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-5"><?php echo wp_kses_post( $p['features'] ); ?></p>
-                        <a href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+            <div class="mt-14">
+                <?php toctoc_render_showcase_grid( false ); ?>
             </div>
             <div class="mt-14">
                 <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
