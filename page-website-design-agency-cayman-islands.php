@@ -2,32 +2,127 @@
 /**
  * Template Name: Website Design Agency Cayman
  * Template Post Type: page
+ *
+ * "AI-Ready Web Design" — custom, high-speed sites engineered to be cited and
+ * recommended by ChatGPT, Gemini and Google.
  */
-get_header(); ?>
+get_header();
+
+// Table of contents — anchors match the section ids below.
+$wd_toc = array(
+    array( '#how-we-help',  'How We Help Your Business (Build, Redesign, or Optimize)' ),
+    array( '#showcase',     'Website Portfolio Showcase' ),
+    array( '#failing',      'Why Traditional Web Design Is Failing Local Businesses' ),
+    array( '#ai-ready',     'What Makes a Website &ldquo;AI-Ready&rdquo;? (Our 3 Core Pillars)' ),
+    array( '#process',      'Our 3-Step Web Design &amp; Launch Process' ),
+);
+
+// Section 1 comparison table: current situation -> how we help.
+$wd_help = array(
+    array(
+        'situation' => '&ldquo;I don&rsquo;t have a website at all.&rdquo;',
+        'label'     => 'Full AI-Ready Build',
+        'text'      => 'We build your brand-new, high-speed website from scratch on a modern framework&mdash;complete with Schema Markup and local map integrations.',
+    ),
+    array(
+        'situation' => '&ldquo;I have a site I like, but it needs technical upgrades.&rdquo;',
+        'label'     => 'Backend Restructuring',
+        'text'      => 'We keep your design intact while fixing the backend code&mdash;injecting Schema Markup, boosting site speed, and aligning metadata for AI crawlers.',
+    ),
+    array(
+        'situation' => '&ldquo;My current site is slow, outdated, or broken.&rdquo;',
+        'label'     => 'Strategic Redesign',
+        'text'      => 'We execute a complete redesign that modernizes your visual aesthetics while rebuilding the site foundation for speed, leads, and modern search indexing.',
+    ),
+);
+
+// Section 2 portfolio — real Cayman builds, mapped to the three project scopes.
+$wd_projects = array(
+    array(
+        'name'     => '19-81 Brewing Co.',
+        'industry' => 'Craft Brewery',
+        'scope'    => 'New AI-Ready Web Build',
+        'features' => 'High-speed mobile framework, Schema Markup integration, and direct local call-to-action pathways.',
+        'url'      => 'https://1981brewingco.com',
+        'img'      => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp',
+        'w'        => 1905,
+        'h'        => 1026,
+    ),
+    array(
+        'name'     => 'Coconut Room',
+        'industry' => 'Restaurant / Hospitality',
+        'scope'    => 'Strategic Website Redesign &amp; Local Map Sync',
+        'features' => 'Clean modern aesthetic, instant load times, and structured content optimized for conversational search.',
+        'url'      => 'https://coconutroom.ky',
+        'img'      => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093239.webp',
+        'w'        => 1897,
+        'h'        => 1127,
+    ),
+    array(
+        'name'     => 'Caytech AC &amp; Appliances',
+        'industry' => 'HVAC / Home Services',
+        'scope'    => 'Backend Restructuring &amp; Conversion Engine',
+        'features' => 'Restructured backend code, metadata alignment, and high-conversion landing layout.',
+        'url'      => 'https://caytechac.com',
+        'img'      => 'https://toctoc.ky/wp-content/uploads/2024/01/caytechac-website-local-business-cayman-islands.jpg',
+        'w'        => 0,
+        'h'        => 0,
+    ),
+);
+
+// Section 4 — the 3 pillars.
+$wd_pillars = array(
+    array(
+        'n'     => '1',
+        'title' => 'Deep Schema Code Injection (The Invisible AI Translator)',
+        'body'  => 'We hand-code specialized Schema Markup into every page of your site. This structured data acts as an invisible translator that communicates directly with search databases.',
+        'why'   => 'Schema Markup hands ChatGPT, Gemini, and Google your exact location, operating hours, service lists, and pricing on a silver platter&mdash;ensuring the algorithm never has to guess what you do.',
+    ),
+    array(
+        'n'     => '2',
+        'title' => 'Ultra-High-Speed Mobile Engineering',
+        'body'  => 'We build streamlined, lightweight websites optimized for instant loading on mobile devices across the Cayman Islands.',
+        'why'   => 'AI search crawlers assign higher trust scores to fast sites. If your website takes more than 3 seconds to load, search engines downgrade your authority and bounce potential customers before they see your homepage.',
+    ),
+    array(
+        'n'     => '3',
+        'title' => 'Generative Engine Optimization (GEO) Content Structure',
+        'body'  => 'We write and format your website content so it answers real, conversational questions asked by modern users.',
+        'why'   => 'People don&rsquo;t search with short keywords anymore; they ask full conversational questions. By structuring your pages into direct answer blocks, AI engines can easily scrape and feature your content as the live recommendation.',
+    ),
+);
+
+// Section 5 — process.
+$wd_process = array(
+    array( '01', 'Discovery &amp; Content Architecture', 'We map out your site map, align your local Cayman keywords, and structure your page layout to guide visitors directly toward making a call.' ),
+    array( '02', 'High-Speed Development &amp; Schema Integration', 'Our team builds your site foundation, optimizes mobile performance, injects hidden Schema code, and connects your Google Maps and local profiles.' ),
+    array( '03', 'Launch &amp; Continuous Indexing', 'We launch your site and immediately issue live indexing requests to Google and AI web scrapers&mdash;ensuring your new digital asset is indexed and ready to bring in calls.' ),
+);
+?>
 
 <main class="min-h-screen bg-background text-foreground">
-    <!-- Section 1: Hero -->
-    <section class="relative pt-48 pb-32 overflow-hidden bg-white">
+
+    <!-- Hero -->
+    <section class="relative pt-48 pb-24 overflow-hidden bg-white">
         <div class="absolute inset-0 z-0 opacity-10">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
             <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent blur-[100px] rounded-full"></div>
         </div>
-
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'Website Design' ); ?>
-                <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-[11px] font-bold text-slate-500 mb-8 uppercase tracking-widest">
-                    Your 24/7 Salesperson
+                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+                    AI-Ready Web Design &middot; Cayman Islands
                 </div>
-                <h1 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">
-                    The Leading <em class="italic text-sky-deep font-display">Web Design Agency</em> for Cayman.
+                <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-slate-900">
+                    AI-Ready Web Design Services in the <em class="italic text-sky-deep font-display">Cayman Islands</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">
-                    We don't just build sites; we specialize in website redesign SEO and development engineered to convert visitors into loyal clients.
+                    Stop paying for pretty digital brochures that no one finds. We engineer custom, lightning-fast websites designed to convert human visitors and get cited and recommended by ChatGPT, Gemini, and Google.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
-                    <a href="#portfolio" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                        See Portfolio
+                    <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                        Call Us Today
                         <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                         </span>
@@ -37,189 +132,199 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Section 2: Case Studies Grid -->
-    <section id="portfolio" class="py-24 md:py-32 bg-slate-50">
+    <!-- Intro -->
+    <section class="pb-12 bg-white">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <!-- Project 1: Adventura -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-adventura-cayman.jpg" alt="Adventura Cayman" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-slate-900 mb-2">Adventura Cayman</h3>
-                        <p class="text-slate-500 mb-6">Premium Watersports Rental platform with real-time availability and booking.</p>
-                        <a href="https://adventuracayman.com" target="_blank" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Coconut Room -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-coconut-room.jpg" alt="Coconut Room" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-slate-900 mb-2">Coconut Room</h3>
-                        <p class="text-slate-500 mb-6">Vibrant Hospitality design featuring digital menus and seamless reservations.</p>
-                        <a href="https://coconutroom.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Prospect Center -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-prospect-center.jpg" alt="Prospect Center" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-slate-900 mb-2">Prospect Center</h3>
-                        <p class="text-slate-500 mb-6">Corporate Real Estate portal with advanced search and directory features.</p>
-                        <a href="https://prospectcenter.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Uncle Liu -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-uncle-liu.jpg" alt="Uncle Liu" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-slate-900 mb-2">Uncle Liu</h3>
-                        <p class="text-slate-500 mb-6">Luxury E-commerce experience tailored for the local market.</p>
-                        <a href="https://uncleliu.ky" target="_blank" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 5: Brisana -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-brisana.jpg" alt="Brisana Insulation" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-slate-900 mb-2">Brisana Insulation</h3>
-                        <p class="text-slate-500 mb-6">Industrial Service landing page optimized for lead generation.</p>
-                        <a href="https://insulation.brisanaconstruction.com" target="_blank" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 6: Pr-Optics -->
-                <div class="group flex flex-col gap-6">
-                    <div class="aspect-[4/5] rounded-[2.5rem] bg-slate-200 overflow-hidden shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-proptics.jpg" alt="Pr-Optics" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display text-slate-900 mb-2">Pr-Optics</h3>
-                        <p class="text-slate-500 mb-6">Modern Optical Boutique website featuring high-end eyewear collections and appointment booking.</p>
-                        <a href="https://pr-optics.com/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Why Choose Us -->
-    <section class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-8">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="flex flex-col md:flex-row items-end justify-between gap-12 mb-20">
-                <div class="max-w-2xl">
-                    <h2 class="text-5xl md:text-7xl font-display leading-[0.9]">Driving Sales Through <em class="italic text-accent font-display">Communication.</em></h2>
-                </div>
-                <p class="text-white/40 text-lg max-w-sm italic">
-                    A website must do more than look pretty—it must communicate your value and close the deal.
+            <div class="max-w-3xl space-y-6">
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    <strong class="font-semibold text-slate-900">We don&rsquo;t build generic brochure sites. We engineer AI-Ready Web Foundations built for lightning-fast speeds, maximum conversion, and algorithmic trust.</strong>
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    In the modern era of search, having a &ldquo;pretty&rdquo; website isn&rsquo;t enough. If your site code is bloated, slow, or missing hidden structured data, AI assistants like ChatGPT and Gemini will simply bypass your business when local customers ask for recommendations.
                 </p>
             </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-3 gap-12">
-                <div>
-                    <div class="text-accent text-4xl font-display mb-4">01.</div>
-                    <h3 class="text-2xl font-display mb-4">Boost Online Visibility</h3>
-                    <p class="text-white/50 text-sm leading-relaxed">Our web design Cayman services improve your search engine rankings from day one.</p>
+    <!-- What's On This Page (table of contents) -->
+    <section class="pb-20 bg-white">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl rounded-[2rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
+                <div class="flex items-center justify-between gap-4 mb-6">
+                    <h2 class="text-2xl font-display text-slate-900">What&rsquo;s On This Page</h2>
+                    <span class="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-bold text-sky-deep border border-slate-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        3 min read
+                    </span>
                 </div>
-                <div>
-                    <div class="text-accent text-4xl font-display mb-4">02.</div>
-                    <h3 class="text-2xl font-display mb-4">Increase Lead Gen</h3>
-                    <p class="text-white/50 text-sm leading-relaxed">Convert more visitors with strategic website development design and CTAs.</p>
-                </div>
-                <div>
-                    <div class="text-accent text-4xl font-display mb-4">03.</div>
-                    <h3 class="text-2xl font-display mb-4">Responsive Design</h3>
-                    <p class="text-white/50 text-sm leading-relaxed">Ensure your site looks great on all devices with our mobile-first Cayman design.</p>
-                </div>
+                <p class="text-sm text-slate-500 mb-6">It takes about 3 minutes to read. We respect your time.</p>
+                <ol class="space-y-3">
+                    <?php foreach ( $wd_toc as $i => $item ) : ?>
+                    <li>
+                        <a href="<?php echo esc_attr( $item[0] ); ?>" class="group flex items-start gap-4 decoration-none">
+                            <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-pale text-sky-deep text-sm font-bold"><?php echo (int) ( $i + 1 ); ?></span>
+                            <span class="text-lg text-slate-700 group-hover:text-sky-deep transition-colors leading-snug pt-0.5"><?php echo wp_kses_post( $item[1] ); ?></span>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ol>
             </div>
         </div>
     </section>
 
-    <!-- Section 4: Features -->
-    <section class="py-24 md:py-32">
+    <!-- 1. How We Help (Build / Redesign / Optimize) -->
+    <section id="how-we-help" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="text-center mb-20">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Technical Excellence</span>
-                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Website Redesign <em class="italic text-sky-deep font-display">& Development</em></h2>
-                <p class="mt-6 text-lg text-slate-500 max-w-2xl mx-auto">
-                    Need more than a website? Explore our full <a href="<?php echo esc_url( home_url( '/web-development-cayman-islands/' ) ); ?>" class="text-sky-deep font-bold underline decoration-accent decoration-2 underline-offset-4">web development services in Cayman</a> — e-commerce, web apps, and custom builds.
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Build, Redesign or Optimize</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Help <em class="italic text-sky-deep font-display">Your Business</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    Every business enters the digital space at a different stage. Here is how we tailor our web engineering services to your specific situation:
                 </p>
             </div>
+            <div class="mt-12 space-y-5">
+                <?php foreach ( $wd_help as $h ) : ?>
+                <div class="grid md:grid-cols-2 gap-6 rounded-[2rem] bg-white border border-slate-100 shadow-soft p-8 md:p-10">
+                    <div class="flex items-start gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-1 text-slate-300"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                        <p class="text-xl md:text-2xl font-display text-slate-900 leading-snug"><?php echo wp_kses_post( $h['situation'] ); ?></p>
+                    </div>
+                    <div class="md:border-l md:border-slate-100 md:pl-8">
+                        <p class="text-sky-deep text-sm font-bold mb-2"><?php echo wp_kses_post( $h['label'] ); ?></p>
+                        <p class="text-slate-600 leading-relaxed"><?php echo wp_kses_post( $h['text'] ); ?></p>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Search Optimized</h3>
-                    <p class="text-slate-500 text-sm mb-6">Implement SEO best practices for improved visibility in search results from launch.</p>
+    <!-- 2. Portfolio Showcase -->
+    <section id="showcase" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Portfolio</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Website <em class="italic text-sky-deep font-display">Portfolio Showcase</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    We build every project on clean code, high speeds, and crawlable backend architectures. Here are a few examples of digital foundations built for local Cayman businesses:
+                </p>
+            </div>
+            <div class="mt-14 grid md:grid-cols-3 gap-8">
+                <?php foreach ( $wd_projects as $p ) : ?>
+                <div class="group flex flex-col gap-6">
+                    <div class="aspect-video rounded-[2.5rem] bg-slate-100 overflow-hidden border border-slate-100 shadow-soft">
+                        <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by TocToc Marketing' ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display text-slate-900"><?php echo wp_kses_post( $p['name'] ); ?></h3>
+                        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 mb-3"><?php echo wp_kses_post( $p['industry'] ); ?></p>
+                        <p class="text-sm text-sky-deep font-bold mb-1">Scope</p>
+                        <p class="text-sm text-slate-600 mb-4 leading-relaxed"><?php echo wp_kses_post( $p['scope'] ); ?></p>
+                        <p class="text-sm text-sky-deep font-bold mb-1">Key Features</p>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5"><?php echo wp_kses_post( $p['features'] ); ?></p>
+                        <a href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Mobile Optimization</h3>
-                    <p class="text-slate-500 text-sm mb-6">Responsive design for seamless browsing on smartphones and tablets.</p>
+                <?php endforeach; ?>
+            </div>
+            <div class="mt-14">
+                <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                    See All Our Work
+                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Why Traditional Web Design Is Failing -->
+    <section id="failing" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; The Old Way vs The New Reality</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Traditional Web Design Is <em class="italic text-sky-deep font-display">Failing Local Businesses</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    Most web design agencies focus 100% of their energy on visual aesthetics and 0% on how modern search engines actually read code.
+                </p>
+            </div>
+            <div class="mt-10 grid md:grid-cols-2 gap-6">
+                <div class="p-8 rounded-[2rem] border border-slate-100 bg-white shadow-soft">
+                    <div class="text-slate-400 text-sm font-bold mb-3">The Old Approach</div>
+                    <p class="text-slate-600 leading-relaxed">Agencies build heavy, slow websites filled with unoptimized images and bloated page builders. They look nice to humans, but search engine crawlers and AI bots get choked on the code and abandon the site.</p>
                 </div>
-                <div class="p-10 rounded-[2.5rem] border border-slate-100 shadow-soft hover:bg-slate-50 transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">WhatsApp Integration</h3>
-                    <p class="text-slate-500 text-sm mb-6">Add live chat to your website for instant customer support and conversion.</p>
+                <div class="p-8 rounded-[2rem] border border-sky-deep/20 bg-sky-pale/40 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3">The New Reality</div>
+                    <p class="text-slate-600 leading-relaxed">Today, your website has two distinct audiences: human customers who want fast information, and backend AI Web Scrapers that evaluate your site code to decide whether to recommend your business. If your site isn&rsquo;t built for both, you lose leads to competitors who are.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <?php
-    toctoc_render_faq( [
-        [
-            'q' => 'How much does a website cost in the Cayman Islands?',
-            'a' => 'Website cost in Cayman depends on the number of pages, features like booking or e-commerce, and whether you need custom design or a redesign. TocToc builds every site as a 24/7 salesperson engineered to convert, and we quote transparently after a quick call about your goals — no generic packages.',
-        ],
-        [
-            'q' => 'How long does it take to build a website?',
-            'a' => 'A focused business website typically takes 3 to 6 weeks from kickoff to launch, depending on content readiness and the scope of features. Larger e-commerce or directory platforms take longer. We map a clear timeline before we start so you always know what comes next.',
-        ],
-        [
-            'q' => 'Do you offer website redesign and web development services?',
-            'a' => 'Yes. Beyond new builds, we specialize in website redesign and full web development for Cayman businesses — rebuilding slow, outdated, or poorly converting sites with custom architecture, fast Core Web Vitals, and SEO baked in from launch.',
-        ],
-        [
-            'q' => 'Do you build websites for restaurants and hospitality businesses in Cayman?',
-            'a' => 'Absolutely. We have built sites for restaurants, watersports, optical boutiques, and real estate across Grand Cayman, with features like digital menus, online reservations, and real-time booking. Hospitality and tourism are a core focus for us.',
-        ],
-        [
-            'q' => 'Will my website be optimized for SEO and mobile?',
-            'a' => 'Every website we build is mobile-first and search optimized from day one — clean code, fast loading, Schema markup, and a structure Google and AI assistants love to crawl. A beautiful site that nobody finds is wasted, so visibility is built in, not bolted on.',
-        ],
-    ], 'Web Design FAQ', 'Website Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
-    ?>
+    <!-- 4. What Makes a Website AI-Ready: 3 Pillars -->
+    <section id="ai-ready" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; The 3 Core Pillars</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">What Makes a Website <em class="italic text-accent font-display">&ldquo;AI-Ready&rdquo;</em>?</h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    We build every website on a specialized technical framework designed to maximize speed, search indexing, and user conversions:
+                </p>
+            </div>
+            <div class="mt-14 space-y-6">
+                <?php foreach ( $wd_pillars as $pl ) : ?>
+                <article class="rounded-[2.5rem] bg-white/5 border border-white/10 p-8 md:p-10">
+                    <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
+                        <span class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent text-slate-950 text-2xl font-display">
+                            <?php echo esc_html( $pl['n'] ); ?>
+                        </span>
+                        <div class="flex-1">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent mb-2">Pillar <?php echo esc_html( $pl['n'] ); ?></p>
+                            <h3 class="text-2xl md:text-3xl font-display leading-snug"><?php echo wp_kses_post( $pl['title'] ); ?></h3>
+                            <p class="mt-4 text-lg text-white/60 leading-relaxed"><?php echo wp_kses_post( $pl['body'] ); ?></p>
+                            <p class="mt-4 text-base text-white/80 leading-relaxed"><span class="font-bold text-accent">Why this matters:</span> <?php echo wp_kses_post( $pl['why'] ); ?></p>
+                        </div>
+                    </div>
+                </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 3-Step Process -->
+    <section id="process" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; Our Process</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our 3-Step Web Design &amp; <em class="italic text-sky-deep font-display">Launch Process</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    We remove the stress and long delays usually associated with web development projects. Here is how we get your business live and optimized:
+                </p>
+            </div>
+            <div class="mt-14 grid md:grid-cols-3 gap-8">
+                <?php foreach ( $wd_process as $s ) : ?>
+                <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-4xl font-display mb-4"><?php echo esc_html( $s[0] ); ?></div>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4 leading-snug"><?php echo wp_kses_post( $s[1] ); ?></h3>
+                    <p class="text-slate-500 leading-relaxed"><?php echo wp_kses_post( $s[2] ); ?></p>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
-        <div class="mx-auto max-w-4xl px-6">
-            <h2 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">Get your <br /><em class="italic text-sky-deep font-display">Custom Quote</em></h2>
+        <div class="mx-auto max-w-5xl px-6">
+            <h2 class="text-4xl md:text-6xl font-display leading-[1.02] text-slate-900">Do You Want a Website <br /><em class="italic text-sky-deep font-display">for the AI Era?</em></h2>
+            <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                Whether you need a brand-new website built from scratch or a deep technical upgrade to your existing site, we build high-speed digital assets that convert visitors and get recommended by ChatGPT, Gemini, and Google. Let&rsquo;s talk about your project today.
+            </p>
             <div class="mt-12">
                 <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                    Call Us
+                    Call Us Today
                     <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                     </span>
@@ -228,5 +333,23 @@ get_header(); ?>
         </div>
     </section>
 </main>
+
+<script type="application/ld+json">
+<?php
+echo wp_json_encode(
+    array(
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Service',
+        'name'        => 'AI-Ready Web Design',
+        'serviceType' => 'Website Design and Development',
+        'provider'    => array( '@id' => 'https://toctoc.ky/#organization' ),
+        'areaServed'  => array( '@type' => 'Place', 'name' => 'Cayman Islands' ),
+        'description' => 'Custom, high-speed AI-ready websites for Cayman Islands businesses: hand-coded Schema markup, ultra-fast mobile engineering and GEO content structure, engineered to convert visitors and get cited and recommended by ChatGPT, Gemini and Google.',
+        'url'         => 'https://toctoc.ky/website-design-agency-cayman-islands/',
+    ),
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
 
 <?php get_footer(); ?>
