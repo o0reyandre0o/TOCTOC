@@ -2,32 +2,90 @@
 /**
  * Template Name: Digital Marketing Agency Cayman
  * Template Post Type: page
+ *
+ * "The Digital Marketing Agency Built for the AI Search Era" — a unified digital
+ * footprint that makes the business the #1 recommended answer on ChatGPT,
+ * Gemini and Google.
  */
-get_header(); ?>
+get_header();
+
+// Table of contents — anchors match the section ids below.
+$dm_toc = array(
+    array( '#approach',    'How Our Digital Marketing Approach Helps Your Business' ),
+    array( '#engine',      'Our Unified Growth Engine (How We Work)' ),
+    array( '#showcase',    'Featured Case Study &amp; Website Showcase' ),
+    array( '#boundaries',  'Who We Work With (And Our Boundaries)' ),
+);
+
+// Section 1 — value points.
+$dm_value = array(
+    array( 'Permanent Digital Assets', 'Instead of renting temporary visibility, we build high-speed websites, Schema-coded data, and authoritative articles that serve as permanent trust signals for search bots.' ),
+    array( 'Unified Channel Synergy', 'We connect your website, Google Maps, TripAdvisor, LinkedIn, YouTube, Facebook, and Instagram so search engines see a single, verified brand across the web.' ),
+    array( 'High-Intent Customer Capture', 'Customers asking AI engines for local recommendations are already looking to buy. We position your brand directly in front of these ready-to-act buyers.' ),
+    array( 'Future-Proof Search Footprint', 'As conversational search replaces standard keyword searches, your business remains ahead of local competitors who haven&rsquo;t updated their digital infrastructure.' ),
+);
+
+// Section 2 — 4-pillar engine.
+$dm_pillars = array(
+    array( '1', 'High-Speed, AI-Ready Web Engineering', 'We build or deeply restructure your website foundation using specialized Schema Markup, ensuring ChatGPT, Gemini, and Google scan your exact location, services, and authority without friction.' ),
+    array( '2', 'Local Knowledge Graph &amp; Map Synchronization', 'We clean up, synchronize, and lock down your exact business details across Google Maps, Apple Maps, local directories, and primary social channels to verify your real-world legitimacy.' ),
+    array( '3', 'High-Authority Content &amp; Social Chunking', 'We write deep-dive website and LinkedIn articles that establish your industry expertise, then &ldquo;chunk&rdquo; that core insight into visual video and image assets for YouTube, Instagram, and Facebook.' ),
+    array( '4', 'Weekly Maintenance &amp; Search Bot Indexing', 'We run weekly technical updates, monitor AI citation shifts, and issue fresh indexing requests to web crawlers to keep your brand active and prioritized.' ),
+);
+
+// Section 3 — showcase projects (real Cayman builds).
+$dm_projects = array(
+    array( 'name' => 'Uncle Liu', 'scope' => 'Full AI-Ready Website Build featuring high-speed mobile architecture and Schema Markup.', 'url' => 'https://uncleliu.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093300.webp', 'w' => 1897, 'h' => 1105 ),
+    array( 'name' => 'San Si Wu', 'scope' => 'Strategic Web Redesign &amp; Google Maps Synchronization.', 'url' => 'https://sansiwu.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093611.webp', 'w' => 1898, 'h' => 1062 ),
+    array( 'name' => 'Easy Lot Cayman', 'scope' => 'Backend Restructuring &amp; Conversion Optimization.', 'url' => 'https://easylot.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2024/01/easylot-website-local-business-cayman-islands.webp', 'w' => 0, 'h' => 0 ),
+);
+
+// Section 4 — boundaries table.
+$dm_boundaries = array(
+    array(
+        'dont_label' => 'No Daily Social Posting',
+        'dont_text'  => 'We do not handle daily post scheduling, stories, or Instagram grid aesthetic curation.',
+        'do_label'   => 'Content Architecture',
+        'do_text'    => 'We build high-value video, image, and written content &ldquo;chunks&rdquo; that build search engine trust.',
+    ),
+    array(
+        'dont_label' => 'No Short-Term Ad Campaigns',
+        'dont_text'  => 'We do not build or manage paid Google Ads, social media ads, or print ads.',
+        'do_label'   => 'Organic Authority Building',
+        'do_text'    => 'We build permanent, crawlable digital assets that generate ongoing organic search leads.',
+    ),
+    array(
+        'dont_label' => 'No Community Management',
+        'dont_text'  => 'We do not handle customer DMs, comment replies, or administrative tasks.',
+        'do_label'   => 'Technical Optimization',
+        'do_text'    => 'We manage site speed, Schema code, map synchronization, and AI bot indexing.',
+    ),
+);
+?>
 
 <main class="min-h-screen bg-background text-foreground">
-    <!-- Section 1: Hero -->
-    <section class="relative pt-48 pb-32 overflow-hidden bg-white">
+
+    <!-- Hero -->
+    <section class="relative pt-48 pb-24 overflow-hidden bg-white">
         <div class="absolute inset-0 z-0 opacity-10">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
             <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent blur-[100px] rounded-full"></div>
         </div>
-
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'Services' ); ?>
                 <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
-                    Laser-Focused on Cayman
+                    Full-Service Digital Marketing &middot; Cayman Islands
                 </div>
-                <h1 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">
-                    Full-Service Digital Marketing Agency in Cayman: <em class="italic text-sky-deep font-display">ROI & Strategy Coaching.</em>
+                <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-slate-900">
+                    The Digital Marketing Agency Built for the <em class="italic text-sky-deep font-display">AI Search Era</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">
-                    Maximize your online reach and revenue with the digital marketing agency Cayman businesses choose for technical precision.
+                    We unify your web presence to make your Cayman business the #1 recommended answer on ChatGPT, Gemini, and Google.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
-                    <a href="#results" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                        See Real Results
+                    <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                        Call Us Today
                         <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                         </span>
@@ -37,284 +95,209 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Section 2: Core Services Grid -->
-    <section id="results" class="py-24 md:py-32 bg-slate-50">
+    <!-- Intro -->
+    <section class="pb-12 bg-white">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Branding -->
-                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <h3 class="text-4xl font-display text-slate-900 mb-6">Professional Corporate Branding</h3>
-                    <p class="text-slate-500 text-lg leading-relaxed mb-6">Consistency builds trust. We extend your Visual Identity across all touchpoints—uniforms, merchandise, and stationery—to create a cohesive and professional brand image.</p>
-                </article>
-
-                <!-- Graphic Design -->
-                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <h3 class="text-4xl font-display text-slate-900 mb-6">High-Impact Graphic Design</h3>
-                    <p class="text-slate-500 text-lg leading-relaxed mb-6">From digital ads to print posters. Our Graphic Design services ensure your marketing materials grab attention and communicate your message clearly.</p>
-                </article>
-
-                <!-- Identity -->
-                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <h3 class="text-4xl font-display text-slate-900 mb-6">Memorable Brand Identity</h3>
-                    <p class="text-slate-500 text-lg leading-relaxed mb-6">Your logo is your first impression. We craft unique, scalable Logo Designs that capture your business essence and stand out in the competitive Cayman market.</p>
-                </article>
-
-                <!-- Merchandise -->
-                <article class="bg-white rounded-[2.5rem] p-12 shadow-soft border border-slate-100 hover:shadow-glass transition-all">
-                    <h3 class="text-4xl font-display text-slate-900 mb-6">Custom Brand Merchandise</h3>
-                    <p class="text-slate-500 text-lg leading-relaxed mb-6">Great brands live everywhere. We design custom stickers and merchandise that turn your customers into brand ambassadors, increasing your visibility offline.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Why Digital Marketing -->
-    <section class="py-24 md:py-32">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-4xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Market Insight</span>
-                <h2 class="mt-6 text-5xl md:text-8xl font-display leading-[0.95] text-slate-900">
-                    How Digital Marketing can help your <em class="italic text-sky-deep font-display">Cayman Business?</em>
-                </h2>
-                <p class="mt-8 text-xl text-slate-600 leading-relaxed max-w-2xl">
-                    The Cayman Islands is a country with a high penetration of social media and a large number of searches on Google, driven by tourists and locals alike.
+            <div class="max-w-3xl space-y-6">
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    If you landed on this page searching for a &ldquo;digital marketing agency&rdquo; in the Cayman Islands, you probably expected a menu of basic retainers: social media post scheduling, print ad coordination, and generic monthly reporting.
                 </p>
-                <ul class="mt-12 space-y-6">
-                    <li class="flex items-center gap-6 text-xl text-slate-700 font-medium">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                        </div>
-                        Reach a Wider Audience (Locals & Tourists)
-                    </li>
-                    <li class="flex items-center gap-6 text-xl text-slate-700 font-medium">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                        </div>
-                        Drive More Traffic & Generate Leads
-                    </li>
-                    <li class="flex items-center gap-6 text-xl text-slate-700 font-medium">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-pale flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                        </div>
-                        Boost Brand Awareness & Offline Visibility
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: Who We Help -->
-    <section class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-8">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Tailored for Cayman</span>
-                <h2 class="mt-6 text-5xl md:text-7xl font-display text-white">Who We <em class="italic text-accent font-display">Help</em></h2>
-                <p class="mt-8 text-white/50 text-lg italic">Our digital marketing services are tailored to meet the unique needs of various industries in the islands.</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h3 class="text-xl font-display mb-2">Retail</h3>
-                    <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Local Stores & Boutiques</p>
-                </div>
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h3 class="text-xl font-display mb-2">Hospitality</h3>
-                    <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Restaurants & Hotels</p>
-                </div>
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h3 class="text-xl font-display mb-2">Professional</h3>
-                    <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Lawyers & Doctors</p>
-                </div>
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h3 class="text-xl font-display mb-2">E-commerce</h3>
-                    <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Online Businesses</p>
-                </div>
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h3 class="text-xl font-display mb-2">Non-profits</h3>
-                    <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Charitable Missions</p>
-                </div>
-                <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
-                    <h3 class="text-xl font-display mb-2">Government</h3>
-                    <p class="text-xs text-white/40 uppercase tracking-widest font-bold">Public Sector</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 5: Solutions -->
-    <section class="py-24 md:py-32">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">The Solutions</span>
-                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Our Digital Marketing <em class="italic text-sky-deep font-display">Solutions</em></h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Website -->
-                <div class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M12 21v-4"/><path d="M2 7h20"/><path d="M12 3v4"/></svg>
-                    </div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Web Development</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Custom Architecture</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> SEO Optimized</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Mobile Responsive</li>
-                    </ul>
-                </div>
-
-                <!-- Email -->
-                <div class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    </div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Email & Automation</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Targeted Campaigns</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Personalized Content</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Automated Workflows</li>
-                    </ul>
-                </div>
-
-                <!-- WhatsApp -->
-                <div class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">WhatsApp Marketing</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Intelligent Chatbots</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Group Promotions</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Support Automation</li>
-                    </ul>
-                </div>
-
-                <!-- PPC -->
-                <div class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="m12 12 4 10 1.7-4.3L22 16Z"/></svg>
-                    </div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">PPC & Paid Ads</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Google & Meta Ads</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Audience ROI Focus</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Data-Driven Scaling</li>
-                    </ul>
-                </div>
-
-                <!-- Lead Gen -->
-                <div class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Lead Gen & CRM</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Customer Data Management</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Behavioral Segmentation</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Relationship Building</li>
-                    </ul>
-                </div>
-
-                <!-- Branding -->
-                <div class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-pale flex items-center justify-center text-sky-deep mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 20 20"/><path d="m5 16 7-7"/></svg>
-                    </div>
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Branding & Identity</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Visual Guidelines</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Graphic Excellence</li>
-                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg> Cohesive Presence</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 5b: Advertising, PR & Communications -->
-    <section class="py-24 md:py-32 bg-slate-50">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Beyond the Click</span>
-                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Advertising, PR &amp; <em class="italic text-sky-deep font-display">Communications</em></h2>
-                <p class="mt-8 text-xl text-slate-600 leading-relaxed">
-                    As a full-service marketing agency in the Cayman Islands, we go beyond digital. From campaign advertising and media buying to public relations and corporate communications, we help Cayman businesses build a reputation that earns trust across every channel.
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    <strong class="font-semibold text-slate-900">We don&rsquo;t operate like a traditional agency.</strong>
                 </p>
-                <div class="mt-8">
-                    <a href="<?php echo esc_url( home_url( '/advertising-pr-agency-cayman-islands/' ) ); ?>" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
-                        Explore Advertising &amp; PR <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Advertising Campaigns</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Creative, data-driven advertising across Google, Meta, print, and local Cayman media — planned and measured for return, not just reach.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Public Relations</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Press, partnerships, and reputation management that position your business as a trusted name in the Cayman Islands community.</p>
-                </div>
-                <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">Corporate Communications</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Clear, consistent messaging across your brand — internal and external — so every touchpoint tells the same compelling story.</p>
-                </div>
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    In the modern era of search, true digital marketing is about building Algorithmic Trust. Instead of managing scattered tactics, we engineer a unified digital footprint so that when modern customers ask AI search engines for a recommendation, your business is the one brought to the surface.
+                </p>
             </div>
         </div>
     </section>
 
-    <?php
-    toctoc_render_faq( [
-        [
-            'q' => 'What makes TocToc the best marketing agency in the Cayman Islands?',
-            'a' => 'We combine deep local Cayman knowledge with a 2026-ready approach built around our Revenue Loop framework: Get Recommended, Get Chosen, Get Clients Back. Unlike traditional agencies, we optimize your business to be recommended by AI tools and search engines, not just to look good — turning visibility into measurable revenue.',
-        ],
-        [
-            'q' => 'How much does a digital marketing agency cost in Cayman?',
-            'a' => 'Costs vary based on the services you need — SEO, web design, social media, advertising, or a full Revenue Loop strategy. We build custom plans for each Cayman business rather than fixed packages, and a free consultation gives you a clear, transparent quote with no obligation.',
-        ],
-        [
-            'q' => 'Do you offer advertising, PR, and communications services in Cayman?',
-            'a' => 'Yes. As a full-service agency, we cover advertising campaigns and media buying, public relations, and corporate communications alongside our digital marketing, SEO, and web design services — a single partner for your entire marketing presence in the Cayman Islands.',
-        ],
-        [
-            'q' => 'Do you work with small businesses in Grand Cayman?',
-            'a' => 'Absolutely. We work with retail, hospitality, professional services, e-commerce, non-profits, and government across Grand Cayman — from local boutiques to established firms. Our strategies scale to your size and budget.',
-        ],
-        [
-            'q' => 'How quickly will I see results from digital marketing?',
-            'a' => 'Paid advertising can drive traffic and leads almost immediately, while SEO and content build compounding results over 3 to 6 months. We focus on a balanced strategy so you see early wins while we build long-term, sustainable growth.',
-        ],
-    ], 'Marketing FAQ', 'Your Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
-    ?>
+    <!-- What's On This Page (table of contents) -->
+    <section class="pb-20 bg-white">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl rounded-[2rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
+                <div class="flex items-center justify-between gap-4 mb-6">
+                    <h2 class="text-2xl font-display text-slate-900">What&rsquo;s On This Page</h2>
+                    <span class="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-bold text-sky-deep border border-slate-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        3 min read
+                    </span>
+                </div>
+                <p class="text-sm text-slate-500 mb-6">It takes about 3 minutes to read. We respect your time.</p>
+                <ol class="space-y-3">
+                    <?php foreach ( $dm_toc as $i => $item ) : ?>
+                    <li>
+                        <a href="<?php echo esc_attr( $item[0] ); ?>" class="group flex items-start gap-4 decoration-none">
+                            <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-pale text-sky-deep text-sm font-bold"><?php echo (int) ( $i + 1 ); ?></span>
+                            <span class="text-lg text-slate-700 group-hover:text-sky-deep transition-colors leading-snug pt-0.5"><?php echo wp_kses_post( $item[1] ); ?></span>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ol>
+            </div>
+        </div>
+    </section>
 
-    <!-- Section 6: Contact CTA -->
-    <section class="relative py-32 bg-sky-pale/50 overflow-hidden">
-        <div class="relative mx-auto max-w-4xl px-6 text-center">
-            <h2 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">
-                Ready to transform your <br /><em class="italic text-sky-deep font-display">Cayman Business?</em>
-            </h2>
-            <p class="mt-8 text-lg text-slate-600 max-w-2xl mx-auto">
-                We guarantee that a simple free call will help you understand how to gain those goals and have more revenue from the internet.
-            </p>
-            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                    Call Us
+    <!-- 1. How Our Approach Helps -->
+    <section id="approach" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; The Value We Bring</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How Our Digital Marketing Approach <em class="italic text-sky-deep font-display">Helps Your Business</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    As a specialized digital marketing agency, our entire focus is on driving measurable, long-term visibility that converts modern buyers. Here is the value we bring to your business:
+                </p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-2 gap-6">
+                <?php foreach ( $dm_value as $v ) : ?>
+                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft">
+                    <div class="text-sky-deep text-sm font-bold mb-3"><?php echo wp_kses_post( $v[0] ); ?></div>
+                    <p class="text-slate-600 leading-relaxed"><?php echo wp_kses_post( $v[1] ); ?></p>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Unified Growth Engine -->
+    <section id="engine" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">02 &middot; How We Work</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Our Unified <em class="italic text-accent font-display">Growth Engine</em></h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    We execute a streamlined, 4-pillar system designed to optimize your digital marketing footprint for modern search engines:
+                </p>
+            </div>
+            <div class="mt-14 grid md:grid-cols-2 gap-6">
+                <?php foreach ( $dm_pillars as $pl ) : ?>
+                <article class="rounded-[2rem] bg-white/5 border border-white/10 p-8">
+                    <div class="flex items-start gap-5">
+                        <span class="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-accent text-slate-950 text-xl font-display"><?php echo esc_html( $pl[0] ); ?></span>
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent mb-1">Pillar <?php echo esc_html( $pl[0] ); ?></p>
+                            <h3 class="text-xl md:text-2xl font-display leading-snug"><?php echo wp_kses_post( $pl[1] ); ?></h3>
+                            <p class="mt-3 text-white/60 leading-relaxed"><?php echo wp_kses_post( $pl[2] ); ?></p>
+                        </div>
+                    </div>
+                </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Featured Case Study + Showcase -->
+    <section id="showcase" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; Proof</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Featured Case Study &amp; <em class="italic text-sky-deep font-display">Website Showcase</em></h2>
+            </div>
+
+            <!-- Featured case study: 19-81 -->
+            <div class="mt-12 rounded-[2.5rem] bg-slate-950 text-white p-8 md:p-12 shadow-glass">
+                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent mb-3">Featured Case Study</p>
+                <h3 class="text-3xl md:text-4xl font-display leading-tight">19-81 Brewing Co.</h3>
+                <div class="mt-8 grid md:grid-cols-3 gap-6">
+                    <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
+                        <p class="text-sky-deep text-sm font-bold mb-2" style="color:#7dd3fc;">The Goal</p>
+                        <p class="text-white/70 leading-relaxed text-sm">Establish a local craft brewery as a consistently recommended brand for conversational search queries.</p>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
+                        <p class="text-accent text-sm font-bold mb-2">The Result</p>
+                        <p class="text-white/70 leading-relaxed text-sm">Regularly recommended as a top choice across ChatGPT, Gemini, and local search maps.</p>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
+                        <p class="text-white text-sm font-bold mb-2">What We Delivered</p>
+                        <p class="text-white/70 leading-relaxed text-sm">A brand-new high-speed website, updated Google Maps &amp; TripAdvisor profiles, overhauled social channels, and continuous weekly updates for search crawlers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio showcase -->
+            <div class="mt-14 max-w-3xl">
+                <h3 class="text-2xl md:text-3xl font-display text-slate-900">Website Portfolio Showcase</h3>
+                <p class="mt-4 text-lg text-slate-600 leading-relaxed">Every project we launch is built on clean code, high speeds, and crawlable backend architectures designed for both human visitors and AI bots.</p>
+            </div>
+            <div class="mt-10 grid md:grid-cols-3 gap-8">
+                <?php foreach ( $dm_projects as $p ) : ?>
+                <div class="group flex flex-col gap-5">
+                    <div class="aspect-video rounded-[2rem] bg-slate-100 overflow-hidden border border-slate-100 shadow-soft">
+                        <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by TocToc Marketing' ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-display text-slate-900 mb-1"><?php echo wp_kses_post( $p['name'] ); ?></h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-3"><?php echo wp_kses_post( $p['scope'] ); ?></p>
+                        <a href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
+                            Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="mt-12">
+                <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                    See All Our Work
                     <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                     </span>
                 </a>
             </div>
-            <div class="mt-10 flex flex-col md:flex-row items-center justify-center gap-8 text-slate-500 font-medium">
-                <div class="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    +1 (345) 547-8120
-                </div>
-                <div class="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
-                    info@toctoc.ky
-                </div>
+        </div>
+    </section>
+
+    <!-- 4. Who We Work With (boundaries) -->
+    <section id="boundaries" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; Full Transparency</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Who We Work With <em class="italic text-accent font-display">(And Our Boundaries)</em></h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    To maintain speed and deliver clear search rankings, we operate with transparent professional boundaries:
+                </p>
+            </div>
+
+            <div class="mt-12">
+                <table class="w-full border-collapse block md:table">
+                    <thead class="hidden md:table-header-group">
+                        <tr>
+                            <th class="w-1/2 text-left align-bottom pb-5 pr-8 border-b border-white/15 text-xl font-normal text-white/90">What We <strong class="font-bold text-white">Don&rsquo;t</strong> Do</th>
+                            <th class="w-1/2 text-left align-bottom pb-5 pl-8 border-b border-white/15 text-xl font-normal text-white/90">What We <strong class="font-bold text-white">Do</strong> Do</th>
+                        </tr>
+                    </thead>
+                    <tbody class="block md:table-row-group">
+                        <?php foreach ( $dm_boundaries as $b ) : ?>
+                        <tr class="block md:table-row">
+                            <td class="block md:table-cell align-top pt-7 pb-4 md:py-7 md:pr-8 md:border-b md:border-white/10 text-white/60 leading-relaxed">
+                                <span class="md:hidden block text-[10px] font-bold uppercase tracking-widest text-white/35 mb-2">What we don&rsquo;t do</span>
+                                <strong class="font-bold text-white"><?php echo wp_kses_post( $b['dont_label'] ); ?>:</strong> <?php echo wp_kses_post( $b['dont_text'] ); ?>
+                            </td>
+                            <td class="block md:table-cell align-top pb-7 md:py-7 md:pl-8 border-b border-white/10 text-white/60 leading-relaxed">
+                                <span class="md:hidden block text-[10px] font-bold uppercase tracking-widest text-accent mb-2">What we do do</span>
+                                <strong class="font-bold text-white"><?php echo wp_kses_post( $b['do_label'] ); ?>:</strong> <?php echo wp_kses_post( $b['do_text'] ); ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
+        <div class="mx-auto max-w-5xl px-6">
+            <h2 class="text-4xl md:text-6xl font-display leading-[1.02] text-slate-900">Do You Want a Digital Marketing Strategy <br /><em class="italic text-sky-deep font-display">Built for the AI Era?</em></h2>
+            <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                Stop relying on outdated agency retainers. Let&rsquo;s build a synchronized digital footprint that makes ChatGPT, Gemini, and Google recommend your Cayman business first.
+            </p>
+            <div class="mt-12">
+                <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                    Call Us Today
+                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
@@ -323,8 +306,7 @@ get_header(); ?>
 <script type="application/ld+json">
 <?php
 // OfferCatalog: a formal, machine-readable enumeration of every service —
-// so when an AI is asked "what does TocToc offer?", the answer is structured,
-// not inferred from prose.
+// so when an AI is asked "what does TocToc offer?", the answer is structured.
 $ttc_catalog = array(
 	array(
 		'AI Search Optimization (SEO, AEO & GEO)',
@@ -363,11 +345,7 @@ echo wp_json_encode(
 		'@type'    => 'OfferCatalog',
 		'name'     => 'TocToc Marketing Services',
 		'url'      => 'https://toctoc.ky/digital-marketing-agency-cayman-islands/',
-		'provider' => array(
-			'@type' => 'ProfessionalService',
-			'@id'   => 'https://toctoc.ky/#organization',
-			'name'  => 'TocToc Marketing',
-		),
+		'provider' => array( '@id' => 'https://toctoc.ky/#organization' ),
 		'itemListElement' => array_map(
 			function ( $s ) {
 				return array(
