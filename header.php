@@ -370,6 +370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Design</a>
         <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Our Work</a>
         <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">About</a>
+        <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-[13px] font-bold text-sky-deep hover:text-primary transition-colors decoration-none uppercase tracking-wider">SEO Checker</a>
     </div>
 
     <div class="flex items-center gap-4">
@@ -398,6 +399,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Web Design</a>
             <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-4xl font-display <?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Our Work</a>
             <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-4xl font-display <?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">About</a>
+            <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-4xl font-display text-sky-deep decoration-none">Free SEO Checker</a>
         </div>
         
         <div class="mt-auto">
