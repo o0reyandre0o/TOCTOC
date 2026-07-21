@@ -136,12 +136,15 @@ $ow_cases = array(
         </div>
     </section>
 
-    <!-- Intro -->
-    <section class="pb-12 bg-white">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl">
-                <p class="text-xl text-slate-700 leading-relaxed">
-                    On this page, you&rsquo;ll find live demonstrations of how we take businesses&mdash;from craft breweries to high-performance automotive services&mdash;and code them directly into the trust networks of ChatGPT, Gemini, and Google.
+    <!-- Intro (home-style: large centered display) -->
+    <section class="relative py-20 md:py-28 bg-white">
+        <div class="mx-auto max-w-4xl px-6 text-center">
+            <div class="space-y-8">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
+                    On this page, you&rsquo;ll find live demonstrations of how we take businesses &mdash; from craft breweries to high-performance automotive services &mdash; and code them directly into the trust networks of modern search.
+                </p>
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
+                    Real proof of Cayman brands made the recommended answer on <em class="italic text-sky-deep font-display">ChatGPT, Gemini, and Google.</em>
                 </p>
             </div>
         </div>
