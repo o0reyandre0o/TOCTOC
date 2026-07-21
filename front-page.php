@@ -124,19 +124,19 @@
             'label'  => 'Chinese Restaurants',
             'desc'   => 'A search demonstration showing Prime Group&rsquo;s Uncle Liu and Coconut Room ranked as the #1 and #2 best Chinese restaurants on Seven Mile Beach by both ChatGPT and Gemini.',
             'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-1-1.mp4',
-            'poster' => '', // Optional: thumbnail image URL.
+            'poster' => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-cover.webp', // Optional: thumbnail image URL.
         ),
         array(
             'label'  => 'Japanese Restaurants',
             'desc'   => 'Video proof showing Lucky Rabbit instantly recommended by ChatGPT and Gemini as the #1 Japanese restaurant near Prospect, showcasing high visibility in local AI search results.',
             'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-japanese-2-1.mp4',
-            'poster' => '',
+            'poster' => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-japanese-cover.webp',
         ),
         array(
             'label'  => 'Craft Brewery',
             'desc'   => 'A demonstration of 19-81 Brewing Co. cited as the undisputed #1 craft brewery in the Cayman Islands by ChatGPT and Gemini, confirming their digital authority.',
             'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
-            'poster' => '',
+            'poster' => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp',
         ),
     );
     ?>
