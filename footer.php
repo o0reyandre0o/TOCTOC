@@ -3,9 +3,20 @@
             <div>
                 <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" loading="lazy" class="h-6 w-auto brightness-0 invert" />
                 <p class="mt-4 text-sm text-white/60 font-medium">Cayman Islands · Built for the AI era</p>
+                <div class="mt-6 flex items-center gap-3">
+                    <a href="https://www.linkedin.com/company/110122083/" target="_blank" rel="noopener" aria-label="TocToc Marketing on LinkedIn" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/wearetoctoc/" target="_blank" rel="noopener" aria-label="TocToc Marketing on Instagram" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/wearetoctoc/" target="_blank" rel="noopener" aria-label="TocToc Marketing on Facebook" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+                    </a>
+                </div>
             </div>
             <nav aria-label="Services" class="flex flex-col gap-3">
-                <h2 class="text-sm font-display italic text-accent mb-1">Our Services</h2>
+                <h2 class="text-xl md:text-2xl font-display italic text-accent mb-3">Our Services</h2>
                 <a href="/digital-marketing-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Digital Marketing Agency</a>
                 <a href="/ai-search-optimization-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">AI Search Optimization</a>
                 <a href="/website-design-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Website Design</a>
