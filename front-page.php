@@ -198,15 +198,16 @@
     <!-- Section 3: AI Search Visibility Framework -->
     <section id="loop" class="relative py-24 md:py-32 overflow-hidden bg-sky-pale/50">
         <!-- Clouds background (same sky image as the hero) -->
-        <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-white/55 z-[1]"></div>
+        <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-bottom" />
+        <!-- Stronger white at the top (behind the heading) fading to lighter over the cards, so clouds stay visible but the title is readable. -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/60 to-white/70 z-[1]"></div>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <h2 class="text-5xl md:text-7xl text-slate-900 font-display">
                     How We Put Your Business in <em class="italic text-sky-deep font-display">AI Search Results</em>
                 </h2>
-                <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    Through our <strong>AI Search Visibility Framework</strong>&mdash;a three-phase system designed to make your business the definitive answer cited by ChatGPT, Gemini, Perplexity, and more.
+                <p class="mt-8 text-lg text-slate-700 max-w-2xl leading-relaxed">
+                    Through our <strong class="text-slate-900">AI Search Visibility Framework</strong>&mdash;a three-phase system designed to make your business the definitive answer cited by ChatGPT, Gemini, Perplexity, and more.
                 </p>
             </div>
 
