@@ -196,8 +196,11 @@
     ?>
 
     <!-- Section 3: AI Search Visibility Framework -->
-    <section id="loop" class="relative py-24 md:py-32 bg-sky-pale/50">
-        <div class="mx-auto max-w-6xl px-6">
+    <section id="loop" class="relative py-24 md:py-32 overflow-hidden bg-sky-pale/50">
+        <!-- Clouds background (same sky image as the hero) -->
+        <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-white/55 z-[1]"></div>
+        <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <h2 class="text-5xl md:text-7xl text-slate-900 font-display">
                     How We Put Your Business in <em class="italic text-sky-deep font-display">AI Search Results</em>
