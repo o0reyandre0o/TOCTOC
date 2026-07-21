@@ -95,7 +95,7 @@ get_header(); ?>
                 <!-- Andre Gutierrez -->
                 <article id="andre-gutierrez" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/andre-gray.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover shrink-0" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/andre-gray.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Andre Gutierrez</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Web Developer</p>
@@ -115,7 +115,7 @@ get_header(); ?>
                 <!-- Nora Bravo -->
                 <article id="nora-bravo" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/nora-gray.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover shrink-0" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/nora-gray.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Nora Bravo</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Graphic Designer</p>
