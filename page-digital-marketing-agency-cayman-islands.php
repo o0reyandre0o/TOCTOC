@@ -190,7 +190,7 @@ $dm_boundaries = array(
                     <div class="grid md:grid-cols-3 gap-6 items-start">
                         <div class="flex justify-center md:justify-start">
                             <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-white/10">
-                                <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline>
+                                <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline poster="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp">
                                     <source src="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4#t=0.1" type="video/mp4">
                                 </video>
                                 <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">

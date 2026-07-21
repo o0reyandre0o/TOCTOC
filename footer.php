@@ -84,6 +84,16 @@
             btn.type = 'button';
             btn.className = 'ttvideo-poster';
             btn.setAttribute('aria-label', 'Play video');
+            // If the video has a cover image, use it as the background (with a dark
+            // gradient for legibility); otherwise the flat brand-green is used.
+            var cover = v.getAttribute('poster');
+            if (cover) {
+                btn.classList.add('ttvideo-poster--image');
+                btn.style.backgroundImage =
+                    "linear-gradient(180deg, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.45) 55%, rgba(15,23,42,0.72) 100%), url('" + cover + "')";
+                btn.style.backgroundSize = 'cover';
+                btn.style.backgroundPosition = 'center';
+            }
             btn.innerHTML =
                 '<span class="ttvideo-poster__play">' + PLAY + '</span>' +
                 '<span class="ttvideo-poster__title">Watch the proof</span>' +
