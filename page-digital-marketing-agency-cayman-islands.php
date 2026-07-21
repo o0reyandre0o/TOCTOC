@@ -136,12 +136,14 @@ $dm_boundaries = array(
     </section>
 
     <!-- 1. How Our Approach Helps -->
-    <section id="approach" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
-        <div class="mx-auto max-w-6xl px-6">
+    <section id="approach" class="relative py-24 md:py-32 overflow-hidden bg-sky-pale/50 scroll-mt-28">
+        <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-bottom" />
+        <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/60 to-white/70 z-[1]"></div>
+        <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; The Value We Bring</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How Our Digital Marketing Approach <em class="italic text-sky-deep font-display">Helps Your Business</em></h2>
-                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                <p class="mt-8 text-lg text-slate-700 leading-relaxed">
                     As a specialized digital marketing agency, our entire focus is on driving measurable, long-term visibility that converts modern buyers. Here is the value we bring to your business:
                 </p>
             </div>
