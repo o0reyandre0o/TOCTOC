@@ -27,7 +27,7 @@
             </nav>
             <div class="flex flex-col md:items-end gap-10">
                 <div class="flex flex-col md:items-end gap-3 text-right">
-                    <h3 class="text-sm font-display italic text-accent mb-1">Contact Us</h3>
+                    <h3 class="text-xl md:text-2xl font-display italic text-accent mb-3">Contact Us</h3>
                     <a href="mailto:info@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">info@toctoc.ky</a>
                     <a href="tel:+13455478120" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">+1 (345) 547-8120</a>
                 </div>
