@@ -89,8 +89,7 @@
             var cover = v.getAttribute('poster');
             if (cover) {
                 btn.classList.add('ttvideo-poster--image');
-                btn.style.backgroundImage =
-                    "linear-gradient(180deg, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.45) 55%, rgba(15,23,42,0.72) 100%), url('" + cover + "')";
+                btn.style.backgroundImage = "url('" + cover + "')";
                 btn.style.backgroundSize = 'cover';
                 btn.style.backgroundPosition = 'center';
             }
