@@ -100,13 +100,10 @@ $dm_boundaries = array(
         <div class="mx-auto max-w-4xl px-6 text-center">
             <div class="space-y-8">
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    If you landed on this page searching for a &ldquo;digital marketing agency&rdquo; in the Cayman Islands, you probably expected a menu of basic retainers: social media post scheduling, print ad coordination, and generic monthly reporting.
+                    If you came here searching for a &ldquo;digital marketing agency&rdquo; in the Cayman Islands, you probably expected a menu of basic retainers &mdash; post scheduling, ad coordination, generic reporting. We don&rsquo;t operate like a traditional agency.
                 </p>
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    <strong class="font-semibold text-slate-900">We don&rsquo;t operate like a traditional agency.</strong>
-                </p>
-                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    In the modern era of search, true digital marketing is about building Algorithmic Trust. Instead of managing scattered tactics, we engineer a unified digital footprint so that when modern customers ask AI search engines for a recommendation, your business is the one brought to the surface.
+                    In the modern era of search, true digital marketing is about building <em class="italic text-sky-deep font-display">Algorithmic Trust.</em> We engineer a unified digital footprint so that when customers ask AI engines for a recommendation, your business is the one brought to the surface.
                 </p>
             </div>
         </div>
