@@ -104,7 +104,7 @@ $wd_process = array(
         <div class="mx-auto max-w-4xl px-6 text-center">
             <div class="space-y-8">
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    <strong class="font-semibold text-slate-900">We don&rsquo;t build generic brochure sites. We engineer AI-Ready Web Foundations built for lightning-fast speeds, maximum conversion, and algorithmic trust.</strong>
+                    We don&rsquo;t build generic brochure sites. We engineer AI-Ready Web Foundations built for <em class="italic text-sky-deep font-display">lightning-fast speeds, maximum conversion, and algorithmic trust.</em>
                 </p>
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     In the modern era of search, having a &ldquo;pretty&rdquo; website isn&rsquo;t enough. If your site code is bloated, slow, or missing hidden structured data, AI assistants like ChatGPT and Gemini will simply bypass your business when local customers ask for recommendations.

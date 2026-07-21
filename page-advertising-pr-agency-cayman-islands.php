@@ -110,7 +110,7 @@ $pr_faqs = array(
                     In the modern era of search, AI engines like ChatGPT and Gemini actively scrape the web for articles, digital profiles, and video platforms to see who is trusted right now.
                 </p>
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    Instead of managing short-term ad campaigns, we architect Digital PR strategies that give these AI engines the permanent, authoritative proof they need to confidently recommend your business for the long haul.
+                    Instead of managing short-term ad campaigns, we architect Digital PR strategies that give these AI engines the <em class="italic text-sky-deep font-display">permanent, authoritative proof</em> they need to recommend your business for the long haul.
                 </p>
             </div>
         </div>

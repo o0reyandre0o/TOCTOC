@@ -36,6 +36,7 @@ $ai_toc = array(
     array( '#video-proof',     'Live Video Proof: Results for Cayman Brands' ),
     array( '#what-we-do',      'What We Do: Our 4 Core AI Visibility Steps' ),
     array( '#how-we-do-it',    'How We Do It: Our 3-Step Execution Process' ),
+    array( '#portfolio',       'Portfolio: We Build Websites AI Loves &amp; Humans Trust' ),
     array( '#traditional-seo', 'Why Traditional SEO is Failing Your Business' ),
     array( '#faq',             'Frequently Asked Questions' ),
 );
@@ -169,7 +170,7 @@ $ai_faqs = array(
                     Traditional search has changed. Customers are no longer just typing &ldquo;Cayman restaurant&rdquo; into Google&mdash;they are asking their phones full, conversational questions. If your business isn&rsquo;t set up for this shift, AI engines won&rsquo;t even know you exist.
                 </p>
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    We take care of all the complex technical heavy lifting so your business is always the first one recommended.
+                    We take care of all the complex technical heavy lifting so your business is <em class="italic text-sky-deep font-display">always the first one recommended.</em>
                 </p>
             </div>
         </div>
