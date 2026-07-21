@@ -12,8 +12,8 @@ get_header();
 // Table of contents — anchors match the section ids below.
 $dm_toc = array(
     array( '#approach',    'How Our Digital Marketing Approach Helps Your Business' ),
-    array( '#engine',      'Our Unified Growth Engine (How We Work)' ),
     array( '#showcase',    'Featured Case Study &amp; Website Showcase' ),
+    array( '#engine',      'Our Unified Growth Engine (How We Work)' ),
     array( '#boundaries',  'Who We Work With (And Our Boundaries)' ),
 );
 
@@ -156,38 +156,11 @@ $dm_boundaries = array(
         </div>
     </section>
 
-    <!-- 2. Unified Growth Engine -->
-    <section id="engine" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">02 &middot; How We Work</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Our Unified <em class="italic text-accent font-display">Growth Engine</em></h2>
-                <p class="mt-8 text-lg text-white/60 leading-relaxed">
-                    We execute a streamlined, 4-pillar system designed to optimize your digital marketing footprint for modern search engines:
-                </p>
-            </div>
-            <div class="mt-14 grid md:grid-cols-2 gap-6">
-                <?php foreach ( $dm_pillars as $pl ) : ?>
-                <article class="rounded-[2rem] bg-white/5 border border-white/10 p-8">
-                    <div class="flex items-start gap-5">
-                        <span class="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-accent text-slate-950 text-xl font-display"><?php echo esc_html( $pl[0] ); ?></span>
-                        <div>
-                            <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent mb-1">Pillar <?php echo esc_html( $pl[0] ); ?></p>
-                            <h3 class="text-xl md:text-2xl font-display leading-snug"><?php echo wp_kses_post( $pl[1] ); ?></h3>
-                            <p class="mt-3 text-white/60 leading-relaxed"><?php echo wp_kses_post( $pl[2] ); ?></p>
-                        </div>
-                    </div>
-                </article>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Featured Case Study + Showcase -->
+    <!-- 2. Featured Case Study + Showcase -->
     <section id="showcase" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; Proof</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Proof</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Featured Case Study &amp; <em class="italic text-sky-deep font-display">Website Showcase</em></h2>
             </div>
 
@@ -207,6 +180,34 @@ $dm_boundaries = array(
                     <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
                         <p class="text-white text-sm font-bold mb-2">What We Delivered</p>
                         <p class="text-white/70 leading-relaxed text-sm">A brand-new high-speed website, updated Google Maps &amp; TripAdvisor profiles, overhauled social channels, and continuous weekly updates for search crawlers.</p>
+                    </div>
+                </div>
+            <!-- The Proof Loop -->
+                <div class="mt-10">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50 mb-6">The Proof Loop</p>
+                    <div class="grid md:grid-cols-3 gap-6 items-start">
+                        <div class="flex justify-center md:justify-start">
+                            <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-white/10">
+                                <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline>
+                                    <source src="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4#t=0.1" type="video/mp4">
+                                </video>
+                                <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
+                                    <span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <figure class="flex flex-col items-center md:items-start">
+                            <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950">
+                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/photo-5102759273703345434-w.webp" alt="19-81 Brewing Co. website by TocToc Marketing" width="1273" height="2560" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+                            </div>
+                            <figcaption class="mt-3 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/50">19-81 website</figcaption>
+                        </figure>
+                        <figure class="flex flex-col items-center md:items-start">
+                            <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950">
+                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094552.webp" alt="19-81 Brewing Co. Google Business Profile" width="505" height="1198" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+                            </div>
+                            <figcaption class="mt-3 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/50">Google Business Profile</figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -239,6 +240,33 @@ $dm_boundaries = array(
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                     </span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Unified Growth Engine -->
+    <section id="engine" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; How We Work</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Our Unified <em class="italic text-accent font-display">Growth Engine</em></h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    We execute a streamlined, 4-pillar system designed to optimize your digital marketing footprint for modern search engines:
+                </p>
+            </div>
+            <div class="mt-14 grid md:grid-cols-2 gap-6">
+                <?php foreach ( $dm_pillars as $pl ) : ?>
+                <article class="rounded-[2rem] bg-white/5 border border-white/10 p-8">
+                    <div class="flex items-start gap-5">
+                        <span class="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-accent text-slate-950 text-xl font-display"><?php echo esc_html( $pl[0] ); ?></span>
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent mb-1">Pillar <?php echo esc_html( $pl[0] ); ?></p>
+                            <h3 class="text-xl md:text-2xl font-display leading-snug"><?php echo wp_kses_post( $pl[1] ); ?></h3>
+                            <p class="mt-3 text-white/60 leading-relaxed"><?php echo wp_kses_post( $pl[2] ); ?></p>
+                        </div>
+                    </div>
+                </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
