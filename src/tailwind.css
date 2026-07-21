@@ -59,3 +59,64 @@
     border: 1px solid hsl(0 0% 100% / 0.08);
   }
 }
+
+@layer components {
+  /* Clickable lime "cover" injected over every lazy video (footer.php) until the
+     visitor clicks to play. Uses the brand accent green. Progressive enhancement:
+     if JS is off the native controls remain and no poster is shown. */
+  .ttvideo-poster {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.25rem;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+    color: hsl(220 45% 8%);
+    background: radial-gradient(120% 130% at 50% 0%,
+      hsl(72 100% 72%) 0%,
+      hsl(72 100% 62%) 45%,
+      hsl(74 85% 46%) 100%);
+    transition: opacity 0.4s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ttvideo-poster__play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.75rem;
+    height: 3.75rem;
+    padding-left: 3px;
+    border-radius: 9999px;
+    background: hsl(220 45% 8%);
+    color: hsl(72 100% 62%);
+    box-shadow: 0 12px 30px hsl(220 45% 8% / 0.35);
+    transition: transform 0.3s ease;
+  }
+  .ttvideo-poster:hover .ttvideo-poster__play,
+  .ttvideo-poster:focus-visible .ttvideo-poster__play {
+    transform: scale(1.09);
+  }
+  .ttvideo-poster__title {
+    font-weight: 800;
+    font-size: 1.05rem;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  .ttvideo-poster__sub {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.72;
+  }
+  .ttvideo-poster.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
