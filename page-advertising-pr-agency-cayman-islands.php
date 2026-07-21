@@ -73,27 +73,27 @@ $pr_faqs = array(
 <main class="min-h-screen bg-background text-foreground">
 
     <!-- Hero -->
-    <section class="relative pt-48 pb-24 overflow-hidden bg-white">
-        <div class="absolute inset-0 z-0 opacity-10">
+    <section class="relative pt-48 pb-24 overflow-hidden bg-slate-950 text-white">
+        <div class="absolute inset-0 z-0 opacity-40">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
             <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent blur-[100px] rounded-full"></div>
         </div>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'Digital PR' ); ?>
-                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+                <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
                     Digital PR for AI Authority Citations &middot; Cayman Islands
                 </div>
-                <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-slate-900">
-                    We Turn Digital PR into <em class="italic text-sky-deep font-display">Permanent AI Trust Signals</em>
+                <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-white">
+                    We Turn Digital PR into <em class="italic text-accent font-display">Permanent AI Trust Signals</em>
                 </h1>
-                <p class="mt-10 text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">
+                <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
                     Ads are built for short-term traffic. Digital PR is built for long-term AI authority. We secure the high-value digital citations that make ChatGPT, Gemini, and Google recommend your brand.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
-                    <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                    <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
                         Call Us Today
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
+                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-950 text-accent transition-transform group-hover:rotate-45">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                         </span>
                     </a>
