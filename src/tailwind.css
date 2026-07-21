@@ -119,21 +119,16 @@
     opacity: 0;
     pointer-events: none;
   }
-  /* Image-cover variant: cover photo behind a dark gradient (set inline by JS). */
+  /* Image-cover variant: cover photo behind a dark gradient (set inline by JS).
+     Same centred layout as the flat green, but white text over the photo. */
   .ttvideo-poster--image {
     color: #fff;
-    justify-content: flex-end;
-    gap: 0.4rem;
-  }
-  .ttvideo-poster--image .ttvideo-poster__play {
-    margin-bottom: auto;
-    margin-top: auto;
   }
   .ttvideo-poster--image .ttvideo-poster__title,
   .ttvideo-poster--image .ttvideo-poster__sub {
     text-shadow: 0 2px 12px rgba(15, 23, 42, 0.65);
   }
   .ttvideo-poster--image .ttvideo-poster__sub {
-    opacity: 0.9;
+    opacity: 0.92;
   }
 }
