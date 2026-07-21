@@ -7,21 +7,21 @@ get_header(); ?>
 
 <main class="min-h-screen bg-background text-foreground">
     <!-- Section 1: Hero -->
-    <section class="relative pt-48 pb-32 overflow-hidden bg-white">
-        <div class="absolute inset-0 z-0 opacity-10">
+    <section class="relative pt-48 pb-32 overflow-hidden bg-slate-950 text-white">
+        <div class="absolute inset-0 z-0 opacity-40">
             <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-sky-deep blur-[120px] rounded-full"></div>
         </div>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'About Us' ); ?>
-                <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+                <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
                     The Dynamic Team
                 </div>
-                <h1 class="text-5xl md:text-[110px] font-display leading-[0.85] text-slate-900">
-                    Your Digital Agency in <em class="italic text-sky-deep font-display">The Cayman Islands.</em>
+                <h1 class="text-5xl md:text-[110px] font-display leading-[0.85] text-white">
+                    Your Digital Agency in <em class="italic text-accent font-display">The Cayman Islands.</em>
                 </h1>
-                <p class="mt-10 text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">
+                <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
                     We combine local expertise with global data-driven strategies. We are your partners in growth, specializing in scaling impact for businesses, coaches, and consultants.
                 </p>
             </div>

@@ -48,19 +48,19 @@ $guide_faqs = array(
 <main class="min-h-screen bg-background text-foreground">
 
 	<!-- Hero -->
-	<section class="relative pt-40 md:pt-48 pb-16 overflow-hidden bg-white">
-		<div class="absolute inset-0 z-0 opacity-10">
+	<section class="relative pt-40 md:pt-48 pb-16 overflow-hidden bg-slate-950 text-white">
+		<div class="absolute inset-0 z-0 opacity-40">
 			<div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
 		</div>
 		<div class="relative z-10 mx-auto max-w-4xl px-6">
 			<?php toctoc_render_breadcrumbs( '2026 Guide' ); ?>
-			<div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+			<div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
 				2026 Guide · Cayman Islands
 			</div>
-			<h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-slate-900">
-				Digital Marketing in the <em class="italic text-sky-deep font-display">Cayman Islands</em>
+			<h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-white">
+				Digital Marketing in the <em class="italic text-accent font-display">Cayman Islands</em>
 			</h1>
-			<p class="mt-8 text-xl text-slate-600 leading-relaxed max-w-3xl">
+			<p class="mt-8 text-xl text-white/70 leading-relaxed max-w-3xl">
 				A clear, up-to-date guide to how digital marketing works in the Cayman Islands in 2026 — SEO, AI visibility (AEO &amp; GEO), costs, and how to choose the right agency.
 			</p>
 		</div>
