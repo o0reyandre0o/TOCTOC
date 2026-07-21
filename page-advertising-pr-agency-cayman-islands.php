@@ -102,14 +102,14 @@ $pr_faqs = array(
         </div>
     </section>
 
-    <!-- Intro -->
-    <section class="pb-12 bg-white">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl space-y-6">
-                <p class="text-xl text-slate-700 leading-relaxed">
+    <!-- Intro (home-style: large centered display) -->
+    <section class="relative py-20 md:py-28 bg-white">
+        <div class="mx-auto max-w-4xl px-6 text-center">
+            <div class="space-y-8">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     In the modern era of search, AI engines like ChatGPT and Gemini actively scrape the web for articles, digital profiles, and video platforms to see who is trusted right now.
                 </p>
-                <p class="text-xl text-slate-700 leading-relaxed">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     Instead of managing short-term ad campaigns, we architect Digital PR strategies that give these AI engines the permanent, authoritative proof they need to confidently recommend your business for the long haul.
                 </p>
             </div>

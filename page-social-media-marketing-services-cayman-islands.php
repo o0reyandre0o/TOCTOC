@@ -101,17 +101,17 @@ $sm_faqs = array(
         </div>
     </section>
 
-    <!-- Intro -->
-    <section class="pb-12 bg-white">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl space-y-6">
-                <p class="text-xl text-slate-700 leading-relaxed">
+    <!-- Intro (home-style: large centered display) -->
+    <section class="relative py-20 md:py-28 bg-white">
+        <div class="mx-auto max-w-4xl px-6 text-center">
+            <div class="space-y-8">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     If you landed on this page looking for a basic social media manager to post generic graphics on your Facebook feed, we are glad you are here&mdash;because we need to warn you.
                 </p>
-                <p class="text-xl text-slate-700 leading-relaxed">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     Spending your budget on standard daily posts that get zero reach is a treadmill that leads nowhere. Today, the real value of social media has shifted. AI search engines crawl your LinkedIn, Instagram, and Facebook profiles to verify if your business is active, legitimate, and trusted.
                 </p>
-                <p class="text-xl text-slate-700 leading-relaxed">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     <strong class="font-semibold text-slate-900">We don&rsquo;t post for vanity metrics. We turn your social channels into high-authority data feeds that fuel AI search engines.</strong>
                 </p>
             </div>

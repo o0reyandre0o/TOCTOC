@@ -99,14 +99,14 @@ $wd_process = array(
         </div>
     </section>
 
-    <!-- Intro -->
-    <section class="pb-12 bg-white">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl space-y-6">
-                <p class="text-xl text-slate-700 leading-relaxed">
+    <!-- Intro (home-style: large centered display) -->
+    <section class="relative py-20 md:py-28 bg-white">
+        <div class="mx-auto max-w-4xl px-6 text-center">
+            <div class="space-y-8">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     <strong class="font-semibold text-slate-900">We don&rsquo;t build generic brochure sites. We engineer AI-Ready Web Foundations built for lightning-fast speeds, maximum conversion, and algorithmic trust.</strong>
                 </p>
-                <p class="text-xl text-slate-700 leading-relaxed">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     In the modern era of search, having a &ldquo;pretty&rdquo; website isn&rsquo;t enough. If your site code is bloated, slow, or missing hidden structured data, AI assistants like ChatGPT and Gemini will simply bypass your business when local customers ask for recommendations.
                 </p>
             </div>

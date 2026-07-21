@@ -161,14 +161,14 @@ $ai_faqs = array(
         </div>
     </section>
 
-    <!-- Intro -->
-    <section class="pb-12 bg-white">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl space-y-6">
-                <p class="text-xl text-slate-700 leading-relaxed">
+    <!-- Intro (home-style: large centered display) -->
+    <section class="relative py-20 md:py-28 bg-white">
+        <div class="mx-auto max-w-4xl px-6 text-center">
+            <div class="space-y-8">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     Traditional search has changed. Customers are no longer just typing &ldquo;Cayman restaurant&rdquo; into Google&mdash;they are asking their phones full, conversational questions. If your business isn&rsquo;t set up for this shift, AI engines won&rsquo;t even know you exist.
                 </p>
-                <p class="text-xl text-slate-700 leading-relaxed">
+                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
                     We take care of all the complex technical heavy lifting so your business is always the first one recommended.
                 </p>
             </div>
