@@ -613,6 +613,9 @@
             </a>
         </div>
     </section>
+    <!-- Free SEO Checker CTA -->
+    <?php toctoc_render_checker_cta(); ?>
+
 </main>
 
 <?php get_footer(); ?>

@@ -405,6 +405,9 @@ $ai_faqs = array(
             </div>
         </div>
     </section>
+    <!-- Free SEO Checker CTA -->
+    <?php toctoc_render_checker_cta(); ?>
+
 </main>
 
 <script type="application/ld+json">

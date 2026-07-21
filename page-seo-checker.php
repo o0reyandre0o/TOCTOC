@@ -47,6 +47,38 @@ if ( $ttseo_ts ) {
 }
 </style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://toctoc.ky/seo-checker/#app",
+  "name": "Free SEO, GEO & AEO Checker",
+  "url": "https://toctoc.ky/seo-checker/",
+  "description": "A free, instant tool that audits any website's classic SEO, its AI visibility (GEO/AEO — how ready the page is to be found and recommended by ChatGPT, Perplexity and Google AI) and its Core Web Vitals speed, returning a score and plain-English plus technical fixes.",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "SEO & AI Visibility Audit Tool",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Runs in any modern web browser.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Classic on-page SEO audit (titles, meta descriptions, headings, images)",
+    "AI visibility check for GEO / AEO — readiness to be recommended by ChatGPT, Perplexity and Google AI",
+    "Core Web Vitals and page speed analysis",
+    "Whole-site scan of up to 20 pages",
+    "Plain-English and technical explanations of every issue",
+    "Downloadable PDF report and free weekly monitoring"
+  ],
+  "provider": { "@id": "https://toctoc.ky/#organization" },
+  "publisher": { "@id": "https://toctoc.ky/#organization" }
+}
+</script>
+
 <main class="min-h-screen bg-background text-foreground">
 
     <!-- Hero + form -->
