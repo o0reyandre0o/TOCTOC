@@ -68,6 +68,39 @@
         }, { rootMargin: '200px 0px' });
         vids.forEach(function (v) { io.observe(v); });
     })();
+
+    // Lime "click to watch" cover over every lazy video. Injected here (not in the
+    // page markup) so a single definition covers every video site-wide. Clicking it
+    // starts playback and reveals the native controls. Progressive enhancement.
+    (function () {
+        var vids = document.querySelectorAll('video[data-ttlazy]');
+        if (!vids.length) return;
+        var PLAY = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+        vids.forEach(function (v) {
+            var wrap = v.parentElement;
+            if (!wrap) return;
+            if (getComputedStyle(wrap).position === 'static') { wrap.style.position = 'relative'; }
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'ttvideo-poster';
+            btn.setAttribute('aria-label', 'Play video');
+            btn.innerHTML =
+                '<span class="ttvideo-poster__play">' + PLAY + '</span>' +
+                '<span class="ttvideo-poster__title">Watch the proof</span>' +
+                '<span class="ttvideo-poster__sub">Click to watch</span>';
+            btn.addEventListener('click', function () {
+                btn.classList.add('is-hidden');
+                v.preload = 'metadata';
+                v.load();
+                var p = v.play();
+                if (p && p.catch) { p.catch(function () {}); }
+                window.setTimeout(function () {
+                    if (btn.parentElement) { btn.parentElement.removeChild(btn); }
+                }, 450);
+            });
+            wrap.appendChild(btn);
+        });
+    })();
     </script>
     <?php wp_footer(); ?>
 </body>
