@@ -273,48 +273,6 @@
         </div>
     </section>
 
-    <!-- Section 4: Process -->
-    <section id="process" class="relative py-24 md:py-32">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-12">
-                <div class="max-w-2xl">
-                    <h2 class="text-5xl md:text-7xl text-slate-900 font-display leading-[0.9]">
-                        How to <em class="italic text-sky-deep font-display">Work With Us</em>
-                    </h2>
-                </div>
-                <p class="text-slate-500 max-w-sm text-lg">
-                    A transparent, 3-step path to putting your business at the top of AI search results.
-                </p>
-            </div>
-
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-soft">
-                <div class="p-10 border-b md:border-b-0 md:border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="font-mono text-xs font-bold text-sky-deep">01</span>
-                        <div class="h-[1px] flex-1 bg-slate-100"></div>
-                    </div>
-                    <h3 class="text-2xl text-slate-900 font-display mb-4">Discovery &amp; Strategy</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">We discuss your business goals, audit your current digital footprint, and map out a custom AI Search Visibility plan tailored to your industry.</p>
-                </div>
-                <div class="p-10 border-b md:border-b-0 md:border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="font-mono text-xs font-bold text-sky-deep">02</span>
-                        <div class="h-[1px] flex-1 bg-slate-100"></div>
-                    </div>
-                    <h3 class="text-2xl text-slate-900 font-display mb-4">Build &amp; Optimize</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Our team sets up your digital profiles for AI crawlers, optimizes your local data feeds, and builds your high-speed website foundation.</p>
-                </div>
-                <div class="p-10 hover:bg-sky-pale/30 transition-colors">
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="font-mono text-xs font-bold text-sky-deep">03</span>
-                        <div class="h-[1px] flex-1 bg-slate-100"></div>
-                    </div>
-                    <h3 class="text-2xl text-slate-900 font-display mb-4">Get Cited &amp; Grow</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in modern search engines like ChatGPT and Gemini, turning AI discovery traffic into a steady stream of new leads.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Section 5: Portfolio -->
     <section id="portfolio" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass">
@@ -561,6 +519,49 @@
                     <svg viewBox="0 0 24 24" width="20" height="20" class="mr-1"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     View All Reviews
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Work With Us — moved below testimonials -->
+    <section id="process" class="relative py-24 md:py-32">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-12">
+                <div class="max-w-2xl">
+                    <h2 class="text-5xl md:text-7xl text-slate-900 font-display leading-[0.9]">
+                        How to <em class="italic text-sky-deep font-display">Work With Us</em>
+                    </h2>
+                </div>
+                <p class="text-slate-500 max-w-sm text-lg">
+                    A transparent, 3-step path to putting your business at the top of AI search results.
+                </p>
+            </div>
+
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-soft">
+                <div class="p-10 border-b md:border-b-0 md:border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="font-mono text-xs font-bold text-sky-deep">01</span>
+                        <div class="h-[1px] flex-1 bg-slate-100"></div>
+                    </div>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">Discovery &amp; Strategy</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">We discuss your business goals, audit your current digital footprint, and map out a custom AI Search Visibility plan tailored to your industry.</p>
+                </div>
+                <div class="p-10 border-b md:border-b-0 md:border-r border-slate-50 hover:bg-sky-pale/30 transition-colors">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="font-mono text-xs font-bold text-sky-deep">02</span>
+                        <div class="h-[1px] flex-1 bg-slate-100"></div>
+                    </div>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">Build &amp; Optimize</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Our team sets up your digital profiles for AI crawlers, optimizes your local data feeds, and builds your high-speed website foundation.</p>
+                </div>
+                <div class="p-10 hover:bg-sky-pale/30 transition-colors">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="font-mono text-xs font-bold text-sky-deep">03</span>
+                        <div class="h-[1px] flex-1 bg-slate-100"></div>
+                    </div>
+                    <h3 class="text-2xl text-slate-900 font-display mb-4">Get Cited &amp; Grow</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in modern search engines like ChatGPT and Gemini, turning AI discovery traffic into a steady stream of new leads.</p>
+                </div>
             </div>
         </div>
     </section>
