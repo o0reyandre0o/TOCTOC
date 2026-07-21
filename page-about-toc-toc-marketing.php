@@ -95,9 +95,7 @@ get_header(); ?>
                 <!-- Andre Gutierrez -->
                 <article id="andre-gutierrez" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <div class="w-16 h-16 rounded-full bg-sky-pale flex items-center justify-center shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/andre-gray.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Andre Gutierrez</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Web Developer</p>
@@ -117,9 +115,7 @@ get_header(); ?>
                 <!-- Nora Bravo -->
                 <article id="nora-bravo" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <div class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-                        </div>
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/nora-gray.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Nora Bravo</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Graphic Designer</p>
