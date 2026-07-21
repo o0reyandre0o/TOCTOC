@@ -95,9 +95,9 @@ function toctoc_render_breadcrumbs( $label = '' ) {
 	?>
 	<nav aria-label="Breadcrumb" class="mb-6">
 		<ol class="flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest">
-			<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-slate-400 hover:text-sky-deep transition-colors decoration-none">Home</a></li>
-			<li aria-hidden="true" class="text-slate-300">/</li>
-			<li aria-current="page" class="text-sky-deep"><?php echo esc_html( $label ); ?></li>
+			<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-white/50 hover:text-accent transition-colors decoration-none">Home</a></li>
+			<li aria-hidden="true" class="text-white/30">/</li>
+			<li aria-current="page" class="text-accent"><?php echo esc_html( $label ); ?></li>
 		</ol>
 	</nav>
 	<?php
