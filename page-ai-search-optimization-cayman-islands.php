@@ -321,6 +321,23 @@ $ai_faqs = array(
         </div>
     </section>
 
+    <!-- Portfolio (same showcase as the homepage / Our Work) -->
+    <section id="portfolio" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <h2 class="text-5xl md:text-7xl font-display leading-[0.9]">
+                    Portfolio: We Build Websites <em class="italic text-accent font-display">AI Loves</em> &amp; Humans Trust.
+                </h2>
+                <p class="mt-8 text-lg text-white/50 max-w-2xl italic">
+                    High-performance &ldquo;Discovery Engines&rdquo; we&rsquo;ve launched for Cayman and beyond.
+                </p>
+            </div>
+            <div class="mt-16">
+                <?php toctoc_render_showcase_grid( true ); ?>
+            </div>
+        </div>
+    </section>
+
     <!-- 4. Why Traditional SEO is Failing -->
     <section id="traditional-seo" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
