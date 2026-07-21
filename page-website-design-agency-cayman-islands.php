@@ -166,21 +166,21 @@ $wd_process = array(
         </div>
     </section>
 
-    <!-- 2. Portfolio Showcase -->
-    <section id="showcase" class="py-24 md:py-32 bg-white scroll-mt-28">
+    <!-- 2. Portfolio Showcase (dark, same as Our Work) -->
+    <section id="showcase" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Portfolio</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Website <em class="italic text-sky-deep font-display">Portfolio Showcase</em></h2>
-                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">02 &middot; Portfolio</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Website <em class="italic text-accent font-display">Portfolio Showcase</em></h2>
+                <p class="mt-8 text-lg text-white/50 leading-relaxed">
                     We build every project on clean code, high speeds, and crawlable backend architectures. Here are a few examples of digital foundations built for local Cayman businesses:
                 </p>
             </div>
             <div class="mt-14">
-                <?php toctoc_render_showcase_grid( false ); ?>
+                <?php toctoc_render_showcase_grid( true ); ?>
             </div>
             <div class="mt-14">
-                <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-white text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
                     See All Our Work
                     <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
