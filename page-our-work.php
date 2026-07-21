@@ -47,6 +47,7 @@ $ow_cases = array(
             'Perform weekly updates across all of these channels to keep search crawlers and AI bots continuously fed with fresh data.',
         ),
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
+        'poster'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp',
         'headline'  => 'How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;',
         'shots'     => array(
             array( 'label' => '19-81 website', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/photo-5102759273703345434-w.webp', 'w' => 1273, 'h' => 2560 ),
@@ -69,6 +70,7 @@ $ow_cases = array(
             'Perform weekly updates to their website and local listings to maintain algorithmic trust and crawl freshness.',
         ),
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-1-1.mp4',
+        'poster'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-cover.webp',
         'headline'  => 'How we ranked our clients #1 &amp; #2 on ChatGPT &amp; Gemini! &#128081;',
         'shots'     => array(
             array( 'label' => 'Uncle Liu &mdash; Google Business Profile', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094942.webp', 'w' => 500, 'h' => 1198 ),
@@ -92,6 +94,7 @@ $ow_cases = array(
             'Perform weekly updates across all platforms to keep their digital footprint active, verified, and authoritative for search engines.',
         ),
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking.mp4',
+        'poster'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking-cover.webp',
         'headline'  => 'How TintXKing shows up in ChatGPT &amp; Gemini &#128663;',
         'shots'     => array(
             array( 'label' => 'TintXKing website', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/descarga.webp', 'w' => 396, 'h' => 800 ),
@@ -254,7 +257,7 @@ $ow_cases = array(
                     <div class="flex justify-center md:justify-start">
                         <?php if ( $c['mp4'] ) : ?>
                         <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
-                            <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline>
+                            <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline <?php echo ! empty( $c['poster'] ) ? 'poster="' . esc_url( $c['poster'] ) . '"' : ''; ?>>
                                 <source src="<?php echo esc_url( $c['mp4'] ); ?>#t=0.1" type="video/mp4">
                             </video>
                             <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
