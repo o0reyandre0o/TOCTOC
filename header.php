@@ -287,9 +287,9 @@
             "closes": "18:00"
           },
           "sameAs": [
-            "https://www.facebook.com/toctocmarketing",
-            "https://www.instagram.com/toctocmarketing",
-            "https://www.linkedin.com/company/toctocmarketing"
+            "https://www.facebook.com/wearetoctoc",
+            "https://www.instagram.com/wearetoctoc",
+            "https://www.linkedin.com/company/110122083/"
           ]
         },
         {
