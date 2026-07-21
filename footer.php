@@ -110,6 +110,29 @@
             wrap.appendChild(btn);
         });
     })();
+
+    // Contact-intent tracking: pushes a GTM/GA4 dataLayer event whenever a visitor
+    // clicks any phone (tel:) or email (mailto:) link anywhere on the site. These are
+    // the primary conversions for a service agency. Mark 'contact_click' as a key
+    // event in GA4 to measure calls & email leads. Mirrors the checker's lead event.
+    (function () {
+        window.dataLayer = window.dataLayer || [];
+        document.addEventListener('click', function (e) {
+            var t = e.target;
+            if (!t || !t.closest) return;
+            var a = t.closest('a[href^="tel:"], a[href^="mailto:"]');
+            if (!a) return;
+            var href = a.getAttribute('href') || '';
+            var isTel = href.indexOf('tel:') === 0;
+            window.dataLayer.push({
+                event: 'contact_click',
+                contact_method: isTel ? 'phone' : 'email',
+                contact_value: href.replace(/^(tel:|mailto:)/, ''),
+                link_text: (a.textContent || '').trim().slice(0, 80),
+                page_path: location.pathname
+            });
+        }, true);
+    })();
     </script>
     <?php wp_footer(); ?>
 </body>
