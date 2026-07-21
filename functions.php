@@ -353,6 +353,35 @@ add_action( 'template_redirect', function () {
  * physical llms.txt in the WordPress root (see toctoc_llms_sync_file), because
  * Apache serves an existing physical file before WordPress ever runs.
  */
+/**
+ * Reusable call-to-action band that funnels visitors to the free SEO/GEO/AEO
+ * Checker. Rendered on the home page, every service page, Our Work and About so
+ * the lead-magnet tool is no longer orphaned. Uses the brand accent-green card.
+ */
+function toctoc_render_checker_cta() {
+	$url = esc_url( home_url( '/seo-checker/' ) );
+	?>
+	<section class="relative py-16 md:py-24 bg-white">
+		<div class="mx-auto max-w-5xl px-6">
+			<div class="relative overflow-hidden rounded-[2.5rem] bg-accent text-slate-950 px-8 py-12 md:p-16 shadow-glass">
+				<div class="relative z-10 max-w-2xl">
+					<span class="inline-flex items-center gap-2 rounded-full border border-slate-950/20 bg-slate-950/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest mb-6">Free Tool &middot; 30 Seconds</span>
+					<h2 class="text-4xl md:text-6xl font-display leading-[0.95]">Not sure how AI sees your website?</h2>
+					<p class="mt-6 text-lg md:text-xl text-slate-950/80 leading-relaxed">Run a free instant audit &mdash; classic SEO, AI visibility (GEO/AEO) and Core Web Vitals speed. Get your scores and exactly what to fix.</p>
+					<a href="<?php echo $url; ?>" class="group mt-10 inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+						Analyze my website free
+						<span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+						</span>
+					</a>
+				</div>
+				<div aria-hidden="true" class="pointer-events-none absolute -right-16 -bottom-20 w-80 h-80 rounded-full bg-slate-950/10 blur-2xl"></div>
+			</div>
+		</div>
+	</section>
+	<?php
+}
+
 function toctoc_llms_content() {
     return <<<'LLMS'
 # TocToc Marketing
