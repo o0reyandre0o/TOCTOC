@@ -189,19 +189,16 @@ get_header(); ?>
                              for readability) — the visible text keeps the real coordinates. -->
                         <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-accent/50 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:0;top:18%" data-dlat="18" data-dlon="-45" data-main="1">
                             <p class="text-sm font-bold text-white leading-none">Cayman Islands</p>
-                            <p class="mt-1 text-[10px] tracking-wider text-accent">19.3&deg;N &middot; 81.4&deg;W &middot; HQ</p>
+                            <p class="mt-1 text-[10px] tracking-wider text-accent">HQ</p>
                         </div>
                         <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:0;top:4%" data-dlat="22" data-dlon="-100">
                             <p class="text-sm font-bold text-white leading-none">USA</p>
-                            <p class="mt-1 text-[10px] tracking-wider text-white/50">Miami</p>
                         </div>
                         <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="right:0;top:44%" data-dlat="2" data-dlon="-108">
                             <p class="text-sm font-bold text-white leading-none">Puerto Rico</p>
-                            <p class="mt-1 text-[10px] tracking-wider text-white/50">San Juan</p>
                         </div>
                         <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:10%;bottom:6%" data-dlat="-48" data-dlon="-58">
                             <p class="text-sm font-bold text-white leading-none">Venezuela</p>
-                            <p class="mt-1 text-[10px] tracking-wider text-white/50">Caracas &middot; Zulia</p>
                         </div>
                     </div>
                 </div>
