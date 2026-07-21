@@ -118,7 +118,7 @@ $ow_cases = array(
                 <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
                     Our Work
                 </div>
-                <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-white">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
                     Real Results: Making Brands the <em class="italic text-accent font-display">Undisputed Choice</em> in the AI Era
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">

@@ -18,7 +18,7 @@ get_header(); ?>
                 <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
                     The #1 SEO Agency in Cayman
                 </div>
-                <h1 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-slate-900">
                     ROI-Driven <em class="italic text-sky-deep font-display">Search Results.</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">

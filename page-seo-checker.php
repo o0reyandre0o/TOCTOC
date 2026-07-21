@@ -61,7 +61,7 @@ if ( $ttseo_ts ) {
             <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
                 Free Tool · SEO · GEO · AEO
             </div>
-            <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-white">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
                 Is your website ready for <em class="italic text-accent font-display">Google &amp; AI?</em>
             </h1>
             <p class="mt-8 mx-auto max-w-2xl text-lg text-white/70 leading-relaxed">
