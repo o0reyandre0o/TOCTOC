@@ -245,7 +245,7 @@ $dm_boundaries = array(
     </section>
 
     <!-- 3. Unified Growth Engine -->
-    <section id="engine" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+    <section id="engine" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-10 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; How We Work</span>
@@ -272,7 +272,7 @@ $dm_boundaries = array(
     </section>
 
     <!-- 4. Who We Work With (boundaries) -->
-    <section id="boundaries" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
+    <section id="boundaries" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-10 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; Full Transparency</span>

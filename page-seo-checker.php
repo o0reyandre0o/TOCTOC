@@ -50,21 +50,21 @@ if ( $ttseo_ts ) {
 <main class="min-h-screen bg-background text-foreground">
 
     <!-- Hero + form -->
-    <section class="ttseo-noprint relative pt-40 md:pt-48 pb-20 overflow-hidden bg-white">
-        <div class="absolute inset-0 z-0 opacity-10">
+    <section class="ttseo-noprint relative pt-40 md:pt-48 pb-20 overflow-hidden bg-slate-950 text-white">
+        <div class="absolute inset-0 z-0 opacity-40">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-deep blur-[100px] rounded-full"></div>
             <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent blur-[100px] rounded-full"></div>
         </div>
 
         <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
             <?php toctoc_render_breadcrumbs( 'Free SEO Checker' ); ?>
-            <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
                 Free Tool · SEO · GEO · AEO
             </div>
-            <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-slate-900">
-                Is your website ready for <em class="italic text-sky-deep font-display">Google &amp; AI?</em>
+            <h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-white">
+                Is your website ready for <em class="italic text-accent font-display">Google &amp; AI?</em>
             </h1>
-            <p class="mt-8 mx-auto max-w-2xl text-lg text-slate-600 leading-relaxed">
+            <p class="mt-8 mx-auto max-w-2xl text-lg text-white/70 leading-relaxed">
                 Run a free instant audit of any page — classic SEO, AI visibility (GEO/AEO), and Core Web Vitals speed. Get your scores and exactly what to fix.
             </p>
 
