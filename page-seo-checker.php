@@ -483,7 +483,7 @@ window.TTSEO = {
         document.getElementById('crawl-avg-geo').textContent = '—';
         document.getElementById('crawl-pages').textContent = '0';
         document.getElementById('crawl-status').textContent = 'Finding pages…';
-        document.getElementById('ttseo-crawl-pdf').classList.add('hidden');
+        document.getElementById('ttseo-crawl-tools').classList.add('hidden');
         document.getElementById('crawl-print-target').textContent = url;
         // Measure the entered URL's speed in parallel with the crawl.
         var spd = document.getElementById('crawl-speed');
@@ -523,12 +523,20 @@ window.TTSEO = {
         function next(i) {
             if (i >= total) {
                 statusEl.textContent = 'Done — scanned ' + counted + ' page' + (counted === 1 ? '' : 's') + '.';
-                // Only offer the PDF once every page has actually been scanned.
-                if (counted) document.getElementById('ttseo-crawl-pdf').classList.remove('hidden');
+                // Only offer the downloads once every page has actually been scanned.
+                if (counted) document.getElementById('ttseo-crawl-tools').classList.remove('hidden');
                 if (counted) {
                     renderSitewide(pages);
                     checkBrokenLinks(linkMap, pages);
                     recordCrawlHistory(siteUrl, email, Math.round(seoSum / counted), Math.round(geoSum / counted));
+                    // Held for the crawl JSON / Markdown export buttons.
+                    window.__ttseoCrawl = {
+                        site: siteUrl,
+                        generated: new Date().toISOString(),
+                        avgSeo: Math.round(seoSum / counted),
+                        avgGeo: Math.round(geoSum / counted),
+                        pages: pages
+                    };
                 }
                 return;
             }
@@ -541,7 +549,7 @@ window.TTSEO = {
                 document.getElementById('crawl-bar').style.width = Math.round(done / total * 100) + '%';
                 if (json && json.success) {
                     var d = json.data; counted++; seoSum += d.seo; geoSum += d.geo;
-                    pages.push({ url: d.url, title: d.title || '', desc: d.desc || '', h1: (d.h1 | 0), phones: d.phones || [] });
+                    pages.push({ url: d.url, title: d.title || '', desc: d.desc || '', h1: (d.h1 | 0), phones: d.phones || [], seo: d.seo, geo: d.geo, issues: d.issues || [] });
                     (d.links || []).forEach(function (L) {
                         var k = L.replace(/\/+$/, '').toLowerCase();
                         if (!linkMap[k]) linkMap[k] = { url: L, src: [] };
@@ -562,6 +570,9 @@ window.TTSEO = {
                                 '<span class="font-bold text-slate-900">' + esc(r.label) + '</span>' +
                                 '<span class="text-xs text-slate-500">' + esc(r.detail) + '</span>' +
                             '</div>' + explainHtml(r) +
+                            (r.items && r.items.length
+                                ? '<ul class="mt-2 space-y-1 text-xs text-slate-500 list-disc pl-5">' + r.items.map(function (it) { return '<li>' + esc(it) + '</li>'; }).join('') + '</ul>'
+                                : '') +
                         '</div>';
                     }).join('');
                     rows.insertAdjacentHTML('beforeend',
@@ -918,6 +929,64 @@ window.TTSEO = {
     if (jsonBtn) { jsonBtn.addEventListener('click', ttseoExportJSON); }
     var mdBtn = document.getElementById('ttseo-md');
     if (mdBtn) { mdBtn.addEventListener('click', ttseoExportMarkdown); }
+
+    // ---- JSON / Markdown export of the full-site (crawl) scan ---------------
+    function ttseoCrawlPath(u) { return (u || '').replace(/^https?:\/\/[^\/]+/, '') || '/'; }
+    function ttseoCrawlIssues(p) {
+        return (p.issues || []).filter(function (r) { return r.status === 'fail' || r.status === 'warn'; });
+    }
+    function ttseoCrawlExportJSON() {
+        var C = window.__ttseoCrawl;
+        if (!C) { return; }
+        var payload = {
+            tool: 'TocToc Marketing — Free SEO / GEO / AEO Checker (full-site scan)',
+            source: 'https://toctoc.ky/seo-checker/',
+            generated: C.generated,
+            site: C.site,
+            pages_scanned: C.pages.length,
+            averages: { seo: C.avgSeo, geo: C.avgGeo },
+            pages: C.pages.map(function (p) {
+                return { url: p.url, seo: p.seo, geo: p.geo, title: p.title, description: p.desc, h1: p.h1, issues: p.issues || [] };
+            })
+        };
+        ttseoDownload('seo-sitescan-' + ttseoHostSlug(C.site) + '.json', JSON.stringify(payload, null, 2), 'application/json');
+    }
+    function ttseoCrawlExportMarkdown() {
+        var C = window.__ttseoCrawl;
+        if (!C) { return; }
+        var host = ttseoHostSlug(C.site);
+        var md = '# Full-site SEO / GEO Report — ' + host + '\n\n';
+        md += '**Site:** ' + C.site + '  \n';
+        md += '**Generated:** ' + new Date(C.generated).toLocaleString() + '  \n';
+        md += '**Pages scanned:** ' + C.pages.length + '  \n';
+        md += '**Average SEO:** ' + C.avgSeo + '/100  \n';
+        md += '**Average AI visibility (GEO / AEO):** ' + C.avgGeo + '/100  \n\n';
+        md += '| Page | SEO | GEO | Issues |\n|---|---|---|---|\n';
+        C.pages.forEach(function (p) {
+            md += '| ' + ttseoCrawlPath(p.url) + ' | ' + p.seo + ' | ' + p.geo + ' | ' + ttseoCrawlIssues(p).length + ' |\n';
+        });
+        md += '\n';
+        C.pages.forEach(function (p) {
+            var issues = ttseoCrawlIssues(p);
+            if (!issues.length) { return; }
+            md += '## ' + p.url + '\n';
+            md += 'SEO ' + p.seo + ' · GEO ' + p.geo + '\n\n';
+            issues.forEach(function (r) {
+                md += '- ' + ttseoStatusMark(r.status) + ' **' + r.label + '** — ' + (r.detail || '');
+                if (r.items && r.items.length) { md += '\n' + r.items.map(function (it) { return '  - ' + it; }).join('\n'); }
+                var fix = (explainOf(r) || {}).fix;
+                if (fix) { md += '\n  - _Fix:_ ' + fix; }
+                md += '\n';
+            });
+            md += '\n';
+        });
+        md += '---\nGenerated by TocToc Marketing — https://toctoc.ky/seo-checker/\n';
+        ttseoDownload('seo-sitescan-' + host + '.md', md, 'text/markdown');
+    }
+    var crawlJsonBtn = document.getElementById('ttseo-crawl-json');
+    if (crawlJsonBtn) { crawlJsonBtn.addEventListener('click', ttseoCrawlExportJSON); }
+    var crawlMdBtn = document.getElementById('ttseo-crawl-md');
+    if (crawlMdBtn) { crawlMdBtn.addEventListener('click', ttseoCrawlExportMarkdown); }
 
     // Full-site scan PDF. The print stylesheet expands every collapsed per-URL
     // breakdown, so the export always contains every page and all its issues —
