@@ -166,7 +166,7 @@ $dm_faqs = array(
 
     <!-- 1. How Our Approach Helps -->
     <section id="approach" class="relative py-24 md:py-32 overflow-hidden bg-sky-pale/50 scroll-mt-28">
-        <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1024 1024w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1536 1536w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1920 1920w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=2560 2560w" sizes="100vw" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-bottom" />
+        <img src="<?php echo esc_url( toctoc_clouds_src() ); ?>" srcset="<?php echo esc_attr( toctoc_clouds_srcset() ); ?>" sizes="100vw" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-bottom" />
         <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/60 to-white/70 z-[1]"></div>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">

@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <?php if ( is_front_page() ) : ?>
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" imagesrcset="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1024 1024w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1536 1536w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1920 1920w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=2560 2560w" imagesizes="100vw" fetchpriority="high">
+    <link rel="preload" as="image" href="<?php echo esc_url( toctoc_clouds_src() ); ?>" imagesrcset="<?php echo esc_attr( toctoc_clouds_srcset() ); ?>" imagesizes="100vw" fetchpriority="high">
     <?php endif; ?>
 
     <link rel="icon" type="image/svg+xml" href="https://toctoc.ky/toctoc-new-favicon-03.svg">

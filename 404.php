@@ -11,7 +11,7 @@ get_header(); ?>
 
     <!-- Clean Sky background (matches the homepage hero) -->
     <img
-        src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2574&auto=format&fit=crop"
+        src="<?php echo esc_url( toctoc_clouds_src() ); ?>"
         alt=""
         aria-hidden="true"
         class="absolute inset-0 w-full h-full object-cover"
