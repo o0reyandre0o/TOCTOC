@@ -23,7 +23,6 @@
         echo '<link rel="stylesheet" href="' . esc_url( get_template_directory_uri() . '/assets/tailwind.min.css' ) . '?v=' . (int) @filemtime( $ttc_css_path ) . '">';
     }
     ?>
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <?php if ( is_front_page() ) : ?>
     <link rel="preload" as="image" href="<?php echo esc_url( toctoc_clouds_src() ); ?>" imagesrcset="<?php echo esc_attr( toctoc_clouds_srcset() ); ?>" imagesizes="100vw" fetchpriority="high">

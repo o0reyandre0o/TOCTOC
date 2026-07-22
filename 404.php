@@ -12,8 +12,12 @@ get_header(); ?>
     <!-- Clean Sky background (matches the homepage hero) -->
     <img
         src="<?php echo esc_url( toctoc_clouds_src() ); ?>"
+        srcset="<?php echo esc_attr( toctoc_clouds_srcset() ); ?>"
+        sizes="100vw"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         class="absolute inset-0 w-full h-full object-cover"
     />
     <div class="absolute inset-0 bg-white/50 z-[1]"></div>
