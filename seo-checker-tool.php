@@ -1288,6 +1288,13 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 		$src  = trim( $img->getAttribute( 'src' ) );
 		$base = ( '' !== $src && 0 !== strpos( $src, 'data:' ) ) ? basename( strtok( $src, '?' ) ) : '';
 		if ( '' === $a ) {
+			// An empty alt is the CORRECT choice for decorative images that also opt out
+			// of the accessibility tree (aria-hidden / role=presentation) — never flag those.
+			$ariah = strtolower( trim( $img->getAttribute( 'aria-hidden' ) ) );
+			$role  = strtolower( trim( $img->getAttribute( 'role' ) ) );
+			if ( 'true' === $ariah || 'presentation' === $role || 'none' === $role ) {
+				continue; // decorative by design → counts as OK
+			}
 			$noalt++;
 			if ( count( $alt_examples ) < 8 && '' !== $base ) {
 				$alt_examples[] = $base . ' — no alt';

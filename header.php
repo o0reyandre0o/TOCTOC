@@ -66,7 +66,7 @@
             'desc' => 'See what is happening in Venezuela after the June 2026 earthquakes: photos, videos and footage from the ground, plus trusted ways to donate from the Cayman Islands.'
         ],
         'seo-checker' => [
-            'title' => 'Free SEO, GEO & AEO Checker Tool | TocToc Marketing Cayman',
+            'title' => 'Free Website SEO, GEO & AEO Checker | TocToc Cayman',
             'desc' => 'Run a free instant audit of any website: classic SEO, AI visibility (GEO/AEO) and Core Web Vitals speed. Get your scores and exactly what to fix.'
         ],
         'digital-marketing-cayman-islands-guide' => [

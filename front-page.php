@@ -198,7 +198,7 @@
     <!-- Section 3: AI Search Visibility Framework -->
     <section id="loop" class="relative py-24 md:py-32 overflow-hidden bg-sky-pale/50">
         <!-- Clouds background (same sky image as the hero) -->
-        <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-bottom" />
+        <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1024 1024w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1536 1536w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1920 1920w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=2560 2560w" sizes="100vw" alt="" aria-hidden="true" width="1920" height="1280" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-bottom" />
         <!-- Stronger white at the top (behind the heading) fading to lighter over the cards, so clouds stay visible but the title is readable. -->
         <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/60 to-white/70 z-[1]"></div>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
