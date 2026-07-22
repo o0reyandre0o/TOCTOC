@@ -15,6 +15,7 @@ $dm_toc = array(
     array( '#showcase',    'Featured Case Study &amp; Website Showcase' ),
     array( '#engine',      'Our Unified Growth Engine (How We Work)' ),
     array( '#boundaries',  'Who We Work With (And Our Boundaries)' ),
+    array( '#faq',         'Frequently Asked Questions' ),
 );
 
 // Section 1 — value points.
@@ -59,6 +60,34 @@ $dm_boundaries = array(
         'dont_text'  => 'We do not handle customer DMs, comment replies, or administrative tasks.',
         'do_label'   => 'Technical Optimization',
         'do_text'    => 'We manage site speed, Schema code, map synchronization, and AI bot indexing.',
+    ),
+);
+
+// FAQ — visible accordion + FAQPage schema (what AI answer engines actually read).
+$dm_faqs = array(
+    array(
+        'q' => 'What does a full-service digital marketing agency in the Cayman Islands actually do?',
+        'a' => 'We unify your entire digital presence into one verified brand that search engines and AI trust. That means a high-speed, Schema-coded website, synchronized Google Maps and directory listings, optimized social profiles, and authoritative content — all engineered to make your Cayman business the #1 recommended answer on ChatGPT, Gemini and Google.',
+    ),
+    array(
+        'q' => 'Do you run Google Ads or paid social media campaigns?',
+        'a' => 'No. We do not build or manage paid Google Ads, social ads or print ads. Ads rent attention and stop the moment you stop paying. Instead we build permanent, crawlable digital assets — websites, Schema data and authoritative content — that generate ongoing organic search leads and compound in value over time.',
+    ),
+    array(
+        'q' => 'How is TocToc different from a traditional marketing agency?',
+        'a' => 'A traditional agency sells retainers for posting, ad management and generic reporting. We build permanent digital assets and algorithmic trust: the structured data, local knowledge graph and content that make ChatGPT, Gemini and Google read your business as the definitive, trusted answer in your category.',
+    ),
+    array(
+        'q' => 'Do you handle daily social media posting and community management?',
+        'a' => 'No. We do not do daily post scheduling, stories, grid curation, DMs or comment replies. What we do is content architecture — building high-value video, image and written content "chunks" and optimizing your profiles so AI crawlers read your business as active, consistent and trusted.',
+    ),
+    array(
+        'q' => 'How long does it take to see results?',
+        'a' => 'The core website and technical foundation take a few days to build, but visibility compounds after that. Most local Cayman businesses see measurable movement in 3 to 6 months, with growth continuing from there as authority and citations build.',
+    ),
+    array(
+        'q' => 'How much does digital marketing cost in the Cayman Islands?',
+        'a' => 'We build a custom monthly plan based on your industry, competition and goals rather than one-size-fits-all packages. Book a free strategy call and we will give you a transparent quote.',
     ),
 );
 ?>
@@ -328,6 +357,30 @@ $dm_boundaries = array(
             </div>
         </div>
     </section>
+
+    <!-- 5. FAQ -->
+    <section id="faq" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; FAQ</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Your Questions, <em class="italic text-sky-deep font-display">Answered</em></h2>
+            </div>
+            <div class="max-w-4xl space-y-4">
+                <?php foreach ( $dm_faqs as $faq ) : ?>
+                <details class="group rounded-[1.75rem] border border-slate-100 bg-slate-50 p-7 shadow-soft transition-all open:bg-white">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 text-xl md:text-2xl font-display text-slate-900 list-none [&::-webkit-details-marker]:hidden">
+                        <span><?php echo esc_html( $faq['q'] ); ?></span>
+                        <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-pale text-sky-deep transition-transform group-open:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo esc_html( $faq['a'] ); ?></p>
+                </details>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
     <!-- Free SEO Checker CTA -->
     <?php toctoc_render_checker_cta(); ?>
 
@@ -391,6 +444,31 @@ echo wp_json_encode(
 				);
 			},
 			$ttc_catalog
+		),
+	),
+	JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
+
+<script type="application/ld+json">
+<?php
+echo wp_json_encode(
+	array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'mainEntity' => array_map(
+			function ( $f ) {
+				return array(
+					'@type'          => 'Question',
+					'name'           => $f['q'],
+					'acceptedAnswer' => array(
+						'@type' => 'Answer',
+						'text'  => $f['a'],
+					),
+				);
+			},
+			$dm_faqs
 		),
 	),
 	JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE

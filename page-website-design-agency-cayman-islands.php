@@ -15,6 +15,7 @@ $wd_toc = array(
     array( '#failing',      'Why Traditional Web Design Is Failing Local Businesses' ),
     array( '#ai-ready',     'What Makes a Website &ldquo;AI-Ready&rdquo;? (Our 3 Core Pillars)' ),
     array( '#process',      'Our 3-Step Web Design &amp; Launch Process' ),
+    array( '#faq',          'Frequently Asked Questions' ),
 );
 
 // Section 1 comparison table: current situation -> how we help.
@@ -64,6 +65,34 @@ $wd_process = array(
     array( '01', 'Discovery &amp; Content Architecture', 'We map out your site map, align your local Cayman keywords, and structure your page layout to guide visitors directly toward making a call.' ),
     array( '02', 'High-Speed Development &amp; Schema Integration', 'Our team builds your site foundation, optimizes mobile performance, injects hidden Schema code, and connects your Google Maps and local profiles.' ),
     array( '03', 'Launch &amp; Continuous Indexing', 'We launch your site and immediately issue live indexing requests to Google and AI web scrapers&mdash;ensuring your new digital asset is indexed and ready to bring in calls.' ),
+);
+
+// FAQ — visible accordion + FAQPage schema (what AI answer engines actually read).
+$wd_faqs = array(
+    array(
+        'q' => 'How much does a website cost in the Cayman Islands?',
+        'a' => 'It depends on scope — a focused local business site is very different from a large e-commerce build. Rather than fixed packages, we quote each project based on the pages, features and integrations you need. Book a free call and we will give you a transparent, itemized quote.',
+    ),
+    array(
+        'q' => 'What does "AI-ready" web design actually mean?',
+        'a' => 'An AI-ready website is engineered so ChatGPT, Gemini and Google can read, trust and recommend it. In practice that means hand-coded Schema markup, a clean semantic HTML structure AI can parse into answers, lightning-fast mobile performance, and content organized around the real questions your customers ask.',
+    ),
+    array(
+        'q' => 'Can you redesign or upgrade my existing website instead of building a new one?',
+        'a' => 'Yes. We do all three: build from scratch, redesign, or optimize what you already have. If your current site is fundamentally sound we restructure its speed, Schema and content architecture; if it is holding you back, we rebuild it on a high-speed, AI-ready foundation.',
+    ),
+    array(
+        'q' => 'Do you build on WordPress?',
+        'a' => 'Yes — we build fast, custom-coded WordPress sites (and custom themes), which gives you an easy-to-manage platform without the bloat and slow load times of generic page-builder templates. Every build is engineered for Core Web Vitals speed and clean, crawlable code.',
+    ),
+    array(
+        'q' => 'Will my website be fast and mobile-friendly?',
+        'a' => 'Yes. Speed and mobile-first design are core to every build, not an afterthought — we optimize for Google Core Web Vitals because page speed is both a ranking signal and the difference between a visitor who converts and one who leaves.',
+    ),
+    array(
+        'q' => 'How long does it take to build a website?',
+        'a' => 'The core high-speed foundation is built in a matter of days, with the full timeline depending on the number of pages, content readiness and any custom features. We will give you a clear schedule with your quote after the discovery call.',
+    ),
 );
 ?>
 
@@ -265,6 +294,29 @@ $wd_process = array(
         </div>
     </section>
 
+    <!-- 6. FAQ -->
+    <section id="faq" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">06 &middot; FAQ</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Web Design, <em class="italic text-sky-deep font-display">Answered</em></h2>
+            </div>
+            <div class="max-w-4xl space-y-4">
+                <?php foreach ( $wd_faqs as $faq ) : ?>
+                <details class="group rounded-[1.75rem] border border-slate-100 bg-slate-50 p-7 shadow-soft transition-all open:bg-white">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 text-xl md:text-2xl font-display text-slate-900 list-none [&::-webkit-details-marker]:hidden">
+                        <span><?php echo esc_html( $faq['q'] ); ?></span>
+                        <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-pale text-sky-deep transition-transform group-open:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo esc_html( $faq['a'] ); ?></p>
+                </details>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
         <div class="mx-auto max-w-5xl px-6">
@@ -299,6 +351,31 @@ echo wp_json_encode(
         'areaServed'  => array( '@type' => 'Place', 'name' => 'Cayman Islands' ),
         'description' => 'Custom, high-speed AI-ready websites for Cayman Islands businesses: hand-coded Schema markup, ultra-fast mobile engineering and GEO content structure, engineered to convert visitors and get cited and recommended by ChatGPT, Gemini and Google.',
         'url'         => 'https://toctoc.ky/website-design-agency-cayman-islands/',
+    ),
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
+
+<script type="application/ld+json">
+<?php
+echo wp_json_encode(
+    array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array_map(
+            function ( $f ) {
+                return array(
+                    '@type'          => 'Question',
+                    'name'           => $f['q'],
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text'  => $f['a'],
+                    ),
+                );
+            },
+            $wd_faqs
+        ),
     ),
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 );

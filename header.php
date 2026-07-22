@@ -10,11 +10,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap">
     <!-- Compiled Tailwind (static, ~39 KB) — replaces the runtime CDN build. Rebuild with: npm run build:css -->
-    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() . '/assets/tailwind.min.css' ); ?>?v=<?php echo (int) @filemtime( get_template_directory() . '/assets/tailwind.min.css' ); ?>">
+    <?php
+    // Inline the compiled Tailwind CSS so it never render-blocks as a separate request
+    // (the whole sheet is only ~44 KB / ~8 KB gzipped). Falls back to a normal stylesheet
+    // link if the file can't be read.
+    $ttc_css_path = get_template_directory() . '/assets/tailwind.min.css';
+    $ttc_css      = @file_get_contents( $ttc_css_path );
+    if ( false !== $ttc_css && '' !== $ttc_css ) {
+        echo '<style id="toctoc-tw">' . $ttc_css . '</style>';
+    } else {
+        echo '<link rel="stylesheet" href="' . esc_url( get_template_directory_uri() . '/assets/tailwind.min.css' ) . '?v=' . (int) @filemtime( $ttc_css_path ) . '">';
+    }
+    ?>
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <?php if ( is_front_page() ) : ?>
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop" imagesrcset="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1024 1024w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1536 1536w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1920 1920w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=2560 2560w" imagesizes="100vw" fetchpriority="high">
     <?php endif; ?>
 
     <link rel="icon" type="image/svg+xml" href="https://toctoc.ky/toctoc-new-favicon-03.svg">

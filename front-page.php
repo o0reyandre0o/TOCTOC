@@ -21,6 +21,8 @@
         <!-- Clean Sky background -->
         <img
             src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&w=1920&auto=format&fit=crop"
+            srcset="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1024 1024w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1536 1536w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=1920 1920w, https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=75&auto=format&fit=crop&w=2560 2560w"
+            sizes="100vw"
             alt="Sky"
             width="1920"
             height="1280"
