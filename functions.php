@@ -361,6 +361,20 @@ add_action( 'template_redirect', function () {
  * Apache serves an existing physical file before WordPress ever runs.
  */
 /**
+ * Self-hosted "clouds" sky background (assets/img) — used on the home hero, the
+ * clouds sections and the 404 page. Replaces the old third-party Unsplash URL:
+ * served from our own domain (1-year browser cache, no extra origin) as responsive
+ * WebP variants (640 / 1280 / 1920 / 2560 px).
+ */
+function toctoc_clouds_src() {
+	return get_template_directory_uri() . '/assets/img/photo-1513002749550-c59d786b8e6c.webp';
+}
+function toctoc_clouds_srcset() {
+	$u = get_template_directory_uri() . '/assets/img/photo-1513002749550-c59d786b8e6c';
+	return $u . '-640.webp 640w, ' . $u . '-1280.webp 1280w, ' . $u . '-1920.webp 1920w, ' . $u . '.webp 2560w';
+}
+
+/**
  * Reusable call-to-action band that funnels visitors to the free SEO/GEO/AEO
  * Checker. Rendered on the home page, every service page, Our Work and About so
  * the lead-magnet tool is no longer orphaned. Uses the brand accent-green card.
