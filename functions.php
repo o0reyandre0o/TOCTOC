@@ -393,7 +393,7 @@ function toctoc_llms_content() {
     return <<<'LLMS'
 # TocToc Marketing
 
-> TocToc Marketing is a leading AI-era digital marketing agency based in the Cayman Islands (George Town, Grand Cayman). We help local businesses get recommended by AI and search engines through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
+> TocToc Marketing is a leading AI-era digital marketing agency based in the Cayman Islands (George Town, Grand Cayman). We make local businesses the #1 answer on ChatGPT, Gemini and Google — with high-performance websites AI loves and humans trust — through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
 
 ## About
 TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business the definitive answer cited by ChatGPT, Gemini and Perplexity. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: George Town, Grand Cayman, Cayman Islands (KY1-1102).

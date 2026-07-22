@@ -25,7 +25,7 @@
     // SEO & Social Meta logic
     $site_name = "TocToc Marketing";
     $default_title = "TocToc Marketing | Digital Marketing Agency Cayman Islands";
-    $default_desc = "Leading digital marketing agency in the Cayman Islands. We specialize in SEO, Web Design, and AI-driven growth strategies for local businesses.";
+    $default_desc = "AI Search Visibility agency in the Cayman Islands. We make local businesses the #1 answer on ChatGPT, Gemini and Google, with high-performance websites AI loves and humans trust.";
     $logo_url = "https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg";
     
     $seo_map = [
@@ -195,7 +195,7 @@
           "name": "TocToc Marketing",
           "alternateName": "Toc Toc Marketing",
           "description": "<?php echo esc_attr($default_desc); ?>",
-          "slogan": "We deploy the AI Search Visibility Framework for your business.",
+          "slogan": "AI Search Visibility for Cayman businesses. We make you the #1 answer on ChatGPT, Gemini & Google — with high-performance websites AI loves and humans trust.",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
