@@ -265,10 +265,20 @@ if ( $ttseo_ts ) {
 
             <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
                 <h2 class="text-3xl md:text-4xl font-display text-slate-900">Full-site scan</h2>
-                <button id="ttseo-crawl-pdf" type="button" class="ttseo-noprint hidden shrink-0 inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2.5 text-sm font-bold hover:bg-slate-800 transition-colors">
-                    Download PDF
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-                </button>
+                <div id="ttseo-crawl-tools" class="ttseo-noprint hidden shrink-0 flex flex-wrap items-center gap-2">
+                    <button id="ttseo-crawl-pdf" type="button" class="inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2.5 text-sm font-bold hover:bg-slate-800 transition-colors">
+                        Download PDF
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    </button>
+                    <button id="ttseo-crawl-json" type="button" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white text-slate-700 px-4 py-2.5 text-sm font-bold hover:border-slate-300 hover:text-slate-900 transition-colors">
+                        JSON
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    </button>
+                    <button id="ttseo-crawl-md" type="button" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white text-slate-700 px-4 py-2.5 text-sm font-bold hover:border-slate-300 hover:text-slate-900 transition-colors">
+                        Markdown
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    </button>
+                </div>
             </div>
             <p id="crawl-status" class="text-slate-500 mb-6">Finding pages…</p>
             <div class="ttseo-noprint w-full h-2 bg-slate-200 rounded-full overflow-hidden mb-10">
