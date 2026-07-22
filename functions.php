@@ -277,6 +277,13 @@ function toctoc_render_video_schema( $videos ) {
 		if ( empty( $v['contentUrl'] ) ) {
 			continue;
 		}
+		// Google's video structured data requires a full ISO 8601 datetime WITH a
+		// timezone for uploadDate; a date-only value ("2026-07-17") is flagged as
+		// missing a timezone / invalid. Cayman Islands is EST (UTC-5, no DST).
+		$upload = isset( $v['uploadDate'] ) ? (string) $v['uploadDate'] : '';
+		if ( preg_match( '/^\d{4}-\d{2}-\d{2}$/', $upload ) ) {
+			$upload .= 'T09:00:00-05:00';
+		}
 		$items[] = array(
 			'@context'     => 'https://schema.org',
 			'@type'        => 'VideoObject',
@@ -284,7 +291,7 @@ function toctoc_render_video_schema( $videos ) {
 			'description'  => $v['description'],
 			'contentUrl'   => $v['contentUrl'],
 			'thumbnailUrl' => $v['thumbnailUrl'],
-			'uploadDate'   => $v['uploadDate'],
+			'uploadDate'   => $upload,
 		);
 	}
 	if ( ! $items ) {

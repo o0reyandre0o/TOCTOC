@@ -310,7 +310,7 @@ $ow_cases = array(
             'description'  => wp_strip_all_tags( html_entity_decode( $c['lead'], ENT_QUOTES, 'UTF-8' ) ),
             'contentUrl'   => $c['mp4'],
             'thumbnailUrl' => toctoc_og_image_url( 'video-' . sanitize_title( $c['title'] ), $c['title'] . ' · Case Study', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
-            'uploadDate'   => '2026-07-17',
+            'uploadDate'   => '2026-07-17T09:00:00-05:00',
         );
     }, $ow_cases ) );
     ?>

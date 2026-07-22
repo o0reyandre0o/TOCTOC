@@ -190,7 +190,7 @@
             'description'  => wp_strip_all_tags( html_entity_decode( $pv['desc'], ENT_QUOTES, 'UTF-8' ) ),
             'contentUrl'   => $pv['mp4'],
             'thumbnailUrl' => toctoc_og_image_url( 'video-' . sanitize_title( $pv['label'] ), wp_strip_all_tags( $pv['label'] ) . ' · First in AI Search', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
-            'uploadDate'   => '2026-07-17',
+            'uploadDate'   => '2026-07-17T09:00:00-05:00',
         );
     }, $ttc_proof ) );
     ?>
