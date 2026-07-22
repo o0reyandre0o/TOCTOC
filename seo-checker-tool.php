@@ -354,6 +354,11 @@ function toctoc_seo_explanations() {
 			'tech'  => "The alt attribute on <img>. Required for WCAG accessibility compliance, enables Google Image search, and gives crawlers context they cannot get from the pixels. Purely decorative images should carry an empty alt=\"\".",
 			'fix'   => "Add short descriptions to your images. It helps Google understand them and helps blind visitors.",
 		),
+		'Responsive images' => array(
+			'plain' => "Whether your pictures come in different sizes so phones download a small version instead of the big desktop one. It makes your site load faster on mobile.",
+			'tech'  => "Use of srcset (on <img> or inside <picture>) so the browser picks the right-resolution file per device pixel ratio and viewport, instead of shipping one full-size image everywhere. Cuts image bytes on mobile — a major Largest Contentful Paint and data-usage win.",
+			'fix'   => "Serve your images in several sizes using srcset (or a <picture> element). Most page builders and WordPress do this automatically once images are added to the media library.",
+		),
 		'Keyword alignment' => array(
 			'plain' => "Whether your page title, your main headline and your web address all say the same thing. If they each talk about something different, Google can't tell what the page is really about.",
 			'tech'  => "Tokenizes the <title>, the first <h1> and the URL slug (stopwords removed) and checks for meaningful overlap. Zero shared terms between title and H1 — or a slug matching neither — dilutes the page's relevance signal for the query it should rank for.",
@@ -1275,18 +1280,52 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 	$imgs    = $doc->getElementsByTagName( 'img' );
 	$imgc    = $imgs->length;
 	$noalt   = 0;
+	$generic = 0;
+	$alt_examples = array();
+	$generic_alts = array( 'image', 'images', 'img', 'photo', 'photos', 'picture', 'pictures', 'logo', 'icon', 'banner', 'graphic', 'untitled', 'placeholder', 'thumbnail', 'imagen' );
 	foreach ( $imgs as $img ) {
-		$a = trim( $img->getAttribute( 'alt' ) );
+		$a    = trim( $img->getAttribute( 'alt' ) );
+		$src  = trim( $img->getAttribute( 'src' ) );
+		$base = ( '' !== $src && 0 !== strpos( $src, 'data:' ) ) ? basename( strtok( $src, '?' ) ) : '';
 		if ( '' === $a ) {
 			$noalt++;
+			if ( count( $alt_examples ) < 8 && '' !== $base ) {
+				$alt_examples[] = $base . ' — no alt';
+			}
+			continue;
+		}
+		$al = strtolower( $a );
+		// "Generic" = an alt that adds nothing: a bare filler word, an image filename,
+		// or a camera/screenshot code like IMG_1234 / DSC0012 / Captura-2026.
+		$is_generic = in_array( $al, $generic_alts, true )
+			|| preg_match( '/\.(jpe?g|png|gif|webp|avif|svg)$/i', $al )
+			|| preg_match( '/^(dsc|img|image|photo|screenshot|captura|imagen)[-_ ]?\d+/i', $a );
+		if ( $is_generic ) {
+			$generic++;
+			if ( count( $alt_examples ) < 8 && '' !== $base ) {
+				$alt_examples[] = $base . ' — generic alt: "' . $a . '"';
+			}
 		}
 	}
-	$seo[] = toctoc_seo_row(
+	$alt_bad    = $noalt + $generic;
+	$alt_good   = $imgc - $alt_bad;
+	$alt_detail = 0 === $imgc ? 'No images' : $alt_good . ' of ' . $imgc . ' images have descriptive alt text';
+	if ( $noalt ) {
+		$alt_detail .= ' · ' . $noalt . ' missing';
+	}
+	if ( $generic ) {
+		$alt_detail .= ' · ' . $generic . ' generic';
+	}
+	$alt_row = toctoc_seo_row(
 		'Image alt text',
-		0 === $imgc ? 'info' : ( 0 === $noalt ? 'pass' : ( $noalt / max( 1, $imgc ) > 0.3 ? 'fail' : 'warn' ) ),
-		0 === $imgc ? 'No images' : ( $imgc - $noalt ) . ' of ' . $imgc . ' images have alt text',
+		0 === $imgc ? 'info' : ( 0 === $alt_bad ? 'pass' : ( $alt_bad / max( 1, $imgc ) > 0.3 ? 'fail' : 'warn' ) ),
+		$alt_detail,
 		'Alt text improves accessibility and image SEO.'
 	);
+	if ( ! empty( $alt_examples ) ) {
+		$alt_row['items'] = $alt_examples; // Named offenders for the on-page + JSON/Markdown report.
+	}
+	$seo[] = $alt_row;
 
 	// Image optimization (static analysis — formats, lazy loading, dimensions).
 	$img_srcs   = array();
@@ -1326,6 +1365,23 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 			'Image optimization',
 			empty( $issues ) ? 'pass' : ( count( $issues ) >= 2 ? 'fail' : 'warn' ),
 			empty( $issues ) ? 'Modern formats, lazy loading and dimensions look good' : implode( ' · ', $issues )
+		);
+	}
+
+	// Responsive images — <picture> and srcset let the browser download a right-sized
+	// file per device instead of the full-size image everywhere. Detected in the raw HTML.
+	if ( $img_real > 0 ) {
+		$picture_n = $doc->getElementsByTagName( 'picture' )->length;
+		$srcset_q  = $xp->query( '//img[@srcset] | //source[@srcset]' );
+		$srcset_n  = $srcset_q ? $srcset_q->length : 0;
+		$responsive = ( $picture_n > 0 || $srcset_n > 0 );
+		$seo[] = toctoc_seo_row(
+			'Responsive images',
+			$responsive ? 'pass' : 'warn',
+			$responsive
+				? $picture_n . ' picture element' . ( 1 === $picture_n ? '' : 's' ) . ' · ' . $srcset_n . ' srcset source' . ( 1 === $srcset_n ? '' : 's' )
+				: 'No srcset or picture markup — every device downloads the full-size image',
+			'Responsive images (srcset / picture) serve smaller files to smaller screens, improving mobile speed.'
 		);
 	}
 

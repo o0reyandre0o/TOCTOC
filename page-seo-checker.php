@@ -72,7 +72,8 @@ if ( $ttseo_ts ) {
     "Core Web Vitals and page speed analysis",
     "Whole-site scan of up to 20 pages",
     "Plain-English and technical explanations of every issue",
-    "Downloadable PDF report and free weekly monitoring"
+    "Detailed image audit: missing, empty, generic alt text and responsive-image (srcset / picture) checks",
+    "Downloadable PDF, JSON and Markdown reports, plus free weekly monitoring"
   ],
   "provider": { "@id": "https://toctoc.ky/#organization" },
   "publisher": { "@id": "https://toctoc.ky/#organization" }
@@ -147,10 +148,20 @@ if ( $ttseo_ts ) {
             </div>
             <div class="flex items-center justify-between gap-4 mb-8">
                 <p class="text-sm text-slate-500">Report for <span id="ttseo-target" class="font-bold text-slate-900"></span></p>
-                <button id="ttseo-pdf" type="button" class="ttseo-noprint shrink-0 inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2.5 text-sm font-bold hover:bg-slate-800 transition-colors">
-                    Download PDF
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-                </button>
+                <div class="ttseo-noprint shrink-0 flex flex-wrap items-center gap-2">
+                    <button id="ttseo-pdf" type="button" class="inline-flex items-center gap-2 rounded-full bg-slate-950 text-white px-5 py-2.5 text-sm font-bold hover:bg-slate-800 transition-colors">
+                        Download PDF
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    </button>
+                    <button id="ttseo-json" type="button" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white text-slate-700 px-4 py-2.5 text-sm font-bold hover:border-slate-300 hover:text-slate-900 transition-colors">
+                        JSON
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    </button>
+                    <button id="ttseo-md" type="button" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white text-slate-700 px-4 py-2.5 text-sm font-bold hover:border-slate-300 hover:text-slate-900 transition-colors">
+                        Markdown
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    </button>
+                </div>
             </div>
 
             <!-- Score cards -->
@@ -369,6 +380,9 @@ window.TTSEO = {
                         '<span class="text-sm text-slate-500">' + esc(r.detail) + '</span>' +
                     '</div>' +
                     explainHtml(r) +
+                    (r.items && r.items.length
+                        ? '<ul class="mt-3 space-y-1 text-xs text-slate-500 list-disc pl-5">' + r.items.map(function (it) { return '<li>' + esc(it) + '</li>'; }).join('') + '</ul>'
+                        : '') +
                 '</div></div>';
         }).join('');
         document.getElementById(containerId).innerHTML = html;
@@ -826,6 +840,75 @@ window.TTSEO = {
         pdfBtn.addEventListener('click', function () { window.print(); });
     }
 
+    // ---- JSON / Markdown export of the single-page report -------------------
+    // Serializes the report already held in window.__ttseoReport — no extra
+    // request. JSON is the full machine-readable payload; Markdown is a clean,
+    // shareable text version (dev-friendly, like SEO Ghost's report formats).
+    function ttseoHostSlug(u) {
+        try { return new URL(u).hostname.replace(/^www\./, '') || 'report'; }
+        catch (e) { return 'report'; }
+    }
+    function ttseoDownload(filename, text, mime) {
+        var blob = new Blob([text], { type: mime + ';charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 200);
+    }
+    function ttseoStatusMark(s) {
+        return s === 'pass' ? '✅' : (s === 'warn' ? '🟡' : (s === 'fail' ? '🔴' : 'ℹ️'));
+    }
+    function ttseoReport() { return window.__ttseoReport || null; }
+    function ttseoExportJSON() {
+        var d = ttseoReport();
+        if (!d) { return; }
+        var payload = {
+            tool: 'TocToc Marketing — Free SEO / GEO / AEO Checker',
+            source: 'https://toctoc.ky/seo-checker/',
+            generated: new Date().toISOString(),
+            url: d.url,
+            scores: d.scores,
+            meta: d.meta,
+            seo: d.seo,
+            geo: d.geo,
+            competitor: d.competitor || null
+        };
+        ttseoDownload('seo-report-' + ttseoHostSlug(d.url) + '.json', JSON.stringify(payload, null, 2), 'application/json');
+    }
+    function ttseoExportMarkdown() {
+        var d = ttseoReport();
+        if (!d) { return; }
+        function rowsMD(rows) {
+            return (rows || []).map(function (r) {
+                var line = '- ' + ttseoStatusMark(r.status) + ' **' + r.label + '** — ' + (r.detail || '');
+                if (r.items && r.items.length) {
+                    line += '\n' + r.items.map(function (it) { return '  - ' + it; }).join('\n');
+                }
+                if (r.fix) { line += '\n  - _Fix:_ ' + r.fix; }
+                return line;
+            }).join('\n');
+        }
+        var host = ttseoHostSlug(d.url);
+        var md = '# SEO / GEO Report — ' + host + '\n\n';
+        md += '**URL:** ' + d.url + '  \n';
+        md += '**Generated:** ' + new Date().toLocaleString() + '  \n';
+        md += '**SEO score:** ' + d.scores.seo + '/100  \n';
+        md += '**AI visibility (GEO / AEO):** ' + d.scores.geo + '/100  \n';
+        if (d.competitor && d.competitor.scores) {
+            md += '**Competitor (' + (d.competitor.host || d.competitor.url) + '):** SEO ' + d.competitor.scores.seo + ' · GEO ' + d.competitor.scores.geo + '  \n';
+        }
+        md += '\n## On-page SEO\n' + rowsMD(d.seo) + '\n\n';
+        md += '## AI visibility (GEO / AEO)\n' + rowsMD(d.geo) + '\n\n';
+        md += '---\nGenerated by TocToc Marketing — https://toctoc.ky/seo-checker/\n';
+        ttseoDownload('seo-report-' + host + '.md', md, 'text/markdown');
+    }
+    var jsonBtn = document.getElementById('ttseo-json');
+    if (jsonBtn) { jsonBtn.addEventListener('click', ttseoExportJSON); }
+    var mdBtn = document.getElementById('ttseo-md');
+    if (mdBtn) { mdBtn.addEventListener('click', ttseoExportMarkdown); }
+
     // Full-site scan PDF. The print stylesheet expands every collapsed per-URL
     // breakdown, so the export always contains every page and all its issues —
     // regardless of what the user expanded on screen.
@@ -884,6 +967,7 @@ window.TTSEO = {
             if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
             if (!json || !json.success) { showError(json && json.data ? json.data.message : 'Could not analyze that URL.'); return; }
             var d = json.data;
+            window.__ttseoReport = d; // held for the JSON / Markdown export buttons
 
             document.getElementById('ttseo-results').classList.remove('hidden');
             document.getElementById('ttseo-target').textContent = d.url;
