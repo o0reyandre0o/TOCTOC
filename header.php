@@ -8,7 +8,8 @@
     <!-- Fonts: direct links (parallel) instead of the old @import chain inside style.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
     <!-- Compiled Tailwind (static, ~39 KB) — replaces the runtime CDN build. Rebuild with: npm run build:css -->
     <?php
     // Inline the compiled Tailwind CSS so it never render-blocks as a separate request
@@ -168,11 +169,21 @@
     <link rel="canonical" href="<?php echo esc_url($canonical); ?>">
     <?php endif; ?>
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    <!-- Google Tag Manager (delayed until first interaction / 3.5s to free the main thread) -->
+    <script>(function(w,d,s,l,i){
+        w[l]=w[l]||[]; // dataLayer available immediately so events queue before GTM loads
+        var loaded=false;
+        function load(){
+            if(loaded)return; loaded=true;
+            w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        }
+        var evs=['scroll','mousemove','touchstart','keydown','pointerdown'];
+        function fire(){ load(); evs.forEach(function(e){ w.removeEventListener(e,fire); }); }
+        evs.forEach(function(e){ w.addEventListener(e,fire,{passive:true}); });
+        w.setTimeout(load,3500); // fallback so no-interaction sessions are still tracked
     })(window,document,'script','dataLayer','GTM-5ZT8BLFP');</script>
     <!-- End Google Tag Manager -->
 
