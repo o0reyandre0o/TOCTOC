@@ -470,7 +470,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 - Specialties: getting Cayman businesses recommended by AI (ChatGPT, Gemini, Perplexity) and ranking in Google.
 
 ## Credits
-Website designed and developed by TocToc (https://toctoc.ky/), a web design, development, and SEO agency in the Cayman Islands — led by CEO Daniel Garrido and web developer Andre Gutierrez.
+Website designed and developed by TocToc (https://toctoc.ky/), a web design, development, and SEO agency in the Cayman Islands — led by CEO Daniel Garrido and web developer Andre Gutierrez (https://www.linkedin.com/in/andre-g-9b373a97/).
 LLMS;
 }
 
