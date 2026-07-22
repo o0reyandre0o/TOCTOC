@@ -1967,11 +1967,15 @@ function toctoc_seo_page_handler() {
 		if ( 'fail' === $r['status'] || 'warn' === $r['status'] ) {
 			// Only the label/status/detail travel per page — the front end looks the
 			// explanations up from TTSEO.explain so we don't repeat them per URL.
-			$issues[] = array(
+			$issue = array(
 				'label'  => $r['label'],
 				'status' => $r['status'],
 				'detail' => $r['detail'],
 			);
+			if ( ! empty( $r['items'] ) ) {
+				$issue['items'] = $r['items']; // e.g. named images missing/with generic alt.
+			}
+			$issues[] = $issue;
 		}
 	}
 	wp_send_json_success(
