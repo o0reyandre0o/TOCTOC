@@ -46,6 +46,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp bubble (same number as the Call Us CTAs). Sits below the
+         mobile menu (z-900) so it hides when the menu is open. -->
+    <a href="https://wa.me/13455478120?text=Hi%20TocToc!%20I%27d%20like%20to%20know%20more%20about%20your%20AI%20search%20services."
+       target="_blank" rel="noopener"
+       aria-label="Chat with TocToc on WhatsApp"
+       class="fixed bottom-5 right-5 z-[500] inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-pill hover:scale-110 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652a11.882 11.882 0 005.71 1.454h.005c6.582 0 11.941-5.359 11.944-11.893a11.821 11.821 0 00-3.474-8.46"/></svg>
+    </a>
+
     <script>
     // Lazy video metadata: videos ship with preload="none" so multi-MB mp4s never
     // load up front. When one nears the viewport we flip to metadata + load(),
@@ -120,13 +130,15 @@
         document.addEventListener('click', function (e) {
             var t = e.target;
             if (!t || !t.closest) return;
-            var a = t.closest('a[href^="tel:"], a[href^="mailto:"]');
+            var a = t.closest('a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me"], a[href*="api.whatsapp.com"]');
             if (!a) return;
             var href = a.getAttribute('href') || '';
-            var isTel = href.indexOf('tel:') === 0;
+            var method = href.indexOf('tel:') === 0 ? 'phone'
+                       : href.indexOf('mailto:') === 0 ? 'email'
+                       : 'whatsapp';
             window.dataLayer.push({
                 event: 'contact_click',
-                contact_method: isTel ? 'phone' : 'email',
+                contact_method: method,
                 contact_value: href.replace(/^(tel:|mailto:)/, ''),
                 link_text: (a.textContent || '').trim().slice(0, 80),
                 page_path: location.pathname
