@@ -49,12 +49,12 @@ $ai_phase1 = array(
     array(
         'title' => 'Automated 5-Star Review System',
         'body'  => 'AI search engines heavily prioritize customer reviews. We install an automated system that texts your happy customers a 1-tap link to leave a Google review right after they do business with you.',
+        'img'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-aisearch-imgs-2.png',
         'imgs'  => array( 10, 5, 3 ),
     ),
     array(
         'title' => 'Google Maps, Apple Maps &amp; LinkedIn Synchronization',
         'body'  => 'We clean up, verify, and lock down your exact business details across Google Maps, Apple Maps, TripAdvisor, and your official LinkedIn Company Page so search bots see matching, verified information everywhere.',
-        'img'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-aisearch-imgs-2.png',
         'imgs'  => array( 6, 8, 0 ),
     ),
     array(
@@ -281,7 +281,7 @@ $ai_google_rating = function ( $dark = false ) {
                     <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
                         <div class="md:order-2">
                             <?php if ( ! empty( $p['img'] ) ) : ?>
-                            <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['title'] ) . ' — real websites built by TocToc' ); ?>" loading="lazy" decoding="async" class="w-full h-auto max-w-[600px] mx-auto" />
+                            <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['title'] ) . ' — real websites built by TocToc' ); ?>" loading="lazy" decoding="async" class="w-full h-auto max-w-[480px] mx-auto" />
                             <?php else : ?>
                             <?php $ai_collage( $ai_sites, $p['imgs'] ); ?>
                             <?php endif; ?>
