@@ -61,6 +61,7 @@ $ai_phase1 = array(
     array(
         'title' => 'Branded YouTube Channel Setup',
         'body'  => 'We create and optimize a dedicated YouTube channel for your business, complete with an initial introductory video asset to give you an immediate video footprint in Cayman.',
+        'img'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-aisearch-imgs-5.png',
         'imgs'  => array( 1, 7, 11 ),
     ),
 );
