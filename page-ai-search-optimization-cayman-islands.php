@@ -157,10 +157,7 @@ $ai_google_rating = function ( $dark = false ) {
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'AI Search Optimization' ); ?>
-                <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
-                    AI Search Visibility &amp; Optimization Services
-                </div>
-                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
+                <h1 class="mt-2 text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
                     Get Your Cayman Business Recommended by <em class="italic text-accent font-display">ChatGPT, Gemini, and Google</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
