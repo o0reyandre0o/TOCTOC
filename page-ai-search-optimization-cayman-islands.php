@@ -33,71 +33,48 @@ $ai_proof = array(
 
 // Table of contents — anchors match the section ids below.
 $ai_toc = array(
-    array( '#video-proof',     'Live Video Proof: Results for Cayman Brands' ),
-    array( '#what-we-do',      'What We Do: Our 4 Core AI Visibility Steps' ),
-    array( '#how-we-do-it',    'How We Do It: Our 3-Step Execution Process' ),
-    array( '#portfolio',       'Portfolio: We Build Websites AI Loves &amp; Humans Trust' ),
-    array( '#traditional-seo', 'Why Traditional SEO is Failing Your Business' ),
-    array( '#faq',             'Frequently Asked Questions' ),
+    array( '#how-it-works', 'How It Works: Our Simple 2-Phase Plan' ),
+    array( '#guarantee',    'Our 90-Day Result Guarantee' ),
+    array( '#exclusivity',  'Industry Exclusivity: One Business Per Category' ),
 );
 
-// Section 2 — the four things we actually build and manage.
-$ai_core_steps = array(
+// Phase 1 — the AI Foundation Build. Each point pairs with a 3-website collage.
+$ai_phase1 = array(
     array(
-        'n'      => '1',
-        'title'  => 'We Build a High-Speed, AI-Ready Website From Scratch.',
-        'body'   => 'If you already have one, we keep it and deeply improve its backend structure. If your current site is too slow or outdated to crawl, we will discuss a full or partial redesign to make it perfect.',
-        'behind' => 'AI assistants don&rsquo;t read websites the way humans do; they scan hidden code in the background. We inject specialized Schema Markup into your site code. This hands ChatGPT and Gemini your exact location, hours, and services on a silver platter.',
+        'title' => 'A Fast, AI-Ready Website',
+        'body'  => 'We build a brand-new website (or deeply upgrade your existing site) designed for instant mobile speed. We install hidden background code that translates your exact services, location, and hours directly into AI language.',
+        'imgs'  => array( 2, 9, 4 ),
     ),
     array(
-        'n'      => '2',
-        'title'  => 'We Sync Your Business Details Across Maps and Core Social Profiles.',
-        'body'   => 'We fully clean up, sync, and lock down your exact business name, address, phone number, and services across Google Maps, Apple Maps, local directories, LinkedIn, Facebook, and Instagram.',
-        'behind' => 'Before an AI engine risks recommending you, it runs an automated web background check to verify you are a real, active company. Mismatched details across different apps confuse the AI, but a perfectly synchronized network of profiles forces them to trust you.',
+        'title' => 'Automated 5-Star Review System',
+        'body'  => 'AI search engines heavily prioritize customer reviews. We install an automated system that texts your happy customers a 1-tap link to leave a Google review right after they do business with you.',
+        'imgs'  => array( 10, 5, 3 ),
     ),
     array(
-        'n'      => '3',
-        'title'  => 'We Restructure Your Content to Answer Real Conversational Questions.',
-        'body'   => 'We take your business knowledge and turn it into deep-dive website blogs, LinkedIn articles, and visual micro-content. We explicitly write and format these assets to serve as direct, definitive answers to consumer queries.',
-        'behind' => 'People don&rsquo;t type short keyword phrases into AI engines anymore; they ask full sentences like, &ldquo;Where is the best place to get authentic Chinese food open right now?&rdquo; We format your content so AI tools can instantly scan, summarize, and deliver your brand as their live recommendation.',
+        'title' => 'Google Maps, Apple Maps &amp; LinkedIn Synchronization',
+        'body'  => 'We clean up, verify, and lock down your exact business details across Google Maps, Apple Maps, TripAdvisor, and your official LinkedIn Company Page so search bots see matching, verified information everywhere.',
+        'imgs'  => array( 6, 8, 0 ),
     ),
     array(
-        'n'      => '4',
-        'title'  => 'We Provide Continuous Monthly Maintenance and Weekly Performance Updates.',
-        'body'   => 'We don&rsquo;t just set it and forget it. We perform weekly technical health checks on your website, continuously feed the algorithms fresh content, and monitor your live positioning.',
-        'behind' => 'AI algorithms never stop changing, and competitors will try to outrank you. By running weekly optimization updates and tracking exactly how tools like ChatGPT and Gemini cite your brand, we protect and defend your #1 spot.',
+        'title' => 'Branded YouTube Channel Setup',
+        'body'  => 'We create and optimize a dedicated YouTube channel for your business, complete with an initial introductory video asset to give you an immediate video footprint in Cayman.',
+        'imgs'  => array( 1, 7, 11 ),
     ),
 );
 
-// Section 3 — the execution timeline.
-$ai_process = array(
+// Phase 2 — Monthly Protection & Growth.
+$ai_phase2 = array(
     array(
-        'n'     => '01',
-        'title' => 'Discovery &amp; Strategy',
-        'body'  => 'We analyze your current digital footprint, audit how AI engines view your competitors, and map out your custom AI Search Visibility blueprint.',
-        'items' => array(),
+        'title' => 'Weekly Search Bot Maintenance',
+        'body'  => 'We run weekly technical updates to keep search engine crawlers actively visiting and indexing your website.',
     ),
     array(
-        'n'     => '02',
-        'title' => 'The 3-Day Base Build',
-        'body'  => 'Once the strategy is locked in, our team sets up your core digital foundation. This initial launch takes exactly 3 days to build and complete, delivering:',
-        'items' => array(
-            'Your new or deeply improved, high-speed website.',
-            'A fully optimized professional LinkedIn profile featuring your first deep-dive article.',
-            'Updated, fully aligned Instagram and Facebook profiles.',
-            'A newly launched or fully optimized YouTube channel featuring at least one high-value video introducing your company.',
-            '3 high-impact social media posts &ldquo;chunked&rdquo; directly out of your main LinkedIn article.',
-        ),
+        'title' => '1 Monthly Authority Article (Website &amp; LinkedIn) + Social Chunking',
+        'body'  => 'We write one detailed industry article about your business expertise, publish it directly to your website and LinkedIn, then turn it into short video and image posts for YouTube, Instagram, and Facebook.',
     ),
     array(
-        'n'     => '03',
-        'title' => 'Ongoing Maintenance &amp; Monitoring',
-        'body'  => 'AI search engines favor consistent activity. To scale your visibility and defend your rankings, we transition into a monthly growth schedule:',
-        'items' => array(
-            'We run weekly technical updates and monitoring to ensure your website remains at peak crawling speed.',
-            'We produce and publish at least one deep-dive LinkedIn and website article per month to expand your AI keyword footprint.',
-            'We continuously repurpose that monthly article into video and image content chunks for your YouTube, Instagram, and Facebook feeds, proving to AI engines that your brand is completely verified and trusted.',
-        ),
+        'title' => 'Monthly AI Ranking Audits',
+        'body'  => 'Every 30 days, we test ChatGPT, Gemini, and Google Maps with real customer questions to track your market share against local rivals.',
     ),
 );
 
@@ -128,6 +105,45 @@ $ai_faqs = array(
         'a' => 'We build a custom monthly plan based on your industry, competition and goals rather than one-size-fits-all packages. Book a free strategy call and we will give you a transparent quote.',
     ),
 );
+
+$ai_sites = toctoc_showcase_sites();
+
+// A "cool" overlapping collage of three real client websites.
+$ai_collage = function ( $sites, $idx ) {
+    $n = count( $sites );
+    if ( ! $n ) { return; }
+    $a = $sites[ $idx[0] % $n ];
+    $b = $sites[ $idx[1] % $n ];
+    $c = $sites[ $idx[2] % $n ];
+    $shot = function ( $s ) {
+        return '<img src="' . esc_url( $s['img'] ) . '" alt="' . esc_attr( wp_strip_all_tags( $s['name'] ) . ' website by TocToc' ) . '" '
+            . ( ! empty( $s['w'] ) ? 'width="' . (int) $s['w'] . '" height="' . (int) $s['h'] . '" ' : '' )
+            . 'loading="lazy" decoding="async" class="w-full h-auto" />';
+    };
+    ?>
+    <div class="relative aspect-[5/4] w-full max-w-[560px] mx-auto" aria-hidden="true">
+        <figure class="absolute top-0 right-0 w-[70%] rotate-[3deg] rounded-2xl overflow-hidden shadow-glass ring-1 ring-black/5 bg-white"><?php echo $shot( $b ); ?></figure>
+        <figure class="absolute bottom-0 left-0 w-[62%] -rotate-[4deg] rounded-2xl overflow-hidden shadow-glass ring-1 ring-black/5 bg-white"><?php echo $shot( $a ); ?></figure>
+        <figure class="absolute bottom-8 right-6 w-[44%] rotate-[6deg] rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 bg-white z-10"><?php echo $shot( $c ); ?></figure>
+    </div>
+    <?php
+};
+
+// Reusable Google rating badge (aggregateRating lives in the site-wide schema graph).
+$ai_google_rating = function ( $dark = false ) {
+    $wrap  = $dark ? 'border-white/20 bg-white/10 text-white' : 'border-slate-200 bg-white text-slate-900 shadow-soft';
+    $muted = $dark ? 'text-white/60' : 'text-slate-500';
+    ?>
+    <div class="inline-flex items-center gap-3 rounded-full border <?php echo esc_attr( $wrap ); ?> px-5 py-2.5">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        <span class="text-lg font-bold leading-none">4.8</span>
+        <span class="inline-flex text-amber-400" aria-hidden="true">
+            <?php for ( $i = 0; $i < 5; $i++ ) : ?><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><?php endfor; ?>
+        </span>
+        <span class="text-sm font-medium <?php echo esc_attr( $muted ); ?> leading-none">21 Google reviews</span>
+    </div>
+    <?php
+};
 ?>
 
 <main class="min-h-screen bg-background text-foreground">
@@ -145,72 +161,41 @@ $ai_faqs = array(
                     AI Search Visibility &amp; Optimization Services
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    Make Your Business the <em class="italic text-accent font-display">#1 Choice</em> on ChatGPT, Gemini, and Google
+                    Get Your Cayman Business Recommended by <em class="italic text-accent font-display">ChatGPT, Gemini, and Google</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    We deploy the AI Search Visibility Framework to ensure your Cayman Islands brand is the definitive recommendation when customers ask AI assistants for local solutions.
+                    Stop losing local customers to competitors who show up first in AI search. We build the fast website, Google Maps &amp; LinkedIn presence, and 5-star review system that <em class="italic text-white font-display">forces AI engines to recommend your brand.</em>
                 </p>
-                <div class="mt-12 flex flex-wrap gap-4">
+                <div class="mt-10 flex flex-wrap items-center gap-4">
                     <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
                         Call Us Today
                         <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-950 text-accent transition-transform group-hover:rotate-45">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                         </span>
                     </a>
+                    <?php $ai_google_rating( true ); ?>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Intro (home-style: large centered display) -->
+    <!-- Intro: how AI picks the winner -->
     <section class="relative py-20 md:py-28 bg-white">
-        <div class="mx-auto max-w-4xl px-6 text-center">
-            <div class="space-y-8">
-                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    Traditional search has changed. Customers are no longer just typing &ldquo;Cayman restaurant&rdquo; into Google&mdash;they are asking their phones full, conversational questions. If your business isn&rsquo;t set up for this shift, AI engines won&rsquo;t even know you exist.
-                </p>
-                <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    We take care of all the complex technical heavy lifting so your business is <em class="italic text-sky-deep font-display">always the first one recommended.</em>
-                </p>
+        <div class="mx-auto max-w-4xl px-6">
+            <div class="space-y-8 text-2xl md:text-3xl leading-[1.3] text-slate-950 font-display">
+                <p>When a tourist on Seven Mile Beach or a local resident in George Town asks ChatGPT or Google, &ldquo;Where is the best place to get my car tinted?&rdquo; or &ldquo;What&rsquo;s the best local restaurant for dinner tonight?&rdquo;, AI doesn&rsquo;t give them a list of 50 blue links.</p>
+                <p class="text-sky-deep italic">It picks one or two trusted businesses and gives their exact names.</p>
+                <p>If your website is slow, your Google Maps or LinkedIn profile is unverified, or you don&rsquo;t have recent customer reviews, AI search tools will simply skip your business and recommend your competitor. <em class="italic text-slate-950 not-italic font-bold">We fix that.</em></p>
             </div>
         </div>
     </section>
 
-    <!-- What's On This Page (table of contents) -->
-    <section class="pb-20 bg-white">
+    <!-- Video proof -->
+    <section id="video-proof" class="py-20 md:py-28 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl rounded-[2rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
-                <div class="flex items-center justify-between gap-4 mb-6">
-                    <h2 class="text-2xl font-display text-slate-900">What&rsquo;s On This Page</h2>
-                    <span class="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-bold text-sky-deep border border-slate-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                        3 min read
-                    </span>
-                </div>
-                <p class="text-sm text-slate-500 mb-6">It takes about 3 minutes to read. We respect your time.</p>
-                <ol class="space-y-3">
-                    <?php foreach ( $ai_toc as $i => $item ) : ?>
-                    <li>
-                        <a href="<?php echo esc_attr( $item[0] ); ?>" class="group flex items-start gap-4 decoration-none">
-                            <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-pale text-sky-deep text-sm font-bold"><?php echo (int) ( $i + 1 ); ?></span>
-                            <span class="text-lg text-slate-700 group-hover:text-sky-deep transition-colors leading-snug pt-0.5"><?php echo wp_kses_post( $item[1] ); ?></span>
-                        </a>
-                    </li>
-                    <?php endforeach; ?>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- 1. Live Video Proof -->
-    <section id="video-proof" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl mb-14">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Proof, not promises</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Live Video Proof: <em class="italic text-sky-deep font-display">Results for Cayman Brands</em></h2>
-                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                    We don&rsquo;t just talk about the future of search&mdash;we&rsquo;ve already coded our clients into the top spots. Here is the real-world proof of Cayman businesses dominating ChatGPT and Gemini today.
-                </p>
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Live proof, not promises</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Hit Play to See Our Clients&rsquo; <em class="italic text-sky-deep font-display">AI Results</em></h2>
             </div>
             <div class="grid gap-8 md:grid-cols-3">
                 <?php foreach ( $ai_proof as $pv ) : ?>
@@ -239,135 +224,188 @@ $ai_faqs = array(
             'name'         => wp_strip_all_tags( html_entity_decode( $pv['headline'], ENT_QUOTES, 'UTF-8' ) ),
             'description'  => wp_strip_all_tags( html_entity_decode( $pv['desc'], ENT_QUOTES, 'UTF-8' ) ),
             'contentUrl'   => $pv['mp4'],
-            'thumbnailUrl' => toctoc_og_image_url( 'video-' . substr( md5( $pv['mp4'] ), 0, 8 ), wp_strip_all_tags( html_entity_decode( $pv['headline'], ENT_QUOTES, 'UTF-8' ) ), 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
+            'thumbnailUrl' => $pv['poster'],
             'uploadDate'   => '2026-07-17T09:00:00-05:00',
         );
     }, $ai_proof ) );
     ?>
 
-    <!-- 2. What We Do: 4 core steps -->
-    <section id="what-we-do" class="py-24 md:py-32 bg-white scroll-mt-28">
+    <!-- What's On This Page (table of contents) -->
+    <section class="pb-20 bg-white">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl rounded-[2rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
+                <div class="flex items-center justify-between gap-4 mb-6">
+                    <h2 class="text-2xl font-display text-slate-900">What&rsquo;s On This Page</h2>
+                    <span class="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-bold text-sky-deep border border-slate-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        2 min read
+                    </span>
+                </div>
+                <p class="text-sm text-slate-500 mb-6">It takes about 2 minutes to read. We respect your time.</p>
+                <ol class="space-y-3">
+                    <?php foreach ( $ai_toc as $i => $item ) : ?>
+                    <li>
+                        <a href="<?php echo esc_attr( $item[0] ); ?>" class="group flex items-start gap-4 decoration-none">
+                            <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-pale text-sky-deep text-sm font-bold"><?php echo (int) ( $i + 1 ); ?></span>
+                            <span class="text-lg text-slate-700 group-hover:text-sky-deep transition-colors leading-snug pt-0.5"><?php echo wp_kses_post( $item[1] ); ?></span>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. How It Works: 2-Phase Plan -->
+    <section id="how-it-works" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; What We Do</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">What We Do: <em class="italic text-sky-deep font-display">Our 4 Core AI Visibility Steps</em></h2>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; How It Works</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our Simple <em class="italic text-sky-deep font-display">2-Phase Plan</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                    Instead of just ranking you in old-school blue links, we actively build your brand&rsquo;s presence inside the databases that fuel AI search engines. Here is exactly what we build and manage for your business:
+                    We handle all the technical work, website setup, and profile connections for you. Our service is broken into two clear, transparent phases:
                 </p>
             </div>
 
-            <div class="mt-14 space-y-6">
-                <?php foreach ( $ai_core_steps as $s ) : ?>
-                <article class="rounded-[2.5rem] border border-slate-100 bg-slate-50 p-8 md:p-10 shadow-soft">
-                    <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
-                        <span class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-950 text-white text-2xl font-display">
-                            <?php echo esc_html( $s['n'] ); ?>
-                        </span>
-                        <div class="flex-1">
-                            <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-deep mb-2">Step <?php echo esc_html( $s['n'] ); ?></p>
-                            <h3 class="text-2xl md:text-3xl font-display text-slate-900 leading-snug"><?php echo wp_kses_post( $s['title'] ); ?></h3>
-                            <p class="mt-4 text-lg text-slate-600 leading-relaxed"><?php echo wp_kses_post( $s['body'] ); ?></p>
+            <!-- Phase 1 -->
+            <div class="mt-16">
+                <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <span class="inline-flex items-center justify-center rounded-full bg-slate-950 text-accent px-5 py-2 text-sm font-bold uppercase tracking-widest">Phase 1</span>
+                    <h3 class="text-2xl md:text-3xl font-display text-slate-900">The AI Foundation Build</h3>
+                </div>
+                <p class="max-w-3xl text-lg text-slate-600 leading-relaxed">
+                    In Phase 1, we build and launch the core assets your business needs to be recognized and trusted by AI search tools:
+                </p>
 
-                            <div class="mt-6 rounded-[1.5rem] border border-sky-deep/15 bg-sky-pale/40 p-6">
-                                <p class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.15em] text-sky-deep mb-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                                    How this works behind the scenes
-                                </p>
-                                <p class="text-base text-slate-600 leading-relaxed"><?php echo wp_kses_post( $s['behind'] ); ?></p>
-                            </div>
+                <div class="mt-14 space-y-16 md:space-y-24">
+                    <?php foreach ( $ai_phase1 as $n => $p ) : ?>
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+                        <div class="md:order-2"><?php $ai_collage( $ai_sites, $p['imgs'] ); ?></div>
+                        <div class="md:order-1">
+                            <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-sky-pale text-sky-deep text-xl font-display mb-5"><?php echo (int) ( $n + 1 ); ?></span>
+                            <h4 class="text-2xl md:text-3xl font-display text-slate-900 leading-tight"><?php echo wp_kses_post( $p['title'] ); ?></h4>
+                            <p class="mt-4 text-lg text-slate-600 leading-relaxed"><?php echo wp_kses_post( $p['body'] ); ?></p>
                         </div>
                     </div>
-                </article>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- 3. How We Do It: 3-step execution -->
-    <section id="how-we-do-it" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; Our Process</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">How We Do It: <em class="italic text-accent font-display">Our 3-Step Execution Process</em></h2>
-                <p class="mt-8 text-lg text-white/60 leading-relaxed">
-                    We take the complexity out of the equation. Here is the exact framework we use to take your business from hidden to highly cited:
+            <!-- Phase 2 -->
+            <div class="mt-20 rounded-[3rem] bg-slate-900 text-white p-8 md:p-14 shadow-glass">
+                <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <span class="inline-flex items-center justify-center rounded-full bg-accent text-slate-950 px-5 py-2 text-sm font-bold uppercase tracking-widest">Phase 2</span>
+                    <h3 class="text-2xl md:text-3xl font-display text-white">Monthly Protection &amp; Growth</h3>
+                    <span class="text-xs font-bold uppercase tracking-widest text-white/50">Billed Monthly &middot; Cancel Anytime</span>
+                </div>
+                <p class="max-w-3xl text-lg text-white/60 leading-relaxed">
+                    Once your foundation is live, we perform continuous monthly maintenance to keep your business at the top of local search results:
                 </p>
-            </div>
-
-            <div class="mt-14 space-y-10">
-                <?php foreach ( $ai_process as $p ) : ?>
-                <article class="flex flex-col md:flex-row gap-6 md:gap-10 border-t border-white/10 pt-10">
-                    <div class="shrink-0 md:w-40">
-                        <span class="text-5xl md:text-6xl font-display text-accent leading-none"><?php echo esc_html( $p['n'] ); ?></span>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl md:text-3xl font-display leading-snug"><?php echo wp_kses_post( $p['title'] ); ?></h3>
-                        <p class="mt-4 text-lg text-white/60 leading-relaxed"><?php echo wp_kses_post( $p['body'] ); ?></p>
-                        <?php if ( ! empty( $p['items'] ) ) : ?>
-                        <ul class="mt-6 space-y-3">
-                            <?php foreach ( $p['items'] as $li ) : ?>
-                            <li class="flex items-start gap-3 text-white/70 leading-relaxed">
-                                <span class="shrink-0 mt-1 inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/20 text-accent">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                                </span>
-                                <span><?php echo wp_kses_post( $li ); ?></span>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?php endif; ?>
-                    </div>
-                </article>
-                <?php endforeach; ?>
+                <div class="mt-12 grid md:grid-cols-3 gap-6">
+                    <?php foreach ( $ai_phase2 as $p ) : ?>
+                    <article class="rounded-[2rem] bg-white/5 border border-white/10 p-7">
+                        <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-accent text-slate-950 mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        </span>
+                        <h4 class="text-xl font-display leading-snug"><?php echo wp_kses_post( $p['title'] ); ?></h4>
+                        <p class="mt-3 text-white/60 leading-relaxed"><?php echo wp_kses_post( $p['body'] ); ?></p>
+                    </article>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio (same showcase as the homepage / Our Work) -->
-    <section id="portfolio" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass scroll-mt-28">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl">
-                <h2 class="text-5xl md:text-7xl font-display leading-[0.9]">
-                    Portfolio: We Build Websites <em class="italic text-accent font-display">AI Loves</em> &amp; Humans Trust.
-                </h2>
-                <p class="mt-8 text-lg text-white/50 max-w-2xl italic">
-                    High-performance &ldquo;Discovery Engines&rdquo; we&rsquo;ve launched for Cayman and beyond.
-                </p>
-            </div>
-            <div class="mt-16">
-                <?php toctoc_render_showcase_grid( true ); ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Why Traditional SEO is Failing -->
-    <section id="traditional-seo" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
-        <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">04 &middot; Generative Engine Optimization</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Traditional SEO is <em class="italic text-sky-deep font-display">Failing Your Business</em></h2>
+    <!-- 2. 90-Day Result Guarantee -->
+    <section id="guarantee" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-5xl px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Zero Risk</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our 90-Day <em class="italic text-sky-deep font-display">Result Guarantee</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                    Traditional SEO was built for short, static keywords. Today, the market has shifted to <strong class="font-semibold text-slate-900">Conversational Queries</strong>&mdash;meaning customers are asking highly specific, full-sentence questions like, &ldquo;Where is the best place to get authentic Chinese food on Seven Mile Beach open right now?&rdquo;
+                    We take all the risk off your shoulders. When you launch Phase 1: The AI Foundation, our work is backed by a simple promise:
                 </p>
-                <p class="mt-6 text-lg text-slate-600 leading-relaxed">To win these modern searches, we deploy <strong class="font-semibold text-slate-900">Generative Engine Optimization (GEO)</strong>:</p>
             </div>
-            <div class="mt-10 grid md:grid-cols-2 gap-6">
-                <div class="p-8 rounded-[2rem] border border-slate-100 bg-white shadow-soft">
-                    <div class="text-sky-deep text-sm font-bold mb-3">AI-Ready Content</div>
-                    <p class="text-slate-600 leading-relaxed">We structure, format, and optimize your website&rsquo;s information so AI tools can instantly read and summarize it.</p>
+            <div class="mt-12 rounded-[2.5rem] bg-slate-950 text-white p-8 md:p-14 shadow-glass text-center">
+                <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent text-slate-950 mb-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                </span>
+                <p class="text-2xl md:text-4xl font-display leading-[1.25] max-w-3xl mx-auto">
+                    If your business is not being cited or recommended by ChatGPT or Gemini for your primary local customer searches within <em class="italic text-accent font-display">90 days</em> of launch, we perform all Phase 2 monthly updates completely <em class="italic text-accent font-display">FREE</em> until it is.
+                </p>
+                <p class="mt-8 text-lg text-white/60">No fine print. No excuses. We keep working until your business gets recommended.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Industry Exclusivity -->
+    <section id="exclusivity" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; One Per Category</span>
+                    <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Industry <em class="italic text-sky-deep font-display">Exclusivity</em></h2>
+                    <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                        Because AI engines usually only recommend 1 to 3 businesses when a customer asks a question, we cannot work with direct competitors in the same market.
+                    </p>
+                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                        We operate on a strict <strong class="text-slate-900">Category Exclusivity</strong> rule in the Cayman Islands, for example:
+                    </p>
+                    <ul class="mt-8 space-y-4">
+                        <?php foreach ( array(
+                            'We only accept one craft brewery.',
+                            'We only accept one window tint company.',
+                            'We only accept one commercial real estate agency, law firm, or luxury service provider.',
+                        ) as $ex ) : ?>
+                        <li class="flex items-start gap-4">
+                            <span class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-pale text-sky-deep mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </span>
+                            <span class="text-lg text-slate-700 leading-relaxed"><?php echo esc_html( $ex ); ?></span>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                        Once we partner with your business, we lock out your local competitors and focus 100% of our energy on keeping your brand at the top.
+                    </p>
                 </div>
-                <div class="p-8 rounded-[2rem] border border-slate-100 bg-white shadow-soft">
-                    <div class="text-sky-deep text-sm font-bold mb-3">Instant Recommendations</div>
-                    <p class="text-slate-600 leading-relaxed">Instead of just ranking you in a list of blue links, GEO ensures AI engines dynamically generate a live recommendation that features your business first.</p>
+                <div class="rounded-[3rem] bg-slate-950 text-white p-10 md:p-14 shadow-glass text-center">
+                    <span class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 text-accent mb-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </span>
+                    <p class="text-3xl md:text-4xl font-display leading-tight">Your category. <em class="italic text-accent font-display">Locked.</em></p>
+                    <p class="mt-6 text-white/60 leading-relaxed">We only recommend one business per category to the AI engines &mdash; make sure it&rsquo;s you, not your competitor.</p>
+                    <div class="mt-8"><?php $ai_google_rating( true ); ?></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. FAQ -->
+    <!-- Final CTA -->
+    <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
+        <div class="mx-auto max-w-5xl px-6">
+            <h2 class="text-4xl sm:text-6xl md:text-7xl leading-[1.02] text-slate-950 font-display">
+                Ready to Lock In Your Business Category <br /><em class="italic font-display text-sky-deep">Before Your Competitor Does?</em>
+            </h2>
+            <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                Let&rsquo;s talk today about building your AI Foundation and securing your spot at the top of local AI search.
+            </p>
+            <div class="mt-12">
+                <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+                    Call Us Today
+                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (kept for AEO — read near-verbatim by AI answer engines) -->
     <section id="faq" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl mb-12">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; FAQ</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">FAQ</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">AI Search, <em class="italic text-sky-deep font-display">Answered</em></h2>
             </div>
             <div class="max-w-4xl space-y-4">
@@ -386,25 +424,6 @@ $ai_faqs = array(
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
-        <div class="mx-auto max-w-5xl px-6">
-            <h2 class="text-4xl sm:text-6xl md:text-7xl leading-[1.02] text-slate-950 font-display">
-                Claim Your #1 Spot in the <br /><em class="italic font-display text-sky-deep">AI Search Era</em>
-            </h2>
-            <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                Don&rsquo;t let your competitors get coded into the algorithms first. Let&rsquo;s talk today and secure your brand as the recommended answer.
-            </p>
-            <div class="mt-12">
-                <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                    Call Us Today
-                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
     <!-- Free SEO Checker CTA -->
     <?php toctoc_render_checker_cta(); ?>
 
@@ -418,16 +437,9 @@ echo wp_json_encode(
         '@type'       => 'Service',
         'name'        => 'AI Search Visibility & Optimization Services',
         'serviceType' => 'AI Search Optimization (SEO, AEO & GEO)',
-        'provider'    => array(
-            '@type' => 'ProfessionalService',
-            '@id'   => 'https://toctoc.ky/#organization',
-            'name'  => 'TocToc Marketing',
-        ),
-        'areaServed'  => array(
-            '@type' => 'Place',
-            'name'  => 'Cayman Islands',
-        ),
-        'description' => 'AI Search Optimization for Cayman Islands businesses: SEO, Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) that make your brand the recommended answer on ChatGPT, Gemini and Google. We build a high-speed AI-ready website, sync your business details across Google Maps, Apple Maps and core social profiles, restructure your content to answer conversational questions, and provide continuous monthly maintenance with weekly performance updates.',
+        'provider'    => array( '@id' => 'https://toctoc.ky/#organization' ),
+        'areaServed'  => array( '@type' => 'Place', 'name' => 'Cayman Islands' ),
+        'description' => 'AI Search Optimization for Cayman Islands businesses: a two-phase plan that makes your brand the recommended answer on ChatGPT, Gemini and Google. Phase 1 (the AI Foundation Build) delivers a fast, AI-ready website, an automated 5-star Google review system, synchronized Google Maps, Apple Maps and LinkedIn profiles, and a branded YouTube channel. Phase 2 (Monthly Protection & Growth) adds weekly search-bot maintenance, one monthly authority article with social chunking, and monthly AI ranking audits. Backed by a 90-day result guarantee and strict one-business-per-category exclusivity.',
         'url'         => 'https://toctoc.ky/ai-search-optimization-cayman-islands/',
     ),
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE

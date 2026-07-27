@@ -42,11 +42,11 @@
     $seo_map = [
         'front' => [
             'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Top-rated marketing agency in the Cayman Islands. SEO, web design & AI visibility that turn searches into customers. Book your free consultation today.'
+            'desc' => 'The AI-era marketing agency for the Cayman Islands, rated 4.8★ by 21 clients. We make your business the #1 answer on Google, ChatGPT & Gemini. Free consult.'
         ],
         'ai-search-optimization-cayman-islands' => [
-            'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
-            'desc' => 'Be the #1 business recommended by ChatGPT, Gemini & Google. AI Search Optimization (SEO, AEO & GEO) for Cayman Islands brands. Book a free strategy call.'
+            'title' => 'SEO & AI Search Optimization Cayman | ChatGPT, Gemini',
+            'desc' => 'Rank on Google and get recommended by ChatGPT & Gemini. SEO, AEO & GEO for Cayman Islands businesses, rated 4.8★ (21 reviews). Book a free strategy call.'
         ],
         'seo-agency-services-cayman-islands' => [
             'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
@@ -54,23 +54,23 @@
         ],
         'digital-marketing-agency-cayman-islands' => [
             'title' => 'Digital Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Full-service digital marketing agency in Cayman: SEO, web design, social media, advertising & PR. Grow your revenue with a free strategy call today.'
+            'desc' => 'Full-service digital marketing in Cayman: SEO, web design, social & PR built for the AI search era. Rated 4.8★ by 21 clients. Book a free strategy call.'
         ],
         'website-design-agency-cayman-islands' => [
-            'title' => 'Website Design Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Award-worthy web design & development in the Cayman Islands. Fast, mobile-first websites that convert visitors into leads. Get your custom quote today.'
+            'title' => 'Website Design Cayman Islands | Fast & AI-Ready | TocToc',
+            'desc' => 'High-speed, mobile-first website design in the Cayman Islands, built to convert and get recommended by AI. Rated 4.8★ (21 reviews). Get a free quote.'
         ],
         'social-media-marketing-services-cayman-islands' => [
-            'title' => 'Social Media for Algorithmic Trust Cayman | TocToc',
-            'desc' => 'Turn your social profiles into fuel for AI search. We optimize your profiles so ChatGPT, Gemini & Google see your Cayman business as the local authority.'
+            'title' => 'Social Media Marketing Cayman | AI-Ready | TocToc',
+            'desc' => 'Social media marketing in the Cayman Islands that makes ChatGPT, Gemini & Google see your brand as the local authority. Rated 4.8★. Book a free call.'
         ],
         'advertising-pr-agency-cayman-islands' => [
-            'title' => 'Digital PR for AI Authority Citations Cayman | TocToc',
-            'desc' => 'Ads rent attention. Digital PR builds permanent AI trust signals. We secure the high-value citations that make ChatGPT, Gemini & Google recommend your Cayman brand.'
+            'title' => 'PR Agency Cayman | Digital PR & AI Authority | TocToc',
+            'desc' => 'A Cayman Islands PR agency for the AI era. We build the citations and authority that make ChatGPT, Gemini & Google recommend your brand. Free strategy call.'
         ],
         'web-development-cayman-islands' => [
             'title' => 'Web Development Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Custom web development services in the Cayman Islands: websites, e-commerce & web apps built fast, secure & SEO-ready. Get your free project quote today.'
+            'desc' => 'Custom web development in the Cayman Islands: fast, secure, SEO-ready websites, e-commerce & web apps. Rated 4.8★ by 21 clients. Get a free project quote.'
         ],
         'venezuela' => [
             'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',

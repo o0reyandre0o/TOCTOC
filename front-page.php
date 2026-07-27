@@ -209,67 +209,67 @@
                     How We Put Your Business in <em class="italic text-sky-deep font-display">AI Search Results</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-700 max-w-2xl leading-relaxed">
-                    Through our <strong class="text-slate-900">AI Search Visibility Framework</strong>&mdash;a three-phase system designed to make your business the definitive answer cited by ChatGPT, Gemini, Perplexity, and more.
+                    A simple <strong class="text-slate-900">2-phase plan</strong>, backed by a <strong class="text-slate-900">90-day result guarantee</strong>, designed to make your business the definitive answer cited by ChatGPT, Gemini, Perplexity, and Google.
                 </p>
             </div>
 
             <div class="mt-16 grid gap-8 md:grid-cols-3">
-                <!-- Card 01 -->
+                <!-- Card 1: Phase 1 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 01</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 1</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                         </div>
                     </div>
-                    <h3 class="text-3xl text-slate-900 font-display mb-2">Get Recommended</h3>
-                    <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Discovery & AI Visibility</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-6">We optimize your &ldquo;Context&rdquo; across the platforms AI assistants use to learn about and recommend local businesses.</p>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Channels Optimized</p>
+                    <h3 class="text-3xl text-slate-900 font-display mb-2">The AI Foundation Build</h3>
+                    <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Built &amp; Launched Once</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">We build the core assets AI search tools need to recognize and trust your business &mdash; fast, verified, and recommended everywhere.</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">What We Build</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Google Maps</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Apple Maps</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">TripAdvisor</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">LinkedIn</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Fast AI-Ready Website</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">5-Star Review System</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Maps &amp; LinkedIn Sync</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Branded YouTube</span>
                     </div>
                 </article>
 
-                <!-- Card 02 -->
+                <!-- Card 2: Phase 2 -->
                 <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 02</span>
+                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 2</span>
                         <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
                         </div>
                     </div>
-                    <h3 class="text-3xl text-slate-900 font-display mb-2">Get Chosen</h3>
-                    <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Your Website Foundation</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-6">A recommendation is only as good as the destination. We build high-speed websites that AI loves to crawl and humans trust to use.</p>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Products Involved</p>
+                    <h3 class="text-3xl text-slate-900 font-display mb-2">Monthly Protection &amp; Growth</h3>
+                    <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Billed Monthly &middot; Cancel Anytime</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">Once your foundation is live, we run continuous maintenance to keep your business at the top of local search results.</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Every Month</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Custom Websites</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Performance Landings</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Online Booking</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Mobile UI/UX</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Weekly Bot Maintenance</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Monthly Authority Article</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Social Chunking</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Monthly AI Audits</span>
                     </div>
                 </article>
 
-                <!-- Card 03 -->
-                <article class="relative rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass">
+                <!-- Card 3: 90-Day Guarantee -->
+                <article class="relative rounded-[2.5rem] bg-slate-950 text-white border border-white/10 p-10 shadow-glass transition-all">
                     <div class="flex items-center justify-between mb-10">
-                        <span class="font-display text-4xl md:text-5xl text-sky-deep">Phase 03</span>
-                        <div class="w-12 h-12 bg-slate-950 rounded-full flex items-center justify-center text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                        <span class="font-display text-4xl md:text-5xl text-accent">90 Days</span>
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-slate-950">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                         </div>
                     </div>
-                    <h3 class="text-3xl text-slate-900 font-display mb-2">Stay Recommended</h3>
-                    <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Ongoing Optimization</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-6">We keep your digital footprint fresh with monthly updates and new reviews so AI assistants keep recommending you.</p>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Products Involved</p>
+                    <h3 class="text-3xl font-display mb-2">Our Result Guarantee</h3>
+                    <p class="text-sm font-bold text-accent uppercase tracking-wider mb-6">Zero Risk</p>
+                    <p class="text-sm leading-relaxed text-white/60 mb-6">If ChatGPT or Gemini aren&rsquo;t recommending you for your primary local searches within 90 days, we run all Phase 2 updates <strong class="text-white">FREE</strong> until they do.</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-3">The Promise</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Monthly Content Updates</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Review Generation</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Profile Maintenance</span>
+                        <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">No Fine Print</span>
+                        <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">No Excuses</span>
+                        <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">One Per Category</span>
                     </div>
                 </article>
             </div>
