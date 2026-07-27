@@ -278,7 +278,13 @@ $ai_google_rating = function ( $dark = false ) {
                 <div class="mt-14 space-y-16 md:space-y-24">
                     <?php foreach ( $ai_phase1 as $n => $p ) : ?>
                     <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-                        <div class="md:order-2"><?php $ai_collage( $ai_sites, $p['imgs'] ); ?></div>
+                        <div class="md:order-2">
+                            <?php if ( ! empty( $p['img'] ) ) : ?>
+                            <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['title'] ) . ' — real websites built by TocToc' ); ?>" loading="lazy" decoding="async" class="w-full h-auto max-w-[600px] mx-auto" />
+                            <?php else : ?>
+                            <?php $ai_collage( $ai_sites, $p['imgs'] ); ?>
+                            <?php endif; ?>
+                        </div>
                         <div class="md:order-1">
                             <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-sky-pale text-sky-deep text-xl font-display mb-5"><?php echo (int) ( $n + 1 ); ?></span>
                             <h4 class="text-2xl md:text-3xl font-display text-slate-900 leading-tight"><?php echo wp_kses_post( $p['title'] ); ?></h4>
