@@ -43,6 +43,7 @@ $ai_phase1 = array(
     array(
         'title' => 'A Fast, AI-Ready Website',
         'body'  => 'We build a brand-new website (or deeply upgrade your existing site) designed for instant mobile speed. We install hidden background code that translates your exact services, location, and hours directly into AI language.',
+        'img'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-aisearch-imgs.png',
         'imgs'  => array( 2, 9, 4 ),
     ),
     array(
