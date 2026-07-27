@@ -62,7 +62,7 @@ get_header(); ?>
                 <div id="daniel-garrido" class="mt-16 flex items-center gap-8 p-10 rounded-[3rem] bg-white/5 border border-white/10 w-fit">
                     <?php $daniel_photo = 'https://toctoc.ky/wp-content/uploads/2026/07/dsf5319-1.webp'; ?>
                     <?php if ( $daniel_photo ) : ?>
-                    <img src="<?php echo esc_url( $daniel_photo ); ?>" alt="Daniel Garrido, Founder & Sales at TocToc Marketing" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover shrink-0" />
+                    <img src="<?php echo esc_url( $daniel_photo ); ?>" alt="Daniel Garrido, Founder & Sales at TocToc Marketing" width="80" height="80" loading="lazy" class="w-28 h-28 rounded-full object-cover object-top shrink-0" />
                     <?php else : ?>
                     <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -95,7 +95,7 @@ get_header(); ?>
                 <!-- Andre Gutierrez -->
                 <article id="andre-gutierrez" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/andre-gray.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover object-top shrink-0" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/andre-gray.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Andre Gutierrez</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Web Developer</p>
@@ -115,7 +115,7 @@ get_header(); ?>
                 <!-- Nora Bravo -->
                 <article id="nora-bravo" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/nora-gray.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover object-top shrink-0" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/nora-gray.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Nora Bravo</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Graphic Designer</p>
