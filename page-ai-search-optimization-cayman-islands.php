@@ -54,6 +54,7 @@ $ai_phase1 = array(
     array(
         'title' => 'Google Maps, Apple Maps &amp; LinkedIn Synchronization',
         'body'  => 'We clean up, verify, and lock down your exact business details across Google Maps, Apple Maps, TripAdvisor, and your official LinkedIn Company Page so search bots see matching, verified information everywhere.',
+        'img'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-aisearch-imgs-2.png',
         'imgs'  => array( 6, 8, 0 ),
     ),
     array(
