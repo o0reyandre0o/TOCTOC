@@ -239,6 +239,13 @@
           "telephone": "+1 345-547-8120",
           "email": "info@toctoc.ky",
           "priceRange": "$$",
+          "memberOf": {
+            "@type": "Organization",
+            "@id": "https://caymanchamber.ky/#organization",
+            "name": "Cayman Islands Chamber of Commerce",
+            "alternateName": "CICOC",
+            "url": "https://caymanchamber.ky/"
+          },
           "knowsAbout": [
             "Search Engine Optimization (SEO)",
             "Answer Engine Optimization (AEO)",

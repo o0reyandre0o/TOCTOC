@@ -17,6 +17,17 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
                     </a>
                 </div>
+                <!-- Cayman Islands Chamber of Commerce membership badge. The seal is navy
+                     artwork, so it sits on a white chip to stay legible (and unaltered)
+                     against the dark footer. Mirrors the `memberOf` node in header.php. -->
+                <a href="https://caymanchamber.ky/" target="_blank" rel="noopener"
+                   aria-label="TocToc Marketing is a member of the Cayman Islands Chamber of Commerce"
+                   class="group mt-8 inline-flex flex-col items-center gap-2 decoration-none">
+                    <span class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white p-2.5 transition-transform group-hover:scale-105">
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/cayman-chamber-of-commerce-member.png' ); ?>" alt="Cayman Islands Chamber of Commerce" width="320" height="320" loading="lazy" decoding="async" class="w-full h-auto" />
+                    </span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-white/50 group-hover:text-white transition-colors">Member</span>
+                </a>
             </div>
             <nav aria-label="Services" class="flex flex-col gap-3">
                 <h2 class="text-xl md:text-2xl font-display italic text-accent mb-3">Our Services</h2>

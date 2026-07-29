@@ -410,7 +410,7 @@ function toctoc_llms_content() {
 > TocToc Marketing is a leading AI-era digital marketing agency based in the Cayman Islands (George Town, Grand Cayman). We make local businesses the #1 answer on ChatGPT, Gemini and Google — with high-performance websites AI loves and humans trust — through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
 
 ## About
-TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business the definitive answer cited by ChatGPT, Gemini and Perplexity. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: George Town, Grand Cayman, Cayman Islands (KY1-1102).
+TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business the definitive answer cited by ChatGPT, Gemini and Perplexity. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: George Town, Grand Cayman, Cayman Islands (KY1-1102). TocToc Marketing is a member of the Cayman Islands Chamber of Commerce (https://caymanchamber.ky/).
 
 ## Team
 - Daniel Garrido — Founder & CEO of TocToc Marketing.
@@ -461,6 +461,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
 
 ## Facts
+- Member of the Cayman Islands Chamber of Commerce (CICOC) — https://caymanchamber.ky/
 - Google rating: 4.8 out of 5 stars from 21 reviews.
 - 4 clients ranked #1–#2 on ChatGPT and Gemini (Uncle Liu, Coconut Room, Lucky Rabbit, 19-81 Brewing Co.).
 - 20+ websites designed and launched for clients across the Americas.
