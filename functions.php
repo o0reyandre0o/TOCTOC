@@ -9,6 +9,30 @@ function toctoc_setup() {
 add_action( 'after_setup_theme', 'toctoc_setup' );
 
 /**
+ * TEMPORARY REPAIR — added 2026-08-03, remove once confirmed working.
+ *
+ * The administrator role lost the manage_options capability at some point (a
+ * role-editor plugin is the usual culprit), which locked the site owner out of
+ * Settings and every plugin screen that hangs off it. The role still holds every
+ * other administrator capability — update_core, list_users, switch_themes — so
+ * this restores the one that went missing rather than granting anything new.
+ *
+ * Only ever touches the built-in administrator role, and only when the cap is
+ * actually absent. Delete this block once Settings is reachable again; if the
+ * capability disappears a second time, something is actively removing it and we
+ * need to find that plugin instead of papering over it.
+ */
+add_action( 'admin_init', function () {
+    $role = get_role( 'administrator' );
+    if ( $role && ! $role->has_cap( 'manage_options' ) ) {
+        $role->add_cap( 'manage_options' );
+        add_action( 'admin_notices', function () {
+            echo '<div class="notice notice-success"><p><strong>TocToc:</strong> restored <code>manage_options</code> on the administrator role. Reload once more and Settings should be back.</p></div>';
+        } );
+    }
+} );
+
+/**
  * TEMPORARY DIAGNOSTIC — added 2026-08-03, remove once resolved.
  *
  * web@toctoc.ky cannot open Settings (options-general.php) or any page gated on
