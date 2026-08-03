@@ -219,16 +219,12 @@ $ai_google_rating = function ( $dark = false ) {
     </section>
 
     <?php
-    // VideoObject schema for the proof clips.
-    toctoc_render_video_schema( array_map( function ( $pv ) {
-        return array(
-            'name'         => wp_strip_all_tags( html_entity_decode( $pv['headline'], ENT_QUOTES, 'UTF-8' ) ),
-            'description'  => wp_strip_all_tags( html_entity_decode( $pv['desc'], ENT_QUOTES, 'UTF-8' ) ),
-            'contentUrl'   => $pv['mp4'],
-            'thumbnailUrl' => $pv['poster'],
-            'uploadDate'   => '2026-07-17T09:00:00-05:00',
-        );
-    }, $ai_proof ) );
+    /*
+     * No VideoObject schema here on purpose — see the same note in front-page.php.
+     * These clips are duplicated from /our-work/, which is the single declared
+     * watch page for them. Marking them up on more than one URL is what triggered
+     * the "Video isn't on a watch page" error in Search Console.
+     */
     ?>
 
     <!-- What's On This Page (table of contents) -->
