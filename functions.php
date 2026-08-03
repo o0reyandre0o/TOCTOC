@@ -88,13 +88,83 @@ add_action( 'admin_notices', function () {
     }
     $role_obj  = get_role( 'administrator' );
     $role_says = $role_obj ? var_export( $role_obj->has_cap( 'manage_options' ), true ) : 'no role';
+
+    /*
+     * Forensics. Settings, the Redirection menu and the Sync Theme button all
+     * gate on manage_options, and all three vanish only while THIS theme is
+     * active — so something loaded alongside this theme is vetoing the
+     * capability at runtime. The repo has no such code, which points at a file
+     * present on the server but not in the repo. Two lists answer that:
+     *
+     * (a) every callback hooked to the two filters able to veto a capability,
+     *     resolved to its source file and line via reflection;
+     * (b) every PHP file in the live theme directory that is not part of the
+     *     repo build — on a site already showing spam-injection symptoms, an
+     *     unexpected file here is the prime suspect.
+     */
+    global $wp_filter;
+    $hook_report = array();
+    foreach ( array( 'user_has_cap', 'map_meta_cap' ) as $hook_name ) {
+        $entries = array();
+        if ( isset( $wp_filter[ $hook_name ] ) ) {
+            foreach ( $wp_filter[ $hook_name ]->callbacks as $prio => $callbacks ) {
+                foreach ( $callbacks as $cb ) {
+                    $fn  = $cb['function'];
+                    $loc = 'unresolvable';
+                    try {
+                        if ( $fn instanceof Closure || ( is_string( $fn ) && function_exists( $fn ) ) ) {
+                            $ref = new ReflectionFunction( $fn );
+                        } elseif ( is_array( $fn ) && 2 === count( $fn ) ) {
+                            $ref = new ReflectionMethod( $fn[0], $fn[1] );
+                        } else {
+                            $ref = null;
+                        }
+                        if ( $ref && $ref->getFileName() ) {
+                            $loc = str_replace( ABSPATH, '', $ref->getFileName() ) . ':' . $ref->getStartLine();
+                        }
+                    } catch ( Throwable $e ) { /* keep 'unresolvable' */ }
+                    $entries[] = '[' . $prio . '] ' . $loc;
+                }
+            }
+        }
+        $hook_report[] = $hook_name . ' → ' . ( $entries ? implode( ' , ', $entries ) : 'none' );
+    }
+
+    // (b) unexpected PHP files in the live theme root.
+    $known_theme_files = array(
+        '404.php', 'footer.php', 'front-page.php', 'functions.php', 'header.php',
+        'index.php', 'page-about-toc-toc-marketing.php',
+        'page-advertising-pr-agency-cayman-islands.php',
+        'page-ai-search-optimization-cayman-islands.php',
+        'page-digital-marketing-agency-cayman-islands.php',
+        'page-digital-marketing-cayman-islands-guide.php', 'page-legal.php',
+        'page-our-work.php', 'page-seo-agency-services-cayman-islands.php',
+        'page-seo-checker.php',
+        'page-social-media-marketing-services-cayman-islands.php',
+        'page-venezuela.php', 'page-web-development-cayman-islands.php',
+        'page-website-design-agency-cayman-islands.php', 'seo-checker-tool.php',
+    );
+    $unexpected = array();
+    foreach ( (array) glob( get_template_directory() . '/*.php' ) as $theme_file ) {
+        if ( ! in_array( basename( $theme_file ), $known_theme_files, true ) ) {
+            $unexpected[] = basename( $theme_file );
+        }
+    }
+
+    // mu-plugins load on every request regardless of theme and never appear in
+    // the normal Plugins list — the other classic hiding spot.
+    $mu = array_keys( (array) get_mu_plugins() );
+
     echo '<div class="notice notice-warning"><p><strong>TocToc diagnostic</strong><br>'
         . 'user: <code>' . esc_html( $u->user_login ) . '</code> (ID ' . (int) $u->ID . ')<br>'
         . 'roles: <code>' . esc_html( implode( ', ', (array) $u->roles ) ?: 'NONE' ) . '</code><br>'
         . 'caps (effective): <code>' . esc_html( implode( ' | ', $out ) ) . '</code><br>'
         . 'user meta (raw): <code>' . esc_html( implode( ' | ', $user_meta ) ) . '</code><br>'
         . 'role grants manage_options: <code>' . esc_html( $role_says ) . '</code><br>'
-        . 'accounts with the administrator role (' . count( $admins ) . '): <code>' . esc_html( implode( ' — ', $list ) ?: 'none found' ) . '</code>'
+        . 'accounts with the administrator role (' . count( $admins ) . '): <code>' . esc_html( implode( ' — ', $list ) ?: 'none found' ) . '</code><br>'
+        . 'capability filters: <code>' . esc_html( implode( ' || ', $hook_report ) ) . '</code><br>'
+        . 'unexpected theme files: <code>' . esc_html( $unexpected ? implode( ', ', $unexpected ) : 'none' ) . '</code><br>'
+        . 'mu-plugins: <code>' . esc_html( $mu ? implode( ', ', $mu ) : 'none' ) . '</code>'
         . '</p></div>';
 } );
 
