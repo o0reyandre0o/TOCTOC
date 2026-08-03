@@ -107,6 +107,63 @@ add_action( 'after_switch_theme', function () {
 	flush_rewrite_rules();
 } );
 
+/**
+ * One-time seed: the TocToc Marketing client record, created with every ID we
+ * already hold (LinkedIn URN from the site schema, YouTube channel ID resolved
+ * from the @wearetoctoc canonical URL). Idempotent twice over: an option flag
+ * plus a lookup of the existing record, so it can never duplicate — and it only
+ * ever INSERTS, so anything you later edit by hand is never overwritten.
+ */
+add_action( 'admin_init', function () {
+	if ( ! defined( 'TCH_BOOTED' ) || get_option( 'tch_seeded_toctoc_v1' ) ) {
+		return;
+	}
+	if ( ! current_user_can( TCH_CAPABILITY ) ) {
+		return; // seed under an admin request, same gate as the hub itself
+	}
+	$existing = get_posts( array(
+		'post_type'   => TCH_Post_Type::POST_TYPE,
+		'title'       => 'TocToc Marketing',
+		'post_status' => 'any',
+		'numberposts' => 1,
+		'fields'      => 'ids',
+	) );
+	if ( $existing ) {
+		update_option( 'tch_seeded_toctoc_v1', 1, false );
+		return;
+	}
+	$id = wp_insert_post( array(
+		'post_type'   => TCH_Post_Type::POST_TYPE,
+		'post_status' => 'publish',
+		'post_title'  => 'TocToc Marketing',
+	) );
+	if ( ! $id || is_wp_error( $id ) ) {
+		return; // leave the flag unset so the next admin load retries
+	}
+	$meta = array(
+		// General.
+		'_tch_client_website'          => 'https://toctoc.ky',
+		'_tch_client_contact'          => 'Daniel Garrido',
+		'_tch_client_email'            => 'info@toctoc.ky',
+		'_tch_client_status'           => 'active',
+		'_tch_client_notes'            => 'Our own agency site. Custom theme (TOCTOC Sky Editorial), all SEO in-theme, auto-deploy from GitHub.',
+		// Google Business Profile — account/location IDs arrive with the API in
+		// phase 2; category and rating context are known today.
+		'_tch_gbp_primary_category'    => 'Marketing agency',
+		// YouTube — channel ID taken from the canonical URL of @wearetoctoc.
+		'_tch_youtube_channel_id'      => 'UCjTE48JKYdNehgwBb8ybNug',
+		'_tch_youtube_url'             => 'https://www.youtube.com/@wearetoctoc',
+		'_tch_youtube_handle'          => '@wearetoctoc',
+		// LinkedIn — same organization ID the site schema publishes in sameAs.
+		'_tch_linkedin_organization_urn' => 'urn:li:organization:110122083',
+		'_tch_linkedin_url'            => 'https://www.linkedin.com/company/110122083/',
+	);
+	foreach ( $meta as $key => $value ) {
+		update_post_meta( $id, $key, $value );
+	}
+	update_option( 'tch_seeded_toctoc_v1', 1, false );
+} );
+
 /** Admin stylesheet, loaded only on the hub's own screens. */
 add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	$screen = get_current_screen();
