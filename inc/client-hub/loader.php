@@ -79,10 +79,17 @@ foreach ( $tch_map as $tch_slug => $tch_classname ) {
 }
 unset( $tch_map, $tch_slug, $tch_classname, $tch_file );
 
-if ( $tch_ready && class_exists( 'TCH_Post_Type' ) && class_exists( 'TCH_Fields' ) && class_exists( 'TCH_Dashboard' ) ) {
+if ( $tch_ready && ! defined( 'TCH_BOOTED' )
+	&& class_exists( 'TCH_Post_Type' ) && class_exists( 'TCH_Fields' ) && class_exists( 'TCH_Dashboard' ) ) {
+	// TCH_BOOTED stops the hooks being registered twice if the plugin build of
+	// this hub is also active — that would give you two Client Hub menus.
+	define( 'TCH_BOOTED', true );
 	TCH_Post_Type::init();
 	TCH_Fields::init();
 	TCH_Dashboard::init();
+} elseif ( $tch_ready ) {
+	// Loaded by something else already; nothing to do.
+	$tch_ready = true;
 } elseif ( is_admin() ) {
 	add_action( 'admin_notices', function () {
 		echo '<div class="notice notice-warning"><p><strong>Client Hub:</strong> some files under <code>inc/client-hub/</code> are missing on the server, so the hub is disabled. The rest of the theme is unaffected.</p></div>';
