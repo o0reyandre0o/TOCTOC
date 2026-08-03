@@ -23,11 +23,32 @@ add_action( 'after_setup_theme', 'toctoc_setup' );
  * need to find that plugin instead of papering over it.
  */
 add_action( 'admin_init', function () {
+    $fixed = array();
+
+    // Layer 1: the role itself.
     $role = get_role( 'administrator' );
     if ( $role && ! $role->has_cap( 'manage_options' ) ) {
         $role->add_cap( 'manage_options' );
-        add_action( 'admin_notices', function () {
-            echo '<div class="notice notice-success"><p><strong>TocToc:</strong> restored <code>manage_options</code> on the administrator role. Reload once more and Settings should be back.</p></div>';
+        $fixed[] = 'role';
+    }
+
+    // Layer 2: per-user denials. wp_capabilities user meta can carry an explicit
+    // 'manage_options' => false, and current_user_can() honours that DENIAL over
+    // anything the role grants. This is why the first repair pass changed
+    // nothing: the role was already fine — the block is on the user records.
+    // remove_cap() deletes the override, restoring normal role inheritance.
+    foreach ( get_users( array( 'role' => 'administrator' ) ) as $admin ) {
+        if ( isset( $admin->caps['manage_options'] ) && false === $admin->caps['manage_options'] ) {
+            $admin->remove_cap( 'manage_options' );
+            $fixed[] = 'user:' . $admin->user_login;
+        }
+    }
+
+    if ( $fixed ) {
+        add_action( 'admin_notices', function () use ( $fixed ) {
+            echo '<div class="notice notice-success"><p><strong>TocToc:</strong> removed a manage_options block on: <code>'
+                . esc_html( implode( ', ', $fixed ) )
+                . '</code>. Reload once more.</p></div>';
         } );
     }
 } );
