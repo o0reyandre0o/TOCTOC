@@ -302,6 +302,29 @@ function toctoc_render_video_schema( $videos ) {
 		. '</script>';
 }
 
+/**
+ * Kill the native WordPress sitemap.
+ *
+ * /wp-sitemap.xml was running in parallel with the curated /sitemap.xml below
+ * and advertising URLs we deliberately keep out of the index: /homepage/ (a
+ * literal duplicate of the front page), /now-hiring/ and /sansiwu/ (both stale
+ * since 2024), plus four empty category archives. Search Console confirmed the
+ * damage — /category/digital-marketing/ is "Submitted and indexed" and
+ * /category/social-media/ is flagged "Duplicate without user-selected
+ * canonical", both serving the home page's exact title.
+ *
+ * The 301 (rather than letting the URLs 404) hands the crawl signal Google has
+ * already built up on wp-sitemap*.xml straight to the real sitemap.
+ */
+add_filter( 'wp_sitemaps_enabled', '__return_false' );
+add_action( 'init', function () {
+    $path = strtok( $_SERVER['REQUEST_URI'] ?? '', '?' );
+    if ( preg_match( '#^/wp-sitemap[a-z0-9_-]*\.(xml|xsl)$#i', (string) $path ) ) {
+        wp_redirect( home_url( '/sitemap.xml' ), 301 );
+        exit;
+    }
+} );
+
 // Dynamic XML Sitemap at /sitemap.xml — intercepts before WordPress routing, no permalink flush needed
 add_action( 'init', function () {
     $uri = $_SERVER['REQUEST_URI'] ?? '';
@@ -521,8 +544,10 @@ function toctoc_robots_content() {
         . "User-agent: *\n"
         . "Disallow: /wp-admin/\n"
         . "Allow: /wp-admin/admin-ajax.php\n"
-        . "Disallow: /*?s=\n"
-        . "Disallow: /search/\n"
+        // Search results and archives are handled with a noindex meta tag in
+        // header.php, NOT with Disallow: blocking the crawl would stop Google
+        // from ever reading that noindex, so the URLs could stay indexed on the
+        // strength of inbound links alone.
         . "\n"
         . "# AI assistants - explicitly welcome to read and cite this site\n"
         . "User-agent: GPTBot\nAllow: /\n\n"
@@ -539,25 +564,25 @@ function toctoc_robots_content() {
 }
 
 /**
- * Self-healing physical robots.txt. Only rewrites when the file is missing or
- * still carries the dead 'sitemap_index.xml' reference (or lacks our real
- * sitemap) — so it fixes the plugin leftover without fighting a deliberate
- * future customization.
+ * Self-healing physical robots.txt, hash-compared against toctoc_robots_content()
+ * exactly like llms.txt above.
+ *
+ * This used to only repair the file when it still named the dead
+ * 'sitemap_index.xml', which meant that once the sitemap line was right the file
+ * froze — every later edit to toctoc_robots_content() silently never shipped,
+ * because Apache serves the physical file before WordPress runs. Comparing the
+ * full hash keeps the function genuinely the single source of truth.
  */
 add_action( 'admin_init', function () {
     if ( ! defined( 'ABSPATH' ) ) {
         return;
     }
-    $file = ABSPATH . 'robots.txt';
-    if ( file_exists( $file ) && is_readable( $file ) ) {
-        $cur = (string) @file_get_contents( $file );
-        $has_dead = ( false !== stripos( $cur, 'sitemap_index.xml' ) );
-        $has_good = ( false !== stripos( $cur, 'toctoc.ky/sitemap.xml' ) );
-        if ( ! $has_dead && $has_good ) {
-            return; // already correct
-        }
+    $file    = ABSPATH . 'robots.txt';
+    $content = toctoc_robots_content();
+    if ( file_exists( $file ) && is_readable( $file ) && md5_file( $file ) === md5( $content ) ) {
+        return; // already current
     }
-    @file_put_contents( $file, toctoc_robots_content() );
+    @file_put_contents( $file, $content );
 } );
 
 // If the physical robots.txt is ever removed, WordPress serves a virtual one —
