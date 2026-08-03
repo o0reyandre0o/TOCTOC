@@ -11,6 +11,11 @@ add_action( 'after_setup_theme', 'toctoc_setup' );
 // Free SEO / GEO / AEO checker tool (AJAX endpoints for /seo-checker/).
 require_once get_template_directory() . '/seo-checker-tool.php';
 
+// Client Hub — admin-only console for the client profiles we manage (GBP,
+// YouTube, LinkedIn, Apple Business Connect, Bing Places). Self-contained in
+// inc/client-hub/ so it can be lifted out into a plugin unchanged.
+require_once get_template_directory() . '/inc/client-hub/loader.php';
+
 function toctoc_scripts() {
     wp_enqueue_style( 'toctoc-style', get_stylesheet_uri(), array(), '3.0' );
     
