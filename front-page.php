@@ -279,6 +279,9 @@
     </section>
 
 
+    <!-- Section 4: Services — the home page's only in-body links to the service pages -->
+    <?php toctoc_render_services_grid(); ?>
+
     <!-- Section 5: Portfolio -->
     <section id="portfolio" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass">
         <div class="mx-auto max-w-6xl px-6">

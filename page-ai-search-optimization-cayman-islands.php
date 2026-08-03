@@ -33,6 +33,7 @@ $ai_proof = array(
 
 // Table of contents — anchors match the section ids below.
 $ai_toc = array(
+    array( '#local-seo',    'Local SEO Services in the Cayman Islands' ),
     array( '#how-it-works', 'How It Works: Our Simple 2-Phase Plan' ),
     array( '#guarantee',    'Our 90-Day Result Guarantee' ),
     array( '#exclusivity',  'Industry Exclusivity: One Business Per Category' ),
@@ -87,6 +88,14 @@ $ai_faqs = array(
     array(
         'q' => 'Will this get my business recommended by ChatGPT and Gemini?',
         'a' => 'Yes — that is the entire goal. We build your Local Knowledge Graph across Google Maps, Apple Maps, directories and reviews, then add Schema markup and Answer Engine Optimization so AI assistants read your business as the trusted, definitive answer. We are already delivering #1 recommendations on ChatGPT and Gemini for Cayman businesses like Uncle Liu, Coconut Room, Lucky Rabbit and 19-81 Brewing Co.',
+    ),
+    array(
+        'q' => 'Do you offer local SEO in the Cayman Islands?',
+        'a' => 'Yes — local SEO is the foundation of this service, not a separate package. We optimize your Google Business Profile, fix NAP consistency across directories, build local citations and handle the technical work (site speed, internal linking, Schema markup) that gets you into the map pack for "near me" searches across George Town, Seven Mile Beach and the wider Grand Cayman. The AI visibility layer is built on top of that base, because ChatGPT and Gemini read the same local signals Google does.',
+    ),
+    array(
+        'q' => 'How much do SEO services cost in the Cayman Islands?',
+        'a' => 'There is no fixed price list. What you need depends on your industry, how competitive your category is locally, and whether you are starting from a working website or from scratch. We build a custom monthly plan and quote it transparently after a free strategy call — the base build takes 3 days, then ongoing work is billed monthly and you can cancel anytime.',
     ),
     array(
         'q' => 'What is the difference between SEO, AEO and GEO?',
@@ -161,11 +170,18 @@ $ai_google_rating = function ( $dark = false ) {
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'AI Search Optimization' ); ?>
+                <?php /* "Local SEO" leads the H1 deliberately. When this page replaced
+                         /seo-agency-services-cayman-islands/ the word "SEO" left the copy
+                         entirely, and Search Console shows what it cost: the retired URL
+                         still pulls 1,062 impressions while this one gets 11. The demand is
+                         all in SEO language — "local seo company in cayman islands" (561
+                         impressions), "seo services cayman" (319, position 4.3), "seo agency
+                         cayman" (104) — and none of those words appeared on the page. */ ?>
                 <h1 class="mt-2 text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    Get Your Cayman Business Recommended by <em class="italic text-accent font-display">ChatGPT, Gemini, and Google</em>
+                    Local SEO That Gets Your Cayman Business Recommended by <em class="italic text-accent font-display">ChatGPT, Gemini, and Google</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    Stop losing local customers to competitors who show up first in AI search. We build the fast website, Google Maps &amp; LinkedIn presence, and 5-star review system that <em class="italic text-white font-display">forces AI engines to recommend your brand.</em>
+                    An SEO agency in the Cayman Islands built for how people search now. We handle the fast website, Google Maps &amp; LinkedIn presence, and 5-star review system that <em class="italic text-white font-display">forces AI engines to recommend your brand.</em>
                 </p>
                 <div class="mt-10 flex flex-wrap items-center gap-4">
                     <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
@@ -187,6 +203,41 @@ $ai_google_rating = function ( $dark = false ) {
                 <p>When a tourist on Seven Mile Beach or a local resident in George Town asks ChatGPT or Google, &ldquo;Where is the best place to get my car tinted?&rdquo; or &ldquo;What&rsquo;s the best local restaurant for dinner tonight?&rdquo;, AI doesn&rsquo;t give them a list of 50 blue links.</p>
                 <p class="text-sky-deep italic">It picks one or two trusted businesses and gives their exact names.</p>
                 <p>If your website is slow, your Google Maps or LinkedIn profile is unverified, or you don&rsquo;t have recent customer reviews, AI search tools will simply skip your business and recommend your competitor. <em class="italic text-slate-950 not-italic font-bold">We fix that.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local SEO: the half of this service the page never actually named -->
+    <section id="local-seo" class="relative py-20 md:py-28 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-4xl px-6">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">The Foundation</span>
+            <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">
+                Local SEO Services in the <em class="italic text-sky-deep font-display">Cayman Islands</em>
+            </h2>
+            <div class="mt-8 space-y-6 text-lg leading-relaxed text-slate-600">
+                <p>
+                    Before an AI assistant can recommend you, it has to be able to find and verify you &mdash; and it reads the same signals Google does. That makes local SEO the foundation of everything on this page, not a separate product. As an <strong class="font-semibold text-slate-900">SEO agency in Cayman</strong>, we start with the unglamorous work: your Google Business Profile, your NAP consistency across every directory, your site speed, your internal linking and your Schema markup.
+                </p>
+                <p>
+                    That base is what earns you the map pack for &ldquo;near me&rdquo; searches in George Town and along Seven Mile Beach. It is also, increasingly, what ChatGPT and Gemini cite when a visitor asks them for a recommendation instead of typing into Google. The work is the same; the payoff now lands in two places at once.
+                </p>
+                <p>
+                    So when businesses come to us looking for a <strong class="font-semibold text-slate-900">local SEO company in the Cayman Islands</strong>, this is that service &mdash; with the answer-engine layer built in rather than sold separately. Classic <strong class="font-semibold text-slate-900">SEO services in Cayman</strong> get you ranked. AEO and GEO get you recommended. You need both, and neither works without the other.
+                </p>
+            </div>
+            <div class="mt-10 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">
+                    <h3 class="text-xl font-display text-slate-900 mb-2">SEO</h3>
+                    <p class="text-sm leading-relaxed text-slate-500">Technical foundations, local citations and Google Business Profile &mdash; so you rank in Cayman search results and the map pack.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">
+                    <h3 class="text-xl font-display text-slate-900 mb-2">AEO</h3>
+                    <p class="text-sm leading-relaxed text-slate-500">Answer Engine Optimization &mdash; structured, quotable content that wins featured snippets and voice results.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">
+                    <h3 class="text-xl font-display text-slate-900 mb-2">GEO</h3>
+                    <p class="text-sm leading-relaxed text-slate-500">Generative Engine Optimization &mdash; the entity and citation work that makes AI assistants name your business.</p>
+                </div>
             </div>
         </div>
     </section>
