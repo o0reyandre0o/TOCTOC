@@ -20,14 +20,24 @@ class TCH_Dashboard {
 	}
 
 	public static function menu() {
+		/*
+		 * No position argument on purpose.
+		 *
+		 * WordPress keys the admin menu by position, so passing an integer that
+		 * another plugin already uses silently overwrites one of the two menus —
+		 * a plugin's screen simply vanishes from the sidebar. This previously
+		 * passed 26, which is squarely in the range plugins pick from.
+		 *
+		 * Omitting it appends the menu at the end of the list, where it cannot
+		 * collide with anything.
+		 */
 		add_menu_page(
 			'Client Hub',
 			'Client Hub',
 			TCH_CAPABILITY,
 			self::SLUG,
 			array( __CLASS__, 'render' ),
-			'dashicons-networking',
-			26
+			'dashicons-networking'
 		);
 
 		add_submenu_page(
