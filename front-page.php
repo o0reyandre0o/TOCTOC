@@ -185,16 +185,18 @@
     </section>
 
     <?php
-    // VideoObject schema — makes the proof clips eligible for Google video results.
-    toctoc_render_video_schema( array_map( function ( $pv ) {
-        return array(
-            'name'         => wp_strip_all_tags( $pv['label'] ) . ' — #1 results on ChatGPT & Gemini',
-            'description'  => wp_strip_all_tags( html_entity_decode( $pv['desc'], ENT_QUOTES, 'UTF-8' ) ),
-            'contentUrl'   => $pv['mp4'],
-            'thumbnailUrl' => toctoc_og_image_url( 'video-' . sanitize_title( $pv['label'] ), wp_strip_all_tags( $pv['label'] ) . ' · First in AI Search', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
-            'uploadDate'   => '2026-07-17T09:00:00-05:00',
-        );
-    }, $ttc_proof ) );
+    /*
+     * No VideoObject schema here on purpose.
+     *
+     * These same three MP4s were also marked up on /our-work/ and on the AI
+     * Search Optimization page. Google requires each video to have exactly one
+     * "watch page" — a page where the video is the main content — so claiming
+     * three different watch pages per file is what produced the "Video isn't on
+     * a watch page" error in Search Console (validation failed 27 Jul 2026,
+     * 4 videos affected). /our-work/ is the declared watch page: there each clip
+     * sits in its own case-study section with a heading and description. On this
+     * page they are supporting proof, so they stay unmarked.
+     */
     ?>
 
     <!-- Section 3: AI Search Visibility Framework -->
