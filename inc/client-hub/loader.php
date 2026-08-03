@@ -31,22 +31,51 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'TCH_VERSION', '0.1.0' );
-define( 'TCH_PATH', get_template_directory() . '/inc/client-hub/' );
-define( 'TCH_URL', get_template_directory_uri() . '/inc/client-hub/' );
-
+// defined() guards: if this hub is ever ALSO installed as a plugin, plugins load
+// before the theme and would define these first. Redefining raises warnings and
+// re-requiring the classes under a different path is a fatal "cannot redeclare".
+if ( ! defined( 'TCH_VERSION' ) ) {
+	define( 'TCH_VERSION', '0.1.0' );
+}
+if ( ! defined( 'TCH_PATH' ) ) {
+	define( 'TCH_PATH', get_template_directory() . '/inc/client-hub/' );
+}
+if ( ! defined( 'TCH_URL' ) ) {
+	define( 'TCH_URL', get_template_directory_uri() . '/inc/client-hub/' );
+}
 /** Only administrators may ever see or touch client records. */
-define( 'TCH_CAPABILITY', 'manage_options' );
+if ( ! defined( 'TCH_CAPABILITY' ) ) {
+	define( 'TCH_CAPABILITY', 'manage_options' );
+}
 
-require_once TCH_PATH . 'class-tch-platforms.php';
-require_once TCH_PATH . 'class-tch-credentials.php';
-require_once TCH_PATH . 'class-tch-post-type.php';
-require_once TCH_PATH . 'class-tch-fields.php';
-require_once TCH_PATH . 'class-tch-dashboard.php';
+/**
+ * Load every class, but never fatal on a missing or half-deployed file.
+ *
+ * This whole feature is optional; the SEO in this theme is not. A partial deploy
+ * must degrade to "the hub is not there today", never to "the theme is broken",
+ * because WordPress answers a broken theme by switching to the default one.
+ */
+$tch_ready = true;
+foreach ( array( 'platforms', 'credentials', 'post-type', 'fields', 'dashboard' ) as $tch_class ) {
+	$tch_file = TCH_PATH . 'class-tch-' . $tch_class . '.php';
+	if ( ! is_readable( $tch_file ) ) {
+		$tch_ready = false;
+		continue;
+	}
+	require_once $tch_file;
+}
+unset( $tch_class, $tch_file );
 
-TCH_Post_Type::init();
-TCH_Fields::init();
-TCH_Dashboard::init();
+if ( $tch_ready && class_exists( 'TCH_Post_Type' ) && class_exists( 'TCH_Fields' ) && class_exists( 'TCH_Dashboard' ) ) {
+	TCH_Post_Type::init();
+	TCH_Fields::init();
+	TCH_Dashboard::init();
+} elseif ( is_admin() ) {
+	add_action( 'admin_notices', function () {
+		echo '<div class="notice notice-warning"><p><strong>Client Hub:</strong> some files under <code>inc/client-hub/</code> are missing on the server, so the hub is disabled. The rest of the theme is unaffected.</p></div>';
+	} );
+}
+unset( $tch_ready );
 
 /**
  * Themes get no activation hook, so flush rewrite rules once when the theme is

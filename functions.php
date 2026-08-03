@@ -14,7 +14,18 @@ require_once get_template_directory() . '/seo-checker-tool.php';
 // Client Hub — admin-only console for the client profiles we manage (GBP,
 // YouTube, LinkedIn, Apple Business Connect, Bing Places). Self-contained in
 // inc/client-hub/ so it can be lifted out into a plugin unchanged.
-require_once get_template_directory() . '/inc/client-hub/loader.php';
+//
+// Guarded with file_exists() on purpose. A bare require_once here took the whole
+// site down on 2026-08-03: the deploy shipped this functions.php before the
+// inc/client-hub/ directory existed on the server, the missing file raised a
+// fatal, and WordPress's error protection responded by falling back to the
+// default theme — taking every bit of SEO with it, since all of it lives in this
+// theme. An optional admin feature must never be able to do that.
+$toctoc_hub = get_template_directory() . '/inc/client-hub/loader.php';
+if ( is_readable( $toctoc_hub ) ) {
+    require_once $toctoc_hub;
+}
+unset( $toctoc_hub );
 
 function toctoc_scripts() {
     wp_enqueue_style( 'toctoc-style', get_stylesheet_uri(), array(), '3.0' );
