@@ -79,10 +79,21 @@ add_action( 'admin_notices', function () {
     foreach ( $admins as $a ) {
         $list[] = $a->user_login . ' <' . $a->user_email . '>';
     }
+    // Raw layers, so a user-level DENIAL (cap => false) is visible instead of
+    // inferred: $u->caps is the wp_capabilities user meta verbatim, and the
+    // role row is what the database grants before any per-user override.
+    $user_meta = array();
+    foreach ( (array) $u->caps as $cap_name => $cap_value ) {
+        $user_meta[] = $cap_name . '=' . var_export( $cap_value, true );
+    }
+    $role_obj  = get_role( 'administrator' );
+    $role_says = $role_obj ? var_export( $role_obj->has_cap( 'manage_options' ), true ) : 'no role';
     echo '<div class="notice notice-warning"><p><strong>TocToc diagnostic</strong><br>'
         . 'user: <code>' . esc_html( $u->user_login ) . '</code> (ID ' . (int) $u->ID . ')<br>'
         . 'roles: <code>' . esc_html( implode( ', ', (array) $u->roles ) ?: 'NONE' ) . '</code><br>'
-        . 'caps: <code>' . esc_html( implode( ' | ', $out ) ) . '</code><br>'
+        . 'caps (effective): <code>' . esc_html( implode( ' | ', $out ) ) . '</code><br>'
+        . 'user meta (raw): <code>' . esc_html( implode( ' | ', $user_meta ) ) . '</code><br>'
+        . 'role grants manage_options: <code>' . esc_html( $role_says ) . '</code><br>'
         . 'accounts with the administrator role (' . count( $admins ) . '): <code>' . esc_html( implode( ' — ', $list ) ?: 'none found' ) . '</code>'
         . '</p></div>';
 } );
