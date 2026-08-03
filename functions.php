@@ -426,6 +426,92 @@ function toctoc_render_checker_cta() {
 	<?php
 }
 
+/**
+ * Service grid with keyword-bearing internal links.
+ *
+ * The home page previously linked to exactly two internal URLs in its body
+ * (/venezuela/ and /our-work/) — every service page was reachable only through
+ * the site-wide nav, which Google largely discounts as boilerplate. The result
+ * is visible in Search Console: the home page absorbs 88% of all impressions
+ * (15,647 of 17,817) and ranks for "cayman website design", "seo services
+ * cayman" and "pr agency cayman" itself, while the pages actually about those
+ * topics sit at position 22-46 with next to no impressions.
+ *
+ * Anchor text here is taken from the queries those pages should own, so the
+ * links tell Google which URL answers which search.
+ */
+function toctoc_services() {
+    return array(
+        array(
+            'title'  => 'SEO &amp; AI Search Optimization',
+            'anchor' => 'SEO &amp; AI Search Optimization in the Cayman Islands',
+            'desc'   => 'Local SEO, AEO and GEO — rank on Google and get recommended by ChatGPT, Gemini and Perplexity.',
+            'url'    => '/ai-search-optimization-cayman-islands/',
+        ),
+        array(
+            'title'  => 'Website Design',
+            'anchor' => 'Website design agency Cayman Islands',
+            'desc'   => 'Fast, mobile-first websites that convert visitors into leads and load in under a second.',
+            'url'    => '/website-design-agency-cayman-islands/',
+        ),
+        array(
+            'title'  => 'Web Development',
+            'anchor' => 'Web development Cayman Islands',
+            'desc'   => 'Custom websites, e-commerce and web apps built from scratch for speed and search.',
+            'url'    => '/web-development-cayman-islands/',
+        ),
+        array(
+            'title'  => 'Social Media Marketing',
+            'anchor' => 'Social media marketing services Cayman',
+            'desc'   => 'Profile and content optimization that makes AI crawlers read your brand as active and trusted.',
+            'url'    => '/social-media-marketing-services-cayman-islands/',
+        ),
+        array(
+            'title'  => 'Digital PR &amp; Advertising',
+            'anchor' => 'PR and advertising agency Cayman Islands',
+            'desc'   => 'High-authority digital assets and citations that make AI engines cite and recommend your brand.',
+            'url'    => '/advertising-pr-agency-cayman-islands/',
+        ),
+        array(
+            'title'  => 'Full-Service Digital Marketing',
+            'anchor' => 'Digital marketing agency Cayman Islands',
+            'desc'   => 'One partner for your entire marketing presence in Cayman, from strategy through execution.',
+            'url'    => '/digital-marketing-agency-cayman-islands/',
+        ),
+    );
+}
+
+function toctoc_render_services_grid() {
+    ?>
+    <section id="services" class="relative py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">What We Do</span>
+                <h2 class="mt-6 text-5xl md:text-7xl text-slate-900 font-display leading-[0.95]">
+                    Marketing Services for <em class="italic text-sky-deep font-display">Cayman Islands Businesses</em>
+                </h2>
+                <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
+                    Every service below is built on the same foundation: making your business the answer people &mdash; and AI &mdash; find first.
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <?php foreach ( toctoc_services() as $s ) : ?>
+                <a href="<?php echo esc_url( home_url( $s['url'] ) ); ?>" class="group flex flex-col rounded-[2rem] border border-slate-100 bg-slate-50 p-8 shadow-soft transition-all hover:bg-white hover:shadow-glass decoration-none">
+                    <h3 class="text-2xl md:text-3xl font-display text-slate-900 mb-3"><?php echo wp_kses_post( $s['title'] ); ?></h3>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6 grow"><?php echo wp_kses_post( $s['desc'] ); ?></p>
+                    <span class="inline-flex items-center gap-2 text-sm font-bold text-sky-deep group-hover:gap-4 transition-all">
+                        <?php echo wp_kses_post( $s['anchor'] ); ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?php
+}
+
 function toctoc_llms_content() {
     return <<<'LLMS'
 # TocToc Marketing
