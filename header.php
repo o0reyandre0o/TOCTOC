@@ -139,20 +139,58 @@
         $current_slug = 'front';
     } elseif (is_404()) {
         $current_slug = '404';
-    } else {
+    } elseif (is_singular()) {
         global $post;
         $current_slug = $post->post_name ?? '';
     }
+    // Archives, search and feeds deliberately get no slug: on a category archive
+    // the global $post is just the first post in the loop, so the old code handed
+    // them a random (or empty) slug and they fell through to the front page's
+    // title. They are noindexed a few lines below instead.
 
-    $title = $seo_map[$current_slug]['title'] ?? $default_title;
-    $desc = $seo_map[$current_slug]['desc'] ?? $default_desc;
+    // Pages that must never be indexed. WordPress archives and search results
+    // have no entry in $seo_map, so they used to inherit the home page's exact
+    // title and description — Google indexed /category/digital-marketing/ under
+    // the front page's title and flagged /category/social-media/ as a duplicate.
+    // The three slugs are orphans from older builds that still answer 200:
+    // /homepage/ is a literal copy of the front page, /now-hiring/ and /sansiwu/
+    // are stale since 2024. None are linked from the site or the sitemap.
+    $orphan_slugs = ['homepage', 'now-hiring', 'sansiwu'];
+    $is_noindex = is_404()
+        || is_search()
+        || is_archive()
+        || is_attachment()
+        || is_paged()
+        || in_array($current_slug, $orphan_slugs, true);
+
+    if (isset($seo_map[$current_slug])) {
+        $title = $seo_map[$current_slug]['title'];
+        $desc  = $seo_map[$current_slug]['desc'];
+    } elseif (is_singular() && get_the_title()) {
+        // No hand-written entry: derive the title from the page itself. Falling
+        // back to $default_title here is what made every unmapped URL look like
+        // a copy of the front page in the SERPs.
+        $title = wp_strip_all_tags(get_the_title()) . ' | ' . $site_name;
+        $desc  = has_excerpt() ? wp_strip_all_tags(get_the_excerpt()) : $default_desc;
+    } else {
+        $title = $default_title;
+        $desc  = $default_desc;
+    }
     $keywords = $keywords_map[$current_slug] ?? $default_keywords;
     // Per-page OG: explicit map first (e.g. Venezuela photo), then a generated
     // branded 1200x630 card (social platforms don't render the SVG logo).
     $og_image = $og_image_map[$current_slug]
         ?? ( function_exists( 'toctoc_og_image_url' ) ? toctoc_og_image_url( $current_slug ?: 'default', $title, $logo_url ) : $logo_url );
     $current_url = home_url(add_query_arg([], $GLOBALS['wp']->request));
-    $canonical = is_front_page() ? home_url('/') : trailingslashit($current_url);
+    if (is_front_page()) {
+        $canonical = home_url('/');
+    } elseif (is_singular()) {
+        // get_permalink() is immune to junk query strings and pagination, unlike
+        // rebuilding the URL from $wp->request.
+        $canonical = get_permalink();
+    } else {
+        $canonical = trailingslashit($current_url);
+    }
     ?>
 
     <title><?php echo esc_html($title); ?></title>
@@ -161,7 +199,7 @@
     <meta name="author" content="TocToc Marketing">
     <meta name="publisher" content="TocToc Marketing">
     <meta name="copyright" content="TocToc Marketing">
-    <?php if (is_404()): ?>
+    <?php if ($is_noindex): ?>
     <meta name="robots" content="noindex, follow">
     <?php else: ?>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
