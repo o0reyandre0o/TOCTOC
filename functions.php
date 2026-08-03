@@ -8,6 +8,40 @@ function toctoc_setup() {
 }
 add_action( 'after_setup_theme', 'toctoc_setup' );
 
+/**
+ * TEMPORARY DIAGNOSTIC — added 2026-08-03, remove once resolved.
+ *
+ * web@toctoc.ky cannot open Settings (options-general.php) or any page gated on
+ * manage_options, while still being able to install plugins and switch themes.
+ * That is not a hidden menu, it is a missing capability, and it predates any
+ * change made today. This prints the account's actual roles and capabilities so
+ * we can tell a wrong role apart from a stripped one.
+ *
+ * Read-only: it reports, it changes nothing.
+ */
+add_action( 'admin_notices', function () {
+    $u = wp_get_current_user();
+    if ( ! $u || ! $u->ID ) {
+        return;
+    }
+    $checks = array( 'manage_options', 'activate_plugins', 'switch_themes', 'edit_posts', 'list_users', 'update_core', 'edit_theme_options' );
+    $out    = array();
+    foreach ( $checks as $cap ) {
+        $out[] = $cap . '=' . ( current_user_can( $cap ) ? 'YES' : 'NO' );
+    }
+    $admins = get_users( array( 'role' => 'administrator', 'fields' => array( 'user_login', 'user_email' ) ) );
+    $list   = array();
+    foreach ( $admins as $a ) {
+        $list[] = $a->user_login . ' <' . $a->user_email . '>';
+    }
+    echo '<div class="notice notice-warning"><p><strong>TocToc diagnostic</strong><br>'
+        . 'user: <code>' . esc_html( $u->user_login ) . '</code> (ID ' . (int) $u->ID . ')<br>'
+        . 'roles: <code>' . esc_html( implode( ', ', (array) $u->roles ) ?: 'NONE' ) . '</code><br>'
+        . 'caps: <code>' . esc_html( implode( ' | ', $out ) ) . '</code><br>'
+        . 'accounts with the administrator role (' . count( $admins ) . '): <code>' . esc_html( implode( ' — ', $list ) ?: 'none found' ) . '</code>'
+        . '</p></div>';
+} );
+
 // Free SEO / GEO / AEO checker tool (AJAX endpoints for /seo-checker/).
 require_once get_template_directory() . '/seo-checker-tool.php';
 
