@@ -46,18 +46,38 @@ class TCH_Post_Type {
 			'show_in_menu'        => false, // hangs off the Client Hub menu instead
 			'menu_icon'           => 'dashicons-groups',
 			'supports'            => array( 'title' ),
-			'capability_type'     => 'toctoc_client',
+			/*
+			 * Primitive capabilities ONLY in this array — never the singular
+			 * meta caps (edit_post / read_post / delete_post).
+			 *
+			 * Mapping a meta cap to 'manage_options' with map_meta_cap => true
+			 * makes core's _post_type_meta_capabilities() register
+			 * 'manage_options' as a post-type meta capability. From then on,
+			 * EVERY current_user_can( 'manage_options' ) on the site is routed
+			 * through map_meta_cap() expecting a post ID, gets none, and
+			 * resolves to do_not_allow — which locked administrators out of
+			 * Settings, the sync plugin and this very hub on 2026-08-03, while
+			 * the role and user records looked perfectly healthy.
+			 *
+			 * With capability_type 'post' and only primitives overridden, the
+			 * meta caps map through the standard machinery onto these same
+			 * manage_options-gated primitives, so access is unchanged:
+			 * administrators only.
+			 */
+			'capability_type'     => 'post',
 			'map_meta_cap'        => true,
 			'capabilities'        => array(
-				'edit_post'          => TCH_CAPABILITY,
-				'read_post'          => TCH_CAPABILITY,
-				'delete_post'        => TCH_CAPABILITY,
-				'edit_posts'         => TCH_CAPABILITY,
-				'edit_others_posts'  => TCH_CAPABILITY,
-				'publish_posts'      => TCH_CAPABILITY,
-				'read_private_posts' => TCH_CAPABILITY,
-				'delete_posts'       => TCH_CAPABILITY,
-				'create_posts'       => TCH_CAPABILITY,
+				'edit_posts'             => TCH_CAPABILITY,
+				'edit_others_posts'      => TCH_CAPABILITY,
+				'edit_private_posts'     => TCH_CAPABILITY,
+				'edit_published_posts'   => TCH_CAPABILITY,
+				'publish_posts'          => TCH_CAPABILITY,
+				'read_private_posts'     => TCH_CAPABILITY,
+				'delete_posts'           => TCH_CAPABILITY,
+				'delete_others_posts'    => TCH_CAPABILITY,
+				'delete_private_posts'   => TCH_CAPABILITY,
+				'delete_published_posts' => TCH_CAPABILITY,
+				'create_posts'           => TCH_CAPABILITY,
 			),
 		) );
 	}
