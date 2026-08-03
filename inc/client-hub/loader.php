@@ -56,15 +56,28 @@ if ( ! defined( 'TCH_CAPABILITY' ) ) {
  * because WordPress answers a broken theme by switching to the default one.
  */
 $tch_ready = true;
-foreach ( array( 'platforms', 'credentials', 'post-type', 'fields', 'dashboard' ) as $tch_class ) {
-	$tch_file = TCH_PATH . 'class-tch-' . $tch_class . '.php';
+$tch_map   = array(
+	'platforms'   => 'TCH_Platforms',
+	'credentials' => 'TCH_Credentials',
+	'post-type'   => 'TCH_Post_Type',
+	'fields'      => 'TCH_Fields',
+	'dashboard'   => 'TCH_Dashboard',
+);
+foreach ( $tch_map as $tch_slug => $tch_classname ) {
+	// Already loaded from somewhere else (e.g. the standalone plugin version of
+	// this hub). require_once only de-duplicates by path, so requiring the same
+	// class from a second location is a fatal "cannot redeclare".
+	if ( class_exists( $tch_classname ) ) {
+		continue;
+	}
+	$tch_file = TCH_PATH . 'class-tch-' . $tch_slug . '.php';
 	if ( ! is_readable( $tch_file ) ) {
 		$tch_ready = false;
 		continue;
 	}
 	require_once $tch_file;
 }
-unset( $tch_class, $tch_file );
+unset( $tch_map, $tch_slug, $tch_classname, $tch_file );
 
 if ( $tch_ready && class_exists( 'TCH_Post_Type' ) && class_exists( 'TCH_Fields' ) && class_exists( 'TCH_Dashboard' ) ) {
 	TCH_Post_Type::init();
