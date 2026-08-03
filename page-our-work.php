@@ -258,7 +258,12 @@ $ow_cases = array(
                         <?php if ( $c['mp4'] ) : ?>
                         <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
                             <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline <?php echo ! empty( $c['poster'] ) ? 'poster="' . esc_url( $c['poster'] ) . '"' : ''; ?>>
-                                <source src="<?php echo esc_url( $c['mp4'] ); ?>#t=0.1" type="video/mp4">
+                                <?php /* No #t=0.1 fragment here: this page is the declared watch page for
+                                         these clips, and the VideoObject contentUrl below must match the
+                                         source URL exactly or Google indexes "...mp4#t=0.1" as a separate,
+                                         unmarked video. The poster attribute already covers the first-frame
+                                         problem the fragment was working around. */ ?>
+                                <source src="<?php echo esc_url( $c['mp4'] ); ?>" type="video/mp4">
                             </video>
                             <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
                                 <span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md"><?php echo wp_kses_post( $c['headline'] ); ?></span>
@@ -303,13 +308,23 @@ $ow_cases = array(
     <?php endforeach; ?>
 
     <?php
-    // VideoObject schema for the case-study demo videos.
+    /*
+     * VideoObject schema for the case-study demo videos. This page is the single
+     * watch page for these clips — the identical markup was removed from
+     * front-page.php and the AI Search Optimization page, where the same files
+     * appear as supporting proof. Claiming three watch pages per video is what
+     * failed Search Console's "Video isn't on a watch page" validation.
+     *
+     * thumbnailUrl points at each clip's real poster frame rather than a
+     * generated OG card: Google requires a thumbnail that actually represents
+     * the video's content.
+     */
     toctoc_render_video_schema( array_map( function ( $c ) {
         return array(
             'name'         => $c['title'] . ' — ' . wp_strip_all_tags( html_entity_decode( $c['headline'], ENT_QUOTES, 'UTF-8' ) ),
             'description'  => wp_strip_all_tags( html_entity_decode( $c['lead'], ENT_QUOTES, 'UTF-8' ) ),
             'contentUrl'   => $c['mp4'],
-            'thumbnailUrl' => toctoc_og_image_url( 'video-' . sanitize_title( $c['title'] ), $c['title'] . ' · Case Study', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
+            'thumbnailUrl' => ! empty( $c['poster'] ) ? $c['poster'] : toctoc_og_image_url( 'video-' . sanitize_title( $c['title'] ), $c['title'] . ' · Case Study', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
             'uploadDate'   => '2026-07-17T09:00:00-05:00',
         );
     }, $ow_cases ) );
