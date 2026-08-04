@@ -249,6 +249,48 @@ add_action( 'admin_init', function () {
 } );
 
 /**
+ * Migration v3 (2026-08-04, user decision): the board is the REAL client list,
+ * not a portfolio. Deletes the 19 seed-v2 records that are not one of the six
+ * confirmed active clients (+ TocToc itself), and loads the 19-81 Brewing
+ * profiles the user supplied by hand. Only titles this code itself seeded are
+ * ever deleted — a record the user created manually can never match the list.
+ */
+add_action( 'admin_init', function () {
+	if ( ! defined( 'TCH_BOOTED' ) || get_option( 'tch_migration_v3' ) ) {
+		return;
+	}
+	if ( ! current_user_can( TCH_CAPABILITY ) ) {
+		return;
+	}
+	$remove = array(
+		'Carnivore Smash Burger', 'Prime Group', 'Yallah', 'Easy Lot',
+		'Prospect Storage', 'Prospect Center', 'Gate Garage Door Solutions',
+		'We Wax The Competition', 'Cabifinde', 'PR Optics', 'SolaraPRO',
+		"D's Pizza", 'Luxe Detailing', 'Miss Cayman Islands', 'Adventura Cayman',
+		'The Conscious Closet', 'Infinite Mindcare', 'Daniel Garrido', 'VitaGo',
+	);
+	foreach ( TCH_Post_Type::all() as $client ) {
+		if ( in_array( get_the_title( $client ), $remove, true ) ) {
+			wp_delete_post( $client->ID, true );
+		}
+	}
+	// 19-81 Brewing Co. — channel and company page supplied by the user.
+	$brew = get_posts( array(
+		'post_type'   => TCH_Post_Type::POST_TYPE,
+		'title'       => '19-81 Brewing Co.',
+		'post_status' => 'any',
+		'numberposts' => 1,
+		'fields'      => 'ids',
+	) );
+	if ( $brew ) {
+		update_post_meta( $brew[0], '_tch_youtube_channel_id', 'UCy4wKhUcIFuioKsg5H0H86A' );
+		update_post_meta( $brew[0], '_tch_youtube_url', 'https://www.youtube.com/channel/UCy4wKhUcIFuioKsg5H0H86A' );
+		update_post_meta( $brew[0], '_tch_linkedin_url', 'https://www.linkedin.com/company/19-81-brewing-co/' );
+	}
+	update_option( 'tch_migration_v3', 1, false );
+} );
+
+/**
  * Daily automatic YouTube sync. Manual "Sync now" stays for on-demand runs;
  * this keeps the numbers fresh without anyone remembering to click. Themes get
  * no activation hook, so the schedule is ensured lazily from admin requests.
