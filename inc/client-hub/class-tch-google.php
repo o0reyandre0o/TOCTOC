@@ -45,8 +45,18 @@ class TCH_Google {
 			&& TCH_Credentials::is_available();
 	}
 
-	public static function is_connected() {
-		return null !== TCH_Credentials::get( 'google', 'refresh_token' );
+	/**
+	 * Connected state.
+	 *
+	 * $client_id 0 is the agency-wide connection, used for Business Profile
+	 * (one Google account manages many listings) and as the fallback for
+	 * anything without its own token. A non-zero id is that client's own
+	 * connection, which YouTube requires: videos.insert has no channel
+	 * parameter, so publishing to a given channel means holding a token that
+	 * authenticates AS that channel.
+	 */
+	public static function is_connected( $client_id = 0 ) {
+		return null !== TCH_Credentials::get( 'google', 'refresh_token', (int) $client_id );
 	}
 
 	/**
@@ -57,7 +67,8 @@ class TCH_Google {
 		return admin_url( 'admin.php?page=' . TCH_Dashboard::SLUG . '&tch_oauth=google' );
 	}
 
-	public static function connect_url() {
+	public static function connect_url( $client_id = 0 ) {
+		$client_id = (int) $client_id;
 		return self::AUTH_URL . '?' . http_build_query( array(
 			'client_id'     => TCH_GOOGLE_CLIENT_ID,
 			'redirect_uri'  => self::redirect_uri(),
@@ -67,8 +78,12 @@ class TCH_Google {
 			// Without prompt=consent Google only issues a refresh token on the
 			// very first authorisation; every reconnect after that would come
 			// back without one and silently break the weekly re-auth cycle.
-			'prompt'        => 'consent',
-			'state'         => wp_create_nonce( 'tch_google_oauth' ),
+			// It also forces the account/channel chooser, which is exactly what
+			// per-client connections depend on.
+			'prompt'        => 'consent select_account',
+			// The nonce is bound to the client id, so the callback cannot be
+			// replayed to file a token against a different client.
+			'state'         => wp_create_nonce( 'tch_google_oauth_' . $client_id ) . ':' . $client_id,
 		) );
 	}
 
@@ -79,11 +94,12 @@ class TCH_Google {
 		);
 	}
 
-	public static function disconnect_url() {
-		return wp_nonce_url(
-			admin_url( 'admin.php?page=' . TCH_Dashboard::SLUG . '&tch_action=google_disconnect' ),
-			'tch_google_disconnect'
-		);
+	public static function disconnect_url( $client_id = 0 ) {
+		$url = admin_url( 'admin.php?page=' . TCH_Dashboard::SLUG . '&tch_action=google_disconnect' );
+		if ( $client_id ) {
+			$url = add_query_arg( 'client', (int) $client_id, $url );
+		}
+		return wp_nonce_url( $url, 'tch_google_disconnect' );
 	}
 
 	/** OAuth callback: ?page=toctoc-client-hub&tch_oauth=google&code=… */
@@ -105,10 +121,16 @@ class TCH_Google {
 		if ( ! isset( $_GET['code'], $_GET['state'] ) ) {
 			return;
 		}
-		if ( ! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['state'] ) ), 'tch_google_oauth' ) ) {
+		$state = sanitize_text_field( wp_unslash( $_GET['state'] ) );
+		list( $nonce, $for_client ) = array_pad( explode( ':', $state, 2 ), 2, '0' );
+		$for_client = (int) $for_client;
+		if ( ! wp_verify_nonce( $nonce, 'tch_google_oauth_' . $for_client ) ) {
 			self::flash( 'OAuth state check failed — please try connecting again.' );
 			wp_safe_redirect( $back );
 			exit;
+		}
+		if ( $for_client ) {
+			$back = get_edit_post_link( $for_client, 'raw' ) ?: $back;
 		}
 
 		$resp = wp_remote_post( self::TOKEN_URL, array(
@@ -130,22 +152,54 @@ class TCH_Google {
 			exit;
 		}
 
-		TCH_Credentials::set( 'google', 'refresh_token', $data['refresh_token'] );
+		TCH_Credentials::set( 'google', 'refresh_token', $data['refresh_token'], $for_client );
 		if ( ! empty( $data['access_token'] ) ) {
-			set_transient( 'tch_google_access', $data['access_token'], max( 60, (int) ( $data['expires_in'] ?? 3600 ) - 60 ) );
+			set_transient( self::token_key( $for_client ), $data['access_token'], max( 60, (int) ( $data['expires_in'] ?? 3600 ) - 60 ) );
 		}
-		self::flash( 'Google connected.', 'success' );
+
+		// Record which channel this token actually publishes to, so the client
+		// screen can show it and the publisher can compare without an extra call.
+		if ( $for_client && ! empty( $data['access_token'] ) ) {
+			$who = wp_remote_get( 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet&mine=true', array(
+				'timeout' => 20,
+				'headers' => array( 'Authorization' => 'Bearer ' . $data['access_token'] ),
+			) );
+			$info = is_wp_error( $who ) ? array() : json_decode( (string) wp_remote_retrieve_body( $who ), true );
+			$id   = (string) ( $info['items'][0]['id'] ?? '' );
+			if ( '' !== $id ) {
+				update_post_meta( $for_client, '_tch_yt_token_channel', $id );
+				update_post_meta( $for_client, '_tch_yt_token_channel_title', sanitize_text_field( (string) ( $info['items'][0]['snippet']['title'] ?? '' ) ) );
+				// First connection for a client with no channel on file: adopt it.
+				if ( '' === trim( (string) get_post_meta( $for_client, TCH_Platforms::meta_key( 'youtube', 'channel_id' ), true ) ) ) {
+					update_post_meta( $for_client, TCH_Platforms::meta_key( 'youtube', 'channel_id' ), $id );
+				}
+			}
+		}
+
+		self::flash( $for_client ? 'Connected for this client.' : 'Google connected.', 'success' );
 		wp_safe_redirect( $back );
 		exit;
 	}
 
-	/** Valid access token, refreshing through the stored refresh token. */
-	public static function access_token() {
-		$cached = get_transient( 'tch_google_access' );
+	private static function token_key( $client_id = 0 ) {
+		$client_id = (int) $client_id;
+		return 'tch_google_access' . ( $client_id ? '_' . $client_id : '' );
+	}
+
+	/**
+	 * Valid access token, refreshing through the stored refresh token.
+	 *
+	 * With a client id, returns that client's own token and nothing else — it
+	 * never falls back to the agency connection, because falling back is
+	 * precisely how a video meant for one channel ends up on another.
+	 */
+	public static function access_token( $client_id = 0 ) {
+		$client_id = (int) $client_id;
+		$cached    = get_transient( self::token_key( $client_id ) );
 		if ( $cached ) {
 			return $cached;
 		}
-		$refresh = TCH_Credentials::get( 'google', 'refresh_token' );
+		$refresh = TCH_Credentials::get( 'google', 'refresh_token', $client_id );
 		if ( null === $refresh ) {
 			return null;
 		}
@@ -163,11 +217,11 @@ class TCH_Google {
 			// invalid_grant here almost always means the 7-day testing-mode
 			// expiry hit; drop the dead token so the UI offers Connect again.
 			if ( isset( $data['error'] ) && 'invalid_grant' === $data['error'] ) {
-				TCH_Credentials::delete( 'google', 'refresh_token' );
+				TCH_Credentials::delete( 'google', 'refresh_token', $client_id );
 			}
 			return null;
 		}
-		set_transient( 'tch_google_access', $data['access_token'], max( 60, (int) ( $data['expires_in'] ?? 3600 ) - 60 ) );
+		set_transient( self::token_key( $client_id ), $data['access_token'], max( 60, (int) ( $data['expires_in'] ?? 3600 ) - 60 ) );
 		return $data['access_token'];
 	}
 
@@ -184,9 +238,15 @@ class TCH_Google {
 
 		if ( 'google_disconnect' === $action ) {
 			check_admin_referer( 'tch_google_disconnect' );
-			TCH_Credentials::delete( 'google', 'refresh_token' );
-			delete_transient( 'tch_google_access' );
-			self::flash( 'Google disconnected.', 'success' );
+			$for = (int) ( $_GET['client'] ?? 0 );
+			TCH_Credentials::delete( 'google', 'refresh_token', $for );
+			delete_transient( self::token_key( $for ) );
+			if ( $for ) {
+				delete_post_meta( $for, '_tch_yt_token_channel' );
+				delete_post_meta( $for, '_tch_yt_token_channel_title' );
+				$back = get_edit_post_link( $for, 'raw' ) ?: $back;
+			}
+			self::flash( 'Disconnected.', 'success' );
 			wp_safe_redirect( $back );
 			exit;
 		}

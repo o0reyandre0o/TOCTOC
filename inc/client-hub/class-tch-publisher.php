@@ -51,7 +51,8 @@ class TCH_Publisher {
 	public static function channel_is_live( $channel ) {
 		switch ( $channel ) {
 			case 'youtube':
-				return class_exists( 'TCH_Google' ) && TCH_Google::is_connected();
+				// Live per client, not globally — see publish_youtube().
+				return class_exists( 'TCH_Google' );
 			case 'gbp':
 				// Approved shows up as a working locations call; we treat the
 				// discovery timestamp as the signal so we do not burn quota here.
@@ -229,9 +230,14 @@ class TCH_Publisher {
 	 * so the default 10,000/day allowance is roughly 100 uploads rather than 6.
 	 */
 	private static function publish_youtube( $client_id, $content_id ) {
-		$token = TCH_Google::access_token();
+		// This client's OWN token. No fallback to the agency connection: that
+		// fallback is what put a TocToc video on a client's channel.
+		$token = TCH_Google::access_token( $client_id );
 		if ( ! $token ) {
-			return new WP_Error( 'tch_no_token', 'Google not connected' );
+			return new WP_Error(
+				'tch_no_token',
+				'this client has no YouTube connection — open the client and use Connect YouTube with the account that owns its channel'
+			);
 		}
 		/*
 		 * Confirm WHERE this token publishes before sending a byte.

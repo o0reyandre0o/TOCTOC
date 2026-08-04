@@ -82,11 +82,60 @@ class TCH_Fields {
 			);
 		}
 
+		if ( 'youtube' === $slug ) {
+			self::render_youtube_connection( $post );
+		}
+
 		echo '<table class="form-table tch-form"><tbody>';
 		foreach ( $platform['fields'] as $field_key => $field ) {
 			self::render_field( TCH_Platforms::meta_key( $slug, $field_key ), $field, $post->ID );
 		}
 		echo '</tbody></table>';
+	}
+
+	/**
+	 * Per-client YouTube connection.
+	 *
+	 * videos.insert always publishes to the default channel of the account that
+	 * authorised, so a channel can only be published to by holding a token that
+	 * authenticates as it. One connection per client is therefore not a design
+	 * choice but the only arrangement the API allows.
+	 */
+	private static function render_youtube_connection( $post ) {
+		if ( ! class_exists( 'TCH_Google' ) || ! $post->ID || 'auto-draft' === $post->post_status ) {
+			return;
+		}
+		if ( ! TCH_Google::is_configured() ) {
+			echo '<p class="tch-note">Google is not configured yet — add the constants to wp-config.php first.</p>';
+			return;
+		}
+
+		$connected = TCH_Google::is_connected( $post->ID );
+		$token_ch  = (string) get_post_meta( $post->ID, '_tch_yt_token_channel', true );
+		$token_tt  = (string) get_post_meta( $post->ID, '_tch_yt_token_channel_title', true );
+		$declared  = trim( (string) get_post_meta( $post->ID, TCH_Platforms::meta_key( 'youtube', 'channel_id' ), true ) );
+
+		echo '<div class="tch-connections">';
+		if ( ! $connected ) {
+			printf(
+				'<p><span class="tch-dot tch-dot--empty"></span> <strong>Not connected.</strong> Publishing to this client&rsquo;s channel needs its own authorisation. '
+				. '<a class="button button-primary" href="%s">Connect YouTube</a></p>'
+				. '<p class="description">Sign in with the Google account that owns this channel — Google will ask which channel to use, and that choice is what receives the uploads.</p>',
+				esc_url( TCH_Google::connect_url( $post->ID ) )
+			);
+		} else {
+			$mismatch = ( '' !== $declared && '' !== $token_ch && $declared !== $token_ch );
+			printf(
+				'<p><span class="tch-dot tch-dot--%s"></span> <strong>Connected</strong> as <code>%s</code>%s '
+				. '<a class="button" href="%s">Reconnect</a> <a class="button" href="%s">Disconnect</a></p>',
+				esc_attr( $mismatch ? 'partial' : 'ready' ),
+				esc_html( $token_tt ?: $token_ch ),
+				$mismatch ? ' &mdash; <strong>but the Channel ID below says ' . esc_html( $declared ) . '</strong>, so uploads are refused until they match.' : '',
+				esc_url( TCH_Google::connect_url( $post->ID ) ),
+				esc_url( TCH_Google::disconnect_url( $post->ID ) )
+			);
+		}
+		echo '</div>';
 	}
 
 	private static function render_field( $meta_key, $field, $post_id ) {
