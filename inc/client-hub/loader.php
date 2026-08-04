@@ -318,10 +318,17 @@ add_action( 'tch_daily_sync', function () {
 /** Admin stylesheet, loaded only on the hub's own screens. */
 add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	$screen = get_current_screen();
-	$ours   = ( $screen && TCH_Post_Type::POST_TYPE === $screen->post_type )
+	$types  = array( TCH_Post_Type::POST_TYPE, TCH_Content::POST_TYPE );
+	$ours   = ( $screen && in_array( $screen->post_type, $types, true ) )
 		|| ( false !== strpos( (string) $hook, 'toctoc-client-hub' ) );
 	if ( ! $ours ) {
 		return;
 	}
 	wp_enqueue_style( 'tch-admin', TCH_URL . 'admin.css', array(), TCH_VERSION );
+
+	// The composer's media picker needs wp.media, which is not loaded on
+	// custom post type screens unless asked for.
+	if ( $screen && TCH_Content::POST_TYPE === $screen->post_type ) {
+		wp_enqueue_media();
+	}
 } );

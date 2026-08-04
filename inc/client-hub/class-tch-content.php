@@ -138,23 +138,43 @@ class TCH_Content {
 		$state = get_post_meta( $post->ID, '_tch_c_state', true ) ?: 'draft';
 		$when  = (int) get_post_meta( $post->ID, '_tch_c_scheduled_at', true );
 		$value = $when ? wp_date( 'Y-m-d\TH:i', $when ) : '';
+		// 'published' and 'failed' are OUTCOMES the publisher writes, never
+		// things you ask for. Offering them in this dropdown was a trap: picking
+		// "Published" only relabelled the record while nothing was ever sent.
+		$is_outcome = in_array( $state, array( 'published', 'failed' ), true );
 		?>
-		<p>
-			<label for="tch_c_state"><strong>State</strong></label><br>
-			<select id="tch_c_state" name="tch_c_state" style="width:100%">
-				<?php foreach ( array( 'draft' => 'Draft', 'scheduled' => 'Scheduled', 'published' => 'Published', 'failed' => 'Failed' ) as $k => $v ) : ?>
-					<option value="<?php echo esc_attr( $k ); ?>" <?php selected( $state, $k ); ?>><?php echo esc_html( $v ); ?></option>
-				<?php endforeach; ?>
-			</select>
-		</p>
+		<?php if ( $is_outcome ) : ?>
+			<p>
+				<strong>Result</strong><br>
+				<span class="tch-state tch-state--<?php echo esc_attr( $state ); ?>"><?php echo esc_html( ucfirst( $state ) ); ?></span>
+			</p>
+			<p>
+				<label><input type="checkbox" name="tch_c_requeue" value="1"> Send again</label><br>
+				<span class="description">Only targets that have not been delivered are retried.</span>
+			</p>
+		<?php else : ?>
+			<p>
+				<label for="tch_c_state"><strong>State</strong></label><br>
+				<select id="tch_c_state" name="tch_c_state" style="width:100%">
+					<option value="draft" <?php selected( $state, 'draft' ); ?>>Draft — not going anywhere</option>
+					<option value="scheduled" <?php selected( $state, 'scheduled' ); ?>>Scheduled — publish at the time below</option>
+				</select>
+			</p>
+		<?php endif; ?>
 		<p>
 			<label for="tch_c_when"><strong>Publish at</strong></label><br>
 			<input type="datetime-local" id="tch_c_when" name="tch_c_when" value="<?php echo esc_attr( $value ); ?>" style="width:100%">
+			<span class="description">Site time (<?php echo esc_html( wp_timezone_string() ); ?>).</span>
 		</p>
-		<p class="description">
-			Site time (<?php echo esc_html( wp_timezone_string() ); ?>). Set state to
-			<em>Scheduled</em> and the publisher picks it up on the next run.
-		</p>
+		<?php if ( $post->ID && 'auto-draft' !== $post->post_status ) : ?>
+			<p style="border-top:1px solid #dcdcde;padding-top:12px;margin-top:12px">
+				<a class="button button-primary" style="width:100%;text-align:center"
+				   href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?page=' . TCH_Dashboard::SLUG . '&tch_action=publish_now&content=' . $post->ID ), 'tch_publish_now' ) ); ?>">
+					Publish now
+				</a>
+				<span class="description">Save your changes first — this sends whatever is already stored.</span>
+			</p>
+		<?php endif; ?>
 		<?php
 	}
 
@@ -166,13 +186,58 @@ class TCH_Content {
 		?>
 		<table class="form-table tch-form"><tbody>
 			<tr>
-				<th><label for="tch_c_media_id">Media (attachment ID)</label></th>
+				<th><label>Image or video</label></th>
 				<td>
-					<input type="number" id="tch_c_media_id" name="tch_c_media_id" value="<?php echo $media ? (int) $media : ''; ?>" class="small-text">
-					<p class="description">
-						Image for a Google post, video file for a YouTube upload. Upload it in
-						<a href="<?php echo esc_url( admin_url( 'upload.php' ) ); ?>">Media</a> and paste its ID.
-					</p>
+					<?php /* Real media picker. Asking for an attachment ID by hand was
+					         hostile: you had to leave the composer, find the number and
+					         type it back in. wp.media is the same modal the rest of
+					         WordPress uses, so uploading happens right here. */ ?>
+					<div class="tch-media">
+						<input type="hidden" id="tch_c_media_id" name="tch_c_media_id" value="<?php echo $media ? (int) $media : ''; ?>">
+						<div class="tch-media__preview"><?php echo self::media_preview_html( $media ); // phpcs:ignore WordPress.Security.EscapeOutput ?></div>
+						<p>
+							<button type="button" class="button tch-media__pick"><?php echo $media ? 'Change' : 'Select or upload'; ?></button>
+							<button type="button" class="button-link-delete tch-media__clear" <?php echo $media ? '' : 'style="display:none"'; ?>>Remove</button>
+						</p>
+						<p class="description">Photo for a Google Business Profile post, video file for a YouTube upload.</p>
+					</div>
+					<script>
+					jQuery(function ($) {
+						var wrap  = $('.tch-media'),
+						    field = wrap.find('#tch_c_media_id'),
+						    frame;
+						wrap.on('click', '.tch-media__pick', function (e) {
+							e.preventDefault();
+							if (!frame) {
+								frame = wp.media({
+									title: 'Select image or video',
+									library: { type: ['image', 'video'] },
+									multiple: false,
+									button: { text: 'Use this file' }
+								});
+								frame.on('select', function () {
+									var a = frame.state().get('selection').first().toJSON(),
+									    thumb = (a.sizes && a.sizes.thumbnail) ? a.sizes.thumbnail.url : '';
+									field.val(a.id);
+									wrap.find('.tch-media__preview').html(
+										(thumb ? '<img src="' + thumb + '" alt="" />' : '') +
+										'<span class="tch-media__name">' + a.filename + '</span>'
+									);
+									wrap.find('.tch-media__pick').text('Change');
+									wrap.find('.tch-media__clear').show();
+								});
+							}
+							frame.open();
+						});
+						wrap.on('click', '.tch-media__clear', function (e) {
+							e.preventDefault();
+							field.val('');
+							wrap.find('.tch-media__preview').empty();
+							wrap.find('.tch-media__pick').text('Select or upload');
+							$(this).hide();
+						});
+					});
+					</script>
 				</td>
 			</tr>
 			<tr>
@@ -204,6 +269,21 @@ class TCH_Content {
 			</tr>
 		</tbody></table>
 		<?php
+	}
+
+	/** Thumbnail for images, filename for videos (which have no preview image). */
+	public static function media_preview_html( $media_id ) {
+		$media_id = (int) $media_id;
+		if ( ! $media_id || ! get_post( $media_id ) ) {
+			return '';
+		}
+		$html = '';
+		if ( wp_attachment_is_image( $media_id ) ) {
+			$html .= wp_get_attachment_image( $media_id, 'thumbnail' );
+		}
+		$file  = get_attached_file( $media_id );
+		$html .= '<span class="tch-media__name">' . esc_html( $file ? basename( $file ) : ( '#' . $media_id ) ) . '</span>';
+		return $html;
 	}
 
 	/** Per-target outcome of the last publish attempt — the audit trail. */
@@ -248,8 +328,15 @@ class TCH_Content {
 		}
 		update_post_meta( $post_id, '_tch_c_targets', $targets );
 
-		$state = sanitize_key( wp_unslash( $_POST['tch_c_state'] ?? 'draft' ) );
-		update_post_meta( $post_id, '_tch_c_state', in_array( $state, array( 'draft', 'scheduled', 'published', 'failed' ), true ) ? $state : 'draft' );
+		// Only draft/scheduled can be asked for. A record already carrying an
+		// outcome keeps it unless "Send again" is ticked, so saving an edit can
+		// never silently un-publish something.
+		if ( ! empty( $_POST['tch_c_requeue'] ) ) {
+			update_post_meta( $post_id, '_tch_c_state', 'scheduled' );
+		} elseif ( isset( $_POST['tch_c_state'] ) ) {
+			$state = sanitize_key( wp_unslash( $_POST['tch_c_state'] ) );
+			update_post_meta( $post_id, '_tch_c_state', in_array( $state, array( 'draft', 'scheduled' ), true ) ? $state : 'draft' );
+		}
 
 		// datetime-local has no timezone, so read it in the site's zone rather
 		// than letting strtotime() assume UTC and shift every post.
