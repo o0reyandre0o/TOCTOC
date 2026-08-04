@@ -80,6 +80,15 @@ class TCH_Dashboard {
 			self::SLUG . '-queue',
 			array( __CLASS__, 'render_queue' )
 		);
+		// The plain WordPress list, with search, filters and bulk actions. The
+		// Queue view above is the scheduling lens; this is the archive.
+		add_submenu_page(
+			self::SLUG,
+			'All content',
+			'All content',
+			TCH_CAPABILITY,
+			'edit.php?post_type=' . TCH_Content::POST_TYPE
+		);
 		add_submenu_page(
 			self::SLUG,
 			'Setup',
@@ -95,14 +104,36 @@ class TCH_Dashboard {
 		if ( ! current_user_can( TCH_CAPABILITY ) ) {
 			wp_die( 'You do not have permission to view this page.' );
 		}
+		/*
+		 * Fetch everything, then sort in PHP.
+		 *
+		 * Ordering with meta_key => '_tch_c_scheduled_at' makes WP_Query INNER
+		 * JOIN postmeta, which silently drops every record that has no date yet
+		 * — so a draft saved without a schedule vanished from this screen even
+		 * though it existed. At 100 rows, sorting here is both correct and cheap.
+		 */
 		$items = get_posts( array(
 			'post_type'   => TCH_Content::POST_TYPE,
 			'post_status' => 'any',
 			'numberposts' => 100,
-			'meta_key'    => '_tch_c_scheduled_at',
-			'orderby'     => 'meta_value_num',
-			'order'       => 'ASC',
+			'orderby'     => 'date',
+			'order'       => 'DESC',
 		) );
+		usort( $items, function ( $a, $b ) {
+			$wa = (int) get_post_meta( $a->ID, '_tch_c_scheduled_at', true );
+			$wb = (int) get_post_meta( $b->ID, '_tch_c_scheduled_at', true );
+			// Undated drafts float to the top: they are the ones needing attention.
+			if ( ! $wa && ! $wb ) {
+				return $b->post_date_gmt <=> $a->post_date_gmt;
+			}
+			if ( ! $wa ) {
+				return -1;
+			}
+			if ( ! $wb ) {
+				return 1;
+			}
+			return $wa <=> $wb;
+		} );
 		?>
 		<div class="wrap tch-wrap">
 			<h1>
