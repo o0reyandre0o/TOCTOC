@@ -84,6 +84,40 @@ class TCH_Dashboard {
 		?>
 		<div class="wrap tch-wrap">
 			<h1>Client Hub</h1>
+			<?php
+			// One-shot result of a connect/sync action, set before the redirect.
+			$flash = class_exists( 'TCH_Google' ) ? TCH_Google::take_flash() : null;
+			if ( $flash ) {
+				printf(
+					'<div class="notice notice-%s is-dismissible"><p>%s</p></div>',
+					esc_attr( 'success' === $flash['type'] ? 'success' : 'error' ),
+					esc_html( $flash['msg'] )
+				);
+			}
+			?>
+
+			<?php if ( class_exists( 'TCH_Google' ) ) : ?>
+			<div class="tch-connections">
+				<?php if ( ! TCH_Google::is_configured() ) : ?>
+					<p><span class="tch-dot tch-dot--empty"></span> <strong>Google:</strong> not configured — define the constants in wp-config.php (see <a href="<?php echo esc_url( admin_url( 'admin.php?page=' . self::SLUG . '-setup' ) ); ?>">Setup</a>).</p>
+				<?php elseif ( ! TCH_Google::is_connected() ) : ?>
+					<p>
+						<span class="tch-dot tch-dot--partial"></span> <strong>Google:</strong> configured, not connected.
+						<a class="button button-primary" href="<?php echo esc_url( TCH_Google::connect_url() ); ?>">Connect Google</a>
+					</p>
+				<?php else : ?>
+					<p>
+						<span class="tch-dot tch-dot--ready"></span> <strong>Google:</strong> connected.
+						<a class="button button-primary" href="<?php echo esc_url( TCH_Google::sync_url() ); ?>">Sync YouTube now</a>
+						<a class="button" href="<?php echo esc_url( TCH_Google::disconnect_url() ); ?>">Disconnect</a>
+						<?php $last = (int) get_option( 'tch_youtube_last_sync' ); ?>
+						<?php if ( $last ) : ?>
+							<span class="description">Last sync: <?php echo esc_html( human_time_diff( $last ) ); ?> ago.</span>
+						<?php endif; ?>
+					</p>
+				<?php endif; ?>
+			</div>
+			<?php endif; ?>
 			<p class="tch-lede">
 				Every profile TocToc manages, in one grid.
 				<span class="tch-dot tch-dot--ready"></span> ready
@@ -135,8 +169,52 @@ class TCH_Dashboard {
 				</table>
 
 				<?php self::render_totals( $clients, $platforms ); ?>
+				<?php self::render_youtube_stats( $clients ); ?>
 			<?php endif; ?>
 		</div>
+		<?php
+	}
+
+	/** Synced YouTube numbers per client — only rows that have data. */
+	private static function render_youtube_stats( $clients ) {
+		$rows = array();
+		foreach ( $clients as $client ) {
+			$synced = (int) get_post_meta( $client->ID, '_tch_youtube_synced_at', true );
+			if ( ! $synced ) {
+				continue;
+			}
+			$rows[] = array(
+				'name'   => get_the_title( $client ),
+				'edit'   => get_edit_post_link( $client->ID ),
+				'title'  => (string) get_post_meta( $client->ID, '_tch_youtube_stat_title', true ),
+				'subs'   => (int) get_post_meta( $client->ID, '_tch_youtube_stat_subs', true ),
+				'videos' => (int) get_post_meta( $client->ID, '_tch_youtube_stat_videos', true ),
+				'views'  => (int) get_post_meta( $client->ID, '_tch_youtube_stat_views', true ),
+				'synced' => $synced,
+			);
+		}
+		if ( ! $rows ) {
+			return;
+		}
+		?>
+		<h2>YouTube</h2>
+		<table class="widefat striped" style="max-width:860px">
+			<thead>
+				<tr><th>Client</th><th>Channel</th><th>Subscribers</th><th>Videos</th><th>Views</th><th>Synced</th></tr>
+			</thead>
+			<tbody>
+			<?php foreach ( $rows as $r ) : ?>
+				<tr>
+					<td><a href="<?php echo esc_url( $r['edit'] ); ?>"><strong><?php echo esc_html( $r['name'] ); ?></strong></a></td>
+					<td><?php echo esc_html( $r['title'] ); ?></td>
+					<td><?php echo esc_html( number_format_i18n( $r['subs'] ) ); ?></td>
+					<td><?php echo esc_html( number_format_i18n( $r['videos'] ) ); ?></td>
+					<td><?php echo esc_html( number_format_i18n( $r['views'] ) ); ?></td>
+					<td><?php echo esc_html( human_time_diff( $r['synced'] ) ); ?> ago</td>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
 		<?php
 	}
 

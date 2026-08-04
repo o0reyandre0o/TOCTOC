@@ -62,6 +62,7 @@ $tch_map   = array(
 	'post-type'   => 'TCH_Post_Type',
 	'fields'      => 'TCH_Fields',
 	'dashboard'   => 'TCH_Dashboard',
+	'google'      => 'TCH_Google',
 );
 foreach ( $tch_map as $tch_slug => $tch_classname ) {
 	// Already loaded from somewhere else (e.g. the standalone plugin version of
@@ -87,6 +88,7 @@ if ( $tch_ready && ! defined( 'TCH_BOOTED' )
 	TCH_Post_Type::init();
 	TCH_Fields::init();
 	TCH_Dashboard::init();
+	TCH_Google::init();
 } elseif ( $tch_ready ) {
 	// Loaded by something else already; nothing to do.
 	$tch_ready = true;
