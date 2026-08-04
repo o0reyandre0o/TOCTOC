@@ -307,7 +307,42 @@ class TCH_Content {
 		}
 		$file  = get_attached_file( $media_id );
 		$html .= '<span class="tch-media__name">' . esc_html( $file ? basename( $file ) : ( '#' . $media_id ) ) . '</span>';
+		$hint  = self::youtube_shape_hint( $media_id );
+		if ( $hint ) {
+			$html .= '<span class="tch-media__hint">' . esc_html( $hint ) . '</span>';
+		}
 		return $html;
+	}
+
+	/**
+	 * Predict how YouTube will classify a video, because the API cannot say.
+	 *
+	 * videos.insert has no Short/long-form switch: YouTube decides from the file
+	 * itself — vertical and roughly a minute or less becomes a Short, anything
+	 * else a regular video. That surprised us on the first upload, so the shape
+	 * is reported here instead of after the fact. To publish long-form, the
+	 * source file has to be horizontal or longer; no API call can override it.
+	 */
+	public static function youtube_shape_hint( $media_id ) {
+		$meta = wp_get_attachment_metadata( (int) $media_id );
+		if ( ! is_array( $meta ) || empty( $meta['width'] ) || empty( $meta['height'] ) ) {
+			return '';
+		}
+		$w      = (int) $meta['width'];
+		$h      = (int) $meta['height'];
+		$secs   = (int) round( (float) ( $meta['length'] ?? 0 ) );
+		$is_tall = $h > $w;
+		$short   = $is_tall && $secs > 0 && $secs <= 60;
+
+		return sprintf(
+			'%d×%d%s — YouTube will publish this as %s',
+			$w,
+			$h,
+			$secs ? ', ' . $secs . 's' : '',
+			$short
+				? 'a SHORT (vertical and under 60s)'
+				: ( $is_tall ? 'a regular video (vertical but over 60s)' : 'a regular video (horizontal)' )
+		);
 	}
 
 	/** Per-target outcome of the last publish attempt — the audit trail. */

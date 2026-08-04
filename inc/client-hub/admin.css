@@ -143,6 +143,16 @@
 	word-break: break-all;
 }
 
+/* Short vs long-form warning: YouTube decides from the file, so this has to be
+   read before uploading, not discovered after. */
+.tch-media__hint {
+	display: block;
+	margin-top: 3px;
+	font-size: 11px;
+	font-weight: 600;
+	color: #8a6d00;
+}
+
 @media (prefers-color-scheme: dark) {
 	.tch-media__preview:not(:empty) { background: transparent; }
 }
