@@ -25,6 +25,10 @@ class TCH_Google {
 	const AUTH_URL  = 'https://accounts.google.com/o/oauth2/v2/auth';
 	const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 	const SCOPE_YT  = 'https://www.googleapis.com/auth/youtube.readonly';
+	// Requested at consent time already so ONE reconnect covers phase 2; API
+	// calls against it stay dead until Google approves the access request
+	// (support case 7-2699000041208 — approved shows as 300 QPM quota).
+	const SCOPE_GBP = 'https://www.googleapis.com/auth/business.manage';
 
 	public static function init() {
 		add_action( 'admin_init', array( __CLASS__, 'maybe_handle_oauth' ) );
@@ -55,7 +59,7 @@ class TCH_Google {
 			'client_id'     => TCH_GOOGLE_CLIENT_ID,
 			'redirect_uri'  => self::redirect_uri(),
 			'response_type' => 'code',
-			'scope'         => self::SCOPE_YT,
+			'scope'         => self::SCOPE_YT . ' ' . self::SCOPE_GBP,
 			'access_type'   => 'offline',
 			// Without prompt=consent Google only issues a refresh token on the
 			// very first authorisation; every reconnect after that would come
@@ -195,6 +199,98 @@ class TCH_Google {
 			wp_safe_redirect( $back );
 			exit;
 		}
+
+		if ( 'discover_gbp' === $action ) {
+			check_admin_referer( 'tch_discover_gbp' );
+			$result = self::discover_gbp();
+			if ( is_wp_error( $result ) ) {
+				self::flash( 'GBP discovery failed: ' . $result->get_error_message() );
+			} else {
+				self::flash( sprintf( 'GBP discovery — %d location(s) matched to clients.', $result ), 'success' );
+			}
+			wp_safe_redirect( $back );
+			exit;
+		}
+	}
+
+	public static function gbp_url() {
+		return wp_nonce_url(
+			admin_url( 'admin.php?page=' . TCH_Dashboard::SLUG . '&tch_action=discover_gbp' ),
+			'tch_discover_gbp'
+		);
+	}
+
+	/**
+	 * Phase 2, step 1: walk every GBP account the connected Google user
+	 * manages, list its locations, and match each location to a client record
+	 * by website host. Fills the account/location IDs the meta boxes leave
+	 * empty, plus the Maps URL and primary category when absent.
+	 *
+	 * Built ahead of approval on purpose: until case 7-2699000041208 is granted
+	 * the first call returns Google's own "quota exceeded / API not approved"
+	 * message, which the dashboard surfaces verbatim — pressing the button IS
+	 * the approval test.
+	 */
+	public static function discover_gbp() {
+		$token = self::access_token();
+		if ( ! $token ) {
+			return new WP_Error( 'tch_no_token', 'not connected — use Connect Google first' );
+		}
+		$args = array( 'timeout' => 25, 'headers' => array( 'Authorization' => 'Bearer ' . $token ) );
+
+		$accounts = self::json( wp_remote_get( 'https://mybusinessaccountmanagement.googleapis.com/v1/accounts', $args ) );
+		if ( isset( $accounts['error'] ) ) {
+			return new WP_Error( 'tch_api', is_array( $accounts['error'] ) ? ( $accounts['error']['message'] ?? 'API error' ) : $accounts['error'] );
+		}
+		if ( empty( $accounts['accounts'] ) ) {
+			return new WP_Error( 'tch_api', 'the connected Google user manages no GBP accounts' );
+		}
+
+		// client host => post id, so locations match by the site they declare.
+		$by_host = array();
+		foreach ( TCH_Post_Type::all() as $client ) {
+			$site = (string) get_post_meta( $client->ID, '_tch_client_website', true );
+			$host = strtolower( (string) wp_parse_url( $site, PHP_URL_HOST ) );
+			if ( $host ) {
+				$by_host[ preg_replace( '/^www\./', '', $host ) ] = $client->ID;
+			}
+		}
+
+		$matched = 0;
+		foreach ( $accounts['accounts'] as $account ) {
+			$page = '';
+			do {
+				$url = add_query_arg( array(
+					'readMask'  => 'name,title,websiteUri,categories.primaryCategory.displayName,metadata.mapsUri',
+					'pageSize'  => 100,
+					'pageToken' => $page,
+				), 'https://mybusinessbusinessinformation.googleapis.com/v1/' . rawurlencode( $account['name'] ) . '/locations' );
+				$locations = self::json( wp_remote_get( $url, $args ) );
+				if ( isset( $locations['error'] ) ) {
+					return new WP_Error( 'tch_api', is_array( $locations['error'] ) ? ( $locations['error']['message'] ?? 'API error' ) : $locations['error'] );
+				}
+				foreach ( (array) ( $locations['locations'] ?? array() ) as $loc ) {
+					$host = strtolower( (string) wp_parse_url( (string) ( $loc['websiteUri'] ?? '' ), PHP_URL_HOST ) );
+					$host = preg_replace( '/^www\./', '', $host );
+					if ( ! $host || ! isset( $by_host[ $host ] ) ) {
+						continue;
+					}
+					$post_id = $by_host[ $host ];
+					update_post_meta( $post_id, TCH_Platforms::meta_key( 'gbp', 'account_id' ), sanitize_text_field( $account['name'] ) );
+					update_post_meta( $post_id, TCH_Platforms::meta_key( 'gbp', 'location_id' ), sanitize_text_field( $loc['name'] ?? '' ) );
+					if ( ! empty( $loc['metadata']['mapsUri'] ) && '' === (string) get_post_meta( $post_id, TCH_Platforms::meta_key( 'gbp', 'url' ), true ) ) {
+						update_post_meta( $post_id, TCH_Platforms::meta_key( 'gbp', 'url' ), esc_url_raw( $loc['metadata']['mapsUri'] ) );
+					}
+					if ( ! empty( $loc['categories']['primaryCategory']['displayName'] ) && '' === (string) get_post_meta( $post_id, TCH_Platforms::meta_key( 'gbp', 'primary_category' ), true ) ) {
+						update_post_meta( $post_id, TCH_Platforms::meta_key( 'gbp', 'primary_category' ), sanitize_text_field( $loc['categories']['primaryCategory']['displayName'] ) );
+					}
+					$matched++;
+				}
+				$page = (string) ( $locations['nextPageToken'] ?? '' );
+			} while ( '' !== $page );
+		}
+		update_option( 'tch_gbp_last_discover', time(), false );
+		return $matched;
 	}
 
 	/**

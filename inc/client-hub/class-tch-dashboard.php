@@ -109,6 +109,7 @@ class TCH_Dashboard {
 					<p>
 						<span class="tch-dot tch-dot--ready"></span> <strong>Google:</strong> connected.
 						<a class="button button-primary" href="<?php echo esc_url( TCH_Google::sync_url() ); ?>">Sync YouTube now</a>
+						<a class="button" href="<?php echo esc_url( TCH_Google::gbp_url() ); ?>" title="Works once Google approves the Business Profile API request (case 7-2699000041208). Until then this button doubles as the approval test — an error means still pending.">Discover GBP</a>
 						<a class="button" href="<?php echo esc_url( TCH_Google::disconnect_url() ); ?>">Disconnect</a>
 						<?php $last = (int) get_option( 'tch_youtube_last_sync' ); ?>
 						<?php if ( $last ) : ?>

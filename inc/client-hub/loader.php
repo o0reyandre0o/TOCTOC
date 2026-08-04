@@ -166,6 +166,109 @@ add_action( 'admin_init', function () {
 	update_option( 'tch_seeded_toctoc_v1', 1, false );
 } );
 
+/**
+ * Seed v2: every site TocToc has built or manages, with the profile links
+ * discovered by crawling each client's own homepage on 2026-08-04 (YouTube
+ * channel IDs resolved through each channel's canonical URL). Same contract as
+ * seed v1: insert-only — an existing record with the same title is never
+ * touched, so hand edits always win. Engagement is set only for the six
+ * clients confirmed active; everyone else stays unclassified on purpose.
+ */
+add_action( 'admin_init', function () {
+	if ( ! defined( 'TCH_BOOTED' ) || get_option( 'tch_seeded_clients_v2' ) ) {
+		return;
+	}
+	if ( ! current_user_can( TCH_CAPABILITY ) ) {
+		return;
+	}
+	// title => [ website, engagement, youtube[ id, handle ], linkedin_url, instagram ]
+	$seed = array(
+		'Uncle Liu'                  => array( 'https://uncleliu.ky', 'active', null, null, 'uncleliu.ky' ),
+		'Coconut Room'               => array( 'https://coconutroom.ky', 'active', null, null, 'coconutroom.ky' ),
+		'Prime Kitchen'              => array( 'https://primekitchen.ky', 'active', null, 'https://www.linkedin.com/company/prime-group-cayman/', 'primekitchen.ky' ),
+		'San Si Wu'                  => array( 'https://sansiwu.ky', 'active', null, null, 'sansiwu.ky' ),
+		'19-81 Brewing Co.'          => array( 'https://1981brewingco.com', 'active', null, null, '1981brewingco' ),
+		'TintXKing'                  => array( 'https://tintxking.com', 'active', array( 'UCtM9Wm9_LgPlstILVeeyOIg', '' ), 'https://www.linkedin.com/company/tintxking/', 'tintxking' ),
+		'Carnivore Smash Burger'     => array( 'https://carnivore.ky', '', null, null, 'smash.ky' ),
+		'Prime Group'                => array( 'https://primegroup.ky', '', null, 'https://www.linkedin.com/company/prime-group-ky/', 'primekitchen.ky' ),
+		'Yallah'                     => array( 'https://yallah.ky', '', null, null, 'yallah.ky' ),
+		'Easy Lot'                   => array( 'https://easylot.ky', '', array( 'UCfejmvl93pIcH8fcccIkhng', '@EasyLotKy' ), null, 'easylotky' ),
+		'Prospect Storage'           => array( 'https://prospectstorage.ky', '', array( 'UC0ZyygUZZKnZ4kARwM6ag-g', '@ProspectStorage' ), null, 'prospectstorage.ky' ),
+		'Prospect Center'            => array( 'https://prospectcenter.ky', '', null, null, 'prospectcenter.ky' ),
+		'Gate Garage Door Solutions' => array( 'https://gategaragedoorsolutions.com', '', null, null, '' ),
+		'We Wax The Competition'     => array( 'https://wewaxthecompetition.com', '', null, null, 'wewax' ),
+		'Cabifinde'                  => array( 'https://cabifinde.com', '', null, null, 'cabifinde' ),
+		'PR Optics'                  => array( 'https://pr-optics.com', '', null, null, '' ),
+		'SolaraPRO'                  => array( 'https://solara-pro.com', '', null, null, '' ),
+		"D's Pizza"                  => array( 'https://dspizza.ky', '', null, null, '' ),
+		'Luxe Detailing'             => array( 'https://luxedetailing.ky', '', null, null, 'luxedetailing.ky' ),
+		'Miss Cayman Islands'        => array( 'https://misscaymanislands.ky', '', null, null, 'officialmisscaymanislands' ),
+		'Adventura Cayman'           => array( 'https://adventuracayman.com', '', null, null, 'adventuracayman' ),
+		'The Conscious Closet'       => array( 'https://theconsciouscloset.ky', '', null, null, 'the_conscious_closet_ky' ),
+		'Infinite Mindcare'          => array( 'https://infinitemindcare.com', '', null, 'https://www.linkedin.com/company/infinitemindcare/', '' ),
+		'Daniel Garrido'             => array( 'https://danielgarrido.com', '', null, null, '' ),
+		'VitaGo'                     => array( 'https://vitagopr.com', '', null, null, 'vitagopr' ),
+	);
+
+	$existing = array();
+	foreach ( TCH_Post_Type::all() as $c ) {
+		$existing[ get_the_title( $c ) ] = true;
+	}
+
+	foreach ( $seed as $title => $row ) {
+		if ( isset( $existing[ $title ] ) ) {
+			continue;
+		}
+		$id = wp_insert_post( array(
+			'post_type'   => TCH_Post_Type::POST_TYPE,
+			'post_status' => 'publish',
+			'post_title'  => $title,
+		) );
+		if ( ! $id || is_wp_error( $id ) ) {
+			continue;
+		}
+		update_post_meta( $id, '_tch_client_website', $row[0] );
+		if ( '' !== $row[1] ) {
+			update_post_meta( $id, '_tch_client_status', $row[1] );
+		}
+		if ( is_array( $row[2] ) ) {
+			update_post_meta( $id, '_tch_youtube_channel_id', $row[2][0] );
+			update_post_meta( $id, '_tch_youtube_url', 'https://www.youtube.com/channel/' . $row[2][0] );
+			if ( '' !== $row[2][1] ) {
+				update_post_meta( $id, '_tch_youtube_handle', $row[2][1] );
+			}
+		}
+		if ( ! empty( $row[3] ) ) {
+			update_post_meta( $id, '_tch_linkedin_url', $row[3] );
+		}
+		if ( '' !== $row[4] ) {
+			update_post_meta( $id, '_tch_client_notes', 'IG: @' . $row[4] );
+		}
+	}
+	update_option( 'tch_seeded_clients_v2', 1, false );
+} );
+
+/**
+ * Daily automatic YouTube sync. Manual "Sync now" stays for on-demand runs;
+ * this keeps the numbers fresh without anyone remembering to click. Themes get
+ * no activation hook, so the schedule is ensured lazily from admin requests.
+ */
+add_action( 'admin_init', function () {
+	if ( defined( 'TCH_BOOTED' ) && ! wp_next_scheduled( 'tch_daily_sync' ) ) {
+		wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', 'tch_daily_sync' );
+	}
+} );
+add_action( 'tch_daily_sync', function () {
+	if ( ! class_exists( 'TCH_Google' ) || ! TCH_Google::is_connected() ) {
+		return;
+	}
+	$result = TCH_Google::sync_youtube();
+	update_option( 'tch_last_cron_result', array(
+		'time'   => time(),
+		'result' => is_wp_error( $result ) ? 'error: ' . $result->get_error_message() : $result . ' channel(s)',
+	), false );
+} );
+
 /** Admin stylesheet, loaded only on the hub's own screens. */
 add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	$screen = get_current_screen();
