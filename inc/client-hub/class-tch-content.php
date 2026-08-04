@@ -201,6 +201,28 @@ class TCH_Content {
 						</p>
 						<p class="description">Photo for a Google Business Profile post, video file for a YouTube upload.</p>
 					</div>
+					<?php
+					/*
+					 * Escape hatch for files that exist on the server but were never
+					 * registered as attachments — anything put in /uploads/ over FTP
+					 * or through the host's file manager has no media-library record,
+					 * so the picker above genuinely cannot see it. Restricted to this
+					 * site's uploads directory (checked with realpath) so it can never
+					 * be pointed at arbitrary paths.
+					 */
+					$media_url = (string) get_post_meta( $post->ID, '_tch_c_media_url', true );
+					$limit     = size_format( wp_max_upload_size() );
+					?>
+					<p style="margin-top:14px">
+						<label for="tch_c_media_url"><strong>…or paste a file URL already on this server</strong></label><br>
+						<input type="url" id="tch_c_media_url" name="tch_c_media_url" value="<?php echo esc_attr( $media_url ); ?>" class="large-text code"
+						       placeholder="<?php echo esc_attr( trailingslashit( wp_upload_dir()['baseurl'] ) . '2026/07/video.mp4' ); ?>">
+						<span class="description">
+							Used only when nothing is selected above. Must live under
+							<code><?php echo esc_html( wp_upload_dir()['baseurl'] ); ?></code>.
+							This server accepts uploads up to <strong><?php echo esc_html( $limit ); ?></strong> through the media library.
+						</span>
+					</p>
 					<script>
 					jQuery(function ($) {
 						var wrap  = $('.tch-media'),
@@ -209,9 +231,11 @@ class TCH_Content {
 						wrap.on('click', '.tch-media__pick', function (e) {
 							e.preventDefault();
 							if (!frame) {
+								// No library type filter. Restricting to image+video
+								// hid files whose MIME type WordPress never recorded,
+								// and the publisher validates the file anyway.
 								frame = wp.media({
 									title: 'Select image or video',
-									library: { type: ['image', 'video'] },
 									multiple: false,
 									button: { text: 'Use this file' }
 								});
@@ -357,6 +381,13 @@ class TCH_Content {
 			update_post_meta( $post_id, '_tch_c_media_id', $media );
 		} else {
 			delete_post_meta( $post_id, '_tch_c_media_id' );
+		}
+
+		$media_url = esc_url_raw( wp_unslash( $_POST['tch_c_media_url'] ?? '' ) );
+		if ( '' !== $media_url ) {
+			update_post_meta( $post_id, '_tch_c_media_url', $media_url );
+		} else {
+			delete_post_meta( $post_id, '_tch_c_media_url' );
 		}
 
 		$cta_types = array( '', 'LEARN_MORE', 'BOOK', 'ORDER', 'SHOP', 'SIGN_UP', 'CALL' );

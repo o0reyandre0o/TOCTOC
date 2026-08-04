@@ -233,11 +233,44 @@ class TCH_Publisher {
 		if ( ! $token ) {
 			return new WP_Error( 'tch_no_token', 'Google not connected' );
 		}
-		$media_id = (int) get_post_meta( $content_id, '_tch_c_media_id', true );
-		$path     = $media_id ? get_attached_file( $media_id ) : '';
-		if ( ! $path || ! is_readable( $path ) ) {
-			return new WP_Error( 'tch_no_media', 'no readable video attachment — set a Media ID' );
+		/*
+		 * Confirm WHERE this token publishes before sending a byte.
+		 *
+		 * videos.insert has no channel parameter — it always uploads to the
+		 * default channel of the authenticated account. So a single connection
+		 * cannot serve several clients: whoever is connected receives every
+		 * upload, silently. Putting a client's video on the wrong channel is
+		 * worse than not publishing at all, so this compares the token's real
+		 * channel against the one stored on the client and refuses on a
+		 * mismatch. Costs 1 quota unit out of 10,000/day.
+		 */
+		$expected = trim( (string) get_post_meta( $client_id, TCH_Platforms::meta_key( 'youtube', 'channel_id' ), true ) );
+		$who      = wp_remote_get( 'https://www.googleapis.com/youtube/v3/channels?part=id&mine=true', array(
+			'timeout' => 20,
+			'headers' => array( 'Authorization' => 'Bearer ' . $token ),
+		) );
+		$who_data = is_wp_error( $who ) ? array() : json_decode( (string) wp_remote_retrieve_body( $who ), true );
+		$actual   = (string) ( $who_data['items'][0]['id'] ?? '' );
+		if ( '' === $actual ) {
+			$msg = (string) ( $who_data['error']['message'] ?? 'could not read the connected channel' );
+			return new WP_Error( 'tch_no_channel', $msg . ' — reconnect Google (the youtube.upload scope may be missing)' );
 		}
+		if ( '' !== $expected && $actual !== $expected ) {
+			return new WP_Error(
+				'tch_wrong_channel',
+				sprintf(
+					'refused: the connected Google account publishes to channel %1$s, but this client is %2$s. Connect with the account that owns %2$s, or fix the client\'s Channel ID.',
+					$actual,
+					$expected
+				)
+			);
+		}
+
+		$path = self::resolve_media_path( $content_id );
+		if ( is_wp_error( $path ) ) {
+			return $path;
+		}
+		$media_id = (int) get_post_meta( $content_id, '_tch_c_media_id', true );
 		$size = filesize( $path );
 		if ( ! $size ) {
 			return new WP_Error( 'tch_no_media', 'video file is empty' );
@@ -260,7 +293,7 @@ class TCH_Publisher {
 				'Authorization'           => 'Bearer ' . $token,
 				'Content-Type'            => 'application/json; charset=UTF-8',
 				'X-Upload-Content-Length' => (string) $size,
-				'X-Upload-Content-Type'   => (string) ( get_post_mime_type( $media_id ) ?: 'video/*' ),
+				'X-Upload-Content-Type'   => (string) ( ( $media_id ? get_post_mime_type( $media_id ) : '' ) ?: 'video/*' ),
 			),
 			'body'    => wp_json_encode( $meta ),
 		) );
@@ -317,6 +350,40 @@ class TCH_Publisher {
 
 		$video_id = (string) ( $final['id'] ?? '' );
 		return $video_id ? 'uploaded: https://youtu.be/' . $video_id : 'uploaded';
+	}
+
+	/**
+	 * Local path of the file to upload: the chosen attachment, or the pasted
+	 * URL for files sitting in /uploads/ without a media-library record.
+	 *
+	 * The pasted URL is resolved against the uploads directory and then checked
+	 * with realpath, so a crafted value ("…/uploads/../../wp-config.php") cannot
+	 * walk out of that directory and hand a server file to YouTube.
+	 */
+	private static function resolve_media_path( $content_id ) {
+		$media_id = (int) get_post_meta( $content_id, '_tch_c_media_id', true );
+		if ( $media_id ) {
+			$path = get_attached_file( $media_id );
+			if ( $path && is_readable( $path ) ) {
+				return $path;
+			}
+		}
+
+		$url = (string) get_post_meta( $content_id, '_tch_c_media_url', true );
+		if ( '' === $url ) {
+			return new WP_Error( 'tch_no_media', 'no video selected — pick one in Image or video, or paste a file URL' );
+		}
+		$uploads = wp_upload_dir();
+		if ( 0 !== strpos( $url, $uploads['baseurl'] ) ) {
+			return new WP_Error( 'tch_bad_media', 'the file URL must be inside ' . $uploads['baseurl'] );
+		}
+		$candidate = $uploads['basedir'] . substr( $url, strlen( $uploads['baseurl'] ) );
+		$real      = realpath( $candidate );
+		$base      = realpath( $uploads['basedir'] );
+		if ( ! $real || ! $base || 0 !== strpos( $real, $base ) || ! is_readable( $real ) ) {
+			return new WP_Error( 'tch_bad_media', 'that file does not exist on this server' );
+		}
+		return $real;
 	}
 
 	/**
