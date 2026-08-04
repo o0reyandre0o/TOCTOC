@@ -29,6 +29,9 @@ class TCH_Google {
 	// calls against it stay dead until Google approves the access request
 	// (support case 7-2699000041208 — approved shows as 300 QPM quota).
 	const SCOPE_GBP = 'https://www.googleapis.com/auth/business.manage';
+	// Upload needs its own scope beyond youtube.readonly. Requested up front so
+	// one consent covers reading stats today and publishing video tomorrow.
+	const SCOPE_YT_UPLOAD = 'https://www.googleapis.com/auth/youtube.upload';
 
 	public static function init() {
 		add_action( 'admin_init', array( __CLASS__, 'maybe_handle_oauth' ) );
@@ -59,7 +62,7 @@ class TCH_Google {
 			'client_id'     => TCH_GOOGLE_CLIENT_ID,
 			'redirect_uri'  => self::redirect_uri(),
 			'response_type' => 'code',
-			'scope'         => self::SCOPE_YT . ' ' . self::SCOPE_GBP,
+			'scope'         => self::SCOPE_YT . ' ' . self::SCOPE_YT_UPLOAD . ' ' . self::SCOPE_GBP,
 			'access_type'   => 'offline',
 			// Without prompt=consent Google only issues a refresh token on the
 			// very first authorisation; every reconnect after that would come

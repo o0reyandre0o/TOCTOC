@@ -67,12 +67,94 @@ class TCH_Dashboard {
 		);
 		add_submenu_page(
 			self::SLUG,
+			'Compose content',
+			'Compose',
+			TCH_CAPABILITY,
+			'post-new.php?post_type=' . TCH_Content::POST_TYPE
+		);
+		add_submenu_page(
+			self::SLUG,
+			'Content queue',
+			'Queue',
+			TCH_CAPABILITY,
+			self::SLUG . '-queue',
+			array( __CLASS__, 'render_queue' )
+		);
+		add_submenu_page(
+			self::SLUG,
 			'Setup',
 			'Setup',
 			TCH_CAPABILITY,
 			self::SLUG . '-setup',
 			array( __CLASS__, 'render_setup' )
 		);
+	}
+
+	/** Everything queued or delivered, newest schedule first. */
+	public static function render_queue() {
+		if ( ! current_user_can( TCH_CAPABILITY ) ) {
+			wp_die( 'You do not have permission to view this page.' );
+		}
+		$items = get_posts( array(
+			'post_type'   => TCH_Content::POST_TYPE,
+			'post_status' => 'any',
+			'numberposts' => 100,
+			'meta_key'    => '_tch_c_scheduled_at',
+			'orderby'     => 'meta_value_num',
+			'order'       => 'ASC',
+		) );
+		?>
+		<div class="wrap tch-wrap">
+			<h1>
+				Content queue
+				<a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=' . TCH_Content::POST_TYPE ) ); ?>" class="page-title-action">Compose</a>
+			</h1>
+			<?php if ( ! $items ) : ?>
+				<div class="notice notice-info inline"><p>Nothing queued. <a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=' . TCH_Content::POST_TYPE ) ); ?>">Compose your first post</a> — write once, tick the clients and channels, set a date.</p></div>
+			<?php else : ?>
+				<table class="widefat striped">
+					<thead><tr><th>Content</th><th>State</th><th>Publish at</th><th>Targets</th><th></th></tr></thead>
+					<tbody>
+					<?php foreach ( $items as $item ) :
+						$state   = get_post_meta( $item->ID, '_tch_c_state', true ) ?: 'draft';
+						$when    = (int) get_post_meta( $item->ID, '_tch_c_scheduled_at', true );
+						$targets = (array) get_post_meta( $item->ID, '_tch_c_targets', true );
+						$results = (array) get_post_meta( $item->ID, '_tch_c_results', true );
+						$done    = 0;
+						foreach ( $results as $r ) {
+							$done += ! empty( $r['ok'] ) ? 1 : 0;
+						}
+						?>
+						<tr>
+							<td><a href="<?php echo esc_url( get_edit_post_link( $item->ID ) ); ?>"><strong><?php echo esc_html( get_the_title( $item ) ); ?></strong></a></td>
+							<td><span class="tch-state tch-state--<?php echo esc_attr( $state ); ?>"><?php echo esc_html( ucfirst( $state ) ); ?></span></td>
+							<td><?php echo $when ? esc_html( wp_date( 'Y-m-d H:i', $when ) ) : '&mdash;'; ?></td>
+							<td><?php echo esc_html( sprintf( '%d/%d delivered', $done, count( $targets ) ) ); ?></td>
+							<td>
+								<?php if ( 'published' !== $state && $targets ) : ?>
+									<a class="button button-small" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?page=' . self::SLUG . '&tch_action=publish_now&content=' . $item->ID ), 'tch_publish_now' ) ); ?>">Publish now</a>
+								<?php endif; ?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+					</tbody>
+				</table>
+			<?php endif; ?>
+
+			<h2>Automation</h2>
+			<?php $next = wp_next_scheduled( TCH_Publisher::CRON_HOOK ); ?>
+			<p>
+				Publisher runs every 5 minutes.
+				<?php echo $next ? 'Next run in ' . esc_html( human_time_diff( $next ) ) . '.' : '<strong>Not scheduled.</strong>'; ?>
+			</p>
+			<p class="description">
+				WordPress only fires its cron when someone visits the site, so a quiet hour can delay a
+				scheduled post. For minute-accurate publishing add a real server cron hitting
+				<code><?php echo esc_html( site_url( 'wp-cron.php?doing_wp_cron' ) ); ?></code> every 5 minutes
+				(and set <code>DISABLE_WP_CRON</code> to true in wp-config.php).
+			</p>
+		</div>
+		<?php
 	}
 
 	public static function render() {
@@ -125,6 +207,32 @@ class TCH_Dashboard {
 				<span class="tch-dot tch-dot--partial"></span> incomplete
 				<span class="tch-dot tch-dot--empty"></span> missing
 			</p>
+
+			<?php
+			// Staleness first: this is the screen's most actionable content. A
+			// retained client going quiet is what eventually makes the 90-day
+			// guarantee expensive, so it outranks the coverage grid.
+			$stale = class_exists( 'TCH_Publisher' ) ? TCH_Publisher::stale_report() : array();
+			if ( $stale ) :
+				?>
+				<div class="notice notice-warning inline tch-stale">
+					<p><strong>Needs a post</strong></p>
+					<ul>
+						<?php foreach ( $stale as $s ) : ?>
+							<li>
+								<a href="<?php echo esc_url( get_edit_post_link( $s['id'] ) ); ?>"><strong><?php echo esc_html( $s['client'] ); ?></strong></a>
+								&middot; <code><?php echo esc_html( $s['channel'] ); ?></code> &mdash;
+								<?php
+								echo null === $s['days']
+									? 'never published from the hub'
+									: esc_html( sprintf( '%d days ago (limit %d)', $s['days'], $s['limit'] ) );
+								?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+					<p><a class="button button-primary" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=' . TCH_Content::POST_TYPE ) ); ?>">Compose a post</a></p>
+				</div>
+			<?php endif; ?>
 
 			<?php if ( ! $clients ) : ?>
 				<div class="notice notice-info inline">
