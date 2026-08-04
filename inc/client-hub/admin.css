@@ -112,6 +112,41 @@
 .tch-state--published { background: #edfaef; color: #00622b; border-color: #68de7c; }
 .tch-state--failed    { background: #fcf0f1; color: #8a2424; border-color: #f86368; }
 
+/* Media picker ------------------------------------------------------------ */
+
+.tch-media__preview {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 0;
+}
+
+.tch-media__preview:not(:empty) {
+	margin-bottom: 10px;
+	padding: 8px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	background: #fff;
+}
+
+.tch-media__preview img {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+	border-radius: 3px;
+	display: block;
+}
+
+.tch-media__name {
+	font-size: 12px;
+	color: #50575e;
+	word-break: break-all;
+}
+
+@media (prefers-color-scheme: dark) {
+	.tch-media__preview:not(:empty) { background: transparent; }
+}
+
 /* Target matrix: many columns, so keep the checkboxes readable. */
 .tch-targets th,
 .tch-targets td { vertical-align: middle; }
