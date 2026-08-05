@@ -229,6 +229,25 @@
     })(window,document,'script','dataLayer','GTM-5ZT8BLFP');</script>
     <!-- End Google Tag Manager -->
 
+    <!--
+      Microsoft Clarity — heatmaps and session recordings, and it links up with
+      Bing Webmaster Tools so the behaviour data sits beside the search data.
+
+      Loaded normally rather than deferred like GTM above: the script is already
+      async so it never blocks parsing, and a recorder that starts 3.5s late
+      misses the first scroll and the first rage-click — exactly the moments the
+      tool exists to capture. GTM can afford the delay because its events queue
+      in the dataLayer; a session recording cannot be replayed retroactively.
+    -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "xxr2kxt233");
+    </script>
+    <!-- End Microsoft Clarity -->
+
     <!-- Image Source for legacy crawlers -->
     <link rel="image_src" href="<?php echo esc_url($logo_url); ?>">
     
