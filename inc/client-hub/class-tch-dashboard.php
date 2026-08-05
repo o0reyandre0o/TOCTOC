@@ -230,6 +230,30 @@ class TCH_Dashboard {
 						<?php endif; ?>
 					</p>
 				<?php endif; ?>
+
+				<?php
+				// LinkedIn: one agency connection covers every page the member
+				// administers, so it lives here rather than on each client.
+				if ( class_exists( 'TCH_LinkedIn' ) ) :
+					if ( ! TCH_LinkedIn::is_configured() ) : ?>
+						<p><span class="tch-dot tch-dot--empty"></span> <strong>LinkedIn:</strong> add <code>TCH_LINKEDIN_CLIENT_ID</code> and <code>TCH_LINKEDIN_CLIENT_SECRET</code> to wp-config.php.</p>
+					<?php elseif ( ! TCH_LinkedIn::is_connected() ) : ?>
+						<p>
+							<span class="tch-dot tch-dot--partial"></span> <strong>LinkedIn:</strong> configured, not connected.
+							<a class="button button-primary" href="<?php echo esc_url( TCH_LinkedIn::connect_url() ); ?>">Connect LinkedIn</a>
+							<span class="description">Works once the Community Management API request is approved.</span>
+						</p>
+					<?php else : $days = TCH_LinkedIn::days_left(); ?>
+						<p>
+							<span class="tch-dot tch-dot--ready"></span> <strong>LinkedIn:</strong> connected.
+							<a class="button" href="<?php echo esc_url( TCH_LinkedIn::discover_url() ); ?>">Discover pages</a>
+							<a class="button" href="<?php echo esc_url( TCH_LinkedIn::disconnect_url() ); ?>">Disconnect</a>
+							<?php if ( null !== $days ) : ?>
+								<span class="description">Token expires in <?php echo esc_html( $days ); ?> days.</span>
+							<?php endif; ?>
+						</p>
+					<?php endif;
+				endif; ?>
 			</div>
 			<?php endif; ?>
 			<p class="tch-lede">

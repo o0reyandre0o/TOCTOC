@@ -63,6 +63,7 @@ $tch_map   = array(
 	'fields'      => 'TCH_Fields',
 	'dashboard'   => 'TCH_Dashboard',
 	'google'      => 'TCH_Google',
+	'linkedin'    => 'TCH_LinkedIn',
 	'content'     => 'TCH_Content',
 	'publisher'   => 'TCH_Publisher',
 );
@@ -91,6 +92,7 @@ if ( $tch_ready && ! defined( 'TCH_BOOTED' )
 	TCH_Fields::init();
 	TCH_Dashboard::init();
 	TCH_Google::init();
+	TCH_LinkedIn::init();
 	TCH_Content::init();
 	TCH_Publisher::init();
 } elseif ( $tch_ready ) {

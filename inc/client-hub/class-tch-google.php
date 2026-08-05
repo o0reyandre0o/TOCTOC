@@ -407,6 +407,11 @@ class TCH_Google {
 		return $updated;
 	}
 
+	/** Shared flash for sibling integrations (LinkedIn) to reuse. */
+	public static function flash_public( $message, $type = 'error' ) {
+		self::flash( $message, $type );
+	}
+
 	/** One-shot admin notice surviving the redirect. */
 	private static function flash( $message, $type = 'error' ) {
 		set_transient( 'tch_flash_' . get_current_user_id(), array( 'msg' => $message, 'type' => $type ), 60 );

@@ -58,7 +58,7 @@ class TCH_Publisher {
 				// discovery timestamp as the signal so we do not burn quota here.
 				return class_exists( 'TCH_Google' ) && TCH_Google::is_connected() && (bool) get_option( 'tch_gbp_last_discover' );
 			case 'linkedin':
-				return false; // phase 4 — Community Management API not approved yet
+				return class_exists( 'TCH_LinkedIn' ) && TCH_LinkedIn::is_connected();
 		}
 		return false;
 	}
@@ -144,6 +144,8 @@ class TCH_Publisher {
 				return self::publish_gbp( $client_id, $content_id );
 			case 'youtube':
 				return self::publish_youtube( $client_id, $content_id );
+			case 'linkedin':
+				return self::publish_linkedin( $client_id, $content_id );
 		}
 		return new WP_Error( 'tch_no_adapter', 'no adapter for ' . $channel );
 	}
@@ -356,6 +358,21 @@ class TCH_Publisher {
 
 		$video_id = (string) ( $final['id'] ?? '' );
 		return $video_id ? 'uploaded: https://youtu.be/' . $video_id : 'uploaded';
+	}
+
+	/**
+	 * LinkedIn company page post.
+	 *
+	 * One agency-wide connection covers every page the member administers, so
+	 * unlike YouTube there is no per-client token — only the client's own
+	 * organization URN, which Discover LinkedIn fills in automatically.
+	 */
+	private static function publish_linkedin( $client_id, $content_id ) {
+		$urn = trim( (string) get_post_meta( $client_id, TCH_Platforms::meta_key( 'linkedin', 'organization_urn' ), true ) );
+		if ( '' === $urn ) {
+			return new WP_Error( 'tch_no_urn', 'client has no LinkedIn organization URN — run Discover LinkedIn' );
+		}
+		return TCH_LinkedIn::publish( $urn, get_post_field( 'post_content', $content_id ) );
 	}
 
 	/**
