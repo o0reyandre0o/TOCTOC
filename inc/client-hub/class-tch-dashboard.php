@@ -345,24 +345,27 @@ class TCH_Dashboard {
 		}
 
 		if ( class_exists( 'TCH_Bing' ) ) {
-			if ( ! TCH_Bing::is_configured() ) {
-				self::connection_row(
-					'Bing', 'Instant indexing', 'empty',
-					'Add <code>TCH_BING_API_KEY</code> to wp-config.php to push pages into Bing as you publish.',
-					array()
-				);
+			// The key file answering is the single point of failure: without it
+			// every submission is rejected with a 403 and nothing else shows it.
+			$key_ok = TCH_Bing::key_file_ok();
+			$log    = TCH_Bing::get_log();
+			$last   = $log ? human_time_diff( (int) $log[0]['time'] ) . ' ago — ' . $log[0]['result'] : 'nothing sent yet';
+
+			$actions = array( array( 'Submit all pages', wp_nonce_url(
+				admin_url( 'admin.php?page=' . self::SLUG . '&tch_action=indexnow_all' ),
+				'tch_indexnow_all'
+			), false ) );
+
+			if ( $key_ok ) {
+				$note = 'Pages go to Bing, Yandex, Seznam and Naver the moment they are published. Last: ' . esc_html( $last ) . '.';
+				$q    = TCH_Bing::quota();
+				if ( is_array( $q ) ) {
+					$note .= ' Bing crawl budget left today: ' . number_format_i18n( (int) ( $q['DailyQuota'] ?? 0 ) ) . '.';
+				}
 			} else {
-				$q     = TCH_Bing::quota();
-				$log   = TCH_Bing::get_log();
-				$last  = $log ? human_time_diff( (int) $log[0]['time'] ) . ' ago' : 'nothing sent yet';
-				$quota = is_array( $q ) ? sprintf( '%s submissions left today.', number_format_i18n( (int) ( $q['DailyQuota'] ?? 0 ) ) ) : '';
-				self::connection_row(
-					'Bing', 'Instant indexing',
-					'ready',
-					'Pages are submitted automatically on publish. Last: ' . esc_html( $last ) . '. ' . esc_html( $quota ),
-					array()
-				);
+				$note = 'The key file at <code>' . esc_html( TCH_Bing::key_location() ) . '</code> is not answering, so every submission will be rejected.';
 			}
+			self::connection_row( 'IndexNow', 'Instant indexing', $key_ok ? 'ready' : 'partial', $note, $actions );
 		}
 
 		echo '</div>';

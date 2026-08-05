@@ -63,12 +63,28 @@ class TCH_Publisher {
 		return false;
 	}
 
-	/** Manual "publish now" from the queue screen. */
+	/** Manual "publish now" from the queue screen, and the IndexNow backfill. */
 	public static function maybe_publish_now() {
 		if ( ! isset( $_GET['page'], $_GET['tch_action'] ) || TCH_Dashboard::SLUG !== $_GET['page'] ) {
 			return;
 		}
-		if ( 'publish_now' !== sanitize_key( wp_unslash( $_GET['tch_action'] ) ) || ! current_user_can( TCH_CAPABILITY ) ) {
+		if ( ! current_user_can( TCH_CAPABILITY ) ) {
+			return;
+		}
+		$action = sanitize_key( wp_unslash( $_GET['tch_action'] ) );
+
+		if ( 'indexnow_all' === $action ) {
+			check_admin_referer( 'tch_indexnow_all' );
+			$res = TCH_Bing::submit_all();
+			TCH_Google::flash_public(
+				is_wp_error( $res ) ? 'IndexNow: ' . $res->get_error_message() : 'IndexNow: all published pages submitted.',
+				is_wp_error( $res ) ? 'error' : 'success'
+			);
+			wp_safe_redirect( admin_url( 'admin.php?page=' . TCH_Dashboard::SLUG ) );
+			exit;
+		}
+
+		if ( 'publish_now' !== $action ) {
 			return;
 		}
 		check_admin_referer( 'tch_publish_now' );
