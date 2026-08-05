@@ -334,6 +334,45 @@ add_action( 'admin_init', function () {
 } );
 
 /**
+ * Migration v5: LinkedIn organization URNs, read off each page's admin URL
+ * (linkedin.com/company/<id>/admin) and supplied by the user 2026-08-05.
+ *
+ * With these stored, publishing works the moment Community Management API
+ * access is granted — no Discover run needed first. Insert-only.
+ */
+add_action( 'admin_init', function () {
+	if ( ! defined( 'TCH_BOOTED' ) || get_option( 'tch_migration_v5' ) ) {
+		return;
+	}
+	if ( ! current_user_can( TCH_CAPABILITY ) ) {
+		return;
+	}
+	$urns = array(
+		'Coconut Room'      => '137223956',
+		'TintXKing'         => '136994496',
+		'Uncle Liu'         => '137223951',
+		'19-81 Brewing Co.' => '136964445',
+	);
+	foreach ( $urns as $title => $org_id ) {
+		$found = get_posts( array(
+			'post_type'   => TCH_Post_Type::POST_TYPE,
+			'title'       => $title,
+			'post_status' => 'any',
+			'numberposts' => 1,
+			'fields'      => 'ids',
+		) );
+		if ( ! $found ) {
+			continue;
+		}
+		$key = TCH_Platforms::meta_key( 'linkedin', 'organization_urn' );
+		if ( '' === trim( (string) get_post_meta( $found[0], $key, true ) ) ) {
+			update_post_meta( $found[0], $key, 'urn:li:organization:' . $org_id );
+		}
+	}
+	update_option( 'tch_migration_v5', 1, false );
+} );
+
+/**
  * Daily automatic YouTube sync. Manual "Sync now" stays for on-demand runs;
  * this keeps the numbers fresh without anyone remembering to click. Themes get
  * no activation hook, so the schedule is ensured lazily from admin requests.
