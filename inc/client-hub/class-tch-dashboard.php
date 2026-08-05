@@ -209,53 +209,7 @@ class TCH_Dashboard {
 			}
 			?>
 
-			<?php if ( class_exists( 'TCH_Google' ) ) : ?>
-			<div class="tch-connections">
-				<?php if ( ! TCH_Google::is_configured() ) : ?>
-					<p><span class="tch-dot tch-dot--empty"></span> <strong>Google:</strong> not configured — define the constants in wp-config.php (see <a href="<?php echo esc_url( admin_url( 'admin.php?page=' . self::SLUG . '-setup' ) ); ?>">Setup</a>).</p>
-				<?php elseif ( ! TCH_Google::is_connected() ) : ?>
-					<p>
-						<span class="tch-dot tch-dot--partial"></span> <strong>Google:</strong> configured, not connected.
-						<a class="button button-primary" href="<?php echo esc_url( TCH_Google::connect_url() ); ?>">Connect Google</a>
-					</p>
-				<?php else : ?>
-					<p>
-						<span class="tch-dot tch-dot--ready"></span> <strong>Google:</strong> connected.
-						<a class="button button-primary" href="<?php echo esc_url( TCH_Google::sync_url() ); ?>">Sync YouTube now</a>
-						<a class="button" href="<?php echo esc_url( TCH_Google::gbp_url() ); ?>" title="Works once Google approves the Business Profile API request (case 7-2699000041208). Until then this button doubles as the approval test — an error means still pending.">Discover GBP</a>
-						<a class="button" href="<?php echo esc_url( TCH_Google::disconnect_url() ); ?>">Disconnect</a>
-						<?php $last = (int) get_option( 'tch_youtube_last_sync' ); ?>
-						<?php if ( $last ) : ?>
-							<span class="description">Last sync: <?php echo esc_html( human_time_diff( $last ) ); ?> ago.</span>
-						<?php endif; ?>
-					</p>
-				<?php endif; ?>
-
-				<?php
-				// LinkedIn: one agency connection covers every page the member
-				// administers, so it lives here rather than on each client.
-				if ( class_exists( 'TCH_LinkedIn' ) ) :
-					if ( ! TCH_LinkedIn::is_configured() ) : ?>
-						<p><span class="tch-dot tch-dot--empty"></span> <strong>LinkedIn:</strong> add <code>TCH_LINKEDIN_CLIENT_ID</code> and <code>TCH_LINKEDIN_CLIENT_SECRET</code> to wp-config.php.</p>
-					<?php elseif ( ! TCH_LinkedIn::is_connected() ) : ?>
-						<p>
-							<span class="tch-dot tch-dot--partial"></span> <strong>LinkedIn:</strong> configured, not connected.
-							<a class="button button-primary" href="<?php echo esc_url( TCH_LinkedIn::connect_url() ); ?>">Connect LinkedIn</a>
-							<span class="description">Works once the Community Management API request is approved.</span>
-						</p>
-					<?php else : $days = TCH_LinkedIn::days_left(); ?>
-						<p>
-							<span class="tch-dot tch-dot--ready"></span> <strong>LinkedIn:</strong> connected.
-							<a class="button" href="<?php echo esc_url( TCH_LinkedIn::discover_url() ); ?>">Discover pages</a>
-							<a class="button" href="<?php echo esc_url( TCH_LinkedIn::disconnect_url() ); ?>">Disconnect</a>
-							<?php if ( null !== $days ) : ?>
-								<span class="description">Token expires in <?php echo esc_html( $days ); ?> days.</span>
-							<?php endif; ?>
-						</p>
-					<?php endif;
-				endif; ?>
-			</div>
-			<?php endif; ?>
+			<?php self::render_connections(); ?>
 			<p class="tch-lede">
 				Every profile TocToc manages, in one grid.
 				<span class="tch-dot tch-dot--ready"></span> ready
@@ -335,6 +289,84 @@ class TCH_Dashboard {
 				<?php self::render_totals( $clients, $platforms ); ?>
 				<?php self::render_youtube_stats( $clients ); ?>
 			<?php endif; ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Connections panel.
+	 *
+	 * One row per provider with a fixed shape — identity, state, actions — so
+	 * the eye lands on the same place every time instead of scanning a paragraph
+	 * of prose with buttons wedged into it.
+	 */
+	private static function render_connections() {
+		echo '<div class="tch-conn">';
+
+		if ( class_exists( 'TCH_Google' ) ) {
+			$actions = array();
+			if ( ! TCH_Google::is_configured() ) {
+				$state = 'empty';
+				$note  = 'Add the constants to wp-config.php — see <a href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '-setup' ) ) . '">Setup</a>.';
+			} elseif ( ! TCH_Google::is_connected() ) {
+				$state     = 'partial';
+				$note      = 'Needed for Business Profile. YouTube connects per client.';
+				$actions[] = array( 'Connect Google', TCH_Google::connect_url(), true );
+			} else {
+				$state = 'ready';
+				$last  = (int) get_option( 'tch_youtube_last_sync' );
+				$note  = $last ? 'Last YouTube sync ' . human_time_diff( $last ) . ' ago.' : 'Never synced yet.';
+				$actions[] = array( 'Sync YouTube now', TCH_Google::sync_url(), true );
+				$actions[] = array( 'Discover GBP', TCH_Google::gbp_url(), false );
+				$actions[] = array( 'Disconnect', TCH_Google::disconnect_url(), false );
+			}
+			self::connection_row( 'Google', 'Business Profile &middot; YouTube', $state, $note, $actions );
+		}
+
+		if ( class_exists( 'TCH_LinkedIn' ) ) {
+			$actions = array();
+			if ( ! TCH_LinkedIn::is_configured() ) {
+				$state = 'empty';
+				$note  = 'Add <code>TCH_LINKEDIN_CLIENT_ID</code> and <code>TCH_LINKEDIN_CLIENT_SECRET</code> to wp-config.php.';
+			} elseif ( ! TCH_LinkedIn::is_connected() ) {
+				$state = 'partial';
+				// Spelled out because the Discover button is absent until the
+				// connection exists, which otherwise looks like a missing feature.
+				$note      = 'Waiting on Community Management API approval. <em>Discover pages</em> appears here once connected.';
+				$actions[] = array( 'Connect LinkedIn', TCH_LinkedIn::connect_url(), true );
+			} else {
+				$state = 'ready';
+				$days  = TCH_LinkedIn::days_left();
+				$note  = null !== $days ? 'Token expires in ' . (int) $days . ' days.' : 'Connected.';
+				$actions[] = array( 'Discover pages', TCH_LinkedIn::discover_url(), true );
+				$actions[] = array( 'Disconnect', TCH_LinkedIn::disconnect_url(), false );
+			}
+			self::connection_row( 'LinkedIn', 'Company pages', $state, $note, $actions );
+		}
+
+		echo '</div>';
+	}
+
+	private static function connection_row( $name, $subtitle, $state, $note, $actions ) {
+		$labels = array( 'ready' => 'Connected', 'partial' => 'Not connected', 'empty' => 'Not configured' );
+		?>
+		<div class="tch-conn__row">
+			<div class="tch-conn__id">
+				<span class="tch-dot tch-dot--<?php echo esc_attr( $state ); ?>"></span>
+				<span>
+					<strong><?php echo esc_html( $name ); ?></strong>
+					<span class="tch-conn__sub"><?php echo wp_kses_post( $subtitle ); ?></span>
+				</span>
+			</div>
+			<div class="tch-conn__state">
+				<span class="tch-badge tch-badge--<?php echo esc_attr( $state ); ?>"><?php echo esc_html( $labels[ $state ] ); ?></span>
+				<span class="tch-conn__note"><?php echo wp_kses_post( $note ); ?></span>
+			</div>
+			<div class="tch-conn__actions">
+				<?php foreach ( $actions as $a ) : ?>
+					<a class="button <?php echo $a[2] ? 'button-primary' : ''; ?>" href="<?php echo esc_url( $a[1] ); ?>"><?php echo esc_html( $a[0] ); ?></a>
+				<?php endforeach; ?>
+			</div>
 		</div>
 		<?php
 	}

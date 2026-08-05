@@ -1,69 +1,158 @@
 /* TocToc Client Hub — admin styling.
-   Deliberately close to core wp-admin: this is a tool, not a landing page. */
+   Close to core wp-admin on purpose: this is a tool used daily, not a landing
+   page. The job of every rule here is to make state readable at a glance. */
+
+.tch-wrap {
+	--tch-line:   #dcdcde;
+	--tch-soft:   #f6f7f7;
+	--tch-ink:    #1d2327;
+	--tch-muted:  #646970;
+	--tch-ok:     #00a32a;
+	--tch-warn:   #dba617;
+	--tch-bad:    #d63638;
+	--tch-radius: 6px;
+}
 
 .tch-wrap .tch-lede {
-	font-size: 14px;
-	color: #50575e;
-	margin-bottom: 1.5em;
+	font-size: 13px;
+	color: var(--tch-muted);
+	margin: 0 0 1.25em;
 }
 
 /* Status dots ------------------------------------------------------------ */
 
 .tch-dot {
 	display: inline-block;
-	width: 11px;
-	height: 11px;
+	width: 10px;
+	height: 10px;
 	border-radius: 50%;
-	vertical-align: -1px;
-	margin: 0 3px;
-	/* A ring rather than colour alone, so the three states stay distinguishable
-	   for colour-blind users and in greyscale. */
-	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25);
+	flex: none;
+	/* A ring as well as a fill, so the three states stay distinguishable for
+	   colour-blind users and in greyscale. */
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2);
 }
 
-.tch-dot--ready   { background: #00a32a; }
-.tch-dot--partial { background: #dba617; }
+.tch-dot--ready   { background: var(--tch-ok); }
+.tch-dot--partial { background: var(--tch-warn); }
 .tch-dot--empty   { background: transparent; box-shadow: inset 0 0 0 2px #c3c4c7; }
 
-/* Connections bar -------------------------------------------------------- */
+.tch-lede .tch-dot { vertical-align: -1px; margin: 0 3px 0 10px; }
 
-.tch-connections {
-	margin: 0 0 1.5em;
-	padding: 12px 16px;
-	border: 1px solid #dcdcde;
-	border-radius: 4px;
+/* Badges ----------------------------------------------------------------- */
+
+.tch-badge {
+	display: inline-block;
+	padding: 2px 9px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1.7;
+	white-space: nowrap;
+	border: 1px solid transparent;
+}
+
+.tch-badge--ready   { background: #edfaef; color: #00622b; border-color: #68de7c; }
+.tch-badge--partial { background: #fcf9e8; color: #7a5c00; border-color: #dba617; }
+.tch-badge--empty   { background: #f0f0f1; color: #50575e; border-color: var(--tch-line); }
+
+/* Connections panel ------------------------------------------------------ */
+
+.tch-conn {
+	margin: 0 0 1.75em;
+	border: 1px solid var(--tch-line);
+	border-radius: var(--tch-radius);
 	background: #fff;
+	overflow: hidden;
 }
 
-.tch-connections p { margin: 0; }
-.tch-connections .button { margin-left: 8px; }
-.tch-connections .description { margin-left: 10px; }
-
-@media (prefers-color-scheme: dark) {
-	.tch-connections { background: transparent; }
+.tch-conn__row {
+	display: grid;
+	/* Identity | state | actions. Fixed first column so provider names line up
+	   even when one has a longer subtitle. */
+	grid-template-columns: minmax(180px, 1fr) minmax(220px, 1.6fr) auto;
+	gap: 16px;
+	align-items: center;
+	padding: 16px 18px;
+	border-bottom: 1px solid var(--tch-line);
 }
+
+.tch-conn__row:last-child { border-bottom: 0; }
+
+.tch-conn__id {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+}
+
+.tch-conn__id strong {
+	display: block;
+	font-size: 14px;
+	color: var(--tch-ink);
+	line-height: 1.3;
+}
+
+.tch-conn__sub {
+	display: block;
+	font-size: 11px;
+	color: var(--tch-muted);
+}
+
+.tch-conn__state { min-width: 0; }
+
+.tch-conn__note {
+	display: block;
+	margin-top: 3px;
+	font-size: 12px;
+	color: var(--tch-muted);
+}
+
+.tch-conn__note code { font-size: 11px; }
+
+.tch-conn__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: flex-end;
+}
+
+/* Narrow screens: stack rather than squeeze the buttons into each other. */
+@media (max-width: 960px) {
+	.tch-conn__row {
+		grid-template-columns: 1fr;
+		gap: 10px;
+	}
+	.tch-conn__actions { justify-content: flex-start; }
+}
+
+/* Staleness alert -------------------------------------------------------- */
+
+.tch-stale { border-left-width: 4px; }
+.tch-stale ul { margin: .5em 0 1em 1.2em; list-style: disc; }
+.tch-stale li { margin-bottom: .3em; }
 
 /* Status board ----------------------------------------------------------- */
 
 .tch-board { margin-top: 1em; }
-
 .tch-board__client { width: 24%; }
 
 .tch-board__platform {
 	text-align: center;
 	font-size: 11px;
 	line-height: 1.4;
+	padding: 10px 6px;
 }
 
 .tch-board__platform-label {
 	display: block;
 	font-weight: 400;
-	color: #646970;
+	color: var(--tch-muted);
 }
 
 .tch-board__cell {
 	text-align: center;
-	font-size: 0; /* collapses whitespace around the dot so it centres exactly */
+	/* Collapses the whitespace either side of the dot so it centres exactly. */
+	font-size: 0;
 }
 
 /* Coverage totals -------------------------------------------------------- */
@@ -71,9 +160,10 @@
 .tch-totals {
 	max-width: 420px;
 	margin: 1em 0 2em;
-	border: 1px solid #dcdcde;
-	border-radius: 4px;
+	border: 1px solid var(--tch-line);
+	border-radius: var(--tch-radius);
 	background: #fff;
+	overflow: hidden;
 }
 
 .tch-totals li {
@@ -83,49 +173,47 @@
 	padding: 10px 14px;
 	margin: 0;
 	border-bottom: 1px solid #f0f0f1;
+	font-size: 13px;
 }
 
 .tch-totals li:last-child { border-bottom: 0; }
 .tch-totals strong { font-variant-numeric: tabular-nums; }
 
-/* Publishing -------------------------------------------------------------- */
-
-.tch-stale ul {
-	margin: .5em 0 1em 1.2em;
-	list-style: disc;
-}
-
-.tch-stale li { margin-bottom: .3em; }
+/* Content states --------------------------------------------------------- */
 
 .tch-state {
 	display: inline-block;
 	padding: 2px 9px;
-	border-radius: 10px;
+	border-radius: 999px;
 	font-size: 11px;
 	font-weight: 600;
-	/* Border as well as fill so the states stay distinct in greyscale. */
 	border: 1px solid transparent;
 }
 
-.tch-state--draft     { background: #f0f0f1; color: #50575e; border-color: #dcdcde; }
+.tch-state--draft     { background: #f0f0f1; color: #50575e; border-color: var(--tch-line); }
 .tch-state--scheduled { background: #f0f6fc; color: #0a4b78; border-color: #72aee6; }
 .tch-state--published { background: #edfaef; color: #00622b; border-color: #68de7c; }
 .tch-state--failed    { background: #fcf0f1; color: #8a2424; border-color: #f86368; }
 
-/* Media picker ------------------------------------------------------------ */
+/* Composer --------------------------------------------------------------- */
+
+.tch-targets th,
+.tch-targets td { vertical-align: middle; }
+
+.tch-targets thead th { font-size: 11px; line-height: 1.4; }
+.tch-targets input[type="checkbox"] { margin: 0; }
 
 .tch-media__preview {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	min-height: 0;
 }
 
 .tch-media__preview:not(:empty) {
 	margin-bottom: 10px;
 	padding: 8px;
-	border: 1px solid #dcdcde;
-	border-radius: 4px;
+	border: 1px solid var(--tch-line);
+	border-radius: var(--tch-radius);
 	background: #fff;
 }
 
@@ -143,8 +231,8 @@
 	word-break: break-all;
 }
 
-/* Short vs long-form warning: YouTube decides from the file, so this has to be
-   read before uploading, not discovered after. */
+/* Short vs long-form: YouTube decides from the file, so this has to be read
+   before uploading, not discovered afterwards. */
 .tch-media__hint {
 	display: block;
 	margin-top: 3px;
@@ -153,40 +241,30 @@
 	color: #8a6d00;
 }
 
-@media (prefers-color-scheme: dark) {
-	.tch-media__preview:not(:empty) { background: transparent; }
-}
-
-/* Target matrix: many columns, so keep the checkboxes readable. */
-.tch-targets th,
-.tch-targets td { vertical-align: middle; }
-.tch-targets input[type="checkbox"] { margin: 0; }
-
 /* Meta box notes --------------------------------------------------------- */
 
 .tch-note {
 	margin: 12px 0 4px;
 	padding: 10px 14px;
 	border-left: 4px solid #72aee6;
-	background: #f6f7f7;
+	background: var(--tch-soft);
 	font-size: 13px;
 	color: #50575e;
 }
 
-/* Bing: no API is reachable, so flag it visually as a manual task rather than
-   letting it read as "integration pending". */
-.tch-note--manual { border-left-color: #dba617; }
+/* Bing has no reachable API, so it reads as a manual task rather than as an
+   integration that is merely pending. */
+.tch-note--manual { border-left-color: var(--tch-warn); }
 
 .tch-form th { width: 200px; }
 
-.tch-roadmap {
-	max-width: 760px;
-	line-height: 1.7;
-}
-
+.tch-roadmap { max-width: 760px; line-height: 1.7; }
 .tch-roadmap li { margin-bottom: .35em; }
 
-/* Dark scheme: wp-admin ships one, and a hard-coded white card looks broken. */
+/* Dark scheme: wp-admin ships one, and hard-coded white cards look broken. */
 @media (prefers-color-scheme: dark) {
-	.tch-totals { background: transparent; }
+	.tch-conn,
+	.tch-totals,
+	.tch-media__preview:not(:empty) { background: transparent; }
+	.tch-note { background: rgba(255, 255, 255, .04); }
 }
