@@ -528,6 +528,66 @@ function toctoc_render_services_grid() {
     <?php
 }
 
+/**
+ * Local credentials band.
+ *
+ * Bing's query data for this site (Aug 2026) surfaced people searching for
+ * "caymanian owned marketing agencies", "marketers in the cayman islands" and
+ * "marketing companies in the cayman islands" — buyers explicitly looking for a
+ * local firm rather than an overseas one. The proof of that was real but buried
+ * in the footer: Chamber membership and the trade licence number.
+ *
+ * Wording is deliberately limited to what is documented — a registered Cayman
+ * company, licensed, Chamber member, based in George Town. "Caymanian-owned"
+ * carries a specific legal meaning under Cayman status law and is not claimed
+ * here.
+ */
+function toctoc_render_local_trust() {
+	$items = array(
+		array(
+			'label' => 'Registered in Cayman',
+			'text'  => 'TOC TOC CORPORATION LTD, licensed to trade in the Cayman Islands.',
+			'meta'  => 'Trade &amp; Business Licence TB1795A',
+		),
+		array(
+			'label' => 'Chamber member',
+			'text'  => 'Member of the Cayman Islands Chamber of Commerce.',
+			'meta'  => 'CICOC',
+		),
+		array(
+			'label' => 'Based in George Town',
+			'text'  => 'A local team on Grand Cayman &mdash; not an overseas agency with a Cayman phone number.',
+			'meta'  => 'Grand Cayman, KY1-1102',
+		),
+		array(
+			'label' => 'Rated 4.8 / 5',
+			'text'  => 'Twenty-one reviews from Cayman businesses we work with.',
+			'meta'  => 'Google reviews',
+		),
+	);
+	?>
+	<section class="py-16 md:py-20 bg-slate-50 border-y border-slate-100">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="max-w-3xl mb-10">
+				<span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Local &amp; accountable</span>
+				<h2 class="mt-5 text-3xl md:text-5xl font-display text-slate-900 leading-[1.05]">
+					A Cayman business, working for <em class="italic text-sky-deep font-display">Cayman businesses</em>
+				</h2>
+			</div>
+			<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+				<?php foreach ( $items as $i ) : ?>
+				<div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">
+					<h3 class="text-lg font-display text-slate-900 mb-2"><?php echo wp_kses_post( $i['label'] ); ?></h3>
+					<p class="text-sm leading-relaxed text-slate-500 mb-3"><?php echo wp_kses_post( $i['text'] ); ?></p>
+					<span class="text-[11px] font-bold uppercase tracking-widest text-sky-deep"><?php echo wp_kses_post( $i['meta'] ); ?></span>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+	<?php
+}
+
 function toctoc_llms_content() {
     return <<<'LLMS'
 # TocToc Marketing

@@ -279,6 +279,10 @@
     </section>
 
 
+    <!-- Local credentials — answers the "is this an actual Cayman firm?" question
+         that Bing's query data shows buyers asking before they enquire. -->
+    <?php toctoc_render_local_trust(); ?>
+
     <!-- Section 4: Services — the home page's only in-body links to the service pages -->
     <?php toctoc_render_services_grid(); ?>
 
