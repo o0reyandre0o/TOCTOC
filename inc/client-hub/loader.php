@@ -297,6 +297,43 @@ add_action( 'admin_init', function () {
 } );
 
 /**
+ * Migration v4: LinkedIn company pages supplied by the user (2026-08-05).
+ *
+ * Only the page URL — the urn:li:organization value arrives on its own once the
+ * Community Management API is approved and Discover pages runs, which matches
+ * on exactly the vanity name stored here. Never overwrites an existing value.
+ */
+add_action( 'admin_init', function () {
+	if ( ! defined( 'TCH_BOOTED' ) || get_option( 'tch_migration_v4' ) ) {
+		return;
+	}
+	if ( ! current_user_can( TCH_CAPABILITY ) ) {
+		return;
+	}
+	$pages = array(
+		'Coconut Room' => 'https://www.linkedin.com/company/room-coconut/',
+		'Uncle Liu'    => 'https://www.linkedin.com/company/uncle-liu-s-chinese-kitchen/',
+	);
+	foreach ( $pages as $title => $url ) {
+		$found = get_posts( array(
+			'post_type'   => TCH_Post_Type::POST_TYPE,
+			'title'       => $title,
+			'post_status' => 'any',
+			'numberposts' => 1,
+			'fields'      => 'ids',
+		) );
+		if ( ! $found ) {
+			continue;
+		}
+		$key = TCH_Platforms::meta_key( 'linkedin', 'url' );
+		if ( '' === trim( (string) get_post_meta( $found[0], $key, true ) ) ) {
+			update_post_meta( $found[0], $key, $url );
+		}
+	}
+	update_option( 'tch_migration_v4', 1, false );
+} );
+
+/**
  * Daily automatic YouTube sync. Manual "Sync now" stays for on-demand runs;
  * this keeps the numbers fresh without anyone remembering to click. Themes get
  * no activation hook, so the schedule is ensured lazily from admin requests.
