@@ -303,7 +303,16 @@ class TCH_Google {
 
 		$accounts = self::json( wp_remote_get( 'https://mybusinessaccountmanagement.googleapis.com/v1/accounts', $args ) );
 		if ( isset( $accounts['error'] ) ) {
-			return new WP_Error( 'tch_api', is_array( $accounts['error'] ) ? ( $accounts['error']['message'] ?? 'API error' ) : $accounts['error'] );
+			$msg = is_array( $accounts['error'] ) ? (string) ( $accounts['error']['message'] ?? 'API error' ) : (string) $accounts['error'];
+			// Google leaves these APIs at a quota of 0 requests/minute until the
+			// access request is granted, so the very first call "exceeds" the
+			// limit. That reads like a rate-limit problem but means the exact
+			// opposite: nothing has been used, the allowance is simply zero.
+			if ( false !== stripos( $msg, 'quota' ) && false !== stripos( $msg, 'exceeded' ) ) {
+				$msg = 'the Business Profile API quota is still 0 — support case 7-2699000041208 has not been granted yet. '
+					. 'Nothing to fix; retry when the quota shows 300 QPM in Cloud Console.';
+			}
+			return new WP_Error( 'tch_api', $msg );
 		}
 		if ( empty( $accounts['accounts'] ) ) {
 			return new WP_Error( 'tch_api', 'the connected Google user manages no GBP accounts' );
