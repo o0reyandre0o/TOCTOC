@@ -126,14 +126,29 @@ class TCH_Fields {
 		} else {
 			$mismatch = ( '' !== $declared && '' !== $token_ch && $declared !== $token_ch );
 			printf(
-				'<p><span class="tch-dot tch-dot--%s"></span> <strong>Connected</strong> as <code>%s</code>%s '
+				'<p><span class="tch-dot tch-dot--%s"></span> <strong>Connected</strong> as <code>%s</code> '
 				. '<a class="button" href="%s">Reconnect</a> <a class="button" href="%s">Disconnect</a></p>',
 				esc_attr( $mismatch ? 'partial' : 'ready' ),
 				esc_html( $token_tt ?: $token_ch ),
-				$mismatch ? ' &mdash; <strong>but the Channel ID below says ' . esc_html( $declared ) . '</strong>, so uploads are refused until they match.' : '',
 				esc_url( TCH_Google::connect_url( $post->ID ) ),
 				esc_url( TCH_Google::disconnect_url( $post->ID ) )
 			);
+
+			if ( $mismatch ) {
+				/*
+				 * Uploads go to whichever channel authorised, and the API offers
+				 * no way to redirect them, so a mismatch has to be fixed at the
+				 * consent screen. Saying only "they do not match" left the actual
+				 * cause — the account cannot see the channel — unexplained.
+				 */
+				echo '<div class="tch-note tch-note--manual">'
+					. '<strong>This connection publishes to the wrong channel, so uploads are blocked.</strong><br>'
+					. 'Expected <code>' . esc_html( $declared ) . '</code>, got <code>' . esc_html( $token_ch ) . '</code>.<br><br>'
+					. 'Press <em>Reconnect</em> and pick the right channel on Google&rsquo;s <em>&ldquo;Choose your account or a brand account&rdquo;</em> screen. '
+					. '<strong>If the channel is not listed there</strong>, the account you signed in with has no access to it yet — accept the ownership invitation on that channel first '
+					. '(YouTube Studio &rarr; Settings &rarr; Permissions), then reconnect.'
+					. '</div>';
+			}
 		}
 		echo '</div>';
 	}
