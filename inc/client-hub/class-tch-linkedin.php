@@ -89,7 +89,16 @@ class TCH_LinkedIn {
 		$back = admin_url( 'admin.php?page=' . TCH_Dashboard::SLUG );
 
 		if ( isset( $_GET['error'] ) ) {
-			TCH_Google::flash_public( 'LinkedIn returned: ' . sanitize_text_field( wp_unslash( $_GET['error_description'] ?? $_GET['error'] ) ) );
+			$detail = sanitize_text_field( wp_unslash( $_GET['error_description'] ?? $_GET['error'] ) );
+			// "scope is not valid" does not mean the scope names are wrong — it
+			// means the app has not been GRANTED them, which is the normal state
+			// until Community Management API access is approved. Say so, rather
+			// than leaving a technical string that reads like a bug in the hub.
+			if ( false !== stripos( $detail, 'scope' ) ) {
+				$detail = 'the Community Management API is not approved for this app yet, so LinkedIn will not grant the page permissions. '
+					. 'Nothing to fix here — retry once the request is granted (developer.linkedin.com → your app → Products).';
+			}
+			TCH_Google::flash_public( 'LinkedIn: ' . $detail );
 			wp_safe_redirect( $back );
 			exit;
 		}
