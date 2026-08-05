@@ -40,9 +40,15 @@
     $logo_url = "https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg";
     
     $seo_map = [
+        // Keeps the head term: the home already ranks 4.5 for "marketing agency
+        // cayman islands" and 3.2-5.3 across the cluster, so it is the page that
+        // wins it. The description carries the two things a local buyer checks
+        // before enquiring — that the firm is actually here, and that someone
+        // else has vouched for it — because at position 9 the snippet is doing
+        // all the persuading.
         'front' => [
             'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'The AI-era marketing agency for the Cayman Islands, rated 4.8★ by 21 clients. We make your business the #1 answer on Google, ChatGPT & Gemini. Free consult.'
+            'desc' => 'Licensed Cayman marketing agency in George Town, rated 4.8★ by 21 local clients. SEO, web design and social built to make you the answer on Google, ChatGPT and Gemini.'
         ],
         'ai-search-optimization-cayman-islands' => [
             'title' => 'SEO & AI Search Optimization Cayman | ChatGPT, Gemini',
@@ -52,13 +58,29 @@
             'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
             'desc' => 'Be the #1 business recommended by ChatGPT, Gemini & Google. AI Search Optimization (SEO, AEO & GEO) for Cayman Islands brands. Book a free strategy call.'
         ],
+        /*
+         * Retargeted away from the head term on 2026-08-05.
+         *
+         * This page and the front page both said "…Marketing Agency Cayman
+         * Islands", so Google could not tell them apart and split the authority:
+         * the home ranks 4.5 for "marketing agency cayman islands" while this
+         * page sat at 44, and the same pattern repeated across five money
+         * queries. The home wins those, so this page stops contesting them and
+         * takes territory nothing else covers — consulting, branding and
+         * "marketing services grand cayman", all of which have real Cayman
+         * demand (84-95 impressions each) and no page of their own.
+         */
         'digital-marketing-agency-cayman-islands' => [
-            'title' => 'Digital Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Full-service digital marketing in Cayman: SEO, web design, social & PR built for the AI search era. Rated 4.8★ by 21 clients. Book a free strategy call.'
+            'title' => 'Marketing Services & Branding Grand Cayman | TocToc',
+            'desc' => 'Marketing consulting, branding and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★ by 21 clients.'
         ],
+        // The home outranks this page for its own topic — 3.2 against 19.4 on
+        // "web design cayman islands". Carrying both noun forms ("web design"
+        // and "website design agency") is how this page starts matching the
+        // full query set instead of half of it.
         'website-design-agency-cayman-islands' => [
-            'title' => 'Website Design Cayman Islands | Fast & AI-Ready | TocToc',
-            'desc' => 'High-speed, mobile-first website design in the Cayman Islands, built to convert and get recommended by AI. Rated 4.8★ (21 reviews). Get a free quote.'
+            'title' => 'Web Design Cayman Islands | Website Design Agency | TocToc',
+            'desc' => 'Website design agency in the Cayman Islands building fast, mobile-first sites that convert — and that AI search engines can actually read. Rated 4.8★ (21 reviews). Free quote.'
         ],
         // Bing's query log for this page is dominated by "social media COMPANY in
         // cayman" and "social media AGENCIES cayman islands" — the noun people
@@ -121,8 +143,8 @@
         'front' => 'digital marketing agency cayman islands, ai marketing agency, aeo agency, ai search visibility framework, marketing agency grand cayman, seo cayman islands',
         'ai-search-optimization-cayman-islands' => 'local seo cayman islands, local seo company in cayman islands, seo services cayman, seo agency cayman, ai search optimization cayman islands, ai seo cayman, aeo agency cayman, geo optimization cayman, chatgpt seo, gemini recommendation, ai search visibility cayman, answer engine optimization',
         'seo-agency-services-cayman-islands' => 'ai search optimization cayman islands, ai seo cayman, aeo agency cayman, geo optimization cayman, chatgpt seo, gemini recommendation, ai search visibility cayman, answer engine optimization',
-        'digital-marketing-agency-cayman-islands' => 'digital marketing services cayman islands, branding agency cayman, graphic design cayman islands, marketing strategy grand cayman',
-        'website-design-agency-cayman-islands' => 'website design cayman islands, web design agency grand cayman, wordpress development cayman, high performance websites',
+        'digital-marketing-agency-cayman-islands' => 'marketing services grand cayman, cayman marketing consultant, cayman marketing consulting, branding agency cayman islands, cayman islands branding, marketing design services cayman, graphic design cayman islands, marketing strategy grand cayman',
+        'website-design-agency-cayman-islands' => 'web design cayman islands, website design cayman islands, cayman website design, website design agency cayman islands, website design agency in the cayman islands, creative website design agency cayman islands, cayman web design, web design agency grand cayman, wordpress development cayman',
         'social-media-marketing-services-cayman-islands' => 'social media company in cayman, social media agencies cayman islands, social media company cayman, social media strategy cayman, social media marketing cayman islands, social media agency cayman, social media for ai search, algorithmic trust, social search optimization, instagram linkedin optimization cayman',
         'advertising-pr-agency-cayman-islands' => 'digital pr cayman islands, ai authority citations, pr agency cayman, pr services cayman, entity trust score, linkedin authority building cayman, digital pr for ai search, brand citations chatgpt gemini',
         'web-development-cayman-islands' => 'web development cayman islands, web development agency cayman, website development company cayman, ecommerce development cayman, web app development cayman',

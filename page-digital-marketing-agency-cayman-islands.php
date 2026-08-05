@@ -106,11 +106,18 @@ $dm_faqs = array(
                 <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
                     Full-Service Digital Marketing &middot; Cayman Islands
                 </div>
+                <?php /* This H1 said "The Digital Marketing Agency…", the same claim as
+                         the front page, and Search Console showed the cost: the home
+                         ranks 4.5 for "marketing agency cayman islands" while this page
+                         sat at 44 for the identical term. It now claims the ground
+                         nothing else covers — consulting, branding and marketing
+                         services for Grand Cayman — which has real local demand and no
+                         page competing for it. */ ?>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    The Digital Marketing Agency Built for the <em class="italic text-accent font-display">AI Search Era</em>
+                    Marketing Services &amp; Branding for <em class="italic text-accent font-display">Grand Cayman</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    We unify your web presence to make your Cayman business the #1 recommended answer on ChatGPT, Gemini, and Google.
+                    Strategy, branding and campaigns from one local team &mdash; and every piece built so ChatGPT, Gemini and Google read your business as the Cayman authority.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
                     <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
