@@ -64,6 +64,7 @@ $tch_map   = array(
 	'dashboard'   => 'TCH_Dashboard',
 	'google'      => 'TCH_Google',
 	'linkedin'    => 'TCH_LinkedIn',
+	'bing'        => 'TCH_Bing',
 	'content'     => 'TCH_Content',
 	'publisher'   => 'TCH_Publisher',
 );
@@ -93,6 +94,7 @@ if ( $tch_ready && ! defined( 'TCH_BOOTED' )
 	TCH_Dashboard::init();
 	TCH_Google::init();
 	TCH_LinkedIn::init();
+	TCH_Bing::init();
 	TCH_Content::init();
 	TCH_Publisher::init();
 } elseif ( $tch_ready ) {
