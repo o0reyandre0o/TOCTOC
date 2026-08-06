@@ -253,18 +253,17 @@ $cs_shots = array(
 			<div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-items-center lg:justify-items-start">
 
 				<figure class="flex flex-col items-center lg:items-start w-full">
-					<div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-black shadow-glass ring-1 ring-white/10">
-						<?php /* No VideoObject markup here: /our-work/ is the declared watch
-						         page for these clips, and claiming a second one is what failed
-						         Search Console's video validation in July. */ ?>
-						<video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline
-							poster="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking-cover.webp">
-							<source src="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking.mp4" type="video/mp4">
-						</video>
-						<div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
-							<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How TintXKing shows up in ChatGPT &amp; Gemini &#128663;</span>
-						</div>
-					</div>
+					<?php
+					// Facade, not a <video> — see toctoc_render_proof_video().
+					toctoc_render_proof_video( array(
+						'mp4'     => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking.mp4',
+						'poster'  => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking-cover.webp',
+						'label'   => 'How TintXKing shows up in ChatGPT and Gemini',
+						'class'   => 'max-w-[280px] bg-black shadow-glass ring-1 ring-white/10',
+						'overlay' => '<div class="pointer-events-none absolute inset-x-0 top-0 z-40 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">'
+							. '<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How TintXKing shows up in ChatGPT &amp; Gemini &#128663;</span></div>',
+					) );
+					?>
 					<figcaption class="mt-4 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/40">ChatGPT &amp; Gemini demo</figcaption>
 				</figure>
 
