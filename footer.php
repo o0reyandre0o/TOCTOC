@@ -69,67 +69,43 @@
     </a>
 
     <script>
-    // Lazy video metadata: videos ship with preload="none" so multi-MB mp4s never
-    // load up front. When one nears the viewport we flip to metadata + load(),
-    // which renders its first frame (#t=0.1) exactly like the old eager behavior.
+    // Click-to-play video facade.
+    //
+    // The proof clips ship as a poster button with NO <video> element (see
+    // toctoc_render_proof_video in functions.php). The element is built here, on
+    // click, for two reasons: multi-MB mp4s without faststart never touch the
+    // network until someone asks for them, and Search Console's "Video isn't on
+    // a watch page" report cannot flag a video that isn't in the crawled DOM.
+    // Googlebot renders JS but does not click, so it only ever sees the poster.
     (function () {
-        var vids = document.querySelectorAll('video[data-ttlazy]');
-        if (!vids.length) return;
-        if (!('IntersectionObserver' in window)) {
-            vids.forEach(function (v) { v.preload = 'metadata'; v.load(); });
-            return;
-        }
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (!e.isIntersecting) return;
-                var v = e.target;
-                v.preload = 'metadata';
-                v.load();
-                io.unobserve(v);
-            });
-        }, { rootMargin: '200px 0px' });
-        vids.forEach(function (v) { io.observe(v); });
-    })();
-
-    // Lime "click to watch" cover over every lazy video. Injected here (not in the
-    // page markup) so a single definition covers every video site-wide. Clicking it
-    // starts playback and reveals the native controls. Progressive enhancement.
-    (function () {
-        var vids = document.querySelectorAll('video[data-ttlazy]');
-        if (!vids.length) return;
-        var PLAY = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
-        vids.forEach(function (v) {
-            var wrap = v.parentElement;
-            if (!wrap) return;
-            if (getComputedStyle(wrap).position === 'static') { wrap.style.position = 'relative'; }
-            var btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'ttvideo-poster';
-            btn.setAttribute('aria-label', 'Play video');
-            // If the video has a cover image, use it as the background (with a dark
-            // gradient for legibility); otherwise the flat brand-green is used.
-            var cover = v.getAttribute('poster');
-            if (cover) {
-                btn.classList.add('ttvideo-poster--image');
-                btn.style.backgroundImage = "url('" + cover + "')";
-                btn.style.backgroundSize = 'cover';
-                btn.style.backgroundPosition = 'center';
-            }
-            btn.innerHTML =
-                '<span class="ttvideo-poster__play">' + PLAY + '</span>' +
-                '<span class="ttvideo-poster__title">Watch the proof</span>' +
-                '<span class="ttvideo-poster__sub">Click to watch</span>';
+        var wraps = document.querySelectorAll('[data-ttvideo]');
+        if (!wraps.length) return;
+        Array.prototype.forEach.call(wraps, function (wrap) {
+            var btn = wrap.querySelector('.ttvideo-poster');
+            var src = wrap.getAttribute('data-mp4');
+            if (!btn || !src) return;
             btn.addEventListener('click', function () {
+                if (wrap.querySelector('video')) return;
+                var v = document.createElement('video');
+                v.className = 'w-full h-full object-cover';
+                v.setAttribute('controls', '');
+                v.setAttribute('playsinline', '');
+                v.setAttribute('preload', 'metadata');
+                var cover = wrap.getAttribute('data-poster');
+                if (cover) { v.setAttribute('poster', cover); }
+                var s = document.createElement('source');
+                s.src = src;
+                s.type = 'video/mp4';
+                v.appendChild(s);
+                // Behind the poster so the crossfade has something to reveal.
+                wrap.insertBefore(v, wrap.firstChild);
                 btn.classList.add('is-hidden');
-                v.preload = 'metadata';
-                v.load();
                 var p = v.play();
                 if (p && p.catch) { p.catch(function () {}); }
                 window.setTimeout(function () {
                     if (btn.parentElement) { btn.parentElement.removeChild(btn); }
                 }, 450);
             });
-            wrap.appendChild(btn);
         });
     })();
 
