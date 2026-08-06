@@ -102,6 +102,10 @@ $ow_cases = array(
         ),
         'bg'        => 'bg-white',
         'card'      => 'bg-slate-50',
+        // The only case with a page of its own so far — it is the one whose
+        // Search Console numbers grew (clicks +62%, position 14.9 -> 11.1) while
+        // the tourist-facing clients were in low season.
+        'more'      => array( '/case-study-tintxking-orlando/', 'Read the full case study with the search data' ),
     ),
 );
 
@@ -302,6 +306,15 @@ $ow_cases = array(
                     <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
+
+                <?php if ( ! empty( $c['more'] ) ) : ?>
+                <p class="mt-10">
+                    <a href="<?php echo esc_url( home_url( $c['more'][0] ) ); ?>" class="inline-flex items-center gap-2 font-bold text-sky-deep hover:gap-4 transition-all decoration-none">
+                        <?php echo esc_html( $c['more'][1] ); ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </p>
+                <?php endif; ?>
             </div>
         </div>
     </section>
