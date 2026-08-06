@@ -191,16 +191,11 @@
 
     <?php
     /*
-     * No VideoObject schema here on purpose.
-     *
-     * These same three MP4s were also marked up on /our-work/ and on the AI
-     * Search Optimization page. Google requires each video to have exactly one
-     * "watch page" — a page where the video is the main content — so claiming
-     * three different watch pages per file is what produced the "Video isn't on
-     * a watch page" error in Search Console (validation failed 27 Jul 2026,
-     * 4 videos affected). /our-work/ is the declared watch page: there each clip
-     * sits in its own case-study section with a heading and description. On this
-     * page they are supporting proof, so they stay unmarked.
+     * No VideoObject schema here, and none on /our-work/ either any more — the
+     * clips ship as click-to-play facades with no <video> element at all, which
+     * is what finally cleared "Video isn't on a watch page". Full reasoning in
+     * toctoc_render_proof_video() and in the note where the markup used to live
+     * at the bottom of page-our-work.php.
      */
     ?>
 

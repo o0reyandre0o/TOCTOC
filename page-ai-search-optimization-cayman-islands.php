@@ -277,9 +277,8 @@ $ai_google_rating = function ( $dark = false ) {
     <?php
     /*
      * No VideoObject schema here on purpose — see the same note in front-page.php.
-     * These clips are duplicated from /our-work/, which is the single declared
-     * watch page for them. Marking them up on more than one URL is what triggered
-     * the "Video isn't on a watch page" error in Search Console.
+     * The clips are click-to-play facades with no <video> element, so no page on
+     * the site claims to be a watch page any more.
      */
     ?>
 
