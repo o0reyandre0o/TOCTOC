@@ -284,6 +284,56 @@ function toctoc_og_image_url( $slug, $title, $fallback ) {
 }
 
 /**
+ * Render a proof clip as a click-to-play facade — a poster button, no <video>.
+ *
+ * Search Console's "Video isn't on a watch page" report keys off the <video>
+ * element in the crawled DOM, not off VideoObject markup. Consolidating the
+ * schema onto /our-work/ in July therefore never had a chance of clearing it:
+ * validation failed again on 6 Aug 2026 with the same four items, crawled the
+ * day after that fix shipped. Google's own remedy is one video per dedicated
+ * watch page where it is the main content — which would mean stripping the
+ * clips from the home page and the service pages, i.e. paying with the site's
+ * strongest on-page proof to silence an informational report.
+ *
+ * So the element itself goes instead of the videos. The server ships the poster
+ * and the play button; footer.php builds the <video> on click. Visitors get the
+ * same inline playback they had before, crawlers get a page with no video on it,
+ * and the report drains as those four URLs are recrawled. The cost is real and
+ * worth stating: these clips can no longer earn video rich results. They never
+ * did — "isn't on a watch page" is Google saying it declined to index them.
+ *
+ * @param array $args mp4, poster, label (accessible name), class (wrapper), overlay (HTML pinned on top).
+ */
+function toctoc_render_proof_video( $args ) {
+	$mp4 = isset( $args['mp4'] ) ? $args['mp4'] : '';
+	if ( ! $mp4 ) {
+		return;
+	}
+	$poster  = isset( $args['poster'] ) ? $args['poster'] : '';
+	$label   = isset( $args['label'] ) ? $args['label'] : 'proof video';
+	$class   = isset( $args['class'] ) ? $args['class'] : '';
+	$overlay = isset( $args['overlay'] ) ? $args['overlay'] : '';
+	?>
+	<div class="ttvideo relative aspect-[9/16] w-full overflow-hidden rounded-[2rem] bg-slate-950 <?php echo esc_attr( $class ); ?>"
+		data-ttvideo
+		data-mp4="<?php echo esc_url( $mp4 ); ?>"
+		<?php echo $poster ? 'data-poster="' . esc_url( $poster ) . '"' : ''; ?>>
+		<button type="button"
+			class="ttvideo-poster<?php echo $poster ? ' ttvideo-poster--image' : ''; ?>"
+			<?php echo $poster ? 'style="background-image:url(\'' . esc_url( $poster ) . '\');background-size:cover;background-position:center"' : ''; ?>
+			aria-label="<?php echo esc_attr( 'Play video: ' . $label ); ?>">
+			<span class="ttvideo-poster__play"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+			<span class="ttvideo-poster__title">Watch the proof</span>
+			<span class="ttvideo-poster__sub">Click to watch</span>
+		</button>
+		<?php echo $overlay; // phpcs:ignore WordPress.Security.EscapingOutput -- caller-escaped markup. ?>
+		<?php /* Without JS the facade cannot build anything, so hand over the file. */ ?>
+		<noscript><a class="absolute inset-0 z-40" href="<?php echo esc_url( $mp4 ); ?>"><span class="sr-only"><?php echo esc_html( $label ); ?></span></a></noscript>
+	</div>
+	<?php
+}
+
+/**
  * VideoObject JSON-LD for a list of videos — makes the proof clips eligible for
  * Google video results. Pass [ ['name','description','contentUrl','thumbnailUrl','uploadDate'], ... ].
  */
