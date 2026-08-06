@@ -278,18 +278,31 @@
     <link rel="image_src" href="<?php echo esc_url($logo_url); ?>">
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <?php
+    // Case studies and the guide are articles, not the site itself.
+    $og_type = ( is_singular() && in_array( $current_slug, array( 'case-study-tintxking-orlando', 'digital-marketing-cayman-islands-guide' ), true ) )
+        ? 'article' : 'website';
+    ?>
+    <meta property="og:type" content="<?php echo esc_attr($og_type); ?>">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="TocToc Marketing">
-    <meta property="og:url" content="<?php echo esc_url($current_url); ?>">
+    <?php // Same URL as the canonical. $current_url drops the trailing slash, and
+          // Facebook and LinkedIn treat /page and /page/ as two objects, splitting
+          // a post's shares and reactions between them. ?>
+    <meta property="og:url" content="<?php echo esc_url($canonical); ?>">
     <meta property="og:title" content="<?php echo esc_attr($title); ?>">
     <meta property="og:description" content="<?php echo esc_attr($desc); ?>">
     <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
+    <?php // Declared so a platform can lay out the preview immediately instead of
+          // downloading the file first just to measure it. The generator always
+          // outputs 1200x630. ?>
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="<?php echo esc_attr($title); ?>">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="<?php echo esc_url($current_url); ?>">
+    <meta property="twitter:url" content="<?php echo esc_url($canonical); ?>">
     <meta property="twitter:title" content="<?php echo esc_attr($title); ?>">
     <meta property="twitter:description" content="<?php echo esc_attr($desc); ?>">
     <meta property="twitter:image" content="<?php echo esc_url($og_image); ?>">
