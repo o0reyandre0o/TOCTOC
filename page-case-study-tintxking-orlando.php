@@ -200,30 +200,43 @@ $cs_shots = array(
 				</p>
 			</div>
 
-			<div class="mt-14 grid gap-10 md:grid-cols-2 items-start">
-				<div class="relative aspect-[9/16] w-full max-w-[300px] overflow-hidden rounded-[2rem] bg-black shadow-glass ring-1 ring-white/10">
-					<?php /* No VideoObject markup here: /our-work/ is the declared watch page
-					         for these clips, and claiming a second one is what failed Search
-					         Console's video validation in July. */ ?>
-					<video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline
-						poster="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking-cover.webp">
-						<source src="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking.mp4" type="video/mp4">
-					</video>
-					<div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
-						<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How TintXKing shows up in ChatGPT &amp; Gemini &#128663;</span>
-					</div>
-				</div>
+			<?php
+			/*
+			 * Three identical 9:16 frames, the same treatment /our-work/ uses.
+			 * The video and the two screenshots have different native ratios
+			 * (396x800 and 502x1198), so giving each its own sizing left them at
+			 * mismatched heights and the row read as two separate blocks.
+			 * A fixed frame with object-cover object-top keeps the tops aligned,
+			 * which is where the useful part of a phone screenshot lives.
+			 */
+			?>
+			<div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-items-center lg:justify-items-start">
 
-				<div class="grid grid-cols-2 gap-5">
-					<?php foreach ( $cs_shots as $cs_s ) : ?>
-					<figure>
-						<div class="overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10">
-							<img src="<?php echo esc_url( $cs_s['img'] ); ?>" alt="<?php echo esc_attr( $cs_s['label'] . ' — TintXKing, by TocToc Marketing' ); ?>" width="<?php echo (int) $cs_s['w']; ?>" height="<?php echo (int) $cs_s['h']; ?>" loading="lazy" decoding="async" class="w-full h-auto" />
+				<figure class="flex flex-col items-center lg:items-start w-full">
+					<div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-black shadow-glass ring-1 ring-white/10">
+						<?php /* No VideoObject markup here: /our-work/ is the declared watch
+						         page for these clips, and claiming a second one is what failed
+						         Search Console's video validation in July. */ ?>
+						<video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline
+							poster="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking-cover.webp">
+							<source src="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-tintxking.mp4" type="video/mp4">
+						</video>
+						<div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
+							<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How TintXKing shows up in ChatGPT &amp; Gemini &#128663;</span>
 						</div>
-						<figcaption class="mt-3 text-[11px] font-bold uppercase tracking-widest text-white/40"><?php echo esc_html( $cs_s['label'] ); ?></figcaption>
-					</figure>
-					<?php endforeach; ?>
-				</div>
+					</div>
+					<figcaption class="mt-4 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/40">ChatGPT &amp; Gemini demo</figcaption>
+				</figure>
+
+				<?php foreach ( $cs_shots as $cs_s ) : ?>
+				<figure class="flex flex-col items-center lg:items-start w-full">
+					<div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-white/5 ring-1 ring-white/10 shadow-glass">
+						<img src="<?php echo esc_url( $cs_s['img'] ); ?>" alt="<?php echo esc_attr( $cs_s['label'] . ' — TintXKing, by TocToc Marketing' ); ?>" width="<?php echo (int) $cs_s['w']; ?>" height="<?php echo (int) $cs_s['h']; ?>" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+					</div>
+					<figcaption class="mt-4 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/40"><?php echo esc_html( $cs_s['label'] ); ?></figcaption>
+				</figure>
+				<?php endforeach; ?>
+
 			</div>
 		</div>
 	</section>
