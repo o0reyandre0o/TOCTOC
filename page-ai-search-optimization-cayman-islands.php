@@ -252,14 +252,19 @@ $ai_google_rating = function ( $dark = false ) {
             <div class="grid gap-8 md:grid-cols-3">
                 <?php foreach ( $ai_proof as $pv ) : ?>
                 <figure class="flex flex-col items-center text-center">
-                    <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
-                        <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
-                            <source src="<?php echo esc_url( $pv['mp4'] ); ?>#t=0.1" type="video/mp4">
-                        </video>
-                        <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
-                            <span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md"><?php echo wp_kses_post( $pv['headline'] ); ?></span>
-                        </div>
-                    </div>
+                    <?php
+                    // Facade, not a <video> — see toctoc_render_proof_video(). The
+                    // headline gradient rides along as the overlay so it stays pinned
+                    // above both the poster and the video the click builds.
+                    toctoc_render_proof_video( array(
+                        'mp4'     => $pv['mp4'],
+                        'poster'  => $pv['poster'],
+                        'label'   => wp_strip_all_tags( html_entity_decode( $pv['headline'], ENT_QUOTES, 'UTF-8' ) ),
+                        'class'   => 'max-w-[280px] shadow-soft ring-1 ring-slate-100',
+                        'overlay' => '<div class="pointer-events-none absolute inset-x-0 top-0 z-40 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">'
+                            . '<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">' . wp_kses_post( $pv['headline'] ) . '</span></div>',
+                    ) );
+                    ?>
                     <figcaption class="mt-5 max-w-[300px]">
                         <span class="block text-sm text-slate-500 leading-relaxed"><?php echo wp_kses_post( $pv['desc'] ); ?></span>
                     </figcaption>

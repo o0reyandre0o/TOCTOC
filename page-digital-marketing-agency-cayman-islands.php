@@ -225,14 +225,17 @@ $dm_faqs = array(
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50 mb-6">The Proof Loop</p>
                     <div class="grid md:grid-cols-3 gap-6 items-start">
                         <div class="flex justify-center md:justify-start">
-                            <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-white/10">
-                                <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline poster="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp">
-                                    <source src="https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4#t=0.1" type="video/mp4">
-                                </video>
-                                <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
-                                    <span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;</span>
-                                </div>
-                            </div>
+                            <?php
+                            // Facade, not a <video> — see toctoc_render_proof_video().
+                            toctoc_render_proof_video( array(
+                                'mp4'     => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
+                                'poster'  => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp',
+                                'label'   => '19-81 Brewing ranked #1 by ChatGPT and Gemini',
+                                'class'   => 'max-w-[280px] shadow-soft ring-1 ring-white/10',
+                                'overlay' => '<div class="pointer-events-none absolute inset-x-0 top-0 z-40 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">'
+                                    . '<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;</span></div>',
+                            ) );
+                            ?>
                         </div>
                         <figure class="flex flex-col items-center md:items-start">
                             <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950">
