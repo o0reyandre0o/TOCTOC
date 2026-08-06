@@ -88,7 +88,7 @@
             <?php
             $ttc_stats = array(
                 array( '20+',  'AI-Ready Websites<br>in 2026' ),
-                array( '4.8<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(21 reviews)' ),
+                array( '4.8<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(25 reviews)' ),
             );
             // Two identical copies make the -50% translate loop seamless.
             for ( $ttc_copy = 0; $ttc_copy < 2; $ttc_copy++ ) :

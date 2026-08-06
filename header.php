@@ -52,7 +52,7 @@
         ],
         'ai-search-optimization-cayman-islands' => [
             'title' => 'SEO & AI Search Optimization Cayman | ChatGPT, Gemini',
-            'desc' => 'Rank on Google and get recommended by ChatGPT & Gemini. SEO, AEO & GEO for Cayman Islands businesses, rated 4.8★ (21 reviews). Book a free strategy call.'
+            'desc' => 'Rank on Google and get recommended by ChatGPT & Gemini. SEO, AEO & GEO for Cayman Islands businesses, rated 4.8★ (25 reviews). Book a free strategy call.'
         ],
         'seo-agency-services-cayman-islands' => [
             'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
@@ -72,7 +72,7 @@
          */
         'digital-marketing-agency-cayman-islands' => [
             'title' => 'Marketing Services & Branding Grand Cayman | TocToc',
-            'desc' => 'Marketing consulting, branding and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★ by 21 clients.'
+            'desc' => 'Marketing consulting, branding and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★ by 25 clients.'
         ],
         // The home outranks this page for its own topic — 3.2 against 19.4 on
         // "web design cayman islands". Carrying both noun forms ("web design"
@@ -80,7 +80,7 @@
         // full query set instead of half of it.
         'website-design-agency-cayman-islands' => [
             'title' => 'Web Design Cayman Islands | Website Design Agency | TocToc',
-            'desc' => 'Website design agency in the Cayman Islands building fast, mobile-first sites that convert — and that AI search engines can actually read. Rated 4.8★ (21 reviews). Free quote.'
+            'desc' => 'Website design agency in the Cayman Islands building fast, mobile-first sites that convert — and that AI search engines can actually read. Rated 4.8★ (25 reviews). Free quote.'
         ],
         // Bing's query log for this page is dominated by "social media COMPANY in
         // cayman" and "social media AGENCIES cayman islands" — the noun people
@@ -89,7 +89,7 @@
         // sample), so the title now matches the search rather than our jargon.
         'social-media-marketing-services-cayman-islands' => [
             'title' => 'Social Media Company Cayman Islands | Agency | TocToc',
-            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini & Google read your brand as the local authority. Rated 4.8★ by 21 clients. Book a free call.'
+            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini & Google read your brand as the local authority. Rated 4.8★ by 25 clients. Book a free call.'
         ],
         'advertising-pr-agency-cayman-islands' => [
             'title' => 'PR Agency Cayman | Digital PR & AI Authority | TocToc',
@@ -97,7 +97,7 @@
         ],
         'web-development-cayman-islands' => [
             'title' => 'Web Development Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Custom web development in the Cayman Islands: fast, secure, SEO-ready websites, e-commerce & web apps. Rated 4.8★ by 21 clients. Get a free project quote.'
+            'desc' => 'Custom web development in the Cayman Islands: fast, secure, SEO-ready websites, e-commerce & web apps. Rated 4.8★ by 25 clients. Get a free project quote.'
         ],
         'venezuela' => [
             'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',
@@ -304,7 +304,7 @@
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
-            "reviewCount": "21",
+            "reviewCount": "25",
             "bestRating": "5",
             "worstRating": "1"
           },
