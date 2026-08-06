@@ -363,6 +363,7 @@ add_action( 'init', function () {
         [ 'https://toctoc.ky/advertising-pr-agency-cayman-islands/',               '0.8' ],
         [ 'https://toctoc.ky/our-work/',                                           '0.9' ],
         [ 'https://toctoc.ky/case-study-tintxking-orlando/',                       '0.8' ],
+        [ 'https://toctoc.ky/case-study-prime-group-cayman/',                      '0.8' ],
         [ 'https://toctoc.ky/about-toc-toc-marketing/',                            '0.7' ],
         [ 'https://toctoc.ky/venezuela/',                                          '0.9' ],
         [ 'https://toctoc.ky/seo-checker/',                                        '0.7' ],

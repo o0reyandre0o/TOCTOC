@@ -78,6 +78,9 @@ $ow_cases = array(
         ),
         'bg'        => 'bg-slate-50',
         'card'      => 'bg-white',
+        // primegroup.ky is the cleanest case to argue: we built the site and
+        // touched no other channel, so the +305% belongs to it alone.
+        'more'      => array( '/case-study-prime-group-cayman/', 'Read the full case study with the search data' ),
     ),
     array(
         'id'        => 'case-tintxking',

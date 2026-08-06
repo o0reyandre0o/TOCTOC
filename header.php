@@ -111,6 +111,10 @@
             'title' => 'Digital Marketing in the Cayman Islands: 2026 Guide | TocToc',
             'desc' => 'A clear 2026 guide to digital marketing in the Cayman Islands — SEO, AEO/GEO, AI visibility, costs and how to choose an agency. Answered by TocToc Marketing.'
         ],
+        'case-study-prime-group-cayman' => [
+            'title' => 'The Website That Started Recruiting | Case Study | TocToc',
+            'desc' => 'We built Prime Group\'s site and touched nothing else — no listings, no social, no ads. A year later: +305% clicks, position 17.3 to 9.1, and chefs in Jamaica and Kenya finding them.'
+        ],
         'case-study-tintxking-orlando' => [
             'title' => 'Window Tint Shop: 5.7x More Search Traffic | Case Study | TocToc',
             'desc' => 'TintXKing went from invisible to page one in Orlando — 469% more clicks than the same months last year. The Search Console data, what we changed, and what is still not fixed.'
