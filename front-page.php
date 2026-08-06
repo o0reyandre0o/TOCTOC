@@ -157,23 +157,28 @@
             <div class="grid gap-8 md:grid-cols-3">
                 <?php foreach ( $ttc_proof as $pv ) : ?>
                 <figure class="flex flex-col items-center text-center">
+                    <?php if ( ! empty( $pv['mp4'] ) ) : ?>
+                    <?php
+                    // Poster-only facade; the <video> is built on click in footer.php.
+                    // Nothing here downloads until asked, and there is no <video> for
+                    // Search Console's watch-page report to flag on a supporting page.
+                    toctoc_render_proof_video( array(
+                        'mp4'    => $pv['mp4'],
+                        'poster' => $pv['poster'],
+                        'label'  => $pv['label'] . ' in AI search',
+                        'class'  => 'max-w-[280px] shadow-soft ring-1 ring-slate-100',
+                    ) );
+                    ?>
+                    <?php else : ?>
                     <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
-                        <?php if ( ! empty( $pv['mp4'] ) ) : ?>
-                        <!-- preload="none" + data-ttlazy: metadata only loads when the video nears the
-                             viewport (footer.php observer). These mp4s lack faststart, so eager
-                             metadata would download the entire ~17 MB file per video. -->
-                        <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline <?php echo $pv['poster'] ? 'poster="' . esc_url( $pv['poster'] ) . '"' : ''; ?>>
-                            <source src="<?php echo esc_url( $pv['mp4'] ); ?>#t=0.1" type="video/mp4">
-                        </video>
-                        <?php else : ?>
                         <div class="w-full h-full flex flex-col items-center justify-center text-center gap-4 text-white/60">
                             <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" class="text-sky-deep"><path d="M8 5v14l11-7z"/></svg>
                             </span>
                             <span class="text-xs font-bold uppercase tracking-widest">Video coming soon</span>
                         </div>
-                        <?php endif; ?>
                     </div>
+                    <?php endif; ?>
                     <figcaption class="mt-5">
                         <span class="block text-lg font-display text-slate-900 mb-1"><?php echo esc_html( $pv['label'] ); ?></span>
                         <span class="block text-sm text-slate-500 leading-relaxed"><?php echo wp_kses_post( $pv['desc'] ); ?></span>
