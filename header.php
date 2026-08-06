@@ -112,8 +112,8 @@
             'desc' => 'A clear 2026 guide to digital marketing in the Cayman Islands — SEO, AEO/GEO, AI visibility, costs and how to choose an agency. Answered by TocToc Marketing.'
         ],
         'case-study-tintxking-orlando' => [
-            'title' => 'How a Window Tint Shop Grew Search 63% | Case Study | TocToc',
-            'desc' => 'TintXKing went from invisible to page one in Orlando: clicks +62%, impressions +63%, ranking up 3.8 places in 90 days. The Search Console data and what we changed.'
+            'title' => 'Window Tint Shop: 5.7x More Search Traffic | Case Study | TocToc',
+            'desc' => 'TintXKing went from invisible to page one in Orlando — 469% more clicks than the same months last year. The Search Console data, what we changed, and what is still not fixed.'
         ],
         'our-work' => [
             'title' => 'Our Work | AI Search Case Studies Cayman | TocToc',
