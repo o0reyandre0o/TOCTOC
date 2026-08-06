@@ -19,12 +19,25 @@
  */
 get_header();
 
-// Measured, not estimated. Update these together with the date below.
-$cs_period   = '90 days to 2 August 2026, against the previous 90';
-$cs_metrics  = array(
-	array( 'Clicks from Google',  '225',  '364',  '+62%' ),
-	array( 'Search impressions',  '32,700', '53,358', '+63%' ),
-	array( 'Average position',    '14.9', '11.1', '3.8 places' ),
+/*
+ * Measured, not estimated. Two comparisons on purpose.
+ *
+ * Year-on-year is the headline because quarter-on-quarter flatters or punishes
+ * a business depending on where the season falls — the same 90-day comparison
+ * makes two of our tourist-facing clients look like they collapsed when they
+ * were simply in low season. Against the identical quarter of 2025, TintXKing
+ * grew clicks 469%, and that number is real in a way a quarterly bounce is not.
+ */
+$cs_period  = 'May–August 2026 against the same months of 2025. Source: Google Search Console';
+$cs_metrics = array(
+	array( 'Clicks from Google', '64',     '364',    '+469%' ),
+	array( 'Search impressions', '40,255', '53,358', '+33%' ),
+);
+// The quarter-on-quarter view, kept because it shows ranking moving too.
+$cs_quarter = array(
+	array( 'Clicks from Google', '225',    '364',    '+62%' ),
+	array( 'Search impressions', '32,700', '53,358', '+63%' ),
+	array( 'Average position',   '14.9',   '11.1',   '3.8 places' ),
 );
 
 // Discovery queries — people who did not know the brand existed.
@@ -63,7 +76,7 @@ $cs_shots = array(
 			<?php toctoc_render_breadcrumbs( 'TintXKing Case Study' ); ?>
 			<span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Case Study &middot; Window Tinting &middot; Orlando</span>
 			<h1 class="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display leading-[0.98] text-white max-w-4xl">
-				From Invisible to Page One: <em class="italic text-accent font-display">63% More Searches in 90 Days</em>
+				From Invisible to Page One: <em class="italic text-accent font-display">5.7&times; More Traffic in a Year</em>
 			</h1>
 			<p class="mt-8 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
 				How TintXKing started showing up when someone in Orlando searches &ldquo;window tinting near me&rdquo; &mdash; and stopped depending on ads to be found.
@@ -72,9 +85,9 @@ $cs_shots = array(
 			<!-- Headline numbers -->
 			<div class="mt-14 grid gap-5 sm:grid-cols-3 max-w-3xl">
 				<?php foreach ( array(
-					array( '+62%', 'more clicks from Google' ),
-					array( '+63%', 'more search impressions' ),
-					array( '11.1', 'average position, from 14.9' ),
+					array( '+469%', 'more clicks than the same months last year' ),
+					array( '+33%',  'more people seeing them in search' ),
+					array( '11.1',  'average position, from 14.9' ),
 				) as $cs_h ) : ?>
 				<div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
 					<span class="block text-4xl md:text-5xl font-display text-accent leading-none"><?php echo esc_html( $cs_h[0] ); ?></span>
@@ -123,9 +136,9 @@ $cs_shots = array(
 	<section class="py-20 md:py-28 bg-white">
 		<div class="mx-auto max-w-5xl px-6">
 			<span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">The numbers</span>
-			<h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Every metric moved the same way</h2>
+			<h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Same months, one year apart</h2>
 			<p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-3xl">
-				Clicks, impressions and ranking all improved together. That matters: visibility that grows while ranking slips usually means appearing for searches nobody cares about.
+				We compare against the same months of last year rather than against last quarter. In a seasonal business, quarter-on-quarter mostly measures the calendar &mdash; year-on-year measures the work.
 			</p>
 
 			<div class="mt-12 overflow-x-auto">
@@ -133,8 +146,8 @@ $cs_shots = array(
 					<thead>
 						<tr class="border-b-2 border-slate-900">
 							<th class="py-4 pr-4 text-sm font-bold uppercase tracking-wider text-slate-900">Metric</th>
-							<th class="py-4 px-4 text-sm font-bold uppercase tracking-wider text-slate-500">Previous 90 days</th>
-							<th class="py-4 px-4 text-sm font-bold uppercase tracking-wider text-slate-900">Last 90 days</th>
+							<th class="py-4 px-4 text-sm font-bold uppercase tracking-wider text-slate-500">May&ndash;Aug 2025</th>
+							<th class="py-4 px-4 text-sm font-bold uppercase tracking-wider text-slate-900">May&ndash;Aug 2026</th>
 							<th class="py-4 pl-4 text-sm font-bold uppercase tracking-wider text-sky-deep">Change</th>
 						</tr>
 					</thead>
@@ -145,6 +158,33 @@ $cs_shots = array(
 							<td class="py-5 px-4 text-slate-500 tabular-nums"><?php echo esc_html( $cs_m[1] ); ?></td>
 							<td class="py-5 px-4 text-slate-900 font-bold tabular-nums"><?php echo esc_html( $cs_m[2] ); ?></td>
 							<td class="py-5 pl-4 font-bold text-sky-deep tabular-nums"><?php echo esc_html( $cs_m[3] ); ?></td>
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+
+			<h3 class="mt-16 text-2xl md:text-3xl font-display text-slate-900">And the ranking moved with it</h3>
+			<p class="mt-4 text-lg text-slate-600 leading-relaxed max-w-3xl">
+				Against the previous quarter, the position improved too &mdash; which is what separates real growth from simply appearing for more searches nobody cares about.
+			</p>
+			<div class="mt-8 overflow-x-auto">
+				<table class="w-full text-left border-collapse">
+					<thead>
+						<tr class="border-b-2 border-slate-200">
+							<th class="py-3 pr-4 text-xs font-bold uppercase tracking-wider text-slate-500">Metric</th>
+							<th class="py-3 px-4 text-xs font-bold uppercase tracking-wider text-slate-400">Previous 90 days</th>
+							<th class="py-3 px-4 text-xs font-bold uppercase tracking-wider text-slate-500">Last 90 days</th>
+							<th class="py-3 pl-4 text-xs font-bold uppercase tracking-wider text-sky-deep">Change</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ( $cs_quarter as $cs_m ) : ?>
+						<tr class="border-b border-slate-100">
+							<td class="py-4 pr-4 text-slate-700"><?php echo esc_html( $cs_m[0] ); ?></td>
+							<td class="py-4 px-4 text-slate-400 tabular-nums"><?php echo esc_html( $cs_m[1] ); ?></td>
+							<td class="py-4 px-4 text-slate-700 tabular-nums"><?php echo esc_html( $cs_m[2] ); ?></td>
+							<td class="py-4 pl-4 font-bold text-sky-deep tabular-nums"><?php echo esc_html( $cs_m[3] ); ?></td>
 						</tr>
 						<?php endforeach; ?>
 					</tbody>
