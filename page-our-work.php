@@ -263,19 +263,21 @@ $ow_cases = array(
                     <!-- Video -->
                     <div class="flex justify-center md:justify-start">
                         <?php if ( $c['mp4'] ) : ?>
-                        <div class="relative aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-soft ring-1 ring-slate-100">
-                            <video class="w-full h-full object-cover" controls preload="none" data-ttlazy playsinline <?php echo ! empty( $c['poster'] ) ? 'poster="' . esc_url( $c['poster'] ) . '"' : ''; ?>>
-                                <?php /* No #t=0.1 fragment here: this page is the declared watch page for
-                                         these clips, and the VideoObject contentUrl below must match the
-                                         source URL exactly or Google indexes "...mp4#t=0.1" as a separate,
-                                         unmarked video. The poster attribute already covers the first-frame
-                                         problem the fragment was working around. */ ?>
-                                <source src="<?php echo esc_url( $c['mp4'] ); ?>" type="video/mp4">
-                            </video>
-                            <div class="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
-                                <span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md"><?php echo wp_kses_post( $c['headline'] ); ?></span>
-                            </div>
-                        </div>
+                        <?php
+                        // Facade, not a <video> — see toctoc_render_proof_video(). This
+                        // page used to be the declared watch page for these clips; it no
+                        // longer claims that, because a portfolio page showing three
+                        // videos among nine case studies was never going to satisfy
+                        // Google's "video is the main content" test anyway.
+                        toctoc_render_proof_video( array(
+                            'mp4'     => $c['mp4'],
+                            'poster'  => ! empty( $c['poster'] ) ? $c['poster'] : '',
+                            'label'   => $c['title'] . ' — ' . wp_strip_all_tags( html_entity_decode( $c['headline'], ENT_QUOTES, 'UTF-8' ) ),
+                            'class'   => 'max-w-[280px] shadow-soft ring-1 ring-slate-100',
+                            'overlay' => '<div class="pointer-events-none absolute inset-x-0 top-0 z-40 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">'
+                                . '<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">' . wp_kses_post( $c['headline'] ) . '</span></div>',
+                        ) );
+                        ?>
                         <?php else : ?>
                         <div class="aspect-[9/16] w-full max-w-[280px] rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/60 flex flex-col items-center justify-center gap-3 text-center px-6">
                             <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-slate-300 shadow-soft">
@@ -325,25 +327,24 @@ $ow_cases = array(
 
     <?php
     /*
-     * VideoObject schema for the case-study demo videos. This page is the single
-     * watch page for these clips — the identical markup was removed from
-     * front-page.php and the AI Search Optimization page, where the same files
-     * appear as supporting proof. Claiming three watch pages per video is what
-     * failed Search Console's "Video isn't on a watch page" validation.
+     * No VideoObject schema anywhere on the site any more — deliberately.
      *
-     * thumbnailUrl points at each clip's real poster frame rather than a
-     * generated OG card: Google requires a thumbnail that actually represents
-     * the video's content.
+     * This page carried it as the single declared "watch page" for the proof
+     * clips. That consolidation was the right fix for a real problem (three URLs
+     * claiming the same file) but it never addressed the Search Console error it
+     * was aimed at, which validation-failed again on 6 Aug 2026 against URLs
+     * crawled after the fix shipped. The report keys off the <video> element, and
+     * Google only clears it for a page where the video IS the content — not a
+     * portfolio page listing nine case studies.
+     *
+     * The clips are now click-to-play facades (toctoc_render_proof_video), so no
+     * page ships a <video> and the report has nothing left to flag. Declaring
+     * VideoObject on a page with no video element would be a fresh mismatch, so
+     * the markup goes with it. What that costs: these clips are not eligible for
+     * video rich results. They never were — "isn't on a watch page" was Google
+     * saying it had declined to index them. If video results are ever worth
+     * chasing, the route is a dedicated page per clip, not markup on this one.
      */
-    toctoc_render_video_schema( array_map( function ( $c ) {
-        return array(
-            'name'         => $c['title'] . ' — ' . wp_strip_all_tags( html_entity_decode( $c['headline'], ENT_QUOTES, 'UTF-8' ) ),
-            'description'  => wp_strip_all_tags( html_entity_decode( $c['lead'], ENT_QUOTES, 'UTF-8' ) ),
-            'contentUrl'   => $c['mp4'],
-            'thumbnailUrl' => ! empty( $c['poster'] ) ? $c['poster'] : toctoc_og_image_url( 'video-' . sanitize_title( $c['title'] ), $c['title'] . ' · Case Study', 'https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg' ),
-            'uploadDate'   => '2026-07-17T09:00:00-05:00',
-        );
-    }, $ow_cases ) );
     ?>
 
     <!-- 5. Standalone Web Design Showcase -->
