@@ -71,12 +71,13 @@
     <script>
     // Click-to-play video facade.
     //
-    // The proof clips ship as a poster button with NO <video> element (see
-    // toctoc_render_proof_video in functions.php). The element is built here, on
-    // click, for two reasons: multi-MB mp4s without faststart never touch the
+    // The proof clips ship as a poster button only, with no media element in the
+    // markup (see toctoc_render_proof_video in functions.php). It is built here,
+    // on click, for two reasons: multi-MB mp4s without faststart never touch the
     // network until someone asks for them, and Search Console's "Video isn't on
-    // a watch page" report cannot flag a video that isn't in the crawled DOM.
+    // a watch page" report cannot flag a clip that isn't in the crawled DOM.
     // Googlebot renders JS but does not click, so it only ever sees the poster.
+    // (Kept free of a literal tag name so grepping the served HTML stays clean.)
     (function () {
         var wraps = document.querySelectorAll('[data-ttvideo]');
         if (!wraps.length) return;
