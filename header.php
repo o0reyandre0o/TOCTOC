@@ -74,13 +74,16 @@
             'title' => 'Marketing Services & Branding Grand Cayman | TocToc',
             'desc' => 'Marketing consulting, branding and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★ by 25 clients.'
         ],
-        // The home outranks this page for its own topic — 3.2 against 19.4 on
-        // "web design cayman islands". Carrying both noun forms ("web design"
-        // and "website design agency") is how this page starts matching the
-        // full query set instead of half of it.
+        // Retargeted 10 Aug 2026. Carrying "web design" here was a losing fight:
+        // the home ranks 3.3 on "web design cayman islands" and this page 20.7,
+        // so the two were splitting one query and neither reached page one. The
+        // page's real territory is "development" and "restaurant", where it is
+        // the site's best URL already (18.3 on "restaurant website design cayman
+        // islands" vs the home's 25.0). Title now carries the two nouns that
+        // actually convert here. Full evidence table in the page template.
         'website-design-agency-cayman-islands' => [
-            'title' => 'Web Design Cayman Islands | Website Design Agency | TocToc',
-            'desc' => 'Website design agency in the Cayman Islands building fast, mobile-first sites that convert — and that AI search engines can actually read. Rated 4.8★ (25 reviews). Free quote.'
+            'title' => 'Website Development Grand Cayman | Restaurant Sites | TocToc',
+            'desc' => 'Website development company in Grand Cayman. We hand-code fast, custom sites — and we have built more Cayman restaurant websites than anyone. Rated 4.8★ (25 reviews). Free quote.'
         ],
         // Bing's query log for this page is dominated by "social media COMPANY in
         // cayman" and "social media AGENCIES cayman islands" — the noun people
@@ -152,7 +155,7 @@
         'ai-search-optimization-cayman-islands' => 'local seo cayman islands, local seo company in cayman islands, seo services cayman, seo agency cayman, ai search optimization cayman islands, ai seo cayman, aeo agency cayman, geo optimization cayman, chatgpt seo, gemini recommendation, ai search visibility cayman, answer engine optimization',
         'seo-agency-services-cayman-islands' => 'ai search optimization cayman islands, ai seo cayman, aeo agency cayman, geo optimization cayman, chatgpt seo, gemini recommendation, ai search visibility cayman, answer engine optimization',
         'digital-marketing-agency-cayman-islands' => 'marketing services grand cayman, cayman marketing consultant, cayman marketing consulting, branding agency cayman islands, cayman islands branding, marketing design services cayman, graphic design cayman islands, marketing strategy grand cayman',
-        'website-design-agency-cayman-islands' => 'web design cayman islands, website design cayman islands, cayman website design, website design agency cayman islands, website design agency in the cayman islands, creative website design agency cayman islands, cayman web design, web design agency grand cayman, wordpress development cayman',
+        'website-design-agency-cayman-islands' => 'website development grand cayman, web development services cayman, website development company cayman islands, web development cayman, restaurant website design cayman islands, restaurant website cayman, wordpress development cayman, website developers grand cayman',
         'social-media-marketing-services-cayman-islands' => 'social media company in cayman, social media agencies cayman islands, social media company cayman, social media strategy cayman, social media marketing cayman islands, social media agency cayman, social media for ai search, algorithmic trust, social search optimization, instagram linkedin optimization cayman',
         'advertising-pr-agency-cayman-islands' => 'digital pr cayman islands, ai authority citations, pr agency cayman, pr services cayman, entity trust score, linkedin authority building cayman, digital pr for ai search, brand citations chatgpt gemini',
         'web-development-cayman-islands' => 'web development cayman islands, web development agency cayman, website development company cayman, ecommerce development cayman, web app development cayman',
@@ -501,7 +504,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-[13px] font-bold <?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Home</a>
         <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Services</a>
         <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">AI Search Visibility</a>
-        <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Design</a>
+        <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Development</a>
         <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Our Work</a>
         <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">About</a>
         <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-[13px] font-bold text-sky-deep hover:text-primary transition-colors decoration-none uppercase tracking-wider">SEO Checker</a>
@@ -530,7 +533,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-4xl font-display <?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Home</a>
             <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Services</a>
             <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">AI Search Visibility</a>
-            <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Web Design</a>
+            <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Web Development</a>
             <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-4xl font-display <?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Our Work</a>
             <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-4xl font-display <?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">About</a>
             <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-4xl font-display text-sky-deep decoration-none">Free SEO Checker</a>

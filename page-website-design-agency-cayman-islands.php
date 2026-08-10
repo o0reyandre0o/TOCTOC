@@ -1,20 +1,38 @@
 <?php
 /**
- * Template Name: Website Design Agency Cayman
+ * Template Name: Website Development Grand Cayman
  * Template Post Type: page
  *
- * "AI-Ready Web Design" — custom, high-speed sites engineered to be cited and
- * recommended by ChatGPT, Gemini and Google.
+ * Retargeted 10 Aug 2026 from "AI-Ready Web Design" to website DEVELOPMENT plus
+ * a restaurant/hospitality lead. The slug stays as-is: it holds every one of the
+ * page's 2,659 impressions and a slug is a weak signal next to that.
+ *
+ * Why the move — 180 days of Search Console, page position vs the home's:
+ *
+ *   restaurant website design cayman islands   702 impr   this 18.3  home 25.0
+ *   web development services cayman            673 impr   this 19.6  home 36.9
+ *   website development company cayman is.     659 impr   this 24.0  home  —
+ *   web development cayman                     380 impr   this 21.7  home 25.6
+ *   website development grand cayman           111 impr   this 23.5  home 27.4
+ *   --- terms the home owns, so this page stops chasing them ---
+ *   web design cayman islands                  632 impr   this 20.7  home  3.3
+ *   web development agency cayman islands      425 impr   this 15.8  home  5.7
+ *
+ * On every "design" head term the home outranks this page by 15+ positions, and
+ * two pages splitting one query is what kept both off page one. On "development"
+ * and "restaurant" this page is the site's best URL and merely stuck on page two.
+ * So it now targets only the second group. See also the note in header.php.
  */
 get_header();
 
 // Table of contents — anchors match the section ids below.
 $wd_toc = array(
-    array( '#how-we-help',  'How We Help Your Business (Build, Redesign, or Optimize)' ),
-    array( '#showcase',     'Website Portfolio Showcase' ),
-    array( '#failing',      'Why Traditional Web Design Is Failing Local Businesses' ),
+    array( '#restaurants',  'Restaurant &amp; Hospitality Websites We&rsquo;ve Built in Cayman' ),
+    array( '#how-we-help',  'How We Help Your Business (Build, Rebuild, or Optimize)' ),
+    array( '#showcase',     'Full Website Portfolio' ),
+    array( '#failing',      'Why Most Cayman Websites Fail Their Owners' ),
     array( '#ai-ready',     'What Makes a Website &ldquo;AI-Ready&rdquo;? (Our 3 Core Pillars)' ),
-    array( '#process',      'Our 3-Step Web Design &amp; Launch Process' ),
+    array( '#process',      'Our 3-Step Web Development &amp; Launch Process' ),
     array( '#faq',          'Frequently Asked Questions' ),
 );
 
@@ -74,7 +92,15 @@ $wd_faqs = array(
         'a' => 'It depends on scope — a focused local business site is very different from a large e-commerce build. Rather than fixed packages, we quote each project based on the pages, features and integrations you need. Book a free call and we will give you a transparent, itemized quote.',
     ),
     array(
-        'q' => 'What does "AI-ready" web design actually mean?',
+        'q' => 'How much does a restaurant website cost in the Cayman Islands?',
+        'a' => 'A restaurant site is usually one of the more contained builds we do: menus, hours, location, gallery, reservations and the structured data that lets Google and AI assistants read all of it correctly. Because the scope is well understood after five Cayman restaurant builds, we can quote it quickly and accurately after a short call.',
+    ),
+    array(
+        'q' => 'Can you add online menus, reservations or ordering to my restaurant website?',
+        'a' => 'Yes. We build menus as real, crawlable page content rather than a PDF or an image — that is the single most common reason a restaurant is invisible to ChatGPT, Gemini and Google, because none of them can read a picture of your menu reliably. We also connect direct reservations and integrate whichever ordering or delivery platform you already use.',
+    ),
+    array(
+        'q' => 'What does "AI-ready" web development actually mean?',
         'a' => 'An AI-ready website is engineered so ChatGPT, Gemini and Google can read, trust and recommend it. In practice that means hand-coded Schema markup, a clean semantic HTML structure AI can parse into answers, lightning-fast mobile performance, and content organized around the real questions your customers ask.',
     ),
     array(
@@ -84,6 +110,10 @@ $wd_faqs = array(
     array(
         'q' => 'Do you build on WordPress?',
         'a' => 'Yes — we build fast, custom-coded WordPress sites (and custom themes), which gives you an easy-to-manage platform without the bloat and slow load times of generic page-builder templates. Every build is engineered for Core Web Vitals speed and clean, crawlable code.',
+    ),
+    array(
+        'q' => 'Do you work with businesses outside Grand Cayman?',
+        'a' => 'Yes. Most of our web development work is on Grand Cayman, but we have built and launched sites for clients in Puerto Rico, Florida and the wider Caribbean. The engineering is the same wherever you are; what changes is the local search and structured data setup, which we tailor to the market you actually sell in.',
     ),
     array(
         'q' => 'Will my website be fast and mobile-friendly?',
@@ -106,15 +136,18 @@ $wd_faqs = array(
         </div>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
-                <?php toctoc_render_breadcrumbs( 'Website Design' ); ?>
+                <?php toctoc_render_breadcrumbs( 'Website Development' ); ?>
                 <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
-                    AI-Ready Web Design &middot; Cayman Islands
+                    Website Development &middot; Grand Cayman
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    AI-Ready Web Design Services in the <em class="italic text-accent font-display">Cayman Islands</em>
+                    Website Development in <em class="italic text-accent font-display">Grand Cayman</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    Stop paying for pretty digital brochures that no one finds. We engineer custom, lightning-fast websites designed to convert human visitors and get cited and recommended by ChatGPT, Gemini, and Google.
+                    We are a website development company on Grand Cayman that hand-codes fast, custom sites &mdash; no page builders, no bloated templates. Our web development services have built more restaurant websites in the Cayman Islands than anything else, and those kitchens are now the ones ChatGPT and Gemini name first.
+                </p>
+                <p class="mt-6 text-lg text-white/50 leading-relaxed max-w-3xl">
+                    Restaurants, breweries, retail, professional services and tourism &mdash; 14 live builds across Cayman, Puerto Rico and beyond.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
                     <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
@@ -133,10 +166,10 @@ $wd_faqs = array(
         <div class="mx-auto max-w-4xl px-6 text-center">
             <div class="space-y-8">
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    We don&rsquo;t build generic brochure sites. We engineer AI-Ready Web Foundations built for <em class="italic text-sky-deep font-display">lightning-fast speeds, maximum conversion, and algorithmic trust.</em>
+                    We don&rsquo;t build generic brochure sites. We engineer web foundations built for <em class="italic text-sky-deep font-display">lightning-fast speeds, maximum conversion, and algorithmic trust.</em>
                 </p>
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    In the modern era of search, having a &ldquo;pretty&rdquo; website isn&rsquo;t enough. If your site code is bloated, slow, or missing hidden structured data, AI assistants like ChatGPT and Gemini will simply bypass your business when local customers ask for recommendations.
+                    A &ldquo;pretty&rdquo; website isn&rsquo;t enough any more. If your code is bloated, slow, or missing structured data, AI assistants like ChatGPT and Gemini will simply bypass your business when a hungry visitor asks where to eat tonight.
                 </p>
             </div>
         </div>
@@ -168,14 +201,62 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 1. How We Help (Build / Redesign / Optimize) -->
+    <!--
+        1. Restaurants first.
+
+        This section leads because "restaurant website design cayman islands" is
+        the single clearest opening in the whole Search Console account: 702
+        impressions in 180 days, this page already the site's best result at
+        position 18.3, and a portfolio of five hospitality builds that no other
+        agency on the island can match. Everything below is the general pitch;
+        this is the one where the proof is specific.
+    -->
+    <section id="restaurants" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">01 &middot; Restaurants &amp; Hospitality</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Restaurant Website Design in the <em class="italic text-accent font-display">Cayman Islands</em></h2>
+                <p class="mt-8 text-lg text-white/60 leading-relaxed">
+                    Most of what we build is food and drink. Five live restaurant and brewery sites on Grand Cayman &mdash; Szechuan, tropical Asian, Chinese street food, smash burgers and craft beer &mdash; each hand-coded, each fast on a phone at the table, each structured so search engines and AI assistants can read the menu, the hours and the location without guessing.
+                </p>
+                <p class="mt-5 text-lg text-white/60 leading-relaxed">
+                    That last part is why it matters. When someone on Seven Mile Beach asks ChatGPT or Gemini where to eat, the assistant answers from what it can actually parse. Our restaurant clients are the ones it names.
+                </p>
+            </div>
+
+            <div class="mt-14">
+                <?php toctoc_render_showcase_grid( true, 'food' ); ?>
+            </div>
+
+            <div class="mt-14 grid gap-5 md:grid-cols-2">
+                <a href="<?php echo esc_url( home_url( '/case-study-prime-group-cayman/' ) ); ?>" class="group rounded-[2rem] border border-white/10 bg-white/5 p-8 transition-colors hover:bg-white/10 decoration-none block">
+                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Case study</span>
+                    <h3 class="mt-3 text-2xl font-display text-white">Prime Group &mdash; +305% organic growth</h3>
+                    <p class="mt-3 text-white/50 leading-relaxed">Uncle Liu and Coconut Room, rebuilt from zero and measured against the same quarter a year earlier in Search Console.</p>
+                    <span class="mt-5 inline-flex items-center gap-2 font-bold text-accent group-hover:gap-4 transition-all">Read the numbers
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="<?php echo esc_url( home_url( '/case-study-tintxking-orlando/' ) ); ?>" class="group rounded-[2rem] border border-white/10 bg-white/5 p-8 transition-colors hover:bg-white/10 decoration-none block">
+                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Case study</span>
+                    <h3 class="mt-3 text-2xl font-display text-white">TintXKing &mdash; +469% in leads</h3>
+                    <p class="mt-3 text-white/50 leading-relaxed">Not a restaurant, but the clearest proof of what the build method does to a local service business year over year.</p>
+                    <span class="mt-5 inline-flex items-center gap-2 font-bold text-accent group-hover:gap-4 transition-all">Read the numbers
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. How We Help (Build / Rebuild / Optimize) -->
     <section id="how-we-help" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Build, Redesign or Optimize</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Build, Rebuild or Optimize</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Help <em class="italic text-sky-deep font-display">Your Business</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                    Every business enters the digital space at a different stage. Here is how we tailor our web engineering services to your specific situation:
+                    Every business comes to us at a different stage. Here is how we shape our web development services around where you actually are:
                 </p>
             </div>
             <div class="mt-12 space-y-5">
@@ -195,14 +276,14 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 2. Portfolio Showcase (dark, same as Our Work) -->
+    <!-- 3. Full Portfolio (dark, same as Our Work) -->
     <section id="showcase" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">02 &middot; Portfolio</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Website <em class="italic text-accent font-display">Portfolio Showcase</em></h2>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; Portfolio</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Full Website <em class="italic text-accent font-display">Portfolio</em></h2>
                 <p class="mt-8 text-lg text-white/50 leading-relaxed">
-                    We build every project on clean code, high speeds, and crawlable backend architectures. Here are a few examples of digital foundations built for local Cayman businesses:
+                    Beyond hospitality: retail, wellness, professional services, tourism and manufacturing. Every project on clean code, high speeds, and a crawlable backend architecture.
                 </p>
             </div>
             <div class="mt-14">
@@ -219,14 +300,14 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 3. Why Traditional Web Design Is Failing -->
+    <!-- 4. Why Most Cayman Websites Fail -->
     <section id="failing" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; The Old Way vs The New Reality</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Traditional Web Design Is <em class="italic text-sky-deep font-display">Failing Local Businesses</em></h2>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">04 &middot; The Old Way vs The New Reality</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Most Cayman Websites <em class="italic text-sky-deep font-display">Fail Their Owners</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                    Most web design agencies focus 100% of their energy on visual aesthetics and 0% on how modern search engines actually read code.
+                    Most agencies spend all of their effort on visual aesthetics and none on how modern search engines actually read the code underneath.
                 </p>
             </div>
             <div class="mt-10 grid md:grid-cols-2 gap-6">
@@ -246,7 +327,7 @@ $wd_faqs = array(
     <section id="ai-ready" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; The 3 Core Pillars</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">05 &middot; The 3 Core Pillars</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">What Makes a Website <em class="italic text-accent font-display">&ldquo;AI-Ready&rdquo;</em>?</h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
                     We build every website on a specialized technical framework designed to maximize speed, search indexing, and user conversions:
@@ -276,8 +357,8 @@ $wd_faqs = array(
     <section id="process" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; Our Process</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our 3-Step Web Design &amp; <em class="italic text-sky-deep font-display">Launch Process</em></h2>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">06 &middot; Our Process</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our 3-Step Web Development &amp; <em class="italic text-sky-deep font-display">Launch Process</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     We remove the stress and long delays usually associated with web development projects. Here is how we get your business live and optimized:
                 </p>
