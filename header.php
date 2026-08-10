@@ -506,15 +506,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     
-    <!-- Desktop Menu -->
-    <div class="hidden items-center gap-6 lg:gap-8 md:flex">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-[13px] font-bold <?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Home</a>
-        <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Services</a>
-        <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">AI Search Visibility</a>
-        <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Development</a>
-        <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Our Work</a>
-        <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-[13px] font-bold <?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">About</a>
-        <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-[13px] font-bold text-sky-deep hover:text-primary transition-colors decoration-none uppercase tracking-wider">SEO Checker</a>
+    <!-- Desktop Menu.
+         Breakpoint is lg, not md: seven items with labels this long do not fit a
+         768px bar, and "Web Development" (which replaced the shorter "Web Design"
+         on 10 Aug 2026) is what pushed it over. Below 1024px the hamburger takes
+         over. whitespace-nowrap on the links stops a long label from wrapping to
+         two lines and squashing the logo against the first item. -->
+    <div class="hidden items-center gap-3 xl:gap-5 lg:flex">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Home</a>
+        <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Services</a>
+        <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">AI Search</a>
+        <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Development</a>
+        <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Our Work</a>
+        <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">About</a>
+        <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-boldtext-sky-deep hover:text-primary transition-colors decoration-none uppercase tracking-wider">SEO Checker</a>
     </div>
 
     <div class="flex items-center gap-4">
@@ -526,7 +531,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
         
         <!-- Mobile Toggle -->
-        <button id="menu-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-primary transition-colors">
+        <button id="menu-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-primary transition-colors">
             <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
@@ -534,7 +539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 z-[900] bg-white translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+<div id="mobile-menu" class="fixed inset-0 z-[900] bg-white translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
     <div class="flex flex-col h-full pt-32 px-8 pb-12">
         <div class="flex flex-col gap-6">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-4xl font-display <?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Home</a>
