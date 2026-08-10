@@ -604,6 +604,32 @@
             'q' => 'How long does it take to appear in AI search results?',
             'a' => 'Our base build takes 3 days, and most local Cayman businesses see measurable movement in 3 to 6 months, with compounding growth after that as citations and authority accumulate.',
         ],
+        /*
+         * Four added 10 Aug 2026. The home page draws 146 impressions through
+         * Google's generative features but only 1.0% of its total, the weakest
+         * ratio of any page here — against 13.2% on the AI Search Optimization
+         * page, which carries twice as many FAQ entries. Passage extraction is
+         * the mechanism, so the fix is more answerable questions, drawn from
+         * queries the site already receives: "best marketing agency cayman"
+         * (388 impressions at position 11.3) and "top creative agencies in
+         * cayman" (155 at 10.1) are both unanswered anywhere on the site.
+         */
+        [
+            'q' => 'Who is the best marketing agency in the Cayman Islands?',
+            'a' => 'No agency can honestly declare itself the best, so judge on evidence you can check yourself: published client work you can visit, reviews from named clients, and results shown with the source data rather than asserted. TocToc Marketing holds 4.8 out of 5 across 25 reviews and publishes case studies with the Search Console figures behind them — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, each measured against the same quarter a year earlier. Ask every agency on your shortlist for the same.',
+        ],
+        [
+            'q' => 'What does a marketing agency in Grand Cayman cost?',
+            'a' => 'Cost depends on your category rather than your size, because what you are really buying is the effort needed to outrank whoever is currently ahead of you. A restaurant on Seven Mile Beach sits in a far denser market than a specialist service on the east side, and the work scales accordingly. We quote after one call and will say plainly if the budget you have in mind will not be enough to change anything.',
+        ],
+        [
+            'q' => 'Do you work with small businesses, or only large companies?',
+            'a' => 'Most of our clients are small, owner-run Cayman businesses — restaurants, a brewery, a boutique, a detailing shop, a counselling practice. Small businesses tend to benefit most from this work, because AI assistants answer questions about local services constantly and a well-structured small business can outrank a much larger competitor that never bothered with the technical groundwork.',
+        ],
+        [
+            'q' => 'Do I still need SEO if AI assistants are replacing search?',
+            'a' => 'Yes, because they draw on the same foundation. ChatGPT, Gemini and Google\'s AI answers are assembled from crawlable, well-structured web content — the very thing SEO produces. What changes is the target: instead of competing for a blue link, you are competing to be the source an assistant quotes. Sites that neglected the technical basics are invisible to both.',
+        ],
     ], 'FAQ', 'Quick Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
     ?>
 

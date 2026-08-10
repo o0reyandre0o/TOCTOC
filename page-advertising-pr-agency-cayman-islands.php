@@ -67,6 +67,28 @@ $pr_faqs = array(
         'q' => 'How long does it take to see results?',
         'a' => 'Digital PR compounds rather than switching on. Most Cayman businesses see meaningful movement over 3 to 6 months as articles get indexed, profiles get crawled and citations accumulate. Unlike ads, those assets keep working after you stop paying for them.',
     ),
+    /*
+     * Added 10 Aug 2026 against this page's real Search Console queries over
+     * 180 days — "pr services cayman" (position 14.2), "pr agency grand cayman"
+     * (23.9), "pr agency cayman" (16.3) and "cayman islands advertising
+     * services" (13.2) — plus two superlative queries the site as a whole
+     * receives and answers nowhere: "top creative agencies in cayman" (155
+     * impressions at position 10.1) and "creative agency grand cayman" (179 at
+     * 5.7). Superlative and comparison questions are exactly the shape Google's
+     * generative features quote from.
+     */
+    array(
+        'q' => 'How much do PR services cost in the Cayman Islands?',
+        'a' => 'We price Digital PR by the assets produced, not by a monthly retainer for media chasing. That usually means a defined number of deep-dive articles, the LinkedIn presence build, and the repurposed video and image content each month, quoted after we look at your category and how much authority your competitors have already built. Because the assets are permanent, the cost profile is closer to a build than to an ad budget.',
+    ),
+    array(
+        'q' => 'What does a PR agency in Grand Cayman actually do differently from an advertising agency?',
+        'a' => 'An advertising agency buys attention; a PR agency earns credibility. On a small island that distinction matters more than it does in a big market, because a Cayman audience is small enough that reputation travels faster than reach. Our version of it is built for how people now check that reputation — increasingly by asking an AI assistant, which reads citations and profiles rather than remembering your last campaign.',
+    ),
+    array(
+        'q' => 'Which are the top creative agencies in the Cayman Islands?',
+        'a' => 'Cayman has a small, competitive agency market, and the honest advice is to judge on published work and verifiable results rather than a ranking list. Look at whether an agency shows real client sites you can visit, whether it publishes measurable outcomes, and whether it owns the technical build or subcontracts it. TocToc is rated 4.8 out of 5 across 25 reviews and publishes its case studies with the underlying Search Console data; we would encourage you to hold every agency you speak to, including us, to that standard.',
+    ),
 );
 ?>
 

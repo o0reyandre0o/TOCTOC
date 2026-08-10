@@ -139,8 +139,8 @@ get_header(); ?>
             'a' => 'Web development cost depends on complexity — a custom brochure site, an e-commerce store, and a bespoke web app are very different builds. TocToc quotes transparently after a short call about your goals and required features, so you only pay for what your project actually needs.',
         ],
         [
-            'q' => 'What is the difference between web design and web development?',
-            'a' => 'Web design is the look, feel, and user experience — layout, branding, and visuals. Web development is the engineering that makes it work — the code, functionality, integrations, and performance. We handle both in-house for Cayman businesses, so your site is beautiful and technically excellent.',
+            'q' => 'What is the difference between a website and a web application?',
+            'a' => 'A website informs; a web application does work. If your visitors read, browse and then call you, you need a website — and that is built on our <a href="https://toctoc.ky/website-design-agency-cayman-islands/">website development</a> service. If they log in, book, pay, upload or manage something, you need an application, which is what this page covers. The dividing line matters because the second carries state, permissions and money, and has to be engineered accordingly.',
         ],
         [
             'q' => 'Do you build e-commerce and custom web applications?',
@@ -149,6 +149,30 @@ get_header(); ?>
         [
             'q' => 'Do you offer website maintenance and support after launch?',
             'a' => 'Yes. We offer ongoing maintenance, security updates, backups, and performance monitoring so your website stays fast, safe, and online — and we are here when you need changes or new features.',
+        ],
+        /*
+         * Added 10 Aug 2026. This page was narrowed to e-commerce and web apps
+         * on the same day, so the questions below cover the transactional
+         * ground the shorter FAQ never answered — payments, platform choice and
+         * inventory are the three things a Cayman business actually asks about
+         * before commissioning a store. Each answer leads with the answer,
+         * because Google's generative features quote passages, not pages.
+         */
+        [
+            'q' => 'Can a Cayman business take online payments, and which gateway should it use?',
+            'a' => 'Yes. Cayman businesses can and do sell online, and the practical constraint is usually the payment gateway rather than the store. We build against whichever processor your bank supports and integrate it properly, including the currency handling that trips up most templates when you price in KYD but sell to visitors paying in USD. We will walk through the options with you before any build starts, because that choice shapes the rest of the project.',
+        ],
+        [
+            'q' => 'Should I build on Shopify, WooCommerce or something custom?',
+            'a' => 'For most Cayman businesses the honest answer is WooCommerce or Shopify, not custom. A custom build only pays for itself when your workflow genuinely does not fit an existing platform — unusual inventory rules, a booking model with real complexity, or an internal tool nobody sells off the shelf. We will tell you when a platform is the right call even though it is the smaller project, because a store you can run yourself beats an elegant one you cannot.',
+        ],
+        [
+            'q' => 'Can you connect an online store to the stock or POS system we already use in-store?',
+            'a' => 'Yes, and it is worth doing. We built exactly this for The Conscious Closet, whose WooCommerce store shares one inventory with the till in the shop, so selling an item in person removes it from the website. Whether it is possible for you depends on whether your POS exposes an interface we can talk to, which is the first thing we check.',
+        ],
+        [
+            'q' => 'How long does it take to build an online store or booking platform?',
+            'a' => 'A straightforward store on an existing platform is typically a matter of weeks; a booking platform or custom application is measured in months. The variable that moves the timeline most is rarely the code — it is how ready your product data, photography and business rules are when we start. We will tell you which of those is the bottleneck at the quote stage rather than halfway through.',
         ],
     ], 'Web Development FAQ', 'Development Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
     ?>
