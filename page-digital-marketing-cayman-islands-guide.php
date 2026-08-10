@@ -105,12 +105,12 @@ $guide_faqs = array(
 					<p class="text-slate-500 text-sm">Rank on Google and get recommended by AI.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
-					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Website Design</h3>
-					<p class="text-slate-500 text-sm">Fast, mobile-first sites that convert.</p>
+					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Website Development</h3>
+					<p class="text-slate-500 text-sm">Fast business and restaurant sites that convert.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/web-development-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
-					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Web Development</h3>
-					<p class="text-slate-500 text-sm">Custom sites, e-commerce and web apps.</p>
+					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">E-commerce &amp; Web Apps</h3>
+					<p class="text-slate-500 text-sm">Online stores, bookings and internal tools.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/social-media-marketing-services-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
 					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Social Media</h3>

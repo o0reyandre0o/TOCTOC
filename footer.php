@@ -31,8 +31,8 @@
                 <h2 class="text-xl md:text-2xl font-display italic text-accent mb-3">Our Services</h2>
                 <a href="/digital-marketing-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Digital Marketing Agency</a>
                 <a href="/ai-search-optimization-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">AI Search Optimization</a>
-                <a href="/website-design-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Website Design</a>
-                <a href="/web-development-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Web Development</a>
+                <a href="/website-design-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Website Development</a>
+                <a href="/web-development-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">E-commerce &amp; Web Apps</a>
                 <a href="/social-media-marketing-services-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Social Media for Algorithmic Trust</a>
                 <a href="/advertising-pr-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Digital PR for AI Authority Citations</a>
                 <a href="/about-toc-toc-marketing/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">About Us</a>

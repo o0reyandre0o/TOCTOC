@@ -407,13 +407,13 @@ $ttc_catalog = array(
 		'https://toctoc.ky/ai-search-optimization-cayman-islands/',
 	),
 	array(
-		'Website Design',
-		'Fast, mobile-first websites that convert visitors into leads.',
+		'Website Development',
+		'Fast, hand-coded business and restaurant websites — five live Cayman restaurant builds.',
 		'https://toctoc.ky/website-design-agency-cayman-islands/',
 	),
 	array(
-		'Web Development',
-		'Custom websites, e-commerce and web apps built for speed and SEO.',
+		'E-commerce & Web App Development',
+		'Online stores, booking platforms and internal tools for Cayman businesses.',
 		'https://toctoc.ky/web-development-cayman-islands/',
 	),
 	array(
