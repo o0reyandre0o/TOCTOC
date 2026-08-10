@@ -2,6 +2,13 @@
 /**
  * Template Name: Web Development Cayman
  * Template Post Type: page
+ *
+ * Scope narrowed 10 Aug 2026 to e-commerce and web applications. This page was
+ * competing with /website-design-agency-cayman-islands/ for plain "web
+ * development cayman" and losing 41 impressions to 2,659, so the two split by
+ * intent instead: brochure and restaurant builds live there, transactional
+ * builds live here. Keep the hero on stores/apps — widening it back to generic
+ * web development re-opens the cannibalisation.
  */
 get_header(); ?>
 
@@ -17,13 +24,17 @@ get_header(); ?>
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'Web Development' ); ?>
                 <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
-                    Built Fast · Built to Scale
+                    E-commerce &amp; Web Apps &middot; Built to Scale
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    Web Development Agency in <em class="italic text-accent font-display">Cayman.</em>
+                    E-commerce &amp; Web App Development in <em class="italic text-accent font-display">Cayman.</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    From custom websites to e-commerce platforms and web apps, our Cayman web development services turn ideas into fast, secure, scalable products engineered to perform and rank.
+                    Online stores, booking platforms and internal tools. When your site has to take money, manage inventory or run a workflow, it stops being a website and becomes software &mdash; and we build it to hold up.
+                </p>
+                <p class="mt-6 text-lg text-white/50 leading-relaxed max-w-3xl">
+                    Looking for a standard business or restaurant website instead? That is over on
+                    <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-accent font-bold hover:underline">website development</a>.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
                     <a href="#capabilities" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">

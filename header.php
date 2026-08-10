@@ -98,9 +98,16 @@
             'title' => 'PR Agency Cayman | Digital PR & AI Authority | TocToc',
             'desc' => 'A Cayman Islands PR agency for the AI era. We build the citations and authority that make ChatGPT, Gemini & Google recommend your brand. Free strategy call.'
         ],
+        // Narrowed 10 Aug 2026 to e-commerce and web apps. This page and
+        // /website-design-agency-cayman-islands/ were both aiming at plain
+        // "web development cayman" — and this one lost badly (41 impressions at
+        // position 44.8 against the other's 2,659). Rather than redirect a page
+        // linked from the footer and three templates, the two now split by
+        // intent: brochure and restaurant builds there, transactional builds
+        // here. Nothing overlaps, so nothing cannibalises.
         'web-development-cayman-islands' => [
-            'title' => 'Web Development Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Custom web development in the Cayman Islands: fast, secure, SEO-ready websites, e-commerce & web apps. Rated 4.8★ by 25 clients. Get a free project quote.'
+            'title' => 'E-commerce & Web App Development Cayman Islands | TocToc',
+            'desc' => 'Custom e-commerce and web application development in the Cayman Islands — online stores, booking platforms and internal tools built to be fast and secure. Free project quote.'
         ],
         'venezuela' => [
             'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',
@@ -158,7 +165,7 @@
         'website-design-agency-cayman-islands' => 'website development grand cayman, web development services cayman, website development company cayman islands, web development cayman, restaurant website design cayman islands, restaurant website cayman, wordpress development cayman, website developers grand cayman',
         'social-media-marketing-services-cayman-islands' => 'social media company in cayman, social media agencies cayman islands, social media company cayman, social media strategy cayman, social media marketing cayman islands, social media agency cayman, social media for ai search, algorithmic trust, social search optimization, instagram linkedin optimization cayman',
         'advertising-pr-agency-cayman-islands' => 'digital pr cayman islands, ai authority citations, pr agency cayman, pr services cayman, entity trust score, linkedin authority building cayman, digital pr for ai search, brand citations chatgpt gemini',
-        'web-development-cayman-islands' => 'web development cayman islands, web development agency cayman, website development company cayman, ecommerce development cayman, web app development cayman',
+        'web-development-cayman-islands' => 'ecommerce development cayman islands, online store development cayman, web app development cayman, booking platform development cayman, woocommerce developer cayman islands, custom web application cayman',
         'our-work' => 'toctoc marketing case studies, ai search results cayman islands, chatgpt ranking case study, gemini recommendation cayman, 19-81 brewing, prime group cayman, web design portfolio cayman islands',
         'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
         'venezuela' => 'donate venezuela cayman islands, venezuela earthquake appeal cayman, help venezuela from cayman, venezuela earthquake donation, cayman islands red cross venezuela, donate to venezuela earthquake',
