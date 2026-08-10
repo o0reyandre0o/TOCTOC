@@ -501,7 +501,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-8 z-[1000] shadow-soft border border-white/50">
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-5 xl:px-8 z-[1000] shadow-soft border border-white/50">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
@@ -513,13 +513,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          over. whitespace-nowrap on the links stops a long label from wrapping to
          two lines and squashing the logo against the first item. -->
     <div class="hidden items-center gap-3 xl:gap-5 lg:flex">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Home</a>
-        <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Services</a>
-        <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">AI Search</a>
-        <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Development</a>
-        <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Our Work</a>
-        <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">About</a>
-        <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-[12px] xl:text-[13px] whitespace-nowrap font-boldtext-sky-deep hover:text-primary transition-colors decoration-none uppercase tracking-wider">SEO Checker</a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Home</a>
+        <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Services</a>
+        <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">AI Search</a>
+        <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Development</a>
+        <a href="<?php echo esc_url( home_url( '/our-work/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('our-work') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Our Work</a>
+        <a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('about-toc-toc-marketing') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">About</a>
+        <a href="<?php echo esc_url( home_url( '/seo-checker/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-boldtext-sky-deep hover:text-primary transition-colors decoration-none uppercase tracking-wider">SEO Checker</a>
     </div>
 
     <div class="flex items-center gap-4">
