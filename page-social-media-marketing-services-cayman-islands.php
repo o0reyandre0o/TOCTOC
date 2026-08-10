@@ -66,6 +66,31 @@ $sm_faqs = array(
         'q' => 'How much does this cost in the Cayman Islands?',
         'a' => 'We build a custom plan based on your industry, platforms and competition rather than one-size-fits-all packages. Book a free strategy call and we will give you a transparent quote.',
     ),
+    /*
+     * Added 10 Aug 2026, matched to the queries this page already ranks for in
+     * Search Console over 180 days: "social media marketing cayman" (919
+     * impressions at position 14.2), "social media management cayman islands"
+     * (37 at 16.1) and "cayman social media marketing company" (35 at 18.3).
+     * The management-versus-marketing distinction gets its own entry because
+     * those are different searches with different intent, and this page has
+     * only ever answered one of them clearly.
+     */
+    array(
+        'q' => 'What is the difference between social media management and social media marketing?',
+        'a' => 'Management is the day-to-day running of the accounts — writing posts, scheduling, replying to comments and DMs. Marketing is the strategy that decides what those accounts should achieve and how they support the rest of your presence. We do the second, not the first: we set the architecture, optimize the profiles and hand your team the blueprint, which is why our work keeps paying off even in months when nobody posts much.',
+    ),
+    array(
+        'q' => 'Do I need a social media company in Cayman if I already have a website?',
+        'a' => 'Yes, but probably not for the reason you expect. Your profiles are no longer mainly a place to reach customers directly — they are corroboration. When ChatGPT, Gemini or Google decide whether to recommend your business, they cross-check the hours, phone number, address and category on your social profiles against your website. If those disagree, or a profile looks abandoned, you lose the recommendation to a competitor whose details line up.',
+    ),
+    array(
+        'q' => 'Can you fix social profiles that were set up years ago and abandoned?',
+        'a' => 'Yes, and this is one of the most common jobs we do in Cayman. An old profile with the wrong phone number, a former address or a dead link actively works against you, because it feeds contradictory information to the same crawlers that decide whether to trust your business. We audit every profile that carries your name, correct or consolidate them, and align them with your website so the whole network tells one story.',
+    ),
+    array(
+        'q' => 'How long before social optimization affects my search results?',
+        'a' => 'Profile corrections are read within weeks, but the trust signal builds over months. Fixing inconsistent details is the fast part — crawlers pick that up quickly. What takes longer is the accumulated evidence of an active, coherent presence, which is what actually moves an AI assistant from mentioning you to recommending you. Expect early signals in 4 to 8 weeks and meaningful change over 3 to 6 months.',
+    ),
 );
 ?>
 

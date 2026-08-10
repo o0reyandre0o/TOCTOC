@@ -89,6 +89,35 @@ $dm_faqs = array(
         'q' => 'How much does digital marketing cost in the Cayman Islands?',
         'a' => 'We build a custom monthly plan based on your industry, competition and goals rather than one-size-fits-all packages. Book a free strategy call and we will give you a transparent quote.',
     ),
+    /*
+     * The four below were added 10 Aug 2026 to match queries this page already
+     * receives, taken from 180 days of Search Console rather than guessed:
+     * "marketing design services cayman" (657 impressions), "online marketing
+     * cayman" (568), "communications agency cayman" (56) and "best marketing
+     * agency cayman" (388 impressions at position 11.3).
+     *
+     * Each answer states the answer in its first sentence. Google's generative
+     * features extract passages, not pages — which is why this page earns 82 AI
+     * impressions while sitting at position 37 in the classic results, and why
+     * the site's most FAQ-dense page earns 13.2% of its impressions through AI
+     * against the home page's 1.0%.
+     */
+    array(
+        'q' => 'Who is the best marketing agency in the Cayman Islands?',
+        'a' => 'There is no single objective answer, so judge on evidence rather than claims: published client results you can verify, real reviews, and whether the agency actually builds assets you own. TocToc Marketing is rated 4.8 out of 5 across 25 reviews, and we publish case studies with the underlying Search Console figures — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, both measured against the same quarter a year earlier. Ask any agency you are considering for the same kind of proof.',
+    ),
+    array(
+        'q' => 'Do you offer marketing design and branding services in Cayman?',
+        'a' => 'Yes. Design and branding run through everything we build — brand identity, the visual system for your website, and the content assets that carry it. What makes our approach different is that the design is engineered to be readable by machines as well as people: the same page that looks right to a customer is structured so Google, ChatGPT and Gemini can parse who you are, what you sell and where you are.',
+    ),
+    array(
+        'q' => 'What is the difference between a marketing agency and a communications agency?',
+        'a' => 'A communications agency focuses on message and reputation — press, public relations, internal and crisis communication. A marketing agency is responsible for demand: getting found, generating enquiries and converting them. We work on the demand side, and specifically on being found in the places people now search, which increasingly means AI assistants as much as Google.',
+    ),
+    array(
+        'q' => 'What does online marketing cost for a small business in Grand Cayman?',
+        'a' => 'It depends far more on your competition than on your size — a restaurant on Seven Mile Beach competes in a denser market than a specialist service outside George Town. We price against what it actually takes to reach the front page in your category, not by business size, and we will tell you honestly on the first call if we think the budget you have in mind is not enough to move the needle.',
+    ),
 );
 ?>
 
