@@ -33,10 +33,12 @@ $ai_proof = array(
 
 // Table of contents — anchors match the section ids below.
 $ai_toc = array(
-    array( '#local-seo',    'Local SEO Services in the Cayman Islands' ),
     array( '#how-it-works', 'How It Works: Our Simple 2-Phase Plan' ),
     array( '#guarantee',    'Our 90-Day Result Guarantee' ),
     array( '#exclusivity',  'Industry Exclusivity: One Business Per Category' ),
+    // Local SEO dropped from here on 10 Aug 2026 along with its section; the
+    // FAQ entry now carries that content and the anchor below points at it.
+    array( '#faq',          'FAQ: Local SEO, Pricing, Timelines &amp; How This Differs' ),
 );
 
 // Phase 1 — the AI Foundation Build. Each point pairs with a 3-website collage.
@@ -89,9 +91,31 @@ $ai_faqs = array(
         'q' => 'Will this get my business recommended by ChatGPT and Gemini?',
         'a' => 'Yes — that is the entire goal. We build your Local Knowledge Graph across Google Maps, Apple Maps, directories and reviews, then add Schema markup and Answer Engine Optimization so AI assistants read your business as the trusted, definitive answer. We are already delivering #1 recommendations on ChatGPT and Gemini for Cayman businesses like Uncle Liu, Coconut Room, Lucky Rabbit and 19-81 Brewing Co.',
     ),
+    /*
+     * This entry absorbed the standalone "Local SEO Services in the Cayman
+     * Islands" section that used to sit near the top of the page (moved
+     * 10 Aug 2026). It replaced a two-line answer on the same subject rather
+     * than being added alongside it, so the page states this once instead of
+     * twice. The full section content is kept verbatim — three paragraphs and
+     * the SEO/AEO/GEO cards — because "local seo company in cayman islands"
+     * draws 659 impressions and this is the passage that answers it.
+     */
     array(
-        'q' => 'Do you offer local SEO in the Cayman Islands?',
-        'a' => 'Yes — local SEO is the foundation of this service, not a separate package. We optimize your Google Business Profile, fix NAP consistency across directories, build local citations and handle the technical work (site speed, internal linking, Schema markup) that gets you into the map pack for "near me" searches across George Town, Seven Mile Beach and the wider Grand Cayman. The AI visibility layer is built on top of that base, because ChatGPT and Gemini read the same local signals Google does.',
+        'q' => 'Do you offer local SEO services in the Cayman Islands?',
+        'a' => '<p>Yes &mdash; local SEO is the foundation of this service, not a separate package. Before an AI assistant can recommend you, it has to be able to find and verify you &mdash; and it reads the same signals Google does. That makes local SEO the foundation of everything on this page, not a separate product. As an <strong class="font-semibold text-slate-900">SEO agency in Cayman</strong>, we start with the unglamorous work: your Google Business Profile, your NAP consistency across every directory, your site speed, your internal linking and your Schema markup.</p>'
+            . '<p>That base is what earns you the map pack for &ldquo;near me&rdquo; searches in George Town and along Seven Mile Beach. It is also, increasingly, what ChatGPT and Gemini cite when a visitor asks them for a recommendation instead of typing into Google. The work is the same; the payoff now lands in two places at once.</p>'
+            . '<p>So when businesses come to us looking for a <strong class="font-semibold text-slate-900">local SEO company in the Cayman Islands</strong>, this is that service &mdash; with the answer-engine layer built in rather than sold separately. Classic <strong class="font-semibold text-slate-900">SEO services in Cayman</strong> get you ranked. AEO and GEO get you recommended. You need both, and neither works without the other.</p>'
+            . '<div class="grid gap-4 sm:grid-cols-3 pt-2">'
+            . '<div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">'
+            . '<h3 class="text-xl font-display text-slate-900 mb-2">SEO</h3>'
+            . '<p class="text-sm leading-relaxed text-slate-500">Technical foundations, local citations and Google Business Profile &mdash; so you rank in Cayman search results and the map pack.</p></div>'
+            . '<div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">'
+            . '<h3 class="text-xl font-display text-slate-900 mb-2">AEO</h3>'
+            . '<p class="text-sm leading-relaxed text-slate-500">Answer Engine Optimization &mdash; structured, quotable content that wins featured snippets and voice results.</p></div>'
+            . '<div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">'
+            . '<h3 class="text-xl font-display text-slate-900 mb-2">GEO</h3>'
+            . '<p class="text-sm leading-relaxed text-slate-500">Generative Engine Optimization &mdash; the entity and citation work that makes AI assistants name your business.</p></div>'
+            . '</div>',
     ),
     array(
         'q' => 'How much do SEO services cost in the Cayman Islands?',
@@ -208,39 +232,13 @@ $ai_google_rating = function ( $dark = false ) {
     </section>
 
     <!-- Local SEO: the half of this service the page never actually named -->
-    <section id="local-seo" class="relative py-20 md:py-28 bg-slate-50 scroll-mt-28">
-        <div class="mx-auto max-w-4xl px-6">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">The Foundation</span>
-            <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">
-                Local SEO Services in the <em class="italic text-sky-deep font-display">Cayman Islands</em>
-            </h2>
-            <div class="mt-8 space-y-6 text-lg leading-relaxed text-slate-600">
-                <p>
-                    Before an AI assistant can recommend you, it has to be able to find and verify you &mdash; and it reads the same signals Google does. That makes local SEO the foundation of everything on this page, not a separate product. As an <strong class="font-semibold text-slate-900">SEO agency in Cayman</strong>, we start with the unglamorous work: your Google Business Profile, your NAP consistency across every directory, your site speed, your internal linking and your Schema markup.
-                </p>
-                <p>
-                    That base is what earns you the map pack for &ldquo;near me&rdquo; searches in George Town and along Seven Mile Beach. It is also, increasingly, what ChatGPT and Gemini cite when a visitor asks them for a recommendation instead of typing into Google. The work is the same; the payoff now lands in two places at once.
-                </p>
-                <p>
-                    So when businesses come to us looking for a <strong class="font-semibold text-slate-900">local SEO company in the Cayman Islands</strong>, this is that service &mdash; with the answer-engine layer built in rather than sold separately. Classic <strong class="font-semibold text-slate-900">SEO services in Cayman</strong> get you ranked. AEO and GEO get you recommended. You need both, and neither works without the other.
-                </p>
-            </div>
-            <div class="mt-10 grid gap-4 sm:grid-cols-3">
-                <div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">
-                    <h3 class="text-xl font-display text-slate-900 mb-2">SEO</h3>
-                    <p class="text-sm leading-relaxed text-slate-500">Technical foundations, local citations and Google Business Profile &mdash; so you rank in Cayman search results and the map pack.</p>
-                </div>
-                <div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">
-                    <h3 class="text-xl font-display text-slate-900 mb-2">AEO</h3>
-                    <p class="text-sm leading-relaxed text-slate-500">Answer Engine Optimization &mdash; structured, quotable content that wins featured snippets and voice results.</p>
-                </div>
-                <div class="rounded-[1.5rem] border border-slate-100 bg-white p-6 shadow-soft">
-                    <h3 class="text-xl font-display text-slate-900 mb-2">GEO</h3>
-                    <p class="text-sm leading-relaxed text-slate-500">Generative Engine Optimization &mdash; the entity and citation work that makes AI assistants name your business.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php
+    /*
+     * The "Local SEO Services in the Cayman Islands" section stood here until
+     * 10 Aug 2026. Its full content now lives as the second FAQ entry at the
+     * bottom of the page — same three paragraphs, same SEO/AEO/GEO cards.
+     */
+    ?>
 
     <!-- Video proof -->
     <section id="video-proof" class="py-20 md:py-28 bg-slate-50 scroll-mt-28">
@@ -475,7 +473,13 @@ $ai_google_rating = function ( $dark = false ) {
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
                         </span>
                     </summary>
-                    <p class="mt-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo esc_html( $faq['a'] ); ?></p>
+                    <?php /* div, not p: the local-SEO answer below carries several
+                             paragraphs and a three-card grid, and nesting a <p>
+                             inside a <p> makes the browser close the outer one
+                             early, dropping the styling from everything after it.
+                             wp_kses_post rather than esc_html for the same reason —
+                             the markup in that answer has to survive. */ ?>
+                    <div class="mt-5 space-y-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo wp_kses_post( $faq['a'] ); ?></div>
                 </details>
                 <?php endforeach; ?>
             </div>
@@ -513,12 +517,18 @@ echo wp_json_encode(
         '@type'      => 'FAQPage',
         'mainEntity' => array_map(
             function ( $f ) {
+                // The local-SEO answer is HTML now that it holds the old section.
+                // Stripping tags naively would weld the last word of one block to
+                // the first of the next ("...the other.SEO Technical..."), so tags
+                // become a space first and runs of whitespace collapse after.
+                $text = preg_replace( '/<[^>]+>/', ' ', $f['a'] );
+                $text = trim( preg_replace( '/\s+/u', ' ', html_entity_decode( $text, ENT_QUOTES, 'UTF-8' ) ) );
                 return array(
                     '@type'          => 'Question',
-                    'name'           => $f['q'],
+                    'name'           => wp_strip_all_tags( $f['q'] ),
                     'acceptedAnswer' => array(
                         '@type' => 'Answer',
-                        'text'  => $f['a'],
+                        'text'  => $text,
                     ),
                 );
             },
