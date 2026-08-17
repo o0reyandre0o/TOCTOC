@@ -428,7 +428,10 @@ add_action( 'init', function () {
         [ 'https://toctoc.ky/advertising-pr-agency-cayman-islands/',               '0.8' ],
         [ 'https://toctoc.ky/our-work/',                                           '0.9' ],
         [ 'https://toctoc.ky/case-study-tintxking-orlando/',                       '0.8' ],
-        [ 'https://toctoc.ky/case-study-prime-group-cayman/',                      '0.8' ],
+        // case-study-prime-group-cayman removed 10 Aug 2026: the template is in
+        // the theme but no WordPress page was ever created for it, so the URL
+        // answers 404. A sitemap that advertises a 404 wastes crawl budget and
+        // gets reported as an error. Re-add this line the day that page exists.
         [ 'https://toctoc.ky/about-toc-toc-marketing/',                            '0.7' ],
         [ 'https://toctoc.ky/venezuela/',                                          '0.9' ],
         [ 'https://toctoc.ky/seo-checker/',                                        '0.7' ],

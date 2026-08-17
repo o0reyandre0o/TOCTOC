@@ -228,15 +228,16 @@ $wd_faqs = array(
                 <?php toctoc_render_showcase_grid( true, 'food' ); ?>
             </div>
 
-            <div class="mt-14 grid gap-5 md:grid-cols-2">
-                <a href="<?php echo esc_url( home_url( '/case-study-prime-group-cayman/' ) ); ?>" class="group rounded-[2rem] border border-white/10 bg-white/5 p-8 transition-colors hover:bg-white/10 decoration-none block">
-                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Case study</span>
-                    <h3 class="mt-3 text-2xl font-display text-white">Prime Group &mdash; +305% organic growth</h3>
-                    <p class="mt-3 text-white/50 leading-relaxed">Uncle Liu and Coconut Room, rebuilt from zero and measured against the same quarter a year earlier in Search Console.</p>
-                    <span class="mt-5 inline-flex items-center gap-2 font-bold text-accent group-hover:gap-4 transition-all">Read the numbers
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
-                </a>
+            <?php
+            /*
+             * One card, not two. The Prime Group case-study card was removed on
+             * 10 Aug 2026: its template exists in the theme but no WordPress page
+             * was created for it, so /case-study-prime-group-cayman/ answers 404
+             * and this card was one of the two broken links reported on the site.
+             * Do not re-add it until that URL returns 200.
+             */
+            ?>
+            <div class="mt-14 max-w-xl">
                 <a href="<?php echo esc_url( home_url( '/case-study-tintxking-orlando/' ) ); ?>" class="group rounded-[2rem] border border-white/10 bg-white/5 p-8 transition-colors hover:bg-white/10 decoration-none block">
                     <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Case study</span>
                     <h3 class="mt-3 text-2xl font-display text-white">TintXKing &mdash; +469% in leads</h3>
