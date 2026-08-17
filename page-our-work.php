@@ -78,9 +78,12 @@ $ow_cases = array(
         ),
         'bg'        => 'bg-slate-50',
         'card'      => 'bg-white',
-        // primegroup.ky is the cleanest case to argue: we built the site and
-        // touched no other channel, so the +305% belongs to it alone.
-        'more'      => array( '/case-study-prime-group-cayman/', 'Read the full case study with the search data' ),
+        // No 'more' link on purpose (10 Aug 2026). The Prime Group case-study
+        // template exists in the theme but no WordPress page was ever created
+        // for it, so /case-study-prime-group-cayman/ answers 404 and the link
+        // from here was reported as a broken link. Do not re-add it until that
+        // page exists and returns 200 — the template alone is not enough.
+        // The case content below stays; only the outbound link is gone.
     ),
     array(
         'id'        => 'case-tintxking',
