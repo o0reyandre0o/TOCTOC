@@ -16,7 +16,7 @@ get_header(); ?>
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-4xl">
                 <div class="inline-flex items-center gap-2 rounded-full border border-sky-deep/10 bg-sky-pale/50 px-4 py-1.5 text-[11px] font-bold text-sky-deep mb-8 uppercase tracking-widest">
-                    The #1 SEO Agency in Cayman
+                    SEO &amp; AI Search Agency in Cayman
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-slate-900">
                     ROI-Driven <em class="italic text-sky-deep font-display">Search Results.</em>
@@ -60,7 +60,7 @@ get_header(); ?>
                 <article class="md:col-span-2 max-w-5xl mx-auto w-full text-center mt-20 border-t border-slate-200 pt-20">
                     <div>
                         <h3 class="text-6xl md:text-9xl font-display text-slate-900 mb-10 leading-[0.85]">Map Pack <br /><em class="italic text-sky-deep font-display">Dominance</em></h3>
-                        <p class="text-slate-500 text-3xl leading-relaxed max-w-3xl mx-auto">Fighting to make you the #1 choice in "Near Me" searches. We dominate the local Cayman landscape through precise geotagging and authority building.</p>
+                        <p class="text-slate-500 text-3xl leading-relaxed max-w-3xl mx-auto">Working to make you a strong contender in "Near Me" searches, through precise geotagging and authority building across the local Cayman landscape.</p>
                     </div>
                 </article>
             </div>
@@ -93,7 +93,7 @@ get_header(); ?>
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">03.</div>
                     <h3 class="text-2xl font-display mb-4">Local Map SEO</h3>
-                    <p class="text-white/50 text-sm leading-relaxed">Dominate the Google Map Pack. We ensure tourists and locals find you first when they need a solution.</p>
+                    <p class="text-white/50 text-sm leading-relaxed">Compete in the Google Map Pack, so tourists and locals can find you when they need a solution.</p>
                 </div>
             </div>
         </div>
@@ -152,7 +152,7 @@ get_header(); ?>
     <!-- Final CTA -->
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
         <div class="mx-auto max-w-4xl px-6">
-            <h2 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">Ready to <br /><em class="italic text-sky-deep font-display">Rank #1?</em></h2>
+            <h2 class="text-5xl md:text-8xl font-display leading-[0.9] text-slate-900">Ready to <br /><em class="italic text-sky-deep font-display">Get Found?</em></h2>
             <div class="mt-12">
                 <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
                     Call Us

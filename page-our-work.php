@@ -48,7 +48,7 @@ $ow_cases = array(
         ),
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
         'poster'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp',
-        'headline'  => 'How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;',
+        'headline'  => 'How 19-81 Brewing shows up in ChatGPT &amp; Gemini &#127866;',
         'shots'     => array(
             array( 'label' => '19-81 website', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/photo-5102759273703345434-w.webp', 'w' => 1273, 'h' => 2560 ),
             array( 'label' => 'Google Business Profile', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094552.webp', 'w' => 505, 'h' => 1198 ),
@@ -71,7 +71,7 @@ $ow_cases = array(
         ),
         'mp4'       => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-1-1.mp4',
         'poster'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-cover.webp',
-        'headline'  => 'How we ranked our clients #1 &amp; #2 on ChatGPT &amp; Gemini! &#128081;',
+        'headline'  => 'How Uncle Liu &amp; Coconut Room show up in ChatGPT &amp; Gemini &#128081;',
         'shots'     => array(
             array( 'label' => 'Uncle Liu &mdash; Google Business Profile', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094942.webp', 'w' => 500, 'h' => 1198 ),
             array( 'label' => 'Coconut Room &mdash; Google Business Profile', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094910.webp', 'w' => 502, 'h' => 1198 ),
@@ -129,10 +129,10 @@ $ow_cases = array(
                     Our Work
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    Real Results: Making Cayman Brands the <em class="italic text-accent font-display">Undisputed Choice</em> in AI Search
+                    Real Results: Making Cayman Brands <em class="italic text-accent font-display">Visible</em> in AI Search
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    In AI search, there is no &ldquo;Page 2.&rdquo; You are either the recommended answer, or you are invisible. Here is how we put our clients at the absolute top.
+                    In AI search there is no &ldquo;Page 2&rdquo; &mdash; you are either in the answer or you are not there at all. Here is the work behind that, and the recordings so you can judge it yourself.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
                     <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">

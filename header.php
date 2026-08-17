@@ -36,7 +36,14 @@
     // SEO & Social Meta logic
     $site_name = "TocToc Marketing";
     $default_title = "TocToc Marketing | Digital Marketing Agency Cayman Islands";
-    $default_desc = "AI Search Visibility agency in the Cayman Islands. We make local businesses the #1 answer on ChatGPT, Gemini and Google, with high-performance websites AI loves and humans trust.";
+    /*
+     * No "#1" claims in any of the copy below — see the note in front-page.php.
+     * We do not state that we deliver a #1 recommendation or ranking, because
+     * AI answers vary by phrasing, location and date and no agency can stand
+     * behind that. Agreed wording: we have influenced AI-generated local
+     * recommendations, and we make businesses findable, trustworthy and citable.
+     */
+    $default_desc = "AI Search Visibility agency in the Cayman Islands. We help local businesses get found, trusted and cited by ChatGPT, Gemini and Google, with high-performance websites AI reads and humans trust.";
     $logo_url = "https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg";
     
     $seo_map = [
@@ -56,7 +63,7 @@
         ],
         'seo-agency-services-cayman-islands' => [
             'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
-            'desc' => 'Be the #1 business recommended by ChatGPT, Gemini & Google. AI Search Optimization (SEO, AEO & GEO) for Cayman Islands brands. Book a free strategy call.'
+            'desc' => 'Get your business found and recommended by ChatGPT, Gemini & Google. AI Search Optimization (SEO, AEO & GEO) for Cayman Islands brands. Book a free strategy call.'
         ],
         /*
          * Retargeted away from the head term on 2026-08-05.
@@ -131,7 +138,7 @@
         ],
         'our-work' => [
             'title' => 'Our Work | AI Search Case Studies Cayman | TocToc',
-            'desc' => 'Real results: how we made Cayman brands the #1 recommendation on ChatGPT and Gemini. Case studies from 19-81 Brewing Co., Prime Group and TintXKing.'
+            'desc' => 'Real results: how we have influenced AI-generated recommendations for Cayman brands. Case studies from 19-81 Brewing Co., Prime Group and TintXKing.'
         ],
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
@@ -331,7 +338,7 @@
           "name": "TocToc Marketing",
           "alternateName": "Toc Toc Marketing",
           "description": "<?php echo esc_attr($default_desc); ?>",
-          "slogan": "AI Search Visibility for Cayman businesses. We make you the #1 answer on ChatGPT, Gemini & Google — with high-performance websites AI loves and humans trust.",
+          "slogan": "AI Search Visibility for Cayman businesses. We help you get found, trusted and cited by ChatGPT, Gemini & Google — with high-performance websites AI reads and humans trust.",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",

@@ -4,8 +4,8 @@
  * Template Post Type: page
  *
  * "The Digital Marketing Agency Built for the AI Search Era" — a unified digital
- * footprint that makes the business the #1 recommended answer on ChatGPT,
- * Gemini and Google.
+ * footprint that makes the business findable, trustworthy and citable to
+ * ChatGPT, Gemini and Google. No "#1" claims in the copy — see front-page.php.
  */
 get_header();
 
@@ -67,7 +67,7 @@ $dm_boundaries = array(
 $dm_faqs = array(
     array(
         'q' => 'What does a full-service digital marketing agency in the Cayman Islands actually do?',
-        'a' => 'We unify your entire digital presence into one verified brand that search engines and AI trust. That means a high-speed, Schema-coded website, synchronized Google Maps and directory listings, optimized social profiles, and authoritative content — all engineered to make your Cayman business the #1 recommended answer on ChatGPT, Gemini and Google.',
+        'a' => 'We unify your entire digital presence into one verified brand that search engines and AI trust. That means a high-speed, Schema-coded website, synchronized Google Maps and directory listings, optimized social profiles, and authoritative content — all engineered so ChatGPT, Gemini and Google can find your Cayman business, trust what they find, and cite it when someone asks for a recommendation.',
     ),
     array(
         'q' => 'Do you run Google Ads or paid social media campaigns?',
@@ -259,10 +259,10 @@ $dm_faqs = array(
                             toctoc_render_proof_video( array(
                                 'mp4'     => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
                                 'poster'  => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp',
-                                'label'   => '19-81 Brewing ranked #1 by ChatGPT and Gemini',
+                                'label'   => '19-81 Brewing named by ChatGPT and Gemini',
                                 'class'   => 'max-w-[280px] shadow-soft ring-1 ring-white/10',
                                 'overlay' => '<div class="pointer-events-none absolute inset-x-0 top-0 z-40 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">'
-                                    . '<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;</span></div>',
+                                    . '<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">How 19-81 Brewing shows up in ChatGPT &amp; Gemini &#127866;</span></div>',
                             ) );
                             ?>
                         </div>

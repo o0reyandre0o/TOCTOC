@@ -121,22 +121,33 @@
 
     <!-- Section 2b: Proof (AI search demos) -->
     <?php
+    /*
+     * Claim language, changed 10 Aug 2026 — read before editing these strings.
+     *
+     * Nothing on this site may state that TocToc delivers, produces or
+     * guarantees a #1 recommendation or ranking. AI assistants are
+     * non-deterministic and their answers vary by phrasing, account, location
+     * and date, so a "#1" claim is not something anyone can stand behind. The
+     * agreed wording is that we "have successfully influenced AI-generated
+     * local recommendations", and captures are described as what a recorded
+     * session showed, in the past tense, without asserting a durable position.
+     */
     $ttc_proof = array(
         array(
             'label'  => 'Chinese Restaurants',
-            'desc'   => 'A search demonstration showing Prime Group&rsquo;s Uncle Liu and Coconut Room ranked as the #1 and #2 best Chinese restaurants on Seven Mile Beach by both ChatGPT and Gemini.',
+            'desc'   => 'A recorded session in which ChatGPT and Gemini both named Prime Group&rsquo;s Uncle Liu and Coconut Room among the top Chinese restaurants on Seven Mile Beach.',
             'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-1-1.mp4',
             'poster' => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-cover.webp', // Optional: thumbnail image URL.
         ),
         array(
             'label'  => 'Japanese Restaurants',
-            'desc'   => 'Video proof showing Lucky Rabbit instantly recommended by ChatGPT and Gemini as the #1 Japanese restaurant near Prospect, showcasing high visibility in local AI search results.',
+            'desc'   => 'A recorded session in which ChatGPT and Gemini both recommended Lucky Rabbit when asked for Japanese food near Prospect.',
             'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-japanese-2-1.mp4',
             'poster' => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-japanese-cover.webp',
         ),
         array(
             'label'  => 'Craft Brewery',
-            'desc'   => 'A demonstration of 19-81 Brewing Co. cited as the undisputed #1 craft brewery in the Cayman Islands by ChatGPT and Gemini, confirming their digital authority.',
+            'desc'   => 'A recorded session in which ChatGPT and Gemini both cited 19-81 Brewing Co. when asked about craft breweries in the Cayman Islands.',
             'mp4'    => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
             'poster' => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp',
         ),
@@ -147,10 +158,10 @@
             <div class="max-w-3xl mb-14">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Proof, not promises</span>
                 <h2 class="mt-6 text-5xl md:text-7xl text-slate-900 font-display leading-[0.95]">
-                    Proof We Put You <br /><em class="italic text-sky-deep font-display">First in AI Search</em>
+                    Proof of Our Work in <br /><em class="italic text-sky-deep font-display">AI Search</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    <strong class="font-semibold text-slate-900">We are already delivering #1 rankings for Cayman businesses on ChatGPT and Gemini today.</strong> We don&rsquo;t just talk about the future of search.
+                    <strong class="font-semibold text-slate-900">We have successfully influenced AI-generated local recommendations for Cayman businesses on ChatGPT and Gemini.</strong> We don&rsquo;t just talk about the future of search &mdash; the recordings below are real sessions, and you can run the same prompts yourself.
                 </p>
             </div>
 
@@ -211,7 +222,7 @@
                     How We Put Your Business in <em class="italic text-sky-deep font-display">AI Search Results</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-700 max-w-2xl leading-relaxed">
-                    A simple <strong class="text-slate-900">2-phase plan</strong>, backed by a <strong class="text-slate-900">90-day result guarantee</strong>, designed to make your business the definitive answer cited by ChatGPT, Gemini, Perplexity, and Google.
+                    A simple <strong class="text-slate-900">2-phase plan</strong>, backed by a <strong class="text-slate-900">90-day result guarantee</strong>, designed to make your business the kind of source ChatGPT, Gemini, Perplexity and Google can find, trust and cite.
                 </p>
             </div>
 
@@ -376,7 +387,7 @@
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">19-81 Brewing Co.</h3>
-                        <p class="text-white/60 text-sm mb-6">Craft brewery and taproom site built to be cited as the #1 brewery by ChatGPT and Gemini.</p>
+                        <p class="text-white/60 text-sm mb-6">Craft brewery and taproom site, built so ChatGPT and Gemini can read and cite it.</p>
                         <a href="https://1981brewingco.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -590,7 +601,7 @@
     toctoc_render_faq( [
         [
             'q' => 'What is the AI Search Visibility Framework?',
-            'a' => 'The AI Search Visibility Framework is TocToc Marketing\'s three-phase system for Cayman businesses: Get Recommended (discovery and AI visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business the definitive answer cited by ChatGPT, Gemini and Google.',
+            'a' => 'The AI Search Visibility Framework is TocToc Marketing\'s three-phase system for Cayman businesses: Get Recommended (discovery and AI visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business a source ChatGPT, Gemini and Google can find, trust and cite when someone asks for a recommendation in your category.',
         ],
         [
             'q' => 'Do you offer SEO services in the Cayman Islands?',
@@ -598,7 +609,7 @@
         ],
         [
             'q' => 'Can you really get my business recommended by ChatGPT and Gemini?',
-            'a' => 'Yes — we already do it for Cayman businesses. Uncle Liu and Coconut Room rank #1 and #2 as the best Chinese restaurants on Seven Mile Beach, Lucky Rabbit is the #1 Japanese restaurant near Prospect, and 19-81 Brewing Co. is cited as the #1 craft brewery in Grand Cayman — all recommended by ChatGPT and Gemini today.',
+            'a' => 'We have successfully influenced AI-generated local recommendations for Cayman businesses. In recorded sessions, ChatGPT and Gemini named Uncle Liu, Coconut Room, Lucky Rabbit and 19-81 Brewing Co. when asked for recommendations in their categories. What nobody can honestly promise is a specific position: these systems are non-deterministic, and their answers shift with how the question is worded, where the person is and when they ask. What we can do is the work that makes your business eligible to be cited at all — and hand you the prompts so you can check for yourself.',
         ],
         [
             'q' => 'How long does it take to appear in AI search results?',

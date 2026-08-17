@@ -12,20 +12,20 @@ get_header();
 // Video proof — same clips as the homepage, with page-specific on-video headlines.
 $ai_proof = array(
     array(
-        'headline' => 'How we ranked our clients #1 &amp; #2 on ChatGPT &amp; Gemini! &#128081;',
-        'desc'     => 'A search demonstration showing Prime Group&rsquo;s Uncle Liu and Coconut Room ranked as the #1 and #2 best Chinese restaurants on Seven Mile Beach by both ChatGPT and Gemini.',
+        'headline' => 'How Uncle Liu &amp; Coconut Room show up in ChatGPT &amp; Gemini &#128081;',
+        'desc'     => 'A recorded session in which ChatGPT and Gemini both named Prime Group&rsquo;s Uncle Liu and Coconut Room among the top Chinese restaurants on Seven Mile Beach.',
         'mp4'      => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-1-1.mp4',
         'poster'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-chinese-cover.webp',
     ),
     array(
-        'headline' => 'How we got our client recommended #1 by ChatGPT &amp; Gemini &#127836;',
-        'desc'     => 'Video proof showing Lucky Rabbit instantly recommended by ChatGPT and Gemini as the #1 Japanese restaurant near Prospect, showcasing high visibility in local AI search results.',
+        'headline' => 'How Lucky Rabbit shows up in ChatGPT &amp; Gemini &#127836;',
+        'desc'     => 'A recorded session in which ChatGPT and Gemini both recommended Lucky Rabbit when asked for Japanese food near Prospect.',
         'mp4'      => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-japanese-2-1.mp4',
         'poster'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-japanese-cover.webp',
     ),
     array(
-        'headline' => 'How we made our client the #1 brewery on ChatGPT &amp; Gemini &#127866;',
-        'desc'     => 'A demonstration of 19-81 Brewing Co. cited as the undisputed #1 craft brewery with a taproom in Grand Cayman by ChatGPT and Gemini, confirming their digital authority.',
+        'headline' => 'How 19-81 Brewing shows up in ChatGPT &amp; Gemini &#127866;',
+        'desc'     => 'A recorded session in which ChatGPT and Gemini both cited 19-81 Brewing Co. when asked about craft breweries with a taproom in Grand Cayman.',
         'mp4'      => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-1.mp4',
         'poster'   => 'https://toctoc.ky/wp-content/uploads/2026/07/toctoc-ai-results-1981-cover.webp',
     ),
@@ -89,7 +89,7 @@ $ai_phase2 = array(
 $ai_faqs = array(
     array(
         'q' => 'Will this get my business recommended by ChatGPT and Gemini?',
-        'a' => 'Yes — that is the entire goal. We build your Local Knowledge Graph across Google Maps, Apple Maps, directories and reviews, then add Schema markup and Answer Engine Optimization so AI assistants read your business as the trusted, definitive answer. We are already delivering #1 recommendations on ChatGPT and Gemini for Cayman businesses like Uncle Liu, Coconut Room, Lucky Rabbit and 19-81 Brewing Co.',
+        'a' => 'That is the goal, and we have successfully influenced AI-generated local recommendations for Cayman businesses including Uncle Liu, Coconut Room, Lucky Rabbit and 19-81 Brewing Co. &mdash; each captured on video. We build your Local Knowledge Graph across Google Maps, Apple Maps, directories and reviews, then add Schema markup and Answer Engine Optimization so AI assistants can read and trust your business. What we will not promise is a fixed position: these systems are non-deterministic, and the same question can return different answers depending on wording, location and date.',
     ),
     /*
      * This entry absorbed the standalone "Local SEO Services in the Cayman

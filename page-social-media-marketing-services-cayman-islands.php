@@ -313,7 +313,7 @@ $sm_faqs = array(
         <div class="mx-auto max-w-5xl px-6">
             <h2 class="text-4xl md:text-7xl font-display leading-[1.02] text-slate-900">Stop Wasting Money on <br /><em class="italic text-sky-deep font-display">Social Media Ghost Towns</em></h2>
             <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                Let&rsquo;s stop chasing useless likes and start building the algorithmic trust your business needs to dominate modern search.
+                Let&rsquo;s stop chasing useless likes and start building the algorithmic trust your business needs to compete in modern search.
             </p>
             <div class="mt-12">
                 <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
