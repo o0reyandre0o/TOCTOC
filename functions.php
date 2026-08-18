@@ -260,6 +260,7 @@ function toctoc_recent_projects() {
  */
 function toctoc_render_recent_projects( $dark = false ) {
 	$img   = get_template_directory_uri() . '/assets/img/recent/';
+	$dir   = get_template_directory() . '/assets/img/recent/';
 	$head  = $dark ? 'text-white' : 'text-slate-900';
 	$desc  = $dark ? 'text-white/50' : 'text-slate-500';
 	$link  = $dark ? 'text-accent' : 'text-sky-deep';
@@ -273,7 +274,10 @@ function toctoc_render_recent_projects( $dark = false ) {
 			<a href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" class="block decoration-none">
 				<div class="ttloop relative aspect-[1/2] rounded-[1.75rem] overflow-hidden border shadow-soft <?php echo esc_attr( $frame ); ?>"
 					data-ttloop
+					<?php /* The webm is optional: only advertise it when the file is really there, so the player never wastes a request discovering it is not. */ ?>
+					<?php if ( file_exists( $dir . $p['file'] . '.webm' ) ) : ?>
 					data-webm="<?php echo esc_url( $img . $p['file'] . '.webm' ); ?>"
+					<?php endif; ?>
 					data-mp4="<?php echo esc_url( $img . $p['file'] . '.mp4' ); ?>">
 					<img src="<?php echo esc_url( $img . $p['file'] . '.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by TocToc Marketing' ); ?>" width="540" height="1080" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
 				</div>
