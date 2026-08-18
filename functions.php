@@ -260,6 +260,13 @@ function toctoc_recent_projects() {
 function toctoc_render_recent_projects( $dark = false ) {
 	$img   = get_template_directory_uri() . '/assets/img/recent/';
 	$dir   = get_template_directory() . '/assets/img/recent/';
+	// Stamp each asset with its own mtime. These files get replaced in place as
+	// clients send new covers and recordings, and without the stamp a visitor
+	// who already loaded the old one keeps seeing it until their cache expires.
+	$asset = function ( $file ) use ( $img, $dir ) {
+		$path = $dir . $file;
+		return file_exists( $path ) ? $img . $file . '?v=' . filemtime( $path ) : '';
+	};
 	$head  = $dark ? 'text-white' : 'text-slate-900';
 	$desc  = $dark ? 'text-white/50' : 'text-slate-500';
 	$link  = $dark ? 'text-accent' : 'text-sky-deep';
@@ -273,9 +280,9 @@ function toctoc_render_recent_projects( $dark = false ) {
 			// the served markup, so these cards cannot land in Search Console
 			// "Video isn't on a watch page" either.
 			toctoc_render_proof_video( array(
-				'mp4'    => $img . $p['file'] . '.mp4',
-				'webm'   => file_exists( $dir . $p['file'] . '.webm' ) ? $img . $p['file'] . '.webm' : '',
-				'poster' => $img . $p['file'] . '.webp',
+				'mp4'    => $asset( $p['file'] . '.mp4' ),
+				'webm'   => $asset( $p['file'] . '.webm' ),
+				'poster' => $asset( $p['file'] . '.webp' ),
 				'label'  => wp_strip_all_tags( $p['name'] ) . ' website walkthrough',
 				'aspect' => 'aspect-[1/2]',
 				'title'  => 'Watch the site',
