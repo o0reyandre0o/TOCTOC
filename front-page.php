@@ -302,9 +302,9 @@
 
         The four most recent handovers, sitting directly above the standing
         portfolio so the newest work is the first proof anyone meets. Each card
-        is built to carry a short silent clip of the site moving (hero, then a
-        scroll down); until the clips are uploaded it shows a still and reads
-        exactly the same. Content and markup live in toctoc_recent_projects()
+        carries a short silent clip of the site moving (hero, then a scroll
+        down), four vertical clips side by side. Content and markup live in
+        toctoc_recent_projects()
         and toctoc_render_recent_projects() so this page and the web development
         page can never drift apart.
     -->
@@ -316,7 +316,7 @@
                     Just <em class="italic text-sky-deep font-display">Launched</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    The four most recent websites we designed, built and handed over &mdash; newest first. Every one of them is live right now, and every one of them was built to be read by AI assistants as easily as by people.
+                    The four most recent websites we designed, built and handed over &mdash; newest first. Each card plays a short clip of the real site, so you can see how it moves before you click.
                 </p>
             </div>
 
