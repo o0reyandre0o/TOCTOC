@@ -94,6 +94,16 @@
                 v.setAttribute('preload', 'metadata');
                 var cover = wrap.getAttribute('data-poster');
                 if (cover) { v.setAttribute('poster', cover); }
+                // WebM first when the card offers one: same picture, roughly a
+                // third less to download. Anything that cannot play it falls
+                // straight through to the mp4 below.
+                var webm = wrap.getAttribute('data-webm');
+                if (webm) {
+                    var sw = document.createElement('source');
+                    sw.src = webm;
+                    sw.type = 'video/webm';
+                    v.appendChild(sw);
+                }
                 var s = document.createElement('source');
                 s.src = src;
                 s.type = 'video/mp4';
@@ -107,87 +117,6 @@
                     if (btn.parentElement) { btn.parentElement.removeChild(btn); }
                 }, 450);
             });
-        });
-    })();
-
-    // Ambient portfolio clips (the "Just Launched" cards).
-    //
-    // Same rule as the facade above: nothing media-shaped ships in the markup.
-    // The card renders as a still, and this builds a muted, looping clip over it
-    // once the card is actually on screen, then fades the clip in when it starts
-    // playing. Off-screen cards are paused, so only what is being looked at is
-    // decoding. Skipped entirely for Data Saver, 2G, and reduced-motion — those
-    // visitors keep the still, which is the whole point of shipping it first.
-    (function () {
-        var frames = document.querySelectorAll('[data-ttloop]');
-        if (!frames.length || !('IntersectionObserver' in window)) return;
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''))) return;
-
-        var onScreen = [];
-
-        function play(frame) {
-            var clip = frame.querySelector('.ttloop__video');
-            if (!clip) {
-                clip = document.createElement('video');
-                clip.className = 'ttloop__video';
-                // Property first, attribute second: Safari only honours the
-                // silent-autoplay exception when muted is set before play().
-                clip.muted = true;
-                clip.defaultMuted = true;
-                clip.loop = true;
-                clip.setAttribute('muted', '');
-                clip.setAttribute('loop', '');
-                clip.setAttribute('playsinline', '');
-                clip.setAttribute('webkit-playsinline', '');
-                clip.setAttribute('preload', 'none');
-                clip.setAttribute('disablepictureinpicture', '');
-                // Decorative: the still underneath already carries the alt text.
-                clip.setAttribute('aria-hidden', 'true');
-                ['webm', 'mp4'].forEach(function (kind) {
-                    var url = frame.getAttribute('data-' + kind);
-                    if (!url) return;
-                    var s = document.createElement('source');
-                    s.src = url;
-                    s.type = 'video/' + kind;
-                    clip.appendChild(s);
-                });
-                clip.addEventListener('playing', function () {
-                    frame.classList.add('is-playing');
-                });
-                frame.appendChild(clip);
-            }
-            // Rejects when the browser declines to start it — a background tab,
-            // or a policy this device applies. The still is already on screen,
-            // so there is nothing to fall back to and nothing to report.
-            var p = clip.play();
-            if (p && p.catch) { p.catch(function () {}); }
-        }
-
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                var frame = entry.target;
-                var at = onScreen.indexOf(frame);
-                if (entry.isIntersecting) {
-                    if (at === -1) { onScreen.push(frame); }
-                    play(frame);
-                    return;
-                }
-                if (at !== -1) { onScreen.splice(at, 1); }
-                var clip = frame.querySelector('.ttloop__video');
-                if (clip) { clip.pause(); }
-            });
-        }, { threshold: 0.25 });
-
-        Array.prototype.forEach.call(frames, function (frame) { io.observe(frame); });
-
-        // Chrome pauses video-only media in a background tab to save power, and
-        // the observer has already fired by the time the visitor switches back —
-        // so nothing would ever restart it. Retry whatever is still on screen.
-        document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState !== 'visible') return;
-            onScreen.forEach(play);
         });
     })();
 

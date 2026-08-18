@@ -283,8 +283,8 @@ $wd_faqs = array(
 
         Sits directly above the standing portfolio: newest work first, then the
         full list. Each card carries a short silent clip of the site moving
-        (hero, then a scroll down), and falls back to its still if the clip
-        cannot play. Shared with the home page through
+        (hero, then a scroll down), played on click. Shared with the home page
+        through
         toctoc_render_recent_projects() so the two can never drift.
     -->
     <section id="recent" class="py-24 md:py-32 bg-white scroll-mt-28">
@@ -293,7 +293,7 @@ $wd_faqs = array(
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; Recent Projects Delivered</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Just <em class="italic text-sky-deep font-display">Launched</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
-                    The four most recent websites we designed, built and handed over &mdash; newest first, each one playing a short clip of the real site. A restaurant, a boutique with its own inventory and POS, a wellness practice and an online course platform: four different problems, one build method.
+                    The four most recent websites we designed, built and handed over &mdash; newest first, each one with a clip you can play to watch the real site move. A restaurant, a boutique with its own inventory and POS, a wellness practice and an online course platform: four different problems, one build method.
                 </p>
             </div>
             <div class="mt-14">

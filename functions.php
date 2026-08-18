@@ -196,12 +196,11 @@ function toctoc_render_showcase_grid( $dark = false, $sector = '' ) {
  * The four most recent handovers — shown above the full portfolio on the home
  * page and on the web development page.
  *
- * The thumbnails move: each card carries a short silent clip of the site's hero
- * and a scroll down, so a visitor sees the build working without clicking
- * through to it. Four vertical clips sit side by side on desktop, two up on a
- * phone. The still in 'poster' ships in the markup and the clip fades in over
- * it once it is genuinely playing, so a blocked or slow file degrades to the
- * still rather than a black box.
+ * Each card holds a short silent clip of the site's hero and a scroll down,
+ * played on click through the same facade as the AI-search proof clips
+ * (toctoc_render_proof_video): the card ships as a still with a play button and
+ * nothing media-shaped in the markup, and the video is built on click. Four
+ * vertical clips sit side by side on desktop, two up on a phone.
  *
  * Replacing or adding a clip — the files live in assets/img/recent/ and the
  * originals the client sent are in assets/img/. What the encode needs to be:
@@ -209,15 +208,15 @@ function toctoc_render_showcase_grid( $dark = false, $sector = '' ) {
  *     which is 2x the ~264px column and where the weight lives).
  *   - NO audio track. Three of the four arrived with a silent AAC track still
  *     attached; -an drops it.
- *   - H.264 + faststart, plus a VP9 webm (browsers pick it first, ~30% less).
+ *   - H.264 + faststart, plus a VP9 webm: browsers pick the webm first and it
+ *     came out 30-45% smaller here. Encode both from the ORIGINAL file, not the
+ *     webm from the mp4 — VP9 over already-compressed h264 came out bigger than
+ *     the mp4 it was made from.
  *
  *     ffmpeg -i src.mp4 -an -vf scale=540:1080:flags=lanczos -c:v libx264 \
  *       -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart out.mp4
- *     ffmpeg -i out.mp4 -an -c:v libvpx-vp9 -crf 36 -b:v 0 -row-mt 1 out.webm
- *
- * They autoplay muted on a loop, built by footer.php only once the card scrolls
- * into view, never on a connection with Data Saver on, and never for a visitor
- * who has asked for reduced motion.
+ *     ffmpeg -i src.mp4 -an -vf scale=540:1080:flags=lanczos -c:v libvpx-vp9 \
+ *       -crf 41 -b:v 0 -row-mt 1 -cpu-used 2 out.webm
  */
 function toctoc_recent_projects() {
 	$img = get_template_directory_uri() . '/assets/img/recent/';
@@ -264,24 +263,26 @@ function toctoc_render_recent_projects( $dark = false ) {
 	$head  = $dark ? 'text-white' : 'text-slate-900';
 	$desc  = $dark ? 'text-white/50' : 'text-slate-500';
 	$link  = $dark ? 'text-accent' : 'text-sky-deep';
-	$frame = $dark ? 'bg-white/5 border-white/10' : 'bg-slate-900 border-slate-200';
 	$chip  = $dark ? 'border-white/10 bg-white/10 text-white/70' : 'border-slate-200 bg-white text-sky-deep';
 	?>
 	<div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
 		<?php foreach ( toctoc_recent_projects() as $p ) : ?>
-		<article class="group flex flex-col gap-5">
-			<?php /* Same destination as the "Visit" link below, so it is kept out of the tab order and off screen readers rather than announced twice. */ ?>
-			<a href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" class="block decoration-none">
-				<div class="ttloop relative aspect-[1/2] rounded-[1.75rem] overflow-hidden border shadow-soft <?php echo esc_attr( $frame ); ?>"
-					data-ttloop
-					<?php /* The webm is optional: only advertise it when the file is really there, so the player never wastes a request discovering it is not. */ ?>
-					<?php if ( file_exists( $dir . $p['file'] . '.webm' ) ) : ?>
-					data-webm="<?php echo esc_url( $img . $p['file'] . '.webm' ); ?>"
-					<?php endif; ?>
-					data-mp4="<?php echo esc_url( $img . $p['file'] . '.mp4' ); ?>">
-					<img src="<?php echo esc_url( $img . $p['file'] . '.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by TocToc Marketing' ); ?>" width="540" height="1080" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
-				</div>
-			</a>
+		<article class="flex flex-col gap-5">
+			<?php
+			// Click to play, same facade as the proof clips: no media element in
+			// the served markup, so these cards cannot land in Search Console
+			// "Video isn't on a watch page" either.
+			toctoc_render_proof_video( array(
+				'mp4'    => $img . $p['file'] . '.mp4',
+				'webm'   => file_exists( $dir . $p['file'] . '.webm' ) ? $img . $p['file'] . '.webm' : '',
+				'poster' => $img . $p['file'] . '.webp',
+				'label'  => wp_strip_all_tags( $p['name'] ) . ' website walkthrough',
+				'aspect' => 'aspect-[1/2]',
+				'title'  => 'Watch the site',
+				'sub'    => 'Click to play',
+				'class'  => 'shadow-soft',
+			) );
+			?>
 			<div>
 				<h3 class="text-2xl font-display <?php echo esc_attr( $head ); ?>"><?php echo wp_kses_post( $p['name'] ); ?></h3>
 				<span class="mt-2 inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] <?php echo esc_attr( $chip ); ?>"><?php echo esc_html( $p['tag'] ); ?></span>
@@ -432,18 +433,26 @@ function toctoc_render_proof_video( $args ) {
 	$label   = isset( $args['label'] ) ? $args['label'] : 'proof video';
 	$class   = isset( $args['class'] ) ? $args['class'] : '';
 	$overlay = isset( $args['overlay'] ) ? $args['overlay'] : '';
+	$webm    = isset( $args['webm'] ) ? $args['webm'] : '';
+	// Pass whole class names, never interpolated fragments: Tailwind scans this
+	// file as plain text, so 'aspect-[9/16]' and 'aspect-[1/2]' each have to
+	// appear literally somewhere for the utility to survive the build.
+	$aspect  = isset( $args['aspect'] ) ? $args['aspect'] : 'aspect-[9/16]';
+	$title   = isset( $args['title'] ) ? $args['title'] : 'Watch the proof';
+	$sub     = isset( $args['sub'] ) ? $args['sub'] : 'Click to watch';
 	?>
-	<div class="ttvideo relative aspect-[9/16] w-full overflow-hidden rounded-[2rem] bg-slate-950 <?php echo esc_attr( $class ); ?>"
+	<div class="ttvideo relative <?php echo esc_attr( $aspect ); ?> w-full overflow-hidden rounded-[2rem] bg-slate-950 <?php echo esc_attr( $class ); ?>"
 		data-ttvideo
 		data-mp4="<?php echo esc_url( $mp4 ); ?>"
+		<?php echo $webm ? 'data-webm="' . esc_url( $webm ) . '"' : ''; ?>
 		<?php echo $poster ? 'data-poster="' . esc_url( $poster ) . '"' : ''; ?>>
 		<button type="button"
 			class="ttvideo-poster<?php echo $poster ? ' ttvideo-poster--image' : ''; ?>"
 			<?php echo $poster ? 'style="background-image:url(\'' . esc_url( $poster ) . '\');background-size:cover;background-position:center"' : ''; ?>
 			aria-label="<?php echo esc_attr( 'Play video: ' . $label ); ?>">
 			<span class="ttvideo-poster__play"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-			<span class="ttvideo-poster__title">Watch the proof</span>
-			<span class="ttvideo-poster__sub">Click to watch</span>
+			<span class="ttvideo-poster__title"><?php echo esc_html( $title ); ?></span>
+			<span class="ttvideo-poster__sub"><?php echo esc_html( $sub ); ?></span>
 		</button>
 		<?php echo $overlay; // phpcs:ignore WordPress.Security.EscapingOutput -- caller-escaped markup. ?>
 		<?php /* Without JS the facade cannot build anything, so hand over the file. */ ?>

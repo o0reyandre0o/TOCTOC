@@ -303,7 +303,7 @@
         The four most recent handovers, sitting directly above the standing
         portfolio so the newest work is the first proof anyone meets. Each card
         carries a short silent clip of the site moving (hero, then a scroll
-        down), four vertical clips side by side. Content and markup live in
+        down), played on click. Content and markup live in
         toctoc_recent_projects()
         and toctoc_render_recent_projects() so this page and the web development
         page can never drift apart.
@@ -316,7 +316,7 @@
                     Just <em class="italic text-sky-deep font-display">Launched</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    The four most recent websites we designed, built and handed over &mdash; newest first. Each card plays a short clip of the real site, so you can see how it moves before you click.
+                    The four most recent websites we designed, built and handed over &mdash; newest first. Click any card to watch a short clip of the real site &mdash; the hero, then a scroll down.
                 </p>
             </div>
 
