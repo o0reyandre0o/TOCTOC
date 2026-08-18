@@ -192,6 +192,125 @@ function toctoc_render_showcase_grid( $dark = false, $sector = '' ) {
     <?php
 }
 
+/**
+ * The four most recent handovers — shown above the full portfolio on the home
+ * page and on the web development page.
+ *
+ * The thumbnail is meant to MOVE: a short silent clip of the site's hero plus a
+ * scroll down, so a visitor sees the build working without clicking through to
+ * it. Until a clip exists the card shows the still in 'poster' — the same frame
+ * the clip fades in over — so an empty 'mp4' never looks like a broken card.
+ *
+ * Adding a clip: upload the file, paste its URL into 'mp4' (and 'webm' too if
+ * you have one — roughly 30% smaller, and browsers pick it first). Nothing else
+ * changes. What the clip should be:
+ *   - 16:9. 1280x720 is plenty; it renders about 600px wide.
+ *   - 6 to 12 seconds, cut so the last frame flows back into the first.
+ *   - NO audio track at all. A muted track is still bytes on the wire.
+ *   - H.264 + faststart, under ~3 MB.
+ * They autoplay muted on a loop, built by footer.php only once the card scrolls
+ * into view, never on a connection with Data Saver on, and never for a visitor
+ * who has asked for reduced motion.
+ *
+ * The posters are placeholders taken from each brand's own social image and
+ * stored locally, so the home page never waits on a client's server. Swap them
+ * for a real frame of the clip once the clips land.
+ */
+function toctoc_recent_projects() {
+	$img = get_template_directory_uri() . '/assets/img/recent/';
+	return array(
+		array(
+			'name'   => 'Jaly Dance Fit',
+			'tag'    => 'New build',
+			'desc'   => 'New AI-ready website for her dance-fitness programme, wired straight into the online course platform &mdash; signing up, paying and starting a class all happen without leaving the site.',
+			'url'    => 'https://jalydancefit.com',
+			'mp4'    => '',
+			'webm'   => '',
+			'poster' => $img . 'jaly-dance-fit.webp',
+			'w'      => 1280,
+			'h'      => 720,
+		),
+		array(
+			'name'   => 'Yallah',
+			'tag'    => 'Rebuild',
+			'desc'   => 'Upgraded to an AI-ready website with the whole Mediterranean menu published as real page content, so ChatGPT and Gemini can read every bowl, pita and sauce instead of guessing at a PDF.',
+			'url'    => 'https://yallah.ky',
+			'mp4'    => '',
+			'webm'   => '',
+			'poster' => $img . 'yallah.webp',
+			'w'      => 1280,
+			'h'      => 672,
+		),
+		array(
+			'name'   => 'The Conscious Closet',
+			'tag'    => 'New build',
+			'desc'   => 'New AI-ready website with video throughout, plus a custom inventory, consignor and POS system &mdash; the shop floor and the online store now work from one stock count.',
+			'url'    => 'https://theconsciouscloset.ky',
+			'mp4'    => '',
+			'webm'   => '',
+			'poster' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-093100.webp',
+			'w'      => 1898,
+			'h'      => 1080,
+		),
+		array(
+			'name'   => 'Raw Balance',
+			'tag'    => 'New build',
+			'desc'   => 'A brand-new AI-ready website for a private yoga, Pilates and nutrition practice, with every service, package and booking route laid out so both people and assistants can find it.',
+			'url'    => 'https://rawbalance.ky',
+			'mp4'    => '',
+			'webm'   => '',
+			'poster' => $img . 'raw-balance.webp',
+			'w'      => 1280,
+			'h'      => 672,
+		),
+	);
+}
+
+/**
+ * Render the recent-projects grid. Two columns, not three: these thumbnails
+ * carry moving footage and need the width. $dark switches the colour treatment
+ * exactly the way toctoc_render_showcase_grid() does.
+ */
+function toctoc_render_recent_projects( $dark = false ) {
+	$head  = $dark ? 'text-white' : 'text-slate-900';
+	$desc  = $dark ? 'text-white/50' : 'text-slate-500';
+	$link  = $dark ? 'text-accent' : 'text-sky-deep';
+	$frame = $dark ? 'bg-white/5 border-white/10' : 'bg-slate-900 border-slate-200';
+	$chip  = $dark ? 'border-white/10 bg-white/10 text-white/70' : 'border-slate-200 bg-white text-sky-deep';
+	$ph    = $dark ? 'text-white/20' : 'text-white/30';
+	?>
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+		<?php foreach ( toctoc_recent_projects() as $p ) : ?>
+		<article class="group flex flex-col gap-6">
+			<?php /* Same destination as the "Visit Website" link below, so it is kept out of the tab order and off screen readers rather than announced twice. */ ?>
+			<a href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" class="block decoration-none">
+				<div class="ttloop relative aspect-video rounded-[2.5rem] overflow-hidden border shadow-soft <?php echo esc_attr( $frame ); ?> <?php echo empty( $p['poster'] ) ? 'flex items-center justify-center px-6' : ''; ?>"
+					<?php if ( ! empty( $p['mp4'] ) || ! empty( $p['webm'] ) ) : ?>
+					data-ttloop<?php echo ! empty( $p['mp4'] ) ? ' data-mp4="' . esc_url( $p['mp4'] ) . '"' : ''; ?><?php echo ! empty( $p['webm'] ) ? ' data-webm="' . esc_url( $p['webm'] ) . '"' : ''; ?>
+					<?php endif; ?>>
+					<?php if ( ! empty( $p['poster'] ) ) : ?>
+					<img src="<?php echo esc_url( $p['poster'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by TocToc Marketing' ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+					<?php else : ?>
+					<span class="font-display text-3xl <?php echo esc_attr( $ph ); ?> text-center leading-tight"><?php echo wp_kses_post( $p['name'] ); ?></span>
+					<?php endif; ?>
+				</div>
+			</a>
+			<div>
+				<div class="flex flex-wrap items-center gap-3 mb-3">
+					<h3 class="text-3xl font-display <?php echo esc_attr( $head ); ?>"><?php echo wp_kses_post( $p['name'] ); ?></h3>
+					<span class="inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] <?php echo esc_attr( $chip ); ?>"><?php echo esc_html( $p['tag'] ); ?></span>
+				</div>
+				<p class="<?php echo esc_attr( $desc ); ?> text-sm leading-relaxed mb-6"><?php echo wp_kses_post( $p['desc'] ); ?></p>
+				<a href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold <?php echo esc_attr( $link ); ?> hover:gap-4 transition-all decoration-none">
+					Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+			</div>
+		</article>
+		<?php endforeach; ?>
+	</div>
+	<?php
+}
+
 /** Word-wrap for GD text: split $text into lines that fit $max px at $size. */
 function toctoc_og_wrap( $text, $font, $size, $max ) {
 	$words = preg_split( '/\s+/', $text );
