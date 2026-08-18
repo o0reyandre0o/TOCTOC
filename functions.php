@@ -260,12 +260,15 @@ function toctoc_recent_projects() {
 function toctoc_render_recent_projects( $dark = false ) {
 	$img   = get_template_directory_uri() . '/assets/img/recent/';
 	$dir   = get_template_directory() . '/assets/img/recent/';
-	// Stamp each asset with its own mtime. These files get replaced in place as
-	// clients send new covers and recordings, and without the stamp a visitor
-	// who already loaded the old one keeps seeing it until their cache expires.
+	// Stamp each asset with its byte size. These files get replaced in place as
+	// clients send new covers and recordings, and without a stamp a visitor who
+	// already loaded the old one keeps seeing it until their cache expires.
+	// Size, not filemtime: deploying the theme rewrites every mtime, which
+	// stamped all twelve files with the same deploy timestamp and re-broke the
+	// cache for the eleven that had not changed.
 	$asset = function ( $file ) use ( $img, $dir ) {
 		$path = $dir . $file;
-		return file_exists( $path ) ? $img . $file . '?v=' . filemtime( $path ) : '';
+		return file_exists( $path ) ? $img . $file . '?v=' . filesize( $path ) : '';
 	};
 	$head  = $dark ? 'text-white' : 'text-slate-900';
 	$desc  = $dark ? 'text-white/50' : 'text-slate-500';
