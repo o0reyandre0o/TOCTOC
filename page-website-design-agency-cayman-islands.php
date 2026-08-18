@@ -29,6 +29,7 @@ get_header();
 $wd_toc = array(
     array( '#restaurants',  'Restaurant &amp; Hospitality Websites We&rsquo;ve Built in Cayman' ),
     array( '#how-we-help',  'How We Help Your Business (Build, Rebuild, or Optimize)' ),
+    array( '#recent',       'Just Launched: Our Four Most Recent Builds' ),
     array( '#showcase',     'Full Website Portfolio' ),
     array( '#failing',      'Why Most Cayman Websites Fail Their Owners' ),
     array( '#ai-ready',     'What Makes a Website &ldquo;AI-Ready&rdquo;? (Our 3 Core Pillars)' ),
@@ -277,11 +278,35 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 3. Full Portfolio (dark, same as Our Work) -->
+    <!--
+        3. Just Launched — the four most recent handovers.
+
+        Sits directly above the standing portfolio: newest work first, then the
+        full list. The cards are built to carry a short silent clip of each site
+        moving (hero, then a scroll down), and fall back to a still until those
+        clips are uploaded. Shared with the home page through
+        toctoc_render_recent_projects() so the two can never drift.
+    -->
+    <section id="recent" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; Recent Projects Delivered</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Just <em class="italic text-sky-deep font-display">Launched</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    The four most recent websites we designed, built and handed over &mdash; newest first. A restaurant, a boutique with its own inventory and POS, a wellness practice and an online course platform: four different problems, one build method.
+                </p>
+            </div>
+            <div class="mt-14">
+                <?php toctoc_render_recent_projects(); ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Full Portfolio (dark, same as Our Work) -->
     <section id="showcase" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; Portfolio</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; Portfolio</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Full Website <em class="italic text-accent font-display">Portfolio</em></h2>
                 <p class="mt-8 text-lg text-white/50 leading-relaxed">
                     Beyond hospitality: retail, wellness, professional services, tourism and manufacturing. Every project on clean code, high speeds, and a crawlable backend architecture.
@@ -301,11 +326,11 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 4. Why Most Cayman Websites Fail -->
+    <!-- 5. Why Most Cayman Websites Fail -->
     <section id="failing" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">04 &middot; The Old Way vs The New Reality</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">05 &middot; The Old Way vs The New Reality</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Why Most Cayman Websites <em class="italic text-sky-deep font-display">Fail Their Owners</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     Most agencies spend all of their effort on visual aesthetics and none on how modern search engines actually read the code underneath.
@@ -324,11 +349,11 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 4. What Makes a Website AI-Ready: 3 Pillars -->
+    <!-- 6. What Makes a Website AI-Ready: 3 Pillars -->
     <section id="ai-ready" class="py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">05 &middot; The 3 Core Pillars</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">06 &middot; The 3 Core Pillars</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">What Makes a Website <em class="italic text-accent font-display">&ldquo;AI-Ready&rdquo;</em>?</h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
                     We build every website on a specialized technical framework designed to maximize speed, search indexing, and user conversions:
@@ -354,11 +379,11 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 5. 3-Step Process -->
+    <!-- 7. 3-Step Process -->
     <section id="process" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">06 &middot; Our Process</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">07 &middot; Our Process</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our 3-Step Web Development &amp; <em class="italic text-sky-deep font-display">Launch Process</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     We remove the stress and long delays usually associated with web development projects. Here is how we get your business live and optimized:
@@ -376,11 +401,11 @@ $wd_faqs = array(
         </div>
     </section>
 
-    <!-- 6. FAQ -->
+    <!-- 8. FAQ -->
     <section id="faq" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl mb-12">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">06 &middot; FAQ</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">08 &middot; FAQ</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Web Design, <em class="italic text-sky-deep font-display">Answered</em></h2>
             </div>
             <div class="max-w-4xl space-y-4">
