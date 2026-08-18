@@ -110,6 +110,66 @@
         });
     })();
 
+    // Ambient portfolio clips (the "Just Launched" cards).
+    //
+    // Same rule as the facade above: nothing media-shaped ships in the markup.
+    // The card renders as a still, and this builds a muted, looping clip over it
+    // once the card is actually on screen, then fades the clip in when it starts
+    // playing. Off-screen cards are paused, so only what is being looked at is
+    // decoding. Skipped entirely for Data Saver, 2G, and reduced-motion — those
+    // visitors keep the still, which is the whole point of shipping it first.
+    (function () {
+        var frames = document.querySelectorAll('[data-ttloop]');
+        if (!frames.length || !('IntersectionObserver' in window)) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''))) return;
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                var frame = entry.target;
+                var clip = frame.querySelector('.ttloop__video');
+                if (!entry.isIntersecting) {
+                    if (clip) { clip.pause(); }
+                    return;
+                }
+                if (!clip) {
+                    clip = document.createElement('video');
+                    clip.className = 'ttloop__video';
+                    // Property first, attribute second: Safari only honours the
+                    // silent-autoplay exception when muted is set before play().
+                    clip.muted = true;
+                    clip.defaultMuted = true;
+                    clip.loop = true;
+                    clip.setAttribute('muted', '');
+                    clip.setAttribute('loop', '');
+                    clip.setAttribute('playsinline', '');
+                    clip.setAttribute('webkit-playsinline', '');
+                    clip.setAttribute('preload', 'none');
+                    clip.setAttribute('disablepictureinpicture', '');
+                    // Decorative: the still underneath already carries the alt text.
+                    clip.setAttribute('aria-hidden', 'true');
+                    ['webm', 'mp4'].forEach(function (kind) {
+                        var url = frame.getAttribute('data-' + kind);
+                        if (!url) return;
+                        var s = document.createElement('source');
+                        s.src = url;
+                        s.type = 'video/' + kind;
+                        clip.appendChild(s);
+                    });
+                    clip.addEventListener('playing', function () {
+                        frame.classList.add('is-playing');
+                    });
+                    frame.appendChild(clip);
+                }
+                var p = clip.play();
+                if (p && p.catch) { p.catch(function () {}); }
+            });
+        }, { threshold: 0.25 });
+
+        Array.prototype.forEach.call(frames, function (frame) { io.observe(frame); });
+    })();
+
     // Contact-intent tracking: pushes a GTM/GA4 dataLayer event whenever a visitor
     // clicks any phone (tel:) or email (mailto:) link anywhere on the site. These are
     // the primary conversions for a service agency. Mark 'contact_click' as a key
