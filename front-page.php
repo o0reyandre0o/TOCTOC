@@ -297,6 +297,35 @@
     <!-- Section 4: Services — the home page's only in-body links to the service pages -->
     <?php toctoc_render_services_grid(); ?>
 
+    <!--
+        Section 4b: Just Launched.
+
+        The four most recent handovers, sitting directly above the standing
+        portfolio so the newest work is the first proof anyone meets. Each card
+        is built to carry a short silent clip of the site moving (hero, then a
+        scroll down); until the clips are uploaded it shows a still and reads
+        exactly the same. Content and markup live in toctoc_recent_projects()
+        and toctoc_render_recent_projects() so this page and the web development
+        page can never drift apart.
+    -->
+    <section id="recent" class="relative py-24 md:py-32 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Recent Projects Delivered</span>
+                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.95]">
+                    Just <em class="italic text-sky-deep font-display">Launched</em>
+                </h2>
+                <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
+                    The four most recent websites we designed, built and handed over &mdash; newest first. Every one of them is live right now, and every one of them was built to be read by AI assistants as easily as by people.
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <?php toctoc_render_recent_projects(); ?>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 5: Portfolio -->
     <section id="portfolio" class="relative py-24 md:py-32 bg-slate-900 text-white rounded-[3rem] mx-4 my-12 shadow-glass">
         <div class="mx-auto max-w-6xl px-6">

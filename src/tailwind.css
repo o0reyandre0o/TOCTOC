@@ -131,4 +131,22 @@
   .ttvideo-poster--image .ttvideo-poster__sub {
     opacity: 0.92;
   }
+  /* Ambient clips on the "Just Launched" cards (built by footer.php once the
+     card scrolls into view). The still ships in the markup and stays underneath;
+     the clip is layered over it and only fades in once it is genuinely playing,
+     so a slow or blocked file degrades to the still instead of a black box. */
+  .ttloop__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+  }
+  .ttloop.is-playing .ttloop__video {
+    opacity: 1;
+  }
 }
