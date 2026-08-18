@@ -125,49 +125,70 @@
         var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
         if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''))) return;
 
+        var onScreen = [];
+
+        function play(frame) {
+            var clip = frame.querySelector('.ttloop__video');
+            if (!clip) {
+                clip = document.createElement('video');
+                clip.className = 'ttloop__video';
+                // Property first, attribute second: Safari only honours the
+                // silent-autoplay exception when muted is set before play().
+                clip.muted = true;
+                clip.defaultMuted = true;
+                clip.loop = true;
+                clip.setAttribute('muted', '');
+                clip.setAttribute('loop', '');
+                clip.setAttribute('playsinline', '');
+                clip.setAttribute('webkit-playsinline', '');
+                clip.setAttribute('preload', 'none');
+                clip.setAttribute('disablepictureinpicture', '');
+                // Decorative: the still underneath already carries the alt text.
+                clip.setAttribute('aria-hidden', 'true');
+                ['webm', 'mp4'].forEach(function (kind) {
+                    var url = frame.getAttribute('data-' + kind);
+                    if (!url) return;
+                    var s = document.createElement('source');
+                    s.src = url;
+                    s.type = 'video/' + kind;
+                    clip.appendChild(s);
+                });
+                clip.addEventListener('playing', function () {
+                    frame.classList.add('is-playing');
+                });
+                frame.appendChild(clip);
+            }
+            // Rejects when the browser declines to start it — a background tab,
+            // or a policy this device applies. The still is already on screen,
+            // so there is nothing to fall back to and nothing to report.
+            var p = clip.play();
+            if (p && p.catch) { p.catch(function () {}); }
+        }
+
         var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 var frame = entry.target;
-                var clip = frame.querySelector('.ttloop__video');
-                if (!entry.isIntersecting) {
-                    if (clip) { clip.pause(); }
+                var at = onScreen.indexOf(frame);
+                if (entry.isIntersecting) {
+                    if (at === -1) { onScreen.push(frame); }
+                    play(frame);
                     return;
                 }
-                if (!clip) {
-                    clip = document.createElement('video');
-                    clip.className = 'ttloop__video';
-                    // Property first, attribute second: Safari only honours the
-                    // silent-autoplay exception when muted is set before play().
-                    clip.muted = true;
-                    clip.defaultMuted = true;
-                    clip.loop = true;
-                    clip.setAttribute('muted', '');
-                    clip.setAttribute('loop', '');
-                    clip.setAttribute('playsinline', '');
-                    clip.setAttribute('webkit-playsinline', '');
-                    clip.setAttribute('preload', 'none');
-                    clip.setAttribute('disablepictureinpicture', '');
-                    // Decorative: the still underneath already carries the alt text.
-                    clip.setAttribute('aria-hidden', 'true');
-                    ['webm', 'mp4'].forEach(function (kind) {
-                        var url = frame.getAttribute('data-' + kind);
-                        if (!url) return;
-                        var s = document.createElement('source');
-                        s.src = url;
-                        s.type = 'video/' + kind;
-                        clip.appendChild(s);
-                    });
-                    clip.addEventListener('playing', function () {
-                        frame.classList.add('is-playing');
-                    });
-                    frame.appendChild(clip);
-                }
-                var p = clip.play();
-                if (p && p.catch) { p.catch(function () {}); }
+                if (at !== -1) { onScreen.splice(at, 1); }
+                var clip = frame.querySelector('.ttloop__video');
+                if (clip) { clip.pause(); }
             });
         }, { threshold: 0.25 });
 
         Array.prototype.forEach.call(frames, function (frame) { io.observe(frame); });
+
+        // Chrome pauses video-only media in a background tab to save power, and
+        // the observer has already fired by the time the visitor switches back —
+        // so nothing would ever restart it. Retry whatever is still on screen.
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState !== 'visible') return;
+            onScreen.forEach(play);
+        });
     })();
 
     // Contact-intent tracking: pushes a GTM/GA4 dataLayer event whenever a visitor
