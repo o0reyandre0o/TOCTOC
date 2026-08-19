@@ -384,7 +384,7 @@
             "name": "Daniel Garrido",
             "jobTitle": "Founder & CEO",
             "knowsAbout": ["Web Design", "Search Engine Optimization", "Digital Marketing", "Brand Strategy"],
-            "sameAs": ["https://www.linkedin.com/in/bydanielgarrido/"],
+            "sameAs": ["https://www.linkedin.com/in/bydanielgarrido/", "https://danielgarrido.com"],
             "worksFor": { "@id": "https://toctoc.ky/#organization" }
           },
           "employee": [
@@ -408,6 +408,7 @@
               "jobTitle": "Graphic Designer",
               "description": "Graphic designer crafting brand identities, visual systems, and creative assets that make Cayman businesses stand out.",
               "knowsAbout": ["Graphic Design", "Branding", "Visual Identity", "Social Media Creatives"],
+              "sameAs": ["https://www.linkedin.com/in/norabravo92/"],
               "worksFor": { "@id": "https://toctoc.ky/#organization" }
             }
           ],
