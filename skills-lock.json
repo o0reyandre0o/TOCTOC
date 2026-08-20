@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "instagram-content-generation": {
+      "source": "eachlabs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/instagram-content-generation/SKILL.md",
+      "computedHash": "16b8fb488d1bba01e86604ba9e7c2d78257be03473b46fd723d138b48be8c632"
+    }
+  }
+}
