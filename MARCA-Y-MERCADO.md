@@ -1,8 +1,11 @@
 # TocToc Marketing — Marca y mercado
 
-> Documento interno de referencia. Última actualización: 19 de agosto de 2026.
+> Documento interno de referencia. Última actualización: 20 de agosto de 2026.
 > Sirve para briefear a diseñadores, redactores y a cualquiera que produzca piezas
 > para la marca, y como base del análisis competitivo.
+>
+> La operación de las cuentas propias — calendario, métricas, reglas de publicación
+> e interacción saliente — vive aparte, en [REDES-SOCIALES.md](REDES-SOCIALES.md).
 
 ---
 
@@ -28,9 +31,6 @@ Console y donde mejor posicionamos.
 **Fuera de Caimán** hay clientes en Estados Unidos (TintXKing), Puerto Rico (PR Optics,
 VitaGo, SolaraPRO) y Venezuela. El mercado principal y donde queremos crecer es Gran
 Caimán.
-
-**Dato de audiencia a corregir:** en Instagram, de 140 seguidores solo 65 están en
-Caimán y 42 en Venezuela. Casi un tercio de la audiencia no puede contratarnos.
 
 ---
 
@@ -191,8 +191,6 @@ con avaricia.
   aparecen en búsqueda (boca a boca, freelancers, estudios sin web).
 - **Restaurantes:** varias páginas del sitio siguen diciendo "cinco" sitios de restaurantes;
   con Yallah ya son seis.
-- **Página de empresa en LinkedIn:** 7 seguidores y sin publicaciones en 12 meses, mientras
-  la página de PR del sitio vende presencia optimizada en LinkedIn.
 
 ---
 
