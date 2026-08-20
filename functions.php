@@ -843,7 +843,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 
 ## Facts
 - Member of the Cayman Islands Chamber of Commerce (CICOC) — https://caymanchamber.ky/
-- Google rating: 4.8 out of 5 stars from 25 reviews.
+- Google rating: 4.8 out of 5 stars from 24 reviews.
 - 4 clients named by ChatGPT and Gemini in recorded sessions (Uncle Liu, Coconut Room, Lucky Rabbit, 19-81 Brewing Co.).
 - 20+ websites designed and launched for clients across the Americas.
 - Working in 4 countries: Cayman Islands, United States, Puerto Rico and Venezuela.

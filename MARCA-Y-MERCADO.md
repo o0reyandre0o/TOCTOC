@@ -187,8 +187,6 @@ con avaricia.
 
 ## 7. Pendientes
 
-- **Reseñas:** la meta descripción del home dice 21 reseñas y `/llms.txt` dice 25. Definir
-  el número real y unificarlo.
 - **Competidores:** falta confirmar con el equipo si hay competidores locales que no
   aparecen en búsqueda (boca a boca, freelancers, estudios sin web).
 - **Restaurantes:** varias páginas del sitio siguen diciendo "cinco" sitios de restaurantes;

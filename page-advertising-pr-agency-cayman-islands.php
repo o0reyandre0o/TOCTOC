@@ -87,7 +87,7 @@ $pr_faqs = array(
     ),
     array(
         'q' => 'Which are the top creative agencies in the Cayman Islands?',
-        'a' => 'Cayman has a small, competitive agency market, and the honest advice is to judge on published work and verifiable results rather than a ranking list. Look at whether an agency shows real client sites you can visit, whether it publishes measurable outcomes, and whether it owns the technical build or subcontracts it. TocToc is rated 4.8 out of 5 across 25 reviews and publishes its case studies with the underlying Search Console data; we would encourage you to hold every agency you speak to, including us, to that standard.',
+        'a' => 'Cayman has a small, competitive agency market, and the honest advice is to judge on published work and verifiable results rather than a ranking list. Look at whether an agency shows real client sites you can visit, whether it publishes measurable outcomes, and whether it owns the technical build or subcontracts it. TocToc is rated 4.8 out of 5 across 24 reviews and publishes its case studies with the underlying Search Console data; we would encourage you to hold every agency you speak to, including us, to that standard.',
     ),
 );
 ?>

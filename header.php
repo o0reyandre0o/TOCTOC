@@ -55,11 +55,11 @@
         // all the persuading.
         'front' => [
             'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Licensed Cayman marketing agency in George Town, rated 4.8★ by 21 local clients. SEO, web design and social built to make you the answer on Google, ChatGPT and Gemini.'
+            'desc' => 'Licensed Cayman marketing agency in George Town, rated 4.8★ by 24 local clients. SEO, web design and social built to make you the answer on Google, ChatGPT and Gemini.'
         ],
         'ai-search-optimization-cayman-islands' => [
             'title' => 'SEO & AI Search Optimization Cayman | ChatGPT, Gemini',
-            'desc' => 'Rank on Google and get recommended by ChatGPT & Gemini. SEO, AEO & GEO for Cayman Islands businesses, rated 4.8★ (25 reviews). Book a free strategy call.'
+            'desc' => 'Rank on Google and get recommended by ChatGPT & Gemini. SEO, AEO & GEO for Cayman Islands businesses, rated 4.8★ (24 reviews). Book a free strategy call.'
         ],
         'seo-agency-services-cayman-islands' => [
             'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
@@ -79,7 +79,7 @@
          */
         'digital-marketing-agency-cayman-islands' => [
             'title' => 'Marketing Services & Branding Grand Cayman | TocToc',
-            'desc' => 'Marketing consulting, branding and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★ by 25 clients.'
+            'desc' => 'Marketing consulting, branding and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★ by 24 clients.'
         ],
         // Retargeted 10 Aug 2026. Carrying "web design" here was a losing fight:
         // the home ranks 3.3 on "web design cayman islands" and this page 20.7,
@@ -90,7 +90,7 @@
         // actually convert here. Full evidence table in the page template.
         'website-design-agency-cayman-islands' => [
             'title' => 'Website Development Grand Cayman | Restaurant Sites | TocToc',
-            'desc' => 'Website development company in Grand Cayman. We hand-code fast, custom sites — and we have built more Cayman restaurant websites than anyone. Rated 4.8★ (25 reviews). Free quote.'
+            'desc' => 'Website development company in Grand Cayman. We hand-code fast, custom sites — and we have built more Cayman restaurant websites than anyone. Rated 4.8★ (24 reviews). Free quote.'
         ],
         // Bing's query log for this page is dominated by "social media COMPANY in
         // cayman" and "social media AGENCIES cayman islands" — the noun people
@@ -99,7 +99,7 @@
         // sample), so the title now matches the search rather than our jargon.
         'social-media-marketing-services-cayman-islands' => [
             'title' => 'Social Media Company Cayman Islands | Agency | TocToc',
-            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini & Google read your brand as the local authority. Rated 4.8★ by 25 clients. Book a free call.'
+            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini & Google read your brand as the local authority. Rated 4.8★ by 24 clients. Book a free call.'
         ],
         'advertising-pr-agency-cayman-islands' => [
             'title' => 'PR Agency Cayman | Digital PR & AI Authority | TocToc',
@@ -342,7 +342,7 @@
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
-            "reviewCount": "25",
+            "reviewCount": "24",
             "bestRating": "5",
             "worstRating": "1"
           },

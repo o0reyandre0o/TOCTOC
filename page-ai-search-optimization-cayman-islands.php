@@ -177,7 +177,7 @@ $ai_google_rating = function ( $dark = false ) {
         <span class="inline-flex text-amber-400" aria-hidden="true">
             <?php for ( $i = 0; $i < 5; $i++ ) : ?><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><?php endfor; ?>
         </span>
-        <span class="text-sm font-medium <?php echo esc_attr( $muted ); ?> leading-none">21 Google reviews</span>
+        <span class="text-sm font-medium <?php echo esc_attr( $muted ); ?> leading-none">24 Google reviews</span>
     </div>
     <?php
 };

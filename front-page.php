@@ -88,7 +88,7 @@
             <?php
             $ttc_stats = array(
                 array( '20+',  'AI-Ready Websites<br>in 2026' ),
-                array( '4.8<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(25 reviews)' ),
+                array( '4.8<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(24 reviews)' ),
             );
             // Two identical copies make the -50% translate loop seamless.
             for ( $ttc_copy = 0; $ttc_copy < 2; $ttc_copy++ ) :
@@ -656,7 +656,7 @@
          */
         [
             'q' => 'Who is the best marketing agency in the Cayman Islands?',
-            'a' => 'No agency can honestly declare itself the best, so judge on evidence you can check yourself: published client work you can visit, reviews from named clients, and results shown with the source data rather than asserted. TocToc Marketing holds 4.8 out of 5 across 25 reviews and publishes case studies with the Search Console figures behind them — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, each measured against the same quarter a year earlier. Ask every agency on your shortlist for the same.',
+            'a' => 'No agency can honestly declare itself the best, so judge on evidence you can check yourself: published client work you can visit, reviews from named clients, and results shown with the source data rather than asserted. TocToc Marketing holds 4.8 out of 5 across 24 reviews and publishes case studies with the Search Console figures behind them — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, each measured against the same quarter a year earlier. Ask every agency on your shortlist for the same.',
         ],
         [
             'q' => 'What does a marketing agency in Grand Cayman cost?',

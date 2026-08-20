@@ -104,7 +104,7 @@ $dm_faqs = array(
      */
     array(
         'q' => 'Who is the best marketing agency in the Cayman Islands?',
-        'a' => 'There is no single objective answer, so judge on evidence rather than claims: published client results you can verify, real reviews, and whether the agency actually builds assets you own. TocToc Marketing is rated 4.8 out of 5 across 25 reviews, and we publish case studies with the underlying Search Console figures — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, both measured against the same quarter a year earlier. Ask any agency you are considering for the same kind of proof.',
+        'a' => 'There is no single objective answer, so judge on evidence rather than claims: published client results you can verify, real reviews, and whether the agency actually builds assets you own. TocToc Marketing is rated 4.8 out of 5 across 24 reviews, and we publish case studies with the underlying Search Console figures — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, both measured against the same quarter a year earlier. Ask any agency you are considering for the same kind of proof.',
     ),
     array(
         'q' => 'Do you offer marketing design and branding services in Cayman?',
