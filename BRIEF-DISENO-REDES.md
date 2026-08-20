@@ -193,3 +193,208 @@ Hashtags de la casa: #CaymanIslands #GrandCayman #CaymanBusiness #CaymanWebDesig
 Y en cada entrega de cliente, **publicación en colaboración con su cuenta**. Aparece en los
 dos feeds como una sola publicación, con el alcance sumado. Es la palanca más barata que
 tenemos y en agosto se dejó pasar cuatro veces.
+
+---
+
+## 9. Guiones pieza por pieza
+
+Estado real al 20 de agosto: **producidos** el reel del menú (en ajuste) y el de Morning
+Fuel. Los otros dos existen solo como guion.
+
+---
+
+### 9.1 · Reel del menú — jueves 20 · PRODUCIDO, EN AJUSTE
+
+Título interno: *Text inside an image is invisible*. Grabación de pantalla, sin cámara ni voz.
+
+| Tiempo | Qué se ve | Texto en pantalla |
+|---|---|---|
+| 0–3 s | Una pieza gráfica linda, con precios o servicios escritos dentro de la imagen | *This looks perfect.* |
+| 3–8 s | Intenta seleccionar el texto con el cursor. No se selecciona nada. El intento fallido se ve dos o tres veces | *Now try to select the text.* |
+| 8–13 s | Corte al menú de Yallah como texto real. El cursor lo selecciona y se pone azul | *This is what AI actually reads.* |
+| 13–19 s | Los dos lado a lado | *If you can't select it, ChatGPT can't read it.* |
+| 19–25 s | Cierre de marca, fondo lima | *We design for both.* / toctoc.ky/seo-checker |
+
+Sin música con letra: el texto tiene que poder leerse.
+
+**Dos correcciones pendientes**: exportar a 1080 × 1920 (se entregó a 464 × 848) y estirar el
+audio hasta el final (corta en el segundo 18 y el video dura 23).
+
+**Caption:**
+
+> Two restaurant menus. Only one of them ChatGPT can read.
+>
+> The first one looks great. Beautiful type, nice layout, and completely locked inside a PDF — so when someone asks an assistant "what desserts do they have?", there is nothing to answer with.
+>
+> The second is @yallah.ky. Same information, published as real page content: every base, every protein, every sauce, every price. That is what an assistant actually reads before it recommends you.
+>
+> The test takes two seconds. Open your menu on your phone and try to select the text. If it doesn't highlight, it isn't text.
+>
+> Free check at toctoc.ky/seo-checker
+>
+> #CaymanIslands #GrandCayman #CaymanRestaurants #CamanaBay #CaymanBusiness #WebDesignCayman #SEOServicesCayman
+
+**Comentario para fijar:**
+
+> This isn't an argument against beautiful menus. Print the PDF, frame it, hand it out. Just don't let it be the only place your dishes exist online.
+
+Publicación **en colaboración con @yallah.ky** — el video los muestra como el ejemplo correcto,
+así que es un sí fácil.
+
+---
+
+### 9.2 · Reel de ChatGPT — viernes 21 · POR PRODUCIR
+
+**Hay dos caminos, y cambian una cosa importante.**
+
+**Camino A — reusar la sesión que ya está en el sitio.** En toctoc.ky ya vive una grabación
+donde ChatGPT y Gemini nombran a Uncle Liu y Coconut Room entre los mejores chinos de Seven
+Mile Beach. No hay que grabar nada, y el texto en pantalla se adapta a la pregunta que se ve
+en esa grabación.
+
+> **La condición**: esa sesión es de julio de 2026, no de hoy. Entonces la fecha en pantalla
+> es la real de la grabación, y el caption dice *"in a recorded session"* — nunca *"today"*.
+> Es la misma fórmula que usa el sitio: pasado, sin afirmar una posición permanente. Fechar
+> una prueba con el día equivocado es exactamente lo que arruina la credibilidad de todas las
+> demás.
+
+**Camino B — grabar nueva.** Más trabajo, pero permite decir *"asked today"*, que pega más
+fuerte. Si se elige este:
+
+**A · Grabación del chat — la hace André**
+
+- Grabar desde el teléfono, no desde la computadora. Sale vertical de fábrica y la interfaz se ve grande.
+- Modo No molestar activado. Una notificación entrando arruina la toma.
+- Nada personal en pantalla: sin otras pestañas, sin nombre de usuario, sin sugerencias del teclado.
+- Escribir la pregunta completa y sin errores, despacio. Pelearse con el autocorrector se ve.
+- La pregunta: *Best Chinese restaurant on Seven Mile Beach, Grand Cayman?*
+- Dejar que la respuesta se genere entera. Después desplazar lento hasta los nombres y quedarse quieto dos segundos.
+- Que dure lo que dure: 30, 60 segundos. Se acelera en edición.
+- Grabarlo **el mismo día que se publica**.
+
+**B · Clip de Daniel**
+
+- Vertical, cámara trasera del teléfono.
+- Encuadre del pecho hacia arriba, ojos en el tercio superior, algo de aire sobre la cabeza.
+- Luz de ventana **de frente**, nunca detrás.
+- Fondo con profundidad, no una pared plana. Si es exterior, cuidado con el viento: con viento el clip no sirve.
+- Audio en lugar silencioso, teléfono a un metro o auriculares con micrófono.
+- Ropa de color liso. Nada de rayas finas ni cuadros chicos. **Evitar el verde lima**, compite con el acento de marca.
+- **Mirar el lente**, no la pantalla. Es el error más común y se nota como que está leyendo.
+- La línea, en plural porque son dos clientes: *"Both of those are our clients. That's not luck — that's how the sites are built."*
+- Tres tomas. Se elige la más natural, no la más perfecta.
+
+**C · Montaje — 22 segundos**
+
+| Tiempo | Qué se ve | Texto en pantalla |
+|---|---|---|
+| 0–2 s | La pregunta escribiéndose, a 3x | *We asked ChatGPT where to eat on Seven Mile Beach. It named two of our clients.* |
+| 2–4 s | La generación, a 4x | — |
+| 4–11 s | La respuesta a velocidad normal. Se resalta **un nombre, se deja un latido, después el otro**. Zoom al 115% con barra lima detrás de cada uno | — |
+| 11–16 s | Corte a Daniel, su línea | Subtítulos quemados |
+| 16–22 s | Cierre de marca, fondo lima | *Ask it about your category.* / toctoc.ky/seo-checker |
+
+Dos revelaciones separadas, no una que abarque los dos nombres: dos golpes pegan más que uno.
+
+Fecha en pantalla, chiquita, esquina inferior derecha, del segundo 0 al 11. **La fecha real de
+la sesión.**
+
+Tipografía: Instrument Serif para los textos grandes, Inter para la fecha y los subtítulos.
+Lima `#D8FF3D` sobre azul pizarra `#0B111E`. Música instrumental, que baje bajo la voz de
+Daniel, y si se puede que el corte al nombre caiga en un golpe. Cortes secos, sin fundidos.
+
+**D · Exportación**: 1080 × 1920, 30 fps, H.264, audio AAC. Portada: el frame con el nombre
+resaltado. Master limpio sin marcas de agua.
+
+**Caption:**
+
+> We asked ChatGPT where to eat on Seven Mile Beach. It named @uncleliu.ky and @coconutroom.ky — both ours.
+>
+> Two sister venues, same owner, same method: the menu published as real page content, hours that match the Google profile exactly, and both digital profiles synchronized so an assistant never has to guess which is which.
+>
+> One restaurant getting named can be luck. Two in the same answer is structure.
+>
+> Try it with your own category — toctoc.ky/seo-checker
+>
+> #CaymanIslands #GrandCayman #SevenMileBeach #CaymanRestaurants #CaymanBusiness #AISearch
+
+**Comentario para fijar:**
+
+> Worth saying: these answers change by date, location and phrasing. The reason both venues show up consistently isn't the screenshot, it's that their menus, hours and profiles say the same thing everywhere an assistant looks.
+
+**Colaboración doble, y se pide una sola vez**: Uncle Liu y Coconut Room son los dos locales de
+Prime Group, mismo dueño. Instagram permite más de un colaborador, así que van los dos en el
+mismo post y aparece en tres feeds. Una conversación, tres audiencias.
+
+---
+
+### 9.3 · Reel Morning Fuel — lunes 24 · PRODUCIDO, FALTA UNA LÍNEA
+
+Formato día en la vida. Abre con *morning fuel* y el gancho *fixing the #1 design mistake most
+agencies ignore*, sigue con el café, el tablero de proyectos, ella escribiendo, la llamada con
+Daniel — *the problem? gorgeous designs that AI simply can't read* —, y cierra con la portada
+de Yallah, *another AI-ready website delivered*, y ella despidiéndose con la mano.
+
+**Lo único que falta**: una línea de texto en pantalla en la parte del diseño, algo como
+*"the mistake: text baked into the image"*. El gancho promete arreglar un error concreto y hoy
+no lo nombra en ningún momento. Quien entra por la promesa se va sin la respuesta, y eso
+Instagram lo lee como contenido que no cumplió.
+
+**Va después del reel del menú, no antes.** Su gancho habla de un error de diseño, y ese error
+es exactamente lo que enseña la pieza del jueves. Publicado después se lee como continuación;
+publicado antes queda alguien tomando café.
+
+**Caption:**
+
+> A Monday at TocToc, in 30 seconds.
+>
+> Coffee, the board, and the same conversation we have every week: the design is gorgeous, and an AI assistant can't read a word of it.
+>
+> That's the mistake almost nobody checks for — text baked into an image, a menu locked in a PDF, prices that live only inside a graphic. It looks perfect to you. It's a blank page to ChatGPT.
+>
+> Last week we showed you the test. This is what fixing it looks like from the inside.
+>
+> Free check at toctoc.ky/seo-checker
+>
+> #CaymanIslands #GrandCayman #CaymanBusiness #WebDesignCayman #GraphicDesign #BehindTheScenes
+
+**Comentario para fijar:**
+
+> The board in the middle is real — those are live builds. The one at the end is Yallah in Camana Bay, delivered this month.
+
+---
+
+### 9.4 · Reel del checker — miércoles 26 · POR PRODUCIR
+
+Grabación de pantalla del checker analizando un sitio, con el puntaje apareciendo. Lo graba
+André, que es quien lo construyó.
+
+**El giro está en el pedido**: en vez de mandar a la bio, se pide lo contrario — que dejen su
+web en los comentarios y se la corremos gratis.
+
+| Tiempo | Qué se ve | Texto en pantalla |
+|---|---|---|
+| 0–3 s | La URL escribiéndose en el checker | *We built a free tool that grades any website.* |
+| 3–10 s | El análisis corriendo, acelerado, y el puntaje apareciendo | *SEO. AI visibility. Speed.* |
+| 10–16 s | Se recorre el detalle: qué está bien, qué falla | *In plain English. No signup.* |
+| 16–22 s | Cierre lima | *Drop your website below and we'll run it free.* |
+
+**Correr la herramienta sobre nuestra propia web**, nunca sobre la de un negocio local sin
+avisarle. Publicar un puntaje bajo ajeno es una forma rápida de perder un cliente que todavía
+no sabías que tenías.
+
+**Caption:**
+
+> Drop your website below and we'll run it free.
+>
+> Our checker grades three things: your classic SEO, how visible you are to AI assistants, and how fast the site actually loads on a phone. It explains every issue in plain English and in technical detail. About 60 seconds, no signup.
+>
+> Comment your URL and we'll reply with what we find. Cayman businesses first.
+>
+> toctoc.ky/seo-checker
+>
+> #CaymanIslands #GrandCayman #CaymanBusiness #SEOServicesCayman #LocalSEO
+
+Esta es la pieza que ataca el número que peor está: **cero clics al enlace del perfil en 30
+días**. Genera comentarios, que Instagram premia, y cada respuesta es una conversación privada
+con un prospecto calificado. Las historias del día siguiente salen de las respuestas.
