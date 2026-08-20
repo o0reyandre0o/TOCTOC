@@ -106,8 +106,9 @@ Montaje, 22 segundos:
 | 11–16 s | Daniel a cámara | Subtítulos |
 | 16–22 s | Cierre lima | *Ask it about your category.* / toctoc.ky/seo-checker |
 
-Fecha en pantalla, chiquita, esquina inferior derecha, del segundo 0 al 11: **21 AUG 2026**.
-Es una regla de la marca: las pruebas se citan con su fecha.
+Fecha en pantalla, chiquita, esquina inferior derecha, del segundo 0 al 11: **la fecha real de
+la sesión grabada**, que no es necesariamente hoy. Ver el punto 9.2, que explica los dos
+caminos posibles y por qué la fecha cambia según cuál se elija.
 
 **2. Ajuste al reel "Morning fuel" (lunes 24).** Falta una sola cosa: una línea de texto en
 pantalla en la parte donde se ve el diseño, algo como *"the mistake: text baked into the
