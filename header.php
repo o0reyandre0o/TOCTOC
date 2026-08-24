@@ -456,7 +456,7 @@
           },
           "sameAs": [
             "https://www.facebook.com/wearetoctoc",
-            "https://www.instagram.com/wearetoctoc",
+            "https://www.instagram.com/toctoc.ky",
             "https://www.linkedin.com/company/110122083/",
             "https://www.youtube.com/@wearetoctoc"
           ]

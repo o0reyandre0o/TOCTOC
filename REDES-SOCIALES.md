@@ -1,6 +1,6 @@
 # TocToc Marketing — Redes sociales
 
-> Manual de operación de las cuentas propias. Última actualización: 20 de agosto de 2026.
+> Manual de operación de las cuentas propias. Última actualización: 20 de agosto de 2026, tarde.
 > Lo de marca, público y competencia vive aparte, en [MARCA-Y-MERCADO.md](MARCA-Y-MERCADO.md).
 
 ---
@@ -9,7 +9,8 @@
 
 | Cuenta | Estado | Notas |
 |---|---|---|
-| **Instagram** — @wearetoctoc | Activa | 140 seguidores, 33 seguidos, 52 publicaciones |
+| **Instagram** — @toctoc.ky | Activa desde el 20 ago 2026 | Cuenta nueva. El handle coincide con el dominio, que es la consistencia que le exigimos a los clientes |
+| **Instagram** — @wearetoctoc | Archivada | 140 seguidores. Se conserva como redirección con tres publicaciones fijadas que mandan a la cuenta nueva. No se borra: las menciones y etiquetas acumuladas apuntan ahí |
 | **Google Business Profile** — Toc Toc Marketing | Activa | 4,8 ★ con 24 reseñas. Publicación propia desde el 19 de agosto |
 | **LinkedIn — página de empresa** | Prácticamente muerta | `toc-toc-marketing`: 7 seguidores, 0 publicaciones en 12 meses |
 | **LinkedIn — perfiles personales** | Activos | Daniel, Nora y André, enlazados desde la página About y declarados en el schema del sitio |
@@ -109,14 +110,13 @@ veces respectivamente y no trajeron a nadie: compiten con millones de publicacio
 |---|---|---|---|---|
 | Mié 19 | 5 señales de que la IA no puede leer tu web | Carrusel | Claude | **Publicado** |
 | Mié 19 | Historias + encuesta | Historias | Equipo | **Publicado** |
-| Jue 20 | Text inside an image is invisible | Reel | Nora | Pendiente |
-| Vie 21 | ChatGPT nombrando a un cliente, en vivo | Reel | Daniel + André | Pendiente |
-| Lun 24 | El checker corriendo + "dejá tu web" | Reel | André | Pendiente |
-| Mar 25 | Respuestas a las webs de los comentarios | Historias | André | Pendiente |
-| Mié 26 | La ficha de Google que nadie completa | Carrusel | Claude | **Programado** |
-| Jue 27 | Caja de preguntas | Historias | Daniel | Pendiente |
-| Vie 28 | TintXKing: +469% en consultas | Reel | Daniel | Pendiente |
-| Lun 31 | Cuatro webs entregadas este mes | Reel | Claude | **Programado** |
+| Mié 19 | Post en Google Business Profile | Post GBP | Claude | **Publicado** |
+| Jue 20 | Dos menús: solo uno lo puede leer la IA | Reel | Nora | En ajuste |
+| Vie 21 | ChatGPT nombrando a Uncle Liu y Coconut | Reel | Nora edita · Daniel y André graban | Pendiente |
+| Lun 24 | Morning fuel: un día arreglando el error | Reel | Nora | Falta una línea |
+| Mié 26 | El checker corriendo + "dejá tu web" | Reel | André graba · Nora edita | Pendiente |
+| Vie 28 | La ficha de Google que nadie completa | Carrusel | Manual | Listo, sin publicar |
+| Lun 31 | Cuatro webs entregadas este mes | Reel | Manual | Listo, sin publicar |
 
 Seis piezas, seis ángulos distintos: prueba → enseñanza → herramienta → local → resultado →
 cierre. Ninguna repite cliente ni tema.
@@ -132,6 +132,11 @@ de Google Maps que nadie completa.
 ---
 
 ## 6. Qué se puede automatizar y qué no
+
+> **Windsor está desactivado desde el 20 de agosto de 2026**, al migrar la cuenta. Mientras
+> lo esté, no se puede publicar ni leer métricas por API: todo es manual, y las dos tareas
+> programadas quedaron deshabilitadas. Lo de abajo describe lo que vuelve a estar
+> disponible cuando se reconecte.
 
 Publicamos por el conector de Instagram de Windsor.ai. Lo que **sí** puede hacer:
 
@@ -165,10 +170,10 @@ conector de "LinkedIn" a secas es LinkedIn Ads y solo gestiona campañas.
 
 ### Tareas programadas activas
 
-| Cuándo | Qué |
-|---|---|
-| 26 ago, 14:30 Cayman | Carrusel de la ficha de Google |
-| 31 ago, 14:30 Cayman | Reel de cierre + revisión de fin de mes |
+| Cuándo | Qué | Estado |
+|---|---|---|
+| 28 ago, 14:30 Cayman | Carrusel de la ficha de Google | Desactivada |
+| 31 ago, 14:30 Cayman | Reel de cierre + revisión de fin de mes | Desactivada |
 
 Corren **con la aplicación abierta**. Si a esa hora está cerrada, la publicación sale en el
 siguiente arranque. Regla práctica: si a las 14:35 no aparece, se publica a mano.
