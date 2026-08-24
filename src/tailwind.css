@@ -131,4 +131,160 @@
   .ttvideo-poster--image .ttvideo-poster__sub {
     opacity: 0.92;
   }
+
+  /* ------------------------------------------------------------------
+     Article body (single.php).
+
+     The HTML here comes out of the WordPress editor, so it cannot carry
+     Tailwind utility classes — an author writing a post has no way to add
+     them, and shouldn't have to. These rules style the editor's own output
+     so every article reads the same without anyone formatting anything.
+
+     Measure is capped at 68ch. Long-form body copy set to the full width of
+     a desktop container is the single most common reason people stop
+     reading; the sidebar next to it is what fills the rest of the row.
+     ------------------------------------------------------------------ */
+  .tt-prose {
+    max-width: 68ch;
+    color: hsl(220 15% 32%);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .tt-prose > * + * {
+    margin-top: 1.5rem;
+  }
+  .tt-prose h2 {
+    margin-top: 3.5rem;
+    margin-bottom: 1.25rem;
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem);
+    line-height: 1.05;
+    color: hsl(222 47% 11%);
+  }
+  .tt-prose h2 em {
+    font-style: italic;
+    color: hsl(var(--sky-deep));
+  }
+  .tt-prose h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.6rem;
+    line-height: 1.15;
+    color: hsl(222 47% 11%);
+  }
+  .tt-prose h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: hsl(222 47% 11%);
+  }
+  .tt-prose a {
+    color: hsl(var(--sky-deep));
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .tt-prose a:hover {
+    text-decoration-thickness: 2px;
+  }
+  .tt-prose strong {
+    color: hsl(222 47% 11%);
+    font-weight: 700;
+  }
+  .tt-prose ul,
+  .tt-prose ol {
+    padding-left: 1.5rem;
+  }
+  .tt-prose ul {
+    list-style: disc;
+  }
+  .tt-prose ol {
+    list-style: decimal;
+  }
+  .tt-prose li + li {
+    margin-top: 0.6rem;
+  }
+  .tt-prose li::marker {
+    color: hsl(var(--sky-deep));
+  }
+  /* Pull quote. The lime rule is the accent's one appearance in the body —
+     it stays a rule and never becomes a background behind running text. */
+  .tt-prose blockquote {
+    margin: 2.5rem 0;
+    padding: 0.25rem 0 0.25rem 1.75rem;
+    border-left: 4px solid hsl(var(--accent));
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    color: hsl(222 47% 11%);
+  }
+  .tt-prose blockquote p {
+    margin-top: 0;
+  }
+  .tt-prose img,
+  .tt-prose figure img {
+    border-radius: 1.5rem;
+    width: 100%;
+    height: auto;
+  }
+  .tt-prose figure {
+    margin: 2.5rem 0;
+  }
+  .tt-prose figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: hsl(220 12% 55%);
+    text-align: center;
+  }
+  .tt-prose code {
+    padding: 0.15em 0.45em;
+    border-radius: 0.4rem;
+    background: hsl(210 30% 94%);
+    font-size: 0.9em;
+  }
+  .tt-prose pre {
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: hsl(222 47% 11%);
+    color: hsl(210 40% 96%);
+    overflow-x: auto;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .tt-prose pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+  /* A wide table must scroll inside its own box rather than pushing the page
+     sideways on a phone. */
+  .tt-prose figure.wp-block-table,
+  .tt-prose .wp-block-table {
+    overflow-x: auto;
+  }
+  .tt-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .tt-prose th,
+  .tt-prose td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid hsl(215 25% 90%);
+    text-align: left;
+  }
+  .tt-prose th {
+    font-weight: 700;
+    color: hsl(222 47% 11%);
+    background: hsl(210 40% 97%);
+  }
+  .tt-prose hr {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 1px solid hsl(215 25% 90%);
+  }
 }
