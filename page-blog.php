@@ -141,7 +141,19 @@ $tt_rest = array();
 				<?php endif; ?>
 
 				<?php
-				$tt_pag = paginate_links( array( 'type' => 'array', 'prev_text' => 'Previous', 'next_text' => 'Next' ) );
+				wp_reset_postdata();
+				$tt_pag = paginate_links( array(
+					'type'      => 'array',
+					'prev_text' => 'Previous',
+					'next_text' => 'Next',
+					// Both must be explicit: paginate_links() defaults to the MAIN
+					// query, which on this page is the single page itself (1 of 1),
+					// so it would render nothing at all.
+					'total'     => $tt_q->max_num_pages,
+					'current'   => $tt_paged,
+					'base'      => trailingslashit( get_permalink() ) . 'page/%#%/',
+					'format'    => '',
+				) );
 				if ( $tt_pag ) :
 					?>
 					<nav aria-label="Blog pages" class="mt-16 flex flex-wrap justify-center gap-2">
