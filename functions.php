@@ -148,7 +148,7 @@ function toctoc_extract_toc( $html ) {
 	$used  = array();
 
 	$out = preg_replace_callback(
-		'/<h2([^>]*)>(.*?)<\/h2>/is',
+		'/<h2\b([^>]*)>(.*?)<\/h2>/is',
 		function ( $m ) use ( &$items, &$used ) {
 			$attrs = $m[1];
 			$text  = trim( wp_strip_all_tags( $m[2] ) );
@@ -157,7 +157,7 @@ function toctoc_extract_toc( $html ) {
 			}
 
 			// Respect an id the author set by hand; otherwise slug the heading.
-			if ( preg_match( '/id=["\']([^"\']+)["\']/i', $attrs, $has ) ) {
+			if ( preg_match( '/\bid=["\']([^"\']+)["\']/i', $attrs, $has ) ) {
 				$id = $has[1];
 			} else {
 				$id = sanitize_title( $text );
