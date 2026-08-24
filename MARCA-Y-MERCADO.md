@@ -66,6 +66,38 @@ los resúmenes de IA sobre la agencia.
 
 Relevado el 19 de agosto de 2026.
 
+### AirVu Media — airvumedia.com
+Relevado el 24 de agosto de 2026. Camana Bay, fundada en 2014. **El competidor más serio
+que tenemos**, y el único que nos disputa el terreno de frente.
+
+Cartera institucional que nosotros no tenemos: CUC (la eléctrica de la isla), el sistema de
+identidad nacional del Gobierno de Caimán, Cayman Finance, Jacques Scott.
+
+| | AirVu | TocToc |
+|---|---:|---:|
+| URLs totales | ~90 | 20 |
+| Páginas de servicio | 36 | 6 |
+| Casos de estudio | 15 | 2 |
+| Artículos de blog | ~40 | 4 |
+| Dominios de referencia | **201** | 44 |
+
+**Lo que hicieron en agosto:** ocho artículos en diecinueve días, todos con el molde
+"[vertical] website design/development Cayman Islands" — salud, inmobiliaria, servicios
+financieros, colegios, plazos, rediseño y, el 10 de agosto, **restaurantes**. Además tienen
+`/services/marketing/seo-and-geo/`, `/services/ai/` y un artículo sobre posicionar en
+ChatGPT y Perplexity: **están reclamando nuestro diferenciador**.
+
+**Dónde les ganamos hoy:** profundidad. Sus páginas de servicio miden 885-1.204 palabras;
+las nuestras 1.649-2.198. Su caso de Bacaro —un restaurante— tiene 625 palabras. También
+tenemos reseñas (4,8 con 24 en Google; ellos sin calificar) y `llms.txt` (el suyo da 404).
+
+**Dónde nos ganan:** 201 dominios de referencia contra 44. Los enlaces brutos son casi
+iguales (3.034 contra 3.106), pero los suyos vienen de 201 sitios distintos. Eso es lo que
+el contenido solo no arregla, y es la ventaja de once años y clientes institucionales.
+
+**La respuesta acordada:** no perseguirlos vertical por vertical. Ellos escribieron *sobre*
+webs de restaurantes; nosotros construimos seis. La ventaja es la prueba, no el volumen.
+
 ### Eyecay — eyecay.ky
 Agencia creativa con más de 8 años en la isla. Branding, web, apps móviles, hosting y SEO.
 Portfolio fuerte: Parlamento de las Islas Caimán, Morgan's Restaurant, Pirates Fest.

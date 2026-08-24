@@ -1,6 +1,6 @@
 # TocToc Marketing — Redes sociales
 
-> Manual de operación de las cuentas propias. Última actualización: 20 de agosto de 2026, tarde.
+> Manual de operación de los canales propios. Última actualización: 24 de agosto de 2026.
 > Lo de marca, público y competencia vive aparte, en [MARCA-Y-MERCADO.md](MARCA-Y-MERCADO.md).
 
 ---
@@ -134,6 +134,56 @@ Profile con los mismos cinco puntos y botón "Learn more" al checker.
 **Banco de ideas de reserva:** el menú en PDF que ChatGPT no puede leer · el inventario y punto
 de venta de The Conscious Closet · la reseña de Millie · qué es un archivo llms.txt · la ficha
 de Google Maps que nadie completa.
+
+---
+
+## 5b. El blog — abierto el 24 de agosto de 2026
+
+Hasta ese día el sitio tenía 16 URLs y ningún blog, así que toda la cola larga de
+"[vertical] website design cayman islands" estaba sin disputar. AirVu publicó ocho de esos
+artículos en diecinueve días mientras nosotros no teníamos dónde responder. Ver AirVu en
+[MARCA-Y-MERCADO.md](MARCA-Y-MERCADO.md).
+
+**Dónde vive:** página `/blog/` con plantilla `page-blog.php`; los artículos usan
+`single.php`. Categorías: Restaurants & Hospitality, AI Search, Web Design, Local SEO — una
+sola por artículo, porque la plantilla muestra la primera y WordPress las ordena alfabético.
+
+### Calendario de agosto
+
+| Fecha (10:00 Caimán) | Artículo | Categoría | Palabras | Estado |
+|---|---|---|---:|---|
+| Lun 24 | Restaurant Website Design: Why ChatGPT Cannot Read Your Menu | Restaurants | 1.897 | **Publicado** |
+| Mié 26 | What Is llms.txt, and Does Your Cayman Business Need One? | AI Search | 1.277 | Programado |
+| Vie 28 | The Five Google Business Profile Fields Most Cayman Businesses Leave Blank | Local SEO | 1.527 | Programado |
+| Lun 31 | When Your Website Should Talk to Your Till: Retail in Cayman | Web Design | 1.483 | Programado |
+
+Los programados usan el estado `future` de WordPress, que publica solo: no dependen de
+ninguna tarea externa ni de que la app esté abierta. **El sitio corre en UTC**, así que las
+10:00 de Caimán son las 15:00 en el campo de fecha.
+
+**El viernes 28 el blog y el carrusel de Instagram dicen lo mismo el mismo día**, en dos
+formatos. Es deliberado: es el único caso en que se permite repetir tema entre canales.
+
+### Reglas del blog
+
+- **Cada artículo tiene que apoyarse en algo que hicimos.** Los seis restaurantes, el POS de
+  The Conscious Closet, nuestro propio `llms.txt`. Si el artículo lo podría haber escrito
+  cualquiera, no lo escribimos: ahí AirVu gana por volumen.
+- **Decir lo que no sabemos.** El artículo de `llms.txt` dice que ningún proveedor de IA se
+  comprometió públicamente a leerlo. El de restaurantes dice que fueron cuatro de seis los
+  menús publicados con precios, no los seis. Esa precisión es el activo.
+- Las pruebas de IA van fechadas, con la nota de que no son deterministas.
+- Portada de 1.200 × 675 generada con `post_image.py`. **No se muestra dentro del artículo**,
+  solo en el listado y en las vistas previas de enlaces.
+- Tiempo de lectura e índice lateral se generan del contenido: no se escriben a mano.
+- El sitemap anexa los artículos publicados solo; no hay lista que mantener.
+
+### Cómo se mide
+
+En Search Console, a tres meses: impresiones nuevas para consultas de restaurantes,
+`llms.txt` y ficha de Google que hoy no existen. **No visitas.** Con autoridad de dominio 14
+y 44 dominios de referencia, esto no rankea en semanas; la ventana realista son tres a seis
+meses. El valor inmediato es otro: son piezas que se le mandan a un prospecto el mismo día.
 
 ---
 
