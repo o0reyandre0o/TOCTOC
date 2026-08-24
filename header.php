@@ -47,15 +47,21 @@
     $logo_url = "https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg";
     
     $seo_map = [
-        // Keeps the head term: the home already ranks 4.5 for "marketing agency
-        // cayman islands" and 3.2-5.3 across the cluster, so it is the page that
-        // wins it. The description carries the two things a local buyer checks
-        // before enquiring — that the firm is actually here, and that someone
-        // else has vouched for it — because at position 9 the snippet is doing
-        // all the persuading.
+        /*
+         * Keeps the head term: the home ranks 3.5-9.8 across the whole agency
+         * cluster and wins every one of them against our own service pages.
+         *
+         * Description rewritten 20 Aug 2026. The old one led with credentials —
+         * licensed, George Town, 4.8 stars — which answer "are they real?" but
+         * give nobody a reason to click. Over 28 days the home took 2,570
+         * impressions from Cayman at position 6.8 and returned ONE click. At
+         * those positions the ranking is not the problem; the snippet is. So it
+         * now opens with the one thing on this site a stranger can use without
+         * talking to us, and keeps the proof as the closing clause.
+         */
         'front' => [
             'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Licensed Cayman marketing agency in George Town, rated 4.8★ by 24 local clients. SEO, web design and social built to make you the answer on Google, ChatGPT and Gemini.'
+            'desc' => 'Free 60-second check: see what ChatGPT and Google actually read on your site. Cayman marketing agency in George Town — web design, SEO, AI visibility. 4.8★, 24 reviews.'
         ],
         'ai-search-optimization-cayman-islands' => [
             'title' => 'SEO & AI Search Optimization Cayman | ChatGPT, Gemini',
@@ -77,9 +83,20 @@
          * "marketing services grand cayman", all of which have real Cayman
          * demand (84-95 impressions each) and no page of their own.
          */
+        /*
+         * Branding dropped from the title 20 Aug 2026. The 5 Aug retarget sent
+         * this page after consulting, branding and "marketing services grand
+         * cayman", and 28 days later only one of the three took: it sits at 13.3
+         * on "marketing services grand cayman" and at 22-31 on every branding
+         * query — while the HOME ranks 1.0-4.7 on those same branding terms
+         * without a branding page existing at all. That is the same split the
+         * retarget was meant to end, just moved to a new keyword. The home wins
+         * branding, so this page stops contesting it and doubles down on the
+         * one term where it is genuinely the site's best URL.
+         */
         'digital-marketing-agency-cayman-islands' => [
-            'title' => 'Marketing Services & Branding Grand Cayman | TocToc',
-            'desc' => 'Marketing consulting, branding and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★ by 24 clients.'
+            'title' => 'Marketing Services & Consulting Grand Cayman | TocToc',
+            'desc' => 'Marketing consulting and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team in George Town. Rated 4.8★ by 24 clients.'
         ],
         // Retargeted 10 Aug 2026. Carrying "web design" here was a losing fight:
         // the home ranks 3.3 on "web design cayman islands" and this page 20.7,

@@ -33,11 +33,11 @@ $ai_proof = array(
 
 // Table of contents — anchors match the section ids below.
 $ai_toc = array(
+    // Local SEO restored 20 Aug 2026 — see the note above the section itself.
+    array( '#local-seo',    'Local SEO Services in the Cayman Islands' ),
     array( '#how-it-works', 'How It Works: Our Simple 2-Phase Plan' ),
     array( '#guarantee',    'Our 90-Day Result Guarantee' ),
     array( '#exclusivity',  'Industry Exclusivity: One Business Per Category' ),
-    // Local SEO dropped from here on 10 Aug 2026 along with its section; the
-    // FAQ entry now carries that content and the anchor below points at it.
     array( '#faq',          'FAQ: Local SEO, Pricing, Timelines &amp; How This Differs' ),
 );
 
@@ -231,14 +231,56 @@ $ai_google_rating = function ( $dark = false ) {
         </div>
     </section>
 
-    <!-- Local SEO: the half of this service the page never actually named -->
-    <?php
-    /*
-     * The "Local SEO Services in the Cayman Islands" section stood here until
-     * 10 Aug 2026. Its full content now lives as the second FAQ entry at the
-     * bottom of the page — same three paragraphs, same SEO/AEO/GEO cards.
-     */
-    ?>
+    <!--
+        Local SEO — restored 20 Aug 2026, ten days after it was removed.
+
+        Removing it and folding the content into an FAQ answer cost this page its
+        entire SEO relevance. Search Console, Cayman only, the 28 days after the
+        change: this page fell to 3 impressions at position 88.0, while
+        /seo-agency-services-cayman-islands/ — a 301 that redirects HERE — still
+        ranks 7.7 on "seo agency cayman" and 13.3 on "local seo company in cayman
+        islands". Google kept the old URL rather than accept the destination,
+        which is what happens when the destination stops answering the query.
+
+        An H2 section is not interchangeable with a collapsed FAQ entry. The
+        content is the same three ideas that were moved out; what changes is that
+        the page says out loud, in a heading, that we do local SEO.
+    -->
+    <section id="local-seo" class="py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Local SEO</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Local SEO Services in the <em class="italic text-sky-deep font-display">Cayman Islands</em></h2>
+                <p class="mt-8 text-lg text-slate-600 leading-relaxed">
+                    Half of this work has nothing to do with AI, and it is still where most Cayman businesses lose. Before an assistant can recommend you and before Google can rank you, the ordinary foundations have to be right &mdash; and on this island they usually are not.
+                </p>
+                <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+                    We do the unglamorous part: the Google Business Profile nobody finished filling in, the phone number that reads differently in four places, the pages that take five seconds to load on a phone at the beach.
+                </p>
+            </div>
+
+            <div class="mt-14 grid gap-6 md:grid-cols-3">
+                <div class="rounded-[2rem] border border-slate-100 bg-slate-50 p-8 shadow-soft">
+                    <h3 class="text-2xl font-display text-slate-900">Google Business Profile</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-500">The primary category chosen properly, opening hours kept current through the season, every service listed in plain words, photos added monthly, and reviews answered. It is the first thing an assistant checks before recommending anyone here.</p>
+                </div>
+                <div class="rounded-[2rem] border border-slate-100 bg-slate-50 p-8 shadow-soft">
+                    <h3 class="text-2xl font-display text-slate-900">Consistent business details</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-500">One name, one address and one phone number across your website, Google, Apple Maps, TripAdvisor and every social profile. Faced with two versions of the truth, a search engine trusts neither and recommends somebody else.</p>
+                </div>
+                <div class="rounded-[2rem] border border-slate-100 bg-slate-50 p-8 shadow-soft">
+                    <h3 class="text-2xl font-display text-slate-900">Technical foundation</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-500">Sub-second mobile speed, Schema markup that states your business type, location and services outright, and content published as crawlable text rather than locked inside PDFs or images.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 max-w-3xl">
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    <strong class="text-slate-900">SEO, AEO and GEO are three names for three audiences, not three products.</strong> SEO is being found by a search engine. AEO &mdash; Answer Engine Optimization &mdash; is being the source an assistant quotes when it answers a question directly. GEO &mdash; Generative Engine Optimization &mdash; is being included when a model composes an answer from several sources at once. They draw on the same foundations, which is why we do not sell them separately.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <!-- Video proof -->
     <section id="video-proof" class="py-20 md:py-28 bg-slate-50 scroll-mt-28">
@@ -306,11 +348,11 @@ $ai_google_rating = function ( $dark = false ) {
         </div>
     </section>
 
-    <!-- 1. How It Works: 2-Phase Plan -->
+    <!-- 2. How It Works: 2-Phase Plan -->
     <section id="how-it-works" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; How It Works</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; How It Works</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our Simple <em class="italic text-sky-deep font-display">2-Phase Plan</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     We handle all the technical work, website setup, and profile connections for you. Our service is broken into two clear, transparent phases:
@@ -372,11 +414,11 @@ $ai_google_rating = function ( $dark = false ) {
         </div>
     </section>
 
-    <!-- 2. 90-Day Result Guarantee -->
+    <!-- 3. 90-Day Result Guarantee -->
     <section id="guarantee" class="py-24 md:py-32 bg-slate-50 scroll-mt-28">
         <div class="mx-auto max-w-5xl px-6">
             <div class="text-center max-w-3xl mx-auto">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Zero Risk</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; Zero Risk</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Our 90-Day <em class="italic text-sky-deep font-display">Result Guarantee</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     We take all the risk off your shoulders. When you launch Phase 1: The AI Foundation, our work is backed by a simple promise:
@@ -394,12 +436,12 @@ $ai_google_rating = function ( $dark = false ) {
         </div>
     </section>
 
-    <!-- 3. Industry Exclusivity -->
+    <!-- 4. Industry Exclusivity -->
     <section id="exclusivity" class="py-24 md:py-32 bg-white scroll-mt-28">
         <div class="mx-auto max-w-6xl px-6">
             <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; One Per Category</span>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">04 &middot; One Per Category</span>
                     <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Industry <em class="italic text-sky-deep font-display">Exclusivity</em></h2>
                     <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                         Because AI engines usually only recommend 1 to 3 businesses when a customer asks a question, we cannot work with direct competitors in the same market.
