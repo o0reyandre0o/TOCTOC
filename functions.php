@@ -645,6 +645,7 @@ add_action( 'init', function () {
         [ 'https://toctoc.ky/venezuela/',                                          '0.9' ],
         [ 'https://toctoc.ky/seo-checker/',                                        '0.7' ],
         [ 'https://toctoc.ky/digital-marketing-cayman-islands-guide/',             '0.8' ],
+        [ 'https://toctoc.ky/blog/',                                               '0.7' ],
         [ 'https://toctoc.ky/cookie-policy/',                                      '0.2' ],
         [ 'https://toctoc.ky/privacy-policy/',                                     '0.2' ],
         [ 'https://toctoc.ky/terms-and-conditions/',                               '0.2' ],
@@ -652,6 +653,29 @@ add_action( 'init', function () {
     foreach ( $urls as [ $loc, $priority ] ) {
         echo "  <url><loc>{$loc}</loc><lastmod>{$today}</lastmod><priority>{$priority}</priority></url>\n";
     }
+
+    /*
+     * Blog articles are appended from the database rather than hand-listed
+     * above. The pages are a fixed set and rarely change; posts are the
+     * opposite, and a curated list would mean every new article is invisible
+     * to Google until somebody remembers to edit this file. Their real
+     * modified date is used, not today's, so an old post is not re-announced
+     * as fresh on every crawl.
+     */
+    foreach ( get_posts( array(
+        'post_type'        => 'post',
+        'post_status'      => 'publish',
+        'posts_per_page'   => 500,
+        'orderby'          => 'modified',
+        'order'            => 'DESC',
+        'no_found_rows'    => true,
+        'suppress_filters' => false,
+    ) ) as $tt_post ) {
+        $loc = esc_url( get_permalink( $tt_post ) );
+        $mod = get_post_modified_time( 'Y-m-d', true, $tt_post );
+        echo "  <url><loc>{$loc}</loc><lastmod>{$mod}</lastmod><priority>0.6</priority></url>\n";
+    }
+
     echo '</urlset>';
     exit;
 } );
