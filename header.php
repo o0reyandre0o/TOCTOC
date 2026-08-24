@@ -144,6 +144,15 @@
             'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',
             'desc' => 'See what is happening in Venezuela after the June 2026 earthquakes: photos, videos and footage from the ground, plus trusted ways to donate from the Cayman Islands.'
         ],
+        /*
+         * Blog index, added 24 Aug 2026 with the blog itself. Deliberately not
+         * chasing a head term: this URL exists to be crawled and to funnel
+         * authority to the articles, which are the pages meant to rank.
+         */
+        'blog' => [
+            'title' => 'Blog: Web Design & AI Search in Cayman | TocToc',
+            'desc' => 'Field notes on building websites in the Cayman Islands that Google, ChatGPT and Gemini can actually read — written from the sites we build and the data behind them.'
+        ],
         'seo-checker' => [
             'title' => 'Free Website SEO, GEO & AEO Checker | TocToc Cayman',
             'desc' => 'Run a free instant audit of any website: classic SEO, AI visibility (GEO/AEO) and Core Web Vitals speed. Get your scores and exactly what to fix.'
@@ -200,6 +209,7 @@
         'our-work' => 'toctoc marketing case studies, ai search results cayman islands, chatgpt ranking case study, gemini recommendation cayman, 19-81 brewing, prime group cayman, web design portfolio cayman islands',
         'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
         'venezuela' => 'donate venezuela cayman islands, venezuela earthquake appeal cayman, help venezuela from cayman, venezuela earthquake donation, cayman islands red cross venezuela, donate to venezuela earthquake',
+        'blog' => 'cayman islands web design blog, seo cayman islands, ai search cayman, restaurant website cayman, toctoc marketing blog',
         'seo-checker' => 'free seo checker, seo audit tool, geo checker, aeo checker, ai visibility checker, website seo test, core web vitals test, seo checker cayman islands',
         'digital-marketing-cayman-islands-guide' => 'digital marketing cayman islands guide, best marketing agency cayman, seo aeo geo cayman, how to choose a marketing agency cayman, ai visibility cayman, marketing agency cayman islands',
     ];
@@ -215,6 +225,12 @@
         $current_slug = 'front';
     } elseif (is_404()) {
         $current_slug = '404';
+    } elseif (is_home()) {
+        // The posts page. is_home() is neither is_singular() nor is_archive(),
+        // so without this branch it fell through to $default_title and shipped
+        // the blog index under the front page's title — exactly the duplicate
+        // that got /category/ URLs flagged.
+        $current_slug = 'blog';
     } elseif (is_singular()) {
         global $post;
         $current_slug = $post->post_name ?? '';

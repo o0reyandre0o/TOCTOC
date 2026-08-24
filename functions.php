@@ -120,6 +120,77 @@ function toctoc_render_breadcrumbs( $label = '' ) {
 }
 
 /**
+ * Reading time in whole minutes, from the raw post content.
+ *
+ * Derived rather than typed: a hand-entered "5 min read" is wrong the moment
+ * anyone edits the article, and it is the kind of small lie a reader notices.
+ * 220 wpm is the usual figure for online reading of this register.
+ */
+function toctoc_reading_time( $content ) {
+	$words = str_word_count( wp_strip_all_tags( strip_shortcodes( $content ) ) );
+	return max( 1, (int) ceil( $words / 220 ) );
+}
+
+/**
+ * Pull the H2s out of rendered post content for the table of contents, giving
+ * each one a stable id to link to.
+ *
+ * The ids are injected here rather than typed in the editor for the same reason
+ * as the reading time: an author writing in WordPress should not have to
+ * remember to add anchors, and if they forget, the TOC silently breaks. Only
+ * H2s are collected — an article that needs three levels of nesting in its
+ * sidebar is an article that should have been two articles.
+ *
+ * Returns [ 'html' => content with ids, 'items' => [ ['id'=>…, 'text'=>…], … ] ].
+ */
+function toctoc_extract_toc( $html ) {
+	$items = array();
+	$used  = array();
+
+	$out = preg_replace_callback(
+		'/<h2([^>]*)>(.*?)<\/h2>/is',
+		function ( $m ) use ( &$items, &$used ) {
+			$attrs = $m[1];
+			$text  = trim( wp_strip_all_tags( $m[2] ) );
+			if ( '' === $text ) {
+				return $m[0];
+			}
+
+			// Respect an id the author set by hand; otherwise slug the heading.
+			if ( preg_match( '/id=["\']([^"\']+)["\']/i', $attrs, $has ) ) {
+				$id = $has[1];
+			} else {
+				$id = sanitize_title( $text );
+				if ( '' === $id ) {
+					$id = 'section-' . ( count( $items ) + 1 );
+				}
+				// Two headings with the same words would otherwise share an anchor.
+				$base = $id;
+				$n    = 2;
+				while ( in_array( $id, $used, true ) ) {
+					$id = $base . '-' . $n;
+					$n++;
+				}
+				$attrs .= ' id="' . esc_attr( $id ) . '"';
+			}
+
+			$used[]  = $id;
+			$items[] = array( 'id' => $id, 'text' => $text );
+
+			// scroll-mt keeps the heading clear of the fixed header when jumped to.
+			if ( false === stripos( $attrs, 'class=' ) ) {
+				$attrs .= ' class="scroll-mt-28"';
+			}
+
+			return '<h2' . $attrs . '>' . $m[2] . '</h2>';
+		},
+		$html
+	);
+
+	return array( 'html' => null === $out ? $html : $out, 'items' => $items );
+}
+
+/**
  * Single source of truth for the website portfolio showcase — used on both the
  * Our Work page and the Web Design page so they never drift. Every URL was
  * verified live by its <title>. 'img' empty renders a name placeholder.
