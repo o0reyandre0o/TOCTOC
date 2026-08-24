@@ -1,22 +1,36 @@
 <?php
 /**
- * Blog index — the "Posts page" assigned in Settings → Reading.
+ * Blog index — the page with slug "blog".
  *
  * Why this file exists (Aug 2026): the site had 16 URLs and no blog, so the
  * whole "[industry] website design cayman islands" long tail was uncontested.
  * AirVu Media published eight of those posts in nineteen days while we had
  * nowhere to answer from. This is the shelf; single.php is the article.
  *
- * Not to be confused with front-page.php — WordPress serves that for the
- * static home and this one for the posts page.
+ * Why a page template and not home.php: this install runs `show_on_front` =
+ * "posts", so WordPress ignores `page_for_posts` entirely and home.php would
+ * never be reached. Switching to a static front page would mean creating a
+ * second page that renders the home — the exact duplicate that got /homepage/
+ * indexed once already. A page template needs no global setting changed, and
+ * it is the convention every other page here follows.
  */
 get_header();
 
-$blog_page_id = (int) get_option( 'page_for_posts' );
-$blog_intro   = $blog_page_id ? get_post_field( 'post_excerpt', $blog_page_id ) : '';
+$blog_intro = get_the_excerpt();
 if ( ! $blog_intro ) {
 	$blog_intro = 'Field notes from building websites in the Cayman Islands — what actually makes a local business findable by Google, ChatGPT and Gemini, written from the sites we build and the data we can show.';
 }
+
+// Own query: the page's main loop is the page itself, not the posts.
+// 'page' rather than 'paged' is what a static page receives from /blog/page/2/.
+$tt_paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
+$tt_q     = new WP_Query( array(
+	'post_type'      => 'post',
+	'post_status'    => 'publish',
+	'posts_per_page' => 9,
+	'paged'          => $tt_paged,
+) );
+$tt_rest = array();
 ?>
 
 <main class="min-h-screen bg-background text-foreground">
@@ -45,7 +59,7 @@ if ( ! $blog_intro ) {
 	<section class="py-16 md:py-24 bg-white">
 		<div class="mx-auto max-w-6xl px-6">
 
-			<?php if ( have_posts() ) : ?>
+			<?php if ( $tt_q->have_posts() ) : ?>
 
 				<?php
 				// The newest post gets the wide treatment; the rest go in the grid.
@@ -53,8 +67,8 @@ if ( ! $blog_intro ) {
 				?>
 				<div class="grid gap-8 md:gap-10">
 					<?php
-					while ( have_posts() ) :
-						the_post();
+					while ( $tt_q->have_posts() ) :
+						$tt_q->the_post();
 						$tt_cat  = get_the_category();
 						$tt_cat  = ! empty( $tt_cat ) ? $tt_cat[0]->name : 'Article';
 						$tt_read = toctoc_reading_time( get_the_content() );
