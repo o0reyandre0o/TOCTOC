@@ -113,13 +113,19 @@ veces respectivamente y no trajeron a nadie: compiten con millones de publicacio
 | Mié 19 | Post en Google Business Profile | Post GBP | Claude | **Publicado** |
 | Jue 20 | Dos menús: solo uno lo puede leer la IA | Reel | Nora | En ajuste |
 | Vie 21 | ChatGPT nombrando a Uncle Liu y Coconut | Reel | Nora edita · Daniel y André graban | Pendiente |
-| Lun 24 | Morning fuel: un día arreglando el error | Reel | Nora | Falta una línea |
+| Lun 24 | Cuatro reels de proyectos: Yallah, Jaly, TCC y Rebecca Mahayla | Reels | Equipo | **Publicados** |
+| Lun 24 | La ficha de Google que nadie completa | Post GBP | Claude | **Publicado** |
 | Mié 26 | El checker corriendo + "dejá tu web" | Reel | André graba · Nora edita | Pendiente |
-| Vie 28 | La ficha de Google que nadie completa | Carrusel | Manual | Listo, sin publicar |
+| Vie 28 | La ficha de Google que nadie completa | Carrusel | Windsor, programado 14:30 | **Programado** |
+| Sin fecha | Morning fuel: un día arreglando el error | Reel | Nora | Falta una línea |
 | Lun 31 | Cuatro webs entregadas este mes | Reel | Manual | Listo, sin publicar |
 
-Seis piezas, seis ángulos distintos: prueba → enseñanza → herramienta → local → resultado →
-cierre. Ninguna repite cliente ni tema.
+**El lunes 24 se rompió la regla del día único**, y sirve de ejemplo. Salieron cuatro reels
+de proyectos entre las 8:28 y las 8:54 de la mañana, hora de Cayman. A las tres horas el
+reparto ya estaba decidido: The Conscious Closet 179 cuentas, Yallah 6, Rebecca Mahayla 4,
+Jaly 4. Instagram distribuyó uno y descartó los otros tres. Es el mismo resultado del 18 de
+agosto, y la razón por la que el carrusel de la ficha de Google se dejó para el viernes en
+vez de sumarlo como sexta pieza del día.
 
 **Publicado el 19:** [instagram.com/p/DcO8Xqokde6](https://www.instagram.com/p/DcO8Xqokde6/) —
 primer carrusel desde mayo de 2025. Ese mismo día salió también un post en Google Business
@@ -133,10 +139,12 @@ de Google Maps que nadie completa.
 
 ## 6. Qué se puede automatizar y qué no
 
-> **Windsor está desactivado desde el 20 de agosto de 2026**, al migrar la cuenta. Mientras
-> lo esté, no se puede publicar ni leer métricas por API: todo es manual, y las dos tareas
-> programadas quedaron deshabilitadas. Lo de abajo describe lo que vuelve a estar
-> disponible cuando se reconecte.
+> **Windsor volvió a estar operativo el 24 de agosto de 2026**, ya apuntando a la cuenta
+> nueva: el conector de Instagram devuelve `17841438686941285` / @toctoc.ky. Estuvo
+> desactivado del 20 al 24 mientras se migraba. La tarea programada del carrusel se
+> rearmó con la cuenta nueva; la del reel de cierre del 31 sigue deshabilitada y
+> **todavía apunta a la cuenta vieja**: hay que corregirle el `account` antes de
+> habilitarla, o publicará en @wearetoctoc.
 
 Publicamos por el conector de Instagram de Windsor.ai. Lo que **sí** puede hacer:
 
