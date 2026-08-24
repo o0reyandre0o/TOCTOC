@@ -68,18 +68,19 @@ while ( have_posts() ) :
 			</div>
 		</header>
 
-		<?php if ( has_post_thumbnail() ) : ?>
-			<div class="bg-slate-950">
-				<div class="mx-auto max-w-5xl px-6">
-					<div class="overflow-hidden rounded-[2rem] translate-y-0 md:-mb-16 md:translate-y-0 shadow-glass">
-						<?php the_post_thumbnail( 'full', array( 'class' => 'w-full h-auto', 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
-					</div>
-				</div>
-			</div>
-		<?php endif; ?>
+		<?php
+		/*
+		 * The featured image is deliberately NOT rendered here. It is a cover:
+		 * it identifies the article in the blog index and in link previews, and
+		 * inside the article itself it would only push the first paragraph
+		 * below the fold to repeat what the headline already said. It is still
+		 * declared in the BlogPosting schema at the bottom of this file, so
+		 * social platforms and search engines get it.
+		 */
+		?>
 
 		<!-- Body -->
-		<div class="bg-white <?php echo has_post_thumbnail() ? 'pt-20 md:pt-28' : 'pt-16 md:pt-20'; ?> pb-16 md:pb-24">
+		<div class="bg-white pt-16 md:pt-20 pb-16 md:pb-24">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16">
 
