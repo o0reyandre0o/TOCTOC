@@ -926,6 +926,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 - [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind TocToc — Daniel Garrido (Founder & CEO), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer).
 - [Free SEO / GEO Checker](https://toctoc.ky/seo-checker/): A free tool to audit any website's SEO, AI visibility and speed.
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
+- [Blog](https://toctoc.ky/blog/): Articles on web design, technical SEO and AI search visibility for Cayman Islands businesses, written from the sites TocToc builds on the island.
 
 ## Facts
 - Official profiles: Instagram https://www.instagram.com/toctoc.ky/ · LinkedIn https://www.linkedin.com/company/toc-toc-marketing/ · Google Business Profile: Toc Toc Marketing, George Town, Grand Cayman. The Instagram handle changed from @wearetoctoc to @toctoc.ky on 20 August 2026; the old account is kept as a redirect and is no longer updated.
