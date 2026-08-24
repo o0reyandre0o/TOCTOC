@@ -120,6 +120,21 @@ function toctoc_render_breadcrumbs( $label = '' ) {
 }
 
 /**
+ * URL of the blog index.
+ *
+ * Reads the page assigned in Settings → Reading, and falls back to /blog/ so a
+ * misconfigured (or not-yet-configured) posts page leaves a working link in the
+ * nav instead of one pointing at the site root.
+ */
+function toctoc_blog_url() {
+	$id = (int) get_option( 'page_for_posts' );
+	if ( $id && 'publish' === get_post_status( $id ) ) {
+		return get_permalink( $id );
+	}
+	return home_url( '/blog/' );
+}
+
+/**
  * Reading time in whole minutes, from the raw post content.
  *
  * Derived rather than typed: a hand-entered "5 min read" is wrong the moment
