@@ -561,7 +561,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          over. whitespace-nowrap on the links stops a long label from wrapping to
          two lines and squashing the logo against the first item. -->
     <div class="hidden items-center gap-3 xl:gap-5 lg:flex">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Home</a>
+        <?php // "Home" removed 24 Aug 2026: the logo to its immediate left already
+              // goes there, so the slot was spending nav width on a duplicate link. ?>
         <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Services</a>
         <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">AI Search</a>
         <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-[11px] xl:text-[13px] whitespace-nowrap font-bold<?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-700'; ?> hover:text-primary transition-colors decoration-none uppercase tracking-wider">Web Development</a>
@@ -590,7 +591,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="mobile-menu" class="fixed inset-0 z-[900] bg-white translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
     <div class="flex flex-col h-full pt-32 px-8 pb-12">
         <div class="flex flex-col gap-6">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-4xl font-display <?php echo is_front_page() ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Home</a>
+            <?php // See the desktop nav: "Home" dropped, the logo covers it. ?>
             <a href="<?php echo esc_url( home_url( '/digital-marketing-agency-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('digital-marketing-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Services</a>
             <a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('ai-search-optimization-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">AI Search Visibility</a>
             <a href="<?php echo esc_url( home_url( '/website-design-agency-cayman-islands/' ) ); ?>" class="text-4xl font-display <?php echo is_page('website-design-agency-cayman-islands') ? 'text-sky-deep' : 'text-slate-900'; ?> decoration-none">Web Development</a>
