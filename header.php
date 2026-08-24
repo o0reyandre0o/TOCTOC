@@ -51,17 +51,24 @@
          * Keeps the head term: the home ranks 3.5-9.8 across the whole agency
          * cluster and wins every one of them against our own service pages.
          *
-         * Description rewritten 20 Aug 2026. The old one led with credentials —
-         * licensed, George Town, 4.8 stars — which answer "are they real?" but
-         * give nobody a reason to click. Over 28 days the home took 2,570
-         * impressions from Cayman at position 6.8 and returned ONE click. At
-         * those positions the ranking is not the problem; the snippet is. So it
-         * now opens with the one thing on this site a stranger can use without
-         * talking to us, and keeps the proof as the closing clause.
+         * Description rewritten 20 Aug 2026. Over 28 days the home took 2,570
+         * impressions from Cayman at position 6.8 and returned ONE click, so the
+         * ranking is not the problem — the snippet is. The old one led with
+         * credentials (licensed, George Town, 4.8 stars), which answer "are they
+         * real?" but give nobody a reason to pick us over the other five
+         * agencies on the page.
+         *
+         * A first attempt opened with the free checker and was reverted the same
+         * day: that offer is the /seo-checker/ page's own snippet, and someone
+         * searching "marketing agency cayman islands" is shopping for an agency,
+         * not a tool. Promising a tool to that query misdescribes the page.
+         *
+         * So it now leads with the differentiator instead — the thing no other
+         * Cayman agency says — and keeps the proof as the closing clause.
          */
         'front' => [
             'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Free 60-second check: see what ChatGPT and Google actually read on your site. Cayman marketing agency in George Town — web design, SEO, AI visibility. 4.8★, 24 reviews.'
+            'desc' => 'Cayman marketing agency building websites ChatGPT and Gemini can read, not just Google. Web design, SEO and AI visibility from George Town. 4.8★, 24 reviews.'
         ],
         'ai-search-optimization-cayman-islands' => [
             'title' => 'SEO & AI Search Optimization Cayman | ChatGPT, Gemini',
