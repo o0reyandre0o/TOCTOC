@@ -16,10 +16,12 @@ Uso:  python post_image.py "Antetitulo" "Titular" "Subtitulo" salida.jpg
 import os, sys
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-THEME  = r"C:\Users\58424\Documents\GitHub\TOCTOC"
+# Este script vive en la raiz del tema, asi que la ruta sale de si mismo: nada
+# de rutas locales cableadas, que ademas se publicarian con el tema.
+THEME  = os.path.dirname(os.path.abspath(__file__))
 SERIF  = os.path.join(THEME, "assets", "fonts", "InstrumentSerif-Regular.ttf")
-SANS   = r"C:\Windows\Fonts\segoeui.ttf"
-SANS_B = r"C:\Windows\Fonts\segoeuib.ttf"
+SANS   = os.environ.get("TT_SANS", os.path.join(os.environ.get("WINDIR", "/usr/share"), "Fonts", "segoeui.ttf"))
+SANS_B = os.environ.get("TT_SANS_BOLD", os.path.join(os.environ.get("WINDIR", "/usr/share"), "Fonts", "segoeuib.ttf"))
 
 ACCENT = (217, 255, 62)
 WHITE  = (255, 255, 255)
