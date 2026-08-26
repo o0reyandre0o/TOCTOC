@@ -472,6 +472,22 @@
               "knowsAbout": ["Graphic Design", "Branding", "Visual Identity", "Social Media Creatives"],
               "sameAs": ["https://www.linkedin.com/in/norabravo92/"],
               "worksFor": { "@id": "https://toctoc.ky/#organization" }
+            },
+            <?php /*
+              Andreina Brito, added 26 Aug 2026. No "sameAs" yet: the other three
+              each point at a LinkedIn profile, which is what lets a search engine
+              tie the person here to the same person elsewhere. Hers is missing,
+              so the entity stands alone until we have the URL — an empty or
+              invented sameAs would be worse than none.
+            */ ?>
+            {
+              "@type": "Person",
+              "@id": "https://toctoc.ky/#andreina-brito",
+              "name": "Andreina Brito",
+              "jobTitle": "Video Editor & Social Media",
+              "description": "Video editor and social media specialist. Produces the reels, shorts and stories that carry client work, and runs the day-to-day publishing of the accounts they live on.",
+              "knowsAbout": ["Video Editing", "Short-Form Video", "Instagram Reels", "Social Media Management", "Content Production", "Subtitling"],
+              "worksFor": { "@id": "https://toctoc.ky/#organization" }
             }
           ],
           "address": {

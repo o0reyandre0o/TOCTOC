@@ -145,6 +145,33 @@ get_header(); ?>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Graphic Design</span>
                     </div>
                 </article>
+
+                <!--
+                    Andreina Brito — added 26 Aug 2026.
+
+                    No photograph yet. Rather than leave a broken <img> or a grey
+                    placeholder that reads as an oversight, the avatar is her
+                    initials on the brand lime: it looks like a decision until
+                    the real portrait arrives, and the swap is one line.
+                -->
+                <article id="andreina-brito" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
+                    <div class="flex items-center gap-5 mb-8">
+                        <span aria-hidden="true" class="w-24 h-24 rounded-full bg-accent text-slate-950 shrink-0 flex items-center justify-center font-display text-3xl leading-none">AB</span>
+                        <div>
+                            <h3 class="text-3xl font-display text-slate-900">Andreina Brito</h3>
+                            <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Video Editor &amp; Social Media</p>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-8">
+                        Andreina turns raw footage into the reels and stories that carry our clients&rsquo; work &mdash; and runs the day-to-day of the accounts those pieces live on. Editing, captions, pacing, publishing: the unglamorous craft that decides whether a good idea gets watched or scrolled past.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Video Editing</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Reels &amp; Shorts</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Social Media</span>
+                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Content Production</span>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
