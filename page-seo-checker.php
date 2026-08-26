@@ -17,8 +17,33 @@ if ( $ttseo_ts ) {
 ?>
 
 <style>
+/*
+ * The llms.txt draft box.
+ *
+ * Written out here rather than left to the Tailwind utilities on the element,
+ * because a <pre> without white-space and overflow set does not degrade
+ * gracefully — it spills its lines straight across the page, which is exactly
+ * what happened the first time this shipped: the compiled stylesheet deploys on
+ * a slower cycle than the PHP, so for a few minutes the markup was live with no
+ * rules behind it. Layout that would break the page belongs where it cannot
+ * arrive late.
+ *
+ * The long URLs in the Key pages section are single unbroken tokens, so
+ * pre-wrap alone is not enough; anywhere is what actually breaks them.
+ */
+#llms-body {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-height: 24rem;
+    overflow: auto;
+    tab-size: 2;
+}
+
 @media print {
     nav, footer, .ttseo-noprint { display: none !important; }
+    /* Print the draft in full instead of a scrollable window of it. */
+    #llms-body { max-height: none !important; overflow: visible !important; }
     .ttseo-print-header { display: block !important; }
 
     /* Never force display on these two: only the mode that actually ran has had its
