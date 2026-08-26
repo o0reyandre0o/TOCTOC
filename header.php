@@ -408,6 +408,28 @@
             "alternateName": "CICOC",
             "url": "https://caymanchamber.ky/"
           },
+          <?php /*
+            Press. subjectOf — NOT sameAs: sameAs is for profiles that ARE this
+            organisation elsewhere, and stuffing an article about us in there is
+            a misuse that muddies the entity instead of strengthening it.
+            subjectOf is the correct property for "an article whose subject is
+            this organisation".
+
+            The Chamber piece names www.toctoc.ky in bold text but never links
+            it, so no link equity flows from the most authoritative business
+            domain on the island. Declaring the relationship here is the half we
+            control; asking them to hyperlink the text they already wrote is the
+            other half, and worth more.
+          */ ?>
+          "subjectOf": {
+            "@type": "Article",
+            "@id": "https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/",
+            "url": "https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/",
+            "headline": "Chamber Profile: Toc Toc Marketing — A New Marketing Service for the AI Age",
+            "datePublished": "2026-08-06",
+            "publisher": { "@id": "https://caymanchamber.ky/#organization" },
+            "about": { "@id": "https://toctoc.ky/#organization" }
+          },
           "knowsAbout": [
             "Search Engine Optimization (SEO)",
             "Answer Engine Optimization (AEO)",

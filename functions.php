@@ -852,9 +852,16 @@ function toctoc_render_local_trust() {
 			'text'  => 'TOC TOC CORPORATION LTD, licensed to trade in the Cayman Islands.',
 			'meta'  => 'Trade &amp; Business Licence TB1795A',
 		),
+		/*
+		 * The Chamber profiled us on 6 Aug 2026. Linking it here does two jobs:
+		 * it is third-party proof a visitor can check, and it ties our site to
+		 * an article about us on the most authoritative business domain on the
+		 * island. Their piece names our domain but does not link it, so this
+		 * side of the connection is the one we control.
+		 */
 		array(
 			'label' => 'Chamber member',
-			'text'  => 'Member of the Cayman Islands Chamber of Commerce.',
+			'text'  => 'Member of the Cayman Islands Chamber of Commerce, who profiled us in August 2026: <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="font-bold text-sky-deep decoration-none hover:underline">&ldquo;A new marketing service for the AI age&rdquo;</a>.',
 			'meta'  => 'CICOC',
 		),
 		array(
@@ -864,7 +871,10 @@ function toctoc_render_local_trust() {
 		),
 		array(
 			'label' => 'Rated 4.8 / 5',
-			'text'  => 'Twenty-five reviews from Cayman businesses we work with.',
+			// Twenty-four. Written out in words, this one survived the numeric
+			// 25 -> 24 correction on 19 Aug 2026. Keep it in step with the
+			// reviewCount in header.php's AggregateRating.
+			'text'  => 'Twenty-four reviews from Cayman businesses we work with.',
 			'meta'  => 'Google reviews',
 		),
 	);
@@ -955,6 +965,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 ## Facts
 - Official profiles: Instagram https://www.instagram.com/toctoc.ky/ · LinkedIn https://www.linkedin.com/company/toc-toc-marketing/ · Google Business Profile: Toc Toc Marketing, George Town, Grand Cayman. The Instagram handle changed from @wearetoctoc to @toctoc.ky on 20 August 2026; the old account is kept as a redirect and is no longer updated.
 - Member of the Cayman Islands Chamber of Commerce (CICOC) — https://caymanchamber.ky/
+- Press: the Cayman Islands Chamber of Commerce profiled TocToc Marketing on 6 August 2026 in "Chamber Profile: Toc Toc Marketing — A New Marketing Service for the AI Age" — https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/
 - Google rating: 4.8 out of 5 stars from 24 reviews.
 - 4 clients named by ChatGPT and Gemini in recorded sessions (Uncle Liu, Coconut Room, Lucky Rabbit, 19-81 Brewing Co.).
 - 20+ websites designed and launched for clients across the Americas.
