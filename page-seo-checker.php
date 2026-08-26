@@ -232,6 +232,30 @@ if ( $ttseo_ts ) {
                 <div id="list-geo" class="divide-y divide-slate-100"></div>
             </div>
 
+            <!--
+                Draft llms.txt.
+
+                Sits after the GEO panel on purpose: by this point the reader has
+                seen whether their site is readable at all, which is the thing
+                that decides whether this file is worth publishing. Handing over
+                the draft first — the way the standalone generators do — gets it
+                pasted onto sites nothing can read yet.
+            -->
+            <div id="llms-card" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-8 mb-8">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-2">
+                    <div>
+                        <h2 class="text-2xl font-display text-slate-900">Your draft <code class="text-xl">llms.txt</code></h2>
+                        <p class="text-sm text-slate-500 mt-2 max-w-2xl">Built from your own page and sitemap. It is a <strong>draft</strong>: every <code>TODO</code> below is a fact only you know. Fill them in before publishing, then upload it to the root of your site.</p>
+                    </div>
+                    <div class="ttseo-noprint flex gap-2 shrink-0">
+                        <button type="button" id="llms-copy" class="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold text-slate-700 transition-colors hover:border-sky-deep hover:text-sky-deep">Copy</button>
+                        <button type="button" id="llms-dl" class="rounded-full bg-slate-950 text-white px-5 py-2 text-sm font-bold transition-transform hover:scale-105">Download</button>
+                    </div>
+                </div>
+                <pre id="llms-body" class="mt-5 max-h-96 overflow-auto rounded-2xl bg-slate-950 text-slate-100 p-6 text-[13px] leading-relaxed whitespace-pre-wrap break-words"></pre>
+                <p class="mt-4 text-xs text-slate-400">Worth knowing: <code>llms.txt</code> is a proposed convention, and no major AI company has publicly committed to reading it. It costs an afternoon and it cannot slow your site down &mdash; but do the readable-content and structured-data work first. <a href="<?php echo esc_url( home_url( '/2026/08/26/llms-txt-cayman-islands/' ) ); ?>" class="font-bold text-sky-deep decoration-none hover:underline">The honest version, at length &rarr;</a></p>
+            </div>
+
             <!-- Performance -->
             <div class="rounded-[2rem] bg-white border border-slate-100 shadow-soft p-8 mb-8">
                 <h2 class="text-2xl font-display text-slate-900 mb-6">Speed &amp; Core Web Vitals</h2>
@@ -850,6 +874,57 @@ window.TTSEO = {
         });
     }
 
+    /**
+     * Draft llms.txt panel. Hidden entirely when the server sent nothing, so a
+     * failed sitemap read never leaves an empty box on the report.
+     */
+    function renderLlms(d) {
+        var card = document.getElementById('llms-card');
+        if (!card) { return; }
+        var txt = (d && d.llms) ? String(d.llms) : '';
+        if (!txt.trim()) { card.classList.add('hidden'); return; }
+
+        document.getElementById('llms-body').textContent = txt;
+        card.classList.remove('hidden');
+
+        var copy = document.getElementById('llms-copy');
+        copy.onclick = function () {
+            var done = function () {
+                copy.textContent = 'Copied';
+                setTimeout(function () { copy.textContent = 'Copy'; }, 1800);
+            };
+            // navigator.clipboard needs a secure context and can be blocked;
+            // the textarea fallback keeps the button working either way.
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(txt).then(done, fallback);
+            } else {
+                fallback();
+            }
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = txt;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); done(); } catch (e) {}
+                document.body.removeChild(ta);
+            }
+        };
+
+        document.getElementById('llms-dl').onclick = function () {
+            var blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'llms.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+        };
+    }
+
     function showError(msg) {
         var e = document.getElementById('ttseo-error');
         e.textContent = msg || 'Something went wrong. Please try again.';
@@ -1063,6 +1138,7 @@ window.TTSEO = {
             renderShareBadge(d.badge);
             renderList('list-seo', d.seo);
             renderList('list-geo', d.geo);
+            renderLlms(d);
 
             document.getElementById('ttseo-results').scrollIntoView({ behavior: 'smooth' });
 

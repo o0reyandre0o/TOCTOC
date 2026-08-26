@@ -1153,6 +1153,206 @@ function toctoc_seo_schema_audit( $entities ) {
  * (currently: real image weight). The full-site crawl and the competitor
  * comparison run with $deep = false to stay fast and polite.
  */
+/**
+ * Build a draft llms.txt for the site being audited.
+ *
+ * Why this lives inside the checker instead of being its own tool: there are
+ * already half a dozen standalone llms.txt generators, several on exact-match
+ * domains with far more authority than this one, and every one of them hands
+ * you a file with no idea whether you needed it. Bundling it with the audit is
+ * the only version of this worth building — the report says whether the site is
+ * even readable yet, and the draft is what to do about it.
+ *
+ * No extra HTTP requests beyond the sitemap: page labels come from the URL
+ * slugs. Fetching every page to write a nicer description would add half a
+ * minute to a tool whose whole promise is "about 60 seconds", and the output is
+ * a DRAFT the owner is told to edit either way.
+ *
+ * $entities is the already-parsed JSON-LD from the audit, so the business facts
+ * (name, address, phone, services) cost nothing to reuse.
+ */
+function toctoc_seo_llms_draft( $url, $meta, $entities, $origin ) {
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	$host = preg_replace( '/^www\./', '', (string) $host );
+
+	// ---- Business facts, best-effort, from schema first and <head> second.
+	$name = '';
+	$desc = '';
+	$tel  = '';
+	$addr = array();
+	$sameas = array();
+	$services = array();
+	$type = '';
+
+	foreach ( $entities as $e ) {
+		$types = isset( $e['@type'] ) ? (array) $e['@type'] : array();
+		$is_org = (bool) array_intersect(
+			$types,
+			array( 'Organization', 'LocalBusiness', 'Restaurant', 'Store', 'ProfessionalService',
+				'Corporation', 'NGO', 'Hotel', 'Dentist', 'LegalService', 'MedicalBusiness' )
+		);
+		if ( ! $is_org ) {
+			continue;
+		}
+		if ( ! $type ) {
+			$type = (string) reset( $types );
+		}
+		if ( ! $name && ! empty( $e['name'] ) ) {
+			$name = (string) $e['name'];
+		}
+		if ( ! $desc && ! empty( $e['description'] ) ) {
+			$desc = (string) $e['description'];
+		}
+		if ( ! $tel && ! empty( $e['telephone'] ) ) {
+			$tel = (string) $e['telephone'];
+		}
+		if ( ! $addr && ! empty( $e['address'] ) && is_array( $e['address'] ) ) {
+			$a = isset( $e['address'][0] ) ? $e['address'][0] : $e['address'];
+			foreach ( array( 'streetAddress', 'addressLocality', 'addressRegion', 'postalCode', 'addressCountry' ) as $k ) {
+				if ( ! empty( $a[ $k ] ) && is_string( $a[ $k ] ) ) {
+					$addr[] = $a[ $k ];
+				}
+			}
+		}
+		if ( ! empty( $e['sameAs'] ) ) {
+			foreach ( (array) $e['sameAs'] as $s ) {
+				if ( is_string( $s ) && filter_var( $s, FILTER_VALIDATE_URL ) ) {
+					$sameas[] = $s;
+				}
+			}
+		}
+		foreach ( array( 'makesOffer', 'hasOfferCatalog', 'serviceType' ) as $k ) {
+			if ( empty( $e[ $k ] ) ) {
+				continue;
+			}
+			foreach ( (array) $e[ $k ] as $s ) {
+				if ( is_string( $s ) ) {
+					$services[] = $s;
+				} elseif ( is_array( $s ) && ! empty( $s['name'] ) && is_string( $s['name'] ) ) {
+					$services[] = $s['name'];
+				}
+			}
+		}
+	}
+
+	// Fall back to the <head> when there is no usable schema — which is the
+	// common case, and precisely the sites this draft helps most.
+	if ( ! $name ) {
+		$name = $meta['title'] ? preg_split( '/\s[|\-–—]\s/u', $meta['title'] )[0] : $host;
+	}
+	if ( ! $desc ) {
+		$desc = (string) $meta['description'];
+	}
+	$name = trim( wp_strip_all_tags( $name ) );
+	$desc = trim( wp_strip_all_tags( $desc ) );
+	$sameas   = array_slice( array_values( array_unique( $sameas ) ), 0, 8 );
+	$services = array_slice( array_values( array_unique( $services ) ), 0, 10 );
+
+	// ---- Key pages, from the sitemap. One request, short timeout.
+	$pages = array();
+	$sm    = toctoc_seo_fetch( $origin . '/sitemap.xml', 6 );
+	if ( 200 === $sm['code'] && ! empty( $sm['body'] ) ) {
+		$body = $sm['body'];
+		// A sitemap index points at more sitemaps; follow only the first, once.
+		if ( false !== stripos( $body, '<sitemapindex' )
+			&& preg_match( '#<loc>\s*([^<]+)\s*</loc>#i', $body, $m ) ) {
+			$child = toctoc_seo_fetch( trim( $m[1] ), 6 );
+			if ( 200 === $child['code'] && ! empty( $child['body'] ) ) {
+				$body = $child['body'];
+			}
+		}
+		if ( preg_match_all( '#<loc>\s*([^<]+)\s*</loc>#i', $body, $mm ) ) {
+			foreach ( $mm[1] as $loc ) {
+				$loc = trim( $loc );
+				if ( ! filter_var( $loc, FILTER_VALIDATE_URL ) ) {
+					continue;
+				}
+				$path = (string) wp_parse_url( $loc, PHP_URL_PATH );
+				if ( '' === $path || '/' === $path ) {
+					continue;
+				}
+				// Boilerplate nobody needs pointed out to a language model.
+				if ( preg_match( '#(privacy|cookie|terms|legal|disclaimer|sitemap|feed|wp-|/tag/|/author/|/page/)#i', $path ) ) {
+					continue;
+				}
+				$slug  = trim( $path, '/' );
+				$slug  = substr( strrchr( '/' . $slug, '/' ), 1 );
+				$label = ucwords( trim( preg_replace( '/[-_]+/', ' ', $slug ) ) );
+				if ( '' === $label ) {
+					continue;
+				}
+				$pages[ $loc ] = $label;
+				if ( count( $pages ) >= 12 ) {
+					break;
+				}
+			}
+		}
+	}
+
+	// ---- Assemble.
+	$L   = array();
+	$L[] = '# ' . ( $name ?: $host );
+	$L[] = '';
+	$L[] = '> ' . ( $desc ?: 'TODO — one or two sentences describing what this business does, for whom, and where. Write it the way a customer would say it, not the way your brochure does.' );
+	$L[] = '';
+	$L[] = '## About';
+
+	$about = array();
+	if ( $type ) {
+		$about[] = 'Type: ' . $type . '.';
+	}
+	if ( $addr ) {
+		$about[] = 'Location: ' . implode( ', ', array_unique( $addr ) ) . '.';
+	}
+	if ( $tel ) {
+		$about[] = 'Phone: ' . $tel . '.';
+	}
+	$about[] = 'Website: ' . $origin . '.';
+	$L[] = implode( ' ', $about );
+	if ( ! $addr || ! $tel ) {
+		$L[] = '';
+		$L[] = 'TODO — add the full postal address and phone number. "Cayman" or "the islands" is not a'
+			. ' location to a machine; a street, a town and a country are.';
+	}
+
+	if ( $services ) {
+		$L[] = '';
+		$L[] = '## Services';
+		foreach ( $services as $s ) {
+			$L[] = '- ' . trim( wp_strip_all_tags( (string) $s ) );
+		}
+	} else {
+		$L[] = '';
+		$L[] = '## Services';
+		$L[] = '- TODO — list what you sell, in the words customers use rather than your internal names.';
+	}
+
+	if ( $pages ) {
+		$L[] = '';
+		$L[] = '## Key pages';
+		foreach ( $pages as $loc => $label ) {
+			$L[] = '- [' . $label . '](' . $loc . '): TODO — one line on what this page answers.';
+		}
+	}
+
+	if ( $sameas ) {
+		$L[] = '';
+		$L[] = '## Official profiles';
+		foreach ( $sameas as $s ) {
+			$L[] = '- ' . $s;
+		}
+	}
+
+	$L[] = '';
+	$L[] = '## Notes';
+	$L[] = 'Draft generated from ' . $origin . ' by the TocToc AI visibility checker'
+		. ' (https://toctoc.ky/seo-checker/). Every TODO above is a fact only you know —'
+		. ' fill them in before publishing. A confidently wrong llms.txt is worse than none,'
+		. ' because it is a machine-readable statement about your business that happens to be false.';
+
+	return implode( "\n", $L ) . "\n";
+}
+
 function toctoc_seo_analyze( $url, $html, $deep = false ) {
 	$parts  = wp_parse_url( $url );
 	$origin = $parts['scheme'] . '://' . $parts['host'];
@@ -1563,11 +1763,19 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 		'Semantic landmarks make content easier for AI and assistive tech to parse.'
 	);
 
+	/*
+	 * Draft llms.txt for this site. Only on the deep pass: the shallow one runs
+	 * for the competitor comparison and for every page of a whole-site crawl,
+	 * and neither needs a draft — it would just multiply sitemap requests.
+	 */
+	$llms_draft = $deep ? toctoc_seo_llms_draft( $url, $meta, $entities, $origin ) : '';
+
 	return array(
 		'url'    => $url,
 		'meta'   => $meta,
 		'seo'    => $seo,
 		'geo'    => $geo,
+		'llms'   => $llms_draft,
 		'scores' => array(
 			'seo' => toctoc_seo_score( $seo ),
 			'geo' => toctoc_seo_score( $geo ),
