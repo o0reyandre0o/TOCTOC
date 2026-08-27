@@ -352,7 +352,20 @@
     <!-- End Microsoft Clarity -->
 
     <!-- Image Source for legacy crawlers -->
-    <link rel="image_src" href="<?php echo esc_url($logo_url); ?>">
+    <?php /*
+        image_src now points at the favicon rather than the wordmark SVG.
+
+        It is a legacy hint some crawlers and older link-preview scrapers still
+        read when they cannot find og:image. The wordmark is a wide horizontal
+        SVG — the wrong shape for a thumbnail, and SVG is not rendered as a
+        preview image by most of the services that read this tag at all. The
+        square favicon is what those consumers can actually use.
+
+        Nothing that matters is affected: og:image and twitter:image are set
+        separately further down, and they are what Facebook, LinkedIn, WhatsApp
+        and X actually read.
+    */ ?>
+    <link rel="image_src" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
     
     <!-- Open Graph / Facebook -->
     <?php
