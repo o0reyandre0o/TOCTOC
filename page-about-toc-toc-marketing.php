@@ -147,17 +147,18 @@ get_header(); ?>
                     </div>
                 </article>
 
-                <!-- Andreina Brito — added 26 Aug 2026, portrait added the next day. -->
-                <article id="andreina-brito" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
+                <!-- Adriana Brito — added 26 Aug 2026. First name corrected from "Andreina" on 27 Aug:
+                     it went in wrong and was live for a day. -->
+                <article id="adriana-brito" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/andreina-brito-toctoc.webp" alt="Andreina Brito, Video Editor and Social Media at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/andreina-brito-toctoc.webp" alt="Adriana Brito, Video Editor and Social Media at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
-                            <h3 class="text-3xl font-display text-slate-900">Andreina Brito</h3>
+                            <h3 class="text-3xl font-display text-slate-900">Adriana Brito</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Video Editor &amp; Social Media</p>
                         </div>
                     </div>
                     <p class="text-sm leading-relaxed text-slate-500 mb-8">
-                        Andreina turns raw footage into the reels and stories that carry our clients&rsquo; work &mdash; and runs the day-to-day of the accounts those pieces live on. Editing, captions, pacing, publishing: the unglamorous craft that decides whether a good idea gets watched or scrolled past.
+                        Adriana turns raw footage into the reels and stories that carry our clients&rsquo; work &mdash; and runs the day-to-day of the accounts those pieces live on. Editing, captions, pacing, publishing: the unglamorous craft that decides whether a good idea gets watched or scrolled past.
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Video Editing</span>

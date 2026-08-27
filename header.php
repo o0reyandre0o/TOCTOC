@@ -504,7 +504,8 @@
               "worksFor": { "@id": "https://toctoc.ky/#organization" }
             },
             <?php /*
-              Andreina Brito, added 26 Aug 2026. No "sameAs" yet: the other three
+              Adriana Brito, added 26 Aug 2026 (first name corrected 27 Aug). No
+              "sameAs" yet: the other three
               each point at a LinkedIn profile, which is what lets a search engine
               tie the person here to the same person elsewhere. Hers is missing,
               so the entity stands alone until we have the URL — an empty or
@@ -512,8 +513,8 @@
             */ ?>
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/#andreina-brito",
-              "name": "Andreina Brito",
+              "@id": "https://toctoc.ky/#adriana-brito",
+              "name": "Adriana Brito",
               "jobTitle": "Video Editor & Social Media",
               "description": "Video editor and social media specialist. Produces the reels, shorts and stories that carry client work, and runs the day-to-day publishing of the accounts they live on.",
               "knowsAbout": ["Video Editing", "Short-Form Video", "Instagram Reels", "Social Media Management", "Content Production", "Subtitling"],

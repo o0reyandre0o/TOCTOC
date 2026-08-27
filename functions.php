@@ -1060,7 +1060,7 @@ TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses
 - Daniel Garrido — Founder & CEO of TocToc Marketing. LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
 - Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
 - Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives). LinkedIn: https://www.linkedin.com/in/norabravo92/
-- Andreina Brito — Video Editor & Social Media at TocToc Marketing. Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts.
+- Adriana Brito — Video Editor & Social Media at TocToc Marketing. Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts.
 
 ## Proven results
 TocToc Marketing has successfully influenced AI-generated local recommendations for Cayman businesses. In recorded sessions, ChatGPT and Gemini named Uncle Liu and Coconut Room when asked about Chinese restaurants on Seven Mile Beach, Lucky Rabbit when asked about Japanese food near Prospect, and 19-81 Brewing Co. when asked about craft breweries in the Cayman Islands. These were real sessions captured on video, not guaranteed positions — AI assistants are non-deterministic and their answers vary by phrasing, location and date. Full case studies and the recordings are on the Our Work page: https://toctoc.ky/our-work/
