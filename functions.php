@@ -330,6 +330,27 @@ function toctoc_international_sites() {
 			'img'     => $img . 'reinos-remodelations-website.webp',
 		),
 		array(
+			'name'    => 'Rincon Fence Supply',
+			'country' => 'South Florida',
+			'desc'    => 'Fences, gates, railings and staircases — a supplier catalogue built to be found by the people already pricing a job.',
+			'url'     => 'https://rinconfencesupply.com',
+			'img'     => 'https://toctoc.ky/wp-content/uploads/2026/08/rincon-fence-supply-website.webp',
+		),
+		array(
+			'name'    => 'TR Services Group',
+			'country' => 'Central Florida',
+			'desc'    => 'Home services across Central Florida — one site covering a wide trade list without turning into a directory.',
+			'url'     => 'https://tr-servicesgroup.com',
+			'img'     => 'https://toctoc.ky/wp-content/uploads/2026/08/tr-services-group-website.webp',
+		),
+		array(
+			'name'    => 'Zafra USA',
+			'country' => 'Orlando, Florida',
+			'desc'    => 'Custom kitchen cabinets and storage design — a made-to-order product shown as pages rather than a gallery.',
+			'url'     => 'https://zafrausa.com',
+			'img'     => 'https://toctoc.ky/wp-content/uploads/2026/08/zafra-usa-website.webp',
+		),
+		array(
 			// The site itself declares no location at all — no PostalAddress in
 			// its schema, no city in its copy. "United States" is what the
 			// client confirmed, not something inferred from the page.
