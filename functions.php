@@ -215,6 +215,7 @@ function toctoc_showcase_sites() {
         // Newest first. Jaly and Raw Balance added 27 Aug 2026; their captures
         // are hero screenshots taken headless at 1900x1030 and served as WebP
         // (1 MB of PNG became 52 KB — this grid renders sixteen of these).
+        array( 'sector' => 'food', 'name' => 'Yallah', 'desc' => 'Modern Mediterranean in Camana Bay — the whole build-your-own menu published as real text an assistant can read.', 'url' => 'https://yallah.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/yallah-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'name' => 'Jaly Dance Fit', 'desc' => 'Dance fitness coaching — bilingual site wired into her live-class and online course platform.', 'url' => 'https://jalydancefit.com', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/jaly-dance-fit-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'name' => 'Raw Balance', 'desc' => 'Private yoga and wellness in Grand Cayman — every call to action opens WhatsApp with the message already written.', 'url' => 'https://rawbalance.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/raw-balance-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'name' => 'PR Optics', 'desc' => 'B2B digital lens lab in Puerto Rico — native PHP SEO/Schema engine and a premium Tailwind UI.', 'url' => 'https://pr-optics.com', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092632.webp', 'w' => 1898, 'h' => 1027 ),
