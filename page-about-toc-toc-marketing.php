@@ -151,7 +151,7 @@ get_header(); ?>
                      it went in wrong and was live for a day. -->
                 <article id="adriana-brito" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/andreina-brito-toctoc.webp" alt="Adriana Brito, Video Editor and Social Media at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/adriana-brito-toctoc.webp" alt="Adriana Brito, Video Editor and Social Media at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Adriana Brito</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Video Editor &amp; Social Media</p>
