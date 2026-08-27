@@ -143,7 +143,18 @@ $dm_faqs = array(
                          services for Grand Cayman — which has real local demand and no
                          page competing for it. */ ?>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    Marketing Services &amp; Branding for <em class="italic text-accent font-display">Grand Cayman</em>
+                    <?php /*
+                        "Branding" dropped 27 Aug 2026, finishing what the title
+                        change on 20 Aug started — the title said Consulting
+                        while this H1 still said Branding, which is the site
+                        arguing with itself on the one signal Google weighs most.
+
+                        Branding is not ours to win: on mobile in Cayman the HOME
+                        ranks 4.5 for "branding and design agency cayman" and
+                        this page 24.5. Chasing it here splits the signal and
+                        loses to our own front page.
+                    */ ?>
+                    Marketing Services &amp; Consulting for <em class="italic text-accent font-display">Grand Cayman</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
                     Strategy, branding and campaigns from one local team &mdash; and every piece built so ChatGPT, Gemini and Google read your business as the Cayman authority.
