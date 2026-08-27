@@ -157,9 +157,13 @@ get_header(); ?>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Video Editor &amp; Social Media</p>
                         </div>
                     </div>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-8">
+                    <p class="text-sm leading-relaxed text-slate-500 mb-5">
                         Adriana turns raw footage into the reels and stories that carry our clients&rsquo; work &mdash; and runs the day-to-day of the accounts those pieces live on. Editing, captions, pacing, publishing: the unglamorous craft that decides whether a good idea gets watched or scrolled past.
                     </p>
+                    <a href="https://www.linkedin.com/in/adriana-brito-b2004034b" target="_blank" rel="noopener" class="mb-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+                        LinkedIn
+                    </a>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Video Editing</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Reels &amp; Shorts</span>
