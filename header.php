@@ -518,6 +518,7 @@
               "jobTitle": "Video Editor & Social Media",
               "description": "Video editor and social media specialist. Produces the reels, shorts and stories that carry client work, and runs the day-to-day publishing of the accounts they live on.",
               "knowsAbout": ["Video Editing", "Short-Form Video", "Instagram Reels", "Social Media Management", "Content Production", "Subtitling"],
+              "sameAs": ["https://www.linkedin.com/in/adriana-brito-b2004034b"],
               "worksFor": { "@id": "https://toctoc.ky/#organization" }
             }
           ],
