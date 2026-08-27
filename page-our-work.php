@@ -364,6 +364,37 @@ $ow_cases = array(
             <div class="mt-20">
                 <?php toctoc_render_showcase_grid( true ); ?>
             </div>
+
+            <?php
+            /*
+                Work built outside Cayman — deliberately its own block, below the
+                island portfolio and visibly separated, with the country on every
+                card.
+
+                It is not mixed into the grid above because this site's central
+                claim is that we are a local team here rather than an overseas
+                agency with a Cayman number, and four Florida trades businesses
+                shuffled in among the Cayman builds would quietly weaken it.
+
+                It is shown because it proves range the Cayman grid cannot: that
+                we build for construction and trades, not only hospitality. Grand
+                Cayman has a large construction sector, and a contractor here
+                cares more that we have done insulation and remodelling sites
+                than which country they were in.
+            */
+            ?>
+            <div class="mt-24 pt-16 border-t border-white/10">
+                <div class="max-w-3xl">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Beyond the island</span>
+                    <h3 class="mt-5 text-3xl md:text-5xl font-display leading-[1.02]">We also build for trades and construction <em class="italic text-accent font-display">abroad</em></h3>
+                    <p class="mt-6 text-lg text-white/50 leading-relaxed">
+                        Our home is Grand Cayman, and most of what we build is here. These four are not &mdash; and we are saying so plainly. They are on this page because Cayman has a large construction sector, and if you run a trade here, what matters is that we have already built for insulation, resin flooring, remodelling and home repair.
+                    </p>
+                </div>
+                <div class="mt-14">
+                    <?php toctoc_render_international_grid(); ?>
+                </div>
+            </div>
         </div>
     </section>
 
