@@ -134,7 +134,8 @@ if ( $ttseo_ts ) {
 
                     <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input id="ttseo-name" type="text" placeholder="Your name (optional)" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
-                        <input id="ttseo-email" type="email" required placeholder="Your email" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
+                        <?php // 'required' dropped 27 Aug 2026 while the tool is being tested — see the note in toctoc_seo_check_handler(). ?>
+                        <input id="ttseo-email" type="email" placeholder="Your email (optional — we'll send the full report)" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
                     </div>
 
                     <label class="mt-4 flex items-center gap-2 text-sm text-slate-600 cursor-pointer select-none">
