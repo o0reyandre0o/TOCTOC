@@ -70,9 +70,25 @@
             'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
             'desc' => 'Cayman marketing agency building websites ChatGPT and Gemini can read, not just Google. Web design, SEO and AI visibility from George Town. 4.8★, 24 reviews.'
         ],
+        /*
+         * Retitled 27 Aug 2026 to lead with the words people actually type.
+         *
+         * In 90 days this page drew FIVE queries, all junk — "seo marketing
+         * near me" at position 90, plus scraper artifacts. It ranks for nothing
+         * it sells. Meanwhile the two SEO queries with real mobile demand from
+         * Cayman, "seo services cayman islands" (pos 14.3) and "local seo grand
+         * cayman" (12.1), are answered by the HOME, which is not about SEO.
+         *
+         * The old title opened with "SEO & AI Search Optimization", a phrase
+         * nobody searches: AI search optimisation is what we call the work, not
+         * what a Cayman business types when it wants to be found. So the head
+         * term goes first and the differentiator second — the thing that earns
+         * the click is still there, just no longer occupying the position that
+         * decides relevance.
+         */
         'ai-search-optimization-cayman-islands' => [
-            'title' => 'SEO & AI Search Optimization Cayman | ChatGPT, Gemini',
-            'desc' => 'Rank on Google and get recommended by ChatGPT & Gemini. SEO, AEO & GEO for Cayman Islands businesses, rated 4.8★ (24 reviews). Book a free strategy call.'
+            'title' => 'SEO Services Cayman Islands | Local SEO & AI Search',
+            'desc' => 'Local SEO for Cayman Islands businesses — Google Business Profile, citations and the technical work that gets you found. Plus AI visibility in ChatGPT and Gemini. 4.8★, 24 reviews.'
         ],
         'seo-agency-services-cayman-islands' => [
             'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
