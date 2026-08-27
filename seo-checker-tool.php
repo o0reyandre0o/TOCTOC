@@ -619,8 +619,22 @@ function toctoc_seo_check_handler() {
 	$email   = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
 	$name    = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
 
-	if ( ! is_email( $email ) ) {
-		wp_send_json_error( array( 'message' => 'Please enter a valid email address.' ) );
+	/*
+	 * Email optional, 27 Aug 2026 — TEMPORARY, so the tool can be run
+	 * repeatedly in testing without inventing an address every time.
+	 *
+	 * A typo is still rejected: what changed is that BLANK is allowed, not that
+	 * anything goes. Everything downstream already guards on is_email(), so a
+	 * run without one produces no lead, no emailed report and no scan history.
+	 *
+	 * To restore the gate, put back the plain "! is_email( $email )" check.
+	 * Worth doing once testing is over: the email is how this tool pays for
+	 * itself. Note the whole-site crawl (toctoc_seo_discover_handler, further
+	 * down) still requires one, because it emails its report asynchronously and
+	 * has nowhere to send it otherwise.
+	 */
+	if ( '' !== $email && ! is_email( $email ) ) {
+		wp_send_json_error( array( 'message' => 'That email address does not look valid — or leave it blank to skip.' ) );
 	}
 
 	$url = toctoc_seo_safe_url( $raw_url );
@@ -676,8 +690,12 @@ function toctoc_seo_check_handler() {
 		}
 	}
 
-	// Email the full report to the team + the lead, and log the lead.
-	toctoc_seo_send_report( $name, $email, $url, $result );
+	// Email the full report to the team + the lead, and log the lead. Skipped
+	// entirely without an address: a run with no email is not a lead, and
+	// logging blanks would just pad the leads list with rows nobody can act on.
+	if ( is_email( $email ) ) {
+		toctoc_seo_send_report( $name, $email, $url, $result );
+	}
 
 	// Scan history: store this scan, return the previous ones so the front end
 	// can show progress ("SEO +9 since your last scan"), and (re)arm the 30-day
