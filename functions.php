@@ -215,6 +215,9 @@ function toctoc_showcase_sites() {
         // Newest first. Jaly and Raw Balance added 27 Aug 2026; their captures
         // are hero screenshots taken headless at 1900x1030 and served as WebP
         // (1 MB of PNG became 52 KB — this grid renders sixteen of these).
+        array( 'name' => 'Prospect Self Storage', 'desc' => 'Self storage in Prospect — unit sizes, pricing and availability published as readable content, not a phone number.', 'url' => 'https://prospectstorage.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/prospect-self-storage-website.webp', 'w' => 1900, 'h' => 1030 ),
+        array( 'sector' => 'food', 'name' => 'Prime Kitchen', 'desc' => 'Private chef service in Grand Cayman — menus and packages structured so an assistant can quote them.', 'url' => 'https://primekitchen.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/prime-kitchen-website.webp', 'w' => 1900, 'h' => 1030 ),
+        array( 'name' => 'Easylot', 'desc' => 'Owner-financed land across the Cayman Islands — every lot its own page, with the terms in plain text.', 'url' => 'https://easylot.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/easylot-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'sector' => 'food', 'name' => 'Yallah', 'desc' => 'Modern Mediterranean in Camana Bay — the whole build-your-own menu published as real text an assistant can read.', 'url' => 'https://yallah.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/yallah-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'name' => 'Jaly Dance Fit', 'desc' => 'Dance fitness coaching — bilingual site wired into her live-class and online course platform.', 'url' => 'https://jalydancefit.com', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/jaly-dance-fit-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'name' => 'Raw Balance', 'desc' => 'Private yoga and wellness in Grand Cayman — every call to action opens WhatsApp with the message already written.', 'url' => 'https://rawbalance.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/raw-balance-website.webp', 'w' => 1900, 'h' => 1030 ),
@@ -282,6 +285,85 @@ function toctoc_render_showcase_grid( $dark = false, $sector = '' ) {
         <?php endforeach; ?>
     </div>
     <?php
+}
+
+/**
+ * Work built outside the Cayman Islands.
+ *
+ * Kept in its own list, and rendered in its own section, on purpose. The whole
+ * site argues that we are a local team on Grand Cayman rather than an overseas
+ * agency with a Cayman phone number — mixing four Florida trades businesses
+ * into the main grid would quietly undercut the one claim the brand rests on.
+ *
+ * Shown anyway because it is real work and it proves something the Cayman grid
+ * cannot: that we build for construction and trades, not only hospitality.
+ * Grand Cayman has a large construction sector, and a contractor here cares
+ * more that we have done insulation and remodelling sites than where they were.
+ *
+ * Hence the country on every card. The point is not to blur where the work was
+ * done; it is to show the range and be plain about the geography.
+ */
+function toctoc_international_sites() {
+	$img = 'https://toctoc.ky/wp-content/uploads/2026/08/';
+	return array(
+		array(
+			'name'    => 'Your Handyman Orlando',
+			'country' => 'Orlando, Florida',
+			'desc'    => 'Home repairs and remodelling — every service its own page, marked up so local search knows the twenty areas they cover.',
+			'url'     => 'https://yourhandymanorlando.com',
+			'img'     => $img . 'your-handyman-orlando-website.webp',
+		),
+		array(
+			'name'    => 'Volcan Resin Flooring',
+			'country' => 'United States',
+			'desc'    => 'Industrial and decorative resin floors — a finish catalogue built to be read, not downloaded as a brochure.',
+			'url'     => 'https://volcanresinflooring.com',
+			'img'     => $img . 'volcan-resins-website.webp',
+		),
+		array(
+			'name'    => 'Reino&rsquo;s Remodelations',
+			'country' => 'Florida',
+			'desc'    => 'Residential remodelling — a contractor site structured around the jobs people actually search for.',
+			'url'     => 'https://reinosremodelationsllc.com',
+			'img'     => $img . 'reinos-remodelations-website.webp',
+		),
+		array(
+			'name'    => 'Rovial Insulation',
+			'country' => 'Florida',
+			'desc'    => 'Spray foam and attic insulation — a service site for a trade most competitors still sell over the phone.',
+			'url'     => 'https://insulation.brisanaconstruction.com',
+			'img'     => $img . 'rovial-insulation-website.webp',
+		),
+	);
+}
+
+/**
+ * Render the international work. Dark treatment only, because it sits under the
+ * dark portfolio section on Our Work.
+ */
+function toctoc_render_international_grid() {
+	?>
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+		<?php foreach ( toctoc_international_sites() as $s ) : ?>
+		<div class="group flex flex-col gap-5">
+			<div class="aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-white/5 shadow-soft">
+				<img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $s['name'] ) . ' website by TocToc Marketing' ); ?>" width="1900" height="1030" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+			</div>
+			<div>
+				<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-accent">
+					<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+					<?php echo wp_kses_post( $s['country'] ); ?>
+				</span>
+				<h3 class="mt-2 text-2xl font-display text-white leading-tight"><?php echo wp_kses_post( $s['name'] ); ?></h3>
+				<p class="mt-2 text-sm text-white/40 leading-relaxed mb-5"><?php echo wp_kses_post( $s['desc'] ); ?></p>
+				<a href="<?php echo esc_url( $s['url'] ); ?>" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-accent hover:gap-4 transition-all decoration-none">
+					Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+			</div>
+		</div>
+		<?php endforeach; ?>
+	</div>
+	<?php
 }
 
 /**
