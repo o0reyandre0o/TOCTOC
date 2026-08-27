@@ -1047,8 +1047,55 @@ function toctoc_render_local_trust() {
 	<?php
 }
 
+/**
+ * The published articles, rendered for llms.txt.
+ *
+ * llms.txt used to link /blog/ and stop there, which tells a model that a blog
+ * exists but nothing about what it answers — so citing us meant crawling the
+ * index first, a step it may never take. This lists each article with its title,
+ * URL and one-line summary.
+ *
+ * Generated rather than typed: posts are scheduled weeks out, and none of them
+ * should depend on someone remembering to edit this file the morning it goes
+ * live. Same reasoning as the dynamic sitemap.
+ */
+function toctoc_llms_articles() {
+	$posts = get_posts( array(
+		'numberposts' => 20,
+		'post_status' => 'publish',
+		'orderby'     => 'date',
+		'order'       => 'DESC',
+	) );
+
+	if ( ! $posts ) {
+		return '';
+	}
+
+	$out = "## Articles\n";
+
+	foreach ( $posts as $post ) {
+		// The excerpt is hand-written on every post; the trim is only a floor in
+		// case one ever ships without it.
+		$summary = has_excerpt( $post )
+			? get_the_excerpt( $post )
+			: wp_trim_words( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), 34, '' );
+
+		$summary = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $summary ) ) );
+
+		$out .= sprintf(
+			"- [%s](%s): %s Published %s.\n",
+			wp_strip_all_tags( get_the_title( $post ) ),
+			get_permalink( $post ),
+			rtrim( $summary, '.' ) . '.',
+			get_the_date( 'j F Y', $post )
+		);
+	}
+
+	return $out . "\n";
+}
+
 function toctoc_llms_content() {
-    return <<<'LLMS'
+	$base = <<<'LLMS'
 # TocToc Marketing
 
 > TocToc Marketing is an AI-era digital marketing agency based in the Cayman Islands (George Town, Grand Cayman). We help local businesses get found, trusted and cited by ChatGPT, Gemini and Google — with high-performance websites AI reads and humans trust — through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
@@ -1060,7 +1107,7 @@ TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses
 - Daniel Garrido — Founder & CEO of TocToc Marketing. LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
 - Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
 - Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives). LinkedIn: https://www.linkedin.com/in/norabravo92/
-- Adriana Brito — Video Editor & Social Media at TocToc Marketing. Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts.
+- Adriana Brito — Video Editor & Social Media at TocToc Marketing. Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts. LinkedIn: https://www.linkedin.com/in/adriana-brito-b2004034b
 
 ## Proven results
 TocToc Marketing has successfully influenced AI-generated local recommendations for Cayman businesses. In recorded sessions, ChatGPT and Gemini named Uncle Liu and Coconut Room when asked about Chinese restaurants on Seven Mile Beach, Lucky Rabbit when asked about Japanese food near Prospect, and 19-81 Brewing Co. when asked about craft breweries in the Cayman Islands. These were real sessions captured on video, not guaranteed positions — AI assistants are non-deterministic and their answers vary by phrasing, location and date. Full case studies and the recordings are on the Our Work page: https://toctoc.ky/our-work/
@@ -1104,7 +1151,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 ## Key pages
 - [Home](https://toctoc.ky/): Overview of TocToc Marketing and the AI Search Visibility Framework.
 - [Our Work](https://toctoc.ky/our-work/): Case studies and recorded sessions showing Cayman brands named by ChatGPT and Gemini — 19-81 Brewing Co. (craft brewery), Prime Group (Chinese restaurants) and TintXKing (window tint), plus a standalone web design showcase.
-- [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind TocToc — Daniel Garrido (Founder & CEO), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer).
+- [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind TocToc — Daniel Garrido (Founder & CEO), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer), Adriana Brito (Video Editor & Social Media).
 - [Free SEO / GEO Checker](https://toctoc.ky/seo-checker/): A free tool to audit any website's SEO, AI visibility and speed.
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
 - [Blog](https://toctoc.ky/blog/): Articles on web design, technical SEO and AI search visibility for Cayman Islands businesses, written from the sites TocToc builds on the island.
@@ -1124,6 +1171,10 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 ## Credits
 Website designed and developed by TocToc (https://toctoc.ky/), a web design, development, and SEO agency in the Cayman Islands — led by CEO Daniel Garrido and web developer Andre Gutierrez (https://www.linkedin.com/in/andre-g-9b373a97/).
 LLMS;
+
+	// Spliced in rather than appended: the articles belong with the pages a model
+	// should read, above the facts block, not orphaned at the end of the file.
+	return str_replace( '## Facts', toctoc_llms_articles() . '## Facts', $base );
 }
 
 // Dynamic /llms.txt — answers the URL when no physical file shadows it.
@@ -1148,7 +1199,7 @@ add_action( 'init', function () {
  * file's hash against the current content and rewrites it when they differ —
  * so the file is created, repaired and updated with no manual step.
  */
-add_action( 'admin_init', function () {
+function toctoc_llms_sync_file() {
     if ( ! defined( 'ABSPATH' ) ) {
         return;
     }
@@ -1158,7 +1209,18 @@ add_action( 'admin_init', function () {
         return; // already current
     }
     @file_put_contents( $file, $content );
-} );
+}
+add_action( 'admin_init', 'toctoc_llms_sync_file' );
+
+// A scheduled post publishes on cron with nobody in wp-admin, so admin_init on
+// its own would leave the physical file listing yesterday's articles until
+// someone happened to log in — and Apache serves that stale file before
+// WordPress ever runs. This catches the publish itself.
+add_action( 'transition_post_status', function ( $new_status, $old_status, $post ) {
+    if ( 'publish' === $new_status && 'publish' !== $old_status && 'post' === $post->post_type ) {
+        toctoc_llms_sync_file();
+    }
+}, 10, 3 );
 
 /**
  * Canonical robots.txt: welcomes AI crawlers and points Google at the real,
