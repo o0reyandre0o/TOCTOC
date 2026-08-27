@@ -353,19 +353,20 @@
 
     <!-- Image Source for legacy crawlers -->
     <?php /*
-        image_src now points at the favicon rather than the wordmark SVG.
+        image_src: the square 1000x1000 WebP mark, not the wide wordmark SVG it
+        pointed at until 27 Aug 2026.
 
-        It is a legacy hint some crawlers and older link-preview scrapers still
-        read when they cannot find og:image. The wordmark is a wide horizontal
-        SVG — the wrong shape for a thumbnail, and SVG is not rendered as a
-        preview image by most of the services that read this tag at all. The
-        square favicon is what those consumers can actually use.
+        This is a legacy hint that some crawlers and older link-preview scrapers
+        still read when they find no og:image. Two things made the old value
+        useless to them: the wordmark is a wide horizontal lockup, the wrong
+        shape for a thumbnail, and it is an SVG — which most consumers of this
+        tag do not render at all. A square raster is what they can actually use.
 
-        Nothing that matters is affected: og:image and twitter:image are set
-        separately further down, and they are what Facebook, LinkedIn, WhatsApp
-        and X actually read.
+        Nothing that matters is affected either way: og:image and twitter:image
+        are set separately below, and those are what Facebook, LinkedIn,
+        WhatsApp and X actually read.
     */ ?>
-    <link rel="image_src" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
+    <link rel="image_src" href="https://toctoc.ky/wp-content/uploads/2026/07/logo-toctoc-new-05.webp">
     
     <!-- Open Graph / Facebook -->
     <?php
