@@ -135,8 +135,21 @@ if ( $ttseo_ts ) {
                     <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input id="ttseo-name" type="text" placeholder="Your name (optional)" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
                         <?php // 'required' dropped 27 Aug 2026 while the tool is being tested — see the note in toctoc_seo_check_handler(). ?>
-                        <input id="ttseo-email" type="email" placeholder="Your email (optional — we'll send the full report)" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
+                        <input id="ttseo-email" type="email" placeholder="Your email (optional)" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-slate-900 outline-none focus:border-sky-deep focus:bg-white transition-colors" />
                     </div>
+                    <?php
+                    /*
+                     * Said out loud, under the field, rather than crammed into a
+                     * placeholder — the long version was cut off mid-sentence at
+                     * "we'll send", which reads like a bug and tells nobody what
+                     * they lose by skipping it. Scores appear on screen either
+                     * way; the emailed report is the part that walks away.
+                     */
+                    ?>
+                    <p class="mt-3 flex items-start gap-2 text-sm text-slate-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 text-sky-deep" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+                        <span>Your scores appear on screen either way. <strong class="text-slate-900">Add your email and we also send the full written report</strong> &mdash; every issue, why it matters and how to fix it. Without one, nothing is sent.</span>
+                    </p>
 
                     <label class="mt-4 flex items-center gap-2 text-sm text-slate-600 cursor-pointer select-none">
                         <input id="ttseo-crawl-toggle" type="checkbox" class="w-4 h-4 rounded border-slate-300 accent-sky-deep">
