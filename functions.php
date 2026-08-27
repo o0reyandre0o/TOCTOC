@@ -27,6 +27,28 @@ if ( is_readable( $toctoc_hub ) ) {
 }
 unset( $toctoc_hub );
 
+/*
+ * Kill WordPress core's automatic canonical tag.
+ *
+ * header.php emits its own, with deliberate rules for the front page, for
+ * singular URLs (get_permalink(), immune to junk query strings and pagination)
+ * and for everything else. Core's rel_canonical() was firing as well, so every
+ * page but the front one shipped TWO <link rel="canonical"> tags — found
+ * 27 Aug 2026.
+ *
+ * They happened to agree, which is why nothing looked broken. It was still
+ * costing us the signal: Google's guidance is that when a page declares more
+ * than one canonical, it ignores all of them. On a site whose whole problem is
+ * a redirect Google refuses to consolidate, throwing away the canonical on
+ * every page is not a detail.
+ *
+ * The theme's tag is deliberately absent on noindexed URLs, which is correct —
+ * a page told not to be indexed has nothing to consolidate.
+ */
+add_action( 'after_setup_theme', function () {
+	remove_action( 'wp_head', 'rel_canonical' );
+} );
+
 function toctoc_scripts() {
     wp_enqueue_style( 'toctoc-style', get_stylesheet_uri(), array(), '3.0' );
     
