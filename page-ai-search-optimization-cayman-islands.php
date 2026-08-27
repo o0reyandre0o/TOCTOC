@@ -145,6 +145,17 @@ $ai_faqs = array(
 
 $ai_sites = toctoc_showcase_sites();
 
+/*
+ * Careful with the 'imgs' indices in $ai_phase1 above: they are POSITIONS in
+ * toctoc_showcase_sites(), not names. Adding a client to the top of that array
+ * silently changes which three sites every collage shows — three were added on
+ * 27 Aug 2026 and every index shifted by three.
+ *
+ * It did no damage because the collage is only a fallback: it renders when a
+ * phase has no 'img' of its own, and all four currently do. If that ever stops
+ * being true, pick the sites by name here instead of by position.
+ */
+
 // A "cool" overlapping collage of three real client websites.
 $ai_collage = function ( $sites, $idx ) {
     $n = count( $sites );
