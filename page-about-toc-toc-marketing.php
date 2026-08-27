@@ -101,7 +101,8 @@ get_header(); ?>
                 <!-- Andre Gutierrez -->
                 <article id="andre-gutierrez" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/andre-gray.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
+                        <?php // Retrato nuevo, 27 ago 2026. Se sirve a 320 px para un avatar de 96: el original venia asi y ampliarlo solo inventa pixeles. ?>
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/andre-gutierrez-toctoc.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="320" height="320" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Andre Gutierrez</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Web Developer</p>
@@ -125,7 +126,7 @@ get_header(); ?>
                 <!-- Nora Bravo -->
                 <article id="nora-bravo" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/nora-gray.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="64" height="64" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/nora-bravo-toctoc.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Nora Bravo</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Graphic Designer</p>
@@ -146,17 +147,10 @@ get_header(); ?>
                     </div>
                 </article>
 
-                <!--
-                    Andreina Brito — added 26 Aug 2026.
-
-                    No photograph yet. Rather than leave a broken <img> or a grey
-                    placeholder that reads as an oversight, the avatar is her
-                    initials on the brand lime: it looks like a decision until
-                    the real portrait arrives, and the swap is one line.
-                -->
+                <!-- Andreina Brito — added 26 Aug 2026, portrait added the next day. -->
                 <article id="andreina-brito" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
                     <div class="flex items-center gap-5 mb-8">
-                        <span aria-hidden="true" class="w-24 h-24 rounded-full bg-accent text-slate-950 shrink-0 flex items-center justify-center font-display text-3xl leading-none">AB</span>
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/andreina-brito-toctoc.webp" alt="Andreina Brito, Video Editor and Social Media at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
                             <h3 class="text-3xl font-display text-slate-900">Andreina Brito</h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Video Editor &amp; Social Media</p>
