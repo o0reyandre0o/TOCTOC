@@ -1138,7 +1138,16 @@ window.TTSEO = {
         var competitor = document.getElementById('ttseo-competitor').value.trim();
         var email = document.getElementById('ttseo-email').value.trim();
         var name = document.getElementById('ttseo-name').value.trim();
-        if (!url || !email) { showError('Please enter a URL and your email.'); return; }
+        // Email optional while testing — the URL is the only thing the audit
+        // actually needs. See the note in toctoc_seo_check_handler().
+        if (!url) { showError('Please enter a website URL.'); return; }
+        // The whole-site crawl is the exception: it runs in the background and
+        // delivers by email, so without an address it has nowhere to report to.
+        var wantsCrawl = document.getElementById('ttseo-crawl-toggle');
+        if (wantsCrawl && wantsCrawl.checked && !email) {
+            showError('A whole-site crawl is emailed when it finishes, so it needs an email address.');
+            return;
+        }
         var tsToken = (TTSEO.ts && window.turnstile) ? (window.turnstile.getResponse() || '') : '';
         if (TTSEO.ts && !tsToken) { showError('Please complete the anti-spam check below.'); return; }
 
