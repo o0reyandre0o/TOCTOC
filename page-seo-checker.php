@@ -914,6 +914,9 @@ window.TTSEO = {
 
         var copy = document.getElementById('llms-copy');
         copy.onclick = function () {
+            // Copy and download are the only proof that the draft was worth
+            // generating. Without them we would be guessing whether anyone uses it.
+            ttTrack('llms_draft_copy', { checker_url: d.url });
             var done = function () {
                 copy.textContent = 'Copied';
                 setTimeout(function () { copy.textContent = 'Copy'; }, 1800);
@@ -939,6 +942,7 @@ window.TTSEO = {
         };
 
         document.getElementById('llms-dl').onclick = function () {
+            ttTrack('llms_draft_download', { checker_url: d.url });
             var blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
             var a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
@@ -948,6 +952,25 @@ window.TTSEO = {
             document.body.removeChild(a);
             setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
         };
+    }
+
+    /**
+     * Push an event to GTM's dataLayer.
+     *
+     * GA4's enhanced measurement fires form_start on its own the moment someone
+     * touches a field, but it never sees the submit: this form does not reload
+     * the page, it posts over AJAX. That left 12 form_starts in the week of
+     * 24 Aug 2026 with nothing recording whether a single one finished — blind
+     * at the one step of the funnel that matters.
+     *
+     * Guarded so a blocked or not-yet-loaded GTM can never break the tool: the
+     * audit must keep working for someone running an ad blocker.
+     */
+    function ttTrack(name, params) {
+        try {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(Object.assign({ event: name }, params || {}));
+        } catch (e) {}
     }
 
     function showError(msg) {
@@ -1144,9 +1167,26 @@ window.TTSEO = {
         .then(function (json) {
             btn.disabled = false; btn.style.opacity = '1'; lbl.textContent = 'Analyze my website';
             if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
-            if (!json || !json.success) { showError(json && json.data ? json.data.message : 'Could not analyze that URL.'); return; }
+            if (!json || !json.success) {
+                // Tracked too: a run that dies here is a lead lost at the last
+                // step, and the message says why — bad URL, rate limit, timeout.
+                ttTrack('checker_failed', {
+                    checker_error: (json && json.data && json.data.message) ? String(json.data.message).slice(0, 100) : 'unknown'
+                });
+                showError(json && json.data ? json.data.message : 'Could not analyze that URL.');
+                return;
+            }
             var d = json.data;
             window.__ttseoReport = d; // held for the JSON / Markdown export buttons
+
+            // The conversion. Everything above this line is intent; this is the
+            // moment a stranger became a lead with an email attached.
+            ttTrack('checker_complete', {
+                checker_url: d.url,
+                checker_seo: d.scores.seo,
+                checker_geo: d.scores.geo,
+                checker_has_llms_draft: d.llms ? 'yes' : 'no'
+            });
 
             document.getElementById('ttseo-results').classList.remove('hidden');
             document.getElementById('ttseo-target').textContent = d.url;
