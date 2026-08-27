@@ -215,6 +215,8 @@ function toctoc_showcase_sites() {
         // Newest first. Jaly and Raw Balance added 27 Aug 2026; their captures
         // are hero screenshots taken headless at 1900x1030 and served as WebP
         // (1 MB of PNG became 52 KB — this grid renders sixteen of these).
+        array( 'sector' => 'food', 'name' => 'The Yard', 'desc' => 'Cayman&rsquo;s first food truck court, in Prospect — a leasing pitch to vendors and a destination page for visitors, in one site.', 'url' => 'https://theyard.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/the-yard-website.webp', 'w' => 1900, 'h' => 1030 ),
+        array( 'name' => 'Prospect Center', 'desc' => 'A retail and commercial centre in Prospect — tenants, units and location published as content search engines can read.', 'url' => 'https://prospectcenter.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/prospect-center-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'name' => 'Prospect Self Storage', 'desc' => 'Self storage in Prospect — unit sizes, pricing and availability published as readable content, not a phone number.', 'url' => 'https://prospectstorage.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/prospect-self-storage-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'sector' => 'food', 'name' => 'Prime Kitchen', 'desc' => 'Private chef service in Grand Cayman — menus and packages structured so an assistant can quote them.', 'url' => 'https://primekitchen.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/prime-kitchen-website.webp', 'w' => 1900, 'h' => 1030 ),
         array( 'name' => 'Easylot', 'desc' => 'Owner-financed land across the Cayman Islands — every lot its own page, with the terms in plain text.', 'url' => 'https://easylot.ky', 'img' => 'https://toctoc.ky/wp-content/uploads/2026/08/easylot-website.webp', 'w' => 1900, 'h' => 1030 ),
@@ -328,6 +330,16 @@ function toctoc_international_sites() {
 			'img'     => $img . 'reinos-remodelations-website.webp',
 		),
 		array(
+			// The site itself declares no location at all — no PostalAddress in
+			// its schema, no city in its copy. "United States" is what the
+			// client confirmed, not something inferred from the page.
+			'name'    => 'Guaro Farandi',
+			'country' => 'United States',
+			'desc'    => 'Outdoor travel creator and brand partnerships — a media kit that works as a website instead of a PDF nobody opens.',
+			'url'     => 'https://guarofarandi.com',
+			'img'     => 'https://toctoc.ky/wp-content/uploads/2026/08/guaro-farandi-website.webp',
+		),
+		array(
 			'name'    => 'Rovial Insulation',
 			'country' => 'Florida',
 			'desc'    => 'Spray foam and attic insulation — a service site for a trade most competitors still sell over the phone.',
@@ -343,7 +355,10 @@ function toctoc_international_sites() {
  */
 function toctoc_render_international_grid() {
 	?>
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+	<?php // Three across, not four: with five entries a 4-column row leaves one
+	      // stranded on its own line. 3 + 2 reads as deliberate, and the cards
+	      // come out larger. Revisit if this list grows past six. ?>
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 		<?php foreach ( toctoc_international_sites() as $s ) : ?>
 		<div class="group flex flex-col gap-5">
 			<div class="aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-white/5 shadow-soft">
