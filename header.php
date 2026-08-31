@@ -278,7 +278,16 @@
         // No hand-written entry: derive the title from the page itself. Falling
         // back to $default_title here is what made every unmapped URL look like
         // a copy of the front page in the SERPs.
-        $title = wp_strip_all_tags(get_the_title()) . ' | ' . $site_name;
+        //
+        // A post headline is written for the reader and routinely runs past the
+        // ~60 characters Google actually shows — the restaurant article's title
+        // was 101 with the brand suffix, so it was being cut mid-sentence in the
+        // results. _toctoc_seo_title lets a post carry a shorter title for the
+        // <title> tag alone, leaving the H1 on the page untouched.
+        $seo_title = trim( (string) get_post_meta( get_the_ID(), '_toctoc_seo_title', true ) );
+        $title = '' !== $seo_title
+            ? $seo_title
+            : wp_strip_all_tags(get_the_title()) . ' | ' . $site_name;
         $desc  = has_excerpt() ? wp_strip_all_tags(get_the_excerpt()) : $default_desc;
     } else {
         $title = $default_title;
