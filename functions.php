@@ -157,6 +157,57 @@ function toctoc_blog_url() {
 }
 
 /**
+ * Pulls the article's own Q&A section out of its content, for FAQPage schema.
+ *
+ * Every article here ends with a "Questions we get asked" H2 followed by H3
+ * questions — real FAQ content that carried no markup, so an answer engine had
+ * to infer the structure instead of being handed it.
+ *
+ * Derived from the rendered content rather than typed into a field, for two
+ * reasons. Google requires the marked-up answer to match the visible text
+ * exactly, and a hand-copied version stops matching the first time somebody
+ * edits a paragraph. And there are fourteen articles: a manual field would be
+ * fourteen chances to forget.
+ *
+ * Worth being straight about the payoff: since 2023 Google only shows FAQ rich
+ * results for government and health sites, so this will not put an accordion in
+ * the search result. The value is that ChatGPT, Perplexity and Google's AI get
+ * the question-answer pairs handed to them instead of parsed out of prose —
+ * which is the whole point of this site.
+ *
+ * @param string $html Rendered post content.
+ * @return array List of array( 'q' => string, 'a' => string ).
+ */
+function toctoc_extract_faq( $html ) {
+	// The heading text is matched loosely because it is written by hand and has
+	// varied ("Questions we get asked", "Questions people ask").
+	if ( ! preg_match( '#<h2\b[^>]*>(?:(?!</h2>).)*question(?:(?!</h2>).)*</h2>#is', $html, $m, PREG_OFFSET_CAPTURE ) ) {
+		return array();
+	}
+
+	$start   = $m[0][1] + strlen( $m[0][0] );
+	$rest    = substr( $html, $start );
+	// The FAQ block runs until the next H2, which is the CTA section.
+	$next_h2 = preg_match( '#<h2\b#i', $rest, $mm, PREG_OFFSET_CAPTURE ) ? $mm[0][1] : strlen( $rest );
+	$block   = substr( $rest, 0, $next_h2 );
+
+	if ( ! preg_match_all( '#<h3\b[^>]*>(.*?)</h3>(.*?)(?=<h3\b|$)#is', $block, $pairs, PREG_SET_ORDER ) ) {
+		return array();
+	}
+
+	$faq = array();
+	foreach ( $pairs as $pair ) {
+		$q = trim( wp_strip_all_tags( $pair[1] ) );
+		$a = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $pair[2] ) ) );
+		// A question with no answer under it would produce an invalid entry.
+		if ( '' !== $q && '' !== $a ) {
+			$faq[] = array( 'q' => $q, 'a' => $a );
+		}
+	}
+	return $faq;
+}
+
+/**
  * Optional per-post SEO title, read by header.php for the <title> tag.
  *
  * Article headlines are written to be read, and the good ones run long — the

@@ -207,6 +207,43 @@ echo wp_json_encode( $tt_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | J
 </script>
 
 <?php
+/*
+ * The article's own Q&A section, marked up so answer engines get the pairs
+ * instead of having to parse them out of the prose. Read straight from the
+ * rendered content — see toctoc_extract_faq() — so the marked-up answer always
+ * matches what the reader sees, which is what Google requires.
+ *
+ * Emitted only when the article actually has a questions section; a FAQPage
+ * node with an empty mainEntity is worse than none.
+ */
+$tt_faq = toctoc_extract_faq( $tt_content );
+if ( ! empty( $tt_faq ) ) :
+	$tt_faq_ld = array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'@id'        => get_permalink() . '#faq',
+		'isPartOf'   => array( '@id' => get_permalink() . '#article' ),
+		'mainEntity' => array_map(
+			function ( $item ) {
+				return array(
+					'@type'          => 'Question',
+					'name'           => $item['q'],
+					'acceptedAnswer' => array(
+						'@type' => 'Answer',
+						'text'  => $item['a'],
+					),
+				);
+			},
+			$tt_faq
+		),
+	);
+	?>
+<script type="application/ld+json">
+<?php echo wp_json_encode( $tt_faq_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); ?>
+</script>
+<?php endif; ?>
+
+<?php
 endwhile;
 
 get_footer();
