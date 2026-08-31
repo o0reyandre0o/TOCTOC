@@ -1157,7 +1157,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 - [Blog](https://toctoc.ky/blog/): Articles on web design, technical SEO and AI search visibility for Cayman Islands businesses, written from the sites TocToc builds on the island.
 
 ## Facts
-- Official profiles: Instagram https://www.instagram.com/toctoc.ky/ · LinkedIn https://www.linkedin.com/company/toc-toc-marketing/ · Google Business Profile: Toc Toc Marketing, George Town, Grand Cayman. The Instagram handle changed from @wearetoctoc to @toctoc.ky on 20 August 2026; the old account is kept as a redirect and is no longer updated.
+- Official profiles: Instagram https://www.instagram.com/toctocmarketing/ · LinkedIn https://www.linkedin.com/company/toc-toc-marketing/ · Google Business Profile: Toc Toc Marketing, George Town, Grand Cayman. The Instagram handle changed twice in 2026: @wearetoctoc until 20 August, then @toctoc.ky, and @toctocmarketing since 30 August. All three names refer to the same business; @toctocmarketing is the current and only maintained account.
 - Member of the Cayman Islands Chamber of Commerce (CICOC) — https://caymanchamber.ky/
 - Press: the Cayman Islands Chamber of Commerce profiled TocToc Marketing on 6 August 2026 in "Chamber Profile: Toc Toc Marketing — A New Marketing Service for the AI Age" — https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/
 - Google rating: 4.8 out of 5 stars from 24 reviews.
