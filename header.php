@@ -88,11 +88,11 @@
          */
         'ai-search-optimization-cayman-islands' => [
             'title' => 'SEO Services Cayman Islands | Local SEO & AI Search',
-            'desc' => 'Local SEO for Cayman Islands businesses — Google Business Profile, citations and the technical work that gets you found. Plus AI visibility in ChatGPT and Gemini. 4.8★, 24 reviews.'
+            'desc' => 'Local SEO for Cayman Islands businesses — Google Business Profile, citations and the technical work that gets you found, plus AI visibility in ChatGPT.'
         ],
         'seo-agency-services-cayman-islands' => [
             'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
-            'desc' => 'Get your business found and recommended by ChatGPT, Gemini & Google. AI Search Optimization (SEO, AEO & GEO) for Cayman Islands brands. Book a free strategy call.'
+            'desc' => 'Get found and recommended by ChatGPT, Gemini and Google. AI Search Optimization (SEO, AEO, GEO) for Cayman Islands brands. Book a free call.'
         ],
         /*
          * Retargeted away from the head term on 2026-08-05.
@@ -119,7 +119,7 @@
          */
         'digital-marketing-agency-cayman-islands' => [
             'title' => 'Marketing Services & Consulting Grand Cayman | TocToc',
-            'desc' => 'Marketing consulting and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team in George Town. Rated 4.8★ by 24 clients.'
+            'desc' => 'Marketing consulting and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★.'
         ],
         // Retargeted 10 Aug 2026. Carrying "web design" here was a losing fight:
         // the home ranks 3.3 on "web design cayman islands" and this page 20.7,
@@ -130,7 +130,7 @@
         // actually convert here. Full evidence table in the page template.
         'website-design-agency-cayman-islands' => [
             'title' => 'Website Development Grand Cayman | Restaurant Sites | TocToc',
-            'desc' => 'Website development company in Grand Cayman. We hand-code fast, custom sites — and we have built more Cayman restaurant websites than anyone. Rated 4.8★ (24 reviews). Free quote.'
+            'desc' => 'Website design and development in Grand Cayman. Hand-coded, fast, custom sites — and more Cayman restaurant websites than anyone. Rated 4.8★. Free quote.'
         ],
         // Bing's query log for this page is dominated by "social media COMPANY in
         // cayman" and "social media AGENCIES cayman islands" — the noun people
@@ -139,7 +139,7 @@
         // sample), so the title now matches the search rather than our jargon.
         'social-media-marketing-services-cayman-islands' => [
             'title' => 'Social Media Company Cayman Islands | Agency | TocToc',
-            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini & Google read your brand as the local authority. Rated 4.8★ by 24 clients. Book a free call.'
+            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini and Google read your brand as the local authority. Rated 4.8★. Book a free call.'
         ],
         'advertising-pr-agency-cayman-islands' => [
             'title' => 'PR Agency Cayman | Digital PR & AI Authority | TocToc',
@@ -154,11 +154,11 @@
         // here. Nothing overlaps, so nothing cannibalises.
         'web-development-cayman-islands' => [
             'title' => 'E-commerce & Web App Development Cayman Islands | TocToc',
-            'desc' => 'Custom e-commerce and web application development in the Cayman Islands — online stores, booking platforms and internal tools built to be fast and secure. Free project quote.'
+            'desc' => 'Custom e-commerce and web app development in the Cayman Islands — online stores, booking platforms and internal tools, fast and secure. Free quote.'
         ],
         'venezuela' => [
             'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',
-            'desc' => 'See what is happening in Venezuela after the June 2026 earthquakes: photos, videos and footage from the ground, plus trusted ways to donate from the Cayman Islands.'
+            'desc' => 'What is happening in Venezuela after the June 2026 earthquakes: photos, video and footage from the ground, plus trusted ways to donate from Cayman.'
         ],
         /*
          * Blog index, added 24 Aug 2026 with the blog itself. Deliberately not
@@ -167,7 +167,7 @@
          */
         'blog' => [
             'title' => 'Blog: Web Design & AI Search in Cayman | TocToc',
-            'desc' => 'Field notes on building websites in the Cayman Islands that Google, ChatGPT and Gemini can actually read — written from the sites we build and the data behind them.'
+            'desc' => 'Field notes on building Cayman Islands websites that Google, ChatGPT and Gemini can actually read — from the sites we build and the data behind them.'
         ],
         'seo-checker' => [
             'title' => 'Free Website SEO, GEO & AEO Checker | TocToc Cayman',
@@ -179,11 +179,11 @@
         ],
         'case-study-prime-group-cayman' => [
             'title' => 'The Website That Started Recruiting | Case Study | TocToc',
-            'desc' => 'We built Prime Group\'s site and touched nothing else — no listings, no social, no ads. A year later: +305% clicks, position 17.3 to 9.1, and chefs in Jamaica and Kenya finding them.'
+            'desc' => 'We built Prime Group\'s site and touched nothing else — no listings, no social, no ads. A year later: +305% clicks and position 17.3 to 9.1.'
         ],
         'case-study-tintxking-orlando' => [
             'title' => 'Window Tint Shop: 5.7x More Search Traffic | Case Study | TocToc',
-            'desc' => 'TintXKing went from invisible to page one in Orlando — 469% more clicks than the same months last year. The Search Console data, what we changed, and what is still not fixed.'
+            'desc' => 'TintXKing went from invisible to page one in Orlando — 469% more clicks year on year. The Search Console data and exactly what we changed.'
         ],
         'our-work' => [
             'title' => 'Our Work | AI Search Case Studies Cayman | TocToc',
