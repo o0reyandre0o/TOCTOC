@@ -105,6 +105,51 @@ if ( $ttseo_ts ) {
 }
 </script>
 
+<?php
+/*
+ * FAQ — added 31 Aug 2026, and the reason is worth recording.
+ *
+ * This page is the second most visited on the site after the home, but it had
+ * 354 words of visible text: everything else lives in sections that stay
+ * hidden until a scan finishes. So a first-time visitor, and any crawler,
+ * arrived at a form with almost nothing explaining what the tool does or why
+ * the result matters.
+ *
+ * These answers stay visible whether or not anyone runs a scan, and they carry
+ * FAQPage markup for the answer engines this tool is itself about.
+ */
+$ttseo_faqs = array(
+    array(
+        'q' => 'Is it really free, and do you need my email?',
+        'a' => '<p>Free, and no. The email field is optional &mdash; the scan runs and shows you the whole result without it. If you do leave one, we send the full report and a weekly re-check that tells you if your score drops.</p>',
+    ),
+    array(
+        'q' => 'What does it actually look at?',
+        'a' => '<p>Three things at once, which is the point of it. The classic on-page work: titles, meta descriptions, heading structure, image alt text. Then AI visibility &mdash; whether a language model can tell what your business does and where it is, and whether your structured data says anything useful about you. Then speed, measured against Core Web Vitals.</p><p>Most tools do one of those three. The reason to look at them together is that they fail together: a page a crawler cannot parse is usually also a page an assistant cannot summarise.</p>',
+    ),
+    array(
+        'q' => 'How is this different from PageSpeed Insights?',
+        'a' => '<p>PageSpeed measures how fast a page loads, and nothing else. That is one of the three sections here, and Google\'s own tool is the authority on it &mdash; we do not pretend otherwise.</p><p>The other two sections are the ones PageSpeed does not cover: whether a search engine can understand what the page is about, and whether an AI assistant has enough to go on to recommend you.</p>',
+    ),
+    array(
+        'q' => 'What are GEO and AEO?',
+        'a' => '<p><strong>GEO</strong> is generative engine optimisation &mdash; being cited when ChatGPT, Gemini or Perplexity assemble an answer rather than return a list of links.</p><p><strong>AEO</strong> is answer engine optimisation &mdash; being the direct answer: the box at the top of Google, or what a voice assistant reads aloud.</p><p>Both run on the same foundations as ordinary SEO, plus structure a machine can read without guessing at it.</p>',
+    ),
+    array(
+        'q' => 'Will fixing these get me recommended by ChatGPT?',
+        'a' => '<p>It makes it possible. That is not the same as guaranteed, and we would rather say so.</p><p>AI answers are not stable &mdash; ask the same question twice on different days and different businesses come back. Anyone promising you a fixed position in an AI answer is describing something that does not exist. What this checker finds are the reasons a model currently cannot read you at all, which is a different and more fixable problem.</p>',
+    ),
+    array(
+        'q' => 'Can I scan a site that is not mine?',
+        'a' => '<p>Yes, and plenty of people run it on a competitor before they run it on themselves. The scan only reads what is already published publicly, the same as any search engine does.</p>',
+    ),
+    array(
+        'q' => 'I have the report. Where do I start?',
+        'a' => '<p>Start with anything marked missing before anything marked weak. An absent title or no structured data at all costs you more than a mediocre version of either, and takes less time to fix.</p><p>Every issue comes with a plain-English explanation and a technical one, so you can act on it yourself or forward it to whoever builds your site without having to translate anything.</p>',
+    ),
+);
+?>
+
 <main class="min-h-screen bg-background text-foreground">
 
     <!-- Hero + form -->
@@ -382,7 +427,61 @@ if ( $ttseo_ts ) {
             </div>
         </div>
     </section>
+
+    <!-- FAQ — always visible, unlike the result sections above, which stay
+         hidden until a scan runs. Read near-verbatim by AI answer engines. -->
+    <section id="faq" class="ttseo-noprint py-24 md:py-32 bg-white scroll-mt-28">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">FAQ</span>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">About this <em class="italic text-sky-deep font-display">checker</em></h2>
+            </div>
+            <div class="max-w-4xl space-y-4">
+                <?php foreach ( $ttseo_faqs as $faq ) : ?>
+                <details class="group rounded-[1.75rem] border border-slate-100 bg-slate-50 p-7 shadow-soft transition-all open:bg-white">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 text-xl md:text-2xl font-display text-slate-900 list-none [&amp;::-webkit-details-marker]:hidden">
+                        <span><?php echo esc_html( $faq['q'] ); ?></span>
+                        <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-pale text-sky-deep transition-transform group-open:rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-5 space-y-5 text-base md:text-lg leading-relaxed text-slate-600"><?php echo wp_kses_post( $faq['a'] ); ?></div>
+                </details>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 </main>
+
+<script type="application/ld+json">
+<?php
+echo wp_json_encode(
+    array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        '@id'        => 'https://toctoc.ky/seo-checker/#faq',
+        'isPartOf'   => array( '@id' => 'https://toctoc.ky/seo-checker/#app' ),
+        'mainEntity' => array_map(
+            function ( $f ) {
+                // Google requires the marked-up answer to match the visible
+                // text, so it is stripped from the same string the page renders
+                // rather than written out a second time.
+                return array(
+                    '@type'          => 'Question',
+                    'name'           => wp_strip_all_tags( $f['q'] ),
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text'  => trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $f['a'] ) ) ),
+                    ),
+                );
+            },
+            $ttseo_faqs
+        ),
+    ),
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
+?>
+</script>
 
 <script>
 window.TTSEO = {
