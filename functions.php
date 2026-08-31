@@ -157,6 +157,30 @@ function toctoc_blog_url() {
 }
 
 /**
+ * Optional per-post SEO title, read by header.php for the <title> tag.
+ *
+ * Article headlines are written to be read, and the good ones run long — the
+ * restaurant piece came to 101 characters once the brand suffix was appended,
+ * so Google was cutting it mid-sentence. This holds a shorter title for the
+ * search result alone; the H1 on the page keeps the full headline.
+ *
+ * Registered rather than left as a loose meta key so it can be set over the
+ * REST API, which is how the posts are published here.
+ */
+add_action( 'init', function () {
+	register_post_meta( 'post', '_toctoc_seo_title', array(
+		'type'          => 'string',
+		'single'        => true,
+		'default'       => '',
+		'show_in_rest'  => true,
+		'auth_callback' => function () {
+			return current_user_can( 'edit_posts' );
+		},
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+} );
+
+/**
  * Reading time in whole minutes, from the raw post content.
  *
  * Derived rather than typed: a hand-entered "5 min read" is wrong the moment
