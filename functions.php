@@ -1088,7 +1088,7 @@ function toctoc_render_local_trust() {
 		array(
 			'label' => 'Based in George Town',
 			'text'  => 'A local team on Grand Cayman &mdash; not an overseas agency with a Cayman phone number.',
-			'meta'  => 'Grand Cayman, KY1-1102',
+			'meta'  => 'George Town, KY1-1110',
 		),
 		array(
 			'label' => 'Rated 4.8 / 5',
@@ -1176,7 +1176,7 @@ function toctoc_llms_content() {
 > TocToc Marketing is an AI-era digital marketing agency based in the Cayman Islands (George Town, Grand Cayman). We help local businesses get found, trusted and cited by ChatGPT, Gemini and Google — with high-performance websites AI reads and humans trust — through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
 
 ## About
-TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business a source ChatGPT, Gemini and Perplexity can find, trust and cite. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: George Town, Grand Cayman, Cayman Islands (KY1-1102). TocToc Marketing is a member of the Cayman Islands Chamber of Commerce (https://caymanchamber.ky/).
+TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business a source ChatGPT, Gemini and Perplexity can find, trust and cite. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: 207 Sparky's Drive, George Town, Grand Cayman, Cayman Islands (KY1-1110). TocToc Marketing is a member of the Cayman Islands Chamber of Commerce (https://caymanchamber.ky/).
 
 ## Team
 - Daniel Garrido — Founder & CEO of TocToc Marketing. LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
