@@ -41,6 +41,17 @@
                 <div class="flex flex-col md:items-end gap-3 text-right">
                     <h3 class="text-xl md:text-2xl font-display italic text-accent mb-3">Contact Us</h3>
                     <a href="mailto:info@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">info@toctoc.ky</a>
+                    <?php /* Direccion visible, no solo en el schema. Google cruza el NAP
+                             (nombre, direccion, telefono) del sitio contra la ficha y los
+                             directorios: si solo vive dentro del JSON-LD, no hay nada que
+                             cruzar para quien lee la pagina, y el dato con mas peso local
+                             queda invisible. Tiene que coincidir CARACTER POR CARACTER con
+                             la ficha de Google Business Profile. */ ?>
+                    <address class="not-italic text-sm leading-relaxed text-white/60 mt-1">
+                        207 Sparky&rsquo;s Drive<br>
+                        George Town, KY1-1110<br>
+                        Cayman Islands
+                    </address>
                     <a href="tel:+13455478120" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">+1 (345) 547-8120</a>
                 </div>
                 <div class="text-xs text-white/60 font-medium flex flex-col md:items-end gap-3">
