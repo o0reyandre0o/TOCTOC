@@ -10,11 +10,11 @@ get_header();
 
 // Table of contents — anchors match the section ids below.
 $pr_toc = array(
-    array( '#authority',  'How We Help You Build Your Digital Authority' ),
+    array( '#authority',  'How a business builds authority online' ),
     array( '#fuels',      'How Digital PR Fuels ChatGPT, Gemini, and Google' ),
     array( '#citation',   'What is an &ldquo;AI Authority Citation&rdquo;?' ),
     array( '#ads-vs-pr',  'Ads for Short-Term Traffic vs. Digital PR for AI Trust' ),
-    array( '#boundaries', 'Our Boundaries: What We Do (and What We Don&rsquo;t Do)' ),
+    array( '#boundaries', 'What digital PR does not cover' ),
     array( '#faq',        'Frequently Asked Questions' ),
 );
 
@@ -169,7 +169,7 @@ $pr_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Digital Assets</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Help You Build Your <em class="italic text-sky-deep font-display">Digital Authority</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How a business builds <em class="italic text-sky-deep font-display">authority online</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     We don&rsquo;t just plan your strategy&mdash;we build the high-value digital assets that search engines and AI agents use to verify your expertise. Here is how we build your permanent digital footprint:
                 </p>
@@ -269,7 +269,7 @@ $pr_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">05 &middot; Full Transparency</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Our Boundaries: What We Do <em class="italic text-accent font-display">(and What We Don&rsquo;t Do)</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">What digital PR <em class="italic text-accent font-display">does not cover</em></h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
                     Because we focus exclusively on building long-term search visibility and algorithmic authority, we operate strictly as digital footprint architects:
                 </p>

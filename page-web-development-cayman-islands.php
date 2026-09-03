@@ -100,17 +100,17 @@ get_header(); ?>
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">01.</div>
-                    <h3 class="text-2xl font-display mb-4">Performance First</h3>
+                    <h3 class="text-2xl font-display mb-4">Page speed and Core Web Vitals</h3>
                     <p class="text-white/50 text-sm leading-relaxed">Optimized code and Core Web Vitals so your site loads instantly on mobile and keeps visitors from bouncing.</p>
                 </div>
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">02.</div>
-                    <h3 class="text-2xl font-display mb-4">SEO-Ready Architecture</h3>
+                    <h3 class="text-2xl font-display mb-4">Semantic HTML and structured data</h3>
                     <p class="text-white/50 text-sm leading-relaxed">Clean semantic markup and Schema baked in, so Google and AI assistants understand and recommend your site.</p>
                 </div>
                 <div>
                     <div class="text-accent text-4xl font-display mb-4">03.</div>
-                    <h3 class="text-2xl font-display mb-4">Secure &amp; Scalable</h3>
+                    <h3 class="text-2xl font-display mb-4">Security and handling traffic growth</h3>
                     <p class="text-white/50 text-sm leading-relaxed">Built to grow with your business and to stay secure, with best practices for hosting, backups, and updates.</p>
                 </div>
             </div>

@@ -10,10 +10,10 @@ get_header();
 
 // Table of contents — anchors match the section ids below.
 $sm_toc = array(
-    array( '#profiles',          'How We Optimize Your Social Profiles for AI Search' ),
+    array( '#profiles',          'What makes a social profile readable to AI' ),
     array( '#failing',           'Why Traditional Social Media is Failing Your Business' ),
-    array( '#algorithmic-trust', 'Understanding &ldquo;Algorithmic Trust&rdquo; and AI Crawlers' ),
-    array( '#boundaries',        'Our Boundaries: What We Do (and What We Don&rsquo;t Do)' ),
+    array( '#algorithmic-trust', 'How AI decides whether to recommend a business' ),
+    array( '#boundaries',        'What social media management does not cover' ),
     array( '#faq',               'Frequently Asked Questions' ),
 );
 
@@ -171,7 +171,7 @@ $sm_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; Profile Foundations</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Optimize Your Social Profiles for <em class="italic text-sky-deep font-display">AI Search</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">What makes a social profile readable to <em class="italic text-sky-deep font-display">AI Search</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     We build the structural foundation of your social media profiles so they feed clean, verifiable data directly to search engine scrapers.
                 </p>
@@ -221,7 +221,7 @@ $sm_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">03 &middot; Algorithmic Trust</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Understanding &ldquo;Algorithmic Trust&rdquo; and <em class="italic text-sky-deep font-display">AI Crawlers</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How AI decides whether to <em class="italic text-sky-deep font-display">recommend a business</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     Before ChatGPT or Gemini suggests your brand to a customer, it runs a background check on your business across the web. This is called building <strong class="font-semibold text-slate-900">Algorithmic Trust</strong>.
                 </p>
@@ -252,7 +252,7 @@ $sm_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; Full Transparency</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Our Boundaries: What We Do <em class="italic text-accent font-display">(and What We Don&rsquo;t Do)</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">What social media management <em class="italic text-accent font-display">does not cover</em></h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
                     We want to be completely transparent about how we work. Because our focus is entirely on driving search visibility and revenue, we operate strictly as technical and strategic guides:
                 </p>

@@ -158,7 +158,7 @@
             <div class="max-w-3xl mb-14">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Proof, not promises</span>
                 <h2 class="mt-6 text-5xl md:text-7xl text-slate-900 font-display leading-[0.95]">
-                    Proof of Our Work in <br /><em class="italic text-sky-deep font-display">AI Search</em>
+                    Cayman businesses named by <br /><em class="italic text-sky-deep font-display">ChatGPT and Gemini</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-600 max-w-2xl leading-relaxed">
                     <strong class="font-semibold text-slate-900">We have successfully influenced AI-generated local recommendations for Cayman businesses on ChatGPT and Gemini.</strong> We don&rsquo;t just talk about the future of search &mdash; the recordings below are real sessions, and you can run the same prompts yourself.
@@ -219,7 +219,7 @@
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <h2 class="text-5xl md:text-7xl text-slate-900 font-display">
-                    How We Put Your Business in <em class="italic text-sky-deep font-display">AI Search Results</em>
+                    How a business gets recommended by <em class="italic text-sky-deep font-display">ChatGPT and Gemini</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-700 max-w-2xl leading-relaxed">
                     A simple <strong class="text-slate-900">2-phase plan</strong>, backed by a <strong class="text-slate-900">90-day result guarantee</strong>, designed to make your business the kind of source ChatGPT, Gemini, Perplexity and Google can find, trust and cite.
@@ -235,7 +235,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                         </div>
                     </div>
-                    <h3 class="text-3xl text-slate-900 font-display mb-2">The AI Foundation Build</h3>
+                    <h3 class="text-3xl text-slate-900 font-display mb-2">The one-time setup: site, reviews, maps and listings</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Built &amp; Launched Once</p>
                     <p class="text-sm leading-relaxed text-slate-500 mb-6">We build the core assets AI search tools need to recognize and trust your business &mdash; fast, verified, and recommended everywhere.</p>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">What We Build</p>
@@ -255,7 +255,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
                         </div>
                     </div>
-                    <h3 class="text-3xl text-slate-900 font-display mb-2">Monthly Protection &amp; Growth</h3>
+                    <h3 class="text-3xl text-slate-900 font-display mb-2">The monthly work: upkeep, content and monitoring</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Billed Monthly &middot; Cancel Anytime</p>
                     <p class="text-sm leading-relaxed text-slate-500 mb-6">Once your foundation is live, we run continuous maintenance to keep your business at the top of local search results.</p>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Every Month</p>
@@ -275,7 +275,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                         </div>
                     </div>
-                    <h3 class="text-3xl font-display mb-2">Our Result Guarantee</h3>
+                    <h3 class="text-3xl font-display mb-2">What happens if AI still does not recommend you</h3>
                     <p class="text-sm font-bold text-accent uppercase tracking-wider mb-6">Zero Risk</p>
                     <p class="text-sm leading-relaxed text-white/60 mb-6">If ChatGPT or Gemini aren&rsquo;t recommending you for your primary local searches within 90 days, we run all Phase 2 updates <strong class="text-white">FREE</strong> until they do.</p>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-3">The Promise</p>

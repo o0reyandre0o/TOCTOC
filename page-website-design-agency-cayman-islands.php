@@ -28,7 +28,7 @@ get_header();
 // Table of contents — anchors match the section ids below.
 $wd_toc = array(
     array( '#restaurants',  'Restaurant &amp; Hospitality Websites We&rsquo;ve Built in Cayman' ),
-    array( '#how-we-help',  'How We Help Your Business (Build, Rebuild, or Optimize)' ),
+    array( '#how-we-help',  'Build new, rebuild, or fix the site you have?' ),
     array( '#recent',       'Just Launched: Our Four Most Recent Builds' ),
     array( '#showcase',     'Full Website Portfolio' ),
     array( '#failing',      'Why Most Cayman Websites Fail Their Owners' ),
@@ -256,7 +256,7 @@ $wd_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">02 &middot; Build, Rebuild or Optimize</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How We Help <em class="italic text-sky-deep font-display">Your Business</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Build new, rebuild, or <em class="italic text-sky-deep font-display">fix what you have?</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">
                     Every business comes to us at a different stage. Here is how we shape our web development services around where you actually are:
                 </p>
