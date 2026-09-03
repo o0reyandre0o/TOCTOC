@@ -11,10 +11,10 @@ get_header();
 
 // Table of contents — anchors match the section ids below.
 $dm_toc = array(
-    array( '#approach',    'How Our Digital Marketing Approach Helps Your Business' ),
+    array( '#approach',    'What does a digital marketing agency actually do?' ),
     array( '#showcase',    'Featured Case Study &amp; Website Showcase' ),
-    array( '#engine',      'Our Unified Growth Engine (How We Work)' ),
-    array( '#boundaries',  'Who We Work With (And Our Boundaries)' ),
+    array( '#engine',      'The four things that decide whether AI finds you' ),
+    array( '#boundaries',  'Who this works for, and who it does not' ),
     array( '#faq',         'Frequently Asked Questions' ),
 );
 
@@ -28,10 +28,10 @@ $dm_value = array(
 
 // Section 2 — 4-pillar engine.
 $dm_pillars = array(
-    array( '1', 'High-Speed, AI-Ready Web Engineering', 'We build or deeply restructure your website foundation using specialized Schema Markup, ensuring ChatGPT, Gemini, and Google scan your exact location, services, and authority without friction.' ),
-    array( '2', 'Local Knowledge Graph &amp; Map Synchronization', 'We clean up, synchronize, and lock down your exact business details across Google Maps, Apple Maps, local directories, and primary social channels to verify your real-world legitimacy.' ),
-    array( '3', 'High-Authority Content &amp; Social Chunking', 'We write deep-dive website and LinkedIn articles that establish your industry expertise, then &ldquo;chunk&rdquo; that core insight into visual video and image assets for YouTube, Instagram, and Facebook.' ),
-    array( '4', 'Weekly Maintenance &amp; Search Bot Indexing', 'We run weekly technical updates, monitor AI citation shifts, and issue fresh indexing requests to web crawlers to keep your brand active and prioritized.' ),
+    array( '1', 'Structured data, so a model can read your business', 'We build or deeply restructure your website foundation using specialized Schema Markup, ensuring ChatGPT, Gemini, and Google scan your exact location, services, and authority without friction.' ),
+    array( '2', 'The same business details everywhere Google looks', 'We clean up, synchronize, and lock down your exact business details across Google Maps, Apple Maps, local directories, and primary social channels to verify your real-world legitimacy.' ),
+    array( '3', 'Articles first, then the same idea as video and images', 'We write deep-dive website and LinkedIn articles that establish your industry expertise, then &ldquo;chunk&rdquo; that core insight into visual video and image assets for YouTube, Instagram, and Facebook.' ),
+    array( '4', 'Weekly technical upkeep and fresh indexing requests', 'We run weekly technical updates, monitor AI citation shifts, and issue fresh indexing requests to web crawlers to keep your brand active and prioritized.' ),
 );
 
 // Section 3 — showcase projects (real Cayman builds).
@@ -218,9 +218,9 @@ $dm_faqs = array(
         <div class="relative z-10 mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">01 &middot; The Value We Bring</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How Our Digital Marketing Approach <em class="italic text-sky-deep font-display">Helps Your Business</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">What does a digital marketing agency <em class="italic text-sky-deep font-display">actually do?</em></h2>
                 <p class="mt-8 text-lg text-slate-700 leading-relaxed">
-                    As a specialized digital marketing agency, our entire focus is on driving measurable, long-term visibility that converts modern buyers. Here is the value we bring to your business:
+                    A digital marketing agency runs the work that makes a business findable and credible online: the website, the search listings, the content and the advertising. In the Cayman Islands that now includes a fifth job &mdash; being readable by ChatGPT, Gemini and Google&rsquo;s AI answers, which increasingly decide what a customer sees before any website does.
                 </p>
             </div>
             <div class="mt-12 grid md:grid-cols-2 gap-6">
@@ -330,9 +330,9 @@ $dm_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">03 &middot; How We Work</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Our Unified <em class="italic text-accent font-display">Growth Engine</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">The four things that decide <em class="italic text-accent font-display">whether AI finds you</em></h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
-                    We execute a streamlined, 4-pillar system designed to optimize your digital marketing footprint for modern search engines:
+                    Four things, in this order. We measured a typical Cayman business site in August 2026 and found that 91% of its search impressions came from rank-tracking software rather than people &mdash; which is why we start with what a machine can actually read about you, not with volume:
                 </p>
             </div>
             <div class="mt-14 grid md:grid-cols-2 gap-6">
@@ -357,7 +357,7 @@ $dm_faqs = array(
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">04 &middot; Full Transparency</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Who We Work With <em class="italic text-accent font-display">(And Our Boundaries)</em></h2>
+                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">Who this works for, <em class="italic text-accent font-display">and who it does not</em></h2>
                 <p class="mt-8 text-lg text-white/60 leading-relaxed">
                     To maintain speed and deliver clear search rankings, we operate with transparent professional boundaries:
                 </p>
