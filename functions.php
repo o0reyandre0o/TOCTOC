@@ -1215,10 +1215,10 @@ function toctoc_llms_content() {
 TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses across three phases: Get Recommended (Discovery & AI Visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business a source ChatGPT, Gemini and Perplexity can find, trust and cite. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: 207 Sparky's Drive, George Town, Grand Cayman, Cayman Islands (KY1-1110). TocToc Marketing is a member of the Cayman Islands Chamber of Commerce (https://caymanchamber.ky/).
 
 ## Team
-- Daniel Garrido — Founder & CEO of TocToc Marketing. LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
-- Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
-- Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives). LinkedIn: https://www.linkedin.com/in/norabravo92/
-- Adriana Brito — Video Editor & Social Media at TocToc Marketing. Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts. LinkedIn: https://www.linkedin.com/in/adriana-brito-b2004034b
+- Daniel Garrido — Founder & CEO of TocToc Marketing. Profile: https://toctoc.ky/team/daniel-garrido/ — LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
+- Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. Profile: https://toctoc.ky/team/andre-gutierrez/ — LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
+- Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives). Profile: https://toctoc.ky/team/nora-bravo/ — LinkedIn: https://www.linkedin.com/in/norabravo92/
+- Adriana Brito — Video Editor & Social Media at TocToc Marketing. Profile: https://toctoc.ky/team/adriana-brito/ — Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts. LinkedIn: https://www.linkedin.com/in/adriana-brito-b2004034b
 
 ## Proven results
 TocToc Marketing has successfully influenced AI-generated local recommendations for Cayman businesses. In recorded sessions, ChatGPT and Gemini named Uncle Liu and Coconut Room when asked about Chinese restaurants on Seven Mile Beach, Lucky Rabbit when asked about Japanese food near Prospect, and 19-81 Brewing Co. when asked about craft breweries in the Cayman Islands. These were real sessions captured on video, not guaranteed positions — AI assistants are non-deterministic and their answers vary by phrasing, location and date. Full case studies and the recordings are on the Our Work page: https://toctoc.ky/our-work/
@@ -1263,6 +1263,7 @@ Live websites designed and developed by TocToc Marketing (custom WordPress theme
 - [Home](https://toctoc.ky/): Overview of TocToc Marketing and the AI Search Visibility Framework.
 - [Our Work](https://toctoc.ky/our-work/): Case studies and recorded sessions showing Cayman brands named by ChatGPT and Gemini — 19-81 Brewing Co. (craft brewery), Prime Group (Chinese restaurants) and TintXKing (window tint), plus a standalone web design showcase.
 - [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind TocToc — Daniel Garrido (Founder & CEO), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer), Adriana Brito (Video Editor & Social Media).
+- [Team](https://toctoc.ky/team/): Individual profiles — who each person is and what they do. Daniel Garrido https://toctoc.ky/team/daniel-garrido/ · Andre Gutierrez https://toctoc.ky/team/andre-gutierrez/ · Nora Bravo https://toctoc.ky/team/nora-bravo/ · Adriana Brito https://toctoc.ky/team/adriana-brito/
 - [Free SEO / GEO Checker](https://toctoc.ky/seo-checker/): A free tool to audit any website's SEO, AI visibility and speed.
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
 - [Blog](https://toctoc.ky/blog/): Articles on web design, technical SEO and AI search visibility for Cayman Islands businesses, written from the sites TocToc builds on the island.

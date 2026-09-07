@@ -189,6 +189,26 @@
             'title' => 'Our Work | AI Search Case Studies Cayman | TocToc',
             'desc' => 'Real results: how we have influenced AI-generated recommendations for Cayman brands. Case studies from 19-81 Brewing Co., Prime Group and TintXKing.'
         ],
+        'team' => [
+            'title' => 'The TocToc Marketing Team | George Town, Grand Cayman',
+            'desc' => 'The four people who scope, design, build and publish every TocToc project: Daniel Garrido, Andre Gutierrez, Nora Bravo and Adriana Brito.'
+        ],
+        'daniel-garrido' => [
+            'title' => 'Daniel Garrido | Founder of TocToc Marketing, Cayman',
+            'desc' => 'Founder and CEO of TocToc Marketing in George Town. Scopes every project, leads client strategy, and writes on AI search visibility.'
+        ],
+        'andre-gutierrez' => [
+            'title' => 'Andre Gutierrez | Web Developer, TocToc Marketing',
+            'desc' => 'Web developer and technical SEO specialist at TocToc Marketing. Builds WordPress themes from scratch, JSON-LD entity graphs and fast, AI-readable sites.'
+        ],
+        'nora-bravo' => [
+            'title' => 'Nora Bravo | Graphic Designer, TocToc Marketing',
+            'desc' => 'Graphic designer at TocToc Marketing in Grand Cayman. Logos, brand identity, design systems and the social creatives that come out of them.'
+        ],
+        'adriana-brito' => [
+            'title' => 'Adriana Brito | Video Editor, TocToc Marketing',
+            'desc' => 'Video editor and social media specialist at TocToc Marketing. Reels, shorts, subtitling, and the day-to-day publishing behind client accounts.'
+        ],
         'about-toc-toc-marketing' => [
             'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
             'desc' => 'Meet the team behind your growth. We combine local Cayman expertise with global digital strategies to help your business scale.'
@@ -223,6 +243,11 @@
         'advertising-pr-agency-cayman-islands' => 'digital pr cayman islands, ai authority citations, pr agency cayman, pr services cayman, entity trust score, linkedin authority building cayman, digital pr for ai search, brand citations chatgpt gemini',
         'web-development-cayman-islands' => 'ecommerce development cayman islands, online store development cayman, web app development cayman, booking platform development cayman, woocommerce developer cayman islands, custom web application cayman',
         'our-work' => 'toctoc marketing case studies, ai search results cayman islands, chatgpt ranking case study, gemini recommendation cayman, 19-81 brewing, prime group cayman, web design portfolio cayman islands',
+        'team' => 'toctoc marketing team, marketing team cayman islands, web designers grand cayman',
+        'daniel-garrido' => 'daniel garrido, daniel garrido cayman, toctoc marketing founder',
+        'andre-gutierrez' => 'andre gutierrez, andre gutierrez web developer, wordpress developer cayman islands',
+        'nora-bravo' => 'nora bravo, nora bravo graphic designer, graphic designer cayman islands',
+        'adriana-brito' => 'adriana brito, video editor cayman islands, social media manager grand cayman',
         'about-toc-toc-marketing' => 'about toctoc marketing, marketing team cayman islands, daniel garrido, digital marketing experts grand cayman',
         'venezuela' => 'donate venezuela cayman islands, venezuela earthquake appeal cayman, help venezuela from cayman, venezuela earthquake donation, cayman islands red cross venezuela, donate to venezuela earthquake',
         'blog' => 'cayman islands web design blog, seo cayman islands, ai search cayman, restaurant website cayman, toctoc marketing blog',
@@ -482,7 +507,8 @@
           ],
           "founder": {
             "@type": "Person",
-            "@id": "https://toctoc.ky/#daniel-garrido",
+            "@id": "https://toctoc.ky/team/daniel-garrido/#person",
+            "url": "https://toctoc.ky/team/daniel-garrido/",
             "name": "Daniel Garrido",
             "jobTitle": "Founder & CEO",
             "knowsAbout": ["Web Design", "Search Engine Optimization", "Digital Marketing", "Brand Strategy"],
@@ -492,7 +518,8 @@
           "employee": [
             {
               "@type": "Person",
-              "@id": "https://www.linkedin.com/in/andre-g-9b373a97/#person",
+              "@id": "https://toctoc.ky/team/andre-gutierrez/#person",
+              "url": "https://toctoc.ky/team/andre-gutierrez/",
               "name": "Andre Gutierrez",
               "jobTitle": "Web Developer & Technical SEO Specialist",
               "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, technical and semantic SEO, building high-performance websites optimized for AI search visibility.",
@@ -505,7 +532,8 @@
             },
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/#nora-bravo",
+              "@id": "https://toctoc.ky/team/nora-bravo/#person",
+              "url": "https://toctoc.ky/team/nora-bravo/",
               "name": "Nora Bravo",
               "jobTitle": "Graphic Designer",
               "description": "Graphic designer crafting brand identities, visual systems, and creative assets that make Cayman businesses stand out.",
@@ -514,16 +542,14 @@
               "worksFor": { "@id": "https://toctoc.ky/#organization" }
             },
             <?php /*
-              Adriana Brito, added 26 Aug 2026 (first name corrected 27 Aug). No
-              "sameAs" yet: the other three
-              each point at a LinkedIn profile, which is what lets a search engine
-              tie the person here to the same person elsewhere. Hers is missing,
-              so the entity stands alone until we have the URL — an empty or
-              invented sameAs would be worse than none.
+              Adriana Brito, added 26 Aug 2026 (first name corrected 27 Aug —
+              it went live as "Andreina" for a day). Her LinkedIn sameAs arrived
+              on 2 Sep, so all four Person nodes now resolve outward.
             */ ?>
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/#adriana-brito",
+              "@id": "https://toctoc.ky/team/adriana-brito/#person",
+              "url": "https://toctoc.ky/team/adriana-brito/",
               "name": "Adriana Brito",
               "jobTitle": "Video Editor & Social Media",
               "description": "Video editor and social media specialist. Produces the reels, shorts and stories that carry client work, and runs the day-to-day publishing of the accounts they live on.",
