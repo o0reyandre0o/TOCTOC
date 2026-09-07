@@ -9,6 +9,17 @@
  * @package TocToc
  */
 
+if ( ! function_exists( 'toctoc_team_members' ) ) {
+	// inc/team.php not on the server yet — render the page's own content rather
+	// than fatal. Same guard, same reason, as the four profile shims.
+	get_header();
+	echo '<main class="min-h-screen bg-background text-foreground pt-48 pb-32"><div class="mx-auto max-w-3xl px-6">';
+	while ( have_posts() ) { the_post(); the_content(); }
+	echo '</div></main>';
+	get_footer();
+	return;
+}
+
 get_header();
 
 $tt_team = toctoc_team_members();

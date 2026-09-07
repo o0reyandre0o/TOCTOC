@@ -27,6 +27,42 @@ if ( is_readable( $toctoc_hub ) ) {
 }
 unset( $toctoc_hub );
 
+// The team, as data + the helpers the /team/ pages use. Guarded exactly like
+// the Client Hub above and for the same reason: functions.php can reach the
+// server before a new inc/ file does, and a bare require would take the whole
+// theme down for the length of that window.
+$toctoc_team = get_template_directory() . '/inc/team.php';
+if ( is_readable( $toctoc_team ) ) {
+    require_once $toctoc_team;
+}
+unset( $toctoc_team );
+
+/**
+ * Send author archives to the person's profile page.
+ *
+ * Two reasons. The archives were noindexed and template-less, so they duplicated
+ * a profile page that now says the same thing properly. And WordPress builds an
+ * author URL from the login name, which published /author/localadm/ — handing
+ * anyone who looked a valid administrator username for free. Renaming the user
+ * slug would hide it; redirecting removes the URL.
+ */
+function toctoc_author_archive_redirect() {
+    if ( ! is_author() || ! function_exists( 'toctoc_team_members' ) ) {
+        return;
+    }
+    $id = (int) get_queried_object_id();
+    foreach ( toctoc_team_members() as $slug => $member ) {
+        if ( ! empty( $member['author'] ) && (int) $member['author'] === $id ) {
+            wp_safe_redirect( toctoc_team_url( $slug ), 301 );
+            exit;
+        }
+    }
+    // An author with no profile page still should not expose a login name.
+    wp_safe_redirect( home_url( '/team/' ), 301 );
+    exit;
+}
+add_action( 'template_redirect', 'toctoc_author_archive_redirect' );
+
 /*
  * Kill WordPress core's automatic canonical tag.
  *
