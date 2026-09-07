@@ -216,7 +216,8 @@ get_header(); ?>
                         <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 sm:col-span-2">
                             <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">Europe</p>
                             <h3 class="text-xl font-display text-white">United Kingdom</h3>
-                            <p class="mt-2 text-sm text-white/50 leading-relaxed">Our first European client &mdash; the same build and AI-search framework, run for a UK market and a UK search index.</p>
+                            <p class="mt-2 text-sm text-white/50 leading-relaxed">Construction and retail fit-out &mdash; our first European client, working nationally. Same build and AI-search framework, tuned to a UK search index.</p>
+                            <p class="mt-3 text-[10px] font-bold uppercase tracking-widest text-white/40">England &middot; Scotland &middot; Republic of Ireland</p>
                         </div>
                     </div>
                 </div>
