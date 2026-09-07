@@ -523,8 +523,14 @@
               "name": "Andre Gutierrez",
               "jobTitle": "Web Developer & Technical SEO Specialist",
               "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, technical and semantic SEO, building high-performance websites optimized for AI search visibility.",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "ORCID",
+                "value": "0009-0002-0951-7834",
+                "url": "https://orcid.org/0009-0002-0951-7834"
+              },
               "knowsAbout": ["WordPress Development", "WordPress Theme Development", "Vibe Coding", "Technical SEO", "Semantic SEO", "JSON-LD Structured Data", "Conversion Rate Optimization (CRO)", "Elementor", "AI-Assisted Development", "Web Performance"],
-              "sameAs": ["https://www.linkedin.com/in/andre-g-9b373a97/", "https://github.com/o0reyandre0o", "https://toctoc.ky/team/andre-gutierrez/"],
+              "sameAs": ["https://www.linkedin.com/in/andre-g-9b373a97/", "https://github.com/o0reyandre0o", "https://orcid.org/0009-0002-0951-7834", "https://toctoc.ky/team/andre-gutierrez/"],
               "worksFor": [
                 { "@id": "https://toctoc.ky/#organization" },
                 { "@id": "https://www.polimedios.com/#organization" }

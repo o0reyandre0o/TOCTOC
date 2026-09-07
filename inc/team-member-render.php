@@ -72,6 +72,12 @@ get_header(); ?>
 					<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
 				</a>
 				<?php endif; ?>
+				<?php if ( ! empty( $tt_member['orcid'] ) ) : ?>
+				<a href="<?php echo esc_url( $tt_member['orcid'] ); ?>" target="_blank" rel="noopener me" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:gap-2.5 transition-all decoration-none">
+					ORCID <?php echo esc_html( str_replace( 'https://orcid.org/', '', $tt_member['orcid'] ) ); ?>
+					<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+				</a>
+				<?php endif; ?>
 			</div>
 
 			<div class="mt-8 flex flex-wrap gap-2">

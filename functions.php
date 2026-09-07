@@ -1277,7 +1277,7 @@ TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses
 
 ## Team
 - Daniel Garrido — Founder & CEO of TocToc Marketing. Profile: https://toctoc.ky/team/daniel-garrido/ — LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
-- Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. Profile: https://toctoc.ky/team/andre-gutierrez/ — LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
+- Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. Profile: https://toctoc.ky/team/andre-gutierrez/ — ORCID: https://orcid.org/0009-0002-0951-7834 — LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
 - Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives). Profile: https://toctoc.ky/team/nora-bravo/ — LinkedIn: https://www.linkedin.com/in/norabravo92/
 - Adriana Brito — Video Editor & Social Media at TocToc Marketing. Profile: https://toctoc.ky/team/adriana-brito/ — Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts. LinkedIn: https://www.linkedin.com/in/adriana-brito-b2004034b
 

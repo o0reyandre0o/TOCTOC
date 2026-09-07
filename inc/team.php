@@ -59,6 +59,7 @@ function toctoc_team_members() {
 			'role_plain'=> 'Web Developer & Technical SEO Specialist',
 			'photo'     => 'https://toctoc.ky/wp-content/uploads/2026/08/andre-gutierrez-toctoc.webp',
 			'linkedin'  => 'https://www.linkedin.com/in/andre-g-9b373a97/',
+			'orcid'     => 'https://orcid.org/0009-0002-0951-7834',
 			'site'      => '',
 			'author'    => 3,
 			'lede'      => 'Builds the sites. Wrote the theme this page is rendered by.',
