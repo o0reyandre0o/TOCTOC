@@ -52,16 +52,35 @@ function toctoc_author_archive_redirect() {
     }
     $id = (int) get_queried_object_id();
     foreach ( toctoc_team_members() as $slug => $member ) {
-        if ( ! empty( $member['author'] ) && (int) $member['author'] === $id ) {
+        if ( ! empty( $member['author'] ) && (int) $member['author'] === $id && toctoc_team_page_live( $slug ) ) {
             wp_safe_redirect( toctoc_team_url( $slug ), 301 );
             exit;
         }
     }
-    // An author with no profile page still should not expose a login name.
-    wp_safe_redirect( home_url( '/team/' ), 301 );
-    exit;
+    // An author with no live profile still should not expose a login name — but
+    // only send them to /team/ once /team/ actually answers. A 301 to a 404 is
+    // worse than the archive we were trying to replace, and 301s are cached by
+    // browsers, so pointing one at a page that does not exist yet is expensive
+    // to undo. Until the pages are published this falls through to the archive,
+    // which is noindexed anyway.
+    if ( toctoc_team_page_live( '' ) ) {
+        wp_safe_redirect( home_url( '/team/' ), 301 );
+        exit;
+    }
 }
 add_action( 'template_redirect', 'toctoc_author_archive_redirect' );
+
+/**
+ * Is a /team/ page actually published?
+ *
+ * @param string $slug Member slug, or '' for the /team/ index itself.
+ * @return bool
+ */
+function toctoc_team_page_live( $slug ) {
+    $path = '' === $slug ? 'team' : 'team/' . $slug;
+    $page = get_page_by_path( $path );
+    return $page instanceof WP_Post && 'publish' === $page->post_status;
+}
 
 /*
  * Kill WordPress core's automatic canonical tag.
