@@ -8,6 +8,24 @@ function toctoc_setup() {
 }
 add_action( 'after_setup_theme', 'toctoc_setup' );
 
+/**
+ * Authorship meta.
+ *
+ * Wappalyzer and BuiltWith read the generator tag, which is how a "sites built
+ * by X" footprint gets assembled at scale — schema alone does not produce one.
+ * WordPress's own generator is removed at the same time: it was announcing the
+ * exact core version to anyone who asked, and it would otherwise leave the page
+ * with two conflicting generator tags.
+ */
+function toctoc_authorship_meta() {
+    echo '<meta name="generator" content="TOCTOC Sky Editorial by TocToc (https://toctoc.ky/)">' . "
+";
+    echo '<meta name="designer" content="TocToc (https://toctoc.ky/)">' . "
+";
+}
+add_action( 'wp_head', 'toctoc_authorship_meta', 1 );
+remove_action( 'wp_head', 'wp_generator' );
+
 // Free SEO / GEO / AEO checker tool (AJAX endpoints for /seo-checker/).
 require_once get_template_directory() . '/seo-checker-tool.php';
 
@@ -36,6 +54,32 @@ if ( is_readable( $toctoc_team ) ) {
     require_once $toctoc_team;
 }
 unset( $toctoc_team );
+
+// El grafo unico: recoge los nodos de todas las plantillas y los imprime una
+// sola vez en wp_footer.
+$toctoc_graph = get_template_directory() . '/inc/schema-graph.php';
+if ( is_readable( $toctoc_graph ) ) {
+    require_once $toctoc_graph;
+}
+unset( $toctoc_graph );
+
+// Red de seguridad. Las plantillas llaman a estas funciones directamente, asi
+// que si inc/schema-graph.php aun no ha llegado al servidor una llamada sin
+// definir seria un fatal — que es exactamente como se cayo el tema entero el
+// 3 de agosto de 2026. Con esto, el peor caso es volver al comportamiento
+// anterior (un bloque por plantilla) en lugar de tumbar el sitio.
+if ( ! function_exists( 'toctoc_schema_add_raw' ) ) {
+    function toctoc_schema_add_raw( $json ) {
+        echo '<script type="application/ld+json">' . $json . '</script>';
+    }
+    function toctoc_schema_add( $node ) {
+        if ( is_array( $node ) && $node ) {
+            echo '<script type="application/ld+json">'
+                . wp_json_encode( $node, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+                . '</script>';
+        }
+    }
+}
 
 /**
  * Send author archives to the person's profile page.
@@ -151,7 +195,7 @@ function toctoc_render_faq( $faqs, $eyebrow = 'FAQ', $heading = 'Frequently Aske
             </div>
         </div>
     </section>
-    <script type="application/ld+json">
+    <?php ob_start(); ?>
     <?php
     $entities = array_map( function ( $faq ) {
         return [
@@ -169,7 +213,7 @@ function toctoc_render_faq( $faqs, $eyebrow = 'FAQ', $heading = 'Frequently Aske
         'mainEntity' => $entities,
     ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
     ?>
-    </script>
+    <?php toctoc_schema_add_raw( ob_get_clean() ); ?>
     <?php
 }
 
@@ -863,9 +907,7 @@ function toctoc_render_video_schema( $videos ) {
 	if ( ! $items ) {
 		return;
 	}
-	echo '<script type="application/ld+json">'
-		. wp_json_encode( ( 1 === count( $items ) ) ? $items[0] : $items, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
-		. '</script>';
+	toctoc_schema_add( $items );
 }
 
 /**

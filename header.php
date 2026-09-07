@@ -587,7 +587,7 @@
             "https://www.facebook.com/wearetoctoc/",
             "https://www.instagram.com/toctocmarketing/",
             "https://maps.google.com/?cid=66681410512619349",
-            "https://www.linkedin.com/company/110122083/",
+            "https://www.linkedin.com/company/toc-toc-marketing/",
             "https://www.youtube.com/@wearetoctoc"
           ]
         },
