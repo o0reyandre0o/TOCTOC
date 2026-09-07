@@ -597,7 +597,7 @@ $ve_news = [
             </div>
         </div>
     </section>
-    <script type="application/ld+json">
+    <?php ob_start(); ?>
     <?php
     echo wp_json_encode( [
         '@context'   => 'https://schema.org',
@@ -611,7 +611,7 @@ $ve_news = [
         }, $ve_faqs ),
     ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
     ?>
-    </script>
+    <?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
     <!-- ================= 6. SHARE ================= -->
     <section class="py-20 md:py-28 bg-slate-950 text-center">
@@ -791,7 +791,7 @@ $ve_news = [
 })();
 </script>
 
-<script type="application/ld+json">
+<?php ob_start(); ?>
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -817,6 +817,6 @@ $ve_news = [
     "publisher": { "@type": "Organization", "name": "Cayman Compass", "url": "https://www.caymancompass.com" }
   }
 }
-</script>
+<?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
 <?php get_footer(); ?>

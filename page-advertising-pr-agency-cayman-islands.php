@@ -347,7 +347,7 @@ $pr_faqs = array(
 
 </main>
 
-<script type="application/ld+json">
+<?php ob_start(); ?>
 <?php
 echo wp_json_encode(
     array(
@@ -369,9 +369,9 @@ echo wp_json_encode(
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 );
 ?>
-</script>
+<?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
-<script type="application/ld+json">
+<?php ob_start(); ?>
 <?php
 echo wp_json_encode(
     array(
@@ -394,6 +394,6 @@ echo wp_json_encode(
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 );
 ?>
-</script>
+<?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
 <?php get_footer(); ?>

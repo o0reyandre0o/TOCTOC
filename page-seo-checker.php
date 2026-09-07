@@ -72,7 +72,7 @@ if ( $ttseo_ts ) {
 }
 </style>
 
-<script type="application/ld+json">
+<?php ob_start(); ?>
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -103,7 +103,7 @@ if ( $ttseo_ts ) {
   "provider": { "@id": "https://toctoc.ky/#organization" },
   "publisher": { "@id": "https://toctoc.ky/#organization" }
 }
-</script>
+<?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
 <?php
 /*
@@ -453,7 +453,7 @@ $ttseo_faqs = array(
     </section>
 </main>
 
-<script type="application/ld+json">
+<?php ob_start(); ?>
 <?php
 echo wp_json_encode(
     array(
@@ -481,7 +481,7 @@ echo wp_json_encode(
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 );
 ?>
-</script>
+<?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
 <script>
 window.TTSEO = {

@@ -433,7 +433,7 @@
     <meta property="twitter:image" content="<?php echo esc_url($og_image); ?>">
 
     <!-- JSON-LD Schema -->
-    <script type="application/ld+json">
+    <?php ob_start(); ?>
     {
       "@context": "https://schema.org",
       "@graph": [
@@ -652,7 +652,7 @@
         ?>
       ]
     }
-    </script>
+    <?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
 
     <?php wp_head(); ?>

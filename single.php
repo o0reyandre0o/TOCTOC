@@ -176,7 +176,7 @@ while ( have_posts() ) :
 
 </main>
 
-<script type="application/ld+json">
+<?php ob_start(); ?>
 <?php
 $tt_img = has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'full' ) : '';
 $tt_ld  = array(
@@ -204,7 +204,7 @@ if ( ! empty( $tt_cats ) ) {
 }
 echo wp_json_encode( $tt_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
 ?>
-</script>
+<?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
 <?php
 /*
@@ -238,9 +238,9 @@ if ( ! empty( $tt_faq ) ) :
 		),
 	);
 	?>
-<script type="application/ld+json">
+<?php ob_start(); ?>
 <?php echo wp_json_encode( $tt_faq_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); ?>
-</script>
+<?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 <?php endif; ?>
 
 <?php
