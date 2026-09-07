@@ -355,11 +355,10 @@ echo wp_json_encode(
         '@type'       => 'Service',
         'name'        => 'Digital PR for AI Authority Citations',
         'serviceType' => 'Digital PR and AI Authority Citation Building',
-        'provider'    => array(
-            '@type' => 'ProfessionalService',
-            '@id'   => 'https://toctoc.ky/#organization',
-            'name'  => 'TocToc Marketing',
-        ),
+        // Referencia pura. Anadir @type o name aqui redefine la entidad
+        // canonica en la misma pagina donde header.php ya la define entera, y
+        // deja a Google eligiendo entre dos versiones de lo mismo.
+        'provider'    => array( '@id' => 'https://toctoc.ky/#organization' ),
         'areaServed'  => array(
             '@type' => 'Place',
             'name'  => 'Cayman Islands',
