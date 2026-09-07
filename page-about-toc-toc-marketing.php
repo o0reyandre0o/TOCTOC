@@ -175,16 +175,16 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Where we work: animated dot globe (Cayman HQ + USA, Puerto Rico, Venezuela) -->
+    <!-- Where we work: animated dot globe (Cayman HQ + USA, Puerto Rico, Venezuela, UK) -->
     <section class="relative py-20 md:py-28 bg-slate-950 text-white rounded-[3rem] mx-4 my-8 overflow-hidden">
         <div class="mx-auto max-w-6xl px-6">
             <div class="grid lg:grid-cols-2 gap-12 items-start">
 
                 <div class="order-2 lg:order-1">
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Where we work</span>
-                    <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">One team, <em class="italic text-accent font-display">four countries</em></h2>
+                    <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">One team, <em class="italic text-accent font-display">five countries</em></h2>
                     <p class="mt-8 text-lg text-white/60 leading-relaxed max-w-md">
-                        Four countries, two languages, one framework. We work in <strong class="text-white font-semibold">English and Spanish</strong> &mdash; and everything we do is digital-first, so borders don&rsquo;t slow us down.
+                        Five countries, two languages, one framework. We work in <strong class="text-white font-semibold">English and Spanish</strong> &mdash; and everything we do is digital-first, so borders don&rsquo;t slow us down.
                     </p>
 
                     <!-- Country cards: 2×2 right under the text. -->
@@ -213,6 +213,11 @@ get_header(); ?>
                             <p class="mt-2 text-sm text-white/50 leading-relaxed">Projects and partnerships &mdash; the same framework, tuned to the local market.</p>
                             <p class="mt-3 text-[10px] font-bold uppercase tracking-widest text-white/40">Caracas &middot; Zulia</p>
                         </div>
+                        <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 sm:col-span-2">
+                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1.5">Europe</p>
+                            <h3 class="text-xl font-display text-white">United Kingdom</h3>
+                            <p class="mt-2 text-sm text-white/50 leading-relaxed">Our first European client &mdash; the same build and AI-search framework, run for a UK market and a UK search index.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -223,6 +228,9 @@ get_header(); ?>
                              line from each chip to its marker as the globe turns.
                              data-dlat/data-dlon are stylized display positions (spread apart
                              for readability) — the visible text keeps the real coordinates. -->
+                        <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-white/15 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:0;top:1%" data-dlat="38" data-dlon="-30">
+                            <p class="text-sm font-bold text-white leading-none">United Kingdom</p>
+                        </div>
                         <div class="ttglobe-chip absolute pointer-events-none rounded-xl border border-accent/50 bg-slate-900/95 px-3 py-2 shadow-soft transition-opacity duration-500" style="left:0;top:18%" data-dlat="18" data-dlon="-45" data-main="1">
                             <p class="text-sm font-bold text-white leading-none">Cayman Islands</p>
                             <p class="mt-1 text-[10px] tracking-wider text-accent">HQ</p>
@@ -289,9 +297,13 @@ get_header(); ?>
         // Stylized display positions (spread across the hemisphere for clarity —
         // the real coordinates live in the chip labels). With the projection
         // used here, screen-left corresponds to GREATER longitudes than the
-        // camera center (-75): Cayman left, USA top-right, PR right, VE bottom.
+        // camera center (-75): Cayman left, USA top-right, PR right, VE bottom,
+        // UK upper-left. The UK sits at a modest display latitude on purpose —
+        // the globe's tilt pushes northern points away from the camera, and a
+        // realistic 54N would drop the marker behind the horizon during the
+        // ambient sweep and fade its chip out.
         var HQ = [18, -45];
-        var DESTS = [[22, -100], [2, -108], [-48, -58]];
+        var DESTS = [[22, -100], [2, -108], [-48, -58], [38, -30]];
 
         function arcPoints(A0, B0) {
             var A = fromLatLon(A0[0], A0[1]), B = fromLatLon(B0[0], B0[1]);
