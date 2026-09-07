@@ -4,9 +4,16 @@
  * build in header.php. Compile with: npm run build:css
  */
 module.exports = {
-  // Scan every theme template at the root. `scratch/` (scraped HTML copies)
-  // and node_modules are intentionally excluded.
-  content: ['./*.php'],
+  // Scan every theme template at the root AND everything under inc/.
+  //
+  // inc/ was missing until 2026-09-07 and it cost a broken layout: the /team/
+  // profile pages render from inc/team-member-render.php, so every class used
+  // only there — lg:col-span-2, sm:justify-between — was silently dropped from
+  // the build. Tailwind does not warn about this; the class simply does not
+  // exist and the element falls back to its default box.
+  //
+  // `scratch/` (scraped HTML copies) and node_modules stay excluded.
+  content: ['./*.php', './inc/**/*.php'],
   theme: {
     extend: {
       fontFamily: {
