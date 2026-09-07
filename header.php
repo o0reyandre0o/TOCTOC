@@ -507,38 +507,38 @@
           ],
           "founder": {
             "@type": "Person",
-            "@id": "https://toctoc.ky/team/daniel-garrido/#person",
+            "@id": "https://toctoc.ky/#daniel-garrido",
             "url": "https://toctoc.ky/team/daniel-garrido/",
             "name": "Daniel Garrido",
             "jobTitle": "Founder & CEO",
             "knowsAbout": ["Web Design", "Search Engine Optimization", "Digital Marketing", "Brand Strategy"],
-            "sameAs": ["https://www.linkedin.com/in/bydanielgarrido/", "https://danielgarrido.com"],
+            "sameAs": ["https://www.linkedin.com/in/bydanielgarrido/", "https://danielgarrido.com", "https://toctoc.ky/team/daniel-garrido/"],
             "worksFor": { "@id": "https://toctoc.ky/#organization" }
           },
           "employee": [
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/team/andre-gutierrez/#person",
+              "@id": "https://www.linkedin.com/in/andre-g-9b373a97/#person",
               "url": "https://toctoc.ky/team/andre-gutierrez/",
               "name": "Andre Gutierrez",
               "jobTitle": "Web Developer & Technical SEO Specialist",
               "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, technical and semantic SEO, building high-performance websites optimized for AI search visibility.",
               "knowsAbout": ["WordPress Development", "WordPress Theme Development", "Vibe Coding", "Technical SEO", "Semantic SEO", "JSON-LD Structured Data", "Conversion Rate Optimization (CRO)", "Elementor", "AI-Assisted Development", "Web Performance"],
-              "sameAs": ["https://www.linkedin.com/in/andre-g-9b373a97/"],
+              "sameAs": ["https://www.linkedin.com/in/andre-g-9b373a97/", "https://github.com/o0reyandre0o", "https://toctoc.ky/team/andre-gutierrez/"],
               "worksFor": [
                 { "@id": "https://toctoc.ky/#organization" },
-                { "@type": "Organization", "name": "Polimedios", "url": "https://polimedios.com/" }
+                { "@id": "https://www.polimedios.com/#organization" }
               ]
             },
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/team/nora-bravo/#person",
+              "@id": "https://toctoc.ky/#nora-bravo",
               "url": "https://toctoc.ky/team/nora-bravo/",
               "name": "Nora Bravo",
               "jobTitle": "Graphic Designer",
               "description": "Graphic designer crafting brand identities, visual systems, and creative assets that make Cayman businesses stand out.",
               "knowsAbout": ["Graphic Design", "Branding", "Visual Identity", "Social Media Creatives"],
-              "sameAs": ["https://www.linkedin.com/in/norabravo92/"],
+              "sameAs": ["https://www.linkedin.com/in/norabravo92/", "https://toctoc.ky/team/nora-bravo/"],
               "worksFor": { "@id": "https://toctoc.ky/#organization" }
             },
             <?php /*
@@ -548,13 +548,13 @@
             */ ?>
             {
               "@type": "Person",
-              "@id": "https://toctoc.ky/team/adriana-brito/#person",
+              "@id": "https://toctoc.ky/#adriana-brito",
               "url": "https://toctoc.ky/team/adriana-brito/",
               "name": "Adriana Brito",
               "jobTitle": "Video Editor & Social Media",
               "description": "Video editor and social media specialist. Produces the reels, shorts and stories that carry client work, and runs the day-to-day publishing of the accounts they live on.",
               "knowsAbout": ["Video Editing", "Short-Form Video", "Instagram Reels", "Social Media Management", "Content Production", "Subtitling"],
-              "sameAs": ["https://www.linkedin.com/in/adriana-brito-b2004034b"],
+              "sameAs": ["https://www.linkedin.com/in/adriana-brito-b2004034b", "https://toctoc.ky/team/adriana-brito/"],
               "worksFor": { "@id": "https://toctoc.ky/#organization" }
             }
           ],
@@ -584,8 +584,9 @@
             "closes": "18:00"
           },
           "sameAs": [
-            "https://www.facebook.com/wearetoctoc",
-            "https://www.instagram.com/toctocmarketing",
+            "https://www.facebook.com/wearetoctoc/",
+            "https://www.instagram.com/toctocmarketing/",
+            "https://maps.google.com/?cid=66681410512619349",
             "https://www.linkedin.com/company/110122083/",
             "https://www.youtube.com/@wearetoctoc"
           ]
@@ -641,6 +642,14 @@
           "isPartOf": { "@id": "https://toctoc.ky/#website" }
         }
         <?php endif; ?>
+        <?php
+        /* Nodo de pagina para /team/ y las cuatro fichas. Vive aqui, y no en la
+           plantilla, para que la pagina siga teniendo un unico bloque ld+json y
+           un unico @graph — con la Person referenciada por @id, nunca redefinida. */
+        if ( function_exists( 'toctoc_team_extra_schema_json' ) ) {
+            echo toctoc_team_extra_schema_json();
+        }
+        ?>
       ]
     }
     </script>

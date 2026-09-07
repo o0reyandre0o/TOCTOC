@@ -28,6 +28,7 @@ function toctoc_team_members() {
 	return array(
 
 		'daniel-garrido' => array(
+			'person_id'=> 'https://toctoc.ky/#daniel-garrido',
 			'name'      => 'Daniel Garrido',
 			'role'      => 'Founder &amp; CEO',
 			'role_plain'=> 'Founder & CEO',
@@ -52,6 +53,7 @@ function toctoc_team_members() {
 		),
 
 		'andre-gutierrez' => array(
+			'person_id'=> 'https://www.linkedin.com/in/andre-g-9b373a97/#person',
 			'name'      => 'Andre Gutierrez',
 			'role'      => 'Web Developer &amp; Technical SEO Specialist',
 			'role_plain'=> 'Web Developer & Technical SEO Specialist',
@@ -77,6 +79,7 @@ function toctoc_team_members() {
 		),
 
 		'nora-bravo' => array(
+			'person_id'=> 'https://toctoc.ky/#nora-bravo',
 			'name'      => 'Nora Bravo',
 			'role'      => 'Graphic Designer',
 			'role_plain'=> 'Graphic Designer',
@@ -101,6 +104,7 @@ function toctoc_team_members() {
 		),
 
 		'adriana-brito' => array(
+			'person_id'=> 'https://toctoc.ky/#adriana-brito',
 			'name'      => 'Adriana Brito',
 			'role'      => 'Video Editor &amp; Social Media',
 			'role_plain'=> 'Video Editor & Social Media',
@@ -153,16 +157,93 @@ function toctoc_team_url( $slug ) {
 /**
  * Person @id for the entity graph.
  *
- * These are the stable identifiers the rest of the site points at. Before the
- * team pages existed, Andre's Person node was identified by a LinkedIn URL,
- * which had the ownership backwards: our own site should assert who a person is
- * and use sameAs to point outward for confirmation, not the other way round.
+ * READ THIS BEFORE CHANGING ONE.
+ *
+ * These identifiers are a contract across domains, not a local detail. Every
+ * site we build carries the agency entity block, and those blocks reference
+ * these exact strings — roughly thirty sites at the time of writing. Changing
+ * an @id here does not rename an entity; it deletes one and creates another,
+ * and leaves every client site pointing at something the canonical domain no
+ * longer declares.
+ *
+ * They were changed on 2026-09-07 to the /team/ URLs on the reasoning that a
+ * LinkedIn URL is a strange identity for our own employee. The reasoning was
+ * fine and the change was still wrong: an @id is an opaque key, not a location.
+ * The profile page's job is to CONFIRM the entity — same @id, mainEntity on the
+ * page node, and the page URL added to the person's sameAs — not to rehouse it.
+ * Reverted the same day.
  *
  * @param string $slug Page slug.
  * @return string
  */
 function toctoc_team_person_id( $slug ) {
-	return toctoc_team_url( $slug ) . '#person';
+	$member = toctoc_team_member( $slug );
+	return $member['person_id'] ?? ( toctoc_team_url( $slug ) . '#person' );
+}
+
+/**
+ * The /team/ page node, as a JSON fragment spliced into header.php's @graph.
+ *
+ * Returned with a leading comma because it is appended to an existing array of
+ * nodes. Empty string on any page that is not part of /team/.
+ *
+ * The Person is referenced by @id and never redefined here — a second
+ * definition of the same @id in one graph is exactly the ambiguity the stable
+ * identifiers exist to avoid.
+ *
+ * @return string
+ */
+function toctoc_team_extra_schema_json() {
+	if ( ! is_page() ) {
+		return '';
+	}
+	$slug = get_post_field( 'post_name', get_the_ID() );
+	$site = home_url( '/' ) . '#website';
+
+	if ( 'team' === $slug ) {
+		$items = array();
+		$pos   = 0;
+		foreach ( toctoc_team_members() as $member_slug => $member ) {
+			$pos++;
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos,
+				'item'     => array( '@id' => toctoc_team_person_id( $member_slug ) ),
+			);
+		}
+		$node = array(
+			'@type'      => 'CollectionPage',
+			'@id'        => home_url( '/team/' ) . '#webpage',
+			'url'        => home_url( '/team/' ),
+			'name'       => 'The TocToc Marketing team',
+			'isPartOf'   => array( '@id' => $site ),
+			'about'      => array( '@id' => home_url( '/' ) . '#organization' ),
+			'mainEntity' => array(
+				'@type'           => 'ItemList',
+				'numberOfItems'   => count( $items ),
+				'itemListElement' => $items,
+			),
+		);
+		return ',' . wp_json_encode( $node, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+	}
+
+	$member = toctoc_team_member( $slug );
+	if ( null === $member ) {
+		return '';
+	}
+
+	$node = array(
+		'@type'              => 'ProfilePage',
+		'@id'                => toctoc_team_url( $slug ) . '#webpage',
+		'url'                => toctoc_team_url( $slug ),
+		'name'               => $member['name'] . ' — ' . $member['role_plain'] . ' at TocToc Marketing',
+		'description'        => html_entity_decode( wp_strip_all_tags( $member['lede'] ), ENT_QUOTES, 'UTF-8' ),
+		'isPartOf'           => array( '@id' => $site ),
+		'about'              => array( '@id' => $member['person_id'] ),
+		'mainEntity'         => array( '@id' => $member['person_id'] ),
+		'primaryImageOfPage' => array( '@type' => 'ImageObject', 'url' => $member['photo'] ),
+	);
+	return ',' . wp_json_encode( $node, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 }
 
 /**

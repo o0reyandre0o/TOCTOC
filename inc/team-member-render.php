@@ -28,30 +28,11 @@ if ( null === $tt_member ) {
 $tt_first    = strtok( $tt_member['name'], ' ' );
 $tt_articles = toctoc_team_articles( $tt_member );
 
-// JSON-LD is built as an array and encoded, never hand-written: an unescaped
-// apostrophe in a bio would otherwise silently invalidate the whole block.
-$tt_person = array(
-	'@type'      => 'Person',
-	'@id'        => toctoc_team_person_id( $tt_slug ),
-	'name'       => $tt_member['name'],
-	'url'        => toctoc_team_url( $tt_slug ),
-	'jobTitle'   => $tt_member['role_plain'],
-	'image'      => $tt_member['photo'],
-	'description'=> html_entity_decode( wp_strip_all_tags( $tt_member['lede'] ), ENT_QUOTES, 'UTF-8' ),
-	'knowsAbout' => array_values( $tt_member['knows'] ),
-	'worksFor'   => array( '@id' => home_url( '/' ) . '#organization' ),
-	'sameAs'     => array_values( array_filter( array( $tt_member['linkedin'], $tt_member['site'] ) ) ),
-);
-
-$tt_graph = array(
-	'@context'   => 'https://schema.org',
-	'@type'      => 'ProfilePage',
-	'@id'        => toctoc_team_url( $tt_slug ) . '#profilepage',
-	'url'        => toctoc_team_url( $tt_slug ),
-	'name'       => $tt_member['name'] . ' — ' . $tt_member['role_plain'] . ' at TocToc Marketing',
-	'mainEntity' => $tt_person,
-	'isPartOf'   => array( '@id' => home_url( '/' ) . '#organization' ),
-);
+// No JSON-LD here. The page node lives in header.php's @graph via
+// toctoc_team_extra_schema_json(), so the page keeps one ld+json block and one
+// definition of each @id. A second <script> here produced two blocks and two
+// definitions of the same Person — the exact ambiguity stable @ids exist to
+// prevent.
 
 get_header(); ?>
 
@@ -190,7 +171,6 @@ get_header(); ?>
 
 	<?php toctoc_render_checker_cta(); ?>
 
-	<script type="application/ld+json"><?php echo wp_json_encode( $tt_graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
 
 </main>
 

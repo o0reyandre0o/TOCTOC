@@ -24,38 +24,8 @@ get_header();
 
 $tt_team = toctoc_team_members();
 
-// An Organization with its employees listed as a plain ItemList of Person
-// references. The full Person nodes live on each profile page and in the
-// site-wide graph in header.php; repeating them here would create four
-// competing definitions of the same @id.
-$tt_graph = array(
-	'@context'        => 'https://schema.org',
-	'@type'           => 'CollectionPage',
-	'@id'             => home_url( '/team/' ) . '#collectionpage',
-	'url'             => home_url( '/team/' ),
-	'name'            => 'The TocToc Marketing team',
-	'isPartOf'        => array( '@id' => home_url( '/' ) . '#organization' ),
-	'mainEntity'      => array(
-		'@type'           => 'ItemList',
-		'numberOfItems'   => count( $tt_team ),
-		'itemListElement' => array(),
-	),
-);
-$tt_pos = 0;
-foreach ( $tt_team as $tt_slug => $tt_member ) {
-	$tt_pos++;
-	$tt_graph['mainEntity']['itemListElement'][] = array(
-		'@type'    => 'ListItem',
-		'position' => $tt_pos,
-		'item'     => array(
-			'@type'    => 'Person',
-			'@id'      => toctoc_team_person_id( $tt_slug ),
-			'name'     => $tt_member['name'],
-			'jobTitle' => $tt_member['role_plain'],
-			'url'      => toctoc_team_url( $tt_slug ),
-		),
-	);
-}
+// No JSON-LD here either: the CollectionPage node is emitted inside
+// header.php's @graph by toctoc_team_extra_schema_json(). One block per page.
 ?>
 
 <main class="min-h-screen bg-background text-foreground">
@@ -106,7 +76,6 @@ foreach ( $tt_team as $tt_slug => $tt_member ) {
 
 	<?php toctoc_render_checker_cta(); ?>
 
-	<script type="application/ld+json"><?php echo wp_json_encode( $tt_graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
 
 </main>
 
