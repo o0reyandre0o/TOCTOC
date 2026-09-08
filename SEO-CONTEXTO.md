@@ -273,3 +273,62 @@ curl -s -o /dev/null -w '%{http_code}' https://DOMINIO/sitemap.xml
 - Eventos de conversión en GA4: el checker emite `checker_complete`,
   `checker_failed`, `llms_draft_copy`, `llms_draft_download` y `seo_check_lead`
   al dataLayer. Falta confirmar que todos llegan a GA4 como eventos.
+
+---
+
+## Entidad Andre Gutierrez — línea base en IA (7 sep 2026)
+
+Primera medición **después** de montar el grafo de entidad, así que **no hay
+"antes"**: esto no demuestra que algo mejorara, es el punto de partida contra el
+que comparar. Repetir hacia el **19 oct 2026** con las mismas dos preguntas.
+
+### Pregunta 1 — "Who is Andre Gutierrez?"
+
+Sin contexto adicional. El modelo resolvió al Andre correcto de entre todos los
+que comparten ese nombre, y lo describió como *AI-driven Web Developer at TocToc
+Marketing*, George Town, Grand Cayman; vibe coding, WordPress, Elementor, datos
+estructurados, GEO.
+
+**Trazabilidad: las 12 frases comprobadas aparecen en nuestro contenido
+publicado** (schema de la home, ficha `/team/andre-gutierrez/`, y about).
+
+Salvedad honesta: esas cadenas están **tanto en el JSON-LD como en el texto
+visible** de las páginas. Que la respuesta venga del schema en concreto no queda
+demostrado — solo que viene de algo nuestro.
+
+La señal más específica es `vibe coding`: está en el `knowsAbout` de su nodo
+Person y no es un término que nadie asociaría con un homónimo cualquiera.
+
+### Pregunta 2 — "Who builds WordPress websites in the Cayman Islands?"
+
+TocToc sale **primero**, y es **la única entrada que nombra a una persona**:
+*"Features web developer Andre Gutierrez…"*. Las demás son solo nombres de
+agencia. Eso es exactamente lo que compra tener un nodo Person.
+
+Competencia que el modelo considera del mismo grupo:
+
+| Agencia | Comprobado |
+|---|---|
+| Eyecay | **Real** — eyecay.ky responde 200, "Web Design & SEO in Cayman Islands" |
+| CODE Digital | Sin confirmar (dominios adivinados, no encontrados) |
+| Caribbean Web Design (CWD) | Sin confirmar |
+
+### Límites de esta medición
+
+- **Una sola ejecución de un solo modelo.** Un LLM varía entre ejecuciones; esto
+  es un dato, no una medida.
+- Sin línea base previa (ver arriba).
+- El orden en una lista no es un ranking.
+- No se registró qué modelo respondió. En la próxima ronda, anotarlo, y correr
+  ChatGPT, Gemini y Perplexity por separado.
+
+### Estado del grafo en esa fecha
+
+```
+ORCID  0009-0002-0951-7834   público, con empleo y 3 enlaces
+GitHub o0reyandre0o          enlaza de vuelta a la ficha (campo blog)
+toctoc.ky ↔ ORCID            cerrado en ambos sentidos
+toctoc.ky ↔ GitHub           cerrado en ambos sentidos
+LinkedIn                     no verificable (devuelve 999 a clientes no navegador)
+polimedios.com               declara el @id, pero SIN ORCID ni GitHub — pendiente
+```
