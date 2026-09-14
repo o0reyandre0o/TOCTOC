@@ -960,6 +960,11 @@ add_action( 'init', function () {
         // answers 404. A sitemap that advertises a 404 wastes crawl budget and
         // gets reported as an error. Re-add this line the day that page exists.
         [ 'https://toctoc.ky/about-toc-toc-marketing/',                            '0.7' ],
+        [ 'https://toctoc.ky/team/',                                               '0.7' ],
+        [ 'https://toctoc.ky/team/daniel-garrido/',                                '0.6' ],
+        [ 'https://toctoc.ky/team/andre-gutierrez/',                               '0.6' ],
+        [ 'https://toctoc.ky/team/nora-bravo/',                                    '0.6' ],
+        [ 'https://toctoc.ky/team/adriana-brito/',                                 '0.6' ],
         [ 'https://toctoc.ky/venezuela/',                                          '0.9' ],
         [ 'https://toctoc.ky/seo-checker/',                                        '0.7' ],
         [ 'https://toctoc.ky/digital-marketing-cayman-islands-guide/',             '0.8' ],
@@ -968,6 +973,42 @@ add_action( 'init', function () {
         [ 'https://toctoc.ky/privacy-policy/',                                     '0.2' ],
         [ 'https://toctoc.ky/terms-and-conditions/',                               '0.2' ],
     ];
+    /*
+     * Cualquier pagina publicada que no este en la lista de arriba se anade
+     * sola. La lista curada existe para controlar la prioridad de las paginas
+     * importantes, no para ser la unica fuente: el 7 de septiembre de 2026 se
+     * publicaron /team/ y las cuatro fichas del equipo, ninguna entro aqui, y
+     * estuvieron una semana fuera del sitemap sin que nada lo avisara. Una
+     * pagina nueva puede quedar mal priorizada; invisible, no.
+     *
+     * Los slugs huerfanos son los mismos que header.php marca noindex: paginas
+     * de builds viejos que siguen respondiendo 200 y no deben anunciarse.
+     */
+    $tt_listadas = array();
+    foreach ( $urls as [ $tt_loc_prev, $tt_prio_prev ] ) {
+        $tt_listadas[ untrailingslashit( $tt_loc_prev ) ] = true;
+    }
+    $tt_huerfanas = array( 'homepage', 'now-hiring', 'sansiwu' );
+    foreach ( get_posts( array(
+        'post_type'        => 'page',
+        'post_status'      => 'publish',
+        'posts_per_page'   => 300,
+        'orderby'          => 'menu_order',
+        'order'            => 'ASC',
+        'no_found_rows'    => true,
+        'suppress_filters' => false,
+    ) ) as $tt_page ) {
+        if ( in_array( $tt_page->post_name, $tt_huerfanas, true ) ) {
+            continue;
+        }
+        $tt_loc = get_permalink( $tt_page );
+        if ( ! $tt_loc || isset( $tt_listadas[ untrailingslashit( $tt_loc ) ] ) ) {
+            continue;
+        }
+        $tt_listadas[ untrailingslashit( $tt_loc ) ] = true;
+        $urls[] = array( esc_url( $tt_loc ), '0.6' );
+    }
+
     foreach ( $urls as [ $loc, $priority ] ) {
         echo "  <url><loc>{$loc}</loc><lastmod>{$today}</lastmod><priority>{$priority}</priority></url>\n";
     }
