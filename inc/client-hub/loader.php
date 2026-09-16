@@ -164,9 +164,11 @@ add_action( 'admin_init', function () {
 		'_tch_youtube_channel_id'      => 'UCjTE48JKYdNehgwBb8ybNug',
 		'_tch_youtube_url'             => 'https://www.youtube.com/@wearetoctoc',
 		'_tch_youtube_handle'          => '@wearetoctoc',
-		// LinkedIn — same organization ID the site schema publishes in sameAs.
+		// LinkedIn — the URN keeps the numeric id because the API publishes
+		// against it. The URL is the public vanity form: /company/110122083/
+		// redirects anonymous visitors (Googlebot included) to a login wall.
 		'_tch_linkedin_organization_urn' => 'urn:li:organization:110122083',
-		'_tch_linkedin_url'            => 'https://www.linkedin.com/company/110122083/',
+		'_tch_linkedin_url'            => 'https://www.linkedin.com/company/toc-toc-marketing/',
 	);
 	foreach ( $meta as $key => $value ) {
 		update_post_meta( $id, $key, $value );
