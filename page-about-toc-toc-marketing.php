@@ -99,82 +99,60 @@ get_header(); ?>
             </div>
 
             <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-                <!-- Andre Gutierrez -->
-                <article id="andre-gutierrez" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
-                    <div class="flex items-center gap-5 mb-8">
-                        <?php // Retrato nuevo, 27 ago 2026. Se sirve a 320 px para un avatar de 96: el original venia asi y ampliarlo solo inventa pixeles. ?>
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/andre-gutierrez-toctoc.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="320" height="320" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
-                        <div>
-                            <h3 class="text-3xl font-display text-slate-900"><a href="https://toctoc.ky/team/andre-gutierrez/" class="decoration-none hover:text-sky-deep transition-colors">Andre Gutierrez</a></h3>
-                            <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Web Developer</p>
-                        </div>
-                    </div>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-5">
-                        Andre builds the websites AI loves and humans trust. An AI-driven developer who blends <strong class="text-slate-700">vibe coding</strong> with deep WordPress and Elementor expertise, he ships fast, high-performance sites engineered to get recommended in the answer economy.
-                    </p>
-                    <a href="https://www.linkedin.com/in/andre-g-9b373a97/" target="_blank" rel="noopener" class="mb-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
-                        LinkedIn
-                    </a>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Vibe Coding</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">WordPress</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Elementor</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">AI Development</span>
-                    </div>
-                    <a href="https://toctoc.ky/team/andre-gutierrez/" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">Full profile <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-                </article>
+                <?php
+                /* Las cuatro personas salen de inc/team.php. Daniel tiene su
+                   propio bloque arriba, asi que aqui se omite. */
+                $tt_cards = function_exists( 'toctoc_team_members' ) ? toctoc_team_members() : array();
+                unset( $tt_cards['daniel-garrido'] );
+                foreach ( $tt_cards as $tt_slug => $tt_m ) :
+                    $tt_url   = 'https://toctoc.ky/team/' . $tt_slug . '/';
+                    $tt_posts = function_exists( 'toctoc_team_article_count' ) ? toctoc_team_article_count( $tt_m ) : 0;
+                ?>
+                <article id="<?php echo esc_attr( $tt_slug ); ?>" class="group relative rounded-[2.5rem] bg-white border border-slate-100 p-8 md:p-10 shadow-soft transition-all hover:shadow-glass hover:border-sky-deep/20 text-left">
 
-                <!-- Nora Bravo -->
-                <article id="nora-bravo" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
-                    <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/nora-bravo-toctoc.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
+                    <div class="flex items-center gap-5">
+                        <img src="<?php echo esc_url( $tt_m['photo'] ); ?>"
+                             alt="<?php echo esc_attr( $tt_m['name'] . ', ' . $tt_m['role_plain'] . ' at TocToc Marketing' ); ?>"
+                             width="200" height="200" loading="lazy" decoding="async"
+                             class="w-20 h-20 rounded-[1.25rem] object-cover object-top shrink-0 border border-slate-100" />
                         <div>
-                            <h3 class="text-3xl font-display text-slate-900"><a href="https://toctoc.ky/team/nora-bravo/" class="decoration-none hover:text-sky-deep transition-colors">Nora Bravo</a></h3>
-                            <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Graphic Designer</p>
+                            <h3 class="text-2xl md:text-3xl font-display text-slate-900 leading-tight">
+                                <a href="<?php echo esc_url( $tt_url ); ?>" class="decoration-none after:absolute after:inset-0 group-hover:text-sky-deep transition-colors"><?php echo esc_html( $tt_m['name'] ); ?></a>
+                            </h3>
+                            <p class="mt-1 text-base text-slate-500"><?php echo wp_kses_post( $tt_m['role'] ); ?></p>
                         </div>
                     </div>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-5">
-                        Nora gives every brand its visual voice. From logos and brand identities to scroll-stopping social creatives, she designs the look and feel that makes Cayman businesses instantly recognizable — and impossible to ignore.
-                    </p>
-                    <a href="https://www.linkedin.com/in/norabravo92/" target="_blank" rel="noopener" class="mb-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
-                        LinkedIn
-                    </a>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Branding</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Visual Identity</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Social Creatives</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Graphic Design</span>
-                    </div>
-                    <a href="https://toctoc.ky/team/nora-bravo/" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">Full profile <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-                </article>
 
-                <!-- Adriana Brito — added 26 Aug 2026. First name corrected from "Andreina" on 27 Aug:
-                     it went in wrong and was live for a day. -->
-                <article id="adriana-brito" class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft transition-all hover:shadow-glass text-left">
-                    <div class="flex items-center gap-5 mb-8">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/08/adriana-brito-toctoc.webp" alt="Adriana Brito, Video Editor and Social Media at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
-                        <div>
-                            <h3 class="text-3xl font-display text-slate-900"><a href="https://toctoc.ky/team/adriana-brito/" class="decoration-none hover:text-sky-deep transition-colors">Adriana Brito</a></h3>
-                            <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Video Editor &amp; Social Media</p>
-                        </div>
+                    <p class="mt-6 text-base leading-relaxed text-slate-600"><?php echo wp_kses_post( $tt_m['lede'] ); ?></p>
+
+                    <?php /* Datos comprobables, en una linea, donde antes habia cuatro etiquetas. */ ?>
+                    <dl class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
+                        <?php if ( ! empty( $tt_m['from'] ) ) : ?>
+                        <div><dt class="sr-only">From</dt><dd>From <span class="text-slate-600"><?php echo esc_html( $tt_m['from']['city'] ); ?></span></dd></div>
+                        <?php endif; ?>
+                        <?php if ( $tt_posts ) : ?>
+                        <div><dt class="sr-only">Published</dt><dd><span class="text-slate-600"><?php echo esc_html( $tt_posts ); ?></span> articles</dd></div>
+                        <?php endif; ?>
+                    </dl>
+
+                    <div class="mt-6 flex flex-wrap gap-1.5">
+                        <?php foreach ( array_slice( $tt_m['tags'], 0, 4 ) as $tt_tag ) : ?>
+                        <span class="rounded-full bg-slate-50 text-slate-400 text-[10px] px-2.5 py-1 font-bold uppercase tracking-widest"><?php echo wp_kses_post( $tt_tag ); ?></span>
+                        <?php endforeach; ?>
                     </div>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-5">
-                        Adriana turns raw footage into the reels and stories that carry our clients&rsquo; work &mdash; and runs the day-to-day of the accounts those pieces live on. Editing, captions, pacing, publishing: the unglamorous craft that decides whether a good idea gets watched or scrolled past.
-                    </p>
-                    <a href="https://www.linkedin.com/in/adriana-brito-b2004034b" target="_blank" rel="noopener" class="mb-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
-                        LinkedIn
-                    </a>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Video Editing</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Reels &amp; Shorts</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Social Media</span>
-                        <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Content Production</span>
+
+                    <div class="mt-8 flex items-center justify-between">
+                        <span class="inline-flex items-center gap-2 text-sm font-bold text-sky-deep group-hover:gap-3 transition-all">
+                            Full profile
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </span>
+                        <?php /* relative z-10 para que el enlace de LinkedIn gane al de la tarjeta entera */ ?>
+                        <a href="<?php echo esc_url( $tt_m['linkedin'] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $tt_m['name'] ); ?> on LinkedIn" class="relative z-10 text-slate-300 hover:text-sky-deep transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+                        </a>
                     </div>
-                    <a href="https://toctoc.ky/team/adriana-brito/" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">Full profile <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
                 </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
