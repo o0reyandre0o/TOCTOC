@@ -648,7 +648,7 @@
                 </a>
             </div>
             <a href="/plugins/" class="block decoration-none">
-                <img src="https://toctoc.ky/wp-content/uploads/2026/09/ag-theme-sync-for-github-cover.webp"
+                <img src="https://toctoc.ky/wp-content/uploads/2026/09/ag-theme-sync-cover-v2.webp"
                      alt="AG Theme Sync for GitHub, a free WordPress plugin by TocToc"
                      width="1600" height="840" loading="lazy" decoding="async"
                      class="w-full h-auto rounded-[1.75rem] border border-white/10 shadow-glass" />

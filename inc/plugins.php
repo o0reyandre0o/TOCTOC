@@ -29,7 +29,7 @@ function toctoc_plugins() {
 			'author_url'  => 'https://toctoc.ky/team/andre-gutierrez/',
 			'wporg'       => 'https://wordpress.org/plugins/ag-theme-sync-for-github/',
 			'requires'    => 'WordPress 5.6 · PHP 7.4',
-			'image'       => 'https://toctoc.ky/wp-content/uploads/2026/09/ag-theme-sync-for-github-cover.webp',
+			'image'       => 'https://toctoc.ky/wp-content/uploads/2026/09/ag-theme-sync-cover-v2.webp',
 			'image_alt'   => 'A GitHub repository syncing to a live WordPress theme in one click, with backup, post-install check and automatic rollback',
 			'zip'         => 'https://toctoc.ky/wp-content/uploads/2026/09/ag-theme-sync-for-github-2.2.0.zip',
 			'zip_kb'      => 98,
