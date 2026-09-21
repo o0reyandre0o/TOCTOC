@@ -40,54 +40,83 @@ get_header(); ?>
 <main class="min-h-screen bg-background text-foreground">
 
 	<!-- Profile hero -->
-	<section class="relative pt-48 pb-24 overflow-hidden bg-slate-950 text-white">
+	<section class="relative pt-36 pb-20 overflow-hidden bg-slate-950 text-white">
 		<div class="absolute inset-0 z-0 opacity-40">
-			<div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-sky-deep blur-[120px] rounded-full"></div>
+			<div class="absolute top-0 left-1/3 w-[520px] h-[520px] bg-sky-deep blur-[120px] rounded-full"></div>
 		</div>
 
 		<div class="relative z-10 mx-auto max-w-5xl px-6">
 			<?php toctoc_render_breadcrumbs( $tt_member['name'] ); ?>
 
-			<div class="flex flex-col sm:flex-row sm:items-center gap-8">
-				<img src="<?php echo esc_url( $tt_member['photo'] ); ?>"
-					 alt="<?php echo esc_attr( $tt_member['name'] . ', ' . $tt_member['role_plain'] . ' at TocToc Marketing' ); ?>"
-					 width="400" height="400" fetchpriority="high" decoding="async"
-					 class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover object-top shrink-0 border border-white/15" />
-				<div>
-					<p class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent mb-4">TocToc Marketing &middot; Grand Cayman</p>
+			<div class="mt-8 grid md:grid-cols-[minmax(0,260px)_1fr] gap-10 md:gap-14 items-start">
+
+				<?php /* El retrato en vertical y en rectangulo: a 5:6 cabe la persona,
+						 no solo la cara, y deja de competir con el titular. */ ?>
+				<figure class="relative">
+					<img src="<?php echo esc_url( $tt_member['photo'] ); ?>"
+						 alt="<?php echo esc_attr( $tt_member['name'] . ', ' . $tt_member['role_plain'] . ' at TocToc Marketing' ); ?>"
+						 width="520" height="624" fetchpriority="high" decoding="async"
+						 class="w-full aspect-[5/6] object-cover object-top rounded-[1.75rem] border border-white/10" />
+					<figcaption class="absolute -bottom-3 left-5 right-5 rounded-full bg-accent px-4 py-2 text-center text-[10px] font-bold uppercase tracking-[0.18em] text-slate-950">
+						TocToc &middot; Grand Cayman
+					</figcaption>
+				</figure>
+
+				<div class="pt-2">
 					<h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-white"><?php echo esc_html( $tt_member['name'] ); ?></h1>
-					<p class="mt-3 text-sm font-bold uppercase tracking-[0.2em] text-white/40"><?php echo wp_kses_post( $tt_member['role'] ); ?></p>
-					<?php if ( ! empty( $tt_member['from'] ) ) : ?>
-					<p class="mt-3 text-sm text-white/40">From <?php echo esc_html( $tt_member['from']['city'] ); ?>, Venezuela</p>
-					<?php endif; ?>
+
+					<?php /* En caja normal y a mayor tamano: es la frase que de verdad
+							 importa despues del nombre, y en versalitas se leia peor. */ ?>
+					<p class="mt-4 text-xl md:text-2xl text-white/75 leading-snug"><?php echo wp_kses_post( $tt_member['role'] ); ?></p>
+
+					<div class="mt-7 h-px bg-gradient-to-r from-accent/55 to-white/10"></div>
+
+					<?php /* Todos los datos duros en una fila, en vez de apilados. */ ?>
+					<dl class="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
+						<?php if ( ! empty( $tt_member['from'] ) ) : ?>
+						<div>
+							<dt class="sr-only">From</dt>
+							<dd class="text-white/45">From <span class="text-white/80"><?php echo esc_html( $tt_member['from']['city'] ); ?>, Venezuela</span></dd>
+						</div>
+						<?php endif; ?>
+						<?php if ( $tt_total ) : ?>
+						<div>
+							<dt class="sr-only">Published</dt>
+							<dd class="text-white/45"><span class="text-white/80"><?php echo esc_html( $tt_total ); ?></span> <?php echo 1 === $tt_total ? 'article' : 'articles'; ?></dd>
+						</div>
+						<?php endif; ?>
+						<?php if ( ! empty( $tt_member['orcid'] ) ) : ?>
+						<div>
+							<dt class="sr-only">ORCID</dt>
+							<dd class="text-white/45">ORCID <a href="<?php echo esc_url( $tt_member['orcid'] ); ?>" target="_blank" rel="noopener me" class="text-white/80 decoration-none hover:text-accent transition-colors"><?php echo esc_html( str_replace( 'https://orcid.org/', '', $tt_member['orcid'] ) ); ?></a></dd>
+						</div>
+						<?php endif; ?>
+					</dl>
+
+					<p class="mt-7 text-xl md:text-2xl text-white/70 leading-relaxed max-w-2xl"><?php echo wp_kses_post( $tt_member['lede'] ); ?></p>
+
+					<?php /* Pildoras: en esta pagina los enlaces son la prueba de que la
+							 persona es quien dice ser, no una nota al pie. */ ?>
+					<div class="mt-8 flex flex-wrap items-center gap-3">
+						<a href="<?php echo esc_url( $tt_member['linkedin'] ); ?>" target="_blank" rel="noopener me" class="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-accent hover:text-slate-950 px-5 py-2.5 text-sm font-bold transition-colors decoration-none">
+							<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+							LinkedIn
+						</a>
+						<?php if ( ! empty( $tt_member['orcid'] ) ) : ?>
+						<a href="<?php echo esc_url( $tt_member['orcid'] ); ?>" target="_blank" rel="noopener me" class="inline-flex items-center gap-2 rounded-full border border-white/15 hover:border-accent hover:text-accent px-5 py-2.5 text-sm font-bold transition-colors decoration-none">ORCID</a>
+						<?php endif; ?>
+						<?php if ( $tt_member['site'] ) : ?>
+						<a href="<?php echo esc_url( $tt_member['site'] ); ?>" target="_blank" rel="noopener me" class="inline-flex items-center gap-2 rounded-full border border-white/15 hover:border-accent hover:text-accent px-5 py-2.5 text-sm font-bold transition-colors decoration-none"><?php echo esc_html( preg_replace( '#^https?://#', '', $tt_member['site'] ) ); ?></a>
+						<?php endif; ?>
+					</div>
+
+					<div class="mt-8 flex flex-wrap gap-2">
+						<?php foreach ( $tt_member['tags'] as $tt_tag ) : ?>
+						<span class="rounded-full bg-white/5 text-white/45 text-[10px] px-3 py-1.5 font-bold uppercase tracking-widest border border-white/10"><?php echo wp_kses_post( $tt_tag ); ?></span>
+						<?php endforeach; ?>
+					</div>
 				</div>
-			</div>
 
-			<p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl"><?php echo wp_kses_post( $tt_member['lede'] ); ?></p>
-
-			<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-				<a href="<?php echo esc_url( $tt_member['linkedin'] ); ?>" target="_blank" rel="noopener me" class="inline-flex items-center gap-2 text-sm font-bold text-accent hover:gap-3 transition-all decoration-none">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
-					LinkedIn
-				</a>
-				<?php if ( $tt_member['site'] ) : ?>
-				<a href="<?php echo esc_url( $tt_member['site'] ); ?>" target="_blank" rel="noopener me" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:gap-2.5 transition-all decoration-none">
-					<?php echo esc_html( preg_replace( '#^https?://#', '', $tt_member['site'] ) ); ?>
-					<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-				</a>
-				<?php endif; ?>
-				<?php if ( ! empty( $tt_member['orcid'] ) ) : ?>
-				<a href="<?php echo esc_url( $tt_member['orcid'] ); ?>" target="_blank" rel="noopener me" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:gap-2.5 transition-all decoration-none">
-					ORCID <?php echo esc_html( str_replace( 'https://orcid.org/', '', $tt_member['orcid'] ) ); ?>
-					<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-				</a>
-				<?php endif; ?>
-			</div>
-
-			<div class="mt-8 flex flex-wrap gap-2">
-				<?php foreach ( $tt_member['tags'] as $tt_tag ) : ?>
-				<span class="rounded-full bg-white/5 text-white/50 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10"><?php echo wp_kses_post( $tt_tag ); ?></span>
-				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
