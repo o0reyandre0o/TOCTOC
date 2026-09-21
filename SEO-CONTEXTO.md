@@ -332,3 +332,48 @@ toctoc.ky ↔ GitHub           cerrado en ambos sentidos
 LinkedIn                     no verificable (devuelve 999 a clientes no navegador)
 polimedios.com               declara el @id, pero SIN ORCID ni GitHub — pendiente
 ```
+
+---
+
+## Superficie de IA de Google — primera medición (21 sep 2026)
+
+Datos de **Search Console → Performance → Generative AI features (beta)**, ventana
+23 ago – 19 sep. **No está en la API**: solo se ve en la interfaz, así que esta
+tabla se copia a mano. Es la primera cifra real de GEO/AEO que tenemos; todo lo
+anterior eran inferencias.
+
+```
+total                 385 impresiones en 28 días
+home                  163  (42%)
+páginas de servicio   197  (51%)
+blog                   17  (4%)
+/team/daniel-garrido/   3
+```
+
+**Contexto:** en la misma ventana la búsqueda web dio 8.316 impresiones, o sea
+que la IA es un 4,6% de ese número. Pero no son comparables tal cual: ~90% de
+las impresiones de búsqueda web son rastreadores de posiciones, y las de IA
+casi con seguridad no lo son. En impresiones *humanas* la IA pesa mucho más de
+lo que sugiere ese porcentaje.
+
+### Lo que corrige
+
+En septiembre concluimos que los artículos del blog eran lo que rendía en IA,
+basándonos en su **cuota** (33-38% de las impresiones de cada artículo venían de
+superficies de IA). En **valor absoluto** el blog son 17 de 385 impresiones: el
+4%. Las dos cosas son ciertas y la segunda es la que importa para decidir dónde
+invertir. **Quien trabaja en IA es la home y las páginas de servicio.**
+
+### Otros detalles
+
+- `/team/daniel-garrido/` aparece con 3 impresiones **dos semanas después** de
+  publicarse. Las fichas entran rápido en estas superficies.
+- Dos URLs aparecen **sin barra final** (`/digital-marketing-agency-cayman-islands`
+  y `/web-development-cayman-islands`), además de su forma canónica. Vigilar: si
+  crece, hay que revisar de dónde salen esos enlaces.
+
+### Enlaces entrantes, según Bing (21 sep 2026)
+
+`GetLinkCounts` para toctoc.ky devuelve `Links: []`, `TotalPages: 0`. Bing no
+conoce **ningún** enlace externo al sitio. Es la línea base contra la que medir
+si alguna vez alguien de fuera enlaza un artículo.
