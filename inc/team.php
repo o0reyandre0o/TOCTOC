@@ -15,9 +15,8 @@
  * we spent August removing from this site.
  *
  * 'from' es el lugar de origen, no la residencia. Se publica como birthPlace
- * en el schema y como una linea visible en la ficha. Daniel no lo lleva aun:
- * su ciudad llego sin confirmar y un dato personal equivocado en una pagina
- * indexada es peor que un dato ausente.
+ * en el schema y como una linea visible en la ficha. Los cuatro son de
+ * Venezuela: Cabimas, Maracaibo y Caracas.
  *
  * @package TocToc
  */
@@ -33,6 +32,7 @@ function toctoc_team_members() {
 	return array(
 
 		'daniel-garrido' => array(
+			'from'      => array( 'city' => 'Caracas', 'region' => 'Distrito Capital', 'country' => 'VE' ),
 			'person_id'=> 'https://toctoc.ky/#daniel-garrido',
 			'name'      => 'Daniel Garrido',
 			'role'      => 'Founder &amp; CEO',

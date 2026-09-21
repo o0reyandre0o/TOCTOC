@@ -508,6 +508,7 @@
           "founder": {
             "@type": "Person",
             "@id": "https://toctoc.ky/#daniel-garrido",
+            "birthPlace": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Caracas", "addressRegion": "Distrito Capital", "addressCountry": "VE" } },
             "url": "https://toctoc.ky/team/daniel-garrido/",
             "name": "Daniel Garrido",
             "jobTitle": "Founder & CEO",
