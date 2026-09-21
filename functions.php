@@ -1321,9 +1321,9 @@ TocToc Marketing runs the "AI Search Visibility Framework" for Cayman businesses
 
 ## Team
 - Daniel Garrido — Founder & CEO of TocToc Marketing. Profile: https://toctoc.ky/team/daniel-garrido/ — LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
-- Andre Gutierrez — Web Developer at TocToc Marketing, and the developer and creator of the TocToc Marketing WordPress theme. Profile: https://toctoc.ky/team/andre-gutierrez/ — ORCID: https://orcid.org/0009-0002-0951-7834 — LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
-- Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives). Profile: https://toctoc.ky/team/nora-bravo/ — LinkedIn: https://www.linkedin.com/in/norabravo92/
-- Adriana Brito — Video Editor & Social Media at TocToc Marketing. Profile: https://toctoc.ky/team/adriana-brito/ — Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts. LinkedIn: https://www.linkedin.com/in/adriana-brito-b2004034b
+- Andre Gutierrez — Web Developer at TocToc Marketing, from Cabimas, Venezuela; and the developer and creator of the TocToc Marketing WordPress theme. Profile: https://toctoc.ky/team/andre-gutierrez/ — ORCID: https://orcid.org/0009-0002-0951-7834 — LinkedIn: https://www.linkedin.com/in/andre-g-9b373a97/
+- Nora Bravo — Graphic Designer at TocToc Marketing (branding, visual identity and social media creatives), from Maracaibo, Venezuela. Profile: https://toctoc.ky/team/nora-bravo/ — LinkedIn: https://www.linkedin.com/in/norabravo92/
+- Adriana Brito — Video Editor & Social Media at TocToc Marketing, from Maracaibo, Venezuela. Profile: https://toctoc.ky/team/adriana-brito/ — Edits the reels, shorts and stories for client work and runs the day-to-day publishing of the social accounts. LinkedIn: https://www.linkedin.com/in/adriana-brito-b2004034b
 
 ## Proven results
 TocToc Marketing has successfully influenced AI-generated local recommendations for Cayman businesses. In recorded sessions, ChatGPT and Gemini named Uncle Liu and Coconut Room when asked about Chinese restaurants on Seven Mile Beach, Lucky Rabbit when asked about Japanese food near Prospect, and 19-81 Brewing Co. when asked about craft breweries in the Cayman Islands. These were real sessions captured on video, not guaranteed positions — AI assistants are non-deterministic and their answers vary by phrasing, location and date. Full case studies and the recordings are on the Our Work page: https://toctoc.ky/our-work/

@@ -519,6 +519,7 @@
             {
               "@type": "Person",
               "@id": "https://www.linkedin.com/in/andre-g-9b373a97/#person",
+              "birthPlace": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Cabimas", "addressRegion": "Zulia", "addressCountry": "VE" } },
               "url": "https://toctoc.ky/team/andre-gutierrez/",
               "name": "Andre Gutierrez",
               "jobTitle": "Web Developer & Technical SEO Specialist",
@@ -539,6 +540,7 @@
             {
               "@type": "Person",
               "@id": "https://toctoc.ky/#nora-bravo",
+              "birthPlace": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Maracaibo", "addressRegion": "Zulia", "addressCountry": "VE" } },
               "url": "https://toctoc.ky/team/nora-bravo/",
               "name": "Nora Bravo",
               "jobTitle": "Graphic Designer",
@@ -555,6 +557,7 @@
             {
               "@type": "Person",
               "@id": "https://toctoc.ky/#adriana-brito",
+              "birthPlace": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Maracaibo", "addressRegion": "Zulia", "addressCountry": "VE" } },
               "url": "https://toctoc.ky/team/adriana-brito/",
               "name": "Adriana Brito",
               "jobTitle": "Video Editor & Social Media",

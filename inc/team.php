@@ -14,6 +14,11 @@
  * page with nothing but a paragraph and a headshot is exactly the kind of page
  * we spent August removing from this site.
  *
+ * 'from' es el lugar de origen, no la residencia. Se publica como birthPlace
+ * en el schema y como una linea visible en la ficha. Daniel no lo lleva aun:
+ * su ciudad llego sin confirmar y un dato personal equivocado en una pagina
+ * indexada es peor que un dato ausente.
+ *
  * @package TocToc
  */
 
@@ -53,6 +58,7 @@ function toctoc_team_members() {
 		),
 
 		'andre-gutierrez' => array(
+			'from'      => array( 'city' => 'Cabimas', 'region' => 'Zulia', 'country' => 'VE' ),
 			'person_id'=> 'https://www.linkedin.com/in/andre-g-9b373a97/#person',
 			'name'      => 'Andre Gutierrez',
 			'role'      => 'Web Developer &amp; Technical SEO Specialist',
@@ -80,6 +86,7 @@ function toctoc_team_members() {
 		),
 
 		'nora-bravo' => array(
+			'from'      => array( 'city' => 'Maracaibo', 'region' => 'Zulia', 'country' => 'VE' ),
 			'person_id'=> 'https://toctoc.ky/#nora-bravo',
 			'name'      => 'Nora Bravo',
 			'role'      => 'Graphic Designer',
@@ -105,6 +112,7 @@ function toctoc_team_members() {
 		),
 
 		'adriana-brito' => array(
+			'from'      => array( 'city' => 'Maracaibo', 'region' => 'Zulia', 'country' => 'VE' ),
 			'person_id'=> 'https://toctoc.ky/#adriana-brito',
 			'name'      => 'Adriana Brito',
 			'role'      => 'Video Editor &amp; Social Media',

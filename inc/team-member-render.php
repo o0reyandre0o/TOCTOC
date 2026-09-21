@@ -57,6 +57,9 @@ get_header(); ?>
 					<p class="text-[11px] font-bold uppercase tracking-[0.2em] text-accent mb-4">TocToc Marketing &middot; Grand Cayman</p>
 					<h1 class="text-5xl md:text-7xl font-display leading-[0.95] text-white"><?php echo esc_html( $tt_member['name'] ); ?></h1>
 					<p class="mt-3 text-sm font-bold uppercase tracking-[0.2em] text-white/40"><?php echo wp_kses_post( $tt_member['role'] ); ?></p>
+					<?php if ( ! empty( $tt_member['from'] ) ) : ?>
+					<p class="mt-3 text-sm text-white/40">From <?php echo esc_html( $tt_member['from']['city'] ); ?>, Venezuela</p>
+					<?php endif; ?>
 				</div>
 			</div>
 
