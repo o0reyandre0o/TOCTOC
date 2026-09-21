@@ -205,6 +205,13 @@ $ttseo_faqs = array(
                         Watch my site weekly &amp; email me if my score drops (free)
                     </label>
 
+                    <?php /* Cebo: invisible y fuera del arbol de accesibilidad, con
+                             autocomplete apagado para que el navegador no lo rellene. */ ?>
+                    <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
+                        <label for="website_extra">Do not fill this in</label>
+                        <input type="text" id="website_extra" name="website_extra" tabindex="-1" autocomplete="off" value="">
+                    </div>
+
                     <?php if ( $ttseo_ts ) : ?>
                     <div class="cf-turnstile mt-4" data-sitekey="<?php echo esc_attr( $ttseo_ts ); ?>"></div>
                     <?php endif; ?>
@@ -484,6 +491,7 @@ echo wp_json_encode(
 <?php toctoc_schema_add_raw( ob_get_clean() ); ?>
 
 <script>
+var TTSEO_LOADED = Date.now();
 window.TTSEO = {
     ajax: '<?php echo esc_js( $ttseo_ajax ); ?>',
     nonce: '<?php echo esc_js( $ttseo_nonce ); ?>',
@@ -656,6 +664,8 @@ window.TTSEO = {
 
         var params = { action: 'toctoc_seo_discover', nonce: TTSEO.nonce, url: url, email: email, name: name };
         if (tsToken) params.ts_token = tsToken;
+        params.website_extra = (document.getElementById('website_extra') || {}).value || '';
+        params.ttseo_t = Date.now() - TTSEO_LOADED;
         fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(params) })
         .then(function (r) { return r.json(); })
         .then(function (json) {
@@ -1283,6 +1293,8 @@ window.TTSEO = {
         if (monToggle && monToggle.checked) params.monitor = '1';
         if (competitor) params.competitor = competitor;
         if (tsToken) params.ts_token = tsToken;
+        params.website_extra = (document.getElementById('website_extra') || {}).value || '';
+        params.ttseo_t = Date.now() - TTSEO_LOADED;
         var body = new URLSearchParams(params);
         fetch(TTSEO.ajax, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
         .then(function (r) { return r.json(); })

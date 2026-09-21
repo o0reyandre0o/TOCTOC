@@ -217,6 +217,33 @@ function toctoc_seo_rate_limited( $bucket = 'check', $max = 15 ) {
 	return false;
 }
 
+/**
+ * Honeypot + submit timing. True when the request looks automated.
+ *
+ * Complements Turnstile rather than replacing it: a bot that runs JavaScript
+ * and solves the challenge still fills every field it finds and submits
+ * instantly. These two signals cost nothing and need no keys.
+ */
+function toctoc_seo_looks_automated() {
+	// Never block the team while testing.
+	if ( function_exists( 'current_user_can' ) && current_user_can( 'manage_options' ) ) {
+		return false;
+	}
+	// The bait field is hidden from sight and from screen readers. Anything in
+	// it was not typed by a person.
+	$bait = isset( $_POST['website_extra'] ) ? trim( (string) wp_unslash( $_POST['website_extra'] ) ) : '';
+	if ( '' !== $bait ) {
+		return true;
+	}
+	// Time from page load to submit, in milliseconds, as reported by the page.
+	// Trivially forgeable on its own, which is why it is one of two signals.
+	$elapsed = isset( $_POST['ttseo_t'] ) ? (int) $_POST['ttseo_t'] : 0;
+	if ( $elapsed > 0 && $elapsed < 3000 ) {
+		return true;
+	}
+	return false;
+}
+
 /** Verify the Cloudflare Turnstile token. Returns true when disabled or valid. */
 function toctoc_seo_turnstile_ok() {
 	$secret = get_option( 'toctoc_ts_secret', '' );
@@ -629,6 +656,9 @@ function toctoc_seo_send_report( $name, $email, $url, $result ) {
 function toctoc_seo_check_handler() {
 	check_ajax_referer( 'toctoc_seo', 'nonce' );
 
+	if ( toctoc_seo_looks_automated() ) {
+		wp_send_json_error( array( 'message' => 'Could not process that request. Please try again.' ) );
+	}
 	if ( ! toctoc_seo_turnstile_ok() ) {
 		wp_send_json_error( array( 'message' => 'Anti-spam verification failed. Please refresh and try again.' ) );
 	}
@@ -2021,6 +2051,9 @@ add_action( 'wp_ajax_toctoc_seo_discover', 'toctoc_seo_discover_handler' );
 add_action( 'wp_ajax_nopriv_toctoc_seo_discover', 'toctoc_seo_discover_handler' );
 function toctoc_seo_discover_handler() {
 	check_ajax_referer( 'toctoc_seo', 'nonce' );
+	if ( toctoc_seo_looks_automated() ) {
+		wp_send_json_error( array( 'message' => 'Could not process that request. Please try again.' ) );
+	}
 	if ( ! toctoc_seo_turnstile_ok() ) {
 		wp_send_json_error( array( 'message' => 'Anti-spam verification failed. Please refresh and try again.' ) );
 	}
