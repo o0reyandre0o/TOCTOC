@@ -254,6 +254,22 @@ function toctoc_team_extra_schema_json() {
  * @param int                  $limit  Max posts.
  * @return WP_Post[]
  */
+function toctoc_team_article_count( $member ) {
+	if ( empty( $member['author'] ) ) {
+		return 0;
+	}
+	$c = count_user_posts( (int) $member['author'], 'post', true );
+	return (int) $c;
+}
+
+/**
+ * Posts written by a member, newest first.
+ *
+ * El listado va acotado, el recuento no. Cuando se escribio esto Andre tenia
+ * ocho articulos y el tope de 12 parecia lejano; en cuanto paso de 12, la ficha
+ * empezo a decir "12 pieces" con 15 publicados. Contar y listar son dos cosas
+ * distintas y conviene que lo sigan siendo.
+ */
 function toctoc_team_articles( $member, $limit = 12 ) {
 	if ( empty( $member['author'] ) ) {
 		return array();

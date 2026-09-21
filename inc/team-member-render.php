@@ -27,6 +27,7 @@ if ( null === $tt_member ) {
 
 $tt_first    = strtok( $tt_member['name'], ' ' );
 $tt_articles = toctoc_team_articles( $tt_member );
+$tt_total    = toctoc_team_article_count( $tt_member );
 
 // No JSON-LD here. The page node lives in header.php's @graph via
 // toctoc_team_extra_schema_json(), so the page keeps one ld+json block and one
@@ -130,7 +131,7 @@ get_header(); ?>
 				Articles by <em class="italic text-accent font-display"><?php echo esc_html( $tt_member['name'] ); ?></em>
 			</h2>
 			<p class="mt-6 text-lg text-white/50 max-w-2xl">
-				<?php echo esc_html( count( $tt_articles ) ); ?> <?php echo 1 === count( $tt_articles ) ? 'piece' : 'pieces'; ?> on the TocToc blog.
+				<?php echo esc_html( $tt_total ); ?> <?php echo 1 === $tt_total ? 'piece' : 'pieces'; ?> on the TocToc blog.<?php if ( $tt_total > count( $tt_articles ) ) : ?> The <?php echo esc_html( count( $tt_articles ) ); ?> most recent are below.<?php endif; ?>
 			</p>
 
 			<ul class="mt-12 divide-y divide-white/10 border-y border-white/10">
