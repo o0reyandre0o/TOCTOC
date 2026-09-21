@@ -48,6 +48,10 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 		if ( 'live' === $tt_p['state'] ) {
 			$tt_node['downloadUrl'] = $tt_p['wporg'];
 			$tt_node['url']         = $tt_p['wporg'];
+		} elseif ( ! empty( $tt_p['zip'] ) ) {
+			// Mientras espera revision se descarga de aqui, asi que el nodo
+			// puede decirlo: describe lo que existe, no lo que esperamos.
+			$tt_node['downloadUrl'] = $tt_p['zip'];
 		}
 		toctoc_schema_add( $tt_node );
 	}
@@ -122,15 +126,32 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 						</span>
 					</a>
 					<?php else : ?>
-					<a href="mailto:info@toctoc.ky?subject=Early%20access%3A%20<?php echo rawurlencode( $tt_p['name'] ); ?>" class="inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-6 pr-2 py-2 text-base font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-						Ask for early access
+					<a href="<?php echo esc_url( $tt_p['zip'] ); ?>" download class="inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-6 pr-2 py-2 text-base font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+						Download v<?php echo esc_html( $tt_p['version'] ); ?> &middot; <?php echo esc_html( $tt_p['zip_kb'] ); ?> KB
 						<span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent text-slate-950">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
 						</span>
 					</a>
-					<p class="text-sm text-slate-500 max-w-sm">Submitted to the WordPress plugin directory and waiting on review. We will publish the install link here the day it is approved.</p>
+					<p class="text-sm text-slate-500 max-w-sm">Waiting on review at WordPress.org. Install it from here meanwhile &mdash; once it is approved, reinstall from the directory to get automatic updates.</p>
 					<?php endif; ?>
 				</div>
+
+				<?php if ( ! empty( $tt_p['install'] ) ) : ?>
+				<div class="mt-10 rounded-[1.75rem] border border-slate-100 bg-slate-50/60 p-8">
+					<h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-deep mb-6">How to install it</h3>
+					<ol class="space-y-3">
+						<?php foreach ( $tt_p['install'] as $tt_i => $tt_step ) : ?>
+						<li class="flex gap-4 text-sm text-slate-600 leading-relaxed">
+							<span class="shrink-0 inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-white text-[11px] font-bold"><?php echo (int) $tt_i + 1; ?></span>
+							<span><?php echo wp_kses_post( $tt_step ); ?></span>
+						</li>
+						<?php endforeach; ?>
+					</ol>
+					<?php if ( ! empty( $tt_p['server'] ) ) : ?>
+					<p class="mt-6 text-sm text-slate-500"><?php echo wp_kses_post( $tt_p['server'] ); ?></p>
+					<?php endif; ?>
+				</div>
+				<?php endif; ?>
 			</article>
 			<?php endforeach; ?>
 
