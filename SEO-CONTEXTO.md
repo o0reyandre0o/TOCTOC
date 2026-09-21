@@ -377,3 +377,47 @@ invertir. **Quien trabaja en IA es la home y las páginas de servicio.**
 `GetLinkCounts` para toctoc.ky devuelve `Links: []`, `TotalPages: 0`. Bing no
 conoce **ningún** enlace externo al sitio. Es la línea base contra la que medir
 si alguna vez alguien de fuera enlaza un artículo.
+
+---
+
+## Primera citación observada en IA (21 sep 2026)
+
+**Modelo:** Gemini · **Consulta exacta:** `Quien es Andre Gutierrez Web developer?`
+(en español, con búsqueda en vivo: la respuesta mostró tarjeta de fuente).
+
+La respuesta abrió con *"Existen un par de figuras reconocidas en el ámbito del
+desarrollo web con este nombre"* y colocó a Andre **el primero**, descrito como
+desarrollador web y especialista en SEO técnico de TocToc Marketing, originario
+de Cabimas. La tarjeta de fuente citaba `/team/andre-gutierrez/` y reproducía el
+texto de la página casi literal:
+
+```
+Andre Gutierrez | Web Developer, TocToc Marketing
+"Andre Gutierrez. Web Developer & Technical SEO Specialist.
+ From Cabimas, Venezuela. Builds the sites..."
+```
+
+Ese orden —H1, rol, origen, lede— es exactamente el de la ficha.
+
+### El dato que importa: la latencia
+
+La línea **"From Cabimas, Venezuela" se publicó ese mismo día a las 10:52**
+(commit `f020e5a`). Gemini la estaba citando pocas horas después. Publicar →
+rastrear → citar ocurrió **dentro del mismo día**, no en semanas.
+
+### Qué prueba y qué no
+
+Prueba que la ficha es encontrable, legible y citable, y que **la
+desambiguación funciona**: es el beneficio que se buscaba al montar los `@id`
+estables, el ORCID y el GitHub enlazado de vuelta.
+
+No prueba tráfico (nadie hizo clic), ni estabilidad (una consulta, un modelo,
+una sesión), ni desambiguación completa: el propio modelo dice que hay "un par
+de figuras" con ese nombre. Repetir la consulta en otras sesiones antes de
+tratarlo como un resultado y no como una observación.
+
+### Pendiente
+
+Volver a correr las dos preguntas de la línea base del 7 de septiembre
+(`Who is Andre Gutierrez?` y `Who builds WordPress websites in the Cayman
+Islands?`) para comparar contra algo escrito, en vez de contra una impresión.
