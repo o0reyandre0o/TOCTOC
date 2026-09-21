@@ -35,7 +35,10 @@
                 <a href="/web-development-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">E-commerce &amp; Web Apps</a>
                 <a href="/social-media-marketing-services-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Social Media for Algorithmic Trust</a>
                 <a href="/advertising-pr-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Digital PR for AI Authority Citations</a>
-                <a href="/plugins/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Free WordPress Plugins</a>
+                <a href="/plugins/" class="group inline-flex w-fit items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-sm font-bold text-accent hover:bg-accent hover:text-slate-950 transition-colors decoration-none">
+                    Free WordPress Plugins
+                    <span class="rounded-full bg-accent px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-950 group-hover:bg-slate-950 group-hover:text-accent transition-colors">New</span>
+                </a>
                 <a href="/about-toc-toc-marketing/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">About Us</a>
             </nav>
             <div class="flex flex-col md:items-end gap-10">

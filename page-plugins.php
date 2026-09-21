@@ -44,6 +44,7 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 			'publisher'           => array( '@id' => home_url( '/' ) . '#organization' ),
 			'isAccessibleForFree' => true,
 			'license'             => 'https://www.gnu.org/licenses/gpl-2.0.html',
+			'image'               => $tt_p['image'] ?? '',
 		);
 		if ( 'live' === $tt_p['state'] ) {
 			$tt_node['downloadUrl'] = $tt_p['wporg'];
@@ -82,6 +83,13 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 		<div class="mx-auto max-w-5xl px-6 space-y-10">
 			<?php foreach ( $tt_plugins as $tt_p ) : ?>
 			<article class="rounded-[2.5rem] border border-slate-100 bg-white p-8 md:p-12 shadow-soft">
+
+				<?php if ( ! empty( $tt_p['image'] ) ) : ?>
+				<img src="<?php echo esc_url( $tt_p['image'] ); ?>"
+					 alt="<?php echo esc_attr( $tt_p['image_alt'] ); ?>"
+					 width="1600" height="840" loading="lazy" decoding="async"
+					 class="w-full h-auto rounded-[1.75rem] border border-slate-100 mb-10" />
+				<?php endif; ?>
 
 				<div class="flex flex-wrap items-center gap-4">
 					<h2 class="text-3xl md:text-4xl font-display text-slate-900"><?php echo esc_html( $tt_p['name'] ); ?></h2>
