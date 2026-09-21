@@ -69,7 +69,7 @@ get_header(); ?>
                     </div>
                     <?php endif; ?>
                     <div>
-                        <div class="text-4xl font-display text-white">Daniel Garrido</div>
+                        <div class="text-4xl font-display text-white"><a href="https://toctoc.ky/team/daniel-garrido/" class="decoration-none hover:text-accent transition-colors">Daniel Garrido</a></div>
                         <div class="text-sm uppercase tracking-[0.3em] text-white/40 font-bold">Founder &amp; Sales</div>
                         <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
                             <a href="https://danielgarrido.com" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:gap-2.5 transition-all decoration-none">
@@ -95,6 +95,7 @@ get_header(); ?>
                     The Talent
                 </div>
                 <h2 class="text-5xl md:text-8xl font-display text-slate-900 leading-none">A Passionate <em class="italic text-sky-deep font-display">Team.</em></h2>
+                <p class="mt-8 text-lg text-slate-500">Each of us has a profile with the work behind the name &mdash; <a href="https://toctoc.ky/team/" class="font-bold text-sky-deep decoration-none hover:underline">see the whole team</a>.</p>
             </div>
 
             <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
@@ -104,7 +105,7 @@ get_header(); ?>
                         <?php // Retrato nuevo, 27 ago 2026. Se sirve a 320 px para un avatar de 96: el original venia asi y ampliarlo solo inventa pixeles. ?>
                         <img src="https://toctoc.ky/wp-content/uploads/2026/08/andre-gutierrez-toctoc.webp" alt="Andre Gutierrez, Web Developer at TocToc Marketing" width="320" height="320" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
-                            <h3 class="text-3xl font-display text-slate-900">Andre Gutierrez</h3>
+                            <h3 class="text-3xl font-display text-slate-900"><a href="https://toctoc.ky/team/andre-gutierrez/" class="decoration-none hover:text-sky-deep transition-colors">Andre Gutierrez</a></h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Web Developer</p>
                         </div>
                     </div>
@@ -121,6 +122,7 @@ get_header(); ?>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Elementor</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">AI Development</span>
                     </div>
+                    <a href="https://toctoc.ky/team/andre-gutierrez/" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">Full profile <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
                 </article>
 
                 <!-- Nora Bravo -->
@@ -128,7 +130,7 @@ get_header(); ?>
                     <div class="flex items-center gap-5 mb-8">
                         <img src="https://toctoc.ky/wp-content/uploads/2026/08/nora-bravo-toctoc.webp" alt="Nora Bravo, Graphic Designer at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
-                            <h3 class="text-3xl font-display text-slate-900">Nora Bravo</h3>
+                            <h3 class="text-3xl font-display text-slate-900"><a href="https://toctoc.ky/team/nora-bravo/" class="decoration-none hover:text-sky-deep transition-colors">Nora Bravo</a></h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Graphic Designer</p>
                         </div>
                     </div>
@@ -145,6 +147,7 @@ get_header(); ?>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Social Creatives</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Graphic Design</span>
                     </div>
+                    <a href="https://toctoc.ky/team/nora-bravo/" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">Full profile <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
                 </article>
 
                 <!-- Adriana Brito — added 26 Aug 2026. First name corrected from "Andreina" on 27 Aug:
@@ -153,7 +156,7 @@ get_header(); ?>
                     <div class="flex items-center gap-5 mb-8">
                         <img src="https://toctoc.ky/wp-content/uploads/2026/08/adriana-brito-toctoc.webp" alt="Adriana Brito, Video Editor and Social Media at TocToc Marketing" width="512" height="512" loading="lazy" decoding="async" class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
                         <div>
-                            <h3 class="text-3xl font-display text-slate-900">Adriana Brito</h3>
+                            <h3 class="text-3xl font-display text-slate-900"><a href="https://toctoc.ky/team/adriana-brito/" class="decoration-none hover:text-sky-deep transition-colors">Adriana Brito</a></h3>
                             <p class="text-xs font-bold text-sky-deep uppercase tracking-[0.2em] mt-1">Video Editor &amp; Social Media</p>
                         </div>
                     </div>
@@ -170,6 +173,7 @@ get_header(); ?>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Social Media</span>
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Content Production</span>
                     </div>
+                    <a href="https://toctoc.ky/team/adriana-brito/" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">Full profile <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
                 </article>
             </div>
         </div>
