@@ -220,3 +220,53 @@ function toctoc_plugin_downloads_widget_render() {
 	echo '</tbody></table>';
 	echo '<p style="margin:12px 0 0;color:#646970;font-size:12px">Bots and repeat hits within six hours are not counted, and neither is anyone who copies the file URL directly. The number is a floor, not a total.</p>';
 }
+
+/**
+ * Read the tally over REST, for anyone who can already see it in wp-admin.
+ *
+ * Same numbers as the dashboard widget, for checking a deploy or pulling the
+ * figure into a report without opening the panel. Permission-gated rather than
+ * public: how many people downloaded a plugin is ours to share, not the
+ * internet's to scrape.
+ */
+function toctoc_plugin_downloads_route() {
+	register_rest_route(
+		'toctoc/v1',
+		'/plugin-downloads',
+		array(
+			'methods'             => 'GET',
+			'callback'            => 'toctoc_plugin_downloads_rest',
+			'permission_callback' => static function () {
+				return current_user_can( 'edit_pages' );
+			},
+		)
+	);
+}
+add_action( 'rest_api_init', 'toctoc_plugin_downloads_route' );
+
+/**
+ * REST payload.
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function toctoc_plugin_downloads_rest() {
+	$all = get_option( TOCTOC_DL_OPTION, array() );
+	$all = is_array( $all ) ? $all : array();
+	$out = array();
+
+	foreach ( toctoc_plugins() as $p ) {
+		$row  = isset( $all[ $p['slug'] ] ) && is_array( $all[ $p['slug'] ] ) ? $all[ $p['slug'] ] : array();
+		$days = isset( $row['days'] ) ? (array) $row['days'] : array();
+		$out[] = array(
+			'slug'    => $p['slug'],
+			'name'    => $p['name'],
+			'version' => $p['version'],
+			'total'   => isset( $row['total'] ) ? (int) $row['total'] : 0,
+			'last7'   => toctoc_plugin_downloads_since( $days, 7 ),
+			'last30'  => toctoc_plugin_downloads_since( $days, 30 ),
+			'last'    => ! empty( $row['last'] ) ? gmdate( 'Y-m-d H:i', (int) $row['last'] ) : null,
+			'days'    => $days,
+		);
+	}
+	return $out;
+}
