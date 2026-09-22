@@ -63,6 +63,14 @@ if ( is_readable( $toctoc_plugins ) ) {
 }
 unset( $toctoc_plugins );
 
+// El contador de descargas del ZIP. Va aparte de inc/plugins.php: aquel son
+// datos, este engancha init y el dashboard. Mismo guard por la misma razon.
+$toctoc_dl = get_template_directory() . '/inc/plugin-downloads.php';
+if ( is_readable( $toctoc_dl ) ) {
+    require_once $toctoc_dl;
+}
+unset( $toctoc_dl );
+
 // El grafo unico: recoge los nodos de todas las plantillas y los imprime una
 // sola vez en wp_footer.
 $toctoc_graph = get_template_directory() . '/inc/schema-graph.php';
