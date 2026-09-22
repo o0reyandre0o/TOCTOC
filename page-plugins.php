@@ -96,7 +96,7 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 					<?php if ( 'live' === $tt_p['state'] ) : ?>
 					<span class="rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-950">On WordPress.org</span>
 					<?php else : ?>
-					<span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">In review at WordPress.org</span>
+					<span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-500"><?php echo esc_html( $tt_p['badge'] ?? 'Direct download' ); ?></span>
 					<?php endif; ?>
 				</div>
 
@@ -140,7 +140,7 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
 						</span>
 					</a>
-					<p class="text-sm text-slate-500 max-w-sm">Waiting on review at WordPress.org. Install it from here meanwhile &mdash; once it is approved, reinstall from the directory to get automatic updates.</p>
+					<?php if ( ! empty( $tt_p['note'] ) ) : ?><p class="text-sm text-slate-500 max-w-md leading-relaxed"><?php echo wp_kses_post( $tt_p['note'] ); ?></p><?php endif; ?>
 					<?php endif; ?>
 				</div>
 

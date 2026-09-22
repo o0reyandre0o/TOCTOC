@@ -5,10 +5,14 @@
  * Same shape as the client showcase: one array, two consumers. Adding the next
  * plugin is one entry here, not a new template.
  *
- * 'state' is the honest part. A plugin sitting in the WordPress.org review queue
- * has a reserved slug and no public page, and saying otherwise would send people
- * to a 404. Only 'live' prints the directory button; 'review' says what is
- * actually happening and offers early access by email.
+ * 'state' is the honest part. 'live' prints the directory button; anything else
+ * says what is actually happening and offers the direct download.
+ *
+ * AG Theme Sync was rejected on 21 Sep 2026 — not on quality, but because the
+ * directory does not accept plugins that install code from outside it. The rule
+ * is old and consistently applied: WP Pusher was removed under it in 2015 and
+ * Git Updater was never accepted. So the state is 'self', permanently, and the
+ * page says why rather than pretending the decision is still pending.
  *
  * @package TocToc
  */
@@ -23,7 +27,7 @@ function toctoc_plugins() {
 		array(
 			'slug'        => 'ag-theme-sync-for-github',
 			'name'        => 'AG Theme Sync for GitHub',
-			'state'       => 'review',
+			'state'       => 'self',
 			'version'     => '2.2.0',
 			'author'      => 'Andre Gutierrez',
 			'author_url'  => 'https://toctoc.ky/team/andre-gutierrez/',
@@ -42,6 +46,8 @@ function toctoc_plugins() {
 				'Press <strong>Verify connection</strong>, then <strong>Save settings</strong>.',
 				'Deploy with <strong>Sync Theme</strong> in the admin bar, or from the plugin dashboard.',
 			),
+			'badge'       => 'Self-hosted',
+			'note'        => 'Not in the WordPress.org directory, and it never will be: the directory does not accept plugins that install code from anywhere else, a rule it has applied since it closed WP Pusher in 2015. Git Updater and WP Pusher are self-hosted for the same reason. Download it here; updates are announced on this page.',
 			'server'      => 'Your server needs to write directly to <code>wp-content/themes</code> and to reach <code>api.github.com</code>.',
 			'lede'        => 'Publish a WordPress theme straight from a GitHub repository, in one click, with a backup and an automatic rollback if the site does not come back up.',
 			'problem'     => 'Editing a theme with an AI coding assistant is fast. Getting the result onto the live site is not: FTP, a zip, a file manager, and the hope that nothing was missed. This closes that gap without leaving wp-admin.',
