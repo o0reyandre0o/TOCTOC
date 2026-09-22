@@ -12,6 +12,22 @@
 if ( ! function_exists( 'toctoc_plugins' ) ) {
 	// inc/plugins.php not on the server yet — render the page's own content
 	// rather than fatal. Same guard, same reason, as the team pages.
+/**
+ * Download link for a plugin, counted when the counter is available.
+ *
+ * The theme reaches the server one file at a time, so a template that hard
+ * depends on a brand-new include is a template that breaks mid-deploy. Without
+ * the counter the button still works; it just does not count.
+ *
+ * @param array<string,mixed> $p Plugin row.
+ * @return string
+ */
+function toctoc_dl_link( $p ) {
+	return function_exists( 'toctoc_plugin_download_url' )
+		? toctoc_plugin_download_url( $p['slug'] )
+		: $p['zip'];
+}
+
 	get_header();
 	echo '<main class="min-h-screen bg-background text-foreground pt-48 pb-32"><div class="mx-auto max-w-3xl px-6">';
 	while ( have_posts() ) { the_post(); the_content(); }
@@ -50,9 +66,11 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 			$tt_node['downloadUrl'] = $tt_p['wporg'];
 			$tt_node['url']         = $tt_p['wporg'];
 		} elseif ( ! empty( $tt_p['zip'] ) ) {
-			// Mientras espera revision se descarga de aqui, asi que el nodo
-			// puede decirlo: describe lo que existe, no lo que esperamos.
-			$tt_node['downloadUrl'] = $tt_p['zip'];
+			// Se descarga de aqui, asi que el nodo puede decirlo: describe lo
+			// que existe, no lo que esperamos. Via el enlace contado, que
+			// redirige al ZIP: quien siga downloadUrl no nota nada y el numero
+			// cuenta descargas, no clics en un boton.
+			$tt_node['downloadUrl'] = toctoc_dl_link( $tt_p );
 		}
 		toctoc_schema_add( $tt_node );
 	}
@@ -134,7 +152,7 @@ if ( function_exists( 'toctoc_schema_add' ) ) {
 						</span>
 					</a>
 					<?php else : ?>
-					<a href="<?php echo esc_url( $tt_p['zip'] ); ?>" download class="inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-6 pr-2 py-2 text-base font-bold shadow-pill transition-all hover:scale-105 decoration-none">
+					<a href="<?php echo esc_url( toctoc_dl_link( $tt_p ) ); ?>" download class="inline-flex items-center gap-3 rounded-full bg-slate-950 text-white pl-6 pr-2 py-2 text-base font-bold shadow-pill transition-all hover:scale-105 decoration-none">
 						Download v<?php echo esc_html( $tt_p['version'] ); ?> &middot; <?php echo esc_html( $tt_p['zip_kb'] ); ?> KB
 						<span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent text-slate-950">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
