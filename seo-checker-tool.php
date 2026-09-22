@@ -1140,19 +1140,6 @@ function toctoc_seo_image_weight( $img_srcs, $origin, $page_url ) {
 }
 
 /**
- * Deep schema audit: for every recognized @type, verify the properties Google
- * and AI engines expect. Returns [detail, status] or null when there is
- * nothing auditable.
- */
-/**
- * Required and recommended properties per schema.org type.
- *
- * One list, two consumers: the audit that scores the page and the graph that
- * draws it. Kept apart they would drift, and a node painted green while the
- * report calls it incomplete is worse than either alone.
- */
-
-/**
  * Turn parsed JSON-LD into a drawable entity graph.
  *
  * Only top-level entities become nodes. Nested value objects — a PostalAddress,
@@ -1317,6 +1304,13 @@ function toctoc_seo_entity_graph( $entities ) {
 	);
 }
 
+/**
+ * Required and recommended properties per schema.org type.
+ *
+ * One list, two consumers: the audit that scores the page and the graph that
+ * draws it. Kept apart they would drift, and a node painted green while the
+ * report calls it incomplete is worse than either alone.
+ */
 function toctoc_seo_schema_rules() {
 	$rules = array(
 		'Organization'        => array( 'req' => array( 'name' ), 'rec' => array( 'url', 'logo', 'sameAs', 'telephone' ) ),
@@ -1340,6 +1334,11 @@ function toctoc_seo_schema_rules() {
 	return $rules;
 }
 
+/**
+ * Deep schema audit: for every recognized @type, verify the properties Google
+ * and AI engines expect. Returns [detail, status] or null when there is
+ * nothing auditable.
+ */
 function toctoc_seo_schema_audit( $entities ) {
 	$rules = toctoc_seo_schema_rules();
 
