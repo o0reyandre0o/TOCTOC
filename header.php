@@ -469,6 +469,15 @@
           "@id": "https://toctoc.ky/#organization",
           "url": "https://toctoc.ky",
           "telephone": "+1 345-547-8120",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "@id": "https://toctoc.ky/#contact",
+            "contactType": "sales",
+            "telephone": "+1 345-547-8120",
+            "email": "info@toctoc.ky",
+            "areaServed": "KY",
+            "availableLanguage": ["English", "Spanish"]
+          },
           "email": "info@toctoc.ky",
           "priceRange": "$$",
           "memberOf": {
@@ -497,6 +506,7 @@
             "url": "https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/",
             "headline": "Chamber Profile: Toc Toc Marketing — A New Marketing Service for the AI Age",
             "datePublished": "2026-08-06",
+            "author": { "@id": "https://caymanchamber.ky/#organization" },
             "publisher": { "@id": "https://caymanchamber.ky/#organization" },
             "about": { "@id": "https://toctoc.ky/#organization" }
           },
@@ -626,19 +636,15 @@
             {
               "@type": "ListItem",
               "position": 1,
-              "item": {
-                "@id": "https://toctoc.ky",
-                "name": "Home"
-              }
+              "name": "Home",
+              "item": "https://toctoc.ky/"
             }
             <?php if (!is_front_page()): ?>
             ,{
               "@type": "ListItem",
               "position": 2,
-              "item": {
-                "@id": "<?php echo $current_url; ?>",
-                "name": "<?php echo esc_attr($title); ?>"
-              }
+              "name": "<?php echo esc_attr($title); ?>",
+              "item": "<?php echo esc_url($current_url); ?>"
             }
             <?php endif; ?>
           ]
