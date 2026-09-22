@@ -12,6 +12,14 @@
 if ( ! function_exists( 'toctoc_plugins' ) ) {
 	// inc/plugins.php not on the server yet — render the page's own content
 	// rather than fatal. Same guard, same reason, as the team pages.
+	get_header();
+	echo '<main class="min-h-screen bg-background text-foreground pt-48 pb-32"><div class="mx-auto max-w-3xl px-6">';
+	while ( have_posts() ) { the_post(); the_content(); }
+	echo '</div></main>';
+	get_footer();
+	return;
+}
+
 /**
  * Download link for a plugin, counted when the counter is available.
  *
@@ -26,14 +34,6 @@ function toctoc_dl_link( $p ) {
 	return function_exists( 'toctoc_plugin_download_url' )
 		? toctoc_plugin_download_url( $p['slug'] )
 		: $p['zip'];
-}
-
-	get_header();
-	echo '<main class="min-h-screen bg-background text-foreground pt-48 pb-32"><div class="mx-auto max-w-3xl px-6">';
-	while ( have_posts() ) { the_post(); the_content(); }
-	echo '</div></main>';
-	get_footer();
-	return;
 }
 
 get_header();
