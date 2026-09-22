@@ -336,7 +336,7 @@ $ttseo_faqs = array(
                 <div class="flex flex-wrap items-start justify-between gap-4">
                     <div>
                         <h2 class="text-2xl font-display text-slate-900">What an AI sees</h2>
-                        <p class="text-sm text-slate-500 mt-2 max-w-2xl">Every entity your page declares, and how they connect. Disconnected boxes are facts nothing can reach; red ones point at something that does not exist.</p>
+                        <p class="text-sm text-slate-500 mt-2 max-w-2xl">Every entity your page declares, and how they connect. Grey boxes are entities this page points at but declares elsewhere &mdash; on another page, or on another site. That is how identity is built across the web.</p>
                     </div>
                     <button type="button" id="graph-png" class="ttseo-noprint shrink-0 rounded-full border border-slate-200 px-5 py-2 text-sm font-bold text-slate-700 transition-colors hover:border-sky-deep hover:text-sky-deep">Download image</button>
                 </div>
@@ -349,7 +349,8 @@ $ttseo_faqs = array(
                     <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#16a34a"></span> Complete</span>
                     <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#d97706"></span> Missing recommended</span>
                     <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#dc2626"></span> Missing required</span>
-                    <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#94a3b8"></span> Referenced, not defined here</span>
+                    <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#94a3b8"></span> Defined on another page or site</span>
+                    <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#dc2626"></span> Broken reference</span>
                 </div>
 
                 <div id="graph-panel" class="mt-6 rounded-2xl bg-slate-950 text-slate-100 p-6 text-sm leading-relaxed"></div>
@@ -1074,7 +1075,7 @@ window.TTSEO = {
     function ttgColor(state) {
         if (state === 'ok') { return '#16a34a'; }
         if (state === 'warn') { return '#d97706'; }
-        if (state === 'gap') { return '#dc2626'; }
+        if (state === 'gap' || state === 'broken') { return '#dc2626'; }
         return '#94a3b8';
     }
 
@@ -1120,14 +1121,28 @@ window.TTSEO = {
         for (i = 0; i < n; i++) { (cols[depth[i]] = cols[depth[i]] || []).push(i); }
         var keys = Object.keys(cols).map(Number).sort(function (a, b) { return a - b; });
 
+        /*
+         * A column taller than six boxes makes a thin stack that all the edges
+         * have to cross. Past that it is split into side-by-side sub-columns,
+         * which costs width — and width is the one thing a scrollable strip has
+         * plenty of.
+         */
+        var columns = [];
+        keys.forEach(function (k) {
+            var list = cols[k];
+            if (list.length <= 6) { columns.push(list); return; }
+            var parts = Math.ceil(list.length / 6), per = Math.ceil(list.length / parts);
+            for (var a = 0; a < list.length; a += per) { columns.push(list.slice(a, a + per)); }
+        });
+
         var tallest = 0;
-        keys.forEach(function (k) { tallest = Math.max(tallest, cols[k].length); });
+        columns.forEach(function (c) { tallest = Math.max(tallest, c.length); });
 
         var H = Math.max(230, tallest * TTG_GAPY + 70);
-        var W = 40 + keys.length * TTG_GAPX;
+        var W = 40 + columns.length * TTG_GAPX;
         var pos = [];
-        keys.forEach(function (k, ci) {
-            var list = cols[k], colH = list.length * TTG_GAPY;
+        columns.forEach(function (list, ci) {
+            var colH = list.length * TTG_GAPY;
             list.forEach(function (idx, ri) {
                 pos[idx] = { x: 24 + ci * TTG_GAPX, y: (H - colH) / 2 + ri * TTG_GAPY };
             });
@@ -1135,9 +1150,19 @@ window.TTSEO = {
         return { pos: pos, w: W, h: H };
     }
 
+    /** Point on a cubic bezier at t, for placing a label along the curve. */
+    function ttgAt(x1, y1, c1, d1, c2, d2, x2, y2, t) {
+        var u = 1 - t;
+        return {
+            x: u * u * u * x1 + 3 * u * u * t * c1 + 3 * u * t * t * c2 + t * t * t * x2,
+            y: u * u * u * y1 + 3 * u * u * t * d1 + 3 * u * t * t * d2 + t * t * t * y2
+        };
+    }
+
     function ttgSvg(g, lay, sel) {
         var pos = lay.pos, s = '';
-        var labelEdges = g.edges.length <= 14;
+        var labelEdges = g.edges.length <= 12;
+        var seen = {}, rank = {};
 
         s += '<svg id="ttg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + lay.w + ' ' + lay.h + '" width="' + lay.w + '" height="' + lay.h + '" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">';
         s += '<rect width="' + lay.w + '" height="' + lay.h + '" fill="#f8fafc"/>';
@@ -1150,14 +1175,28 @@ window.TTSEO = {
             var x1 = a.x + TTG_NW, y1 = a.y + TTG_NH / 2, x2 = b.x, y2 = b.y + TTG_NH / 2;
             if (b.x < a.x) { x1 = a.x; x2 = b.x + TTG_NW; }
             var on = (sel === e.f || sel === e.t);
-            var col = e.d ? '#dc2626' : (on ? '#0369a1' : '#cbd5e1');
+            var roto = (e.k === 'broken');
+            var col = roto ? '#dc2626' : (on ? '#0369a1' : '#cbd5e1');
             var dx = Math.max(40, Math.abs(x2 - x1) / 2);
-            s += '<path d="M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ',' + (x2 - dx) + ' ' + y2 + ',' + x2 + ' ' + y2 + '"'
+            var c1 = x1 + dx, c2 = x2 - dx;
+            s += '<path d="M' + x1 + ' ' + y1 + ' C' + c1 + ' ' + y1 + ',' + c2 + ' ' + y2 + ',' + x2 + ' ' + y2 + '"'
               + ' fill="none" stroke="' + col + '" stroke-width="' + (on ? 2.2 : 1.4) + '"'
-              + (e.d ? ' stroke-dasharray="5 4"' : '') + ' marker-end="url(#' + (e.d ? 'ttg-ar' : 'ttg-a') + ')"/>';
-            if (labelEdges || on) {
-                var mx = (x1 + x2) / 2, my = (y1 + y2) / 2 - 6;
-                s += '<text x="' + mx + '" y="' + my + '" text-anchor="middle" font-size="10" fill="' + (e.d ? '#dc2626' : '#64748b') + '"'
+              + (e.d ? ' stroke-dasharray="5 4"' : '') + ' marker-end="url(#' + (roto ? 'ttg-ar' : 'ttg-a') + ')"/>';
+
+            /*
+             * One label per property per source. Three employee edges leaving
+             * the same box do not need the word three times, and the copies
+             * land on top of each other anyway.
+             */
+            var clave = e.f + '|' + e.p;
+            rank[e.f] = (rank[e.f] || 0) + 1;
+            if ((labelEdges || on) && !seen[clave]) {
+                seen[clave] = 1;
+                // Staggered along the curve so fans out of one node do not
+                // stack every label in the same vertical strip.
+                var t = 0.38 + 0.14 * ((rank[e.f] - 1) % 3);
+                var p = ttgAt(x1, y1, c1, y1, c2, y2, x2, y2, t);
+                s += '<text x="' + p.x.toFixed(1) + '" y="' + (p.y - 5).toFixed(1) + '" text-anchor="middle" font-size="10" fill="' + (roto ? '#dc2626' : '#64748b') + '"'
                   + ' stroke="#f8fafc" stroke-width="3.5" paint-order="stroke">' + esc(e.p) + '</text>';
             }
         });
@@ -1168,6 +1207,9 @@ window.TTSEO = {
             var c = ttgColor(nd.state), on = (sel === i);
             var type = ttgClip(nd.types.join(', '), 24);
             var name = nd.label ? ttgClip(nd.label, 26) : (nd.id ? ttgClip(nd.id.replace(/^https?:\/\//, ''), 26) : 'no name');
+            // For a reference, the host is the useful second line: the first
+            // already carries the fragment that identifies the entity.
+            if (nd.kind && nd.host) { type = ttgClip(nd.host, 24); }
             s += '<g class="ttg-node" data-i="' + i + '" style="cursor:pointer">';
             s += '<rect x="' + p.x + '" y="' + p.y + '" width="' + TTG_NW + '" height="' + TTG_NH + '" rx="12" fill="#ffffff"'
               + ' stroke="' + (on ? '#0f172a' : '#e2e8f0') + '" stroke-width="' + (on ? 2 : 1) + '"'
@@ -1216,8 +1258,12 @@ window.TTSEO = {
         h += '<p class="mt-1 text-lg font-bold">' + esc(nd.label || '(no name)') + '</p>';
         h += '<p class="mt-1 text-xs break-all" style="color:#94a3b8">' + (nd.id ? esc(nd.id) : 'No @id &mdash; nothing on any page can point at this entity') + '</p>';
 
-        if (nd.state === 'ext') {
-            h += '<p class="mt-4 text-slate-300">Something on this page points at this <code>@id</code>, but the page never defines it. That is fine when it lives on another page of the site, and a dead end when it does not.</p>';
+        if (nd.kind === 'site') {
+            h += '<p class="mt-4 text-slate-300">Declared on another page of this site, and referenced here by <code>@id</code>. That is the right way round: an entity should be defined once and pointed at everywhere else.</p>';
+        } else if (nd.kind === 'external') {
+            h += '<p class="mt-4 text-slate-300">An entity on another site. Pointing at it by <code>@id</code> is how a search engine or an AI ties this business to the same thing described elsewhere &mdash; a directory, a profile, a chamber of commerce.</p>';
+        } else if (nd.kind === 'broken') {
+            h += '<p class="mt-4" style="color:#f87171">This reference has no domain, only a fragment. It resolves against whichever page happens to read it, which means it resolves to nothing dependable. Write it as a full URL.</p>';
         } else {
             if (nd.req && nd.req.length) {
                 h += '<p class="mt-4"><span class="font-bold" style="color:#f87171">Required, missing:</span> ' + esc(nd.req.join(', ')) + '</p>';
@@ -1328,11 +1374,12 @@ window.TTSEO = {
             return;
         }
 
-        stats.innerHTML = ttgPill('entities', st.entities, 'ok')
-            + (st.dangling ? ttgPill(st.dangling === 1 ? 'reference goes nowhere' : 'references go nowhere', st.dangling, 'bad') : '')
+        stats.innerHTML = ttgPill(st.entities === 1 ? 'entity declared here' : 'entities declared here', st.entities, 'ok')
+            + (st.offpage ? ttgPill(st.offpage === 1 ? 'link to the rest of the site' : 'links to the rest of the site', st.offpage, 'ok') : '')
+            + (st.offsite ? ttgPill(st.offsite === 1 ? 'link to another site' : 'links to other sites', st.offsite, 'ok') : '')
+            + (st.broken ? ttgPill(st.broken === 1 ? 'broken reference' : 'broken references', st.broken, 'bad') : '')
             + (st.orphans ? ttgPill(st.orphans === 1 ? 'entity connected to nothing' : 'entities connected to nothing', st.orphans, 'warn') : '')
-            + (st.noid ? ttgPill(st.noid === 1 ? 'entity without @id' : 'entities without @id', st.noid, 'warn') : '')
-            + (!st.dangling && !st.orphans && !st.noid ? ttgPill('fully joined up', '✓', 'ok') : '');
+            + (st.noid ? ttgPill(st.noid === 1 ? 'entity without @id' : 'entities without @id', st.noid, 'warn') : '');
 
         ttgDraw();
         ttgPanel(-1);
