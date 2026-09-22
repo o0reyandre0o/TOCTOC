@@ -361,9 +361,52 @@
     <link rel="canonical" href="<?php echo esc_url($canonical); ?>">
     <?php endif; ?>
     
+    <!--
+      Internal traffic: the team's own browsers load neither GTM nor Clarity.
+
+      GA4's own route (an IP rule, or a traffic_type parameter plus a data
+      filter) needs a fixed office IP, which a team working from Venezuela does
+      not have, and a GTM change for every new parameter. Not loading the tags
+      at all needs neither, works from the first page view, and cannot leak.
+
+      A browser is internal when it carries the tt_internal cookie:
+        - any browser logged in to wp-admin gets it automatically;
+        - any other (a phone, a second browser) visits /?tt_internal=1 once;
+        - /?tt_internal=0 removes it.
+      Tag Assistant still works: a gtm_debug URL or a tagassistant referrer
+      loads the tags regardless, so tracking can be tested from an internal
+      browser without clearing anything.
+    -->
+    <script>(function (w, d) {
+        var year = '; max-age=34560000; path=/; SameSite=Lax; Secure';
+        <?php if ( is_user_logged_in() ) : ?>
+        d.cookie = 'tt_internal=1' + year;
+        <?php endif; ?>
+        var m = w.location.search.match(/[?&]tt_internal=([01])/);
+        if (m) {
+            d.cookie = m[1] === '1' ? 'tt_internal=1' + year : 'tt_internal=; max-age=0; path=/; SameSite=Lax; Secure';
+            // Drop the flag from the address bar so it never ends up in a
+            // shared link and marks someone else's browser.
+            try { w.history.replaceState(null, '', w.location.href.replace(/([?&])tt_internal=[01]&?/, '$1').replace(/[?&]$/, '')); } catch (e) {}
+            d.addEventListener('DOMContentLoaded', function () {
+                var t = d.createElement('div');
+                t.setAttribute('role', 'status');
+                t.textContent = m[1] === '1'
+                    ? 'This browser is now marked as TocToc internal. Analytics will ignore it.'
+                    : 'Internal flag removed. This browser is tracked again.';
+                t.style.cssText = 'position:fixed;left:16px;bottom:16px;z-index:2147483647;background:#0f172a;color:#fff;font:600 13px/1.4 system-ui,sans-serif;padding:10px 16px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25)';
+                d.body.appendChild(t);
+                w.setTimeout(function () { if (t.parentNode) { t.parentNode.removeChild(t); } }, 5000);
+            });
+        }
+        var debug = /[?&]gtm_debug=/.test(w.location.search) || /tagassistant\.google\.com/.test(d.referrer);
+        w.TT_INTERNAL = !debug && /(?:^|;\s*)tt_internal=1(?:;|$)/.test(d.cookie);
+    })(window, document);</script>
+
     <!-- Google Tag Manager (delayed until first interaction / 3.5s to free the main thread) -->
     <script>(function(w,d,s,l,i){
         w[l]=w[l]||[]; // dataLayer available immediately so events queue before GTM loads
+        if(w.TT_INTERNAL)return; // our own browsers: see the note above
         var loaded=false;
         function load(){
             if(loaded)return; loaded=true;
@@ -390,7 +433,7 @@
       in the dataLayer; a session recording cannot be replayed retroactively.
     -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
+        if (!window.TT_INTERNAL) (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
