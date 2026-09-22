@@ -1151,11 +1151,19 @@ function toctoc_seo_image_weight( $img_srcs, $origin, $page_url ) {
  * rather than dropped. That is usually either a genuine mistake or a
  * deliberate cross-domain reference, and both are worth seeing.
  *
- * @param array $entities Top-level JSON-LD entities.
+ * A reference to an @id the page does not define is not automatically a
+ * fault. Pointing at an entity declared on another page of the same site,
+ * or on another domain, is how cross-site identity is built in the first
+ * place. So references are classified by where they point, and only the
+ * ones that can resolve to nothing at all are called broken.
+ *
+ * @param array  $entities Top-level JSON-LD entities.
+ * @param string $page_url The URL being analysed, to tell this site apart.
  * @return array{nodes:array,edges:array,stats:array}
  */
-function toctoc_seo_entity_graph( $entities ) {
-	$rules = toctoc_seo_schema_rules();
+function toctoc_seo_entity_graph( $entities, $page_url = '' ) {
+	$rules     = toctoc_seo_schema_rules();
+	$page_host = $page_url ? strtolower( (string) wp_parse_url( $page_url, PHP_URL_HOST ) ) : '';
 	$nodes = array();
 	$byid  = array();
 
@@ -1254,24 +1262,49 @@ function toctoc_seo_entity_graph( $entities ) {
 					if ( $byid[ $target ] === $from ) {
 						continue; // self-reference, nothing to draw
 					}
-					$edges[] = array( 'f' => $from, 't' => $byid[ $target ], 'p' => (string) $prop, 'd' => 0 );
+					$edges[] = array( 'f' => $from, 't' => $byid[ $target ], 'p' => (string) $prop, 'd' => 0, 'k' => 'page' );
 				} else {
 					if ( ! isset( $phantoms[ $target ] ) ) {
 						$phantoms[ $target ] = count( $nodes );
-						$host = wp_parse_url( $target, PHP_URL_HOST );
+						$host = strtolower( (string) wp_parse_url( $target, PHP_URL_HOST ) );
+						$frag = (string) wp_parse_url( $target, PHP_URL_FRAGMENT );
+						$path = (string) wp_parse_url( $target, PHP_URL_PATH );
+
+						if ( ! $host ) {
+							// No host at all: a bare '#thing' resolves against whatever
+							// page happens to be reading it, which is nothing stable.
+							$kind = 'broken';
+						} elseif ( $page_host && $host === $page_host ) {
+							$kind = 'site';
+						} else {
+							$kind = 'external';
+						}
+
+						// Label by what identifies the entity, not by its host: six
+						// boxes all reading the same domain name say nothing.
+						$label = $frag ? '#' . $frag : ( $path && '/' !== $path ? trim( $path, '/' ) : $host );
+
 						$nodes[] = array(
 							'i'      => count( $nodes ),
 							'id'     => $target,
-							'types'  => array( 'External' ),
-							'label'  => $host ? $host : $target,
-							'state'  => 'ext',
+							'types'  => array( 'broken' === $kind ? 'Broken reference' : 'Not on this page' ),
+							'label'  => $label,
+							'host'   => $host,
+							'kind'   => $kind,
+							'state'  => 'broken' === $kind ? 'broken' : 'ext',
 							'req'    => array(),
 							'rec'    => array(),
 							'sameAs' => 0,
 							'props'  => 0,
 						);
 					}
-					$edges[] = array( 'f' => $from, 't' => $phantoms[ $target ], 'p' => (string) $prop, 'd' => 1 );
+					$edges[] = array(
+						'f' => $from,
+						't' => $phantoms[ $target ],
+						'p' => (string) $prop,
+						'd' => 1,
+						'k' => $nodes[ $phantoms[ $target ] ]['kind'],
+					);
 				}
 			}
 		}
@@ -1287,7 +1320,7 @@ function toctoc_seo_entity_graph( $entities ) {
 	$orphans = 0;
 	foreach ( $nodes as $k => $n ) {
 		$nodes[ $k ]['orphan'] = isset( $linked[ $n['i'] ] ) ? 0 : 1;
-		if ( $nodes[ $k ]['orphan'] && 'ext' !== $n['state'] ) {
+		if ( $nodes[ $k ]['orphan'] && 'ext' !== $n['state'] && 'broken' !== $n['state'] ) {
 			$orphans++;
 		}
 	}
@@ -1296,10 +1329,12 @@ function toctoc_seo_entity_graph( $entities ) {
 		'nodes' => $nodes,
 		'edges' => $edges,
 		'stats' => array(
-			'entities' => count( array_filter( $nodes, static function ( $n ) { return 'ext' !== $n['state']; } ) ),
-			'dangling' => count( array_filter( $edges, static function ( $e ) { return ! empty( $e['d'] ); } ) ),
+			'entities' => count( array_filter( $nodes, static function ( $n ) { return empty( $n['kind'] ); } ) ),
+			'offpage'  => count( array_filter( $edges, static function ( $e ) { return isset( $e['k'] ) && 'site' === $e['k']; } ) ),
+			'offsite'  => count( array_filter( $edges, static function ( $e ) { return isset( $e['k'] ) && 'external' === $e['k']; } ) ),
+			'broken'   => count( array_filter( $edges, static function ( $e ) { return isset( $e['k'] ) && 'broken' === $e['k']; } ) ),
 			'orphans'  => $orphans,
-			'noid'     => count( array_filter( $nodes, static function ( $n ) { return 'ext' !== $n['state'] && '' === $n['id']; } ) ),
+			'noid'     => count( array_filter( $nodes, static function ( $n ) { return empty( $n['kind'] ) && '' === $n['id']; } ) ),
 		),
 	);
 }
@@ -2023,7 +2058,7 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 		'seo'    => $seo,
 		'geo'    => $geo,
 		'llms'   => $llms_draft,
-		'graph'  => toctoc_seo_entity_graph( $entities ),
+		'graph'  => toctoc_seo_entity_graph( $entities, $url ),
 		'scores' => array(
 			'seo' => toctoc_seo_score( $seo ),
 			'geo' => toctoc_seo_score( $geo ),
