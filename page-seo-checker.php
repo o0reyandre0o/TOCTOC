@@ -324,6 +324,38 @@ $ttseo_faqs = array(
             </div>
 
             <!--
+                The entity graph.
+
+                Sits right after the GEO panel because it answers the same
+                question one level deeper: the panel says whether an AI can read
+                the page, this says what it would actually learn — which things
+                the site claims exist, and whether they are joined up or just a
+                pile of unrelated blocks.
+            -->
+            <div id="graph-card" class="hidden rounded-[2rem] bg-white border border-slate-100 shadow-soft p-8 mb-8">
+                <div class="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                        <h2 class="text-2xl font-display text-slate-900">What an AI sees</h2>
+                        <p class="text-sm text-slate-500 mt-2 max-w-2xl">Every entity your page declares, and how they connect. Disconnected boxes are facts nothing can reach; red ones point at something that does not exist.</p>
+                    </div>
+                    <button type="button" id="graph-png" class="ttseo-noprint shrink-0 rounded-full border border-slate-200 px-5 py-2 text-sm font-bold text-slate-700 transition-colors hover:border-sky-deep hover:text-sky-deep">Download image</button>
+                </div>
+
+                <div id="graph-stats" class="mt-6 flex flex-wrap gap-2"></div>
+
+                <div id="graph-canvas" class="mt-6 overflow-x-auto rounded-2xl border border-slate-100 bg-slate-50/60"></div>
+
+                <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-500">
+                    <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#16a34a"></span> Complete</span>
+                    <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#d97706"></span> Missing recommended</span>
+                    <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#dc2626"></span> Missing required</span>
+                    <span class="inline-flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#94a3b8"></span> Referenced, not defined here</span>
+                </div>
+
+                <div id="graph-panel" class="mt-6 rounded-2xl bg-slate-950 text-slate-100 p-6 text-sm leading-relaxed"></div>
+            </div>
+
+            <!--
                 Draft llms.txt.
 
                 Sits after the GEO panel on purpose: by this point the reader has
@@ -1022,6 +1054,298 @@ window.TTSEO = {
         });
     }
 
+    /*
+     * The entity graph, drawn as inline SVG.
+     *
+     * No charting library on purpose. This tool measures how fast the visitor's
+     * page loads; shipping 150 KB of JavaScript to draw twenty rectangles would
+     * contradict its own advice. Everything below is string concatenation and
+     * one breadth-first pass.
+     *
+     * The layout is deliberately deterministic — columns by distance from the
+     * busiest node — rather than a force simulation. A force layout looks
+     * livelier and puts the same graph somewhere different every run, which is
+     * useless when the picture is meant to be compared and shared.
+     */
+    var TTG = { g: null, pos: [], sel: -1 };
+
+    var TTG_NW = 176, TTG_NH = 54, TTG_GAPX = 232, TTG_GAPY = 74;
+
+    function ttgColor(state) {
+        if (state === 'ok') { return '#16a34a'; }
+        if (state === 'warn') { return '#d97706'; }
+        if (state === 'gap') { return '#dc2626'; }
+        return '#94a3b8';
+    }
+
+    function ttgClip(s, n) {
+        s = String(s || '');
+        return s.length > n ? s.slice(0, n - 1) + '…' : s;
+    }
+
+    /**
+     * Place every node in a column by its distance from the hub.
+     *
+     * The hub is the most connected node, which on a healthy site is the
+     * Organization or the WebSite — the thing everything else hangs off. When
+     * nothing is connected to anything, every node lands in its own column and
+     * the picture says exactly that.
+     */
+    function ttgLayout(g) {
+        var n = g.nodes.length, adj = {}, i;
+        g.edges.forEach(function (e) {
+            (adj[e.f] = adj[e.f] || []).push(e.t);
+            (adj[e.t] = adj[e.t] || []).push(e.f);
+        });
+
+        var hub = 0, best = -1;
+        for (i = 0; i < n; i++) {
+            var score = ((adj[i] || []).length * 1000) + (g.nodes[i].props || 0);
+            if (score > best) { best = score; hub = i; }
+        }
+
+        var depth = [], q = [hub];
+        depth[hub] = 0;
+        while (q.length) {
+            var cur = q.shift();
+            (adj[cur] || []).forEach(function (nx) {
+                if (depth[nx] === undefined) { depth[nx] = depth[cur] + 1; q.push(nx); }
+            });
+        }
+        var maxd = 0;
+        for (i = 0; i < n; i++) { if (depth[i] !== undefined && depth[i] > maxd) { maxd = depth[i]; } }
+        for (i = 0; i < n; i++) { if (depth[i] === undefined) { depth[i] = maxd + 1; } }
+
+        var cols = {};
+        for (i = 0; i < n; i++) { (cols[depth[i]] = cols[depth[i]] || []).push(i); }
+        var keys = Object.keys(cols).map(Number).sort(function (a, b) { return a - b; });
+
+        var tallest = 0;
+        keys.forEach(function (k) { tallest = Math.max(tallest, cols[k].length); });
+
+        var H = Math.max(230, tallest * TTG_GAPY + 70);
+        var W = 40 + keys.length * TTG_GAPX;
+        var pos = [];
+        keys.forEach(function (k, ci) {
+            var list = cols[k], colH = list.length * TTG_GAPY;
+            list.forEach(function (idx, ri) {
+                pos[idx] = { x: 24 + ci * TTG_GAPX, y: (H - colH) / 2 + ri * TTG_GAPY };
+            });
+        });
+        return { pos: pos, w: W, h: H };
+    }
+
+    function ttgSvg(g, lay, sel) {
+        var pos = lay.pos, s = '';
+        var labelEdges = g.edges.length <= 14;
+
+        s += '<svg id="ttg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + lay.w + ' ' + lay.h + '" width="' + lay.w + '" height="' + lay.h + '" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">';
+        s += '<rect width="' + lay.w + '" height="' + lay.h + '" fill="#f8fafc"/>';
+        s += '<defs><marker id="ttg-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#94a3b8"/></marker>';
+        s += '<marker id="ttg-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#dc2626"/></marker></defs>';
+
+        g.edges.forEach(function (e) {
+            var a = pos[e.f], b = pos[e.t];
+            if (!a || !b) { return; }
+            var x1 = a.x + TTG_NW, y1 = a.y + TTG_NH / 2, x2 = b.x, y2 = b.y + TTG_NH / 2;
+            if (b.x < a.x) { x1 = a.x; x2 = b.x + TTG_NW; }
+            var on = (sel === e.f || sel === e.t);
+            var col = e.d ? '#dc2626' : (on ? '#0369a1' : '#cbd5e1');
+            var dx = Math.max(40, Math.abs(x2 - x1) / 2);
+            s += '<path d="M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ',' + (x2 - dx) + ' ' + y2 + ',' + x2 + ' ' + y2 + '"'
+              + ' fill="none" stroke="' + col + '" stroke-width="' + (on ? 2.2 : 1.4) + '"'
+              + (e.d ? ' stroke-dasharray="5 4"' : '') + ' marker-end="url(#' + (e.d ? 'ttg-ar' : 'ttg-a') + ')"/>';
+            if (labelEdges || on) {
+                var mx = (x1 + x2) / 2, my = (y1 + y2) / 2 - 6;
+                s += '<text x="' + mx + '" y="' + my + '" text-anchor="middle" font-size="10" fill="' + (e.d ? '#dc2626' : '#64748b') + '"'
+                  + ' stroke="#f8fafc" stroke-width="3.5" paint-order="stroke">' + esc(e.p) + '</text>';
+            }
+        });
+
+        g.nodes.forEach(function (nd, i) {
+            var p = pos[i];
+            if (!p) { return; }
+            var c = ttgColor(nd.state), on = (sel === i);
+            var type = ttgClip(nd.types.join(', '), 24);
+            var name = nd.label ? ttgClip(nd.label, 26) : (nd.id ? ttgClip(nd.id.replace(/^https?:\/\//, ''), 26) : 'no name');
+            s += '<g class="ttg-node" data-i="' + i + '" style="cursor:pointer">';
+            s += '<rect x="' + p.x + '" y="' + p.y + '" width="' + TTG_NW + '" height="' + TTG_NH + '" rx="12" fill="#ffffff"'
+              + ' stroke="' + (on ? '#0f172a' : '#e2e8f0') + '" stroke-width="' + (on ? 2 : 1) + '"'
+              + (nd.state === 'ext' ? ' stroke-dasharray="4 3"' : '') + '/>';
+            s += '<rect x="' + p.x + '" y="' + (p.y + 10) + '" width="4" height="' + (TTG_NH - 20) + '" rx="2" fill="' + c + '"/>';
+            s += '<text x="' + (p.x + 16) + '" y="' + (p.y + 23) + '" font-size="11.5" font-weight="700" fill="#0f172a">' + esc(type) + '</text>';
+            s += '<text x="' + (p.x + 16) + '" y="' + (p.y + 40) + '" font-size="11" fill="#64748b">' + esc(name) + '</text>';
+            if (nd.orphan && nd.state !== 'ext') {
+                s += '<circle cx="' + (p.x + TTG_NW - 12) + '" cy="' + (p.y + 12) + '" r="4" fill="#d97706"><title>Connected to nothing</title></circle>';
+            }
+            s += '</g>';
+        });
+
+        s += '</svg>';
+        return s;
+    }
+
+    function ttgPill(label, value, tone) {
+        var bg = tone === 'bad' ? '#fef2f2' : tone === 'warn' ? '#fffbeb' : '#f1f5f9';
+        var fg = tone === 'bad' ? '#dc2626' : tone === 'warn' ? '#b45309' : '#334155';
+        return '<span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold" style="background:' + bg + ';color:' + fg + '">'
+            + '<span style="font-variant-numeric:tabular-nums">' + esc(String(value)) + '</span> ' + esc(label) + '</span>';
+    }
+
+    /**
+     * The detail panel.
+     *
+     * Deliberately phrased as consequences rather than property names. "Missing
+     * address" is a schema fact; "an AI cannot say where you are" is the reason
+     * anyone should care, and it is the same sentence the report uses.
+     */
+    function ttgPanel(i) {
+        var el = document.getElementById('graph-panel');
+        var g = TTG.g;
+        if (!el || !g) { return; }
+
+        if (i < 0 || !g.nodes[i]) {
+            el.innerHTML = '<p class="text-slate-400">Click any box to see what it declares &mdash; and what it is missing.</p>';
+            return;
+        }
+        var nd = g.nodes[i];
+        var ins = g.edges.filter(function (e) { return e.t === i; });
+        var outs = g.edges.filter(function (e) { return e.f === i; });
+
+        var h = '<p class="text-xs font-bold uppercase tracking-widest" style="color:' + ttgColor(nd.state) + '">' + esc(nd.types.join(' + ')) + '</p>';
+        h += '<p class="mt-1 text-lg font-bold">' + esc(nd.label || '(no name)') + '</p>';
+        h += '<p class="mt-1 text-xs break-all" style="color:#94a3b8">' + (nd.id ? esc(nd.id) : 'No @id &mdash; nothing on any page can point at this entity') + '</p>';
+
+        if (nd.state === 'ext') {
+            h += '<p class="mt-4 text-slate-300">Something on this page points at this <code>@id</code>, but the page never defines it. That is fine when it lives on another page of the site, and a dead end when it does not.</p>';
+        } else {
+            if (nd.req && nd.req.length) {
+                h += '<p class="mt-4"><span class="font-bold" style="color:#f87171">Required, missing:</span> ' + esc(nd.req.join(', ')) + '</p>';
+            }
+            if (nd.rec && nd.rec.length) {
+                h += '<p class="mt-2"><span class="font-bold" style="color:#fbbf24">Recommended, missing:</span> ' + esc(nd.rec.join(', ')) + '</p>';
+            }
+            if (!(nd.req && nd.req.length) && !(nd.rec && nd.rec.length)) {
+                h += '<p class="mt-4"><span class="font-bold" style="color:#4ade80">Complete.</span> Every property Google and the AI engines look for on this type is present.</p>';
+            }
+            h += '<p class="mt-2 text-slate-400">' + esc(String(nd.props)) + ' properties declared'
+              + (nd.sameAs ? ' &middot; ' + esc(String(nd.sameAs)) + ' sameAs link' + (nd.sameAs === 1 ? '' : 's') : ' &middot; no sameAs links')
+              + '</p>';
+        }
+
+        if (outs.length) {
+            h += '<p class="mt-4 text-slate-300"><span class="font-bold">Points at:</span> ' + outs.map(function (e) {
+                var t = g.nodes[e.t];
+                return esc(e.p) + ' &rarr; ' + esc(t.label || t.types.join(', ')) + (e.d ? ' <span style="color:#f87171">(not defined here)</span>' : '');
+            }).join(' &middot; ') + '</p>';
+        }
+        if (ins.length) {
+            h += '<p class="mt-2 text-slate-300"><span class="font-bold">Pointed at by:</span> ' + ins.map(function (e) {
+                var f = g.nodes[e.f];
+                return esc(f.label || f.types.join(', ')) + ' (' + esc(e.p) + ')';
+            }).join(' &middot; ') + '</p>';
+        }
+        if (!ins.length && !outs.length && nd.state !== 'ext') {
+            h += '<p class="mt-4" style="color:#fbbf24">Connected to nothing. It is valid markup, but it floats: nothing else on the page says how this relates to the business.</p>';
+        }
+
+        el.innerHTML = h;
+    }
+
+    function ttgDraw() {
+        var box = document.getElementById('graph-canvas');
+        if (!box || !TTG.g) { return; }
+        var lay = ttgLayout(TTG.g);
+        TTG.pos = lay.pos;
+        box.innerHTML = ttgSvg(TTG.g, lay, TTG.sel);
+        Array.prototype.forEach.call(box.querySelectorAll('.ttg-node'), function (el) {
+            el.addEventListener('click', function () {
+                var i = parseInt(el.getAttribute('data-i'), 10);
+                TTG.sel = (TTG.sel === i) ? -1 : i;
+                ttgDraw();
+                ttgPanel(TTG.sel);
+            });
+        });
+    }
+
+    /**
+     * Export the drawing as a PNG.
+     *
+     * Rasterised through a canvas rather than handed over as an .svg file: the
+     * point is an image somebody can paste into an email to a client, and half
+     * the places they would paste it do not render SVG.
+     */
+    function ttgPng(domain) {
+        var svg = document.getElementById('ttg-svg');
+        if (!svg) { return; }
+        var lay = ttgLayout(TTG.g);
+        var pad = 24, foot = 46, scale = 2;
+        var w = lay.w + pad * 2, h = lay.h + pad * 2 + foot;
+
+        var raw = new XMLSerializer().serializeToString(svg);
+        var img = new Image();
+        img.onload = function () {
+            var cv = document.createElement('canvas');
+            cv.width = w * scale; cv.height = h * scale;
+            var cx = cv.getContext('2d');
+            cx.scale(scale, scale);
+            cx.fillStyle = '#ffffff'; cx.fillRect(0, 0, w, h);
+            cx.drawImage(img, pad, pad, lay.w, lay.h);
+            cx.fillStyle = '#94a3b8';
+            cx.font = '12px ui-sans-serif, system-ui, Segoe UI, sans-serif';
+            cx.fillText('Structured data on ' + domain, pad, h - 18);
+            cx.textAlign = 'right';
+            cx.fillStyle = '#0f172a';
+            cx.fillText('toctoc.ky/seo-checker', w - pad, h - 18);
+            var a = document.createElement('a');
+            a.href = cv.toDataURL('image/png');
+            a.download = 'entity-graph-' + domain.replace(/[^a-z0-9.-]/gi, '-') + '.png';
+            a.click();
+        };
+        img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(raw)));
+    }
+
+    function renderGraph(d) {
+        var card = document.getElementById('graph-card');
+        if (!card) { return; }
+        var g = d && d.graph;
+        if (!g || !g.nodes) { card.classList.add('hidden'); return; }
+
+        TTG.g = g; TTG.sel = -1;
+        card.classList.remove('hidden');
+
+        var st = g.stats || {};
+        var stats = document.getElementById('graph-stats');
+
+        // No entities at all is the loudest possible finding, so it gets the
+        // whole panel instead of an empty frame with a zero next to it.
+        if (!st.entities) {
+            stats.innerHTML = '';
+            document.getElementById('graph-canvas').innerHTML =
+                '<div class="p-10 text-center"><p class="text-lg font-bold text-slate-900">Nothing to draw.</p>'
+                + '<p class="mt-2 text-sm text-slate-500 max-w-md mx-auto">This page declares no structured data, so an AI engine has to guess what the business is, where it is, and whether it is the same company it saw somewhere else. Usually it guesses wrong, or skips you.</p></div>';
+            ttgPanel(-1);
+            return;
+        }
+
+        stats.innerHTML = ttgPill('entities', st.entities, 'ok')
+            + (st.dangling ? ttgPill(st.dangling === 1 ? 'reference goes nowhere' : 'references go nowhere', st.dangling, 'bad') : '')
+            + (st.orphans ? ttgPill(st.orphans === 1 ? 'entity connected to nothing' : 'entities connected to nothing', st.orphans, 'warn') : '')
+            + (st.noid ? ttgPill(st.noid === 1 ? 'entity without @id' : 'entities without @id', st.noid, 'warn') : '')
+            + (!st.dangling && !st.orphans && !st.noid ? ttgPill('fully joined up', '✓', 'ok') : '');
+
+        ttgDraw();
+        ttgPanel(-1);
+
+        var btn = document.getElementById('graph-png');
+        if (btn) {
+            btn.onclick = function () {
+                var host = '';
+                try { host = new URL(d.url).hostname; } catch (e) { host = 'site'; }
+                ttgPng(host);
+            };
+        }
+    }
     /**
      * Draft llms.txt panel. Hidden entirely when the server sent nothing, so a
      * failed sitemap read never leaves an empty box on the report.
@@ -1337,6 +1661,7 @@ window.TTSEO = {
             renderShareBadge(d.badge);
             renderList('list-seo', d.seo);
             renderList('list-geo', d.geo);
+            renderGraph(d);
             renderLlms(d);
 
             document.getElementById('ttseo-results').scrollIntoView({ behavior: 'smooth' });
