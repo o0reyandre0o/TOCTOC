@@ -326,6 +326,14 @@ $sm_faqs = array(
         </div>
     </section>
     <!-- Free SEO Checker CTA -->
+    <?php
+    // Latest articles on this page's topics; see toctoc_render_related_posts().
+    // Guarded: functions.php can reach the server after this template does.
+    if ( function_exists( 'toctoc_render_related_posts' ) ) {
+        toctoc_render_related_posts( array( 13, 14 ), 'On social media <em class="italic text-sky-deep font-display">that pays</em>' );
+    }
+    ?>
+
     <?php toctoc_render_checker_cta(); ?>
 
 </main>

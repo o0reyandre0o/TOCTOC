@@ -234,6 +234,89 @@ function toctoc_render_faq( $faqs, $eyebrow = 'FAQ', $heading = 'Frequently Aske
 }
 
 /**
+ * "From the blog" block for service pages: the latest published articles in the
+ * categories that page sells.
+ *
+ * The blog had no links pointing into it from the pages Google and the AI
+ * surfaces actually show — the home page and the service pages — so articles
+ * were reachable only from /blog/. This hands each service page's weight to the
+ * articles that support it, and gives a reader who is not ready to enquire
+ * somewhere useful to go instead of leaving.
+ *
+ * Driven by category rather than by a hand-picked list, for two reasons.
+ * Scheduled posts go live on their own by WP-cron, and a hard-coded link to one
+ * would be a 404 until the day it publishes; a query only ever returns what is
+ * already public. And nobody has to remember to update six templates every time
+ * an article comes out.
+ *
+ * @param int[]  $cat_ids Categories this service page is about, most specific first.
+ * @param string $heading Section heading (HTML allowed: <em> for the accent).
+ * @param int    $limit   How many articles to show.
+ */
+function toctoc_render_related_posts( $cat_ids, $heading = 'From the blog', $limit = 3 ) {
+    $q = new WP_Query( array(
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'category__in'        => array_map( 'intval', (array) $cat_ids ),
+        'posts_per_page'      => (int) $limit,
+        'ignore_sticky_posts' => true,
+        'no_found_rows'       => true,
+    ) );
+    if ( ! $q->have_posts() ) {
+        return; // Nothing published in these categories yet: no empty shell.
+    }
+    ?>
+    <section class="py-24 md:py-28 bg-slate-50">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">From the blog</span>
+                    <h2 class="mt-5 text-4xl md:text-5xl font-display text-slate-900 leading-[0.95]"><?php echo wp_kses_post( $heading ); ?></h2>
+                </div>
+                <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="text-sm font-bold text-sky-deep decoration-none hover:underline">All articles &rarr;</a>
+            </div>
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <?php
+                while ( $q->have_posts() ) :
+                    $q->the_post();
+                    // Label with the category this page is about, not whichever
+                    // category happens to be first on the post.
+                    $cat = '';
+                    foreach ( get_the_category() as $c ) {
+                        if ( in_array( (int) $c->term_id, array_map( 'intval', (array) $cat_ids ), true ) ) {
+                            $cat = $c->name;
+                            break;
+                        }
+                    }
+                    ?>
+                    <article class="group flex flex-col rounded-[2rem] border border-slate-100 bg-white shadow-soft overflow-hidden">
+                        <a href="<?php the_permalink(); ?>" class="block overflow-hidden bg-slate-200 aspect-[16/10] decoration-none">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <?php the_post_thumbnail( 'medium_large', array( 'class' => 'h-full w-full object-cover transition-transform duration-700 group-hover:scale-105', 'loading' => 'lazy' ) ); ?>
+                            <?php endif; ?>
+                        </a>
+                        <div class="flex flex-1 flex-col p-6">
+                            <?php if ( '' !== $cat ) : ?>
+                            <div class="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
+                                <span class="rounded-full bg-sky-pale px-2.5 py-1 text-sky-deep"><?php echo esc_html( html_entity_decode( $cat, ENT_QUOTES, 'UTF-8' ) ); ?></span>
+                            </div>
+                            <?php endif; ?>
+                            <h3 class="mt-4 text-2xl font-display leading-tight text-slate-900">
+                                <a href="<?php the_permalink(); ?>" class="decoration-none hover:text-sky-deep transition-colors"><?php the_title(); ?></a>
+                            </h3>
+                            <p class="mt-3 text-sm text-slate-500 leading-relaxed"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 22 ) ); ?></p>
+                            <span class="mt-auto pt-5 text-[11px] font-bold uppercase tracking-widest text-slate-400"><?php echo esc_html( get_the_date( 'j M Y' ) ); ?></span>
+                        </div>
+                    </article>
+                <?php endwhile; ?>
+            </div>
+        </div>
+    </section>
+    <?php
+    wp_reset_postdata();
+}
+
+/**
  * Visible breadcrumbs (Home / Page). The matching BreadcrumbList JSON-LD has
  * been in header.php all along — this renders the visual counterpart.
  * Pass a short label; falls back to the WP page title.

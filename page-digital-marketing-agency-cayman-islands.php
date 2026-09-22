@@ -432,6 +432,14 @@ $dm_faqs = array(
     </section>
 
     <!-- Free SEO Checker CTA -->
+    <?php
+    // Latest articles on this page's topics; see toctoc_render_related_posts().
+    // Guarded: functions.php can reach the server after this template does.
+    if ( function_exists( 'toctoc_render_related_posts' ) ) {
+        toctoc_render_related_posts( array( 14, 19, 13 ), 'Notes from <em class="italic text-sky-deep font-display">the work</em>' );
+    }
+    ?>
+
     <?php toctoc_render_checker_cta(); ?>
 
 </main>
