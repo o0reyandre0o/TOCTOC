@@ -219,6 +219,19 @@ A 30/08/2026: **3 publicados, 11 programados** hasta el 17 de septiembre.
 Los posts programados publican por WP-cron en el servidor — no dependen de
 ninguna máquina local.
 
+**Serie de octubre 2026** (programada el 22/09, ids 8805–8819): 8 posts, martes
+y jueves a las 15:00, del 1 al 27 oct. Deliberadamente menos que el ritmo casi
+diario de septiembre: los posts de septiembre tenían 2–5 lectores cada uno en
+GA4, y el blog es una parte mínima de las impresiones de IA frente a la home y
+las páginas de servicio. Temas: informe de IA de Search Console, qué bloquea a
+los crawlers de IA, qué índice usa cada asistente, GA4 mal medido, puesta a
+punto antes de la temporada, entidades/nombres, contenido con IA y las reglas de
+Google, AI Overviews que se expanden. Cada dato externo va enlazado a su fuente;
+**ninguno cita cifras propias de TocToc** (regla del usuario, 22/09). El bloque
+de preguntas de cada post cierra con un H2 ("Where to start this week") para que
+`toctoc_extract_faq()` no arrastre el cierre dentro de la última respuesta, como
+pasa en los de septiembre.
+
 Cuatro de los programados apuntan a demanda medida en GSC y los otros no:
 `local-seo-grand-cayman` (2 sep), `how-long-does-seo-take-cayman-islands`
 (7 sep), `how-often-should-a-cayman-business-post` (9 sep),
