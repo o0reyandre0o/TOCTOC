@@ -544,7 +544,7 @@ $ai_google_rating = function ( $dark = false ) {
     // Latest articles on this page's topics; see toctoc_render_related_posts().
     // Guarded: functions.php can reach the server after this template does.
     if ( function_exists( 'toctoc_render_related_posts' ) ) {
-        toctoc_render_related_posts( array( 17 ), 'How AI search <em class="italic text-sky-deep font-display">actually works</em>' );
+        toctoc_render_related_posts( array( 17, 12 ), 'How AI search <em class="italic text-sky-deep font-display">actually works</em>' );
     }
     ?>
 
