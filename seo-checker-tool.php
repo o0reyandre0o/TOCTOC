@@ -1140,6 +1140,59 @@ function toctoc_seo_image_weight( $img_srcs, $origin, $page_url ) {
 }
 
 /**
+ * Lift entities that are defined inline, nested inside another, to the top.
+ *
+ * A founder or an employee written out in full inside an Organization is a
+ * definition, not a reference: it is on this page. Without this the graph saw
+ * only top-level nodes and reported those people as "not on this page", which
+ * is exactly backwards.
+ *
+ * A nested object counts as a definition when it has an @id, a @type and at
+ * least one other property. `{"@id": …}` alone, or with only a @type, is a
+ * pointer and stays one. The parent keeps its nested copy, and since that copy
+ * carries an @id the edge extraction already treats it as a link to the lifted
+ * node. Only the graph uses this; the audit scores the markup as written.
+ *
+ * @param array $entities Top-level JSON-LD entities.
+ * @return array Entities plus any nested definitions not already top-level.
+ */
+function toctoc_seo_hoist_entities( $entities ) {
+	$top = array();
+	foreach ( $entities as $e ) {
+		if ( is_array( $e ) && ! empty( $e['@id'] ) && is_string( $e['@id'] ) ) {
+			$top[ $e['@id'] ] = true;
+		}
+	}
+
+	$found = array();
+	$walk  = static function ( $value, $depth ) use ( &$walk, &$found ) {
+		if ( ! is_array( $value ) || $depth > 6 ) {
+			return;
+		}
+		foreach ( $value as $v ) {
+			if ( ! is_array( $v ) ) {
+				continue;
+			}
+			if ( isset( $v['@id'], $v['@type'] ) && is_string( $v['@id'] ) && ! isset( $found[ $v['@id'] ] )
+				&& array_diff( array_keys( $v ), array( '@id', '@type', '@context' ) ) ) {
+				$found[ $v['@id'] ] = $v;
+			}
+			$walk( $v, $depth + 1 );
+		}
+	};
+	foreach ( $entities as $e ) {
+		$walk( $e, 0 );
+	}
+
+	foreach ( $found as $id => $def ) {
+		if ( ! isset( $top[ $id ] ) ) {
+			$entities[] = $def;
+		}
+	}
+	return $entities;
+}
+
+/**
  * Turn parsed JSON-LD into a drawable entity graph.
  *
  * Only top-level entities become nodes. Nested value objects — a PostalAddress,
@@ -1164,6 +1217,7 @@ function toctoc_seo_image_weight( $img_srcs, $origin, $page_url ) {
 function toctoc_seo_entity_graph( $entities, $page_url = '' ) {
 	$rules     = toctoc_seo_schema_rules();
 	$page_host = $page_url ? strtolower( (string) wp_parse_url( $page_url, PHP_URL_HOST ) ) : '';
+	$entities  = toctoc_seo_hoist_entities( $entities );
 	$nodes = array();
 	$byid  = array();
 

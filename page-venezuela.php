@@ -791,7 +791,12 @@ $ve_news = [
 })();
 </script>
 
-<?php ob_start(); ?>
+<?php
+/* Daniel and TocToc are referenced by @id, never re-declared. This block used to
+   spell out an inline Person with an inline Organization, which is a second,
+   anonymous Daniel working for a second, anonymous TocToc — two entities a
+   parser has no reason to merge with the real ones. */
+ob_start(); ?>
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -802,12 +807,8 @@ $ve_news = [
   "inLanguage": "en",
   "isPartOf": { "@id": "https://toctoc.ky/#website" },
   "about": { "@type": "Place", "name": "Venezuela" },
-  "creator": {
-    "@type": "Person",
-    "name": "Daniel Garrido",
-    "jobTitle": "Founder & CEO",
-    "worksFor": { "@type": "Organization", "name": "TocToc Marketing", "url": "https://toctoc.ky" }
-  },
+  "creator": { "@id": "https://toctoc.ky/#daniel-garrido" },
+  "publisher": { "@id": "https://toctoc.ky/#organization" },
   "citation": {
     "@type": "NewsArticle",
     "headline": "How Cayman residents can help Venezuela after the earthquakes",

@@ -338,6 +338,14 @@
     } else {
         $canonical = trailingslashit($current_url);
     }
+    // The graph registry stitches the page node together on wp_footer and
+    // needs to know which page it is describing. Canonical, not $current_url:
+    // the page node is the page, whatever query string it was reached with.
+    $GLOBALS['toctoc_page_meta'] = array(
+        'url'  => $canonical,
+        'name' => html_entity_decode( (string) $title, ENT_QUOTES, 'UTF-8' ),
+        'desc' => html_entity_decode( (string) $desc, ENT_QUOTES, 'UTF-8' ),
+    );
     ?>
 
     <title><?php echo esc_html($title); ?></title>

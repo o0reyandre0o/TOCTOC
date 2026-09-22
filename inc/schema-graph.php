@@ -86,6 +86,102 @@ function toctoc_schema_add_raw( $json ) {
 }
 
 /**
+ * Join the page-level nodes into one connected graph.
+ *
+ * Templates each add what they know — a breadcrumb from the header, an FAQ from
+ * the page, an Article from single.php — and none of them knows about the
+ * others. The result was a set of valid but disconnected blocks: a
+ * BreadcrumbList and an FAQPage that nothing pointed at, so nothing traversing
+ * the graph could tell they belonged to this page or this business.
+ *
+ * This runs once, when the whole graph is known, and only ever fills gaps. It
+ * never overwrites a property a template set and never changes an existing
+ * @id; a node that had no @id gets one, which is adding identity, not moving it.
+ *
+ * - The page gets one page node. A template's own (AboutPage, ProfilePage,
+ *   CollectionPage, WebPage) is used when present; otherwise a WebPage is
+ *   created. On a post it takes the @id the Article already names in
+ *   mainEntityOfPage, so the reference resolves instead of becoming a second
+ *   page.
+ * - That node is tied to the WebSite, to the breadcrumb (by the breadcrumb's
+ *   real @id, which is built differently from the canonical) and, on the home
+ *   page only, to the Organization it is about.
+ * - Every FAQPage gets an @id and is declared part of the page.
+ *
+ * @param array<int, array<string, mixed>> $nodes De-duplicated nodes.
+ * @return array<int, array<string, mixed>>
+ */
+function toctoc_schema_stitch( $nodes ) {
+	$page = $GLOBALS['toctoc_page_meta'] ?? array();
+	if ( empty( $page['url'] ) || is_404() || is_search() ) {
+		return $nodes;
+	}
+
+	$site       = home_url( '/' ) . '#website';
+	$org        = home_url( '/' ) . '#organization';
+	$page_types = array( 'WebPage', 'AboutPage', 'CollectionPage', 'ProfilePage', 'ContactPage', 'ItemPage', 'QAPage', 'SearchResultsPage' );
+
+	$page_i   = null;
+	$crumb_id = '';
+	$main_of  = '';
+	foreach ( $nodes as $i => $n ) {
+		$types = (array) ( $n['@type'] ?? array() );
+		if ( null === $page_i && array_intersect( $types, $page_types ) ) {
+			$page_i = $i;
+		}
+		if ( '' === $crumb_id && in_array( 'BreadcrumbList', $types, true ) && ! empty( $n['@id'] ) ) {
+			$crumb_id = (string) $n['@id'];
+		}
+		if ( '' === $main_of && ! empty( $n['mainEntityOfPage']['@id'] ) && is_string( $n['mainEntityOfPage']['@id'] ) ) {
+			$main_of = $n['mainEntityOfPage']['@id'];
+		}
+	}
+
+	if ( null === $page_i ) {
+		$nodes[] = array_filter(
+			array(
+				'@type'       => 'WebPage',
+				'@id'         => $main_of ? $main_of : $page['url'] . '#webpage',
+				'url'         => $page['url'],
+				'name'        => $page['name'] ?? '',
+				'description' => $page['desc'] ?? '',
+			)
+		);
+		$page_i = count( $nodes ) - 1;
+	}
+
+	if ( empty( $nodes[ $page_i ]['@id'] ) ) {
+		$nodes[ $page_i ]['@id'] = $page['url'] . '#webpage';
+	}
+	if ( empty( $nodes[ $page_i ]['isPartOf'] ) ) {
+		$nodes[ $page_i ]['isPartOf'] = array( '@id' => $site );
+	}
+	if ( empty( $nodes[ $page_i ]['breadcrumb'] ) && '' !== $crumb_id ) {
+		$nodes[ $page_i ]['breadcrumb'] = array( '@id' => $crumb_id );
+	}
+	if ( empty( $nodes[ $page_i ]['about'] ) && is_front_page() ) {
+		$nodes[ $page_i ]['about'] = array( '@id' => $org );
+	}
+	$page_id = $nodes[ $page_i ]['@id'];
+
+	$faq = 0;
+	foreach ( $nodes as $i => $n ) {
+		if ( ! in_array( 'FAQPage', (array) ( $n['@type'] ?? array() ), true ) ) {
+			continue;
+		}
+		$faq++;
+		if ( empty( $n['@id'] ) ) {
+			$nodes[ $i ]['@id'] = $page['url'] . '#faq' . ( $faq > 1 ? '-' . $faq : '' );
+		}
+		if ( empty( $n['isPartOf'] ) ) {
+			$nodes[ $i ]['isPartOf'] = array( '@id' => $page_id );
+		}
+	}
+
+	return $nodes;
+}
+
+/**
  * Print the graph.
  *
  * Nodes are de-duplicated by @id, first definition winning: header.php declares
@@ -110,6 +206,8 @@ function toctoc_schema_render() {
 		}
 		$keep[] = $node;
 	}
+
+	$keep = toctoc_schema_stitch( $keep );
 
 	if ( $keep ) {
 		echo '<script type="application/ld+json">'
