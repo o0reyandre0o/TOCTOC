@@ -1070,7 +1070,9 @@ window.TTSEO = {
      */
     var TTG = { g: null, pos: [], sel: -1 };
 
-    var TTG_NW = 176, TTG_NH = 54, TTG_GAPX = 232, TTG_GAPY = 74;
+    // GAPX leaves 120px between columns. That strip holds every curve and
+    // every property label; at 56px, 'parentOrganization' did not fit.
+    var TTG_NW = 176, TTG_NH = 54, TTG_GAPX = 296, TTG_GAPY = 74;
 
     function ttgColor(state) {
         if (state === 'ok') { return '#16a34a'; }
@@ -1122,16 +1124,15 @@ window.TTSEO = {
         var keys = Object.keys(cols).map(Number).sort(function (a, b) { return a - b; });
 
         /*
-         * A column taller than six boxes makes a thin stack that all the edges
-         * have to cross. Past that it is split into side-by-side sub-columns,
-         * which costs width — and width is the one thing a scrollable strip has
-         * plenty of.
+         * Only a genuinely huge column is split. Splitting sends the edges for
+         * the far half straight through the boxes of the near half, which is
+         * worse than a tall column; a tall column only costs scrolling.
          */
         var columns = [];
         keys.forEach(function (k) {
             var list = cols[k];
-            if (list.length <= 6) { columns.push(list); return; }
-            var parts = Math.ceil(list.length / 6), per = Math.ceil(list.length / parts);
+            if (list.length <= 10) { columns.push(list); return; }
+            var parts = Math.ceil(list.length / 10), per = Math.ceil(list.length / parts);
             for (var a = 0; a < list.length; a += per) { columns.push(list.slice(a, a + per)); }
         });
 
