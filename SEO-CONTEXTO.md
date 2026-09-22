@@ -154,6 +154,24 @@ lo cuenta como orgánico.
 El orgánico real de Caimán son **~10 sesiones de 7 usuarios en 28 días**. El
 "+116% de Organic Search" que salía del dato bruto no representa nada.
 
+**Corrección (22 sep 2026): Países Bajos era tráfico interno, no un robot.**
+Las sesiones de NL traen referencia `tagassistant.google.com` y leads de prueba
+del checker el **27 ago**, el mismo día que se montaron esos eventos en GTM
+(commit `218e6a2`). Alguien del equipo probando con VPN. Desde el commit
+`5de02b9` los navegadores internos no cargan GTM ni Clarity (cookie
+`tt_internal`: automática al entrar en wp-admin; en otro navegador,
+visitar `/?tt_internal=1` una vez; `/?tt_internal=0` la quita; `?gtm_debug=`
+la ignora para poder probar). **Datos anteriores a esa fecha siguen
+contaminados; excluir NL al comparar.**
+
+**El otro patrón, el contrario: Singapur** (25 ago–21 sep 2026). 139 sesiones
+de **138 usuarios**, 0,2 s de media, 1 sesión con engagement, escritorio,
+Chrome, directo, recorriendo hasta `/cookie-policy`. Un navegador headless que
+ejecuta JS, con usuario nuevo en cada visita. Era el **36% de las sesiones**
+del periodo (117 en el anterior). GA4 no deja borrarlo hacia atrás: **excluir
+Singapur (y China, mismo patrón) en cualquier comparación.** Con eso, el
+tráfico humano del periodo fue ~226 sesiones, −5% frente al anterior.
+
 ---
 
 ## No hay demanda de búsqueda de marca
@@ -270,9 +288,15 @@ curl -s -o /dev/null -w '%{http_code}' https://DOMINIO/sitemap.xml
   página del portafolio, se le acaban de meter 30 sitios, y la gente se va al
   instante. Sin diagnosticar.
 - Velocidad / Core Web Vitals: **no auditado todavía**.
-- Eventos de conversión en GA4: el checker emite `checker_complete`,
-  `checker_failed`, `llms_draft_copy`, `llms_draft_download` y `seo_check_lead`
-  al dataLayer. Falta confirmar que todos llegan a GA4 como eventos.
+- Eventos de conversión en GA4 (comprobado 22 sep 2026 leyendo el contenedor
+  publicado de `GTM-5ZT8BLFP`): GTM tiene una etiqueta GA4 por evento, con
+  disparador por nombre exacto, para `seo_check_lead`, `checker_complete`,
+  `checker_failed`, `llms_draft_copy`, `llms_draft_download` y `donate_click`.
+  **`contact_click` no tiene etiqueta**: el footer lo empuja desde el 21 jul en
+  cada clic a WhatsApp, teléfono o email, y nunca ha llegado a GA4. Además el
+  único key event marcado es `form_start` (hacer clic en un campo), no un
+  lead. Falta: etiqueta de `contact_click` en GTM; en GA4 marcar
+  `contact_click` y `seo_check_lead` como key events y desmarcar `form_start`.
 
 ---
 
