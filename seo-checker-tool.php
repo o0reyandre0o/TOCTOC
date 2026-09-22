@@ -433,7 +433,7 @@ function toctoc_seo_explanations() {
 		),
 		'AI crawler access' => array(
 			'plain' => "Whether you let ChatGPT, Claude and Google's AI actually read your site. If you block them, you simply cannot be recommended by them — no matter how good your site is.",
-			'tech'  => "robots.txt rules for GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot and CCBot. A blanket 'Disallow: /' for these agents removes you from AI retrieval and training corpora.",
+			'tech'  => "robots.txt rules for GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, Claude-User, anthropic-ai, Google-Extended, PerplexityBot, Perplexity-User and CCBot, read the way crawlers read them: a bot obeys the group that names it, or the '*' group when none does. A 'Disallow: /' that applies to these agents removes you from AI retrieval and training corpora.",
 			'fix'   => "Your site is blocking AI bots like ChatGPT's. Let them in so your business can show up when people ask AI.",
 		),
 		'XML sitemap' => array(
@@ -1137,6 +1137,83 @@ function toctoc_seo_image_weight( $img_srcs, $origin, $page_url ) {
 		$status,
 		'Sampled ' . $measured . ' images: ' . $kb( $total ) . ' total, heaviest ' . $kb( $heaviest ) . ( $heavy_ct ? ' (' . $heavy_ct . ' over 150 KB)' : '' )
 	);
+}
+
+/**
+ * Does robots.txt shut this crawler out of the whole site?
+ *
+ * Follows the grouping rule crawlers actually use (RFC 9309): a bot obeys the
+ * group that names it, and falls back to the "*" group only when no group
+ * does. The regex this replaced looked only for a group naming the bot, so a
+ * site with a blanket "User-agent: *" / "Disallow: /" was reported as letting
+ * AI crawlers in — the one case where the answer matters most.
+ *
+ * Only the root is judged: "Disallow: /" with no "Allow: /" in the same group.
+ * Partial blocks (/wp-admin/, /cart/) are normal and not what this row is for.
+ *
+ * @param string $body Lower-cased robots.txt.
+ * @param string $bot  Lower-cased product token, e.g. "gptbot".
+ * @return bool
+ */
+function toctoc_seo_robots_blocks_root( $body, $bot ) {
+	$groups     = array();
+	$agents     = array();
+	$rules      = array();
+	$last_agent = false;
+	foreach ( preg_split( '/\r\n|\r|\n/', $body ) as $line ) {
+		$line = trim( preg_replace( '/#.*$/', '', $line ) );
+		if ( '' === $line || false === strpos( $line, ':' ) ) {
+			continue;
+		}
+		list( $key, $value ) = array_map( 'trim', explode( ':', $line, 2 ) );
+		if ( 'user-agent' === $key ) {
+			// Consecutive user-agent lines share one group; a user-agent after
+			// rules starts a new one.
+			if ( ! $last_agent && $agents ) {
+				$groups[] = array( $agents, $rules );
+				$agents   = array();
+				$rules    = array();
+			}
+			$agents[]   = $value;
+			$last_agent = true;
+		} elseif ( 'allow' === $key || 'disallow' === $key ) {
+			$rules[]    = array( $key, $value );
+			$last_agent = false;
+		}
+	}
+	if ( $agents ) {
+		$groups[] = array( $agents, $rules );
+	}
+
+	$named = null;
+	$star  = null;
+	foreach ( $groups as $group ) {
+		foreach ( $group[0] as $agent ) {
+			if ( $agent === $bot && null === $named ) {
+				$named = $group;
+			} elseif ( '*' === $agent && null === $star ) {
+				$star = $group;
+			}
+		}
+	}
+	$group = $named ? $named : $star;
+	if ( ! $group ) {
+		return false;
+	}
+
+	$disallow = false;
+	$allow    = false;
+	foreach ( $group[1] as $rule ) {
+		if ( '/' === $rule[1] ) {
+			if ( 'disallow' === $rule[0] ) {
+				$disallow = true;
+			} else {
+				$allow = true;
+			}
+		}
+	}
+	// On an exact tie RFC 9309 lets Allow win.
+	return $disallow && ! $allow;
 }
 
 /**
@@ -2051,12 +2128,11 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 	// robots.txt — is it blocking AI crawlers?
 	$robots_txt = toctoc_seo_fetch( $origin . '/robots.txt' );
 	$rbody      = strtolower( $robots_txt['body'] );
-	$ai_bots    = array( 'gptbot', 'oai-searchbot', 'chatgpt-user', 'claudebot', 'anthropic-ai', 'google-extended', 'perplexitybot', 'ccbot' );
+	$ai_bots    = array( 'gptbot', 'oai-searchbot', 'chatgpt-user', 'claudebot', 'claude-searchbot', 'claude-user', 'anthropic-ai', 'google-extended', 'perplexitybot', 'perplexity-user', 'ccbot' );
 	$blocked    = array();
 	if ( 200 === $robots_txt['code'] && '' !== $rbody ) {
 		foreach ( $ai_bots as $bot ) {
-			// crude: bot section followed by a blanket disallow.
-			if ( preg_match( '/user-agent:\s*' . preg_quote( $bot, '/' ) . '\b[^#]*?disallow:\s*\/\s*(\n|$)/is', $rbody ) ) {
+			if ( toctoc_seo_robots_blocks_root( $rbody, $bot ) ) {
 				$blocked[] = $bot;
 			}
 		}

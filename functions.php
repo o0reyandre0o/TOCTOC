@@ -1485,7 +1485,13 @@ function toctoc_robots_content() {
         . "User-agent: ChatGPT-User\nAllow: /\n\n"
         . "User-agent: Google-Extended\nAllow: /\n\n"
         . "User-agent: PerplexityBot\nAllow: /\n\n"
+        . "User-agent: Perplexity-User\nAllow: /\n\n"
+        // Anthropic split its crawler in three: ClaudeBot trains, Claude-SearchBot
+        // builds the index Claude searches, Claude-User fetches a page when a
+        // person asks about it. The last two decide whether Claude can cite us.
         . "User-agent: ClaudeBot\nAllow: /\n\n"
+        . "User-agent: Claude-SearchBot\nAllow: /\n\n"
+        . "User-agent: Claude-User\nAllow: /\n\n"
         . "User-agent: anthropic-ai\nAllow: /\n\n"
         . "User-agent: Applebot-Extended\nAllow: /\n\n"
         . "User-agent: CCBot\nAllow: /\n"
