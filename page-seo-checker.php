@@ -1151,19 +1151,9 @@ window.TTSEO = {
         return { pos: pos, w: W, h: H };
     }
 
-    /** Point on a cubic bezier at t, for placing a label along the curve. */
-    function ttgAt(x1, y1, c1, d1, c2, d2, x2, y2, t) {
-        var u = 1 - t;
-        return {
-            x: u * u * u * x1 + 3 * u * u * t * c1 + 3 * u * t * t * c2 + t * t * t * x2,
-            y: u * u * u * y1 + 3 * u * u * t * d1 + 3 * u * t * t * d2 + t * t * t * y2
-        };
-    }
-
     function ttgSvg(g, lay, sel) {
         var pos = lay.pos, s = '';
-        var labelEdges = g.edges.length <= 12;
-        var seen = {}, rank = {};
+        var labelEdges = g.edges.length <= 40;
 
         s += '<svg id="ttg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + lay.w + ' ' + lay.h + '" width="' + lay.w + '" height="' + lay.h + '" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">';
         s += '<rect width="' + lay.w + '" height="' + lay.h + '" fill="#f8fafc"/>';
@@ -1185,19 +1175,15 @@ window.TTSEO = {
               + (e.d ? ' stroke-dasharray="5 4"' : '') + ' marker-end="url(#' + (roto ? 'ttg-ar' : 'ttg-a') + ')"/>';
 
             /*
-             * One label per property per source. Three employee edges leaving
-             * the same box do not need the word three times, and the copies
-             * land on top of each other anyway.
+             * The label sits just before the arrowhead, on the right-hand end
+             * of the gap. Every box in a column has its own row there, so
+             * labels cannot collide the way they did in the middle of a fan,
+             * where every curve leaving one node is still bunched together.
              */
-            var clave = e.f + '|' + e.p;
-            rank[e.f] = (rank[e.f] || 0) + 1;
-            if ((labelEdges || on) && !seen[clave]) {
-                seen[clave] = 1;
-                // Staggered along the curve so fans out of one node do not
-                // stack every label in the same vertical strip.
-                var t = 0.38 + 0.14 * ((rank[e.f] - 1) % 3);
-                var p = ttgAt(x1, y1, c1, y1, c2, y2, x2, y2, t);
-                s += '<text x="' + p.x.toFixed(1) + '" y="' + (p.y - 5).toFixed(1) + '" text-anchor="middle" font-size="10" fill="' + (roto ? '#dc2626' : '#64748b') + '"'
+            if (labelEdges || on) {
+                var fwd = x2 >= x1;
+                var lx = (fwd ? x2 : x1) - 10, ly = (fwd ? y2 : y1) - 5;
+                s += '<text x="' + lx + '" y="' + ly + '" text-anchor="end" font-size="10" fill="' + (roto ? '#dc2626' : '#64748b') + '"'
                   + ' stroke="#f8fafc" stroke-width="3.5" paint-order="stroke">' + esc(e.p) + '</text>';
             }
         });
