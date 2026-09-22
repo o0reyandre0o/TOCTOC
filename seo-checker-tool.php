@@ -1144,8 +1144,180 @@ function toctoc_seo_image_weight( $img_srcs, $origin, $page_url ) {
  * and AI engines expect. Returns [detail, status] or null when there is
  * nothing auditable.
  */
-function toctoc_seo_schema_audit( $entities ) {
-	// type => [ 'req' => required, 'rec' => recommended ]
+/**
+ * Required and recommended properties per schema.org type.
+ *
+ * One list, two consumers: the audit that scores the page and the graph that
+ * draws it. Kept apart they would drift, and a node painted green while the
+ * report calls it incomplete is worse than either alone.
+ */
+
+/**
+ * Turn parsed JSON-LD into a drawable entity graph.
+ *
+ * Only top-level entities become nodes. Nested value objects — a PostalAddress,
+ * an ImageObject, forty Answers — would triple the node count and tell the
+ * reader nothing; what matters is which entities exist and how they point at
+ * each other.
+ *
+ * A reference to an @id that no node declares is kept as a "dangling" edge
+ * rather than dropped. That is usually either a genuine mistake or a
+ * deliberate cross-domain reference, and both are worth seeing.
+ *
+ * @param array $entities Top-level JSON-LD entities.
+ * @return array{nodes:array,edges:array,stats:array}
+ */
+function toctoc_seo_entity_graph( $entities ) {
+	$rules = toctoc_seo_schema_rules();
+	$nodes = array();
+	$byid  = array();
+
+	foreach ( $entities as $e ) {
+		if ( ! is_array( $e ) || ! isset( $e['@type'] ) ) {
+			continue;
+		}
+		$types = array_values( array_filter( array_map( 'strval', (array) $e['@type'] ) ) );
+		if ( ! $types ) {
+			continue;
+		}
+
+		// Label: the most human field available, never the raw type alone.
+		$label = '';
+		foreach ( array( 'name', 'headline', 'legalName', 'alternateName' ) as $k ) {
+			if ( ! empty( $e[ $k ] ) && is_string( $e[ $k ] ) ) {
+				$label = $e[ $k ];
+				break;
+			}
+		}
+
+		// Missing properties, judged by the same rules the audit uses. A node
+		// typed as several things must satisfy all of them.
+		$missing_req = array();
+		$missing_rec = array();
+		foreach ( $types as $t ) {
+			if ( ! isset( $rules[ $t ] ) ) {
+				continue;
+			}
+			foreach ( $rules[ $t ]['req'] as $p ) {
+				if ( ! isset( $e[ $p ] ) || '' === $e[ $p ] ) {
+					$missing_req[ $p ] = true;
+				}
+			}
+			foreach ( $rules[ $t ]['rec'] as $p ) {
+				if ( ! isset( $e[ $p ] ) || '' === $e[ $p ] ) {
+					$missing_rec[ $p ] = true;
+				}
+			}
+		}
+
+		$state = 'ok';
+		if ( $missing_req ) {
+			$state = 'gap';
+		} elseif ( $missing_rec ) {
+			$state = 'warn';
+		}
+
+		$i = count( $nodes );
+		$id = isset( $e['@id'] ) && is_string( $e['@id'] ) ? $e['@id'] : '';
+		$nodes[] = array(
+			'i'       => $i,
+			'id'      => $id,
+			'types'   => $types,
+			'label'   => $label,
+			'state'   => $state,
+			'req'     => array_keys( $missing_req ),
+			'rec'     => array_keys( $missing_rec ),
+			'sameAs'  => isset( $e['sameAs'] ) ? count( (array) $e['sameAs'] ) : 0,
+			'props'   => count( $e ),
+		);
+		if ( '' !== $id && ! isset( $byid[ $id ] ) ) {
+			$byid[ $id ] = $i;
+		}
+	}
+
+	// Edges: any property whose value is (or contains) an @id reference.
+	$edges    = array();
+	$phantoms = array();
+	$idx      = 0;
+	foreach ( $entities as $e ) {
+		if ( ! is_array( $e ) || ! isset( $e['@type'] ) || ! array_filter( (array) $e['@type'] ) ) {
+			continue;
+		}
+		$from = $idx;
+		$idx++;
+		foreach ( $e as $prop => $val ) {
+			if ( '@id' === $prop || '@type' === $prop || '@context' === $prop ) {
+				continue;
+			}
+			$candidates = array();
+			if ( is_array( $val ) && isset( $val['@id'] ) ) {
+				$candidates[] = $val['@id'];
+			} elseif ( is_array( $val ) ) {
+				foreach ( $val as $v ) {
+					if ( is_array( $v ) && isset( $v['@id'] ) ) {
+						$candidates[] = $v['@id'];
+					}
+				}
+			}
+			foreach ( $candidates as $target ) {
+				if ( ! is_string( $target ) || '' === $target ) {
+					continue;
+				}
+				if ( isset( $byid[ $target ] ) ) {
+					if ( $byid[ $target ] === $from ) {
+						continue; // self-reference, nothing to draw
+					}
+					$edges[] = array( 'f' => $from, 't' => $byid[ $target ], 'p' => (string) $prop, 'd' => 0 );
+				} else {
+					if ( ! isset( $phantoms[ $target ] ) ) {
+						$phantoms[ $target ] = count( $nodes );
+						$host = wp_parse_url( $target, PHP_URL_HOST );
+						$nodes[] = array(
+							'i'      => count( $nodes ),
+							'id'     => $target,
+							'types'  => array( 'External' ),
+							'label'  => $host ? $host : $target,
+							'state'  => 'ext',
+							'req'    => array(),
+							'rec'    => array(),
+							'sameAs' => 0,
+							'props'  => 0,
+						);
+					}
+					$edges[] = array( 'f' => $from, 't' => $phantoms[ $target ], 'p' => (string) $prop, 'd' => 1 );
+				}
+			}
+		}
+	}
+
+	// A node nothing points at and that points at nothing is floating loose —
+	// present in the markup, invisible to anything traversing the graph.
+	$linked = array();
+	foreach ( $edges as $ed ) {
+		$linked[ $ed['f'] ] = true;
+		$linked[ $ed['t'] ] = true;
+	}
+	$orphans = 0;
+	foreach ( $nodes as $k => $n ) {
+		$nodes[ $k ]['orphan'] = isset( $linked[ $n['i'] ] ) ? 0 : 1;
+		if ( $nodes[ $k ]['orphan'] && 'ext' !== $n['state'] ) {
+			$orphans++;
+		}
+	}
+
+	return array(
+		'nodes' => $nodes,
+		'edges' => $edges,
+		'stats' => array(
+			'entities' => count( array_filter( $nodes, static function ( $n ) { return 'ext' !== $n['state']; } ) ),
+			'dangling' => count( array_filter( $edges, static function ( $e ) { return ! empty( $e['d'] ); } ) ),
+			'orphans'  => $orphans,
+			'noid'     => count( array_filter( $nodes, static function ( $n ) { return 'ext' !== $n['state'] && '' === $n['id']; } ) ),
+		),
+	);
+}
+
+function toctoc_seo_schema_rules() {
 	$rules = array(
 		'Organization'        => array( 'req' => array( 'name' ), 'rec' => array( 'url', 'logo', 'sameAs', 'telephone' ) ),
 		'LocalBusiness'       => array( 'req' => array( 'name', 'address' ), 'rec' => array( 'telephone', 'url', 'image', 'geo', 'openingHoursSpecification', 'priceRange', 'sameAs', 'aggregateRating' ) ),
@@ -1164,6 +1336,12 @@ function toctoc_seo_schema_audit( $entities ) {
 		'VideoObject'         => array( 'req' => array( 'name' ), 'rec' => array( 'thumbnailUrl', 'uploadDate', 'description' ) ),
 		'Event'               => array( 'req' => array( 'name', 'startDate' ), 'rec' => array( 'location', 'image', 'offers' ) ),
 	);
+
+	return $rules;
+}
+
+function toctoc_seo_schema_audit( $entities ) {
+	$rules = toctoc_seo_schema_rules();
 
 	$audited  = array(); // type => ['req' => missing[], 'rec' => missing[]]
 	foreach ( $entities as $e ) {
@@ -1846,6 +2024,7 @@ function toctoc_seo_analyze( $url, $html, $deep = false ) {
 		'seo'    => $seo,
 		'geo'    => $geo,
 		'llms'   => $llms_draft,
+		'graph'  => toctoc_seo_entity_graph( $entities ),
 		'scores' => array(
 			'seo' => toctoc_seo_score( $seo ),
 			'geo' => toctoc_seo_score( $geo ),
