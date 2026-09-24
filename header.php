@@ -189,10 +189,6 @@
             'title' => 'Our Work | AI Search Case Studies Cayman | TocToc',
             'desc' => 'Real results: how we have influenced AI-generated recommendations for Cayman brands. Case studies from 19-81 Brewing Co., Prime Group and TintXKing.'
         ],
-        'plugins' => [
-            'title' => 'Free WordPress Plugins by TocToc | Cayman Islands',
-            'desc' => 'GPL-licensed WordPress plugins built by TocToc Marketing for real client builds, published free. Starting with AG Theme Sync for GitHub.'
-        ],
         'team' => [
             'title' => 'The TocToc Marketing Team | George Town, Grand Cayman',
             'desc' => 'The four people who scope, design, build and publish every TocToc project: Daniel Garrido, Andre Gutierrez, Nora Bravo and Adriana Brito.'

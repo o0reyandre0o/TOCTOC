@@ -624,38 +624,6 @@
     </section>
     -->
 
-    <?php /* Los plugins que publicamos. Va aqui, despues de los servicios y
-             antes de las preguntas: quien llego hasta este punto ya sabe que
-             hacemos, y esto es la prueba de que lo hacemos. */ ?>
-    <section id="plugins" class="relative py-24 md:py-32 bg-slate-950 text-white rounded-[3rem] mx-4 my-12 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-40">
-            <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-sky-deep blur-[120px] rounded-full"></div>
-        </div>
-        <div class="relative z-10 mx-auto max-w-6xl px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent">Open source &middot; GPL</span>
-                <h2 class="mt-6 text-4xl md:text-6xl font-display leading-[0.95]">
-                    We publish the tools <em class="italic text-accent font-display">we build for ourselves.</em>
-                </h2>
-                <p class="mt-8 text-lg text-white/60 leading-relaxed max-w-md">
-                    Every plugin came out of a real problem on a client site in Grand Cayman. They are free, GPL-licensed, and anyone can install them &mdash; starting with a one-click theme deploy from GitHub, backup and rollback included.
-                </p>
-                <a href="/plugins/" class="mt-10 inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-6 pr-2 py-2 text-base font-bold shadow-pill transition-all hover:scale-105 decoration-none">
-                    See our plugins
-                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-accent">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
-                </a>
-            </div>
-            <a href="/plugins/" class="block decoration-none">
-                <img src="https://toctoc.ky/wp-content/uploads/2026/09/ag-theme-sync-cover-v2.webp"
-                     alt="AG Theme Sync for GitHub, a free WordPress plugin by TocToc"
-                     width="1600" height="840" loading="lazy" decoding="async"
-                     class="w-full h-auto rounded-[1.75rem] border border-white/10 shadow-glass" />
-            </a>
-        </div>
-    </section>
-
     <?php
     // Visible FAQ + matching FAQPage schema (answers must exist in the DOM for
     // AI answer engines to trust and quote them).
