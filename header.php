@@ -243,7 +243,6 @@
         'advertising-pr-agency-cayman-islands' => 'digital pr cayman islands, ai authority citations, pr agency cayman, pr services cayman, entity trust score, linkedin authority building cayman, digital pr for ai search, brand citations chatgpt gemini',
         'web-development-cayman-islands' => 'ecommerce development cayman islands, online store development cayman, web app development cayman, booking platform development cayman, woocommerce developer cayman islands, custom web application cayman',
         'our-work' => 'toctoc marketing case studies, ai search results cayman islands, chatgpt ranking case study, gemini recommendation cayman, 19-81 brewing, prime group cayman, web design portfolio cayman islands',
-        'plugins' => 'wordpress plugins toctoc, github theme sync wordpress, deploy wordpress theme from github',
         'team' => 'toctoc marketing team, marketing team cayman islands, web designers grand cayman',
         'daniel-garrido' => 'daniel garrido, daniel garrido cayman, toctoc marketing founder',
         'andre-gutierrez' => 'andre gutierrez, andre gutierrez web developer, wordpress developer cayman islands',
