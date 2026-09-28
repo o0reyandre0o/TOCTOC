@@ -234,7 +234,7 @@ $pr_faqs = array(
                         If ChatGPT sees that a trusted professional network like LinkedIn or a prominent digital content hub is consistently talking about your business, it treats that as real-world proof of your authority.
                     </p>
                     <p class="text-lg text-slate-600 leading-relaxed">
-                        The more organic, high-quality digital citations your business accumulates, the higher your <strong class="font-semibold text-slate-900">&ldquo;Entity Trust Score&rdquo;</strong> rises&mdash;guaranteed to make AI models confidently recommend you over competitors.
+                        The more organic, high-quality digital citations your business accumulates, the higher your <strong class="font-semibold text-slate-900">&ldquo;Entity Trust Score&rdquo;</strong> rises&mdash;and the more confidently AI models can describe and recommend you.
                     </p>
                 </div>
             </div>

@@ -20,7 +20,7 @@
                 <!-- Cayman Islands Chamber of Commerce membership badge. Uses the Chamber's
                      white/reversed seal, so it reads on the dark footer without altering the
                      artwork. Mirrors the `memberOf` node in header.php. -->
-                <a href="https://caymanchamber.ky/" target="_blank" rel="noopener"
+                <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener"
                    aria-label="TocToc Marketing is a member of the Cayman Islands Chamber of Commerce"
                    class="group mt-8 inline-flex flex-col items-center gap-2 decoration-none">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/CICOC-Logo-white-01.png' ); ?>" alt="Cayman Islands Chamber of Commerce" width="320" height="320" loading="lazy" decoding="async" class="w-20 h-20 opacity-80 transition-all group-hover:opacity-100 group-hover:scale-105" />

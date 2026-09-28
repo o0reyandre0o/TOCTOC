@@ -295,6 +295,43 @@ curl -s -o /dev/null -w '%{http_code}' https://DOMINIO/sitemap.xml
 
 ---
 
+## NAP: nombre, dirección y teléfono en internet (auditoría 2026-09-28)
+
+Lo que dice **la web** (las 24 páginas y el schema coinciden entre sí):
+TocToc Marketing (alternateName "Toc Toc Marketing") · 207 Sparky's Drive,
+George Town, KY1-1110 · +1 (345) 547-8120 · info@toctoc.ky. Razón social que se
+muestra en la home: TOC TOC CORPORATION LTD.
+
+Lo que dice **el resto de internet**, y dónde no cuadra:
+
+| Fuente | Nombre | Dirección | Email |
+|---|---|---|---|
+| Google Business Profile | "Toc Toc Marketing - Digital Marketing Agency" (el sufijo es relleno de palabras clave, prohibido por Google) | sin verificar | sin verificar |
+| Facebook (wearetoctoc) | Toc Toc Marketing | "14 Valencia Heights" según buscadores | daniel@toctoc.ky |
+| Licencia comercial (PDF antiguo, oct 2025) | TOC TOC CORPORATION LTD T/A TOC TOC MARKETING | Block 20D Parcel 445, Unit 14 Valencia Heights, Crewe Road | — |
+| Cámara de Comercio (perfil) | Toc Toc Marketing, "Daniel" sin apellido | no verificado (bloquea bots) | — |
+| LinkedIn, Instagram | Toc Toc Marketing / toctocmarketing | — | — |
+
+**Dos direcciones y dos emails circulan a la vez.** Falta decidir cuál es la
+canónica y llevarla a todas partes, empezando por el Perfil de Google.
+
+**Dominio viejo `wearetoctoc.com`:** sigue resolviendo y muestra un listado de
+directorio ("Index of /", con `_.htaccess` y un `llms.txt` vacío). Todas sus
+páginas antiguas dan 404 pero Google aún las tiene indexadas ("SEO Agency
+Orlando | We Are Toc Toc", "Cookie Policy (UK)", la licencia en PDF). Arreglo:
+301 de todo el dominio a toctoc.ky, que también corta el listado.
+
+**Directorios donde no aparecemos** (oportunidad, no inconsistencia): Cayman
+Resident (agencias), eCayOnline, topseos.com. FindYello bloquea bots, sin
+verificar.
+
+Arreglado en la web ese día: la garantía "guaranteed to make AI models
+confidently recommend you" (página de PR), Uncle Liu descrito como e-commerce en
+la home (es un restaurante), y el sello de la Cámara ahora enlaza al perfil que
+publicaron en vez de a su portada.
+
+---
+
 ## Pendientes
 
 - La página `/our-work/` tiene **2,6 segundos de permanencia media**. Es la
