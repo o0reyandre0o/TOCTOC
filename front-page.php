@@ -29,7 +29,7 @@
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-44 md:pt-52 pb-24 text-center flex flex-col items-center">
             <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] leading-[0.95] text-slate-900 font-display">
-                A Marketing Agency<br />
+                A Cayman Marketing Agency<br />
                 focused on getting your<br />
                 business in <em class="italic text-sky-deep font-display">AI Answers.</em>
             </h1>
