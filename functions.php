@@ -854,8 +854,12 @@ function toctoc_og_wrap( $text, $font, $size, $max ) {
  * uploads/toctoc-og/. Social platforms don't render the SVG logo, so every page
  * gets a real raster card: dark slate gradient, dot texture, lime check badge,
  * page title in Instrument Serif. Falls back to $fallback when GD/font missing.
- * The filename embeds a hash of the title, so a title change regenerates it.
+ * The filename embeds a hash of the title and of TOCTOC_OG_VERSION, so a title
+ * change regenerates it, and bumping the version regenerates every card (the
+ * cards cached before 29 Sep 2026 still printed the old "TocToc" name).
  */
+const TOCTOC_OG_VERSION = '2';
+
 function toctoc_og_image_url( $slug, $title, $fallback ) {
 	if ( ! function_exists( 'imagecreatetruecolor' ) || ! function_exists( 'imagettftext' ) ) {
 		return $fallback;
@@ -871,7 +875,7 @@ function toctoc_og_image_url( $slug, $title, $fallback ) {
 	}
 	$slug = sanitize_key( $slug ? $slug : 'default' );
 	$up   = wp_upload_dir();
-	$name = $slug . '-' . substr( md5( $t ), 0, 6 ) . '.png';
+	$name = $slug . '-' . substr( md5( $t . '|' . TOCTOC_OG_VERSION ), 0, 6 ) . '.png';
 	$dir  = $up['basedir'] . '/toctoc-og';
 	$file = $dir . '/' . $name;
 	$url  = $up['baseurl'] . '/toctoc-og/' . $name;

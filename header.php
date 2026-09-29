@@ -129,8 +129,8 @@
         // islands" vs the home's 25.0). Title now carries the two nouns that
         // actually convert here. Full evidence table in the page template.
         'website-design-agency-cayman-islands' => [
-            'title' => 'Website Development Grand Cayman | Restaurant Sites | Toc Toc',
-            'desc' => 'Website design and development in Grand Cayman. Hand-coded, fast, custom sites — and more Cayman restaurant websites than anyone. Rated ' . toctoc_google_reviews()['rating'] . '★. Free quote.'
+            'title' => 'Website Development Grand Cayman | Restaurants | Toc Toc',
+            'desc' => 'Website design and development in Grand Cayman. Hand-coded, fast, custom sites, with a specialism in Cayman restaurant websites. Rated ' . toctoc_google_reviews()['rating'] . '★. Free quote.'
         ],
         // Bing's query log for this page is dominated by "social media COMPANY in
         // cayman" and "social media AGENCIES cayman islands" — the noun people
@@ -176,7 +176,7 @@
             'desc' => 'Run a free instant audit of any website: classic SEO, AI visibility (GEO/AEO) and Core Web Vitals speed. Get your scores and exactly what to fix.'
         ],
         'digital-marketing-cayman-islands-guide' => [
-            'title' => 'Digital Marketing in the Cayman Islands: 2026 Guide | Toc Toc',
+            'title' => 'Digital Marketing Cayman Islands: 2026 Guide | Toc Toc',
             'desc' => 'A clear 2026 guide to digital marketing in the Cayman Islands — SEO, AEO/GEO, AI visibility, costs and how to choose an agency. Answered by Toc Toc Marketing.'
         ],
         'case-study-prime-group-cayman' => [
@@ -184,7 +184,7 @@
             'desc' => 'We built Prime Group\'s site and touched nothing else — no listings, no social, no ads. A year later: +305% clicks and position 17.3 to 9.1.'
         ],
         'case-study-tintxking-orlando' => [
-            'title' => 'Window Tint Shop: 5.7x More Search Traffic | Case Study | Toc Toc',
+            'title' => 'Window Tint Shop: 5.7x More Search Traffic | Toc Toc',
             'desc' => 'TintXKing went from invisible to page one in Orlando — 469% more clicks year on year. The Search Console data and exactly what we changed.'
         ],
         'our-work' => [
@@ -324,6 +324,16 @@
             ? $seo_title
             : wp_strip_all_tags(get_the_title()) . ' | ' . $site_name;
         $desc  = has_excerpt() ? wp_strip_all_tags(get_the_excerpt()) : $default_desc;
+        // Titles and excerpts written before 28 Sep 2026 carry the old "TocToc".
+        $title = str_replace( 'TocToc', 'Toc Toc', $title );
+        $desc  = str_replace( 'TocToc', 'Toc Toc', $desc );
+        // Excerpts are written for the page and often run past what Google
+        // shows (~155 characters); cut at a word boundary instead of mid-word.
+        if ( mb_strlen( $desc ) > 158 ) {
+            $desc = rtrim( mb_substr( $desc, 0, 155 ) );
+            $desc = preg_replace( '/\s+\S*$/u', '', $desc );
+            $desc = rtrim( $desc, " ,;:—-" ) . '…';
+        }
     } else {
         $title = $default_title;
         $desc  = $default_desc;
@@ -466,10 +476,16 @@
     <!-- Open Graph / Facebook -->
     <?php
     // Case studies and the guide are articles, not the site itself.
-    $og_type = ( is_singular() && in_array( $current_slug, array( 'case-study-tintxking-orlando', 'digital-marketing-cayman-islands-guide' ), true ) )
+    // Blog posts too (they said "website" until 29 Sep 2026).
+    $og_type = ( is_singular( 'post' ) || ( is_singular() && in_array( $current_slug, array( 'case-study-tintxking-orlando', 'digital-marketing-cayman-islands-guide' ), true ) ) )
         ? 'article' : 'website';
     ?>
     <meta property="og:type" content="<?php echo esc_attr($og_type); ?>">
+    <?php if ( is_singular( 'post' ) ) : ?>
+    <meta property="article:published_time" content="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+    <meta property="article:modified_time" content="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>">
+    <meta property="article:author" content="<?php echo esc_attr( get_the_author() ); ?>">
+    <?php endif; ?>
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Toc Toc Marketing">
     <?php // Same URL as the canonical. $current_url drops the trailing slash, and
@@ -487,11 +503,13 @@
     <meta property="og:image:alt" content="<?php echo esc_attr($title); ?>">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="<?php echo esc_url($canonical); ?>">
-    <meta property="twitter:title" content="<?php echo esc_attr($title); ?>">
-    <meta property="twitter:description" content="<?php echo esc_attr($desc); ?>">
-    <meta property="twitter:image" content="<?php echo esc_url($og_image); ?>">
+    <?php // name=, not property=: X reads the twitter: tags by name. ?>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="<?php echo esc_url($canonical); ?>">
+    <meta name="twitter:title" content="<?php echo esc_attr($title); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($desc); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($og_image); ?>">
+    <meta name="twitter:image:alt" content="<?php echo esc_attr($title); ?>">
 
     <!-- JSON-LD Schema -->
     <?php ob_start(); ?>
