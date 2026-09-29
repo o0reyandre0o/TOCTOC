@@ -75,7 +75,7 @@ $dm_faqs = array(
     ),
     array(
         'q' => 'How is Toc Toc different from a traditional marketing agency?',
-        'a' => 'A traditional agency sells retainers for posting, ad management and generic reporting. We build permanent digital assets and algorithmic trust: the structured data, local knowledge graph and content that make ChatGPT, Gemini and Google read your business as the definitive, trusted answer in your category.',
+        'a' => 'A traditional agency sells retainers for posting, ad management and generic reporting. We build permanent digital assets and algorithmic trust: the structured data, local knowledge graph and content that help ChatGPT, Gemini and Google read your business as a trusted, citable source in your category.',
     ),
     array(
         'q' => 'Do you handle daily social media posting and community management?',
@@ -460,8 +460,8 @@ $ttc_catalog = array(
 		'https://toctoc.ky/website-design-agency-cayman-islands/',
 	),
 	array(
-		'E-commerce & Web App Development',
-		'Online stores, booking platforms and internal tools for Cayman businesses.',
+		'Web Apps & Booking Platforms',
+		'Booking platforms, customer portals and internal tools for Cayman businesses.',
 		'https://toctoc.ky/web-development-cayman-islands/',
 	),
 	array(

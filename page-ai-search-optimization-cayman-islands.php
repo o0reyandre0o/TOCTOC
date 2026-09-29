@@ -123,7 +123,7 @@ $ai_faqs = array(
     ),
     array(
         'q' => 'What is the difference between SEO, AEO and GEO?',
-        'a' => 'SEO (Search Engine Optimization) gets you ranked on Google. AEO (Answer Engine Optimization) gets your business quoted as the direct answer in featured snippets and voice search. GEO (Generative Engine Optimization) gets you recommended by AI assistants like ChatGPT, Gemini and Perplexity. Our AI Search Optimization covers all three, because in 2026 your customers search across all of them.',
+        'a' => 'SEO (Search Engine Optimization) gets you ranked on Google. AEO (Answer Engine Optimization) gets your business quoted as the direct answer in featured snippets and voice search. GEO (Generative Engine Optimization) gets you recommended by AI assistants like ChatGPT, Gemini, Perplexity and Siri. Our AI Search Optimization covers all three, because in 2026 your customers search across all of them.',
     ),
     array(
         'q' => 'How long does it take to show up in AI search results?',
@@ -135,7 +135,7 @@ $ai_faqs = array(
     ),
     array(
         'q' => 'How is this different from traditional SEO?',
-        'a' => 'Traditional SEO targets short keywords and a list of blue links. AI Search Optimization targets conversational, full-sentence questions and gets your business generated as the live recommendation an AI gives — not just a ranking. We optimize your data structure, Schema and content specifically for how ChatGPT, Gemini and Google AI read and cite businesses today.',
+        'a' => 'Traditional SEO targets short keywords and a list of blue links. AI Search Optimization targets conversational, full-sentence questions and aims to get your business included in the live recommendation an AI gives — not just a ranking. We optimize your data structure, Schema and content specifically for how ChatGPT, Gemini and Google AI read and cite businesses today.',
     ),
     array(
         'q' => 'How much does AI Search Optimization cost in the Cayman Islands?',
@@ -408,7 +408,7 @@ $ai_google_rating = function ( $dark = false ) {
                     <span class="text-xs font-bold uppercase tracking-widest text-white/50">Billed Monthly &middot; Cancel Anytime</span>
                 </div>
                 <p class="max-w-3xl text-lg text-white/60 leading-relaxed">
-                    Once your foundation is live, we perform continuous monthly maintenance to keep your business at the top of local search results:
+                    Once your foundation is live, we perform continuous monthly maintenance to keep your business visible and accurate in local search and AI answers:
                 </p>
                 <div class="mt-12 grid md:grid-cols-3 gap-6">
                     <?php foreach ( $ai_phase2 as $p ) : ?>
@@ -497,7 +497,7 @@ $ai_google_rating = function ( $dark = false ) {
                 Ready to Lock In Your Business Category <br /><em class="italic font-display text-sky-deep">Before Your Competitor Does?</em>
             </h2>
             <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                Let&rsquo;s talk today about building your AI Foundation and securing your spot at the top of local AI search.
+                Let&rsquo;s talk today about building your AI Foundation and earning your place in local AI search.
             </p>
             <div class="mt-12">
                 <a href="tel:+13455478120" class="group inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">
@@ -562,7 +562,7 @@ echo wp_json_encode(
         'serviceType' => 'AI Search Optimization (SEO, AEO & GEO)',
         'provider'    => array( '@id' => 'https://toctoc.ky/#organization' ),
         'areaServed'  => array( '@type' => 'Place', 'name' => 'Cayman Islands' ),
-        'description' => 'AI Search Optimization for Cayman Islands businesses: a two-phase plan that makes your brand the recommended answer on ChatGPT, Gemini and Google. Phase 1 (the AI Foundation Build) delivers a fast, AI-ready website, an automated 5-star Google review system, synchronized Google Maps, Apple Maps and LinkedIn profiles, and a branded YouTube channel. Phase 2 (Monthly Protection & Growth) adds weekly search-bot maintenance, one monthly authority article with social chunking, and monthly AI ranking audits. Backed by a 90-day result guarantee and strict one-business-per-category exclusivity.',
+        'description' => 'AI Search Optimization for Cayman Islands businesses: a two-phase plan that makes your brand a source ChatGPT, Gemini, Siri and Google can find, trust and cite. Phase 1 (the AI Foundation Build) delivers a fast, AI-ready website, an automated 5-star Google review system, synchronized Google Maps, Apple Maps and LinkedIn profiles, and a branded YouTube channel. Phase 2 (Monthly Protection & Growth) adds weekly search-bot maintenance, one monthly authority article with social chunking, and monthly AI ranking audits. Backed by a 90-day result guarantee and strict one-business-per-category exclusivity.',
         'url'         => 'https://toctoc.ky/ai-search-optimization-cayman-islands/',
     ),
     JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE

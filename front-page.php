@@ -110,11 +110,14 @@
     <section class="relative py-24 md:py-32">
         <div class="mx-auto max-w-4xl px-6 text-center">
             <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                We are a digital marketing agency based in the Cayman Islands, focused on getting your business
-                <em class="italic text-sky-deep font-display"> recommended by AI agents.</em>
+                Toc Toc Marketing is a Cayman Islands digital marketing agency specializing in
+                <em class="italic text-sky-deep font-display">AI Search Visibility,</em> SEO and high-performance websites.
             </p>
             <p class="mt-8 text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                Our <em class="italic text-sky-deep font-display">AI Search Visibility Framework</em> is the proven system we use to turn local digital presence into definitive AI citations (and the real-world results speak for themselves).
+                Our <em class="italic text-sky-deep font-display">AI Search Visibility Framework</em> is how we make a local business easy for AI assistants to find, verify and cite &mdash; and the recordings below show what it has done for real clients.
+            </p>
+            <p class="mt-10 text-base text-slate-500">
+                Founded and led by <a href="https://toctoc.ky/team/daniel-garrido/" class="font-bold text-slate-900 decoration-none hover:text-sky-deep">Daniel Garrido</a>, Founder &amp; CEO, with a small team in George Town working in English and Spanish.
             </p>
         </div>
     </section>
@@ -222,7 +225,7 @@
                     How a business gets recommended by <em class="italic text-sky-deep font-display">ChatGPT and Gemini</em>
                 </h2>
                 <p class="mt-8 text-lg text-slate-700 max-w-2xl leading-relaxed">
-                    A simple <strong class="text-slate-900">2-phase plan</strong>, backed by a <strong class="text-slate-900">90-day result guarantee</strong>, designed to make your business the kind of source ChatGPT, Gemini, Perplexity and Google can find, trust and cite.
+                    A simple <strong class="text-slate-900">2-phase plan</strong>, backed by a <strong class="text-slate-900">90-day result guarantee</strong>, designed to make your business the kind of source ChatGPT, Gemini, Perplexity, Siri and Google can find, trust and cite.
                 </p>
             </div>
 
@@ -257,7 +260,7 @@
                     </div>
                     <h3 class="text-3xl text-slate-900 font-display mb-2">The monthly work: upkeep, content and monitoring</h3>
                     <p class="text-sm font-bold text-sky-deep uppercase tracking-wider mb-6">Billed Monthly &middot; Cancel Anytime</p>
-                    <p class="text-sm leading-relaxed text-slate-500 mb-6">Once your foundation is live, we run continuous maintenance to keep your business at the top of local search results.</p>
+                    <p class="text-sm leading-relaxed text-slate-500 mb-6">Once your foundation is live, we run continuous maintenance to keep your business visible and accurate in local search and AI answers.</p>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">Every Month</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="rounded-full bg-slate-50 text-slate-500 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-slate-100">Weekly Bot Maintenance</span>
@@ -284,6 +287,7 @@
                         <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">No Excuses</span>
                         <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">One Per Category</span>
                     </div>
+                    <p class="mt-6 text-xs leading-relaxed text-white/50"><strong class="text-white/80">One Per Category:</strong> we take on one business per category in each market, so we are never optimizing you against another client. <a href="/ai-search-optimization-cayman-islands/#exclusivity" class="font-bold text-accent decoration-none hover:underline">How exclusivity works</a></p>
                 </article>
             </div>
         </div>
@@ -585,7 +589,7 @@
                     </h2>
                 </div>
                 <p class="text-slate-500 max-w-sm text-lg">
-                    A transparent, 3-step path to putting your business at the top of AI search results.
+                    A transparent, 3-step path to making your business visible and trusted in AI search.
                 </p>
             </div>
 
@@ -612,7 +616,7 @@
                         <div class="h-[1px] flex-1 bg-slate-100"></div>
                     </div>
                     <h3 class="text-2xl text-slate-900 font-display mb-4">Get Cited &amp; Grow</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes the recommended answer in modern search engines like ChatGPT and Gemini, turning AI discovery traffic into a steady stream of new leads.</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Your business becomes a source ChatGPT, Gemini and Google can find, verify and cite, and we track every month how often they do.</p>
                 </div>
             </div>
         </div>
@@ -630,11 +634,11 @@
     toctoc_render_faq( [
         [
             'q' => 'What is the AI Search Visibility Framework?',
-            'a' => 'The AI Search Visibility Framework is Toc Toc Marketing\'s three-phase system for Cayman businesses: Get Recommended (discovery and AI visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business a source ChatGPT, Gemini and Google can find, trust and cite when someone asks for a recommendation in your category.',
+            'a' => 'The AI Search Visibility Framework is Toc Toc Marketing\'s two-phase plan for Cayman businesses. Phase 1, the AI Foundation Build, is done once: a fast, AI-ready website, a review system, synchronized Google Maps, Apple Maps and LinkedIn profiles, and a branded YouTube channel. Phase 2, Monthly Protection & Growth, is the ongoing work: search-bot maintenance, a monthly authority article and monthly AI audits. The goal is to make your business a source ChatGPT, Gemini and Google can find, trust and cite when someone asks for a recommendation in your category.',
         ],
         [
             'q' => 'Do you offer SEO services in the Cayman Islands?',
-            'a' => 'Yes. Toc Toc Marketing is a leading AI Search Optimization agency in the Cayman Islands covering SEO, AEO and GEO — ranking businesses on Google and getting them recommended by AI assistants like ChatGPT and Gemini.',
+            'a' => 'Yes. Toc Toc Marketing is a Cayman Islands digital marketing agency specializing in AI Search Visibility, SEO and high-performance websites. Our AI Search Optimization service covers SEO, AEO and GEO — ranking businesses on Google and getting them recommended by AI assistants like ChatGPT and Gemini.',
         ],
         [
             'q' => 'Can you really get my business recommended by ChatGPT and Gemini?',
@@ -680,7 +684,7 @@
                 Ready to put your business in <br /><em class="italic font-display">AI Search?</em>
             </h2>
             <p class="mt-8 text-lg md:text-xl text-slate-600 max-w-xl mx-auto">
-                Let’s talk about your business and how we can turn your brand into the recommended answer.
+                Let’s talk about your business and how we can make your brand easier for AI to find, trust and recommend.
             </p>
             <a href="tel:+13455478120" class="group mt-12 inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-transform hover:scale-[1.05] decoration-none">
                 Call Us

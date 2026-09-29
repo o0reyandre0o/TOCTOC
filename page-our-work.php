@@ -157,7 +157,7 @@ $ow_cases = array(
                     On this page, you&rsquo;ll find live demonstrations of how we take businesses &mdash; from craft breweries to high-performance automotive services &mdash; and code them directly into the trust networks of modern search.
                 </p>
                 <p class="text-3xl md:text-5xl leading-[1.2] text-slate-950 font-display">
-                    Real proof of Cayman brands made the recommended answer on <em class="italic text-sky-deep font-display">ChatGPT, Gemini, and Google.</em>
+                    Recorded sessions of Cayman brands named by <em class="italic text-sky-deep font-display">ChatGPT, Gemini, and Google.</em>
                 </p>
             </div>
         </div>
@@ -402,7 +402,7 @@ $ow_cases = array(
     <section class="py-24 md:py-32 bg-sky-pale/50 text-center">
         <div class="mx-auto max-w-5xl px-6">
             <h2 class="text-4xl md:text-6xl font-display leading-[1.02] text-slate-900">
-                Are You Ready to Turn Your Brand Into <br /><em class="italic text-sky-deep font-display">the Recommended Answer?</em>
+                Ready to Make Your Brand <br /><em class="italic text-sky-deep font-display">Easier to Recommend?</em>
             </h2>
             <p class="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
                 Let&rsquo;s talk today about optimizing your website, maps, and channels to secure your spot at the top of local and AI search.
@@ -429,7 +429,7 @@ echo wp_json_encode(
         '@context'        => 'https://schema.org',
         '@type'           => 'CollectionPage',
         'name'            => 'Our Work — Toc Toc Marketing',
-        'description'     => 'Case studies showing how Toc Toc Marketing makes Cayman Islands businesses the recommended answer on ChatGPT, Gemini and Google — including 19-81 Brewing Co., Prime Group and TintXKing.',
+        'description'     => 'Case studies showing how Toc Toc Marketing has influenced AI-generated recommendations for Cayman Islands businesses on ChatGPT, Gemini and Google — including 19-81 Brewing Co., Prime Group and TintXKing.',
         'url'             => 'https://toctoc.ky/our-work/',
         'isPartOf'        => array( '@id' => 'https://toctoc.ky/#website' ),
         'about'           => array( '@id' => 'https://toctoc.ky/#organization' ),

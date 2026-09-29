@@ -43,7 +43,7 @@
      * behind that. Agreed wording: we have influenced AI-generated local
      * recommendations, and we make businesses findable, trustworthy and citable.
      */
-    $default_desc = "AI Search Visibility agency in the Cayman Islands. We help local businesses get found, trusted and cited by ChatGPT, Gemini and Google, with high-performance websites AI reads and humans trust.";
+    $default_desc = "Toc Toc Marketing is a Cayman Islands digital marketing agency specializing in AI Search Visibility, SEO and high-performance websites. We help local businesses get found, trusted and cited by ChatGPT, Gemini and Google, with high-performance websites AI reads and humans trust.";
     $logo_url = "https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg";
     
     $seo_map = [
@@ -145,7 +145,9 @@
             'title' => 'PR Agency Cayman | Digital PR & AI Authority | Toc Toc',
             'desc' => 'A Cayman Islands PR agency for the AI era. We build the citations and authority that make ChatGPT, Gemini & Google recommend your brand. Free strategy call.'
         ],
-        // Narrowed 10 Aug 2026 to e-commerce and web apps. This page and
+        // Narrowed 10 Aug 2026 to e-commerce and web apps, and on 29 Sep 2026
+        // to web apps and booking platforms only (e-commerce dropped as a
+        // service). This page and
         // /website-design-agency-cayman-islands/ were both aiming at plain
         // "web development cayman" — and this one lost badly (41 impressions at
         // position 44.8 against the other's 2,659). Rather than redirect a page
@@ -153,8 +155,8 @@
         // intent: brochure and restaurant builds there, transactional builds
         // here. Nothing overlaps, so nothing cannibalises.
         'web-development-cayman-islands' => [
-            'title' => 'E-commerce & Web App Development Cayman Islands | Toc Toc',
-            'desc' => 'Custom e-commerce and web app development in the Cayman Islands — online stores, booking platforms and internal tools, fast and secure. Free quote.'
+            'title' => 'Web App & Booking Platform Development Cayman | Toc Toc',
+            'desc' => 'Web apps, booking platforms, customer portals and integrations for Cayman Islands businesses — fast, secure and built around how you work. Free quote.'
         ],
         'venezuela' => [
             'title' => 'Venezuela Earthquake Appeal — Donate Now | Cayman Islands',
@@ -211,7 +213,11 @@
         ],
         'about-toc-toc-marketing' => [
             'title' => 'About Toc Toc Marketing | Your Digital Partners in Cayman',
-            'desc' => 'Meet the team behind your growth. We combine local Cayman expertise with global digital strategies to help your business scale.'
+            'desc' => 'A Cayman Islands digital marketing agency specializing in AI Search Visibility, SEO and high-performance websites. Meet Daniel Garrido and the team.'
+        ],
+        'chamber-members' => [
+            'title' => 'Cayman Chamber of Commerce Members | Toc Toc Marketing',
+            'desc' => 'For Cayman Islands Chamber of Commerce members: an AI Search Visibility audit and a category availability check from Toc Toc Marketing in George Town.'
         ],
         'cookie-policy' => [
             'title' => 'Cookie Policy | Toc Toc Marketing Cayman Islands',
@@ -241,7 +247,7 @@
         'website-design-agency-cayman-islands' => 'website development grand cayman, web development services cayman, website development company cayman islands, web development cayman, restaurant website design cayman islands, restaurant website cayman, wordpress development cayman, website developers grand cayman',
         'social-media-marketing-services-cayman-islands' => 'social media company in cayman, social media agencies cayman islands, social media company cayman, social media strategy cayman, social media marketing cayman islands, social media agency cayman, social media for ai search, algorithmic trust, social search optimization, instagram linkedin optimization cayman',
         'advertising-pr-agency-cayman-islands' => 'digital pr cayman islands, ai authority citations, pr agency cayman, pr services cayman, entity trust score, linkedin authority building cayman, digital pr for ai search, brand citations chatgpt gemini',
-        'web-development-cayman-islands' => 'ecommerce development cayman islands, online store development cayman, web app development cayman, booking platform development cayman, woocommerce developer cayman islands, custom web application cayman',
+        'web-development-cayman-islands' => 'web app development cayman, booking platform development cayman, booking system cayman islands, custom web application cayman, customer portal development cayman, api integration cayman',
         'our-work' => 'toctoc marketing case studies, ai search results cayman islands, chatgpt ranking case study, gemini recommendation cayman, 19-81 brewing, prime group cayman, web design portfolio cayman islands',
         'team' => 'toctoc marketing team, marketing team cayman islands, web designers grand cayman',
         'daniel-garrido' => 'daniel garrido, daniel garrido cayman, toctoc marketing founder',

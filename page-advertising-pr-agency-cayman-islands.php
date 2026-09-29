@@ -30,7 +30,7 @@ $pr_boundaries = array(
         'dont_label' => 'No Low-Value &ldquo;Daily Posting&rdquo;',
         'dont_text'  => 'We do not write or schedule generic daily posts to keep your feed busy.',
         'do_label'   => 'High-Value Blog Production',
-        'do_text'    => 'We write deep-dive website articles that act as the definitive source of truth for AI web scrapers.',
+        'do_text'    => 'We write deep-dive website articles that give AI crawlers a clear, citable source of truth about your business.',
     ),
     array(
         'dont_label' => 'No Community Management',

@@ -90,7 +90,7 @@ $wd_process = array(
 $wd_faqs = array(
     array(
         'q' => 'How much does a website cost in the Cayman Islands?',
-        'a' => 'It depends on scope — a focused local business site is very different from a large e-commerce build. Rather than fixed packages, we quote each project based on the pages, features and integrations you need. Book a free call and we will give you a transparent, itemized quote.',
+        'a' => 'It depends on scope — a focused local business site is very different from a large multi-feature build. Rather than fixed packages, we quote each project based on the pages, features and integrations you need. Book a free call and we will give you a transparent, itemized quote.',
     ),
     array(
         'q' => 'How much does a restaurant website cost in the Cayman Islands?',

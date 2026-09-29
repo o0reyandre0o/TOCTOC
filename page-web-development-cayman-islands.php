@@ -7,8 +7,12 @@
  * competing with /website-design-agency-cayman-islands/ for plain "web
  * development cayman" and losing 41 impressions to 2,659, so the two split by
  * intent instead: brochure and restaurant builds live there, transactional
- * builds live here. Keep the hero on stores/apps — widening it back to generic
+ * builds live here. Keep the hero on apps — widening it back to generic
  * web development re-opens the cannibalisation.
+ *
+ * 29 Sep 2026: e-commerce dropped as a service (Daniel, Trello card 606), so
+ * the page is now web apps and booking platforms only. The URL stays: it is
+ * linked from the footer, the services grid and the guide.
  */
 get_header(); ?>
 
@@ -24,13 +28,13 @@ get_header(); ?>
             <div class="max-w-4xl">
                 <?php toctoc_render_breadcrumbs( 'Web Development' ); ?>
                 <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold text-accent mb-8 uppercase tracking-widest">
-                    E-commerce &amp; Web Apps &middot; Built to Scale
+                    Web Apps &middot; Booking &middot; Integrations
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    E-commerce &amp; Web App Development in <em class="italic text-accent font-display">Cayman.</em>
+                    Web Apps &amp; Booking Platforms in <em class="italic text-accent font-display">Cayman.</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    Online stores, booking platforms and internal tools. When your site has to take money, manage inventory or run a workflow, it stops being a website and becomes software &mdash; and we build it to hold up.
+                    Booking platforms, customer portals and internal tools. When your site has to take a booking, run a workflow or talk to the systems you already use, it stops being a website and becomes software &mdash; and we build it to hold up.
                 </p>
                 <p class="mt-6 text-lg text-white/50 leading-relaxed max-w-3xl">
                     Looking for a standard business or restaurant website instead? That is over on
@@ -62,12 +66,12 @@ get_header(); ?>
                     <p class="text-slate-500 text-sm leading-relaxed">Bespoke, hand-built websites with clean code and custom architecture — no bloated templates, no compromises on speed.</p>
                 </article>
                 <article class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
-                    <h3 class="text-2xl font-display text-slate-900 mb-4">E-commerce Development</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Secure online stores with smooth checkout, inventory, and payments — built to sell to the Cayman market and beyond.</p>
+                    <h3 class="text-2xl font-display text-slate-900 mb-4">Booking Platforms</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Reservations, appointments and availability that sync with your calendar and confirm automatically — built around how your business actually runs.</p>
                 </article>
                 <article class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
                     <h3 class="text-2xl font-display text-slate-900 mb-4">Web Apps &amp; Portals</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Booking systems, directories, and customer portals with real-time functionality tailored to how your business runs.</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Customer portals, member areas, directories and dashboards with real-time functionality tailored to how your business runs.</p>
                 </article>
                 <article class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all">
                     <h3 class="text-2xl font-display text-slate-900 mb-4">CMS &amp; WordPress</h3>
@@ -136,43 +140,33 @@ get_header(); ?>
     toctoc_render_faq( [
         [
             'q' => 'How much does web development cost in the Cayman Islands?',
-            'a' => 'Web development cost depends on complexity — a custom brochure site, an e-commerce store, and a bespoke web app are very different builds. Toc Toc quotes transparently after a short call about your goals and required features, so you only pay for what your project actually needs.',
+            'a' => 'Web development cost depends on complexity — a booking setup, a customer portal and a bespoke internal tool are very different builds. Toc Toc quotes transparently after a short call about your goals and required features, so you only pay for what your project actually needs.',
         ],
         [
             'q' => 'What is the difference between a website and a web application?',
             'a' => 'A website informs; a web application does work. If your visitors read, browse and then call you, you need a website — and that is built on our <a href="https://toctoc.ky/website-design-agency-cayman-islands/">website development</a> service. If they log in, book, pay, upload or manage something, you need an application, which is what this page covers. The dividing line matters because the second carries state, permissions and money, and has to be engineered accordingly.',
         ],
         [
-            'q' => 'Do you build e-commerce and custom web applications?',
-            'a' => 'Yes. We develop secure e-commerce stores, booking systems, customer portals, directories, and custom web apps with real-time functionality, built to scale as your Cayman business grows.',
+            'q' => 'Do you build booking systems and custom web applications?',
+            'a' => 'Yes. We develop booking systems, customer portals, directories and custom web apps with real-time functionality, built to scale as your Cayman business grows. We do not build online stores (e-commerce) as a service.',
         ],
         [
             'q' => 'Do you offer website maintenance and support after launch?',
             'a' => 'Yes. We offer ongoing maintenance, security updates, backups, and performance monitoring so your website stays fast, safe, and online — and we are here when you need changes or new features.',
         ],
         /*
-         * Added 10 Aug 2026. This page was narrowed to e-commerce and web apps
-         * on the same day, so the questions below cover the transactional
-         * ground the shorter FAQ never answered — payments, platform choice and
-         * inventory are the three things a Cayman business actually asks about
-         * before commissioning a store. Each answer leads with the answer,
-         * because Google's generative features quote passages, not pages.
+         * Added 10 Aug 2026, trimmed 29 Sep 2026 when e-commerce was dropped:
+         * the payment-gateway and Shopify/WooCommerce questions went with it.
+         * Each answer leads with the answer, because Google's generative
+         * features quote passages, not pages.
          */
         [
-            'q' => 'Can a Cayman business take online payments, and which gateway should it use?',
-            'a' => 'Yes. Cayman businesses can and do sell online, and the practical constraint is usually the payment gateway rather than the store. We build against whichever processor your bank supports and integrate it properly, including the currency handling that trips up most templates when you price in KYD but sell to visitors paying in USD. We will walk through the options with you before any build starts, because that choice shapes the rest of the project.',
+            'q' => 'Can you connect a web app to the systems we already use?',
+            'a' => 'Yes, and it is usually where the value is. Calendars, CRMs, booking tools, point-of-sale and payment processors can all be connected when they expose an interface we can talk to, which is the first thing we check. Connecting what you already run beats replacing it.',
         ],
         [
-            'q' => 'Should I build on Shopify, WooCommerce or something custom?',
-            'a' => 'For most Cayman businesses the honest answer is WooCommerce or Shopify, not custom. A custom build only pays for itself when your workflow genuinely does not fit an existing platform — unusual inventory rules, a booking model with real complexity, or an internal tool nobody sells off the shelf. We will tell you when a platform is the right call even though it is the smaller project, because a store you can run yourself beats an elegant one you cannot.',
-        ],
-        [
-            'q' => 'Can you connect an online store to the stock or POS system we already use in-store?',
-            'a' => 'Yes, and it is worth doing. We built exactly this for The Conscious Closet, whose WooCommerce store shares one inventory with the till in the shop, so selling an item in person removes it from the website. Whether it is possible for you depends on whether your POS exposes an interface we can talk to, which is the first thing we check.',
-        ],
-        [
-            'q' => 'How long does it take to build an online store or booking platform?',
-            'a' => 'A straightforward store on an existing platform is typically a matter of weeks; a booking platform or custom application is measured in months. The variable that moves the timeline most is rarely the code — it is how ready your product data, photography and business rules are when we start. We will tell you which of those is the bottleneck at the quote stage rather than halfway through.',
+            'q' => 'How long does it take to build a booking platform or web app?',
+            'a' => 'A booking setup on an existing platform is typically a matter of weeks; a custom portal or application is measured in months. The variable that moves the timeline most is rarely the code — it is how ready your business rules, data and integrations are when we start. We will tell you which of those is the bottleneck at the quote stage rather than halfway through.',
         ],
     ], 'Web Development FAQ', 'Development Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
     ?>

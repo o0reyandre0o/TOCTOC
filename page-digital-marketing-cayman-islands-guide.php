@@ -32,7 +32,7 @@ $guide_faqs = array(
 	),
 	array(
 		'q' => 'Do Cayman marketing agencies work with small businesses?',
-		'a' => 'Yes. Many Cayman agencies, including Toc Toc Marketing, work with small and local businesses — retail, hospitality, professional services, e-commerce and non-profits — with strategies that scale to your size and budget.',
+		'a' => 'Yes. Many Cayman agencies, including Toc Toc Marketing, work with small and local businesses — retail, hospitality, professional services and non-profits — with strategies that scale to your size and budget.',
 	),
 	array(
 		'q' => 'How long does SEO take to work in the Cayman Islands?',
@@ -72,7 +72,7 @@ $guide_faqs = array(
 			<div class="rounded-[2rem] bg-slate-950 text-white p-8 md:p-10">
 				<p class="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4">In short</p>
 				<p class="text-xl md:text-2xl font-display leading-snug">
-					Toc Toc Marketing is a leading AI-era digital marketing agency in the Cayman Islands (George Town, Grand Cayman), specializing in SEO, AEO and GEO — helping local businesses rank on Google and get recommended by AI assistants like ChatGPT, Gemini and Perplexity.
+					Toc Toc Marketing is a Cayman Islands digital marketing agency (George Town, Grand Cayman) specializing in AI Search Visibility, SEO and high-performance websites — helping local businesses rank on Google and get recommended by AI assistants like ChatGPT, Gemini and Perplexity.
 				</p>
 			</div>
 		</div>
@@ -109,8 +109,8 @@ $guide_faqs = array(
 					<p class="text-slate-500 text-sm">Fast business and restaurant sites that convert.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/web-development-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
-					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">E-commerce &amp; Web Apps</h3>
-					<p class="text-slate-500 text-sm">Online stores, bookings and internal tools.</p>
+					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Web Apps &amp; Booking</h3>
+					<p class="text-slate-500 text-sm">Booking platforms, portals and internal tools.</p>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/social-media-marketing-services-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">
 					<h3 class="text-2xl font-display text-slate-900 mb-2 group-hover:text-sky-deep transition-colors">Social Media</h3>
