@@ -6,7 +6,7 @@
  * on its own, so these pages need no template assigned in wp-admin — one less
  * thing to get wrong if a page is ever deleted and recreated.
  *
- * @package TocToc
+ * @package Toc Toc
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -54,11 +54,11 @@ get_header(); ?>
 						 no solo la cara, y deja de competir con el titular. */ ?>
 				<figure class="relative">
 					<img src="<?php echo esc_url( $tt_member['photo'] ); ?>"
-						 alt="<?php echo esc_attr( $tt_member['name'] . ', ' . $tt_member['role_plain'] . ' at TocToc Marketing' ); ?>"
+						 alt="<?php echo esc_attr( $tt_member['name'] . ', ' . $tt_member['role_plain'] . ' at Toc Toc Marketing' ); ?>"
 						 width="520" height="624" fetchpriority="high" decoding="async"
 						 class="w-full aspect-[5/6] object-cover object-top rounded-[1.75rem] border border-white/10" />
 					<figcaption class="absolute -bottom-3 left-5 right-5 rounded-full bg-accent px-4 py-2 text-center text-[10px] font-bold uppercase tracking-[0.18em] text-slate-950">
-						TocToc &middot; Grand Cayman
+						Toc Toc &middot; Grand Cayman
 					</figcaption>
 				</figure>
 
@@ -163,7 +163,7 @@ get_header(); ?>
 				Articles by <em class="italic text-accent font-display"><?php echo esc_html( $tt_member['name'] ); ?></em>
 			</h2>
 			<p class="mt-6 text-lg text-white/50 max-w-2xl">
-				<?php echo esc_html( $tt_total ); ?> <?php echo 1 === $tt_total ? 'piece' : 'pieces'; ?> on the TocToc blog.<?php if ( $tt_total > count( $tt_articles ) ) : ?> The <?php echo esc_html( count( $tt_articles ) ); ?> most recent are below.<?php endif; ?>
+				<?php echo esc_html( $tt_total ); ?> <?php echo 1 === $tt_total ? 'piece' : 'pieces'; ?> on the Toc Toc blog.<?php if ( $tt_total > count( $tt_articles ) ) : ?> The <?php echo esc_html( count( $tt_articles ) ); ?> most recent are below.<?php endif; ?>
 			</p>
 
 			<ul class="mt-12 divide-y divide-white/10 border-y border-white/10">
@@ -202,7 +202,7 @@ get_header(); ?>
 				<?php endforeach; ?>
 			</div>
 			<a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="mt-12 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">
-				About TocToc Marketing
+				About Toc Toc Marketing
 				<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</a>
 		</div>

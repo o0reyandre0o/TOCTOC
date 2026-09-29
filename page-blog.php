@@ -47,7 +47,7 @@ $tt_rest = array();
 				Field Notes &middot; Grand Cayman
 			</div>
 			<h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[92px] font-display leading-[0.95] text-white">
-				The <em class="italic text-accent font-display">TocToc</em> Blog
+				The <em class="italic text-accent font-display">Toc Toc</em> Blog
 			</h1>
 			<p class="mt-8 text-xl text-white/70 leading-relaxed max-w-3xl">
 				<?php echo esc_html( $blog_intro ); ?>

@@ -74,7 +74,7 @@ $dm_faqs = array(
         'a' => 'No. We do not build or manage paid Google Ads, social ads or print ads. Ads rent attention and stop the moment you stop paying. Instead we build permanent, crawlable digital assets — websites, Schema data and authoritative content — that generate ongoing organic search leads and compound in value over time.',
     ),
     array(
-        'q' => 'How is TocToc different from a traditional marketing agency?',
+        'q' => 'How is Toc Toc different from a traditional marketing agency?',
         'a' => 'A traditional agency sells retainers for posting, ad management and generic reporting. We build permanent digital assets and algorithmic trust: the structured data, local knowledge graph and content that make ChatGPT, Gemini and Google read your business as the definitive, trusted answer in your category.',
     ),
     array(
@@ -104,7 +104,7 @@ $dm_faqs = array(
      */
     array(
         'q' => 'Who is the best marketing agency in the Cayman Islands?',
-        'a' => 'There is no single objective answer, so judge on evidence rather than claims: published client results you can verify, real reviews, and whether the agency actually builds assets you own. TocToc Marketing is rated 4.8 out of 5 across 24 reviews, and we publish case studies with the underlying Search Console figures — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, both measured against the same quarter a year earlier. Ask any agency you are considering for the same kind of proof.',
+        'a' => 'There is no single objective answer, so judge on evidence rather than claims: published client results you can verify, real reviews, and whether the agency actually builds assets you own. Toc Toc Marketing is rated ' . toctoc_google_reviews()['rating'] . ' out of 5 across ' . toctoc_google_reviews()['count'] . ' reviews, and we publish case studies with the underlying Search Console figures — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, both measured against the same quarter a year earlier. Ask any agency you are considering for the same kind of proof.',
     ),
     array(
         'q' => 'Do you offer marketing design and branding services in Cayman?',
@@ -279,7 +279,7 @@ $dm_faqs = array(
                         </div>
                         <figure class="flex flex-col items-center md:items-start">
                             <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950">
-                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/photo-5102759273703345434-w.webp" alt="19-81 Brewing Co. website by TocToc Marketing" width="1273" height="2560" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/photo-5102759273703345434-w.webp" alt="19-81 Brewing Co. website by Toc Toc Marketing" width="1273" height="2560" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
                             </div>
                             <figcaption class="mt-3 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/50">19-81 website</figcaption>
                         </figure>
@@ -302,7 +302,7 @@ $dm_faqs = array(
                 <?php foreach ( $dm_projects as $p ) : ?>
                 <div class="group flex flex-col gap-5">
                     <div class="aspect-video rounded-[2rem] bg-slate-100 overflow-hidden border border-slate-100 shadow-soft">
-                        <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by TocToc Marketing' ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by Toc Toc Marketing' ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h4 class="text-xl font-display text-slate-900 mb-1"><?php echo wp_kses_post( $p['name'] ); ?></h4>
@@ -447,7 +447,7 @@ $dm_faqs = array(
 <?php ob_start(); ?>
 <?php
 // OfferCatalog: a formal, machine-readable enumeration of every service —
-// so when an AI is asked "what does TocToc offer?", the answer is structured.
+// so when an AI is asked "what does Toc Toc offer?", the answer is structured.
 $ttc_catalog = array(
 	array(
 		'AI Search Optimization (SEO, AEO & GEO)',
@@ -484,7 +484,7 @@ echo wp_json_encode(
 	array(
 		'@context' => 'https://schema.org',
 		'@type'    => 'OfferCatalog',
-		'name'     => 'TocToc Marketing Services',
+		'name'     => 'Toc Toc Marketing Services',
 		'url'      => 'https://toctoc.ky/digital-marketing-agency-cayman-islands/',
 		'provider' => array( '@id' => 'https://toctoc.ky/#organization' ),
 		'itemListElement' => array_map(

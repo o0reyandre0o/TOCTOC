@@ -22,7 +22,7 @@ while ( have_posts() ) :
 	$tt_toc      = toctoc_extract_toc( $tt_content );   // also injects the ids
 	$tt_content  = $tt_toc['html'];
 	$tt_read     = toctoc_reading_time( get_the_content() );
-	$tt_author   = get_the_author_meta( 'display_name' ) ?: 'TocToc Marketing';
+	$tt_author   = get_the_author_meta( 'display_name' ) ?: 'Toc Toc Marketing';
 	$tt_excerpt  = wp_strip_all_tags( get_the_excerpt() );
 
 	// Map the WordPress author onto the Person entities already declared in
@@ -121,7 +121,7 @@ while ( have_posts() ) :
 						<p class="mt-2 text-sm text-slate-500 leading-relaxed">
 							<?php
 							$tt_bio = get_the_author_meta( 'description' );
-							echo esc_html( $tt_bio ? $tt_bio : 'TocToc Marketing builds websites in the Cayman Islands that Google and AI assistants can read, understand and recommend.' );
+							echo esc_html( $tt_bio ? $tt_bio : 'Toc Toc Marketing builds websites in the Cayman Islands that Google and AI assistants can read, understand and recommend.' );
 							?>
 						</p>
 						<a href="<?php echo esc_url( home_url( '/about-toc-toc-marketing/' ) ); ?>" class="mt-4 inline-block text-sm font-bold text-sky-deep decoration-none hover:underline">Meet the team &rarr;</a>

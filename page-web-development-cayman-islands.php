@@ -136,7 +136,7 @@ get_header(); ?>
     toctoc_render_faq( [
         [
             'q' => 'How much does web development cost in the Cayman Islands?',
-            'a' => 'Web development cost depends on complexity — a custom brochure site, an e-commerce store, and a bespoke web app are very different builds. TocToc quotes transparently after a short call about your goals and required features, so you only pay for what your project actually needs.',
+            'a' => 'Web development cost depends on complexity — a custom brochure site, an e-commerce store, and a bespoke web app are very different builds. Toc Toc quotes transparently after a short call about your goals and required features, so you only pay for what your project actually needs.',
         ],
         [
             'q' => 'What is the difference between a website and a web application?',

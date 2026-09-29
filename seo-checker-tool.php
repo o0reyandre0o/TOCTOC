@@ -1,6 +1,6 @@
 <?php
 /**
- * TocToc — Free SEO / GEO / AEO Checker (public lead magnet).
+ * Toc Toc — Free SEO / GEO / AEO Checker (public lead magnet).
  *
  * Two AJAX endpoints:
  *   toctoc_seo_check  → fast on-page SEO + GEO/AEO audit (also captures the lead)
@@ -203,7 +203,7 @@ function toctoc_seo_safe_url( $url ) {
  * Simple per-IP hourly rate limit. Returns true when the caller is over the limit.
  */
 function toctoc_seo_rate_limited( $bucket = 'check', $max = 15 ) {
-	// Logged-in site admins (the TocToc team testing the tool) are never limited.
+	// Logged-in site admins (the Toc Toc team testing the tool) are never limited.
 	if ( function_exists( 'current_user_can' ) && current_user_can( 'manage_options' ) ) {
 		return false;
 	}
@@ -598,20 +598,20 @@ function toctoc_seo_report_html( $result, $lead = array() ) {
 
 	/*
 	 * Signed footer with a clickable domain. Until 27 Aug 2026 this report went
-	 * out with the words "TocToc SEO Checker" and no link anywhere in it: the
+	 * out with the words "Toc Toc SEO Checker" and no link anywhere in it: the
 	 * one asset we hand a prospect, and it gave them no way back. Inline styles
 	 * because email clients strip stylesheets.
 	 */
 	$h .= '<hr style="margin:32px 0 20px;border:none;border-top:1px solid #eee;">';
 	$h .= '<table style="width:100%;border-collapse:collapse;"><tr>'
 		. '<td style="font-family:Arial,sans-serif;font-size:13px;color:#475569;line-height:1.6;">'
-		. '<strong style="color:#0f172a;">TocToc Marketing</strong><br>'
+		. '<strong style="color:#0f172a;">Toc Toc Marketing</strong><br>'
 		. 'Websites built to be read by AI &mdash; George Town, Grand Cayman.<br>'
 		. '<a href="https://toctoc.ky/" style="color:#066CE0;font-weight:bold;text-decoration:none;">toctoc.ky</a>'
 		. ' &nbsp;&middot;&nbsp; '
 		. '<a href="https://toctoc.ky/seo-checker/" style="color:#066CE0;text-decoration:none;">Re-run this check</a>'
 		. ' &nbsp;&middot;&nbsp; '
-		. '<a href="mailto:info@toctoc.ky" style="color:#066CE0;text-decoration:none;">info@toctoc.ky</a>'
+		. '<a href="mailto:daniel@toctoc.ky" style="color:#066CE0;text-decoration:none;">daniel@toctoc.ky</a>'
 		. '</td></tr></table>';
 	$h .= '<p style="font-family:Arial,sans-serif;font-size:12px;color:#94a3b8;margin-top:18px;">'
 		. 'Want these fixed rather than listed? '
@@ -637,7 +637,7 @@ function toctoc_seo_send_report( $name, $email, $url, $result ) {
 
 	// Lead copy (their own report — the form promises it).
 	if ( is_email( $email ) ) {
-		$intro = '<p style="font-family:Arial,sans-serif;">Hi ' . esc_html( $name ? $name : 'there' ) . ', here is your free SEO &amp; GEO report from TocToc Marketing.</p>';
+		$intro = '<p style="font-family:Arial,sans-serif;">Hi ' . esc_html( $name ? $name : 'there' ) . ', here is your free SEO &amp; GEO report from Toc Toc Marketing.</p>';
 		wp_mail( $email, 'Your SEO report for ' . $host, $intro . toctoc_seo_report_html( $result ), $headers );
 	}
 
@@ -791,7 +791,7 @@ function toctoc_seo_badge_handler() {
 	$ff = "'Segoe UI', Arial, Helvetica, sans-serif";
 	header( 'Content-Type: image/svg+xml' );
 	header( 'Cache-Control: public, max-age=86400' );
-	echo '<svg xmlns="http://www.w3.org/2000/svg" width="460" height="72" viewBox="0 0 460 72" role="img" aria-label="SEO score ' . $seo . ' of 100, AI visibility ' . $geo . ' of 100, verified by TocToc Marketing">'
+	echo '<svg xmlns="http://www.w3.org/2000/svg" width="460" height="72" viewBox="0 0 460 72" role="img" aria-label="SEO score ' . $seo . ' of 100, AI visibility ' . $geo . ' of 100, verified by Toc Toc Marketing">'
 		// Card with a subtle diagonal slate gradient + hairline border.
 		. '<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">'
 		. '<stop offset="0" stop-color="#0b1120"/><stop offset="1" stop-color="#1e293b"/>'
@@ -802,7 +802,7 @@ function toctoc_seo_badge_handler() {
 		. '<path d="M30.5 36.5 l5.5 5.5 L47 30.5" fill="none" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'
 		// Brand block.
 		. '<text x="66" y="30" font-family="' . $ff . '" font-size="9" font-weight="bold" letter-spacing="2.5" fill="#8fa3bd">VERIFIED SCORE</text>'
-		. '<text x="66" y="50" font-family="' . $ff . '" font-size="15" font-weight="bold" fill="#ffffff">TocToc Marketing</text>'
+		. '<text x="66" y="50" font-family="' . $ff . '" font-size="15" font-weight="bold" fill="#ffffff">Toc Toc Marketing</text>'
 		// Divider.
 		. '<line x1="212" y1="17" x2="212" y2="55" stroke="#334155"/>'
 		// Scores.
@@ -909,7 +909,7 @@ function toctoc_seo_weekly_monitor_run() {
 			$h .= '<h2 style="margin:0 0 10px;color:#dc2626;">&#9888; Your score dropped this week</h2>';
 			$h .= '<p style="font-size:15px;color:#333;">Weekly check for <strong>' . esc_html( $host ) . '</strong>:</p>';
 			$h .= '<table style="border-collapse:collapse;background:#f8fafc;border-radius:8px;">' . $line( 'SEO', (int) $mon['seo'], $seo ) . $line( 'AI visibility (GEO)', (int) $mon['geo'], $geo ) . '</table>';
-			$h .= '<p style="font-size:14px;color:#333;line-height:1.6;margin-top:16px;">A drop usually means something changed on the site or competitors moved. <a href="https://toctoc.ky/seo-checker/">Run a full scan</a> to see exactly what to fix &mdash; or let us defend your ranking for you: TocToc Marketing, +1 (345) 547-8120.</p>';
+			$h .= '<p style="font-size:14px;color:#333;line-height:1.6;margin-top:16px;">A drop usually means something changed on the site or competitors moved. <a href="https://toctoc.ky/seo-checker/">Run a full scan</a> to see exactly what to fix &mdash; or let us defend your ranking for you: Toc Toc Marketing, +1 (345) 547-8120.</p>';
 			$h .= '<p style="font-size:11px;color:#999;margin-top:24px;">You get this weekly check because you opted in at toctoc.ky/seo-checker. <a href="' . esc_url( $unsub ) . '" style="color:#999;">Stop monitoring this site</a>.</p>';
 			$h .= '</div>';
 			wp_mail( $mon['email'], '⚠ ' . $host . ': your SEO score dropped', $h, array( 'Content-Type: text/html; charset=UTF-8' ) );
@@ -1023,7 +1023,7 @@ function toctoc_seo_send_rescan_reminder( $email, $url ) {
 	$h .= '<h2 style="margin:0 0 10px;">A month ago, ' . esc_html( $host ) . ' scored ' . (int) $last['seo'] . '/100 (SEO) and ' . (int) $last['geo'] . '/100 (AI visibility).</h2>';
 	$h .= '<p style="font-size:15px;line-height:1.6;color:#333;">Websites change, competitors publish, and AI algorithms never stop moving. A monthly check is the easiest way to catch a drop before it costs you customers.</p>';
 	$h .= '<p style="margin:24px 0;"><a href="https://toctoc.ky/seo-checker/" style="background:#0f172a;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:bold;">Re-scan your site free &rarr;</a></p>';
-	$h .= '<p style="font-size:13px;color:#666;line-height:1.5;">Want the fixes done for you? TocToc Marketing puts Cayman businesses at the top of Google and AI answers. Call us at +1 (345) 547-8120.</p>';
+	$h .= '<p style="font-size:13px;color:#666;line-height:1.5;">Want the fixes done for you? Toc Toc Marketing puts Cayman businesses at the top of Google and AI answers. Call us at +1 (345) 547-8120.</p>';
 	$h .= '<p style="font-size:11px;color:#999;margin-top:24px;">You are receiving this one-time reminder because you ran a free scan at toctoc.ky/seo-checker. No further emails will be sent unless you scan again.</p>';
 	$h .= '</div>';
 	wp_mail(
@@ -1758,7 +1758,7 @@ function toctoc_seo_llms_draft( $url, $meta, $entities, $origin ) {
 
 	$L[] = '';
 	$L[] = '## Notes';
-	$L[] = 'Draft generated from ' . $origin . ' by the TocToc AI visibility checker'
+	$L[] = 'Draft generated from ' . $origin . ' by the Toc Toc AI visibility checker'
 		. ' (https://toctoc.ky/seo-checker/). Every TODO above is a fact only you know —'
 		. ' fill them in before publishing. A confidently wrong llms.txt is worse than none,'
 		. ' because it is a machine-readable statement about your business that happens to be false.';

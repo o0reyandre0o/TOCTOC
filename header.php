@@ -34,8 +34,8 @@
     
     <?php
     // SEO & Social Meta logic
-    $site_name = "TocToc Marketing";
-    $default_title = "TocToc Marketing | Digital Marketing Agency Cayman Islands";
+    $site_name = "Toc Toc Marketing";
+    $default_title = "Toc Toc Marketing | Digital Marketing Agency Cayman Islands";
     /*
      * No "#1" claims in any of the copy below — see the note in front-page.php.
      * We do not state that we deliver a #1 recommendation or ranking, because
@@ -67,8 +67,8 @@
          * Cayman agency says — and keeps the proof as the closing clause.
          */
         'front' => [
-            'title' => 'Marketing Agency Cayman Islands | TocToc Marketing',
-            'desc' => 'Cayman marketing agency building websites ChatGPT and Gemini can read, not just Google. Web design, SEO and AI visibility from George Town. 4.8★, 24 reviews.'
+            'title' => 'Marketing Agency Cayman Islands | Toc Toc Marketing',
+            'desc' => 'Cayman marketing agency building websites ChatGPT and Gemini can read, not just Google. Web design, SEO and AI visibility from George Town. ' . toctoc_google_reviews()['rating'] . '★, ' . toctoc_google_reviews()['count'] . ' reviews.'
         ],
         /*
          * Retitled 27 Aug 2026 to lead with the words people actually type.
@@ -91,7 +91,7 @@
             'desc' => 'Local SEO for Cayman Islands businesses — Google Business Profile, citations and the technical work that gets you found, plus AI visibility in ChatGPT.'
         ],
         'seo-agency-services-cayman-islands' => [
-            'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | TocToc',
+            'title' => 'AI Search Optimization Cayman | ChatGPT & Gemini | Toc Toc',
             'desc' => 'Get found and recommended by ChatGPT, Gemini and Google. AI Search Optimization (SEO, AEO, GEO) for Cayman Islands brands. Book a free call.'
         ],
         /*
@@ -118,8 +118,8 @@
          * one term where it is genuinely the site's best URL.
          */
         'digital-marketing-agency-cayman-islands' => [
-            'title' => 'Marketing Services & Consulting Grand Cayman | TocToc',
-            'desc' => 'Marketing consulting and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated 4.8★.'
+            'title' => 'Marketing Services & Consulting Grand Cayman | Toc Toc',
+            'desc' => 'Marketing consulting and full-service campaigns for Grand Cayman businesses — strategy, design and execution from one local team. Rated ' . toctoc_google_reviews()['rating'] . '★.'
         ],
         // Retargeted 10 Aug 2026. Carrying "web design" here was a losing fight:
         // the home ranks 3.3 on "web design cayman islands" and this page 20.7,
@@ -129,8 +129,8 @@
         // islands" vs the home's 25.0). Title now carries the two nouns that
         // actually convert here. Full evidence table in the page template.
         'website-design-agency-cayman-islands' => [
-            'title' => 'Website Development Grand Cayman | Restaurant Sites | TocToc',
-            'desc' => 'Website design and development in Grand Cayman. Hand-coded, fast, custom sites — and more Cayman restaurant websites than anyone. Rated 4.8★. Free quote.'
+            'title' => 'Website Development Grand Cayman | Restaurant Sites | Toc Toc',
+            'desc' => 'Website design and development in Grand Cayman. Hand-coded, fast, custom sites — and more Cayman restaurant websites than anyone. Rated ' . toctoc_google_reviews()['rating'] . '★. Free quote.'
         ],
         // Bing's query log for this page is dominated by "social media COMPANY in
         // cayman" and "social media AGENCIES cayman islands" — the noun people
@@ -138,11 +138,11 @@
         // already converts unusually well there (position 4, 100% CTR on a small
         // sample), so the title now matches the search rather than our jargon.
         'social-media-marketing-services-cayman-islands' => [
-            'title' => 'Social Media Company Cayman Islands | Agency | TocToc',
-            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini and Google read your brand as the local authority. Rated 4.8★. Book a free call.'
+            'title' => 'Social Media Company Cayman Islands | Agency | Toc Toc',
+            'desc' => 'A social media agency in the Cayman Islands that makes ChatGPT, Gemini and Google read your brand as the local authority. Rated ' . toctoc_google_reviews()['rating'] . '★. Book a free call.'
         ],
         'advertising-pr-agency-cayman-islands' => [
-            'title' => 'PR Agency Cayman | Digital PR & AI Authority | TocToc',
+            'title' => 'PR Agency Cayman | Digital PR & AI Authority | Toc Toc',
             'desc' => 'A Cayman Islands PR agency for the AI era. We build the citations and authority that make ChatGPT, Gemini & Google recommend your brand. Free strategy call.'
         ],
         // Narrowed 10 Aug 2026 to e-commerce and web apps. This page and
@@ -153,7 +153,7 @@
         // intent: brochure and restaurant builds there, transactional builds
         // here. Nothing overlaps, so nothing cannibalises.
         'web-development-cayman-islands' => [
-            'title' => 'E-commerce & Web App Development Cayman Islands | TocToc',
+            'title' => 'E-commerce & Web App Development Cayman Islands | Toc Toc',
             'desc' => 'Custom e-commerce and web app development in the Cayman Islands — online stores, booking platforms and internal tools, fast and secure. Free quote.'
         ],
         'venezuela' => [
@@ -166,70 +166,70 @@
          * authority to the articles, which are the pages meant to rank.
          */
         'blog' => [
-            'title' => 'Blog: Web Design & AI Search in Cayman | TocToc',
+            'title' => 'Blog: Web Design & AI Search in Cayman | Toc Toc',
             'desc' => 'Field notes on building Cayman Islands websites that Google, ChatGPT and Gemini can actually read — from the sites we build and the data behind them.'
         ],
         'seo-checker' => [
-            'title' => 'Free Website SEO, GEO & AEO Checker | TocToc Cayman',
+            'title' => 'Free Website SEO, GEO & AEO Checker | Toc Toc Cayman',
             'desc' => 'Run a free instant audit of any website: classic SEO, AI visibility (GEO/AEO) and Core Web Vitals speed. Get your scores and exactly what to fix.'
         ],
         'digital-marketing-cayman-islands-guide' => [
-            'title' => 'Digital Marketing in the Cayman Islands: 2026 Guide | TocToc',
-            'desc' => 'A clear 2026 guide to digital marketing in the Cayman Islands — SEO, AEO/GEO, AI visibility, costs and how to choose an agency. Answered by TocToc Marketing.'
+            'title' => 'Digital Marketing in the Cayman Islands: 2026 Guide | Toc Toc',
+            'desc' => 'A clear 2026 guide to digital marketing in the Cayman Islands — SEO, AEO/GEO, AI visibility, costs and how to choose an agency. Answered by Toc Toc Marketing.'
         ],
         'case-study-prime-group-cayman' => [
-            'title' => 'The Website That Started Recruiting | Case Study | TocToc',
+            'title' => 'The Website That Started Recruiting | Case Study | Toc Toc',
             'desc' => 'We built Prime Group\'s site and touched nothing else — no listings, no social, no ads. A year later: +305% clicks and position 17.3 to 9.1.'
         ],
         'case-study-tintxking-orlando' => [
-            'title' => 'Window Tint Shop: 5.7x More Search Traffic | Case Study | TocToc',
+            'title' => 'Window Tint Shop: 5.7x More Search Traffic | Case Study | Toc Toc',
             'desc' => 'TintXKing went from invisible to page one in Orlando — 469% more clicks year on year. The Search Console data and exactly what we changed.'
         ],
         'our-work' => [
-            'title' => 'Our Work | AI Search Case Studies Cayman | TocToc',
+            'title' => 'Our Work | AI Search Case Studies Cayman | Toc Toc',
             'desc' => 'Real results: how we have influenced AI-generated recommendations for Cayman brands. Case studies from 19-81 Brewing Co., Prime Group and TintXKing.'
         ],
         'team' => [
-            'title' => 'The TocToc Marketing Team | George Town, Grand Cayman',
-            'desc' => 'The four people who scope, design, build and publish every TocToc project: Daniel Garrido, Andre Gutierrez, Nora Bravo and Adriana Brito.'
+            'title' => 'The Toc Toc Marketing Team | George Town, Grand Cayman',
+            'desc' => 'The four people who scope, design, build and publish every Toc Toc project: Daniel Garrido, Andre Gutierrez, Nora Bravo and Adriana Brito.'
         ],
         'daniel-garrido' => [
-            'title' => 'Daniel Garrido | Founder of TocToc Marketing, Cayman',
-            'desc' => 'Founder and CEO of TocToc Marketing in George Town. Scopes every project, leads client strategy, and writes on AI search visibility.'
+            'title' => 'Daniel Garrido | Founder of Toc Toc Marketing, Cayman',
+            'desc' => 'Founder and CEO of Toc Toc Marketing in George Town. Scopes every project, leads client strategy, and writes on AI search visibility.'
         ],
         'andre-gutierrez' => [
-            'title' => 'Andre Gutierrez | Web Developer, TocToc Marketing',
-            'desc' => 'Web developer and technical SEO specialist at TocToc Marketing. Builds WordPress themes from scratch, JSON-LD entity graphs and fast, AI-readable sites.'
+            'title' => 'Andre Gutierrez | Web Developer, Toc Toc Marketing',
+            'desc' => 'Web developer and technical SEO specialist at Toc Toc Marketing. Builds WordPress themes from scratch, JSON-LD entity graphs and fast, AI-readable sites.'
         ],
         'nora-bravo' => [
-            'title' => 'Nora Bravo | Graphic Designer, TocToc Marketing',
-            'desc' => 'Graphic designer at TocToc Marketing in Grand Cayman. Logos, brand identity, design systems and the social creatives that come out of them.'
+            'title' => 'Nora Bravo | Graphic Designer, Toc Toc Marketing',
+            'desc' => 'Graphic designer at Toc Toc Marketing in Grand Cayman. Logos, brand identity, design systems and the social creatives that come out of them.'
         ],
         'adriana-brito' => [
-            'title' => 'Adriana Brito | Video Editor, TocToc Marketing',
-            'desc' => 'Video editor and social media specialist at TocToc Marketing. Reels, shorts, subtitling, and the day-to-day publishing behind client accounts.'
+            'title' => 'Adriana Brito | Video Editor, Toc Toc Marketing',
+            'desc' => 'Video editor and social media specialist at Toc Toc Marketing. Reels, shorts, subtitling, and the day-to-day publishing behind client accounts.'
         ],
         'about-toc-toc-marketing' => [
-            'title' => 'About TocToc Marketing | Your Digital Partners in Cayman',
+            'title' => 'About Toc Toc Marketing | Your Digital Partners in Cayman',
             'desc' => 'Meet the team behind your growth. We combine local Cayman expertise with global digital strategies to help your business scale.'
         ],
         'cookie-policy' => [
-            'title' => 'Cookie Policy | TocToc Marketing Cayman Islands',
-            'desc' => 'Read TocToc Marketing\'s Cookie Policy. Learn how we use cookies to enhance your experience on our Cayman Islands digital marketing agency website.'
+            'title' => 'Cookie Policy | Toc Toc Marketing Cayman Islands',
+            'desc' => 'Read Toc Toc Marketing\'s Cookie Policy. Learn how we use cookies to enhance your experience on our Cayman Islands digital marketing agency website.'
         ],
         'privacy-policy' => [
-            'title' => 'Privacy Policy | TocToc Marketing Cayman Islands',
-            'desc' => 'TocToc Marketing\'s Privacy Policy. Understand how we collect, use, and protect your personal data as a leading digital marketing agency in the Cayman Islands.'
+            'title' => 'Privacy Policy | Toc Toc Marketing Cayman Islands',
+            'desc' => 'Toc Toc Marketing\'s Privacy Policy. Understand how we collect, use, and protect your personal data as a leading digital marketing agency in the Cayman Islands.'
         ],
         'terms-and-conditions' => [
-            'title' => 'Terms & Conditions | TocToc Marketing Cayman Islands',
-            'desc' => 'Review TocToc Marketing\'s Terms and Conditions governing the use of our digital marketing services in the Cayman Islands.'
+            'title' => 'Terms & Conditions | Toc Toc Marketing Cayman Islands',
+            'desc' => 'Review Toc Toc Marketing\'s Terms and Conditions governing the use of our digital marketing services in the Cayman Islands.'
         ]
     ];
 
     $seo_map['404'] = [
-        'title' => 'Page Not Found | TocToc Marketing Cayman Islands',
-        'desc' => 'The page you are looking for does not exist. Explore TocToc Marketing\'s SEO, AEO, web design, and digital marketing services in the Cayman Islands.'
+        'title' => 'Page Not Found | Toc Toc Marketing Cayman Islands',
+        'desc' => 'The page you are looking for does not exist. Explore Toc Toc Marketing\'s SEO, AEO, web design, and digital marketing services in the Cayman Islands.'
     ];
 
     $default_keywords = 'digital marketing agency cayman islands, marketing agency grand cayman, seo cayman islands, web design cayman islands, toctoc marketing';
@@ -346,9 +346,9 @@
     <title><?php echo esc_html($title); ?></title>
     <meta name="description" content="<?php echo esc_attr($desc); ?>">
     <meta name="keywords" content="<?php echo esc_attr($keywords); ?>">
-    <meta name="author" content="TocToc Marketing">
-    <meta name="publisher" content="TocToc Marketing">
-    <meta name="copyright" content="TocToc Marketing">
+    <meta name="author" content="Toc Toc Marketing">
+    <meta name="publisher" content="Toc Toc Marketing">
+    <meta name="copyright" content="Toc Toc Marketing">
     <?php if ($is_noindex): ?>
     <meta name="robots" content="noindex, follow">
     <?php else: ?>
@@ -387,7 +387,7 @@
                 var t = d.createElement('div');
                 t.setAttribute('role', 'status');
                 t.textContent = m[1] === '1'
-                    ? 'This browser is now marked as TocToc internal. Analytics will ignore it.'
+                    ? 'This browser is now marked as Toc Toc internal. Analytics will ignore it.'
                     : 'Internal flag removed. This browser is tracked again.';
                 t.style.cssText = 'position:fixed;left:16px;bottom:16px;z-index:2147483647;background:#0f172a;color:#fff;font:600 13px/1.4 system-ui,sans-serif;padding:10px 16px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25)';
                 d.body.appendChild(t);
@@ -461,7 +461,7 @@
     ?>
     <meta property="og:type" content="<?php echo esc_attr($og_type); ?>">
     <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="TocToc Marketing">
+    <meta property="og:site_name" content="Toc Toc Marketing">
     <?php // Same URL as the canonical. $current_url drops the trailing slash, and
           // Facebook and LinkedIn treat /page and /page/ as two objects, splitting
           // a post's shares and reactions between them. ?>
@@ -490,14 +490,14 @@
       "@graph": [
         {
           "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
-          "name": "TocToc Marketing",
-          "alternateName": "Toc Toc Marketing",
+          "name": "Toc Toc Marketing",
+          "alternateName": "TocToc Marketing",
           "description": "<?php echo esc_attr($default_desc); ?>",
           "slogan": "AI Search Visibility for Cayman businesses. We help you get found, trusted and cited by ChatGPT, Gemini & Google — with high-performance websites AI reads and humans trust.",
           "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "24",
+            "ratingValue": "<?php echo esc_attr( toctoc_google_reviews()['rating'] ); ?>",
+            "reviewCount": "<?php echo (int) toctoc_google_reviews()['count']; ?>",
             "bestRating": "5",
             "worstRating": "1"
           },
@@ -520,11 +520,11 @@
             "@id": "https://toctoc.ky/#contact",
             "contactType": "sales",
             "telephone": "+1 345-547-8120",
-            "email": "info@toctoc.ky",
+            "email": "daniel@toctoc.ky",
             "areaServed": "KY",
             "availableLanguage": ["English", "Spanish"]
           },
-          "email": "info@toctoc.ky",
+          "email": "daniel@toctoc.ky",
           "priceRange": "$$",
           "memberOf": {
             "@type": "Organization",
@@ -585,7 +585,7 @@
               "url": "https://toctoc.ky/team/andre-gutierrez/",
               "name": "Andre Gutierrez",
               "jobTitle": "Web Developer & Technical SEO Specialist",
-              "description": "AI-driven web developer, and the developer and creator of the TocToc Marketing WordPress theme. Specializes in vibe coding, WordPress, technical and semantic SEO, building high-performance websites optimized for AI search visibility.",
+              "description": "AI-driven web developer, and the developer and creator of the Toc Toc Marketing WordPress theme. Specializes in vibe coding, WordPress, technical and semantic SEO, building high-performance websites optimized for AI search visibility.",
               "identifier": {
                 "@type": "PropertyValue",
                 "propertyID": "ORCID",
@@ -631,7 +631,7 @@
           ],
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "207 Sparky's Drive",
+            "streetAddress": "207 Sparky's Dr",
             "addressLocality": "George Town",
             "addressRegion": "Grand Cayman",
             "postalCode": "KY1-1110",
@@ -666,7 +666,7 @@
           "@type": "WebSite",
           "@id": "https://toctoc.ky/#website",
           "url": "https://toctoc.ky",
-          "name": "TocToc Marketing",
+          "name": "Toc Toc Marketing",
           "publisher": { "@id": "https://toctoc.ky/#organization" },
           "creator": { "@id": "https://toctoc.ky/#organization" },
           "potentialAction": {
@@ -733,7 +733,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-5 xl:px-8 z-[1000] shadow-soft border border-white/50">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
-        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
+        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     
     <!-- Desktop Menu.
@@ -790,7 +790,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
             <div>
-                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" class="h-4 w-auto brightness-0 invert" />
+                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-4 w-auto brightness-0 invert" />
                 <p class="mt-4 text-sm text-white/40 font-medium">Cayman Islands · Built for the AI era</p>
             </div>
         </div>

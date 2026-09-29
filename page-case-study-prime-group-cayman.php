@@ -6,7 +6,7 @@
  * Create a WordPress page with slug "case-study-prime-group-cayman".
  *
  * The cleanest of the three cases to argue, because only one variable moved.
- * TocToc built primegroup.ky from scratch and did not touch the Google Business
+ * Toc Toc built primegroup.ky from scratch and did not touch the Google Business
  * Profile, the social accounts or any paid campaign — so the year-on-year change
  * is attributable to the site itself rather than to a bundle of channels. Every
  * figure comes from Search Console for the same months a year apart, which is

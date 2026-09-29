@@ -6,7 +6,7 @@
  * The parent page of the four profiles. Slug-matched (page-team.php), so it
  * needs no template chosen in wp-admin either.
  *
- * @package TocToc
+ * @package Toc Toc
  */
 
 if ( ! function_exists( 'toctoc_team_members' ) ) {
@@ -43,7 +43,7 @@ $tt_team = toctoc_team_members();
 				Four people, and <em class="italic text-accent font-display">what each one does.</em>
 			</h1>
 			<p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-				TocToc Marketing is a small team in George Town, Grand Cayman. Nobody here is a department &mdash; every project is scoped, designed, built and published by the four people on this page.
+				Toc Toc Marketing is a small team in George Town, Grand Cayman. Nobody here is a department &mdash; every project is scoped, designed, built and published by the four people on this page.
 			</p>
 		</div>
 	</section>
@@ -55,7 +55,7 @@ $tt_team = toctoc_team_members();
 				<a href="<?php echo esc_url( toctoc_team_url( $tt_slug ) ); ?>" class="group rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft hover:shadow-glass transition-all decoration-none block text-left">
 					<div class="flex items-center gap-5 mb-8">
 						<img src="<?php echo esc_url( $tt_member['photo'] ); ?>"
-							 alt="<?php echo esc_attr( $tt_member['name'] . ', ' . $tt_member['role_plain'] . ' at TocToc Marketing' ); ?>"
+							 alt="<?php echo esc_attr( $tt_member['name'] . ', ' . $tt_member['role_plain'] . ' at Toc Toc Marketing' ); ?>"
 							 width="300" height="300" loading="lazy" decoding="async"
 							 class="w-24 h-24 rounded-full object-cover object-top shrink-0" />
 						<div>

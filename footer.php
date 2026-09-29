@@ -1,19 +1,19 @@
     <footer class="bg-slate-950 text-white border-t border-white/5">
         <div class="mx-auto max-w-6xl px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
-                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="TocToc Marketing" width="734" height="127" loading="lazy" class="h-6 w-auto brightness-0 invert" />
+                <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" loading="lazy" class="h-6 w-auto brightness-0 invert" />
                 <p class="mt-4 text-sm text-white/60 font-medium">Cayman Islands · Built for the AI era</p>
                 <div class="mt-6 flex items-center gap-3">
-                    <a href="https://www.linkedin.com/company/toc-toc-marketing/" target="_blank" rel="noopener" aria-label="TocToc Marketing on LinkedIn" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
+                    <a href="https://www.linkedin.com/company/toc-toc-marketing/" target="_blank" rel="noopener" aria-label="Toc Toc Marketing on LinkedIn" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
                     </a>
-                    <a href="https://www.instagram.com/toctocmarketing/" target="_blank" rel="noopener" aria-label="TocToc Marketing on Instagram" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
+                    <a href="https://www.instagram.com/toctocmarketing/" target="_blank" rel="noopener" aria-label="Toc Toc Marketing on Instagram" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
-                    <a href="https://www.facebook.com/wearetoctoc/" target="_blank" rel="noopener" aria-label="TocToc Marketing on Facebook" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
+                    <a href="https://www.facebook.com/wearetoctoc/" target="_blank" rel="noopener" aria-label="Toc Toc Marketing on Facebook" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
                     </a>
-                    <a href="https://www.youtube.com/@wearetoctoc" target="_blank" rel="noopener" aria-label="TocToc Marketing on YouTube" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
+                    <a href="https://www.youtube.com/@wearetoctoc" target="_blank" rel="noopener" aria-label="Toc Toc Marketing on YouTube" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white/70 hover:bg-accent hover:text-slate-950 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
                     </a>
                 </div>
@@ -21,7 +21,7 @@
                      white/reversed seal, so it reads on the dark footer without altering the
                      artwork. Mirrors the `memberOf` node in header.php. -->
                 <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener"
-                   aria-label="TocToc Marketing is a member of the Cayman Islands Chamber of Commerce"
+                   aria-label="Toc Toc Marketing is a member of the Cayman Islands Chamber of Commerce"
                    class="group mt-8 inline-flex flex-col items-center gap-2 decoration-none">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/CICOC-Logo-white-01.png' ); ?>" alt="Cayman Islands Chamber of Commerce" width="320" height="320" loading="lazy" decoding="async" class="w-20 h-20 opacity-80 transition-all group-hover:opacity-100 group-hover:scale-105" />
                     <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-white/50 group-hover:text-white transition-colors">Member</span>
@@ -40,7 +40,7 @@
             <div class="flex flex-col md:items-end gap-10">
                 <div class="flex flex-col md:items-end gap-3 text-right">
                     <h3 class="text-xl md:text-2xl font-display italic text-accent mb-3">Contact Us</h3>
-                    <a href="mailto:info@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">info@toctoc.ky</a>
+                    <a href="mailto:daniel@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">daniel@toctoc.ky</a>
                     <?php /* Direccion visible, no solo en el schema. Google cruza el NAP
                              (nombre, direccion, telefono) del sitio contra la ficha y los
                              directorios: si solo vive dentro del JSON-LD, no hay nada que
@@ -48,7 +48,7 @@
                              queda invisible. Tiene que coincidir CARACTER POR CARACTER con
                              la ficha de Google Business Profile. */ ?>
                     <address class="not-italic text-sm leading-relaxed text-white/60 mt-1">
-                        207 Sparky&rsquo;s Drive<br>
+                        207 Sparky&rsquo;s Dr<br>
                         George Town, KY1-1110<br>
                         Cayman Islands
                     </address>
@@ -64,7 +64,7 @@
                         <span class="opacity-20">•</span>
                         <a href="https://toctoc.ky/wp-content/uploads/2026/05/Trade-and-Business-Licence-Grant-application-TOC-TOC-CORPORATION-LTD-T_A-TOC-TOC-MARKETING_CIG.pdf" target="_blank" class="hover:text-white transition-colors">TBL: TB1795A</a>
                     </div>
-                    <span>© 2026 TocToc Marketing. All rights reserved.</span>
+                    <span>© 2026 Toc Toc Marketing. All rights reserved.</span>
                 </div>
             </div>
         </div>
@@ -72,9 +72,9 @@
 
     <!-- Floating WhatsApp bubble (same number as the Call Us CTAs). Sits below the
          mobile menu (z-900) so it hides when the menu is open. -->
-    <a href="https://wa.me/13455478120?text=Hi%20TocToc!%20I%27d%20like%20to%20know%20more%20about%20your%20AI%20search%20services."
+    <a href="https://wa.me/13455478120?text=Hi%20Toc%20Toc!%20I%27d%20like%20to%20know%20more%20about%20your%20AI%20search%20services."
        target="_blank" rel="noopener"
-       aria-label="Chat with TocToc on WhatsApp"
+       aria-label="Chat with Toc Toc on WhatsApp"
        class="fixed bottom-5 right-5 z-[500] inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-pill hover:scale-110 transition-transform">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652a11.882 11.882 0 005.71 1.454h.005c6.582 0 11.941-5.359 11.944-11.893a11.821 11.821 0 00-3.474-8.46"/></svg>
     </a>

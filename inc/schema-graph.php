@@ -16,7 +16,7 @@
  * <script> wrapper for ob_start() / toctoc_schema_add_raw(), so the JSON itself
  * is never rewritten by hand.
  *
- * @package TocToc
+ * @package Toc Toc
  */
 
 defined( 'ABSPATH' ) || exit;

@@ -270,7 +270,7 @@ $cs_shots = array(
 				<?php foreach ( $cs_shots as $cs_s ) : ?>
 				<figure class="flex flex-col items-center lg:items-start w-full">
 					<div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] bg-white/5 ring-1 ring-white/10 shadow-glass">
-						<img src="<?php echo esc_url( $cs_s['img'] ); ?>" alt="<?php echo esc_attr( $cs_s['label'] . ' — TintXKing, by TocToc Marketing' ); ?>" width="<?php echo (int) $cs_s['w']; ?>" height="<?php echo (int) $cs_s['h']; ?>" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+						<img src="<?php echo esc_url( $cs_s['img'] ); ?>" alt="<?php echo esc_attr( $cs_s['label'] . ' — TintXKing, by Toc Toc Marketing' ); ?>" width="<?php echo (int) $cs_s['w']; ?>" height="<?php echo (int) $cs_s['h']; ?>" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
 					</div>
 					<figcaption class="mt-4 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/40"><?php echo esc_html( $cs_s['label'] ); ?></figcaption>
 				</figure>

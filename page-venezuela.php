@@ -395,7 +395,7 @@ $ve_news = [
             </blockquote>
             <div class="mt-8">
                 <p class="text-lg font-bold text-white">Daniel Garrido</p>
-                <p class="text-sm text-white/50">Founder of TocToc · via <a href="https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/" target="_blank" rel="noopener" class="underline hover:text-white">Cayman Compass</a></p>
+                <p class="text-sm text-white/50">Founder of Toc Toc · via <a href="https://www.caymancompass.com/2026/07/02/how-cayman-residents-can-help-venezuela-after-the-earthquakes/" target="_blank" rel="noopener" class="underline hover:text-white">Cayman Compass</a></p>
             </div>
         </div>
     </section>
@@ -792,9 +792,9 @@ $ve_news = [
 </script>
 
 <?php
-/* Daniel and TocToc are referenced by @id, never re-declared. This block used to
+/* Daniel and Toc Toc are referenced by @id, never re-declared. This block used to
    spell out an inline Person with an inline Organization, which is a second,
-   anonymous Daniel working for a second, anonymous TocToc — two entities a
+   anonymous Daniel working for a second, anonymous Toc Toc — two entities a
    parser has no reason to merge with the real ones. */
 ob_start(); ?>
 {

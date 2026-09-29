@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: About TocToc Marketing
+ * Template Name: About Toc Toc Marketing
  * Template Post Type: page
  */
 get_header(); ?>
@@ -62,7 +62,7 @@ get_header(); ?>
                 <div id="daniel-garrido" class="mt-16 flex items-center gap-8 p-10 rounded-[3rem] bg-white/5 border border-white/10 w-fit">
                     <?php $daniel_photo = 'https://toctoc.ky/wp-content/uploads/2026/07/dsf5319-1.webp'; ?>
                     <?php if ( $daniel_photo ) : ?>
-                    <img src="<?php echo esc_url( $daniel_photo ); ?>" alt="Daniel Garrido, Founder & Sales at TocToc Marketing" width="80" height="80" loading="lazy" class="w-28 h-28 rounded-full object-cover object-top shrink-0" />
+                    <img src="<?php echo esc_url( $daniel_photo ); ?>" alt="Daniel Garrido, Founder & Sales at Toc Toc Marketing" width="80" height="80" loading="lazy" class="w-28 h-28 rounded-full object-cover object-top shrink-0" />
                     <?php else : ?>
                     <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -112,7 +112,7 @@ get_header(); ?>
 
                     <div class="flex items-center gap-5">
                         <img src="<?php echo esc_url( $tt_m['photo'] ); ?>"
-                             alt="<?php echo esc_attr( $tt_m['name'] . ', ' . $tt_m['role_plain'] . ' at TocToc Marketing' ); ?>"
+                             alt="<?php echo esc_attr( $tt_m['name'] . ', ' . $tt_m['role_plain'] . ' at Toc Toc Marketing' ); ?>"
                              width="200" height="200" loading="lazy" decoding="async"
                              class="w-20 h-20 rounded-[1.25rem] object-cover object-top shrink-0 border border-slate-100" />
                         <div>
@@ -237,7 +237,7 @@ get_header(); ?>
 
     <script>
     (function () {
-        // ---- TocToc dot globe v2: dense sphere + graticule, visible rotation,
+        // ---- Toc Toc dot globe v2: dense sphere + graticule, visible rotation,
         //      fixed chips with leader lines. Vanilla canvas, no libraries. ----
         var wrap = document.getElementById('ttglobe-wrap');
         var canvas = document.getElementById('ttglobe');

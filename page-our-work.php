@@ -428,8 +428,8 @@ echo wp_json_encode(
     array(
         '@context'        => 'https://schema.org',
         '@type'           => 'CollectionPage',
-        'name'            => 'Our Work — TocToc Marketing',
-        'description'     => 'Case studies showing how TocToc Marketing makes Cayman Islands businesses the recommended answer on ChatGPT, Gemini and Google — including 19-81 Brewing Co., Prime Group and TintXKing.',
+        'name'            => 'Our Work — Toc Toc Marketing',
+        'description'     => 'Case studies showing how Toc Toc Marketing makes Cayman Islands businesses the recommended answer on ChatGPT, Gemini and Google — including 19-81 Brewing Co., Prime Group and TintXKing.',
         'url'             => 'https://toctoc.ky/our-work/',
         'isPartOf'        => array( '@id' => 'https://toctoc.ky/#website' ),
         'about'           => array( '@id' => 'https://toctoc.ky/#organization' ),

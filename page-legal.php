@@ -18,7 +18,7 @@ get_header();
             <div class="flex items-center gap-6 text-xs font-bold text-slate-400 uppercase tracking-widest">
                 <span>Effective: <?php echo get_the_modified_date('F Y'); ?></span>
                 <span class="opacity-30">|</span>
-                <span>TocToc Marketing</span>
+                <span>Toc Toc Marketing</span>
             </div>
         </header>
 

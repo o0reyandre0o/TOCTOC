@@ -18,7 +18,7 @@
  * en el schema y como una linea visible en la ficha. Los cuatro son de
  * Venezuela: Cabimas, Maracaibo y Caracas.
  *
- * @package TocToc
+ * @package Toc Toc
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -43,9 +43,9 @@ function toctoc_team_members() {
 			'author'    => 1,
 			'lede'      => 'The person on the other end of an enquiry &mdash; and the one who decides what a project actually needs before anybody quotes it.',
 			'bio'       => array(
-				'Daniel founded TocToc Marketing in George Town after years of running and marketing local businesses himself. That is the whole origin of the company: &ldquo;I know what it&rsquo;s like to run a local business &mdash; the feeling of building something special from the ground up. It&rsquo;s my story, too.&rdquo;',
+				'Daniel founded Toc Toc Marketing in George Town after years of running and marketing local businesses himself. That is the whole origin of the company: &ldquo;I know what it&rsquo;s like to run a local business &mdash; the feeling of building something special from the ground up. It&rsquo;s my story, too.&rdquo;',
 				'A musician before he was a marketer, he approaches a campaign the way he approaches an arrangement &mdash; every part in service of one idea, nothing in it because it was available. Scoping, client strategy and the commercial side of every project sit with him, which is why enquiries reach a director rather than a form queue.',
-				'He also writes about AI search visibility under his own name at danielgarrido.com, and represents TocToc at the Cayman Islands Chamber of Commerce.',
+				'He also writes about AI search visibility under his own name at danielgarrido.com, and represents Toc Toc at the Cayman Islands Chamber of Commerce.',
 			),
 			'does'      => array(
 				'Scoping a project before it is quoted',
@@ -70,8 +70,8 @@ function toctoc_team_members() {
 			'author'    => 3,
 			'lede'      => 'Builds the sites. Wrote the theme this page is rendered by.',
 			'bio'       => array(
-				'Andre is the developer behind TocToc&rsquo;s builds. Every site the agency ships is a WordPress theme written from scratch &mdash; no page builders, no purchased templates &mdash; which is why they load quickly, and why the markup can be shaped around what a search engine and a language model actually read rather than around what a builder happens to output.',
-				'He wrote the TocToc Marketing theme itself: the structured-data graph, the dynamic llms.txt, and the schema that ties every page, service and person on this site into one connected entity. This page is rendered by it.',
+				'Andre is the developer behind Toc Toc&rsquo;s builds. Every site the agency ships is a WordPress theme written from scratch &mdash; no page builders, no purchased templates &mdash; which is why they load quickly, and why the markup can be shaped around what a search engine and a language model actually read rather than around what a builder happens to output.',
+				'He wrote the Toc Toc Marketing theme itself: the structured-data graph, the dynamic llms.txt, and the schema that ties every page, service and person on this site into one connected entity. This page is rendered by it.',
 				'Day to day that means Core Web Vitals, JSON-LD, semantic HTML and the technical SEO work that decides whether a page can be quoted by ChatGPT or Gemini rather than merely indexed by Google.',
 			),
 			'does'      => array(
@@ -125,7 +125,7 @@ function toctoc_team_members() {
 			'bio'       => array(
 				'Adriana edits the video: reels, shorts and stories for client accounts. Cutting, pacing, captions, subtitles &mdash; the unglamorous craft that decides whether a good idea gets watched or scrolled past.',
 				'She also runs the day-to-day publishing on the accounts those pieces live on: scheduling, captions, replies, and holding a posting rhythm that does not collapse the week a client gets busy.',
-				'Her work is the second half of how TocToc handles content. An article is written once and then rebuilt as video and images, so the same idea reaches people who will never read a blog post &mdash; and so a business keeps showing up in more than one place at a time.',
+				'Her work is the second half of how Toc Toc handles content. An article is written once and then rebuilt as video and images, so the same idea reaches people who will never read a blog post &mdash; and so a business keeps showing up in more than one place at a time.',
 			),
 			'does'      => array(
 				'Reels, shorts and story editing',
@@ -224,7 +224,7 @@ function toctoc_team_extra_schema_json() {
 			'@type'      => 'CollectionPage',
 			'@id'        => home_url( '/team/' ) . '#webpage',
 			'url'        => home_url( '/team/' ),
-			'name'       => 'The TocToc Marketing team',
+			'name'       => 'The Toc Toc Marketing team',
 			'isPartOf'   => array( '@id' => $site ),
 			'about'      => array( '@id' => home_url( '/' ) . '#organization' ),
 			'mainEntity' => array(
@@ -245,7 +245,7 @@ function toctoc_team_extra_schema_json() {
 		'@type'              => 'ProfilePage',
 		'@id'                => toctoc_team_url( $slug ) . '#webpage',
 		'url'                => toctoc_team_url( $slug ),
-		'name'               => $member['name'] . ' — ' . $member['role_plain'] . ' at TocToc Marketing',
+		'name'               => $member['name'] . ' — ' . $member['role_plain'] . ' at Toc Toc Marketing',
 		'description'        => html_entity_decode( wp_strip_all_tags( $member['lede'] ), ENT_QUOTES, 'UTF-8' ),
 		'isPartOf'           => array( '@id' => $site ),
 		'about'              => array( '@id' => $member['person_id'] ),

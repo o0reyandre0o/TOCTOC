@@ -10,7 +10,7 @@
  * server ahead of inc/ before, on 2026-08-03), this renders the page's own
  * content instead of raising a fatal.
  *
- * @package TocToc
+ * @package Toc Toc
  */
 
 $tt_render = get_template_directory() . '/inc/team-member-render.php';

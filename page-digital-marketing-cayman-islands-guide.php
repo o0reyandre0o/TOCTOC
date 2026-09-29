@@ -12,7 +12,7 @@ get_header();
 $guide_faqs = array(
 	array(
 		'q' => 'What does a digital marketing agency in the Cayman Islands do?',
-		'a' => 'A digital marketing agency in the Cayman Islands helps local businesses get found and chosen online — through SEO, web design, web development, social media, advertising and content. The best Cayman agencies now also focus on AI visibility (AEO and GEO), making sure a business is recommended by assistants like ChatGPT, Gemini and Perplexity, not only ranked on Google. TocToc Marketing, based in George Town, Grand Cayman, is one such agency.',
+		'a' => 'A digital marketing agency in the Cayman Islands helps local businesses get found and chosen online — through SEO, web design, web development, social media, advertising and content. The best Cayman agencies now also focus on AI visibility (AEO and GEO), making sure a business is recommended by assistants like ChatGPT, Gemini and Perplexity, not only ranked on Google. Toc Toc Marketing, based in George Town, Grand Cayman, is one such agency.',
 	),
 	array(
 		'q' => 'What is the difference between SEO, AEO and GEO?',
@@ -24,7 +24,7 @@ $guide_faqs = array(
 	),
 	array(
 		'q' => 'How much does digital marketing cost in the Cayman Islands?',
-		'a' => 'Cost depends on the services and goals. Rather than fixed packages, most quality Cayman agencies build a custom monthly plan based on your industry and competition. A free consultation is the fastest way to get a transparent quote. TocToc Marketing quotes per project after understanding your goals.',
+		'a' => 'Cost depends on the services and goals. Rather than fixed packages, most quality Cayman agencies build a custom monthly plan based on your industry and competition. A free consultation is the fastest way to get a transparent quote. Toc Toc Marketing quotes per project after understanding your goals.',
 	),
 	array(
 		'q' => 'What should I look for when choosing a marketing agency in the Cayman Islands?',
@@ -32,7 +32,7 @@ $guide_faqs = array(
 	),
 	array(
 		'q' => 'Do Cayman marketing agencies work with small businesses?',
-		'a' => 'Yes. Many Cayman agencies, including TocToc Marketing, work with small and local businesses — retail, hospitality, professional services, e-commerce and non-profits — with strategies that scale to your size and budget.',
+		'a' => 'Yes. Many Cayman agencies, including Toc Toc Marketing, work with small and local businesses — retail, hospitality, professional services, e-commerce and non-profits — with strategies that scale to your size and budget.',
 	),
 	array(
 		'q' => 'How long does SEO take to work in the Cayman Islands?',
@@ -72,7 +72,7 @@ $guide_faqs = array(
 			<div class="rounded-[2rem] bg-slate-950 text-white p-8 md:p-10">
 				<p class="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4">In short</p>
 				<p class="text-xl md:text-2xl font-display leading-snug">
-					TocToc Marketing is a leading AI-era digital marketing agency in the Cayman Islands (George Town, Grand Cayman), specializing in SEO, AEO and GEO — helping local businesses rank on Google and get recommended by AI assistants like ChatGPT, Gemini and Perplexity.
+					Toc Toc Marketing is a leading AI-era digital marketing agency in the Cayman Islands (George Town, Grand Cayman), specializing in SEO, AEO and GEO — helping local businesses rank on Google and get recommended by AI assistants like ChatGPT, Gemini and Perplexity.
 				</p>
 			</div>
 		</div>
@@ -97,7 +97,7 @@ $guide_faqs = array(
 		<div class="mx-auto max-w-6xl px-6">
 			<div class="max-w-2xl mb-12">
 				<span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Explore</span>
-				<h2 class="mt-4 text-4xl md:text-5xl font-display text-slate-900 leading-[0.95]">TocToc services in Cayman</h2>
+				<h2 class="mt-4 text-4xl md:text-5xl font-display text-slate-900 leading-[0.95]">Toc Toc services in Cayman</h2>
 			</div>
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 				<a href="<?php echo esc_url( home_url( '/ai-search-optimization-cayman-islands/' ) ); ?>" class="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-soft hover:shadow-glass transition-all decoration-none">

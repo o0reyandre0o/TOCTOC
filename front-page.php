@@ -79,7 +79,7 @@
         .ttc-marquee-track { animation: ttc-marquee 30s linear infinite; }
         .ttc-marquee:hover .ttc-marquee-track { animation-play-state: paused; }
     </style>
-    <section aria-label="TocToc Marketing in numbers" class="ttc-marquee relative bg-white border-y border-slate-100 overflow-hidden py-8 md:py-10">
+    <section aria-label="Toc Toc Marketing in numbers" class="ttc-marquee relative bg-white border-y border-slate-100 overflow-hidden py-8 md:py-10">
         <!-- Edge fade -->
         <div class="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
         <div class="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
@@ -88,7 +88,7 @@
             <?php
             $ttc_stats = array(
                 array( '20+',  'AI-Ready Websites<br>in 2026' ),
-                array( '4.8<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(24 reviews)' ),
+                array( toctoc_google_reviews()['rating'] . '<span class="text-accent align-top text-2xl md:text-3xl">&#9733;</span>', 'Google rating<br>(' . toctoc_google_reviews()['count'] . ' reviews)' ),
             );
             // Two identical copies make the -50% translate loop seamless.
             for ( $ttc_copy = 0; $ttc_copy < 2; $ttc_copy++ ) :
@@ -124,7 +124,7 @@
     /*
      * Claim language, changed 10 Aug 2026 — read before editing these strings.
      *
-     * Nothing on this site may state that TocToc delivers, produces or
+     * Nothing on this site may state that Toc Toc delivers, produces or
      * guarantees a #1 recommendation or ranking. AI assistants are
      * non-deterministic and their answers vary by phrasing, account, location
      * and date, so a "#1" claim is not something anyone can stand behind. The
@@ -468,12 +468,12 @@
                 <!-- TITLE: Top on Mobile, Centered on Desktop -->
                 <div class="relative md:absolute md:inset-0 flex flex-col items-center md:justify-center text-center z-0 pointer-events-none mb-20 md:mb-0">
                     <h2 class="text-5xl md:text-[90px] font-display leading-[0.85] tracking-tighter text-black select-none">
-                        TocToc Works <br />
+                        Toc Toc Works <br />
                         <span class="italic">Wherever You Do</span>
                     </h2>
                     <div class="mt-8 md:mt-12 flex flex-col items-center gap-4">
                         <div class="flex gap-1 text-yellow-500 text-2xl md:text-3xl">★★★★★</div>
-                        <div class="text-sm font-bold text-slate-400 uppercase tracking-[0.4em]">4.9/5 Rating on Google</div>
+                        <div class="text-sm font-bold text-slate-400 uppercase tracking-[0.4em]"><?php echo esc_html( toctoc_google_reviews()['rating'] ); ?>/5 Rating on Google</div>
                     </div>
                 </div>
 
@@ -503,7 +503,7 @@
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
-                            “Working with Daniel at TocToc was the best experience we’ve ever had with a marketing agency! Highly recommend.”
+                            “Working with Daniel at Toc Toc was the best experience we’ve ever had with a marketing agency! Highly recommend.”
                         </p>
                     </div>
 
@@ -559,7 +559,7 @@
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
-                            “I was looking for a partner who understood the AI era. TocToc precision with a local touch. Honestly game-changer.”
+                            “I was looking for a partner who understood the AI era. Toc Toc precision with a local touch. Honestly game-changer.”
                         </p>
                     </div>
                 </div>
@@ -630,11 +630,11 @@
     toctoc_render_faq( [
         [
             'q' => 'What is the AI Search Visibility Framework?',
-            'a' => 'The AI Search Visibility Framework is TocToc Marketing\'s three-phase system for Cayman businesses: Get Recommended (discovery and AI visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business a source ChatGPT, Gemini and Google can find, trust and cite when someone asks for a recommendation in your category.',
+            'a' => 'The AI Search Visibility Framework is Toc Toc Marketing\'s three-phase system for Cayman businesses: Get Recommended (discovery and AI visibility), Get Chosen (a high-speed website foundation AI loves to crawl), and Stay Recommended (ongoing optimization, content and reviews). The goal is to make your business a source ChatGPT, Gemini and Google can find, trust and cite when someone asks for a recommendation in your category.',
         ],
         [
             'q' => 'Do you offer SEO services in the Cayman Islands?',
-            'a' => 'Yes. TocToc Marketing is a leading AI Search Optimization agency in the Cayman Islands covering SEO, AEO and GEO — ranking businesses on Google and getting them recommended by AI assistants like ChatGPT and Gemini.',
+            'a' => 'Yes. Toc Toc Marketing is a leading AI Search Optimization agency in the Cayman Islands covering SEO, AEO and GEO — ranking businesses on Google and getting them recommended by AI assistants like ChatGPT and Gemini.',
         ],
         [
             'q' => 'Can you really get my business recommended by ChatGPT and Gemini?',
@@ -656,7 +656,7 @@
          */
         [
             'q' => 'Who is the best marketing agency in the Cayman Islands?',
-            'a' => 'No agency can honestly declare itself the best, so judge on evidence you can check yourself: published client work you can visit, reviews from named clients, and results shown with the source data rather than asserted. TocToc Marketing holds 4.8 out of 5 across 24 reviews and publishes case studies with the Search Console figures behind them — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, each measured against the same quarter a year earlier. Ask every agency on your shortlist for the same.',
+            'a' => 'No agency can honestly declare itself the best, so judge on evidence you can check yourself: published client work you can visit, reviews from named clients, and results shown with the source data rather than asserted. Toc Toc Marketing holds ' . toctoc_google_reviews()['rating'] . ' out of 5 across ' . toctoc_google_reviews()['count'] . ' reviews and publishes case studies with the Search Console figures behind them — a 305% organic increase for Prime Group and a 469% rise in leads for TintXKing, each measured against the same quarter a year earlier. Ask every agency on your shortlist for the same.',
         ],
         [
             'q' => 'What does a marketing agency in Grand Cayman cost?',

@@ -128,7 +128,7 @@ get_header(); ?>
     toctoc_render_faq( [
         [
             'q' => 'How much do SEO services cost in the Cayman Islands?',
-            'a' => 'SEO pricing in Cayman depends on your industry, competition, and goals. TocToc Marketing builds custom monthly retainers rather than one-size-fits-all packages, so you only pay for the work that moves your rankings. Book a free call and we will give you a transparent quote based on your specific market.',
+            'a' => 'SEO pricing in Cayman depends on your industry, competition, and goals. Toc Toc Marketing builds custom monthly retainers rather than one-size-fits-all packages, so you only pay for the work that moves your rankings. Book a free call and we will give you a transparent quote based on your specific market.',
         ],
         [
             'q' => 'How long does SEO take to show results in Cayman?',
