@@ -462,10 +462,10 @@
         <div class="relative mx-auto max-w-7xl px-6">
             
             <!-- Floating Cards Container (H2 centered behind reviews on Desktop, Stacked on Mobile) -->
-            <div class="relative min-h-[800px] md:h-[1160px] w-full mt-10 flex flex-col md:block">
+            <div class="relative min-h-[800px] md:h-[1250px] w-full mt-10 flex flex-col md:block">
                 
                 <!-- TITLE: Top on Mobile, Centered on Desktop -->
-                <?php /* Pinned to the first 1000px: the box grew to 1160px for Sutton's card, and centring on the full height pushed the rating under the cards. */ ?>
+                <?php /* Pinned to the first 1000px: the box grew to 1250px for Sutton's card, and centring on the full height pushed the rating under the cards. */ ?>
                 <div class="relative md:absolute md:inset-x-0 md:top-0 md:h-[1000px] flex flex-col items-center md:justify-center text-center z-0 pointer-events-none mb-20 md:mb-0">
                     <h2 class="text-5xl md:text-[90px] font-display leading-[0.85] tracking-tighter text-black select-none">
                         Toc Toc Works <br />
@@ -574,7 +574,7 @@
                     </div>
 
                     <!-- Review 7: Sutton Burke -->
-                    <div class="relative md:absolute md:top-[900px] md:left-[calc(50%-190px)] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 md:float-animation md:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                    <div class="relative md:absolute md:top-[975px] md:left-[calc(50%-190px)] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 md:float-animation md:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-sky-pale text-sky-deep flex items-center justify-center font-bold text-xl shadow-inner">SB</div>
                             <div>
