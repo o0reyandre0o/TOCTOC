@@ -109,10 +109,10 @@ $sm_faqs = array(
                     Social Media for Algorithmic Trust &middot; Cayman Islands
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    We Make Your Social Media Channels <em class="italic text-accent font-display">Fuel for AI Search Engines</em>
+                    A Cayman Social Media Company That Makes Your Channels <em class="italic text-accent font-display">Fuel for AI Search</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
-                    Stop posting just for likes. We align your profiles and guide your content strategy so ChatGPT, Gemini, and Google recognize your business as the top local authority.
+                    Stop posting just for likes. We align your profiles and guide your content strategy so ChatGPT, Gemini, and Google recognize your business as a trusted local authority.
                 </p>
                 <div class="mt-12 flex flex-wrap gap-4">
                     <a href="tel:+13455478120" class="group inline-flex items-center gap-3 rounded-full bg-accent text-slate-950 pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">

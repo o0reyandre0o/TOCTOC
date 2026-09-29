@@ -107,7 +107,7 @@ $pr_faqs = array(
                     Digital PR for AI Authority Citations &middot; Cayman Islands
                 </div>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] font-display leading-[0.95] text-white">
-                    We Turn Digital PR into <em class="italic text-accent font-display">Permanent AI Trust Signals</em>
+                    Digital PR in Cayman That Builds <em class="italic text-accent font-display">Permanent AI Trust Signals</em>
                 </h1>
                 <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
                     Ads are built for short-term traffic. Digital PR is built for long-term AI authority. We secure the high-value digital citations that make ChatGPT, Gemini, and Google recommend your brand.
