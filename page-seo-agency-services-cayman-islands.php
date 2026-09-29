@@ -144,7 +144,7 @@ get_header(); ?>
         ],
         [
             'q' => 'Can you get my business recommended by AI tools like ChatGPT?',
-            'a' => 'That is our specialty. We structure your website with advanced Schema markup and authoritative, well-organized content so AI models read your business as the trustworthy answer. This is the Get Recommended phase of our Revenue Loop framework.',
+            'a' => 'That is our specialty. We structure your website with advanced Schema markup and authoritative, well-organized content so AI models read your business as the trustworthy answer. This is Phase 1, the AI Foundation Build, of our AI Search Visibility Framework.',
         ],
     ], 'SEO FAQ', 'SEO Questions, <em class="italic text-sky-deep font-display">Answered</em>' );
     ?>

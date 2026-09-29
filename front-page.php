@@ -39,17 +39,15 @@
             </p>
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+                <?php /* The two phases of the framework (29 Sep 2026); these chips used to
+                   name the retired three-phase system. */ ?>
                 <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                    Get Recommended
+                    Phase 1: AI Foundation
                 </div>
                 <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                    Get Chosen
-                </div>
-                <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-sky-deep"><path d="M20 6 9 17l-5-5"/></svg>
-                    Stay Recommended
+                    Phase 2: Monthly Growth
                 </div>
             </div>
 
