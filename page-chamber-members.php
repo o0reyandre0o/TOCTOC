@@ -19,7 +19,7 @@
 get_header();
 
 $ttc_article = 'https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/';
-$ttc_mail    = 'mailto:daniel@toctoc.ky?subject=' . rawurlencode( 'Chamber member audit' );
+$ttc_mail    = 'mailto:info@toctoc.ky?subject=' . rawurlencode( 'Chamber member audit' );
 ?>
 
 <main class="min-h-screen bg-background text-foreground">
@@ -77,7 +77,7 @@ $ttc_mail    = 'mailto:daniel@toctoc.ky?subject=' . rawurlencode( 'Chamber membe
             <h2 class="text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How to <em class="italic text-sky-deep font-display">claim it</em></h2>
             <ol class="mt-14 grid gap-6 md:grid-cols-3">
                 <?php foreach ( array(
-                    array( 'Get in touch', 'Call, WhatsApp or email Daniel and mention you are a Chamber member.' ),
+                    array( 'Get in touch', 'Call, WhatsApp or email us and mention you are a Chamber member.' ),
                     array( 'We run the checks', 'We run the audit and check whether your category is available.' ),
                     array( 'We walk you through it', 'A short call to go over what we found. What you do next is up to you.' ),
                 ) as $ttc_i => $ttc_step ) : ?>
@@ -107,7 +107,7 @@ $ttc_mail    = 'mailto:daniel@toctoc.ky?subject=' . rawurlencode( 'Chamber membe
                 <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-4">Contact</p>
                 <ul class="space-y-3 text-lg text-slate-800">
                     <li><a href="tel:+13455478120" class="decoration-none hover:text-sky-deep">+1 345-547-8120</a></li>
-                    <li><a href="<?php echo esc_url( $ttc_mail ); ?>" class="decoration-none hover:text-sky-deep">daniel@toctoc.ky</a></li>
+                    <li><a href="<?php echo esc_url( $ttc_mail ); ?>" class="decoration-none hover:text-sky-deep">info@toctoc.ky</a></li>
                     <li class="text-slate-600">207 Sparky&rsquo;s Dr, George Town KY1-1110, Cayman Islands</li>
                 </ul>
                 <a href="tel:+13455478120" class="group mt-8 inline-flex items-center gap-4 rounded-full bg-slate-950 text-white pl-8 pr-3 py-3 text-lg font-bold shadow-pill transition-all hover:scale-105 decoration-none">

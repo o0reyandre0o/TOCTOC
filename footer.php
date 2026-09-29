@@ -40,7 +40,7 @@
             <div class="flex flex-col md:items-end gap-10">
                 <div class="flex flex-col md:items-end gap-3 text-right">
                     <h3 class="text-xl md:text-2xl font-display italic text-accent mb-3">Contact Us</h3>
-                    <a href="mailto:daniel@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">daniel@toctoc.ky</a>
+                    <a href="mailto:info@toctoc.ky" class="text-2xl text-white hover:text-accent transition-colors decoration-none font-display">info@toctoc.ky</a>
                     <?php /* Direccion visible, no solo en el schema. Google cruza el NAP
                              (nombre, direccion, telefono) del sitio contra la ficha y los
                              directorios: si solo vive dentro del JSON-LD, no hay nada que

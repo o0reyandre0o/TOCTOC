@@ -526,11 +526,11 @@
             "@id": "https://toctoc.ky/#contact",
             "contactType": "sales",
             "telephone": "+1 345-547-8120",
-            "email": "daniel@toctoc.ky",
+            "email": "info@toctoc.ky",
             "areaServed": "KY",
             "availableLanguage": ["English", "Spanish"]
           },
-          "email": "daniel@toctoc.ky",
+          "email": "info@toctoc.ky",
           "priceRange": "$$",
           "memberOf": {
             "@type": "Organization",

@@ -611,7 +611,7 @@ function toctoc_seo_report_html( $result, $lead = array() ) {
 		. ' &nbsp;&middot;&nbsp; '
 		. '<a href="https://toctoc.ky/seo-checker/" style="color:#066CE0;text-decoration:none;">Re-run this check</a>'
 		. ' &nbsp;&middot;&nbsp; '
-		. '<a href="mailto:daniel@toctoc.ky" style="color:#066CE0;text-decoration:none;">daniel@toctoc.ky</a>'
+		. '<a href="mailto:info@toctoc.ky" style="color:#066CE0;text-decoration:none;">info@toctoc.ky</a>'
 		. '</td></tr></table>';
 	$h .= '<p style="font-family:Arial,sans-serif;font-size:12px;color:#94a3b8;margin-top:18px;">'
 		. 'Want these fixed rather than listed? '
