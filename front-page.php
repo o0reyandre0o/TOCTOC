@@ -28,8 +28,8 @@
         <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none z-[2]"></div>
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-44 md:pt-52 pb-24 text-center flex flex-col items-center">
-            <?php /* Wider than the hero column on desktop, in two balanced lines (29 Sep 2026). */ ?>
-            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[min(4.6vw,88px)] lg:w-[min(1600px,calc(100vw-3rem))] leading-[0.95] text-slate-900 font-display [text-wrap:balance]">
+            <?php /* Wider than the hero column on desktop, at the original 100px, in balanced lines (29 Sep 2026). */ ?>
+            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[100px] lg:w-[min(1500px,calc(100vw-3rem))] leading-[0.95] text-slate-900 font-display [text-wrap:balance]">
                 A Cayman Marketing Agency focused on getting your business in <em class="italic text-sky-deep font-display">AI&nbsp;Answers.</em>
             </h1>
 
