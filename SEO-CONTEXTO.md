@@ -297,10 +297,14 @@ curl -s -o /dev/null -w '%{http_code}' https://DOMINIO/sitemap.xml
 
 ## NAP: nombre, dirección y teléfono en internet (auditoría 2026-09-28)
 
-Lo que dice **la web** (las 24 páginas y el schema coinciden entre sí):
-TocToc Marketing (alternateName "Toc Toc Marketing") · 207 Sparky's Drive,
-George Town, KY1-1110 · +1 (345) 547-8120 · info@toctoc.ky. Razón social que se
-muestra en la home: TOC TOC CORPORATION LTD.
+**NAP canónico (confirmado por Andre el 28 sep, igual al Perfil de Google):**
+Toc Toc Marketing · 207 Sparky's Dr, George Town KY1-1110, Cayman Islands ·
++1 345-547-8120 · daniel@toctoc.ky · https://toctoc.ky · lun–vie 9:00–18:00.
+La web entera ya lo usa (commit 1f4a0b8). El 29 sep se preparó el texto para
+que el equipo de redes lo copie en Facebook, Instagram y LinkedIn.
+
+Antes de unificar, la web decía "TocToc Marketing" e info@toctoc.ky. Razón
+social que se muestra en la home: TOC TOC CORPORATION LTD.
 
 Lo que dice **el resto de internet**, y dónde no cuadra:
 
@@ -318,8 +322,11 @@ canónica y llevarla a todas partes, empezando por el Perfil de Google.
 **Dominio viejo `wearetoctoc.com`:** sigue resolviendo y muestra un listado de
 directorio ("Index of /", con `_.htaccess` y un `llms.txt` vacío). Todas sus
 páginas antiguas dan 404 pero Google aún las tiene indexadas ("SEO Agency
-Orlando | We Are Toc Toc", "Cookie Policy (UK)", la licencia en PDF). Arreglo:
-301 de todo el dominio a toctoc.ky, que también corta el listado.
+Orlando | We Are Toc Toc", "Cookie Policy (UK)", la licencia en PDF). **Hecho
+el 29 sep:** `.htaccess` con `Options -Indexes` y 301 de todo el dominio (con y
+sin www, http y https) al home de toctoc.ky. Pendiente: la excepción de
+`/.well-known/` no se está aplicando (también redirige); no rompe nada porque
+AutoSSL puede validar por DNS en ese mismo servidor.
 
 **Directorios donde no aparecemos** (oportunidad, no inconsistencia): Cayman
 Resident (agencias), eCayOnline, topseos.com. FindYello bloquea bots, sin
