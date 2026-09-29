@@ -151,7 +151,7 @@ $ttc_mail    = 'mailto:info@toctoc.ky?subject=' . rawurlencode( 'Chamber member 
             <div>
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Who you will talk to</span>
                 <h2 class="mt-6 text-4xl md:text-5xl font-display text-slate-900 leading-[0.95]">
-                    <a href="<?php echo esc_url( home_url( '/team/daniel-garrido/' ) ); ?>" class="decoration-none hover:text-sky-deep transition-colors">Daniel Garrido</a>, Founder &amp; CEO
+                    <a href="<?php echo esc_url( home_url( '/team/daniel-garrido/' ) ); ?>" class="decoration-none hover:text-sky-deep transition-colors">Daniel Garrido</a>, Founder
                 </h2>
                 <p class="mt-6 text-lg text-slate-600 leading-relaxed">
                     Daniel represents Toc Toc Marketing at the Chamber and scopes every project himself. Behind him is a small team in George Town working in English and Spanish &mdash; <a href="<?php echo esc_url( home_url( '/team/' ) ); ?>" class="font-bold text-sky-deep decoration-none hover:underline">meet the team</a>.

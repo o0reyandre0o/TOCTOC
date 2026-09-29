@@ -197,7 +197,7 @@
         ],
         'daniel-garrido' => [
             'title' => 'Daniel Garrido | Founder of Toc Toc Marketing, Cayman',
-            'desc' => 'Founder and CEO of Toc Toc Marketing in George Town. Scopes every project, leads client strategy, and writes on AI search visibility.'
+            'desc' => 'Founder of Toc Toc Marketing in George Town. Scopes every project, leads client strategy, and writes on AI search visibility.'
         ],
         'andre-gutierrez' => [
             'title' => 'Andre Gutierrez | Web Developer, Toc Toc Marketing',
@@ -582,7 +582,7 @@
             "birthPlace": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Caracas", "addressRegion": "Distrito Capital", "addressCountry": "VE" } },
             "url": "https://toctoc.ky/team/daniel-garrido/",
             "name": "Daniel Garrido",
-            "jobTitle": "Founder & CEO",
+            "jobTitle": "Founder",
             "knowsAbout": ["Web Design", "Search Engine Optimization", "Digital Marketing", "Brand Strategy"],
             "sameAs": ["https://www.linkedin.com/in/bydanielgarrido/", "https://danielgarrido.com", "https://toctoc.ky/team/daniel-garrido/"],
             "worksFor": { "@id": "https://toctoc.ky/#organization" }

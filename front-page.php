@@ -111,7 +111,7 @@
                 Our <em class="italic text-sky-deep font-display">AI Search Visibility Framework</em> is how we make a local business easy for AI assistants to find, verify and cite &mdash; and the recordings below show what it has done for real clients.
             </p>
             <p class="mt-10 text-base text-slate-500">
-                Founded and led by <a href="https://toctoc.ky/team/daniel-garrido/" class="font-bold text-slate-900 decoration-none hover:text-sky-deep">Daniel Garrido</a>, Founder &amp; CEO, with a small team in George Town working in English and Spanish.
+                Founded and led by <a href="https://toctoc.ky/team/daniel-garrido/" class="font-bold text-slate-900 decoration-none hover:text-sky-deep">Daniel Garrido</a>, Founder, with a small team in George Town working in English and Spanish.
             </p>
         </div>
     </section>
@@ -462,7 +462,7 @@
         <div class="relative mx-auto max-w-7xl px-6">
             
             <!-- Floating Cards Container (H2 centered behind reviews on Desktop, Stacked on Mobile) -->
-            <div class="relative min-h-[800px] md:h-[1000px] w-full mt-10 flex flex-col md:block">
+            <div class="relative min-h-[800px] md:h-[1160px] w-full mt-10 flex flex-col md:block">
                 
                 <!-- TITLE: Top on Mobile, Centered on Desktop -->
                 <div class="relative md:absolute md:inset-0 flex flex-col items-center md:justify-center text-center z-0 pointer-events-none mb-20 md:mb-0">
@@ -477,12 +477,14 @@
                 </div>
 
                 <?php /*
-                  Every card is a real Google review, quoted from the business profile
-                  and credited to the name the reviewer used there. On 29 Sep 2026
+                  Every card is a real review, quoted from where the client wrote it and
+                  credited to the name they used there: Google reviews, plus Sutton
+                  Burke's comment on Andre's LinkedIn post (added 29 Sep 2026 at
+                  Daniel's request, labelled "via LinkedIn"). On 29 Sep 2026
                   (Daniel, Trello 606) three invented attributions from the May
                   redesign were removed: "Mark Thompson", "Sarah Jenkins · Marketing
                   Executive · UK" (with a made-up "doubled our leads" quote) and
-                  "James Wilson". Do not add reviews that are not on Google.
+                  "James Wilson". Do not add a review nobody actually wrote.
                 */ ?>
                 <!-- Floating Cards -->
                 <div class="flex flex-col gap-6 md:block">
@@ -567,6 +569,20 @@
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
                             “Daniel Garrido and his team are absolutely top-tier! They built an incredible website for me, making the process stress-free.”
+                        </p>
+                    </div>
+
+                    <!-- Review 7: Sutton Burke, from her comment on LinkedIn -->
+                    <div class="relative md:absolute md:top-[900px] md:left-[calc(50%-190px)] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 md:float-animation md:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 rounded-full bg-sky-pale text-sky-deep flex items-center justify-center font-bold text-xl shadow-inner">SB</div>
+                            <div>
+                                <a href="https://suttonburke.com" target="_blank" rel="noopener" class="font-bold text-black leading-tight decoration-none hover:text-sky-deep">Sutton Burke</a>
+                                <div class="text-xs text-slate-500">Author &amp; therapist &middot; via LinkedIn</div>
+                            </div>
+                        </div>
+                        <p class="text-xl font-bold leading-[1.4] text-slate-800">
+                            &ldquo;I love my website so much!! You did such an excellent job.&rdquo;
                         </p>
                     </div>
                 </div>

@@ -62,7 +62,7 @@ get_header(); ?>
                 <div id="daniel-garrido" class="mt-16 flex items-center gap-8 p-10 rounded-[3rem] bg-white/5 border border-white/10 w-fit">
                     <?php $daniel_photo = 'https://toctoc.ky/wp-content/uploads/2026/07/dsf5319-1.webp'; ?>
                     <?php if ( $daniel_photo ) : ?>
-                    <img src="<?php echo esc_url( $daniel_photo ); ?>" alt="Daniel Garrido, Founder & CEO of Toc Toc Marketing" width="80" height="80" loading="lazy" class="w-28 h-28 rounded-full object-cover object-top shrink-0" />
+                    <img src="<?php echo esc_url( $daniel_photo ); ?>" alt="Daniel Garrido, Founder of Toc Toc Marketing" width="80" height="80" loading="lazy" class="w-28 h-28 rounded-full object-cover object-top shrink-0" />
                     <?php else : ?>
                     <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -70,7 +70,7 @@ get_header(); ?>
                     <?php endif; ?>
                     <div>
                         <div class="text-4xl font-display text-white"><a href="https://toctoc.ky/team/daniel-garrido/" class="decoration-none hover:text-accent transition-colors">Daniel Garrido</a></div>
-                        <div class="text-sm uppercase tracking-[0.3em] text-white/40 font-bold">Founder &amp; CEO</div>
+                        <div class="text-sm uppercase tracking-[0.3em] text-white/40 font-bold">Founder</div>
                         <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
                             <a href="https://danielgarrido.com" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:gap-2.5 transition-all decoration-none">
                                 danielgarrido.com
