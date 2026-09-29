@@ -465,7 +465,8 @@
             <div class="relative min-h-[800px] md:h-[1160px] w-full mt-10 flex flex-col md:block">
                 
                 <!-- TITLE: Top on Mobile, Centered on Desktop -->
-                <div class="relative md:absolute md:inset-0 flex flex-col items-center md:justify-center text-center z-0 pointer-events-none mb-20 md:mb-0">
+                <?php /* Pinned to the first 1000px: the box grew to 1160px for Sutton's card, and centring on the full height pushed the rating under the cards. */ ?>
+                <div class="relative md:absolute md:inset-x-0 md:top-0 md:h-[1000px] flex flex-col items-center md:justify-center text-center z-0 pointer-events-none mb-20 md:mb-0">
                     <h2 class="text-5xl md:text-[90px] font-display leading-[0.85] tracking-tighter text-black select-none">
                         Toc Toc Works <br />
                         <span class="italic">Wherever You Do</span>
