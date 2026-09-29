@@ -4,7 +4,8 @@
 /*
  * The Venezuela Earthquake Appeal bar that sat above the nav here was removed
  * on 29 Sep 2026 (Daniel, Trello card 606): an agent reading the home page
- * took it as part of what we do. The /venezuela/ page itself stays live.
+ * took it as part of what we do. The /venezuela/ page was unpublished the same
+ * day and answers 410.
  */
 ?>
 

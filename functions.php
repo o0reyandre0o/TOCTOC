@@ -1080,7 +1080,6 @@ add_action( 'init', function () {
         [ 'https://toctoc.ky/team/andre-gutierrez/',                               '0.6' ],
         [ 'https://toctoc.ky/team/nora-bravo/',                                    '0.6' ],
         [ 'https://toctoc.ky/team/adriana-brito/',                                 '0.6' ],
-        [ 'https://toctoc.ky/venezuela/',                                          '0.9' ],
         [ 'https://toctoc.ky/seo-checker/',                                        '0.7' ],
         [ 'https://toctoc.ky/digital-marketing-cayman-islands-guide/',             '0.8' ],
         [ 'https://toctoc.ky/blog/',                                               '0.7' ],
@@ -1643,7 +1642,9 @@ add_action( 'template_redirect', function () {
         exit;
     }
     $path = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' );
-    $gone = array( 'plugins', '2026/09/21/deploy-wordpress-theme-from-github' );
+    // /venezuela/ (the June 2026 earthquake appeal) and /homepage/ (a literal
+    // copy of the front page) were unpublished on 29 Sep 2026.
+    $gone = array( 'plugins', '2026/09/21/deploy-wordpress-theme-from-github', 'venezuela', 'homepage' );
     if ( in_array( $path, $gone, true ) ) {
         status_header( 410 );
         nocache_headers();
