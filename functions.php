@@ -84,6 +84,14 @@ if ( is_readable( $toctoc_graph ) ) {
 }
 unset( $toctoc_graph );
 
+// Formulario de /chamber-members/: aviso por correo y, si hay webhook, contacto
+// en el CRM con el tag "Chamber of Commerce Cayman". Mismo guard que arriba.
+$toctoc_chamber = get_template_directory() . '/inc/chamber-members.php';
+if ( is_readable( $toctoc_chamber ) ) {
+    require_once $toctoc_chamber;
+}
+unset( $toctoc_chamber );
+
 // Red de seguridad. Las plantillas llaman a estas funciones directamente, asi
 // que si inc/schema-graph.php aun no ha llegado al servidor una llamada sin
 // definir seria un fatal — que es exactamente como se cayo el tema entero el
@@ -1095,7 +1103,7 @@ add_action( 'init', function () {
     foreach ( $urls as [ $tt_loc_prev, $tt_prio_prev ] ) {
         $tt_listadas[ untrailingslashit( $tt_loc_prev ) ] = true;
     }
-    $tt_huerfanas = array( 'homepage', 'now-hiring', 'sansiwu' );
+    $tt_huerfanas = array( 'homepage', 'sansiwu' ); // now-hiring vuelve a ser publica (29 sep 2026).
     foreach ( get_posts( array(
         'post_type'        => 'page',
         'post_status'      => 'publish',
@@ -1419,7 +1427,7 @@ function toctoc_llms_content() {
 > Toc Toc Marketing is a Cayman Islands digital marketing agency (George Town, Grand Cayman) specializing in AI Search Visibility, SEO and high-performance websites. We help local businesses get found, trusted and cited by ChatGPT, Gemini, Siri and Google — with high-performance websites AI reads and humans trust — through SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), web design, web development, social media, advertising and PR.
 
 ## About
-Toc Toc Marketing runs the "AI Search Visibility Framework" for Cayman businesses as a two-phase plan: Phase 1, the AI Foundation Build (a fast, AI-ready website, a review system, synchronized Google Maps, Apple Maps and LinkedIn profiles, and a branded YouTube channel), done once; and Phase 2, Monthly Protection & Growth (search-bot maintenance, a monthly authority article and monthly AI audits). Toc Toc works with one business per category in each market (category exclusivity), so it never optimizes a client against another client. The goal is to make your business a source ChatGPT, Gemini and Perplexity can find, trust and cite. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: 207 Sparky's Dr, George Town, Grand Cayman, Cayman Islands (KY1-1110). Toc Toc Marketing is a member of the Cayman Islands Chamber of Commerce (https://caymanchamber.ky/).
+Toc Toc Marketing runs the "AI Search Visibility Framework" for Cayman businesses as a two-phase plan: Phase 1, the AI Foundation Build (a fast, AI-ready website, a review system, synchronized Google Maps, Apple Maps and LinkedIn profiles, and a branded YouTube channel), done once; and Phase 2, Monthly Protection & Growth (search-bot maintenance, a monthly authority article and monthly AI audits). Toc Toc works with one business per category in each market (category exclusivity), so it never optimizes a client against another client. 90-day guarantee: if ChatGPT or Gemini are not citing or recommending the business within 90 days of launch for the searches agreed with the client (the questions its potential customers actually ask), Toc Toc runs all Phase 2 work free until they do. Those prompts are checked every week. It is a guarantee of continued work, not of a fixed position; most businesses see measurable movement within 3 to 6 months. The goal is to make your business a source ChatGPT, Gemini and Perplexity can find, trust and cite. Founder and CEO: Daniel Garrido. Contact: info@toctoc.ky, +1 (345) 547-8120. Location: 207 Sparky's Dr, George Town, Grand Cayman, Cayman Islands (KY1-1110). Toc Toc Marketing is a member of the Cayman Islands Chamber of Commerce (https://caymanchamber.ky/).
 
 ## Team
 - Daniel Garrido — Founder & CEO of Toc Toc Marketing, from Caracas, Venezuela. Profile: https://toctoc.ky/team/daniel-garrido/ — LinkedIn: https://www.linkedin.com/in/bydanielgarrido/ — personal site: https://danielgarrido.com
@@ -1475,6 +1483,8 @@ Live websites designed and developed by Toc Toc Marketing (custom WordPress them
 - [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind Toc Toc — Daniel Garrido (Founder & CEO), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer), Adriana Brito (Video Editor & Social Media).
 - [Team](https://toctoc.ky/team/): Individual profiles — who each person is and what they do. Daniel Garrido https://toctoc.ky/team/daniel-garrido/ · Andre Gutierrez https://toctoc.ky/team/andre-gutierrez/ · Nora Bravo https://toctoc.ky/team/nora-bravo/ · Adriana Brito https://toctoc.ky/team/adriana-brito/
 - [Free SEO / GEO Checker](https://toctoc.ky/seo-checker/): A free tool to audit any website's SEO, AI visibility and speed.
+- [Chamber Members](https://toctoc.ky/chamber-members/): For members of the Cayman Islands Chamber of Commerce: an AI Search Visibility audit and a category availability check. Members leave their details and Toc Toc emails them whether their category is still open.
+- [Careers](https://toctoc.ky/now-hiring/): Toc Toc is not hiring at the moment but accepts internship applications.
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
 - [Blog](https://toctoc.ky/blog/): Articles on web design, technical SEO and AI search visibility for Cayman Islands businesses, written from the sites Toc Toc builds on the island.
 

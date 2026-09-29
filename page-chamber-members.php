@@ -10,8 +10,9 @@
  * the Chamber beyond one line in a trust card.
  *
  * Slug-matched (page-chamber-members.php), so the WordPress page only needs the
- * slug chamber-members. It was created as a DRAFT: Daniel confirms the offer
- * wording before it goes public. No prices, no guaranteed outcomes.
+ * slug chamber-members. Approved by Daniel and published 29 Sep 2026, with the
+ * category-check form handled in inc/chamber-members.php (email to info@ plus
+ * the CRM tag "Chamber of Commerce Cayman"). No prices, no guaranteed outcomes.
  *
  * @package Toc Toc
  */
@@ -53,6 +54,7 @@ $ttc_mail    = 'mailto:info@toctoc.ky?subject=' . rawurlencode( 'Chamber member 
             <div class="max-w-3xl mb-14">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">The member offer</span>
                 <h2 class="mt-6 text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">Two things we do for <em class="italic text-sky-deep font-display">every member who asks.</em></h2>
+                <a href="#check" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-sky-deep hover:gap-3 transition-all decoration-none">Check your category now &darr;</a>
             </div>
             <div class="grid gap-8 md:grid-cols-2">
                 <article class="rounded-[2.5rem] bg-white border border-slate-100 p-10 shadow-soft">
@@ -71,23 +73,75 @@ $ttc_mail    = 'mailto:info@toctoc.ky?subject=' . rawurlencode( 'Chamber member 
         </div>
     </section>
 
-    <!-- How it works -->
-    <section class="py-24 md:py-28 bg-slate-50">
-        <div class="mx-auto max-w-5xl px-6">
-            <h2 class="text-4xl md:text-6xl font-display text-slate-900 leading-[0.95]">How to <em class="italic text-sky-deep font-display">claim it</em></h2>
-            <ol class="mt-14 grid gap-6 md:grid-cols-3">
-                <?php foreach ( array(
-                    array( 'Get in touch', 'Call, WhatsApp or email us and mention you are a Chamber member.' ),
-                    array( 'We run the checks', 'We run the audit and check whether your category is available.' ),
-                    array( 'We walk you through it', 'A short call to go over what we found. What you do next is up to you.' ),
-                ) as $ttc_i => $ttc_step ) : ?>
-                <li class="rounded-[2rem] bg-white border border-slate-100 p-8 shadow-soft">
-                    <span class="font-mono text-xs font-bold text-sky-deep"><?php echo esc_html( sprintf( '%02d', $ttc_i + 1 ) ); ?></span>
-                    <h3 class="mt-4 text-2xl font-display text-slate-900"><?php echo esc_html( $ttc_step[0] ); ?></h3>
-                    <p class="mt-3 text-sm text-slate-500 leading-relaxed"><?php echo esc_html( $ttc_step[1] ); ?></p>
-                </li>
+    <!-- Category check form -->
+    <?php
+    $ttc_state = isset( $_GET['form'] ) ? sanitize_key( wp_unslash( $_GET['form'] ) ) : '';
+    $ttc_ts    = get_option( 'toctoc_ts_site', '' );
+    $ttc_notes = array(
+        'sent'    => array( 'bg-accent/20 text-slate-900', 'Thank you. We have your details and will email you whether your category is available.' ),
+        'missing' => array( 'bg-red-50 text-red-800', 'Please fill in your name, business, category and a valid email.' ),
+        'limit'   => array( 'bg-red-50 text-red-800', 'Too many attempts from this connection. Please try again in an hour, or email info@toctoc.ky.' ),
+        'error'   => array( 'bg-red-50 text-red-800', 'The form expired. Please send it again.' ),
+    );
+    ?>
+    <section id="check" class="py-24 md:py-28 bg-slate-50 scroll-mt-28">
+        <div class="mx-auto max-w-5xl px-6 grid md:grid-cols-5 gap-12">
+            <div class="md:col-span-2">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Category check</span>
+                <h2 class="mt-6 text-4xl md:text-5xl font-display text-slate-900 leading-[0.95]">Is your category <em class="italic text-sky-deep font-display">still open?</em></h2>
+                <p class="mt-6 text-lg text-slate-600 leading-relaxed">Leave your details and we will email you whether we can take on your category. If you would like the audit too, say so in the message.</p>
+                <ol class="mt-8 space-y-3 text-sm text-slate-500">
+                    <li><strong class="text-slate-900">1.</strong> You send the form.</li>
+                    <li><strong class="text-slate-900">2.</strong> We check the category and reply by email.</li>
+                    <li><strong class="text-slate-900">3.</strong> If it is open, we offer a short call. What you do next is up to you.</li>
+                </ol>
+            </div>
+            <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="md:col-span-3 rounded-[2.5rem] bg-white border border-slate-100 p-8 md:p-10 shadow-soft grid gap-5" id="ttc-form">
+                <?php if ( isset( $ttc_notes[ $ttc_state ] ) ) : ?>
+                <p class="rounded-2xl px-5 py-4 text-sm font-bold <?php echo esc_attr( $ttc_notes[ $ttc_state ][0] ); ?>" role="status"><?php echo esc_html( $ttc_notes[ $ttc_state ][1] ); ?></p>
+                <?php endif; ?>
+                <input type="hidden" name="action" value="toctoc_chamber" />
+                <?php wp_nonce_field( 'toctoc_chamber', 'ttc_nonce' ); ?>
+                <input type="hidden" name="ttseo_t" value="0" />
+                <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+                    <label>Leave this empty <input type="text" name="website_extra" tabindex="-1" autocomplete="off" /></label>
+                </div>
+                <?php
+                foreach ( array(
+                    array( 'name', 'Your name', 'text', true, 'name' ),
+                    array( 'business', 'Business name', 'text', true, 'organization' ),
+                    array( 'category', 'Your category (e.g. restaurant, law firm, dentist)', 'text', true, 'off' ),
+                    array( 'email', 'Email', 'email', true, 'email' ),
+                    array( 'phone', 'Phone (optional)', 'tel', false, 'tel' ),
+                    array( 'website', 'Website (optional)', 'url', false, 'url' ),
+                ) as $ttc_field ) :
+                ?>
+                <label class="grid gap-2 text-sm font-bold text-slate-700">
+                    <?php echo esc_html( $ttc_field[1] ); ?>
+                    <input type="<?php echo esc_attr( $ttc_field[2] ); ?>" name="<?php echo esc_attr( $ttc_field[0] ); ?>" autocomplete="<?php echo esc_attr( $ttc_field[4] ); ?>" <?php echo $ttc_field[3] ? 'required' : ''; ?> class="h-12 rounded-xl border border-slate-200 bg-white px-4 text-base font-normal text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-deep" />
+                </label>
                 <?php endforeach; ?>
-            </ol>
+                <label class="grid gap-2 text-sm font-bold text-slate-700">
+                    Anything we should know? (optional)
+                    <textarea name="message" rows="3" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-base font-normal text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-deep"></textarea>
+                </label>
+                <?php if ( $ttc_ts ) : ?>
+                <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+                <div class="cf-turnstile" data-sitekey="<?php echo esc_attr( $ttc_ts ); ?>" data-response-field-name="ts_token"></div>
+                <?php endif; ?>
+                <button type="submit" class="mt-2 inline-flex items-center justify-center gap-3 rounded-full bg-slate-950 text-white h-14 px-8 text-lg font-bold shadow-pill transition-transform hover:scale-[1.02]">Check my category</button>
+                <p class="text-xs text-slate-400">We only use your details to answer you. See our <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>" class="underline">privacy policy</a>.</p>
+            </form>
+            <script>
+            (function () {
+                var f = document.getElementById('ttc-form'), t0 = Date.now();
+                if (!f) return;
+                f.addEventListener('submit', function () {
+                    f.elements.ttseo_t.value = String(Date.now() - t0);
+                    if (window.dataLayer) window.dataLayer.push({ event: 'chamber_lead' });
+                });
+            })();
+            </script>
         </div>
     </section>
 

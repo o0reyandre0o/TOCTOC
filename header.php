@@ -219,6 +219,10 @@
             'title' => 'Cayman Chamber of Commerce Members | Toc Toc Marketing',
             'desc' => 'For Cayman Islands Chamber of Commerce members: an AI Search Visibility audit and a category availability check from Toc Toc Marketing in George Town.'
         ],
+        'now-hiring' => [
+            'title' => 'Careers & Internships | Toc Toc Marketing, Cayman',
+            'desc' => 'Toc Toc Marketing is not hiring right now, but accepts internship applications in design, video, and web development and SEO. Apply by email.'
+        ],
         'cookie-policy' => [
             'title' => 'Cookie Policy | Toc Toc Marketing Cayman Islands',
             'desc' => 'Read Toc Toc Marketing\'s Cookie Policy. Learn how we use cookies to enhance your experience on our Cayman Islands digital marketing agency website.'
@@ -294,7 +298,7 @@
     // The three slugs are orphans from older builds that still answer 200:
     // /homepage/ is a literal copy of the front page, /now-hiring/ and /sansiwu/
     // are stale since 2024. None are linked from the site or the sitemap.
-    $orphan_slugs = ['homepage', 'now-hiring', 'sansiwu'];
+    $orphan_slugs = ['homepage', 'sansiwu']; // now-hiring public again since 29 Sep 2026 (internships).
     $is_noindex = is_404()
         || is_search()
         || is_archive()
@@ -645,8 +649,8 @@
           },
           "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 19.2945176,
-            "longitude": -81.3754188
+            "latitude": 19.3021577,
+            "longitude": -81.3649931
           },
           "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",

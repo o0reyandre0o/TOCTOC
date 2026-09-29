@@ -26,6 +26,7 @@
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/CICOC-Logo-white-01.png' ); ?>" alt="Cayman Islands Chamber of Commerce" width="320" height="320" loading="lazy" decoding="async" class="w-20 h-20 opacity-80 transition-all group-hover:opacity-100 group-hover:scale-105" />
                     <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-white/50 group-hover:text-white transition-colors">Member</span>
                 </a>
+                <a href="/chamber-members/" class="mt-3 block text-xs font-bold text-white/60 hover:text-accent transition-colors decoration-none">Chamber members: check your category &rarr;</a>
             </div>
             <nav aria-label="Services" class="flex flex-col gap-3">
                 <h2 class="text-xl md:text-2xl font-display italic text-accent mb-3">Our Services</h2>

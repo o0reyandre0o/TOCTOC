@@ -1,19 +1,12 @@
 <?php get_header(); ?>
 
-<!-- Venezuela appeal bar — slim black strip pinned above everything -->
-<div class="fixed top-0 inset-x-0 z-[1100] bg-slate-950 text-white">
-    <div class="mx-auto max-w-6xl px-4 h-11 flex items-center justify-center gap-2 sm:gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 text-[#ED1C24]"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        <span class="text-xs sm:text-sm font-bold truncate">Venezuela Earthquake Appeal</span>
-        <a href="<?php echo esc_url( home_url( '/venezuela/' ) ); ?>" class="shrink-0 inline-flex items-center rounded-full bg-[#C8102E] px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold text-white hover:bg-[#A50D26] transition-colors decoration-none">
-            Donate now
-        </a>
-    </div>
-</div>
-<style>
-    /* Push the floating nav below the appeal bar (home page only). */
-    nav.fixed { top: 3.5rem !important; }
-</style>
+<?php
+/*
+ * The Venezuela Earthquake Appeal bar that sat above the nav here was removed
+ * on 29 Sep 2026 (Daniel, Trello card 606): an agent reading the home page
+ * took it as part of what we do. The /venezuela/ page itself stays live.
+ */
+?>
 
 <main class="min-h-screen bg-background text-foreground">
     <!-- Section 1: Hero Section -->
@@ -280,11 +273,11 @@
                     </div>
                     <h3 class="text-3xl font-display mb-2">What happens if AI still does not recommend you</h3>
                     <p class="text-sm font-bold text-accent uppercase tracking-wider mb-6">Zero Risk</p>
-                    <p class="text-sm leading-relaxed text-white/60 mb-6">If ChatGPT or Gemini aren&rsquo;t recommending you for your primary local searches within 90 days, we run all Phase 2 updates <strong class="text-white">FREE</strong> until they do.</p>
+                    <p class="text-sm leading-relaxed text-white/60 mb-6">If ChatGPT or Gemini aren&rsquo;t recommending you within 90 days for the searches we agree with you &mdash; the questions your customers actually ask &mdash; we run all Phase 2 work <strong class="text-white">FREE</strong> until they do. We check those searches every week.</p>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-3">The Promise</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">No Fine Print</span>
-                        <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">No Excuses</span>
+                        <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">Your Real Searches</span>
+                        <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">Checked Weekly</span>
                         <span class="rounded-full bg-white/10 text-white/70 text-[10px] px-3.5 py-1.5 font-bold uppercase tracking-widest border border-white/10">One Per Category</span>
                     </div>
                     <p class="mt-6 text-xs leading-relaxed text-white/50"><strong class="text-white/80">One Per Category:</strong> we take on one business per category in each market, so we are never optimizing you against another client. <a href="/ai-search-optimization-cayman-islands/#exclusivity" class="font-bold text-accent decoration-none hover:underline">How exclusivity works</a></p>
@@ -481,6 +474,14 @@
                     </div>
                 </div>
 
+                <?php /*
+                  Every card is a real Google review, quoted from the business profile
+                  and credited to the name the reviewer used there. On 29 Sep 2026
+                  (Daniel, Trello 606) three invented attributions from the May
+                  redesign were removed: "Mark Thompson", "Sarah Jenkins · Marketing
+                  Executive · UK" (with a made-up "doubled our leads" quote) and
+                  "James Wilson". Do not add reviews that are not on Google.
+                */ ?>
                 <!-- Floating Cards -->
                 <div class="flex flex-col gap-6 md:block">
                     <!-- Review 1 -->
@@ -489,7 +490,7 @@
                             <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">LF</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Laura Farries</div>
-                                <div class="text-xs text-slate-500">Entrepreneur · Cayman Islands</div>
+                                <div class="text-xs text-slate-500">Google review</div>
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
@@ -500,28 +501,28 @@
                     <!-- Review 2 -->
                     <div class="relative md:absolute md:top-[0px] md:right-[2%] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 md:float-animation md:float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xl shadow-inner">MT</div>
+                            <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xl shadow-inner">PP</div>
                             <div>
-                                <div class="font-bold text-black leading-tight">Mark Thompson</div>
-                                <div class="text-xs text-slate-500">Creative Director · Paradise Paddle</div>
+                                <div class="font-bold text-black leading-tight">Paradise Paddle Cayman</div>
+                                <div class="text-xs text-slate-500">Google review</div>
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
-                            “Working with Daniel at Toc Toc was the best experience we’ve ever had with a marketing agency! Highly recommend.”
+                            “Working with Daniel at Toc Toc was the best experience we’ve ever had with a web designer! Great customer service, always on time.”
                         </p>
                     </div>
 
                     <!-- Review 3 -->
                     <div class="relative md:absolute md:top-[380px] md:left-[0%] w-full md:w-[340px] bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-white z-10 md:float-animation md:float-delayed-2 hover:pause-animation transition-all duration-500">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 font-bold text-xl border border-slate-100">SJ</div>
+                            <div class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 font-bold text-xl border border-slate-100">TM</div>
                             <div>
-                                <div class="font-bold text-black leading-tight">Sarah Jenkins</div>
-                                <div class="text-xs text-slate-500">Marketing Executive · UK</div>
+                                <div class="font-bold text-black leading-tight">Tatus Moya</div>
+                                <div class="text-xs text-slate-500">Google review</div>
                             </div>
                         </div>
                         <p class="text-lg font-bold leading-[1.4] text-slate-700">
-                            “The AI-driven strategy they implemented doubled our leads in months. Professional, fast, and results-oriented.”
+                            “Outstanding team to work with. Daniel and his team are proactive, and genuinely invested in their clients’ success.”
                         </p>
                     </div>
 
@@ -531,7 +532,7 @@
                             <div class="w-14 h-14 rounded-full bg-yellow-100 text-yellow-800 flex items-center justify-center font-bold text-xl shadow-inner">JT</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Janice Tangub</div>
-                                <div class="text-xs text-slate-500">Client · Cayman Islands</div>
+                                <div class="text-xs text-slate-500">Google review</div>
                             </div>
                         </div>
                         <p class="text-lg font-bold leading-[1.4] text-slate-800">
@@ -545,7 +546,7 @@
                             <div class="w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xl shadow-inner">SW</div>
                             <div>
                                 <div class="font-bold text-black leading-tight">Stuart Whittle</div>
-                                <div class="text-xs text-slate-500">Business Owner · Cayman Islands</div>
+                                <div class="text-xs text-slate-500">Google review</div>
                             </div>
                         </div>
                         <p class="text-lg font-bold leading-[1.4] text-slate-800">
@@ -556,14 +557,14 @@
                     <!-- Review 6 -->
                     <div class="relative md:absolute md:top-[620px] md:right-[5%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-50 md:float-animation md:float-delayed-2 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">JW</div>
+                            <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">BS</div>
                             <div>
-                                <div class="font-bold text-black leading-tight">James Wilson</div>
-                                <div class="text-xs text-slate-500">Tech Founder · Bipolaroid Studios</div>
+                                <div class="font-bold text-black leading-tight">Bipolaroid Studios</div>
+                                <div class="text-xs text-slate-500">Google review</div>
                             </div>
                         </div>
                         <p class="text-xl font-bold leading-[1.4] text-slate-800">
-                            “I was looking for a partner who understood the AI era. Toc Toc precision with a local touch. Honestly game-changer.”
+                            “Daniel Garrido and his team are absolutely top-tier! They built an incredible website for me, making the process stress-free.”
                         </p>
                     </div>
                 </div>
@@ -571,7 +572,7 @@
             </div>
 
             <div class="mt-20 flex justify-center relative z-50">
-                <a href="https://www.google.com/maps/place/Toc+Toc+Marketing+-+Digital+Marketing+Agency/@19.2945176,-81.3754188,17z/data=!4m8!3m7!1s0x224ce3f8338a51c1:0xece663baba0755!8m2!3d19.2945176!4d-81.3754188!9m1!1b1!16s%2Fg%2F11t6vf_mtj?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-10 py-5 text-sm font-bold text-slate-900 hover:bg-slate-50 transition-all shadow-xl hover:scale-105 decoration-none">
+                <a href="https://www.google.com/maps/place/Toc+Toc+Marketing/@19.3021577,-81.3649931,17z/data=!4m8!3m7!1s0x224ce3f8338a51c1:0xece663baba0755!8m2!3d19.3021577!4d-81.3649931!9m1!1b1!16s%2Fg%2F11t6vf_mtj?hl=en" target="_blank" class="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-10 py-5 text-sm font-bold text-slate-900 hover:bg-slate-50 transition-all shadow-xl hover:scale-105 decoration-none">
                     <svg viewBox="0 0 24 24" width="20" height="20" class="mr-1"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     View All Reviews
                 </a>

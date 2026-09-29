@@ -440,9 +440,27 @@ $ai_google_rating = function ( $dark = false ) {
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                 </span>
                 <p class="text-2xl md:text-4xl font-display leading-[1.25] max-w-3xl mx-auto">
-                    If your business is not being cited or recommended by ChatGPT or Gemini for your primary local customer searches within <em class="italic text-accent font-display">90 days</em> of launch, we perform all Phase 2 monthly updates completely <em class="italic text-accent font-display">FREE</em> until it is.
+                    If ChatGPT or Gemini are not citing or recommending your business for the searches we agree with you within <em class="italic text-accent font-display">90 days</em> of launch, we run all Phase 2 monthly work <em class="italic text-accent font-display">FREE</em> until they do.
                 </p>
-                <p class="mt-8 text-lg text-white/60">No fine print. No excuses. We keep working until your business gets recommended.</p>
+                <?php /* Guarantee terms defined by Daniel on 29 Sep 2026 (Trello 606). */ ?>
+                <dl class="mt-10 grid gap-4 md:grid-cols-2 text-left max-w-4xl mx-auto">
+                    <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
+                        <dt class="text-[11px] font-bold uppercase tracking-widest text-accent">Which searches</dt>
+                        <dd class="mt-2 text-base text-white/70 leading-relaxed">The questions your potential customers actually ask when they look for what you sell. We agree them with you before launch.</dd>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
+                        <dt class="text-[11px] font-bold uppercase tracking-widest text-accent">Which platforms</dt>
+                        <dd class="mt-2 text-base text-white/70 leading-relaxed">ChatGPT and Gemini.</dd>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
+                        <dt class="text-[11px] font-bold uppercase tracking-widest text-accent">How often</dt>
+                        <dd class="mt-2 text-base text-white/70 leading-relaxed">We run those prompts every week and share what the assistants answered.</dd>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-white/5 border border-white/10 p-6">
+                        <dt class="text-[11px] font-bold uppercase tracking-widest text-accent">What it is, and is not</dt>
+                        <dd class="mt-2 text-base text-white/70 leading-relaxed">A guarantee that we keep working, at our cost, until the results show up. Not a promise of a fixed position: AI answers vary with wording, location and date, and most businesses see measurable movement within 3 to 6 months.</dd>
+                    </div>
+                </dl>
             </div>
         </div>
     </section>
