@@ -1035,7 +1035,7 @@ window.TTSEO = {
         el.innerHTML =
             '<p class="text-xs font-bold uppercase tracking-widest text-sky-deep mb-4">Proud of your score? Share it</p>' +
             '<div class="flex flex-col md:flex-row md:items-center gap-6">' +
-                '<img src="' + esc(badgeUrl) + '" alt="Score badge" width="460" height="72" class="shrink-0 max-w-full h-auto" />' +
+                '<img src="' + esc(badgeUrl) + '" alt="SEO score badge from the Toc Toc checker" width="460" height="72" class="shrink-0 max-w-full h-auto" />' +
                 '<div class="flex-1 min-w-0">' +
                     '<p class="text-sm text-slate-500 mb-2">Paste this on your website or share the image — it links back to the checker:</p>' +
                     '<textarea readonly rows="2" class="ttseo-embed-ta w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600 outline-none"></textarea>' +

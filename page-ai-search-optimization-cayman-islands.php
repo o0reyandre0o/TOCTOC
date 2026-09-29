@@ -164,7 +164,7 @@ $ai_collage = function ( $sites, $idx ) {
     $b = $sites[ $idx[1] % $n ];
     $c = $sites[ $idx[2] % $n ];
     $shot = function ( $s ) {
-        return '<img src="' . esc_url( $s['img'] ) . '" alt="' . esc_attr( wp_strip_all_tags( $s['name'] ) . ' website by Toc Toc' ) . '" '
+        return '<img src="' . esc_url( $s['img'] ) . '" alt="' . esc_attr( toctoc_site_alt( $s ) ) . '" '
             . ( ! empty( $s['w'] ) ? 'width="' . (int) $s['w'] . '" height="' . (int) $s['h'] . '" ' : '' )
             . 'loading="lazy" decoding="async" class="w-full h-auto" />';
     };

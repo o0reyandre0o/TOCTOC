@@ -282,13 +282,13 @@ $dm_faqs = array(
                         </div>
                         <figure class="flex flex-col items-center md:items-start">
                             <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950">
-                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/photo-5102759273703345434-w.webp" alt="19-81 Brewing Co. website by Toc Toc Marketing" width="1273" height="2560" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/photo-5102759273703345434-w.webp" alt="19-81 Brewing Co. website: craft brewery and taproom in Grand Cayman" width="1273" height="2560" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
                             </div>
                             <figcaption class="mt-3 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/50">19-81 website</figcaption>
                         </figure>
                         <figure class="flex flex-col items-center md:items-start">
                             <div class="aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950">
-                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094552.webp" alt="19-81 Brewing Co. Google Business Profile" width="505" height="1198" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+                                <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-094552.webp" alt="19-81 Brewing Co. Google Business Profile listing on Google Maps" width="505" height="1198" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
                             </div>
                             <figcaption class="mt-3 max-w-[280px] text-[11px] font-bold uppercase tracking-widest text-white/50">Google Business Profile</figcaption>
                         </figure>
@@ -305,7 +305,7 @@ $dm_faqs = array(
                 <?php foreach ( $dm_projects as $p ) : ?>
                 <div class="group flex flex-col gap-5">
                     <div class="aspect-video rounded-[2rem] bg-slate-100 overflow-hidden border border-slate-100 shadow-soft">
-                        <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $p['name'] ) . ' website by Toc Toc Marketing' ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="<?php echo esc_url( $p['img'] ); ?>" alt="<?php echo esc_attr( toctoc_site_alt( $p ) ); ?>" <?php echo ! empty( $p['w'] ) ? 'width="' . (int) $p['w'] . '" height="' . (int) $p['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h4 class="text-xl font-display text-slate-900 mb-1"><?php echo wp_kses_post( $p['name'] ); ?></h4>

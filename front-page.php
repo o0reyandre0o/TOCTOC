@@ -17,7 +17,7 @@
             src="<?php echo esc_url( toctoc_clouds_src() ); ?>"
             srcset="<?php echo esc_attr( toctoc_clouds_srcset() ); ?>"
             sizes="100vw"
-            alt="Sky"
+            alt="" aria-hidden="true"
             width="1920"
             height="1280"
             fetchpriority="high"
@@ -338,7 +338,7 @@
                 <!-- Project 1: Adventura -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/photo-5156922354653924700-y-768x416.webp" alt="Adventura Cayman" width="768" height="416" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/photo-5156922354653924700-y-768x416.webp" alt="Adventura Cayman website: premium watersports rentals with real-time booking in Grand Cayman" width="768" height="416" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Adventura Cayman</h3>
@@ -352,7 +352,7 @@
                 <!-- Project 2: Uncle Liu -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-49-04-768x418.webp" alt="Uncle Liu" width="768" height="418" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-49-04-768x418.webp" alt="Uncle Liu website: Szechuan restaurant on Seven Mile Beach, Grand Cayman" width="768" height="418" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">Uncle Liu</h3>
@@ -363,14 +363,14 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Pr-Optics -->
+                <!-- Project 3: PR Optics -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-56-45-768x418.webp" alt="Pr-Optics" width="768" height="418" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/04/image-2026-04-29-16-56-45-768x418.webp" alt="PR Optics website: B2B digital lens lab in Puerto Rico" width="768" height="418" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
-                        <h3 class="text-3xl font-display text-white mb-2">Pr-Optics</h3>
-                        <p class="text-white/60 text-sm mb-6">Modern Optical Boutique website featuring high-end eyewear collections and appointment booking.</p>
+                        <h3 class="text-3xl font-display text-white mb-2">PR Optics</h3>
+                        <p class="text-white/60 text-sm mb-6">B2B digital lens lab in Puerto Rico, with a native SEO and schema engine behind a premium interface.</p>
                         <a href="https://pr-optics.com/" target="_blank" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -380,11 +380,11 @@
                 <!-- Project 4: Smash Burger -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/image-2026-05-13-11-23-39-768x477.webp" alt="Smash Burger" width="768" height="477" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/05/image-2026-05-13-11-23-39-768x477.webp" alt="Carnivore Smash Burger website: smash burger restaurant in the Cayman Islands" width="768" height="477" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
-                        <h3 class="text-3xl font-display text-white mb-2">Smash Burger</h3>
-                        <p class="text-white/60 text-sm mb-6">Vibrant Quick Service Restaurant website with digital ordering and loyalty program.</p>
+                        <h3 class="text-3xl font-display text-white mb-2">Carnivore Smash Burger</h3>
+                        <p class="text-white/60 text-sm mb-6">Premium smash burger spot, with a high-impact design ported from React into WordPress.</p>
                         <a href="https://carnivore.ky/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
@@ -394,10 +394,10 @@
                 <!-- Project 5: Solara -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092614.webp" alt="Solara" width="1897" height="1032" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092614.webp" alt="SolaraPRO website: precision photochromic eyewear brand" width="1897" height="1032" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
-                        <h3 class="text-3xl font-display text-white mb-2">Solara</h3>
+                        <h3 class="text-3xl font-display text-white mb-2">SolaraPRO</h3>
                         <p class="text-white/60 text-sm mb-6">Precision photochromic eyewear brand site with a product-led, search-ready structure.</p>
                         <a href="https://solara-pro.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold text-accent hover:gap-4 transition-all decoration-none">
                             Visit Website <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -408,7 +408,7 @@
                 <!-- Project 6: 19-81 Brewing Co. -->
                 <div class="group flex flex-col gap-6">
                     <div class="aspect-video rounded-[2.5rem] bg-white/5 overflow-hidden border border-white/10 shadow-soft">
-                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp" alt="19-81 Brewing Co." width="1905" height="1026" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                        <img src="https://toctoc.ky/wp-content/uploads/2026/07/captura-de-pantalla-2026-07-17-092511.webp" alt="19-81 Brewing Co. website: craft brewery and taproom in Grand Cayman" width="1905" height="1026" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div>
                         <h3 class="text-3xl font-display text-white mb-2">19-81 Brewing Co.</h3>

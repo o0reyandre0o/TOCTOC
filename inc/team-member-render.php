@@ -193,7 +193,7 @@ get_header(); ?>
 				<?php foreach ( toctoc_team_members() as $tt_other_slug => $tt_other ) : ?>
 					<?php if ( $tt_other_slug === $tt_slug ) { continue; } ?>
 					<a href="<?php echo esc_url( toctoc_team_url( $tt_other_slug ) ); ?>" class="group rounded-[2rem] border border-slate-100 bg-white p-6 shadow-soft hover:shadow-glass transition-all decoration-none flex items-center gap-4">
-						<img src="<?php echo esc_url( $tt_other['photo'] ); ?>" alt="<?php echo esc_attr( $tt_other['name'] ); ?>" width="200" height="200" loading="lazy" decoding="async" class="w-14 h-14 rounded-full object-cover object-top shrink-0" />
+						<img src="<?php echo esc_url( $tt_other['photo'] ); ?>" alt="<?php echo esc_attr( $tt_other['name'] . ', ' . $tt_other['role_plain'] . ' at Toc Toc Marketing' ); ?>" width="200" height="200" loading="lazy" decoding="async" class="w-14 h-14 rounded-full object-cover object-top shrink-0" />
 						<span>
 							<span class="block text-lg font-display text-slate-900 group-hover:text-sky-deep transition-colors"><?php echo esc_html( $tt_other['name'] ); ?></span>
 							<span class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1"><?php echo wp_kses_post( $tt_other['role'] ); ?></span>

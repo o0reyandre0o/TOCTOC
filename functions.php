@@ -552,6 +552,43 @@ function toctoc_showcase_sites() {
 }
 
 /**
+ * Alt text for a portfolio screenshot: "<Name> website: <what the business is>".
+ *
+ * The cards used to say only "<Name> website by Toc Toc Marketing", which tells
+ * an image search or a screen reader nothing about the business (29 Sep 2026).
+ * The description is the first clause of the site's own 'desc' (before the
+ * dash), looked up in toctoc_showcase_sites() by URL when the caller's array
+ * has none. Country is added for the international builds.
+ *
+ * @param array $s Site: name, and optionally desc, url, country.
+ * @return string
+ */
+function toctoc_site_alt( $s ) {
+	$name = trim( wp_strip_all_tags( html_entity_decode( (string) $s['name'], ENT_QUOTES, 'UTF-8' ) ) );
+	$desc = isset( $s['desc'] ) ? (string) $s['desc'] : '';
+	if ( '' === $desc && ! empty( $s['url'] ) ) {
+		$host = preg_replace( '/^www\./', '', (string) wp_parse_url( $s['url'], PHP_URL_HOST ) );
+		foreach ( toctoc_showcase_sites() as $o ) {
+			if ( ! empty( $o['url'] ) && preg_replace( '/^www\./', '', (string) wp_parse_url( $o['url'], PHP_URL_HOST ) ) === $host ) {
+				$desc = $o['desc'];
+				break;
+			}
+		}
+	}
+	$desc = trim( wp_strip_all_tags( html_entity_decode( $desc, ENT_QUOTES, 'UTF-8' ) ) );
+	$what = trim( preg_split( '/\s+[—–]\s+/u', $desc, 2 )[0] );
+	$what = rtrim( $what, '. ' );
+	if ( mb_strlen( $what ) > 100 ) {
+		$what = '';
+	}
+	$alt = $name . ' website';
+	if ( ! empty( $s['country'] ) ) {
+		$alt .= ' (' . wp_strip_all_tags( $s['country'] ) . ')';
+	}
+	return '' !== $what ? $alt . ': ' . $what : $alt . ', built by Toc Toc Marketing';
+}
+
+/**
  * Render the portfolio showcase grid. $dark switches between the dark (Our Work)
  * and light colour treatments.
  *
@@ -582,7 +619,7 @@ function toctoc_render_showcase_grid( $dark = false, $sector = '' ) {
         <div class="group flex flex-col gap-6">
             <div class="aspect-video rounded-[2.5rem] overflow-hidden border shadow-soft <?php echo esc_attr( $frame ); ?> <?php echo empty( $s['img'] ) ? 'flex items-center justify-center px-6' : ''; ?>">
                 <?php if ( ! empty( $s['img'] ) ) : ?>
-                <img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $s['name'] ) . ' website by Toc Toc Marketing' ); ?>" <?php echo ! empty( $s['w'] ) ? 'width="' . (int) $s['w'] . '" height="' . (int) $s['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                <img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( toctoc_site_alt( $s ) ); ?>" <?php echo ! empty( $s['w'] ) ? 'width="' . (int) $s['w'] . '" height="' . (int) $s['h'] . '"' : ''; ?> loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                 <?php else : ?>
                 <span class="font-display text-3xl <?php echo esc_attr( $ph ); ?> text-center leading-tight"><?php echo wp_kses_post( $s['name'] ); ?></span>
                 <?php endif; ?>
@@ -694,7 +731,7 @@ function toctoc_render_international_grid() {
 		<?php foreach ( toctoc_international_sites() as $s ) : ?>
 		<div class="group flex flex-col gap-5">
 			<div class="aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-white/5 shadow-soft">
-				<img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $s['name'] ) . ' website by Toc Toc Marketing' ); ?>" width="1900" height="1030" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+				<img src="<?php echo esc_url( $s['img'] ); ?>" alt="<?php echo esc_attr( toctoc_site_alt( $s ) ); ?>" width="1900" height="1030" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
 			</div>
 			<div>
 				<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-accent">
