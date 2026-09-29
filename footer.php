@@ -37,6 +37,7 @@
                 <a href="/social-media-marketing-services-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Social Media for Algorithmic Trust</a>
                 <a href="/advertising-pr-agency-cayman-islands/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Digital PR for AI Authority Citations</a>
                 <a href="/about-toc-toc-marketing/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">About Us</a>
+                <a href="/now-hiring/" class="text-sm text-white/60 hover:text-white transition-colors decoration-none">Careers</a>
             </nav>
             <div class="flex flex-col md:items-end gap-10">
                 <div class="flex flex-col md:items-end gap-3 text-right">
