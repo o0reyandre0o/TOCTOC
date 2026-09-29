@@ -319,6 +319,7 @@ $ai_google_rating = function ( $dark = false ) {
                     <figcaption class="mt-5 max-w-[300px]">
                         <span class="block text-sm text-slate-500 leading-relaxed"><?php echo wp_kses_post( $pv['desc'] ); ?></span>
                     </figcaption>
+                    <?php function_exists( 'toctoc_render_proof_transcript' ) && toctoc_render_proof_transcript( $pv['mp4'] ); ?>
                 </figure>
                 <?php endforeach; ?>
             </div>

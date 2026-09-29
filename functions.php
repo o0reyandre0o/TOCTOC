@@ -993,6 +993,75 @@ function toctoc_render_proof_video( $args ) {
 }
 
 /**
+ * What each proof clip shows, as text.
+ *
+ * AI assistants and crawlers cannot watch the clips, so the evidence they carry
+ * was invisible to exactly the systems the clips are about (Trello 606, 29 Sep
+ * 2026). These summaries were written from the recordings frame by frame: the
+ * prompt is quoted as typed, the answers are paraphrased, and nothing is claimed
+ * that the recording does not show. Keyed by the clip's file name.
+ *
+ * @return array<string, array{title:string, prompt:string, items:string[]}>
+ */
+function toctoc_proof_transcripts() {
+	return array(
+		'toctoc-ai-results-chinese-1-1.mp4' => array(
+			'title'  => 'Chinese restaurants on Seven Mile Beach',
+			'prompt' => 'What&rsquo;s the best Chinese restaurant in seven mile beach',
+			'items'  => array(
+				'<strong>ChatGPT</strong> (logged out, on a phone) answered with a map of Seven Mile Beach. The first result card was Uncle Liu&rsquo;s Chinese Kitchen, rated 4.9 and open.',
+				'<strong>Gemini 3.5 Flash</strong>, asked the same question, led with Uncle Liu&rsquo;s as a leading spot for authentic Szechuan and Chinese food on Seven Mile Beach, mentioning its 4.9-star rating, its location across from The Westin, and dishes such as hand-pulled Szechuan noodles and dim sum.',
+				'Second in Gemini&rsquo;s list was Coconut Room (with San Si Wu), described as vibrant tropical Asian fusion and street-style takeout.',
+			),
+		),
+		'toctoc-ai-results-japanese-2-1.mp4' => array(
+			'title'  => 'Japanese food near Prospect',
+			'prompt' => 'What&rsquo;s the best Japanese food near prospect',
+			'items'  => array(
+				'<strong>ChatGPT</strong> showed a map with Lucky Rabbit Izakaya Bar &amp; Restaurant as result 1 (rated 4.9) and called it its top pick for someone staying in Prospect: about 5 to 10 minutes away, with an izakaya menu, sushi, robata and cocktails. Kojima Izakaya in George Town came second.',
+				'<strong>Gemini 3.5 Flash</strong>, asked for the best Japanese restaurant near Prospect, listed Lucky Rabbit first as &ldquo;the closest pick&rdquo;: just off the Red Bay roundabout, a cozy izakaya with handmade ramen, yakitori and sushi bowls.',
+			),
+		),
+		'toctoc-ai-results-1981-1.mp4' => array(
+			'title'  => 'Craft breweries in the Cayman Islands',
+			'prompt' => 'Whats the best craft brewery in the Cayman Islands',
+			'items'  => array(
+				'<strong>ChatGPT</strong> put 19-81 Brewing Co. as pin 1 on its map (rated 4.9) and named it its top recommendation for a craft brewery, describing small-batch beers brewed on site, rotating styles and a taproom.',
+				'<strong>Gemini 3.5 Flash</strong> listed 19-81 Brewing Co. first, &ldquo;best for craft beer purists&rdquo;, noting that the name comes from the islands&rsquo; coordinates (19&deg;N, 81&deg;W), the air-conditioned taproom in George Town near the airport, and beers such as the Tropical IPA, the Island Session K&ouml;lsch and seasonal ciders.',
+			),
+		),
+	);
+}
+
+/**
+ * Print the text version of a proof clip, collapsed under the video.
+ *
+ * @param string $mp4  Clip URL; only the three proof clips have a summary.
+ * @param bool   $dark True on dark sections.
+ * @return void
+ */
+function toctoc_render_proof_transcript( $mp4, $dark = false ) {
+	$all = toctoc_proof_transcripts();
+	$key = basename( (string) wp_parse_url( $mp4, PHP_URL_PATH ) );
+	if ( ! isset( $all[ $key ] ) ) {
+		return;
+	}
+	$t    = $all[ $key ];
+	$box  = $dark ? 'border-white/10 bg-white/5 text-white/70' : 'border-slate-100 bg-white text-slate-600';
+	$head = $dark ? 'text-white' : 'text-slate-900';
+	?>
+	<details class="mt-4 w-full max-w-[280px] rounded-2xl border <?php echo esc_attr( $box ); ?> px-4 py-3 text-left text-xs leading-relaxed">
+		<summary class="cursor-pointer font-bold <?php echo esc_attr( $head ); ?>">What the AI answered (text)</summary>
+		<p class="mt-3"><span class="font-bold <?php echo esc_attr( $head ); ?>">Prompt:</span> &ldquo;<?php echo wp_kses_post( $t['prompt'] ); ?>&rdquo;</p>
+		<?php foreach ( $t['items'] as $item ) : ?>
+		<p class="mt-2"><?php echo wp_kses_post( $item ); ?></p>
+		<?php endforeach; ?>
+		<p class="mt-3 opacity-70">A recorded session. AI answers vary with wording, location and date.</p>
+	</details>
+	<?php
+}
+
+/**
  * VideoObject JSON-LD for a list of videos — makes the proof clips eligible for
  * Google video results. Pass [ ['name','description','contentUrl','thumbnailUrl','uploadDate'], ... ].
  */

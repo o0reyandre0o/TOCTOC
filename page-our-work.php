@@ -264,7 +264,7 @@ $ow_cases = array(
                 <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">The Proof Loop</p>
                 <div class="grid md:grid-cols-3 gap-6 items-start">
                     <!-- Video -->
-                    <div class="flex justify-center md:justify-start">
+                    <div class="flex flex-col items-center md:items-start">
                         <?php if ( $c['mp4'] ) : ?>
                         <?php
                         // Facade, not a <video> — see toctoc_render_proof_video(). This
@@ -280,6 +280,9 @@ $ow_cases = array(
                             'overlay' => '<div class="pointer-events-none absolute inset-x-0 top-0 z-40 px-4 pt-4 pb-10 bg-gradient-to-b from-black/85 via-black/45 to-transparent">'
                                 . '<span class="block text-left text-sm font-bold text-white leading-snug drop-shadow-md">' . wp_kses_post( $c['headline'] ) . '</span></div>',
                         ) );
+                        if ( function_exists( 'toctoc_render_proof_transcript' ) ) {
+                            toctoc_render_proof_transcript( $c['mp4'] );
+                        }
                         ?>
                         <?php else : ?>
                         <div class="aspect-[9/16] w-full max-w-[280px] rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/60 flex flex-col items-center justify-center gap-3 text-center px-6">

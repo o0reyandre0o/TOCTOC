@@ -191,6 +191,7 @@
                         <span class="block text-lg font-display text-slate-900 mb-1"><?php echo esc_html( $pv['label'] ); ?></span>
                         <span class="block text-sm text-slate-500 leading-relaxed"><?php echo wp_kses_post( $pv['desc'] ); ?></span>
                     </figcaption>
+                    <?php function_exists( 'toctoc_render_proof_transcript' ) && toctoc_render_proof_transcript( $pv['mp4'] ); ?>
                 </figure>
                 <?php endforeach; ?>
             </div>
