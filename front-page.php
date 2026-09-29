@@ -462,11 +462,11 @@
         <div class="relative mx-auto max-w-7xl px-6">
             
             <!-- Floating Cards Container (H2 centered behind reviews on Desktop, Stacked on Mobile) -->
-            <div class="relative min-h-[800px] md:h-[1250px] w-full mt-10 flex flex-col md:block">
+            <div class="relative min-h-[800px] xl:h-[1250px] w-full mt-10 flex flex-col xl:block">
                 
                 <!-- TITLE: Top on Mobile, Centered on Desktop -->
-                <?php /* Pinned to the first 1000px: the box grew to 1250px for Sutton's card, and centring on the full height pushed the rating under the cards. */ ?>
-                <div class="relative md:absolute md:inset-x-0 md:top-0 md:h-[1000px] flex flex-col items-center md:justify-center text-center z-0 pointer-events-none mb-20 md:mb-0">
+                <?php /* Floating layout from xl (1280px) only; below that the cards sit in a grid. Pinned to the first 1000px: the box grew to 1250px for Sutton's card, and centring on the full height pushed the rating under the cards. */ ?>
+                <div class="relative xl:absolute xl:inset-x-0 xl:top-0 xl:h-[1000px] flex flex-col items-center xl:justify-center text-center z-0 pointer-events-none mb-20 xl:mb-0">
                     <h2 class="text-5xl md:text-[90px] font-display leading-[0.85] tracking-tighter text-black select-none">
                         Toc Toc Works <br />
                         <span class="italic">Wherever You Do</span>
@@ -488,9 +488,9 @@
                   "James Wilson". Do not add reviews that are not on Google.
                 */ ?>
                 <!-- Floating Cards -->
-                <div class="flex flex-col gap-6 md:block">
+                <div class="flex flex-col gap-6 md:grid md:grid-cols-2 xl:block">
                     <!-- Review 1 -->
-                    <div class="relative md:absolute md:top-[50px] md:left-[2%] w-full md:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-20 md:float-animation hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                    <div class="relative xl:absolute xl:top-[50px] xl:left-[2%] w-full xl:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-20 xl:float-animation hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">LF</div>
                             <div>
@@ -504,7 +504,7 @@
                     </div>
 
                     <!-- Review 2 -->
-                    <div class="relative md:absolute md:top-[0px] md:right-[2%] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 md:float-animation md:float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                    <div class="relative xl:absolute xl:top-[0px] xl:right-[2%] w-full xl:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 xl:float-animation xl:float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xl shadow-inner">PP</div>
                             <div>
@@ -518,7 +518,7 @@
                     </div>
 
                     <!-- Review 3 -->
-                    <div class="relative md:absolute md:top-[380px] md:left-[0%] w-full md:w-[340px] bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-white z-10 md:float-animation md:float-delayed-2 hover:pause-animation transition-all duration-500">
+                    <div class="relative xl:absolute xl:top-[380px] xl:left-[0%] w-full xl:w-[340px] bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-white z-10 xl:float-animation xl:float-delayed-2 hover:pause-animation transition-all duration-500">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 font-bold text-xl border border-slate-100">TM</div>
                             <div>
@@ -532,7 +532,7 @@
                     </div>
 
                     <!-- Review 4 -->
-                    <div class="relative md:absolute md:top-[320px] md:right-[0%] w-full md:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 md:float-animation md:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                    <div class="relative xl:absolute xl:top-[320px] xl:right-[0%] w-full xl:w-[350px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 xl:float-animation xl:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-yellow-100 text-yellow-800 flex items-center justify-center font-bold text-xl shadow-inner">JT</div>
                             <div>
@@ -546,7 +546,7 @@
                     </div>
 
                     <!-- Review 5 -->
-                    <div class="relative md:absolute md:top-[680px] md:left-[10%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 md:float-animation md:float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                    <div class="relative xl:absolute xl:top-[680px] xl:left-[10%] w-full xl:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-30 xl:float-animation xl:float-delayed-1 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xl shadow-inner">SW</div>
                             <div>
@@ -560,7 +560,7 @@
                     </div>
 
                     <!-- Review 6 -->
-                    <div class="relative md:absolute md:top-[620px] md:right-[5%] w-full md:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-50 md:float-animation md:float-delayed-2 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                    <div class="relative xl:absolute xl:top-[620px] xl:right-[5%] w-full xl:w-[360px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-50 xl:float-animation xl:float-delayed-2 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl shadow-lg">BS</div>
                             <div>
@@ -574,7 +574,7 @@
                     </div>
 
                     <!-- Review 7: Sutton Burke -->
-                    <div class="relative md:absolute md:top-[975px] md:left-[calc(50%-190px)] w-full md:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 md:float-animation md:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
+                    <div class="relative xl:absolute xl:top-[975px] xl:left-[calc(50%-190px)] w-full xl:w-[380px] bg-white p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-slate-100 z-40 xl:float-animation xl:float-delayed-3 hover:pause-animation transition-all duration-500 hover:shadow-2xl">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-sky-pale text-sky-deep flex items-center justify-center font-bold text-xl shadow-inner">SB</div>
                             <div>
