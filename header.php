@@ -661,8 +661,8 @@
               "Thursday",
               "Friday"
             ],
-            "opens": "09:00",
-            "closes": "18:00"
+            "opens": "08:00",
+            "closes": "17:00"
           },
           "sameAs": [
             "https://www.facebook.com/people/Toc-Toc-Marketing-Cayman-AI-SEO-AI-Ready-Websites/61593560402053/",

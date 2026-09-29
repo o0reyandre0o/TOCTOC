@@ -299,7 +299,7 @@ curl -s -o /dev/null -w '%{http_code}' https://DOMINIO/sitemap.xml
 
 **NAP canónico (confirmado por Andre el 28 sep, igual al Perfil de Google):**
 Toc Toc Marketing · 207 Sparky's Dr, George Town KY1-1110, Cayman Islands ·
-+1 345-547-8120 · info@toctoc.ky · https://toctoc.ky · lun–vie 9:00–18:00.
++1 345-547-8120 · info@toctoc.ky · https://toctoc.ky · lun–vie 8:00–17:00 (hora de Caimán; confirmado por Andre el 29 sep, igual que el Perfil de Google).
 (El 28 sep se había fijado daniel@toctoc.ky; el 29 sep Andre lo cambió a
 info@toctoc.ky como correo público de la empresa. daniel@ sigue recibiendo
 los leads del checker, pero ya no se publica.)
