@@ -11,8 +11,8 @@
  * 1. An email to info@toctoc.ky, always. It works with no setup, and it is the
  *    fallback if the CRM call fails.
  * 2. The CRM (GoHighLevel), when a Private Integration token and location ID
- *    are saved: the contact is upserted with the tag, and a note records the
- *    category and message. GHL's public API cannot create workflows, so any
+ *    are saved: a new contact is created with the tag; an existing one (same
+ *    email) only gains the tag and a note, so its details are never overwritten. GHL's public API cannot create workflows, so any
  *    automation (confirmation email, task for Daniel) hangs off the tag inside
  *    GHL: trigger "Contact Tag added → Chamber of Commerce Cayman".
  * 3. Otherwise, a JSON POST to an inbound webhook if one is configured.
@@ -125,24 +125,24 @@ add_action(
  *
  * @param string $method HTTP method.
  * @param string $path   Path after the API host.
- * @param array  $body   JSON body.
+ * @param array|null $body JSON body; null for a GET.
  * @return array{ok:bool, code:int, data:array}
  */
-function toctoc_ghl_request( $method, $path, $body ) {
-	$res  = wp_remote_request(
-		TOCTOC_GHL_API . $path,
-		array(
-			'method'  => $method,
-			'timeout' => 8,
-			'headers' => array(
-				'Authorization' => 'Bearer ' . get_option( 'toctoc_ghl_token', '' ),
-				'Version'       => '2021-07-28',
-				'Content-Type'  => 'application/json',
-				'Accept'        => 'application/json',
-			),
-			'body'    => wp_json_encode( $body ),
-		)
+function toctoc_ghl_request( $method, $path, $body = null ) {
+	$args = array(
+		'method'  => $method,
+		'timeout' => 8,
+		'headers' => array(
+			'Authorization' => 'Bearer ' . get_option( 'toctoc_ghl_token', '' ),
+			'Version'       => '2021-07-28',
+			'Content-Type'  => 'application/json',
+			'Accept'        => 'application/json',
+		),
 	);
+	if ( null !== $body ) {
+		$args['body'] = wp_json_encode( $body );
+	}
+	$res  = wp_remote_request( TOCTOC_GHL_API . $path, $args );
 	$code = is_wp_error( $res ) ? 0 : (int) wp_remote_retrieve_response_code( $res );
 	$data = is_wp_error( $res ) ? array() : (array) json_decode( (string) wp_remote_retrieve_body( $res ), true );
 	return array(
@@ -153,44 +153,86 @@ function toctoc_ghl_request( $method, $path, $body ) {
 }
 
 /**
+ * Save a lead in GHL without overwriting a contact that already exists.
+ *
+ * Until 30 Sep 2026 every form used /contacts/upsert, which rewrote the name,
+ * company, website and source of anyone already in the CRM — the first test
+ * submissions did exactly that to an existing contact. Now the email is looked
+ * up first: an existing contact only gains the tag and the note; a new one is
+ * created with everything.
+ *
+ * @param array  $contact GHL contact fields (email required).
+ * @param string $tag     Tag to add.
+ * @param string $note    Note body.
+ * @return array{ok:bool, existing:bool, code:int}
+ */
+function toctoc_ghl_save_lead( $contact, $tag, $note ) {
+	$loc   = get_option( 'toctoc_ghl_location', '' );
+	$found = toctoc_ghl_request( 'GET', '/contacts/search/duplicate?locationId=' . rawurlencode( $loc ) . '&email=' . rawurlencode( (string) $contact['email'] ) );
+	$id    = ( $found['ok'] && ! empty( $found['data']['contact']['id'] ) ) ? $found['data']['contact']['id'] : '';
+
+	if ( $id ) {
+		$res = toctoc_ghl_request( 'POST', '/contacts/' . rawurlencode( $id ) . '/tags', array( 'tags' => array( $tag ) ) );
+		$ok  = $res['ok'];
+		$existing = true;
+	} else {
+		$res = toctoc_ghl_request( 'POST', '/contacts/upsert', array_filter( array_merge( $contact, array( 'locationId' => $loc, 'tags' => array( $tag ) ) ) ) );
+		$id  = isset( $res['data']['contact']['id'] ) ? $res['data']['contact']['id'] : '';
+		$ok  = $res['ok'] && $id;
+		$existing = false;
+	}
+	if ( $ok ) {
+		toctoc_ghl_request( 'POST', '/contacts/' . rawurlencode( $id ) . '/notes', array( 'body' => $note ) );
+	} else {
+		error_log( 'toctoc ghl: saving lead failed, HTTP ' . $res['code'] ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+	}
+	return array( 'ok' => (bool) $ok, 'existing' => $existing, 'code' => $res['code'] );
+}
+
+/**
+ * Human status line for the team email.
+ *
+ * @param array  $r   Result of toctoc_ghl_save_lead().
+ * @param string $tag Tag name.
+ * @return string
+ */
+function toctoc_ghl_status_line( $r, $tag ) {
+	if ( ! $r['ok'] ) {
+		return 'CRM: could not save the contact (HTTP ' . $r['code'] . '). Add it by hand.';
+	}
+	return $r['existing']
+		? 'CRM: already in GHL — added the tag "' . $tag . '" and a note; their details were left as they were.'
+		: 'CRM: new contact created in GHL with the tag "' . $tag . '".';
+}
+
+/**
  * Send a submission to GHL: upsert the contact with the tag, then add a note.
  *
  * @param array<string,string> $f Sanitised fields.
  * @return string Status line for the team email.
  */
 function toctoc_chamber_to_ghl( $f ) {
-	$loc   = get_option( 'toctoc_ghl_location', '' );
 	$parts = preg_split( '/\s+/', $f['name'], 2 );
-	$up    = toctoc_ghl_request(
-		'POST',
-		'/contacts/upsert',
-		array_filter(
-			array(
-				'locationId'  => $loc,
-				'firstName'   => $parts[0],
-				'lastName'    => isset( $parts[1] ) ? $parts[1] : '',
-				'name'        => $f['name'],
-				'email'       => $f['email'],
-				'phone'       => $f['phone'],
-				'companyName' => $f['business'],
-				'website'     => $f['website'],
-				'tags'        => array( TOCTOC_CHAMBER_TAG ),
-				'source'      => 'toctoc.ky/chamber-members',
-			)
-		)
-	);
-	$id = isset( $up['data']['contact']['id'] ) ? $up['data']['contact']['id'] : '';
-	if ( ! $up['ok'] || ! $id ) {
-		error_log( 'toctoc chamber: GHL upsert failed, HTTP ' . $up['code'] ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
-		return 'CRM: could not create the contact (HTTP ' . $up['code'] . '). Add it by hand.';
-	}
-	$note = "Chamber of Commerce member — category check\nCategory: " . $f['category'];
+	$note  = "Chamber of Commerce member — category check\nCategory: " . $f['category'];
 	if ( '' !== $f['message'] ) {
 		$note .= "\nMessage: " . $f['message'];
 	}
 	$note .= "\nFrom: https://toctoc.ky/chamber-members/";
-	toctoc_ghl_request( 'POST', '/contacts/' . rawurlencode( $id ) . '/notes', array( 'body' => $note ) );
-	return 'CRM: contact saved in GHL with the tag "' . TOCTOC_CHAMBER_TAG . '".';
+	$r = toctoc_ghl_save_lead(
+		array(
+			'firstName'   => $parts[0],
+			'lastName'    => isset( $parts[1] ) ? $parts[1] : '',
+			'name'        => $f['name'],
+			'email'       => $f['email'],
+			'phone'       => $f['phone'],
+			'companyName' => $f['business'],
+			'website'     => $f['website'],
+			'source'      => 'toctoc.ky/chamber-members',
+		),
+		TOCTOC_CHAMBER_TAG,
+		$note
+	);
+	return toctoc_ghl_status_line( $r, TOCTOC_CHAMBER_TAG );
 }
 
 /**

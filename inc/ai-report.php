@@ -5,9 +5,9 @@
  * The landing page posts here with fetch() and shows its thank-you panel only
  * when this answers success. Each request:
  * 1. is emailed to info@toctoc.ky, always (Reply-To the lead);
- * 2. becomes a GoHighLevel contact tagged "ai visibility report", with a note
- *    holding the service, website and campaign source (?src=…), using the same
- *    token and helper as the Chamber form (inc/chamber-members.php).
+ * 2. goes to GoHighLevel through toctoc_ghl_save_lead() (inc/chamber-members.php):
+ *    a new contact is created with the tag "ai visibility report"; an existing
+ *    one only gains the tag and a note (service, website, ?src= source).
  *
  * No nonce on purpose: the page may be served from a cache for longer than a
  * nonce lives, and a stale nonce would silently lose leads. Spam is handled by
@@ -53,43 +53,32 @@ function toctoc_ai_report_submit() {
 
 	// CRM first, so the email can say whether it worked.
 	$crm = 'CRM: not connected.';
-	if ( function_exists( 'toctoc_ghl_request' ) && get_option( 'toctoc_ghl_token', '' ) && get_option( 'toctoc_ghl_location', '' ) ) {
+	if ( function_exists( 'toctoc_ghl_save_lead' ) && get_option( 'toctoc_ghl_token', '' ) && get_option( 'toctoc_ghl_location', '' ) ) {
 		$parts   = preg_split( '/\s+/', $f['name'], 2 );
 		$website = $f['website'];
 		if ( '' !== $website && ! preg_match( '#^https?://#i', $website ) ) {
 			$website = 'https://' . $website;
 		}
-		$up = toctoc_ghl_request(
-			'POST',
-			'/contacts/upsert',
-			array_filter(
-				array(
-					'locationId'  => get_option( 'toctoc_ghl_location', '' ),
-					'firstName'   => $parts[0],
-					'lastName'    => isset( $parts[1] ) ? $parts[1] : '',
-					'name'        => $f['name'],
-					'email'       => $f['email'],
-					'companyName' => $f['business'],
-					'website'     => esc_url_raw( $website ),
-					'tags'        => array( TOCTOC_REPORT_TAG ),
-					'source'      => 'toctoc.ky/free-ai-visibility-report (src=' . $f['source'] . ')',
-				)
-			)
+		$note = "Free AI & Google Visibility Report request\n"
+			. 'Business: ' . $f['business'] . "\n"
+			. 'Customers look for: ' . ( '' !== $f['service'] ? $f['service'] : '(not given)' ) . "\n"
+			. 'Website: ' . ( '' !== $f['website'] ? $f['website'] : '(none)' ) . "\n"
+			. 'Source: ' . $f['source'] . "\n"
+			. 'Promised: report by email within one business day.';
+		$r   = toctoc_ghl_save_lead(
+			array(
+				'firstName'   => $parts[0],
+				'lastName'    => isset( $parts[1] ) ? $parts[1] : '',
+				'name'        => $f['name'],
+				'email'       => $f['email'],
+				'companyName' => $f['business'],
+				'website'     => esc_url_raw( $website ),
+				'source'      => 'toctoc.ky/free-ai-visibility-report (src=' . $f['source'] . ')',
+			),
+			TOCTOC_REPORT_TAG,
+			$note
 		);
-		$id = isset( $up['data']['contact']['id'] ) ? $up['data']['contact']['id'] : '';
-		if ( $up['ok'] && $id ) {
-			$note = "Free AI & Google Visibility Report request\n"
-				. 'Business: ' . $f['business'] . "\n"
-				. 'Customers look for: ' . ( '' !== $f['service'] ? $f['service'] : '(not given)' ) . "\n"
-				. 'Website: ' . ( '' !== $f['website'] ? $f['website'] : '(none)' ) . "\n"
-				. 'Source: ' . $f['source'] . "\n"
-				. 'Promised: report by email within one business day.';
-			toctoc_ghl_request( 'POST', '/contacts/' . rawurlencode( $id ) . '/notes', array( 'body' => $note ) );
-			$crm = 'CRM: contact saved in GHL with the tag "' . TOCTOC_REPORT_TAG . '".';
-		} else {
-			error_log( 'toctoc ai report: GHL upsert failed, HTTP ' . $up['code'] ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
-			$crm = 'CRM: could not create the contact (HTTP ' . $up['code'] . '). Add it by hand.';
-		}
+		$crm = toctoc_ghl_status_line( $r, TOCTOC_REPORT_TAG );
 	}
 
 	$body = "New request for the Free AI & Google Visibility Report.\n"
