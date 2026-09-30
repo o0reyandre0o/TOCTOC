@@ -27,6 +27,7 @@ $GLOBALS['toctoc_landing_rating'] = true; // Google rating centred in the bar.
 get_header();
 
 $ttr_reviews = function_exists( 'toctoc_google_reviews' ) ? toctoc_google_reviews() : array( 'rating' => '4.8', 'count' => 25 );
+$ttr_ts      = get_option( 'toctoc_ts_site', '' ); // Cloudflare Turnstile, same keys as the SEO checker.
 $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-base font-normal text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-deep';
 ?>
 
@@ -91,6 +92,10 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                         <label class="grid gap-2 text-sm font-bold text-slate-700">What do customers look for when they find you?
                             <input id="what" name="service" placeholder="e.g. emergency plumber, family dentist" class="<?php echo esc_attr( $ttr_input ); ?>">
                         </label>
+                        <?php if ( $ttr_ts ) : ?>
+                        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+                        <div class="cf-turnstile" data-sitekey="<?php echo esc_attr( $ttr_ts ); ?>" data-response-field-name="ts_token"></div>
+                        <?php endif; ?>
                         <button type="submit" class="group mt-2 inline-flex items-center justify-between gap-4 rounded-full bg-slate-950 text-white pl-8 pr-2 py-2 text-lg font-bold shadow-pill transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-progress">
                             Send me my free report
                             <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
@@ -98,6 +103,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                             </span>
                         </button>
                         <p id="rf-err" role="alert" class="hidden text-sm font-bold text-red-700">That didn't go through. Please try again, or email us at <a href="mailto:info@toctoc.ky" class="underline">info@toctoc.ky</a>.</p>
+                        <p id="rf-cap" role="alert" class="hidden text-sm font-bold text-red-700">Please complete the anti-spam check above.</p>
                     </form>
                     <p class="mt-5 text-xs text-slate-500 leading-relaxed">Free, with no obligation. We use your details only to prepare your report and follow up about it. <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>" class="font-bold text-sky-deep decoration-none hover:underline">Privacy policy</a></p>
                 </div>
@@ -251,23 +257,27 @@ if ( function_exists( 'toctoc_schema_add_raw' ) ) {
   var t0=Date.now();
   try{var s=new URLSearchParams(location.search).get("src");if(s)document.getElementById("source").value=s.slice(0,80);}catch(e){}
   var f=document.getElementById("rf");if(!f)return;
-  var btn=f.querySelector('button[type="submit"]'),err=document.getElementById("rf-err");
+  var btn=f.querySelector('button[type="submit"]'),err=document.getElementById("rf-err"),cap=document.getElementById("rf-cap");
+  var hasCaptcha=!!f.querySelector(".cf-turnstile");
+  function resetCaptcha(){if(window.turnstile){try{window.turnstile.reset();}catch(x){}}}
   f.addEventListener("submit",function(e){
     e.preventDefault();
-    err.classList.add("hidden");
+    err.classList.add("hidden");cap.classList.add("hidden");
+    if(hasCaptcha){var tk=f.querySelector('[name="ts_token"]');if(!tk||!tk.value){cap.classList.remove("hidden");return;}}
     document.getElementById("ttseo_t").value=String(Date.now()-t0);
     btn.disabled=true;
     /* f.action would return the <input name="action">, not the URL. */
     fetch(f.getAttribute("action"),{method:"POST",body:new FormData(f),credentials:"same-origin"})
       .then(function(r){return r.json();})
       .then(function(res){
+        if(res&&!res.success&&res.data&&res.data.reason==="captcha"){btn.disabled=false;resetCaptcha();cap.classList.remove("hidden");return;}
         if(!res||!res.success){throw new Error("fail");}
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:"report_lead",lead_source:document.getElementById("source").value});
         document.getElementById("form-view").classList.add("hidden");
         var t=document.getElementById("thanks");t.classList.remove("hidden");t.setAttribute("tabindex","-1");t.focus();
       })
-      .catch(function(){btn.disabled=false;err.classList.remove("hidden");});
+      .catch(function(){btn.disabled=false;resetCaptcha();err.classList.remove("hidden");});
   });
 })();
 </script>

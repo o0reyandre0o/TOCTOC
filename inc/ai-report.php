@@ -11,7 +11,8 @@
  *
  * No nonce on purpose: the page may be served from a cache for longer than a
  * nonce lives, and a stale nonce would silently lose leads. Spam is handled by
- * the SEO checker's honeypot + timing checks and a per-IP rate limit.
+ * Cloudflare Turnstile (same keys as the SEO checker, added 30 Sep 2026), the
+ * checker's honeypot + timing checks and a per-IP rate limit.
  *
  * @package Toc Toc
  */
@@ -29,6 +30,10 @@ function toctoc_ai_report_submit() {
 	// Bots are told it worked, so they learn nothing.
 	if ( function_exists( 'toctoc_seo_looks_automated' ) && toctoc_seo_looks_automated() ) {
 		wp_send_json_success();
+	}
+	// A failed captcha is answered honestly so a person can retry.
+	if ( function_exists( 'toctoc_seo_turnstile_ok' ) && ! toctoc_seo_turnstile_ok() ) {
+		wp_send_json_error( array( 'reason' => 'captcha' ), 403 );
 	}
 	if ( function_exists( 'toctoc_seo_rate_limited' ) && toctoc_seo_rate_limited( 'ai_report', 5 ) ) {
 		wp_send_json_error( array( 'reason' => 'limit' ), 429 );
