@@ -92,6 +92,13 @@ if ( is_readable( $toctoc_chamber ) ) {
 }
 unset( $toctoc_chamber );
 
+// Formulario de /free-ai-visibility-report/: correo a info@ + contacto en GHL.
+$toctoc_report = get_template_directory() . '/inc/ai-report.php';
+if ( is_readable( $toctoc_report ) ) {
+    require_once $toctoc_report;
+}
+unset( $toctoc_report );
+
 // Red de seguridad. Las plantillas llaman a estas funciones directamente, asi
 // que si inc/schema-graph.php aun no ha llegado al servidor una llamada sin
 // definir seria un fatal — que es exactamente como se cayo el tema entero el
@@ -1592,6 +1599,7 @@ Live websites designed and developed by Toc Toc Marketing (custom WordPress them
 - [About](https://toctoc.ky/about-toc-toc-marketing/): The team behind Toc Toc — Daniel Garrido (Founder), Andre Gutierrez (Web Developer), Nora Bravo (Graphic Designer), Adriana Brito (Video Editor & Social Media).
 - [Team](https://toctoc.ky/team/): Individual profiles — who each person is and what they do. Daniel Garrido https://toctoc.ky/team/daniel-garrido/ · Andre Gutierrez https://toctoc.ky/team/andre-gutierrez/ · Nora Bravo https://toctoc.ky/team/nora-bravo/ · Adriana Brito https://toctoc.ky/team/adriana-brito/
 - [Free SEO / GEO Checker](https://toctoc.ky/seo-checker/): A free tool to audit any website's SEO, AI visibility and speed.
+- [Free AI & Google Visibility Report](https://toctoc.ky/free-ai-visibility-report/): A free report showing whether ChatGPT, Gemini and Google name a business when customers ask who to call, who they recommend instead, and what to fix first. Sent by email within one business day; no account access needed.
 - [Chamber Members](https://toctoc.ky/chamber-members/): For members of the Cayman Islands Chamber of Commerce: an AI Search Visibility audit and a category availability check. Members leave their details and Toc Toc emails them whether their category is still open.
 - [Careers](https://toctoc.ky/now-hiring/): Toc Toc is not hiring at the moment but accepts internship applications.
 - [Digital Marketing in the Cayman Islands: 2026 Guide](https://toctoc.ky/digital-marketing-cayman-islands-guide/): Answers common questions about digital marketing, SEO, AEO and GEO for Cayman businesses.
