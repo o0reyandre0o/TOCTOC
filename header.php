@@ -775,8 +775,19 @@ if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
+    <?php if ( ! empty( $GLOBALS['toctoc_landing_rating'] ) && function_exists( 'toctoc_google_reviews' ) ) : $tt_rv = toctoc_google_reviews(); ?>
+    <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 text-sm font-bold text-slate-600 whitespace-nowrap decoration-none hover:text-slate-900">
+        <span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span>
+        <span><strong class="text-slate-900"><?php echo esc_html( $tt_rv['rating'] ); ?></strong> on Google (<?php echo (int) $tt_rv['count']; ?> reviews)</span>
+    </a>
+    <?php endif; ?>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_cta'] ) ) : ?>
-    <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1] ); ?>" class="bg-accent text-accent-foreground h-11 px-6 rounded-full flex items-center gap-2 font-bold text-sm shadow-glow transition-transform hover:scale-105 decoration-none"><?php echo esc_html( $GLOBALS['toctoc_landing_cta'][0] ); ?></a>
+    <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1], array( 'http', 'https', 'tel', 'mailto' ) ); ?>" class="bg-accent text-accent-foreground h-11 px-5 sm:px-6 rounded-full flex items-center gap-2 font-bold text-sm shadow-glow transition-transform hover:scale-105 decoration-none">
+        <?php echo esc_html( $GLOBALS['toctoc_landing_cta'][0] ); ?>
+        <span class="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+    </a>
     <?php endif; ?>
 </nav>
 <?php else : ?>

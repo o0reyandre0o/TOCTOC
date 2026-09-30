@@ -21,7 +21,8 @@
  */
 
 $GLOBALS['toctoc_landing']     = true;
-$GLOBALS['toctoc_landing_cta'] = array( 'Get my free report', '#report' );
+$GLOBALS['toctoc_landing_cta'] = array( 'Call Daniel', 'tel:+13455478120' );
+$GLOBALS['toctoc_landing_rating'] = true; // Google rating centred in the bar.
 
 get_header();
 
@@ -40,7 +41,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-36 md:pt-44 pb-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
             <div>
                 <div class="inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-full border border-slate-200 bg-white/70 px-5 py-2 text-xs font-bold text-slate-600 backdrop-blur">
-                    <span><span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span> <strong class="text-slate-900"><?php echo esc_html( $ttr_reviews['rating'] ); ?></strong> on Google (<?php echo (int) $ttr_reviews['count']; ?> reviews)</span>
+                    <span class="sm:hidden"><span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span> <strong class="text-slate-900"><?php echo esc_html( $ttr_reviews['rating'] ); ?></strong> on Google (<?php echo (int) $ttr_reviews['count']; ?> reviews)</span>
                     <span>Member, Cayman Islands Chamber of Commerce</span>
                 </div>
                 <h1 class="mt-8 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
@@ -256,7 +257,8 @@ if ( function_exists( 'toctoc_schema_add_raw' ) ) {
     err.classList.add("hidden");
     document.getElementById("ttseo_t").value=String(Date.now()-t0);
     btn.disabled=true;
-    fetch(f.action,{method:"POST",body:new FormData(f),credentials:"same-origin"})
+    /* f.action would return the <input name="action">, not the URL. */
+    fetch(f.getAttribute("action"),{method:"POST",body:new FormData(f),credentials:"same-origin"})
       .then(function(r){return r.json();})
       .then(function(res){
         if(!res||!res.success){throw new Error("fail");}
