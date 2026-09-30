@@ -220,6 +220,10 @@
             'title' => 'Cayman Chamber of Commerce Members | Toc Toc Marketing',
             'desc' => 'For Cayman Islands Chamber of Commerce members: an AI Search Visibility audit and a category availability check from Toc Toc Marketing in George Town.'
         ],
+        'free-ai-visibility-report' => [
+            'title' => 'Free AI & Google Visibility Report | Toc Toc Marketing',
+            'desc' => 'Find out whether ChatGPT, Gemini and Google recommend your business when customers ask who to call. Free report from Toc Toc Marketing, sent to your inbox.'
+        ],
         'now-hiring' => [
             'title' => 'Careers & Internships | Toc Toc Marketing, Cayman',
             'desc' => 'Toc Toc Marketing is not hiring right now, but accepts internship applications in design, video, and web development and SEO. Apply by email.'
@@ -760,6 +764,22 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<?php
+/*
+ * Landing pages set $GLOBALS['toctoc_landing'] before get_header(): they keep
+ * the whole <head> (fonts, compiled CSS, SEO, GTM, schema) but get the logo
+ * alone in the bar — no menu to lead a visitor away from the form.
+ */
+if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-5 xl:px-8 z-[1000] shadow-soft border border-white/50">
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
+        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
+    </a>
+    <?php if ( ! empty( $GLOBALS['toctoc_landing_cta'] ) ) : ?>
+    <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1] ); ?>" class="bg-accent text-accent-foreground h-11 px-6 rounded-full flex items-center gap-2 font-bold text-sm shadow-glow transition-transform hover:scale-105 decoration-none"><?php echo esc_html( $GLOBALS['toctoc_landing_cta'][0] ); ?></a>
+    <?php endif; ?>
+</nav>
+<?php else : ?>
 <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between px-5 xl:px-8 z-[1000] shadow-soft border border-white/50">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none">
         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
@@ -862,4 +882,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-
+<?php endif; ?>
