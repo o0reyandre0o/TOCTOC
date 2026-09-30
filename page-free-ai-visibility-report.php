@@ -39,18 +39,14 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
         <div class="absolute inset-0 bg-white/50 z-[1]"></div>
         <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background pointer-events-none z-[2]"></div>
 
-        <div class="relative z-10 mx-auto max-w-6xl px-6 pt-36 md:pt-44 pb-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
-            <div>
-                <div class="xl:hidden inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-full border border-slate-200 bg-white/70 px-5 py-2 text-xs font-bold text-slate-600 backdrop-blur">
-                    <span><span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span> <strong class="text-slate-900"><?php echo esc_html( $ttr_reviews['rating'] ); ?></strong> on Google (<?php echo (int) $ttr_reviews['count']; ?> reviews)</span>
-                    <span>Member, Cayman Islands Chamber of Commerce</span>
-                </div>
-                <h1 class="mt-8 xl:mt-0 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
+        <div class="relative z-10 mx-auto max-w-6xl px-6 pt-40 md:pt-44 pb-20 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-start">
+            <div class="min-w-0">
+                <h1 class="text-[2.6rem] sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
                     When customers ask ChatGPT or Google who to call, <em class="italic text-sky-deep font-display">does it name you?</em>
                 </h1>
                 <p class="mt-8 text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl">Get a free report showing what AI tools and Google say about your business today, who they recommend instead, and what to fix first.</p>
 
-                <div class="mt-10 max-w-xl rounded-[2rem] bg-white border border-slate-100 p-6 md:p-8 shadow-soft" aria-label="Illustration of an AI answer">
+                <div class="mt-10 max-w-xl rounded-[2rem] bg-white border border-slate-100 p-5 sm:p-6 md:p-8 shadow-soft" aria-label="Illustration of an AI answer">
                     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">A customer asks ChatGPT:</p>
                     <div id="cq" aria-live="off" class="rounded-2xl bg-sky-pale/60 px-5 py-4 font-bold text-slate-900 min-h-[3.2em] transition-opacity duration-300">What's the best restaurant near me for a special dinner?</div>
                     <p class="mt-5 text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">ChatGPT answers:</p>
@@ -67,7 +63,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                 </div>
             </div>
 
-            <div id="report" class="rounded-[2.5rem] bg-white border border-slate-100 p-8 md:p-10 shadow-glass lg:sticky lg:top-32 scroll-mt-32">
+            <div id="report" class="min-w-0 rounded-[2rem] sm:rounded-[2.5rem] bg-white border border-slate-100 p-6 sm:p-8 md:p-10 shadow-glass lg:sticky lg:top-32 scroll-mt-32">
                 <div id="form-view">
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">Free &middot; No obligation</span>
                     <h2 class="mt-4 text-4xl font-display text-slate-900 leading-none">Get your <em class="italic text-sky-deep font-display">free report</em></h2>
@@ -96,7 +92,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
                         <div class="cf-turnstile" data-sitekey="<?php echo esc_attr( $ttr_ts ); ?>" data-response-field-name="ts_token"></div>
                         <?php endif; ?>
-                        <button type="submit" class="group mt-2 inline-flex items-center justify-between gap-4 rounded-full bg-slate-950 text-white pl-8 pr-2 py-2 text-lg font-bold shadow-pill transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-progress">
+                        <button type="submit" class="group mt-2 inline-flex items-center justify-between gap-3 rounded-full bg-slate-950 text-white pl-6 sm:pl-8 pr-2 py-2 text-base sm:text-lg font-bold shadow-pill transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-progress">
                             Send me my free report
                             <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-slate-950 transition-transform group-hover:rotate-45">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -123,10 +119,10 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
         <div class="mx-auto max-w-6xl px-6">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-deep">What you get</span>
-                <h2 class="mt-6 text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Your report answers <em class="italic text-sky-deep font-display">four questions</em></h2>
+                <h2 class="mt-6 text-[2.6rem] sm:text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Your report answers <em class="italic text-sky-deep font-display">four questions</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">We ask ChatGPT, Gemini and Google the same questions your customers ask, then show you exactly what came back.</p>
             </div>
-            <div class="mt-16 grid lg:grid-cols-2 gap-10 items-start">
+            <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start [&>*]:min-w-0">
                 <ul class="grid sm:grid-cols-2 gap-6">
                     <?php foreach ( array(
                         array( 'Does AI mention my business?', 'Yes or no, for each question we test.' ),
@@ -140,7 +136,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                     </li>
                     <?php endforeach; ?>
                 </ul>
-                <div class="rounded-[2.5rem] bg-slate-950 text-white p-8 md:p-10 shadow-glass overflow-x-auto" aria-label="Example report page">
+                <div class="rounded-[2rem] sm:rounded-[2.5rem] bg-slate-950 text-white p-6 sm:p-8 md:p-10 shadow-glass overflow-x-auto" aria-label="Example report page">
                     <h3 class="text-3xl font-display">Example page from a report</h3>
                     <p class="mt-2 text-xs text-white/50">Sample data for illustration only.</p>
                     <table class="mt-6 w-full min-w-[420px] text-sm border-collapse">
@@ -176,7 +172,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
     <!-- How it works -->
     <section class="relative py-24 md:py-32">
         <div class="mx-auto max-w-6xl px-6">
-            <h2 class="text-5xl md:text-7xl text-slate-900 font-display leading-[0.9]">How it <em class="italic text-sky-deep font-display">works</em></h2>
+            <h2 class="text-[2.6rem] sm:text-5xl md:text-7xl text-slate-900 font-display leading-[0.9]">How it <em class="italic text-sky-deep font-display">works</em></h2>
             <div class="mt-16 grid grid-cols-1 md:grid-cols-3 bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-soft">
                 <?php foreach ( array(
                     array( 'You send us the form.', 'It takes about a minute.' ),
