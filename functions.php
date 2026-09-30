@@ -9,7 +9,7 @@
  * 2026). Patch for fixes and copy (3.4.0 → 3.4.1), minor for new pages or
  * features (3.4.x → 3.5.0). It is also the cache-busting ?ver= on style.css.
  */
-define( 'TOCTOC_THEME_VERSION', '3.4.3' );
+define( 'TOCTOC_THEME_VERSION', '3.4.4' );
 
 function toctoc_setup() {
     add_theme_support( 'post-thumbnails' );

@@ -781,7 +781,7 @@ if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
     // Chamber membership side by side on ONE line (Andre, 30 Sep 2026). The
     // wording shortens with the screen so it never wraps. Hidden on phones,
     ?>
-    <div class="hidden lg:flex flex-1 min-w-0 overflow-hidden items-center justify-center gap-5 whitespace-nowrap font-bold text-xs xl:text-sm">
+    <div class="hidden lg:flex flex-1 min-w-0 overflow-hidden items-center justify-end gap-5 whitespace-nowrap font-bold text-xs xl:text-sm">
         <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-slate-900 decoration-none hover:text-sky-deep">
             <span class="text-yellow-500 tracking-wider" aria-hidden="true">★★★★★</span>
             <span><?php echo esc_html( $tt_rv['rating'] ); ?> on Google</span>
