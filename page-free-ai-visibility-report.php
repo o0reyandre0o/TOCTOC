@@ -45,20 +45,20 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                 </h1>
                 <p class="mt-8 text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl">Get a free report showing what AI tools and Google say about your business today, who they recommend instead, and what to fix first.</p>
 
-                <div class="mt-10 max-w-xl rounded-[2rem] bg-white border border-slate-100 p-5 sm:p-6 md:p-8 shadow-soft" aria-label="Illustration of an AI answer">
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">A customer asks ChatGPT:</p>
-                    <div id="cq" aria-live="off" class="rounded-2xl bg-sky-pale/60 px-5 py-4 font-bold text-slate-900 min-h-[3.2em] transition-opacity duration-300">What's the best restaurant near me for a special dinner?</div>
-                    <p class="mt-5 text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">ChatGPT answers:</p>
-                    <ol class="list-decimal pl-6 space-y-1 text-slate-700">
+                <div class="mt-10 max-w-xl rounded-[2rem] bg-slate-950 text-white border border-white/10 p-5 sm:p-6 md:p-8 shadow-glass" aria-label="Illustration of an AI answer">
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-2">A customer asks ChatGPT:</p>
+                    <div id="cq" aria-live="off" class="rounded-2xl bg-white/10 border border-white/10 px-5 py-4 font-bold text-white min-h-[3.2em] transition-opacity duration-300">What's the best restaurant near me for a special dinner?</div>
+                    <p class="mt-5 text-[11px] font-bold uppercase tracking-widest text-white/40 mb-2">ChatGPT answers:</p>
+                    <ol class="list-decimal pl-6 space-y-1 text-white/80">
                         <li>A competitor of yours</li>
                         <li>Another competitor</li>
                         <li>A third competitor</li>
                     </ol>
-                    <div class="mt-5 flex items-center gap-3 border-t border-dashed border-slate-200 pt-4 font-bold text-slate-900">
-                        <span class="w-3 h-3 rounded-full bg-red-500 shrink-0" aria-hidden="true"></span>
+                    <div class="mt-5 flex items-center gap-3 border-t border-dashed border-white/15 pt-4 font-bold text-white">
+                        <span class="w-3 h-3 rounded-full bg-red-400 shrink-0 ring-4 ring-red-400/20" aria-hidden="true"></span>
                         Your business isn't named, so that customer never calls you.
                     </div>
-                    <p class="mt-3 text-xs text-slate-500">Illustration. Your report shows the real answers for your business.</p>
+                    <p class="mt-3 text-xs text-white/40">Illustration. Your report shows the real answers for your business.</p>
                 </div>
             </div>
 
