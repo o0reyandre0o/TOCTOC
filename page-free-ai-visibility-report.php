@@ -4,7 +4,8 @@
  * Template Post Type: page
  *
  * Stand-alone landing page (30 Sep 2026), reproduced exactly from the approved
- * HTML design, so it deliberately skips get_header()/get_footer(): no site nav,
+ * HTML design (v2 on 30 Sep 2026: rotating customer question in the chat
+ * illustration), so it deliberately skips get_header()/get_footer(): no site nav,
  * no theme CSS, its own fonts and palette. Slug-matched, so the WordPress page
  * only needs the slug free-ai-visibility-report.
  *
@@ -117,6 +118,13 @@ header.top .wrap{display:flex;justify-content:space-between;align-items:center;g
 .you{display:flex;align-items:center;gap:10px;border-top:1px dashed var(--line);padding-top:12px;font-weight:600}
 .you .dot{width:12px;height:12px;border-radius:50%;background:var(--miss);flex:none}
 .cap{font-size:.85rem;color:var(--muted);margin:10px 0 0}
+#cq{transition:opacity .25s ease;min-height:3.2em}
+.lab{font-size:.85rem;color:var(--muted);margin:0 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{font:600 .92rem "Source Sans 3",sans-serif;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+.a ol{margin:0 0 .8em}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px}
 .card h2{font-size:1.4rem}
 label{display:block;font-weight:600;font-size:.95rem;margin:14px 0 4px}
@@ -172,12 +180,13 @@ footer p{margin:0 0 .4em}
     <h1>When customers ask ChatGPT or Google who to call, does it name you?</h1>
     <p class="lead">Get a free report showing what AI tools and Google say about your business today, who they recommend instead, and what to fix first.</p>
     <div class="chat" aria-label="Illustration of an AI answer">
-      <div class="q">Who should I call for [your service] near me?</div>
+      <p class="lab">A customer asks ChatGPT:</p>
+      <div class="q" id="cq" aria-live="off">Who's the best dentist near me?</div>
+      <p class="lab">ChatGPT answers:</p>
       <div class="a">
-        <p style="margin:0">Here are three options people recommend:</p>
-        <ol><li>Business A</li><li>Business B</li><li>Business C</li></ol>
+        <ol><li>A competitor of yours</li><li>Another competitor</li><li>A third competitor</li></ol>
       </div>
-      <div class="you"><span class="dot" aria-hidden="true"></span>Your business isn't in this answer.</div>
+      <div class="you"><span class="dot" aria-hidden="true"></span>Your business isn't named, so that customer never calls you.</div>
       <p class="cap">Illustration. Your report shows the real answers for your business.</p>
     </div>
   </div>
@@ -264,6 +273,19 @@ footer p{margin:0 0 .4em}
 </div></footer>
 
 <script>
+(function(){
+  var qs=["Who's the best dentist near me?","Where should I eat tonight near me?","Which lawyer should I call near me?","Where can I buy a used car near me?","Which real estate agent should I call near me?","Who's a good accountant near me?","Who's the best physiotherapist near me?"];
+  var el=document.getElementById("cq"),i=0,paused=false;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var box=el.parentNode;
+  box.addEventListener("mouseenter",function(){paused=true});
+  box.addEventListener("mouseleave",function(){paused=false});
+  setInterval(function(){
+    if(paused||document.hidden)return;
+    el.style.opacity=0;
+    setTimeout(function(){i=(i+1)%qs.length;el.textContent=qs[i];el.style.opacity=1;},250);
+  },3000);
+})();
 (function(){
   var t0=Date.now();
   try{var s=new URLSearchParams(location.search).get("src");if(s)document.getElementById("source").value=s.slice(0,80);}catch(e){}
