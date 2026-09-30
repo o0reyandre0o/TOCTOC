@@ -41,7 +41,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-32 md:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-start">
             <div class="min-w-0">
-                <h1 class="text-[2.6rem] sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
+                <h1 class="text-[3.2rem] sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
                     When customers ask ChatGPT or Google who to call, <em class="italic text-sky-deep font-display">does it name you?</em>
                 </h1>
                 <p class="mt-8 text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl">Get a free report showing what AI tools and Google say about your business today, who they recommend instead, and what to fix first.</p>
@@ -136,29 +136,47 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                     </li>
                     <?php endforeach; ?>
                 </ul>
-                <div class="min-w-0 rounded-[2rem] sm:rounded-[2.5rem] bg-slate-950 text-white p-6 sm:p-8 md:p-10 shadow-glass overflow-x-auto" aria-label="Example report page">
+                <div class="min-w-0 rounded-[2rem] sm:rounded-[2.5rem] bg-slate-950 text-white p-6 sm:p-8 md:p-10 shadow-glass overflow-x-auto sm:overflow-visible" aria-label="Example report page">
                     <h3 class="text-3xl font-display">Example page from a report</h3>
                     <p class="mt-2 text-xs text-white/50">Sample data for illustration only.</p>
-                    <table class="mt-6 w-full min-w-[420px] text-sm border-collapse">
+                    <?php
+                    $ttr_rows = array(
+                        array( '"Best [service] near me"', array( 0, 'Not named' ), array( 0, 'Not named' ), array( 1, 'Page 1' ) ),
+                        array( '"Who to call for [problem]"', array( 0, 'Not named' ), array( 1, 'Named' ), array( 0, 'Page 2' ) ),
+                        array( '"[Service] in [your area]"', array( 1, 'Named' ), array( 0, 'Not named' ), array( 1, 'Page 1' ) ),
+                    );
+                    $ttr_cols = array( 1 => 'ChatGPT', 2 => 'Gemini', 3 => 'Google' );
+                    ?>
+                    <?php // Phones: one card per question, results stacked (the table did not fit). ?>
+                    <div class="mt-6 grid gap-3 sm:hidden">
+                        <?php foreach ( $ttr_rows as $ttr_row ) : ?>
+                        <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                            <p class="text-sm font-bold text-white"><?php echo esc_html( $ttr_row[0] ); ?></p>
+                            <dl class="mt-3 grid grid-cols-3 gap-2 text-center">
+                                <?php foreach ( $ttr_cols as $ttr_c => $ttr_name ) : ?>
+                                <div class="rounded-xl bg-white/5 px-1 py-2">
+                                    <dt class="text-[10px] font-bold uppercase tracking-widest text-white/40"><?php echo esc_html( $ttr_name ); ?></dt>
+                                    <dd class="mt-1 text-xs font-bold <?php echo $ttr_row[ $ttr_c ][0] ? 'text-accent' : 'text-red-400'; ?>"><?php echo esc_html( $ttr_row[ $ttr_c ][1] ); ?></dd>
+                                </div>
+                                <?php endforeach; ?>
+                            </dl>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php // Tablet and up: the table. ?>
+                    <table class="hidden sm:table mt-6 w-full text-sm border-collapse">
                         <thead>
                             <tr class="text-left text-[11px] font-bold uppercase tracking-widest text-white/40">
-                                <th class="py-3 pr-3 font-bold">Question we tested</th><th class="py-3 px-2 font-bold">ChatGPT</th><th class="py-3 px-2 font-bold">Gemini</th><th class="py-3 pl-2 font-bold">Google</th>
+                                <th class="py-3 pr-3 font-bold">Question we tested</th><?php foreach ( $ttr_cols as $ttr_name ) : ?><th class="py-3 px-2 font-bold"><?php echo esc_html( $ttr_name ); ?></th><?php endforeach; ?>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-white/10 border-t border-white/10">
-                            <?php
-                            $ttr_no  = '<span class="font-bold text-red-400">%s</span>';
-                            $ttr_yes = '<span class="font-bold text-accent">%s</span>';
-                            foreach ( array(
-                                array( '"Best [service] near me"', array( 0, 'Not named' ), array( 0, 'Not named' ), array( 1, 'Page 1' ) ),
-                                array( '"Who to call for [problem]"', array( 0, 'Not named' ), array( 1, 'Named' ), array( 0, 'Page 2' ) ),
-                                array( '"[Service] in [your area]"', array( 1, 'Named' ), array( 0, 'Not named' ), array( 1, 'Page 1' ) ),
-                            ) as $ttr_row ) : ?>
+                            <?php foreach ( $ttr_rows as $ttr_row ) : ?>
                             <tr>
                                 <td class="py-3 pr-3 text-white/80"><?php echo esc_html( $ttr_row[0] ); ?></td>
-                                <?php for ( $ttr_c = 1; $ttr_c <= 3; $ttr_c++ ) : ?>
-                                <td class="py-3 px-2"><?php echo sprintf( $ttr_row[ $ttr_c ][0] ? $ttr_yes : $ttr_no, esc_html( $ttr_row[ $ttr_c ][1] ) ); // phpcs:ignore WordPress.Security.EscapingOutput -- fixed markup, escaped value. ?></td>
-                                <?php endfor; ?>
+                                <?php foreach ( $ttr_cols as $ttr_c => $ttr_name ) : ?>
+                                <td class="py-3 px-2 font-bold <?php echo $ttr_row[ $ttr_c ][0] ? 'text-accent' : 'text-red-400'; ?>"><?php echo esc_html( $ttr_row[ $ttr_c ][1] ); ?></td>
+                                <?php endforeach; ?>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
