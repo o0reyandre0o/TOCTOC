@@ -773,15 +773,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
 <nav class="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[94%] sm:w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between gap-2 sm:gap-4 pl-4 pr-2 sm:px-5 xl:px-8 z-[1000] shadow-soft border border-white/50">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none shrink-0">
-        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-4 sm:h-6 w-auto transition-transform group-hover:scale-105" />
+        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-5 sm:h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_rating'] ) && function_exists( 'toctoc_google_reviews' ) ) : $tt_rv = toctoc_google_reviews(); ?>
     <?php
     // Trust line centred between the logo and the button: Google rating and
     // Chamber membership side by side on ONE line (Andre, 30 Sep 2026). The
-    // wording shortens with the screen so it never wraps.
+    // wording shortens with the screen so it never wraps. Hidden on phones,
     ?>
-    <div class="flex-1 min-w-0 overflow-hidden flex items-center justify-center gap-2 sm:gap-3 whitespace-nowrap font-bold text-[10px] md:text-xs xl:text-sm">
+    <div class="hidden md:flex flex-1 min-w-0 overflow-hidden items-center justify-center gap-3 whitespace-nowrap font-bold text-xs xl:text-sm">
         <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex items-center gap-1 sm:gap-1.5 text-slate-900 decoration-none hover:text-sky-deep">
             <span class="text-yellow-500 tracking-wider md:hidden" aria-hidden="true">★</span>
             <span class="text-yellow-500 tracking-wider hidden md:inline" aria-hidden="true">★★★★★</span>
@@ -796,8 +796,8 @@ if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
     </div>
     <?php endif; ?>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_cta'] ) ) : ?>
-    <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1], array( 'http', 'https', 'tel', 'mailto' ) ); ?>" aria-label="<?php echo esc_attr( $GLOBALS['toctoc_landing_cta'][0] ); ?>" class="bg-accent text-accent-foreground h-11 w-11 sm:w-auto justify-center sm:px-6 rounded-full flex items-center gap-2 font-bold text-sm whitespace-nowrap shrink-0 shadow-glow transition-transform hover:scale-105 decoration-none">
-        <span class="hidden sm:inline"><?php echo esc_html( $GLOBALS['toctoc_landing_cta'][0] ); ?></span>
+    <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1], array( 'http', 'https', 'tel', 'mailto' ) ); ?>" aria-label="<?php echo esc_attr( $GLOBALS['toctoc_landing_cta'][0] ); ?>" class="bg-accent text-accent-foreground h-11 px-5 sm:px-6 justify-center rounded-full flex items-center gap-2 font-bold text-sm whitespace-nowrap shrink-0 shadow-glow transition-transform hover:scale-105 decoration-none">
+        <span><?php echo esc_html( $GLOBALS['toctoc_landing_cta'][0] ); ?></span>
         <span class="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </span>
