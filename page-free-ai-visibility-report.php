@@ -189,7 +189,7 @@ footer p{margin:0 0 .4em}
     <p class="lead">Get a free report showing what AI tools and Google say about your business today, who they recommend instead, and what to fix first.</p>
     <div class="chat" aria-label="Illustration of an AI answer">
       <p class="lab">A customer asks ChatGPT:</p>
-      <div class="q" id="cq" aria-live="off">Who's the best dentist near me?</div>
+      <div class="q" id="cq" aria-live="off">What's the best restaurant near me for a special dinner?</div>
       <p class="lab">ChatGPT answers:</p>
       <div class="a">
         <ol><li>A competitor of yours</li><li>Another competitor</li><li>A third competitor</li></ol>
@@ -282,7 +282,7 @@ footer p{margin:0 0 .4em}
 
 <script>
 (function(){
-  var qs=["Who's the best dentist near me?","Where should I eat tonight near me?","Which lawyer should I call near me?","Where can I buy a used car near me?","Which real estate agent should I call near me?","Who's a good accountant near me?","Who's the best physiotherapist near me?"];
+  var qs=["What's the best restaurant near me for a special dinner?","Which lawyer should I call for a property dispute near me?","Which construction company should I hire for a new build near me?","Which strata management company should we hire for our complex?","Who can do a property valuation near me?","Who's a good accountant for a small business near me?","Who's the best physiotherapist near me?"];
   var el=document.getElementById("cq"),i=0,paused=false;
   if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   var box=el.parentNode;
