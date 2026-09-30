@@ -3,6 +3,14 @@
  * TOCTOC Premium Theme Functions
  */
 
+/*
+ * Theme version. Bump it on EVERY change to the theme, here and in the
+ * "Version:" line of style.css, and keep the two identical (Andre, 30 Sep
+ * 2026). Patch for fixes and copy (3.4.0 → 3.4.1), minor for new pages or
+ * features (3.4.x → 3.5.0). It is also the cache-busting ?ver= on style.css.
+ */
+define( 'TOCTOC_THEME_VERSION', '3.4.0' );
+
 function toctoc_setup() {
     add_theme_support( 'post-thumbnails' );
 }
@@ -185,7 +193,7 @@ add_action( 'after_setup_theme', function () {
 } );
 
 function toctoc_scripts() {
-    wp_enqueue_style( 'toctoc-style', get_stylesheet_uri(), array(), '3.0' );
+    wp_enqueue_style( 'toctoc-style', get_stylesheet_uri(), array(), TOCTOC_THEME_VERSION );
     
     // Inline script for smooth scrolling
     wp_add_inline_style( 'toctoc-style', 'html { scroll-behavior: smooth; }' );
