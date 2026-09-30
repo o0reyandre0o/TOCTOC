@@ -21,7 +21,6 @@
  */
 
 $GLOBALS['toctoc_landing']     = true;
-$GLOBALS['toctoc_landing_cta'] = array( 'Call the Team', 'tel:+13455478120' );
 $GLOBALS['toctoc_landing_rating'] = true; // Google rating centred in the bar.
 
 get_header();
