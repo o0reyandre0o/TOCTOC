@@ -776,10 +776,15 @@ if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_rating'] ) && function_exists( 'toctoc_google_reviews' ) ) : $tt_rv = toctoc_google_reviews(); ?>
-    <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 text-sm font-bold text-slate-600 whitespace-nowrap decoration-none hover:text-slate-900">
-        <span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span>
-        <span><strong class="text-slate-900"><?php echo esc_html( $tt_rv['rating'] ); ?></strong> on Google (<?php echo (int) $tt_rv['count']; ?> reviews)</span>
-    </a>
+    <?php // Centred trust line: Google rating + Chamber membership. From xl up only (at lg it would run into the button); below that the page shows it under the bar. ?>
+    <div class="hidden xl:flex absolute left-1/2 -translate-x-1/2 items-center gap-4 text-sm font-bold text-slate-600 whitespace-nowrap">
+        <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="flex items-center gap-2 decoration-none hover:text-slate-900">
+            <span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span>
+            <span><strong class="text-slate-900"><?php echo esc_html( $tt_rv['rating'] ); ?></strong> on Google (<?php echo (int) $tt_rv['count']; ?> reviews)</span>
+        </a>
+        <span class="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true"></span>
+        <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="decoration-none hover:text-slate-900">Member, Cayman Islands Chamber of Commerce</a>
+    </div>
     <?php endif; ?>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_cta'] ) ) : ?>
     <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1], array( 'http', 'https', 'tel', 'mailto' ) ); ?>" class="bg-accent text-accent-foreground h-11 px-5 sm:px-6 rounded-full flex items-center gap-2 font-bold text-sm shadow-glow transition-transform hover:scale-105 decoration-none">

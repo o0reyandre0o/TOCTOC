@@ -21,7 +21,7 @@
  */
 
 $GLOBALS['toctoc_landing']     = true;
-$GLOBALS['toctoc_landing_cta'] = array( 'Call Daniel', 'tel:+13455478120' );
+$GLOBALS['toctoc_landing_cta'] = array( 'Call the Team', 'tel:+13455478120' );
 $GLOBALS['toctoc_landing_rating'] = true; // Google rating centred in the bar.
 
 get_header();
@@ -41,11 +41,11 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
 
         <div class="relative z-10 mx-auto max-w-6xl px-6 pt-36 md:pt-44 pb-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
             <div>
-                <div class="inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-full border border-slate-200 bg-white/70 px-5 py-2 text-xs font-bold text-slate-600 backdrop-blur">
-                    <span class="sm:hidden"><span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span> <strong class="text-slate-900"><?php echo esc_html( $ttr_reviews['rating'] ); ?></strong> on Google (<?php echo (int) $ttr_reviews['count']; ?> reviews)</span>
+                <div class="xl:hidden inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-full border border-slate-200 bg-white/70 px-5 py-2 text-xs font-bold text-slate-600 backdrop-blur">
+                    <span><span class="text-yellow-500 tracking-widest" aria-hidden="true">★★★★★</span> <strong class="text-slate-900"><?php echo esc_html( $ttr_reviews['rating'] ); ?></strong> on Google (<?php echo (int) $ttr_reviews['count']; ?> reviews)</span>
                     <span>Member, Cayman Islands Chamber of Commerce</span>
                 </div>
-                <h1 class="mt-8 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
+                <h1 class="mt-8 xl:mt-0 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
                     When customers ask ChatGPT or Google who to call, <em class="italic text-sky-deep font-display">does it name you?</em>
                 </h1>
                 <p class="mt-8 text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl">Get a free report showing what AI tools and Google say about your business today, who they recommend instead, and what to fix first.</p>
