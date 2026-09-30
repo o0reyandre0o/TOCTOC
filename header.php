@@ -776,13 +776,23 @@ if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
         <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-4 sm:h-6 w-auto transition-transform group-hover:scale-105" />
     </a>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_rating'] ) && function_exists( 'toctoc_google_reviews' ) ) : $tt_rv = toctoc_google_reviews(); ?>
-    <?php // Trust lines centred between the logo and the button, on every screen size. ?>
-    <div class="flex-1 min-w-0 flex flex-col items-center justify-center text-center leading-tight font-bold">
-        <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex flex-wrap items-center justify-center gap-x-1.5 text-[10px] sm:text-sm text-slate-900 decoration-none hover:text-sky-deep">
-            <span class="text-yellow-500 tracking-wider" aria-hidden="true">★★★★★</span>
-            <span><?php echo esc_html( $tt_rv['rating'] ); ?> on Google (<?php echo (int) $tt_rv['count']; ?> reviews)</span>
+    <?php
+    // Trust line centred between the logo and the button: Google rating and
+    // Chamber membership side by side on ONE line (Andre, 30 Sep 2026). The
+    // wording shortens with the screen so it never wraps.
+    ?>
+    <div class="flex-1 min-w-0 overflow-hidden flex items-center justify-center gap-2 sm:gap-3 whitespace-nowrap font-bold text-[10px] md:text-xs xl:text-sm">
+        <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex items-center gap-1 sm:gap-1.5 text-slate-900 decoration-none hover:text-sky-deep">
+            <span class="text-yellow-500 tracking-wider md:hidden" aria-hidden="true">★</span>
+            <span class="text-yellow-500 tracking-wider hidden md:inline" aria-hidden="true">★★★★★</span>
+            <span><?php echo esc_html( $tt_rv['rating'] ); ?><span class="md:hidden"> Google</span><span class="hidden md:inline"> on Google</span><span class="hidden xl:inline"> (<?php echo (int) $tt_rv['count']; ?> reviews)</span></span>
         </a>
-        <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="mt-0.5 text-[9px] sm:text-xs text-slate-500 decoration-none hover:text-sky-deep">Member, Cayman Islands Chamber of Commerce</a>
+        <span class="w-1 h-1 rounded-full bg-slate-300 shrink-0" aria-hidden="true"></span>
+        <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="text-slate-500 decoration-none hover:text-sky-deep">
+            <span class="md:hidden">Chamber member</span>
+            <span class="hidden md:inline xl:hidden">Cayman Chamber member</span>
+            <span class="hidden xl:inline">Member, Cayman Islands Chamber of Commerce</span>
+        </a>
     </div>
     <?php endif; ?>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_cta'] ) ) : ?>
