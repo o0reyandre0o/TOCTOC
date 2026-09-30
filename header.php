@@ -781,18 +781,12 @@ if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
     // Chamber membership side by side on ONE line (Andre, 30 Sep 2026). The
     // wording shortens with the screen so it never wraps. Hidden on phones,
     ?>
-    <div class="hidden md:flex flex-1 min-w-0 overflow-hidden items-center justify-center gap-3 whitespace-nowrap font-bold text-xs xl:text-sm">
-        <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex items-center gap-1 sm:gap-1.5 text-slate-900 decoration-none hover:text-sky-deep">
-            <span class="text-yellow-500 tracking-wider md:hidden" aria-hidden="true">★</span>
-            <span class="text-yellow-500 tracking-wider hidden md:inline" aria-hidden="true">★★★★★</span>
-            <span><?php echo esc_html( $tt_rv['rating'] ); ?><span class="md:hidden"> Google</span><span class="hidden md:inline"> on Google</span><span class="hidden xl:inline"> (<?php echo (int) $tt_rv['count']; ?> reviews)</span></span>
+    <div class="hidden lg:flex flex-1 min-w-0 overflow-hidden items-center justify-center gap-5 whitespace-nowrap font-bold text-xs xl:text-sm">
+        <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-slate-900 decoration-none hover:text-sky-deep">
+            <span class="text-yellow-500 tracking-wider" aria-hidden="true">★★★★★</span>
+            <span><?php echo esc_html( $tt_rv['rating'] ); ?> on Google</span>
         </a>
-        <span class="w-1 h-1 rounded-full bg-slate-300 shrink-0" aria-hidden="true"></span>
-        <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="text-slate-500 decoration-none hover:text-sky-deep">
-            <span class="md:hidden">Chamber member</span>
-            <span class="hidden md:inline xl:hidden">Cayman Chamber member</span>
-            <span class="hidden xl:inline">Member, Cayman Islands Chamber of Commerce</span>
-        </a>
+        <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="text-slate-500 decoration-none hover:text-sky-deep">Member, Cayman Islands Chamber of Commerce</a>
     </div>
     <?php endif; ?>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_cta'] ) ) : ?>
