@@ -47,19 +47,27 @@ $ttr_og      = function_exists( 'toctoc_og_image_url' )
 <meta name="twitter:title" content="<?php echo esc_attr( $ttr_title ); ?>">
 <meta name="twitter:description" content="<?php echo esc_attr( $ttr_desc ); ?>">
 <meta name="twitter:image" content="<?php echo esc_url( $ttr_og ); ?>">
-<link rel="icon" type="image/svg+xml" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
+<link rel="icon" type="image/png" href="/wp-content/uploads/fbrfg/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/wp-content/uploads/fbrfg/favicon.svg">
+<link rel="shortcut icon" href="/wp-content/uploads/fbrfg/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/wp-content/uploads/fbrfg/apple-touch-icon.png">
+<link rel="manifest" href="/wp-content/uploads/fbrfg/site.webmanifest">
+<meta name="author" content="Toc Toc Marketing">
 <meta name="generator" content="TOCTOC Sky Editorial by Toc Toc (https://toctoc.ky/)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"WebPage","@id":"https://toctoc.ky/free-ai-visibility-report/#webpage","url":"https://toctoc.ky/free-ai-visibility-report/","name":"Free AI & Google Visibility Report","description":<?php echo wp_json_encode( $ttr_desc, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?>,"isPartOf":{"@id":"https://toctoc.ky/#website"},"about":{"@id":"https://toctoc.ky/#organization"},"publisher":{"@id":"https://toctoc.ky/#organization"}},
+{"@type":"Organization","@id":"https://toctoc.ky/#organization","name":"Toc Toc Marketing","url":"https://toctoc.ky/","logo":"https://toctoc.ky/wp-content/uploads/2026/07/logo-toctoc-new-05.webp","telephone":"+1 345-547-8120","email":"info@toctoc.ky","address":{"@type":"PostalAddress","streetAddress":"207 Sparky's Dr","addressLocality":"George Town","addressRegion":"Grand Cayman","postalCode":"KY1-1110","addressCountry":"KY"},"founder":{"@id":"https://toctoc.ky/#daniel-garrido"},"memberOf":{"@id":"https://caymanchamber.ky/#organization"}},
+{"@type":"Service","@id":"https://toctoc.ky/free-ai-visibility-report/#service","name":"Free AI & Google Visibility Report","serviceType":"AI search visibility audit","description":"A report showing whether ChatGPT, Gemini and Google name a business when customers ask who to call, which businesses they recommend instead, how the business looks on Google, and the three fixes that would help most. Sent by email within one business day.","provider":{"@id":"https://toctoc.ky/#organization"},"areaServed":[{"@type":"Country","name":"Cayman Islands"},{"@type":"Place","name":"Worldwide"}],"url":"https://toctoc.ky/free-ai-visibility-report/"},
+{"@type":"BreadcrumbList","@id":"https://toctoc.ky/free-ai-visibility-report/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toctoc.ky/"},{"@type":"ListItem","position":2,"name":"Free AI & Google Visibility Report","item":"https://toctoc.ky/free-ai-visibility-report/"}]},
+{"@type":"WebPage","@id":"https://toctoc.ky/free-ai-visibility-report/#webpage","url":"https://toctoc.ky/free-ai-visibility-report/","name":"Free AI & Google Visibility Report","description":<?php echo wp_json_encode( $ttr_desc, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?>,"isPartOf":{"@id":"https://toctoc.ky/#website"},"about":{"@id":"https://toctoc.ky/free-ai-visibility-report/#service"},"breadcrumb":{"@id":"https://toctoc.ky/free-ai-visibility-report/#breadcrumb"},"publisher":{"@id":"https://toctoc.ky/#organization"}},
 {"@type":"FAQPage","@id":"https://toctoc.ky/free-ai-visibility-report/#faq","isPartOf":{"@id":"https://toctoc.ky/free-ai-visibility-report/#webpage"},"mainEntity":[
-{"@type":"Question","name":"Is the AI and Google visibility report really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The report is free and comes with no obligation. You can use it yourself or ask Toc Toc Marketing to help you act on it."}},
-{"@type":"Question","name":"How long does the report take?","acceptedAnswer":{"@type":"Answer","text":"You receive it by email within one business day of sending the form."}},
-{"@type":"Question","name":"Do I need to give you access to my accounts?","acceptedAnswer":{"@type":"Answer","text":"No. The report uses what is publicly visible: your website, your listings, and what AI tools and Google show when asked."}},
-{"@type":"Question","name":"Can you work with businesses outside the Cayman Islands?","acceptedAnswer":{"@type":"Answer","text":"Yes. Toc Toc Marketing works with businesses in the Cayman Islands and abroad."}}
+{"@type":"Question","name":"Is the report really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It's free and comes with no obligation. You can use it yourself or ask us to help."}},
+{"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"You'll have it within one business day of sending the form."}},
+{"@type":"Question","name":"Do you need access to my accounts?","acceptedAnswer":{"@type":"Answer","text":"No. The report uses what's publicly visible: your website, your listings, and what AI tools and Google show when asked."}},
+{"@type":"Question","name":"Do you work with businesses outside the Cayman Islands?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with businesses here and abroad."}}
 ]}
 ]}
 </script>
@@ -167,7 +175,7 @@ footer p{margin:0 0 .4em}
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <div class="brand">Toc Toc Marketing</div>
+  <a class="brand" href="https://toctoc.ky/" style="color:inherit;text-decoration:none">Toc Toc Marketing</a>
   <div class="trust">
     <span><span class="stars" aria-hidden="true">★★★★★</span> <b><?php echo esc_html( $ttr_reviews['rating'] ); ?></b> on Google (<?php echo (int) $ttr_reviews['count']; ?> reviews)</span>
     <span>Member, Cayman Islands Chamber of Commerce</span>
@@ -267,7 +275,7 @@ footer p{margin:0 0 .4em}
 </main>
 
 <footer><div class="wrap">
-  <p><b>Toc Toc Marketing</b> · Founded and led by Daniel Garrido · 207 Sparky's Dr, George Town, Cayman Islands</p>
+  <p><a href="https://toctoc.ky/" style="color:inherit;text-decoration:none"><b>Toc Toc Marketing</b></a> · Founded and led by Daniel Garrido · 207 Sparky's Dr, George Town, Cayman Islands</p>
   <p><a href="tel:+13455478120">+1 (345) 547-8120</a> · <a href="https://wa.me/13455478120">WhatsApp</a> · <a href="mailto:info@toctoc.ky">info@toctoc.ky</a></p>
   <p>Trade &amp; Business Licence TB1795A</p>
 </div></footer>

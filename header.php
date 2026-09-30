@@ -28,9 +28,10 @@
     <link rel="preload" as="image" href="<?php echo esc_url( toctoc_clouds_src() ); ?>" imagesrcset="<?php echo esc_attr( toctoc_clouds_srcset() ); ?>" imagesizes="100vw" fetchpriority="high">
     <?php endif; ?>
 
-    <link rel="icon" type="image/svg+xml" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
-    <link rel="shortcut icon" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
-    <link rel="apple-touch-icon" href="https://toctoc.ky/toctoc-new-favicon-03.svg">
+    <?php /* Favicons come from the RealFaviconGenerator plugin (uploads/fbrfg/) and
+             the WordPress site icon, both printed by wp_head(). The three links
+             that sat here pointed at /toctoc-new-favicon-03.svg, which no longer
+             exists (404), and were printed first, so browsers tried them first. */ ?>
     
     <?php
     // SEO & Social Meta logic
