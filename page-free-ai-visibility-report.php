@@ -39,7 +39,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
         <div class="absolute inset-0 bg-white/50 z-[1]"></div>
         <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background pointer-events-none z-[2]"></div>
 
-        <div class="relative z-10 mx-auto max-w-6xl px-6 pt-40 md:pt-44 pb-20 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-start">
+        <div class="relative z-10 mx-auto max-w-6xl px-6 pt-32 md:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-start">
             <div class="min-w-0">
                 <h1 class="text-[2.6rem] sm:text-6xl lg:text-7xl leading-[0.95] text-slate-950 font-display [text-wrap:balance]">
                     When customers ask ChatGPT or Google who to call, <em class="italic text-sky-deep font-display">does it name you?</em>
@@ -122,8 +122,8 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                 <h2 class="mt-6 text-[2.6rem] sm:text-5xl md:text-7xl font-display text-slate-900 leading-[0.9]">Your report answers <em class="italic text-sky-deep font-display">four questions</em></h2>
                 <p class="mt-8 text-lg text-slate-600 leading-relaxed">We ask ChatGPT, Gemini and Google the same questions your customers ask, then show you exactly what came back.</p>
             </div>
-            <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start [&>*]:min-w-0">
-                <ul class="grid sm:grid-cols-2 gap-6">
+            <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                <ul class="min-w-0 grid sm:grid-cols-2 gap-6">
                     <?php foreach ( array(
                         array( 'Does AI mention my business?', 'Yes or no, for each question we test.' ),
                         array( 'Who does it recommend instead?', 'The businesses that show up in your place.' ),
@@ -136,7 +136,7 @@ $ttr_input   = 'w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 
                     </li>
                     <?php endforeach; ?>
                 </ul>
-                <div class="rounded-[2rem] sm:rounded-[2.5rem] bg-slate-950 text-white p-6 sm:p-8 md:p-10 shadow-glass overflow-x-auto" aria-label="Example report page">
+                <div class="min-w-0 rounded-[2rem] sm:rounded-[2.5rem] bg-slate-950 text-white p-6 sm:p-8 md:p-10 shadow-glass overflow-x-auto" aria-label="Example report page">
                     <h3 class="text-3xl font-display">Example page from a report</h3>
                     <p class="mt-2 text-xs text-white/50">Sample data for illustration only.</p>
                     <table class="mt-6 w-full min-w-[420px] text-sm border-collapse">

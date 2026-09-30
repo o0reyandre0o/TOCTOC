@@ -771,26 +771,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  * alone in the bar — no menu to lead a visitor away from the form.
  */
 if ( ! empty( $GLOBALS['toctoc_landing'] ) ) : ?>
-<?php if ( ! empty( $GLOBALS['toctoc_landing_rating'] ) && function_exists( 'toctoc_google_reviews' ) ) : $tt_rv = toctoc_google_reviews(); ?>
-<?php // Trust strip above the bar, on every screen size: Google rating + Chamber membership. ?>
-<div class="fixed top-0 inset-x-0 z-[1100] bg-slate-950 text-white">
-    <div class="mx-auto max-w-6xl px-4 py-1.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-0.5 text-[11px] sm:text-xs leading-4 font-bold text-center">
-        <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-white decoration-none hover:text-accent">
-            <span class="text-yellow-400 tracking-widest" aria-hidden="true">★★★★★</span>
+<nav class="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[94%] sm:w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between gap-2 sm:gap-4 pl-4 pr-2 sm:px-5 xl:px-8 z-[1000] shadow-soft border border-white/50">
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none shrink-0">
+        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-4 sm:h-6 w-auto transition-transform group-hover:scale-105" />
+    </a>
+    <?php if ( ! empty( $GLOBALS['toctoc_landing_rating'] ) && function_exists( 'toctoc_google_reviews' ) ) : $tt_rv = toctoc_google_reviews(); ?>
+    <?php // Trust lines centred between the logo and the button, on every screen size. ?>
+    <div class="flex-1 min-w-0 flex flex-col items-center justify-center text-center leading-tight font-bold">
+        <a href="https://maps.google.com/?cid=66681410512619349" target="_blank" rel="noopener" class="inline-flex flex-wrap items-center justify-center gap-x-1.5 text-[10px] sm:text-sm text-slate-900 decoration-none hover:text-sky-deep">
+            <span class="text-yellow-500 tracking-wider" aria-hidden="true">★★★★★</span>
             <span><?php echo esc_html( $tt_rv['rating'] ); ?> on Google (<?php echo (int) $tt_rv['count']; ?> reviews)</span>
         </a>
-        <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-white/30" aria-hidden="true"></span>
-        <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="text-white/80 decoration-none hover:text-accent">Member, Cayman Islands Chamber of Commerce</a>
+        <a href="https://caymanchamber.ky/chamber-profile-toc-toc-marketing-a-new-marketing-service-for-the-ai-age/" target="_blank" rel="noopener" class="mt-0.5 text-[9px] sm:text-xs text-slate-500 decoration-none hover:text-sky-deep">Member, Cayman Islands Chamber of Commerce</a>
     </div>
-</div>
-<?php endif; ?>
-<nav class="fixed <?php echo empty( $GLOBALS['toctoc_landing_rating'] ) ? 'top-6' : 'top-14 sm:top-12'; ?> left-1/2 -translate-x-1/2 w-[90%] max-w-6xl h-16 glass rounded-full flex items-center justify-between gap-3 px-5 xl:px-8 z-[1000] shadow-soft border border-white/50">
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center group decoration-none shrink-0">
-        <img src="https://toctoc.ky/wp-content/uploads/2026/05/toctoc-new-logo-02.svg" alt="Toc Toc Marketing" width="734" height="127" class="h-5 sm:h-6 w-auto transition-transform group-hover:scale-105" />
-    </a>
+    <?php endif; ?>
     <?php if ( ! empty( $GLOBALS['toctoc_landing_cta'] ) ) : ?>
-    <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1], array( 'http', 'https', 'tel', 'mailto' ) ); ?>" class="bg-accent text-accent-foreground h-11 px-4 sm:px-6 rounded-full flex items-center gap-2 font-bold text-sm whitespace-nowrap shrink-0 shadow-glow transition-transform hover:scale-105 decoration-none">
-        <?php echo esc_html( $GLOBALS['toctoc_landing_cta'][0] ); ?>
+    <a href="<?php echo esc_url( $GLOBALS['toctoc_landing_cta'][1], array( 'http', 'https', 'tel', 'mailto' ) ); ?>" aria-label="<?php echo esc_attr( $GLOBALS['toctoc_landing_cta'][0] ); ?>" class="bg-accent text-accent-foreground h-11 w-11 sm:w-auto justify-center sm:px-6 rounded-full flex items-center gap-2 font-bold text-sm whitespace-nowrap shrink-0 shadow-glow transition-transform hover:scale-105 decoration-none">
+        <span class="hidden sm:inline"><?php echo esc_html( $GLOBALS['toctoc_landing_cta'][0] ); ?></span>
         <span class="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </span>
