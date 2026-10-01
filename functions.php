@@ -9,7 +9,7 @@
  * 2026). Patch for fixes and copy (3.4.0 → 3.4.1), minor for new pages or
  * features (3.4.x → 3.5.0). It is also the cache-busting ?ver= on style.css.
  */
-define( 'TOCTOC_THEME_VERSION', '3.4.4' );
+define( 'TOCTOC_THEME_VERSION', '3.4.5' );
 
 function toctoc_setup() {
     add_theme_support( 'post-thumbnails' );
@@ -37,21 +37,15 @@ remove_action( 'wp_head', 'wp_generator' );
 // Free SEO / GEO / AEO checker tool (AJAX endpoints for /seo-checker/).
 require_once get_template_directory() . '/seo-checker-tool.php';
 
-// Client Hub — admin-only console for the client profiles we manage (GBP,
-// YouTube, LinkedIn, Apple Business Connect, Bing Places). Self-contained in
-// inc/client-hub/ so it can be lifted out into a plugin unchanged.
-//
-// Guarded with file_exists() on purpose. A bare require_once here took the whole
-// site down on 2026-08-03: the deploy shipped this functions.php before the
-// inc/client-hub/ directory existed on the server, the missing file raised a
-// fatal, and WordPress's error protection responded by falling back to the
-// default theme — taking every bit of SEO with it, since all of it lives in this
-// theme. An optional admin feature must never be able to do that.
-$toctoc_hub = get_template_directory() . '/inc/client-hub/loader.php';
-if ( is_readable( $toctoc_hub ) ) {
-    require_once $toctoc_hub;
-}
-unset( $toctoc_hub );
+// Client Hub (inc/client-hub/) was removed on 2026-10-01: it was never used.
+// Its 5-minute publishing cron would keep firing with no code behind it, so it
+// is cleared once here. The client records it seeded stay in the database,
+// inert and invisible without the code.
+add_action( 'init', function () {
+    if ( wp_next_scheduled( 'tch_publish_due' ) ) {
+        wp_clear_scheduled_hook( 'tch_publish_due' );
+    }
+} );
 
 // The team, as data + the helpers the /team/ pages use. Guarded exactly like
 // the Client Hub above and for the same reason: functions.php can reach the
