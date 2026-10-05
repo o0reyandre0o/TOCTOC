@@ -293,6 +293,15 @@
     <!-- Section 4: Services — the home page's only in-body links to the service pages -->
     <?php toctoc_render_services_grid(); ?>
 
+    <?php
+    // Latest articles (5 Oct 2026). The home page is the URL Google crawls most
+    // often, and until now it linked to no article at all, so new posts waited
+    // to be found through the sitemap. Three cards, newest first, any category.
+    if ( function_exists( 'toctoc_render_related_posts' ) ) {
+        toctoc_render_related_posts( array(), 'Latest <em class="italic text-sky-deep font-display">articles</em>' );
+    }
+    ?>
+
     <!--
         Section 4b: Just Launched.
 

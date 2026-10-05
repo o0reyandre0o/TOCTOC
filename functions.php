@@ -9,7 +9,7 @@
  * 2026). Patch for fixes and copy (3.4.0 → 3.4.1), minor for new pages or
  * features (3.4.x → 3.5.0). It is also the cache-busting ?ver= on style.css.
  */
-define( 'TOCTOC_THEME_VERSION', '3.4.5' );
+define( 'TOCTOC_THEME_VERSION', '3.5.0' );
 
 function toctoc_setup() {
     add_theme_support( 'post-thumbnails' );
@@ -272,18 +272,23 @@ function toctoc_render_faq( $faqs, $eyebrow = 'FAQ', $heading = 'Frequently Aske
  * an article comes out.
  *
  * @param int[]  $cat_ids Categories this service page is about, most specific first.
+ *                        Empty: the latest articles from any category (home page).
  * @param string $heading Section heading (HTML allowed: <em> for the accent).
  * @param int    $limit   How many articles to show.
  */
 function toctoc_render_related_posts( $cat_ids, $heading = 'From the blog', $limit = 3 ) {
-    $q = new WP_Query( array(
+    $any = empty( $cat_ids ); // Home page: the latest articles, any category.
+    $args = array(
         'post_type'           => 'post',
         'post_status'         => 'publish',
-        'category__in'        => array_map( 'intval', (array) $cat_ids ),
         'posts_per_page'      => (int) $limit,
         'ignore_sticky_posts' => true,
         'no_found_rows'       => true,
-    ) );
+    );
+    if ( ! $any ) {
+        $args['category__in'] = array_map( 'intval', (array) $cat_ids );
+    }
+    $q = new WP_Query( $args );
     if ( ! $q->have_posts() ) {
         return; // Nothing published in these categories yet: no empty shell.
     }
@@ -305,7 +310,7 @@ function toctoc_render_related_posts( $cat_ids, $heading = 'From the blog', $lim
                     // category happens to be first on the post.
                     $cat = '';
                     foreach ( get_the_category() as $c ) {
-                        if ( in_array( (int) $c->term_id, array_map( 'intval', (array) $cat_ids ), true ) ) {
+                        if ( $any || in_array( (int) $c->term_id, array_map( 'intval', (array) $cat_ids ), true ) ) {
                             $cat = $c->name;
                             break;
                         }
@@ -1799,3 +1804,85 @@ add_action( 'template_redirect', function () {
     wp_redirect( 'https://' . $host . $uri, 301 );
     exit;
 }, 1 );
+
+/**
+ * IndexNow: tell Bing (and the other IndexNow engines) the moment a post or
+ * page goes live or changes, instead of waiting for the next crawl.
+ *
+ * Added 5 Oct 2026, when the two newest articles were still unknown to Google a
+ * week after publishing while Bing had crawled them within minutes. Google does
+ * not take part in IndexNow and offers no API for ordinary pages, so this is
+ * about Bing — the index ChatGPT's search runs on. Google is helped instead by
+ * the "Latest articles" block on the home page (toctoc_render_related_posts()).
+ *
+ * The key is public by design: it is served as plain text at /{key}.txt so the
+ * engines can confirm the ping came from this host. Submissions are
+ * non-blocking and throttled to one per URL per 10 minutes, so a burst of
+ * saves in the editor sends one ping.
+ */
+const TOCTOC_INDEXNOW_KEY = '98b3afa609de79793a13933ad5c4acec';
+
+add_action( 'init', function () {
+	$path = strtok( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), '?' );
+	if ( '/' . TOCTOC_INDEXNOW_KEY . '.txt' === $path ) {
+		header( 'Content-Type: text/plain; charset=utf-8' );
+		echo TOCTOC_INDEXNOW_KEY; // phpcs:ignore WordPress.Security.EscapingOutput -- fixed hex string.
+		exit;
+	}
+}, 1 );
+
+/**
+ * Ping IndexNow with a list of URLs on this host.
+ *
+ * @param string[] $urls Absolute URLs.
+ * @return void
+ */
+function toctoc_indexnow_ping( $urls ) {
+	$host = wp_parse_url( home_url( '/' ), PHP_URL_HOST );
+	$send = array();
+	foreach ( array_unique( (array) $urls ) as $u ) {
+		if ( ! $u || wp_parse_url( $u, PHP_URL_HOST ) !== $host ) {
+			continue;
+		}
+		$t = 'ttin_' . md5( $u );
+		if ( get_transient( $t ) ) {
+			continue;
+		}
+		set_transient( $t, 1, 10 * MINUTE_IN_SECONDS );
+		$send[] = $u;
+	}
+	if ( ! $send ) {
+		return;
+	}
+	wp_remote_post(
+		'https://api.indexnow.org/indexnow',
+		array(
+			'timeout'  => 5,
+			'blocking' => false,
+			'headers'  => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+			'body'     => wp_json_encode(
+				array(
+					'host'        => $host,
+					'key'         => TOCTOC_INDEXNOW_KEY,
+					'keyLocation' => home_url( '/' . TOCTOC_INDEXNOW_KEY . '.txt' ),
+					'urlList'     => array_values( $send ),
+				)
+			),
+		)
+	);
+}
+
+// Published (including scheduled posts going live through WP-cron) or updated
+// while published. Posts also ping the home and the blog index, whose lists
+// of latest articles just changed.
+add_action( 'transition_post_status', function ( $new_status, $old_status, $post ) {
+	if ( 'publish' !== $new_status || ! in_array( $post->post_type, array( 'post', 'page' ), true ) || wp_is_post_revision( $post ) ) {
+		return;
+	}
+	$urls = array( get_permalink( $post ) );
+	if ( 'post' === $post->post_type && 'publish' !== $old_status ) {
+		$urls[] = home_url( '/' );
+		$urls[] = home_url( '/blog/' );
+	}
+	toctoc_indexnow_ping( $urls );
+}, 20, 3 );
