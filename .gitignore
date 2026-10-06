@@ -3,3 +3,6 @@ node_modules/
 # Credenciales (nunca en el repositorio)
 *credentials*.json
 *service_account*.json
+
+# Scripts y pruebas locales (este repositorio se publica entero en la web)
+scratch/
